@@ -1,0 +1,155 @@
+## ***********************************************
+## 応募書入力infomation（基盤(S)）
+## ***********************************************
+
+## 2005/03/24 新規作成
+
+#parse($commonSetting)
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpenClose.js"></script>
+</head>
+<body class="bodyStyle" onUnload="javascript:fncKeepedWindowClose();">
+
+<form name="shinsei_form" method="post" action="" onSubmit="return onCheck()">
+<input type="hidden" name="page" value="0">	<!-- Validate処理をコマンドによって変更させるため -->
+<input type="hidden" name="$form.tokenName" value="$form.token">	<!-- ２重押し防止のため -->
+
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/shinsei/logoff')"><IMG SRC="$path/images/header_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=20 border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#6699CC" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/shinsei/showMainMenu')">応募者向けメニュー</a>＞研究計画調書作成（受付中研究種目一覧＞<B>応募情報入力</B><font size="1">＞応募情報又は研究計画調書確認＞応募情報又は研究計画調書確認完了</font>）</td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><IMG SRC="$path/images/subtitle_img1.gif" WIDTH=61 HEIGHT=49 ALT=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+       応募情報入力</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <IMG SRC="$path/images/subtitle_img3.gif" width=213 height=49 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+<!-- 本文ここから -->
+<!-- 注意事項ここから -->
+    <!-- ログイン入力フォーム、メニュー項目用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr>
+      <td width="92" valign="top"><IMG SRC="$path/images/title_img7.gif" WIDTH=92 HEIGHT=38 ALT=""></td>
+      <td width="52" class="menuLine"><img src="$path/images/spacer.gif" alt="" width="52" height="1"></td>
+      <td width="90%" align="left"> <br>
+       <!-- メニュー用テーブルここから -->
+       <table border="0" cellspacing="6">
+        <tr>
+         <td width="50">&nbsp;</td>
+         <td>基盤研究(S)に応募する場合は以下の研究種目とは重複して応募できません。</td>
+        </tr>
+		<tr>
+         <td width="50">&nbsp;</td>
+         <td>（公募要領「重複応募の制限一覧表」参照）</td>
+        </tr>
+        <tr>
+         <td width="50">&nbsp;</td>
+         <td>(1) 以下の研究種目の継続課題を有している場合</td>
+        </tr>
+        <tr>
+         <td width="50">&nbsp;</td>
+         <td>「特別推進研究」「学術創成研究費」「基盤研究(S・A・B・C)」「若手研究(A・B)」</td>
+        </tr>
+        <tr>
+         <td width="50">&nbsp;</td>
+         <td>これらの継続課題を有しているにも関わらず応募した場合には、今回新たに応募した課題は審査に付されません。</td>
+        </tr>
+        <tr>
+         <td width="50">&nbsp;</td>
+         <td>（なお、「特別推進研究」「学術創成研究費」の継続課題を有している場合には、研究分担者として応募することもできません。）</td>
+        </tr>
+        <tr>
+         <td width="50">&nbsp;</td>
+         <td>&nbsp;</td>
+        </tr>
+        <tr>
+         <td width="50">&nbsp;</td>
+         <td>(2) 以下の研究種目の新規応募をする場合</td>
+        </tr>
+        <tr>
+         <td width="50">&nbsp;</td>
+         <td>「基盤研究(S・B・C)」「若手研究(A・B)」</td>
+        </tr>
+       </table>
+
+       <!-- メニュー用テーブルここまで -->
+       <br>
+      </td>
+     </tr>
+    </table>
+<!-- 注意事項ここまで -->
+<!-- 本文ここまで -->
+<!-- ボタン用テーブルここから -->
+<div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="$link.setAction('/shinsei/dispatchApplication')"><img src="$path/images/bt_ok.gif" width=114 height=28 alt="OK" border=0></a></td>
+       <td><a href="$link.setAction('/shinsei/searchListKiban')"><img src="$path/images/bt_cancel.gif" width=114 height=28 alt="キャンセル" border=0></a></td>
+      </tr>
+     </table>
+</div>
+<!-- ボタン用テーブルここまで -->
+
+     <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img1.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shinsei/logoff')"><IMG SRC="$path/images/footer_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=26 border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img3.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+  <!-- 左右の縦線用テーブルここまで -->
+</div>
+
+</body>
+</html>
+  
+

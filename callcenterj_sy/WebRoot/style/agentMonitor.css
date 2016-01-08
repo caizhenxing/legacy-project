@@ -1,0 +1,56 @@
+#container{
+	height: 320px;
+	width: 720px;
+}
+/* 个状态座席人数统计 */
+.Statistics{
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 30px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #5682B1;
+	text-align: center;
+	float: right;
+	height: 20px;
+	width: 256px;
+}
+.Periphery {
+	WIDTH: 730px; HEIGHT: 320px
+}
+#tblSort TH {
+	BACKGROUND-POSITION: center center; FONT-WEIGHT: bold; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(../images/agentMonitorTitle.jpg); WIDTH: 76px; COLOR: #ffffff; LINE-HEIGHT: 22px; BACKGROUND-REPEAT: repeat-x; FONT-FAMILY: "宋体"; HEIGHT: 21px; TEXT-ALIGN: center
+}
+#tblSort TH DIV {
+	MARGIN: 3px 4px 2px 3px; WIDTH: 60px; HEIGHT: 15px
+}
+.Wonderful TD {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #666666; LINE-HEIGHT: 18px; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: center
+}
+.Partner TD {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #666666; LINE-HEIGHT: 18px; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #afcae7; TEXT-ALIGN: center
+}
+.rowClickStl TD {
+	BACKGROUND-COLOR: #FF9966;
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 20px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-align: center;
+}
+.Statistics {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #ffffff; LINE-HEIGHT: 30px; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #5682b1; TEXT-ALIGN: center
+}
+.Background {
+	BACKGROUND-COLOR: #d7dee5
+}
+.Navigation {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #ffffff; LINE-HEIGHT: 25px; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #9eb7d1; TEXT-ALIGN: center
+}
+.Text {
+	BORDER-RIGHT: #5082b3 1px solid; BORDER-TOP: #5082b3 1px solid; FONT-WEIGHT: normal; FONT-SIZE: 12px; BORDER-LEFT: #5082b3 1px solid; WIDTH: 150px; COLOR: #5481bc; LINE-HEIGHT: 22px; BORDER-BOTTOM: #5082b3 1px solid; FONT-FAMILY: "宋体"; HEIGHT: 18px; TEXT-ALIGN: center
+}
+.Button {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; WIDTH: 70px; COLOR: #5682b1; LINE-HEIGHT: 15px; FONT-FAMILY: "宋体"; HEIGHT: 25px; TEXT-ALIGN: center
+}

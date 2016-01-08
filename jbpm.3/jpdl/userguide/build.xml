@@ -1,0 +1,50 @@
+<project name="jbpm.jpdl.userguide" default="install" basedir=".">
+
+  <!-- project specific properties -->
+  <property name="artifact.name" value="jbpm-jpdl-userguide.zip" />
+  <property name="module.name" value="jpdl" />
+  <property name="jbpm.root" value="../.." />
+  <property file="../version.properties" />
+
+  <!-- properties files -->
+  <property file="${user.home}/jbpm/build.properties" />
+  <property file="build.properties" />
+  <property file="${jbpm.root}/build/build.properties" />
+
+  <!-- import base project build file -->
+  <import file="${jbpm.root}/build/base.project.build.xml"/>
+
+
+  <!-- project specific targets -->
+	
+  <property name="build.dir" value="${basedir}/target/userguide"/>
+  <property name="pdf.name"  value="jbpm-jpdl.pdf" />
+  <import file="${docbook.support.dir}/docbook-support/support.xml" />
+	
+  <target name="get.docbook.support">
+  	<ant antfile="../../build/build.xml" target="get.docbook.support" />
+  </target>
+
+  <target name="generate" 
+  	      depends="clean, get.docbook.support">
+    <mkdir dir="en/images" /> 
+    <antcall target="lang.all"><param name="lang" value="en"/></antcall>
+  </target>
+
+  <target name="generate.html.only" 
+  	      depends="get.docbook.support"
+  	      description="creates the html docs only and opens a browser">
+    <mkdir dir="en/images" /> 
+    <antcall target="lang.dochtml"><param name="lang" value="en"/></antcall>
+    <exec executable="C:/Program Files/Internet Explorer/IEXPLORE.EXE" os="Windows XP,Windows 2000,Windows 98">
+      <arg value="file://${basedir}/target/userguide/en/html/index.html" />
+    </exec>
+  </target>
+
+  <target name="package" depends="all.doc">
+  	<zip zipfile="target/${artifact.name}">
+      <fileset dir="target/userguide/en" />
+  	</zip>
+  </target>
+
+</project>

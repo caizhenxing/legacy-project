@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource '/ExcellenceBase/src/excellence/framework/base/ws/spring-webservice-excellence.xml' to 'spring-webservices-excellence.xml'&#13;&#10;- Original element: 'spring-webservice-excellence.xml'" description="Rename resource 'spring-webservice-excellence.xml'" flags="7" id="org.eclipse.jdt.ui.rename.resource" input="src/excellence/framework/base/ws/spring-webservice-excellence.xml" name="spring-webservices-excellence.xml" stamp="1165280621453" version="1.0"/>
+</session>

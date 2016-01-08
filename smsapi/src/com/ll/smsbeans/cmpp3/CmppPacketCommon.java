@@ -1,0 +1,73 @@
+package com.ll.smsbeans.cmpp3;
+
+public class CmppPacketCommon
+{
+
+	public static final int TIMEOUT = 60000;
+	public static final int CMPP_OK = 0;
+	public static final int CMPP_ERROR_WRITE = -101;
+	public static final int SUBMIT_ERROR_FEETYPR = -1;
+	public static final int SUBMIT_ERROR_USERTYPE = -2;
+	public static final int SUBMIT_ERROR_REGISTERED_DELIVERY = -3;
+	public static final int SUBMIT_ERROR_MSG_FMT = -4;
+	public static final int SUBMIT_ERROR_DESTUSR_TL = -5;
+	public static final int SUBMIT_ERROR_DEST_TERMINAL_ID = -6;
+	public static final int SUBMIT_ERROR_MESSAGE_LENGTH = -7;
+	public static final int SUBMITREP_ERROR_RESULT = -8;
+	public static final int CONNREP_ERROR_STATUS = -9;
+	public static final int QUERY_ERROR_TYPE = -10;
+	public static final int QUERYREP_ERROR_TYPE = -11;
+	public static final int DELIVER_ERROR_REGISTERED_DELIVERY = -12;
+	public static final int DELIVER_ERROR_MSG_FMT = -13;
+	public static final int DELIVERREP_ERROR_RESULT = -14;
+	public static final int DELIVERREP_ERROR_TIME_FORMAT = -15;
+	public static final int CANCELREP_ERROR_SUCCESSID = -16;
+	public static final int ACTIVE_ERROR_SUCCESSID = -17;
+	public static final int FWD_ERROR_TYPE = -18;
+	public static final int FWD_ERROR_FEETYPE = -19;
+	public static final int FWD_ERROR_REGISTERED_DELIVERY = -20;
+	public static final int FWD_ERROR_MSG_FMT = -21;
+	public static final int FWD_ERROR_DESTUSR_TL = -22;
+	public static final int FWD_ERROR_DEST_TERMINAL_ID = -23;
+	public static final int FWD_ERROR_MESSAGE_LENGTH = -24;
+	public static final int FWDREP_ERROR_RESULT = -25;
+	public static final int MTREP_ERROR_RESULT = -26;
+	public static final int MOREP_ERROR_RESULT = -27;
+	public static final int ID_CMPP_CONNECT = 1;
+	public static final int ID_CMPP_CONNECT_RESP = 0x80000001;
+	public static final int ID_CMPP_TERMINATE = 2;
+	public static final int ID_CMPP_TERMINATE_RESP = 0x80000002;
+	public static final int ID_CMPP_SUBMIT = 4;
+	public static final int ID_CMPP_SUBMIT_RESP = 0x80000004;
+	public static final int ID_CMPP_DELIVER = 5;
+	public static final int ID_CMPP_DELIVER_RESP = 0x80000005;
+	public static final int ID_CMPP_QUERY = 6;
+	public static final int ID_CMPP_QUERY_RESP = 0x80000006;
+	public static final int ID_CMPP_CANCEL = 7;
+	public static final int ID_CMPP_CANCEL_RESP = 0x80000007;
+	public static final int ID_CMPP_ACTIVE_TEST = 8;
+	public static final int ID_CMPP_ACTIVE_TEST_RESP = 0x80000008;
+	public static final int ID_CMPP_FWD = 9;
+	public static final int ID_CMPP_FWD_RESP = 0x80000009;
+	public static final int ID_CMPP_MT_ROUTE = 16;
+	public static final int ID_CMPP_MT_ROUTE_RESP = 0x80000010;
+	public static final int ID_CMPP_MO_ROUTE = 17;
+	public static final int ID_CMPP_MO_ROUTE_RESP = 0x80000011;
+	public static final int ID_CMPP_GET_ROUTE = 18;
+	public static final int ID_CMPP_GET_ROUTE_RESP = 0x80000012;
+	public static final int MSG_TYPE_ASCII = 0;
+	public static final int MSG_TYPE_WRITECARD = 3;
+	public static final int MSG_TYPE_BINARY = 4;
+	public static final int MSG_TYPE_UCS2 = 8;
+	public static final int MSG_TYPE_CHINESE = 15;
+	public static final int READ_CMPP_INVALID = 0;
+	public static final int READ_CMPP_CONNECT = 1;
+	public static final int READ_CMPP_TERMINATE = 2;
+	public static final int READ_CMPP_SUBMIT = 4;
+	public static final int READ_CMPP_DELIVER = 5;
+	public static final int READ_CMPP_QUERY = 6;
+	public static final int READ_CMPP_CANCEL = 7;
+	public static final int READ_CMPP_ACTIVE_TEST = 8;
+	public static final int READ_CMPP_FWD = 9;
+
+}

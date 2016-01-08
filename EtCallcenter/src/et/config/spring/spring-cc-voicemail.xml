@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "spring-beans.dtd" >
+<beans>
+	<bean id="ManagerVoiceMail" class="et.bo.callcenter.connection.voicemail.ManagerVoiceMail" destroy-method="destroy" singleton="true">
+	
+		<property name="path" value="d:\\voicemail\\"></property>
+		<property name="clewVoice" value="d:\\zhaoyifei\\clewVoice.mu"></property>
+	</bean>
+	<bean id="VlwMissionBean" class="et.bo.callcenter.connection.voicemail.VlwMissionBean">
+		<property name="mvmi" ref="ManagerVoiceMail"></property>
+	</bean>
+	<bean id="VrMissionBean" class="et.bo.callcenter.connection.voicemail.VrMissionBean">
+		<property name="mvmi" ref="ManagerVoiceMail"></property>
+		<property name="recordFile" value="d:\\zhaoyifei\\clewVoice.mu"></property>
+	</bean>
+</beans>

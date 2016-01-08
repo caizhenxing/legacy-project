@@ -1,0 +1,233 @@
+修改人：王文权
+修改日期：2009-02-16
+说明：在农委修改程序 没有cvs 只能把所有修改都写在这个文件里
+修改内容：
+1 IVR（自动）拨打统计
+	1)jsp  日期默认是当月
+	ivrQuery.jsp js替换
+	 function time(){
+			var time = new Date();
+				document.forms[0].endTime.value = time.format('yyyy-MM-dd');//time.getYear()+"-"+(time.getMonth()+1)+"-"+time.getDate();
+				//time.setYear(time.getYear()-1);
+				var timeStr = time.format('yyyy-MM-dd');
+				timeStr=timeStr.substring(0,7)+'-01';
+				document.forms[0].beginTime.value=timeStr;
+				//document.forms[0].beginTime.value = time.format('yyyy-MM-dd');//time.getYear()+"-"+(time.getMonth()+1)+"-"+time.getDate();			
+		}	
+	2)java 类修改 
+	et.bo.stat.service.impl.IvrServiceImpl 
+	说明: 解决module_id 和ivr栏目对不上 替换构造函数
+	public IvrServiceImpl(){
+		//无内容
+	}
+	加这个方法
+	/**
+	 * 
+	 * @param id 树中加入的label 为：IVR栏目名称维护 的id
+ 	 */
+	public void initIvrModele(String id)
+	{
+		try
+		{
+			String sql = "select label,nickName from base_tree where parent_id = '"+id+"'";
+			RowSet rs = dao.getRowSetByJDBCsql(sql);
+			try {
+				rs.beforeFirst();
+				while (rs.next()) {
+					ivrModule.put(rs.getString("nickName"), rs.getString("label"));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	public JFreeChart statistic(IBaseDTO dto) 和
+	public List<DynaBeanDTO> query(IBaseDTO dto)里加入  initIvrModele(String id)方法
+	数据库加入 这些数据
+	1 人工服务
+	2 价格行情
+	3 供求信息
+	4 医疗健康
+	5 养殖业生产
+	6 每日农技
+	7 致富案例
+	8 农资推介
+	9 专家讲堂
+	0 专题
+	3)存储过程修改 proc_ivrdata
+	问题 module_id '','#','*'  是错误的 不应在sql语句中
+	ALTER procedure [dbo].[proc_ivrdata] (@begintime varchar(20),@endtime varchar(20),@qtype varchar(50))
+as 
+BEGIN
+	create table #temp_ivr_X (X varchar(200))
+	declare @ivr varchar(20)
+	--查询ivr_date表，把统计时间内有记录的ivr模块记录进临时表
+	declare ivr_cur cursor for
+		SELECT DISTINCT module_id
+FROM   cc_ivr_date
+WHERE     module_id IS NOT NULL AND module_id NOT IN ('','#','*')
+and module_begintime >= @begintime and module_begintime <= @endtime
+
+	open ivr_cur
+	fetch next from ivr_cur into @ivr
+	while(@@fetch_status=0)
+	begin
+	insert into #temp_ivr_X values(@ivr)
+	fetch next from ivr_cur into @ivr
+	end	
+	close ivr_cur
+	deallocate ivr_cur
+
+	--创建Y表并插值，Y表为查询类型，次数或时长
+	create table #temp_ivr_Y (Y varchar(50))
+	insert into #temp_ivr_Y values (@qtype)
+	--创建总表
+	create table #temp_ivr_sum (Sum1 varchar(50),X varchar(50),Y varchar(50))
+	declare @sum1 varchar(50)
+	--向总表插值
+	if @qtype = '统计次数'
+		begin
+			--联合查询
+declare temp_ivr_X cursor for 
+			SELECT     COUNT(*), module_id
+FROM         cc_ivr_date
+WHERE     (module_id IS NOT NULL) AND (module_id NOT IN ('','#','*'))
+and module_begintime >= @begintime and module_begintime <= @endtime
+GROUP BY module_id
+		end
+	else
+		begin
+declare temp_ivr_X cursor for 
+			select sum(datediff(ss,module_begintime,module_endtime)),module_id 
+from  cc_ivr_date
+WHERE     (module_id IS NOT NULL) AND (module_id NOT IN ('','#','*'))
+and module_begintime >= @begintime and module_begintime <= @endtime
+GROUP BY module_id
+
+		end
+		--向总表插入数据
+	open temp_ivr_X
+	Fetch Next From temp_ivr_X Into @sum1,@ivr
+	While ( @@Fetch_Status=0 )
+	begin
+		if @qtype = '统计次数'
+			begin
+				insert into #temp_ivr_sum (Sum1,X,Y) values (@sum1,@ivr,@qtype)
+			end
+		else
+			begin
+				insert into #temp_ivr_sum (Sum1,X,Y) values (@sum1,@ivr,@qtype)
+			end
+		Fetch Next From temp_ivr_X Into @sum1,@ivr
+	end
+		
+	close temp_ivr_X
+	Deallocate temp_ivr_X
+
+	--得到横坐标标签结果集（所有表中记录过的IVR模块）
+	select distinct X from #temp_ivr_X order by X
+	--得到纵坐标标签结果集
+	select distinct Y from #temp_ivr_Y order by Y
+	--得到统计结果集
+	select Sum1,X,Y from #temp_ivr_sum order by X,Y
+END
+	2存储过程主要sql
+	2.1）次数
+	select count（*）,module_id 
+	from  cc_ivr_date
+	WHERE     (module_id IS NOT NULL) AND (module_id <> '')
+	and module_begintime >= @begintime and module_begintime <= @endtime
+	GROUP BY module_id
+
+	2.2)时长
+	select sum(datediff(ss,module_begintime,module_endtime)),module_id 
+	from  cc_ivr_date
+	WHERE     (module_id IS NOT NULL) AND (module_id <> '')
+	and module_begintime >= @begintime and module_begintime <= @endtime
+	GROUP BY module_id
+
+2 用户拨打统计
+  说明 存储过程有问题内存溢出应优化 
+  1) jsp 日期默认当月
+  stat/userDialQuery.jsp
+	  1替换 js函数
+	  function setTime(){
+					var time = new Date();
+					document.forms[0].endTime.value = time.format('yyyy-MM-dd');//time.getYear()+"-"+(time.getMonth()+1)+"-"+time.getDate();
+					//time.setYear(time.getYear()-1);
+					var timeStr = time.format('yyyy-MM-dd');
+					timeStr=timeStr.substring(0,7)+'-01';
+					document.forms[0].beginTime.value=timeStr;
+					//document.forms[0].beginTime.value = time.format('yyyy-MM-dd');//time.getYear()+"-"+(time.getMonth()+1)+"-"+time.getDate();			
+		}
+	2增加js函数
+		function goQueryOutLine()
+		{
+			window.open('../callcenter/userInfo.do?method=toCustinfoMain','','width=800,height=380,status=yes,resizable=yes,scrollbars=yes,top=200,left=200');
+		}
+	3 电话号码输入项替换
+	<html:text styleId="handInputOutLine" property="telnum" styleClass="writeTextStyle2" /><font color="red">*</font><input type="button" value="..." onclick="goQueryOutLine()" class="buttonStyle"/>
+	
+  userDialReport.jsp
+  1替换 body 不需要对table汇总
+  <!-- <body class="listBody" onload="sumTable('table1')"> -->
+  <body class="listBody" >
+  2)java 类修改
+  stat/UserDialServiceImpl 修改 query方法
+  public List<DynaBeanDTO> query(IBaseDTO dto) {
+		// TODO Auto-generated method stub
+		List<DynaBeanDTO> list = new ArrayList<DynaBeanDTO>();
+		// 调用存储过程取得统计结果
+		StatDateStr.setBeginEndTime(dto);
+		List<String> params = new ArrayList<String>();
+		List results = new ArrayList();
+		procSql.setProcedureName("proc_userPhoneStatistics");
+		params.add(dto.get("beginTime").toString());
+		params.add(dto.get("endTime").toString());
+		params.add(dto.get("telnum").toString());
+		procSql.setSqlvalues(params);
+		results = procSql.execute();
+
+		// 对存储过程返回的的结果进行分拣
+		List<String> xAxis = getXaxis(results);
+		List<String> yAxis = getYaxis(results);
+		List<String> valueList = getValues(results, xAxis, yAxis);
+		int num1 = 0;
+		int num2 = 0;
+		if (xAxis.size() > 0 && yAxis.size() > 0) {
+			for (Iterator<String> i = xAxis.iterator(); i.hasNext();) {
+				String tmp = i.next();
+				DynaBeanDTO r = new DynaBeanDTO();
+				r.set("name", tmp);
+				r.set("type1", valueList.get(xAxis.indexOf(tmp) * yAxis.size()));
+				r.set("type2", valueList.get(xAxis.indexOf(tmp) * yAxis.size() + 1));
+				r.set("type3", new Integer(Integer.parseInt(valueList.get(xAxis.indexOf(tmp) * yAxis.size()))
+						+ Integer.parseInt(valueList.get(xAxis.indexOf(tmp) * yAxis.size() + 1))));
+				
+				/*计算总量*/
+				int sum1 = Integer.parseInt(valueList.get(xAxis.indexOf(tmp) * yAxis.size()));
+				int sum2 = sum1 + Integer.parseInt(valueList.get(xAxis.indexOf(tmp) * yAxis.size() + 1));
+				
+				num1 += sum1;
+				num2 += sum2;
+				r.set("num1", num1);
+				r.set("num2", num2);
+				list.add(r);
+			}
+		}
+		Collections.reverse(list);
+		return list;
+	}
+  3)存储过程
+   proc_userPhoneStatistics
+
+
+	
+	
+ 
+	
+

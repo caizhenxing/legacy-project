@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+
+<process-definition name="websale"
+                    xmlns="urn:jbpm.org:jpdl-3.1">
+
+  <!-- SWIMLANES (= process roles) -->
+
+  <swimlane name="buyer" />
+  
+  <swimlane name="salesman">
+    <assignment expression="user(ernie)" />
+  </swimlane>
+  
+  <swimlane name="accountant">
+    <assignment expression="user(bert)" />
+  </swimlane>
+  
+  <swimlane name="shipper">
+    <assignment expression="user(grover)" />
+  </swimlane>
+ 
+  <!-- NODES -->
+
+  <start-state name="Create new web sale order">
+    <task swimlane="buyer">
+      <controller>
+        <variable name="item"/>
+        <variable name="quantity"/>
+        <variable name="address"/>
+      </controller>
+    </task>
+    <transition to="Evaluate web order" />
+  </start-state>
+  
+  <task-node name="Evaluate web order">
+    <task swimlane="salesman">
+      <timer duedate="20 seconds" repeat="10 seconds">
+        <action class="org.jbpm.websale.RemindActor">
+          <swimlaneName>salesman</swimlaneName>
+        </action>
+      </timer>
+      <controller>
+        <variable name="item" access="read"/>
+        <variable name="quantity" access="read"/>
+        <variable name="address" access="read"/>
+        <variable name="comment"/>
+      </controller>
+    </task>
+    <transition name="OK" to="salefork" />
+    <transition name="More info needed" to="Fix web order data" />
+  </task-node>
+
+  <task-node name="Fix web order data">
+    <task swimlane="buyer">
+      <controller>
+        <variable name="comment" access="read"/>
+        <variable name="item" />
+        <variable name="quantity" />
+        <variable name="address" />
+      </controller>
+    </task>
+    <transition to="Evaluate web order" />
+  </task-node>
+
+  <fork name="salefork">
+    <transition name="payment"  to="Wait for money" />
+    <transition name="shipping" to="ship item" />
+  </fork>  
+  
+  <task-node name="Wait for money">
+    <task swimlane="accountant">
+      <controller>
+        <variable name="item" access="read" />
+        <variable name="quantity" access="read" />
+        <variable name="address" access="read" />
+        <variable name="money received" />
+      </controller>
+    </task>
+    <transition to="update books" />
+  </task-node>
+  
+  <node name="update books">
+    <action class="org.jbpm.websale.UpdateBooks">
+      <msg>accountancy application is now informed of the payment</msg>
+    </action>
+    <transition to="salejoin" />
+  </node>
+  
+  <node name="ship item">
+    <action class="org.jbpm.websale.ShipItem">
+      <swimlaneName>shipper</swimlaneName>
+      <msg>${shipper} now ships ${item} to ${address}</msg>
+    </action>
+    <transition to="salejoin" />
+  </node>
+  
+  <join name="salejoin">
+    <transition to="end" />
+  </join>  
+
+  <end-state name="end" />
+
+</process-definition>

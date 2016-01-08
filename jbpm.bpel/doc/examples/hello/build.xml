@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<project name="hello" default="redeploy-web">  
+
+  <import file="../common/process.build.xml"/>
+
+</project>

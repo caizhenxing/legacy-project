@@ -1,0 +1,355 @@
+修改人：王文权
+修改日期：2009-02-13
+说明：在农委修改程序 没有cvs 只能把所有修改都写在这个文件里
+修改内容：
+1服务记录统计不准
+	hql from OperQuestion oq where 1 = 1  and answerAgent like '104%' and  Convert(varchar(10),addtime,120) between '2009-02-12' and '2009-02-12' order by addtime desc
+	
+	proc ：proc_telephone
+	存储过程修改
+ALTER PROCEDURE [dbo].[proc_telephone](@beginTime varchar(20),@endTime varchar(20),@condition varchar(20))
+AS
+BEGIN
+	--创建存储统计结果数据的临时表
+	--其中coun是电话数量、svm是电话时长、respondent对应的坐席员、teltype是电话量类型（呼入和呼出）
+	create table #tmp_telephone_value 
+		(coun int, svm int,respondent varchar(20), teltype varchar(20))
+	--创建横坐标标签临时表
+	create table #tmp_telephone_xaxis
+		(xaxis varchar(20))
+	declare @respondent varchar(20)
+	--向横坐标标签临时表添加数据	
+	declare respondent_cur cursor for
+		select distinct [user_name] from sys_user
+			where delete_mark<>'1'
+	open respondent_cur
+	fetch next from respondent_cur into @respondent	
+	while(@@fetch_status=0)
+	begin
+	insert into #tmp_telephone_xaxis values(@respondent)
+	fetch next from respondent_cur into @respondent
+	end
+	close respondent_cur
+	deallocate respondent_cur	
+	--创建纵坐标标签临时表
+	create table #tmp_telephone_yaxis
+		(yaxis varchar(20))
+	--向纵坐标标签临时表添加数据
+	insert into #tmp_telephone_yaxis values('呼入')
+	insert into #tmp_telephone_yaxis values('呼出')
+	declare @coun int
+	declare @svm int	
+	declare @resp varchar(20)
+	--呼入电话总数、时长统计
+	declare talk_in_cur cursor for 
+	select b.countNum coun,a.svm,a.respondent
+	from
+	(
+		select count(*) as coun, sum(convert(int,isnull(touch_keeptime,0)))/1000 
+		as svm,respondent from cc_talk 
+		where respondent_type='AGENT' 
+		and respondent is not null 
+		and convert(varchar(19),touch_begintime,120) between @beginTime and @endTime 
+		group by respondent
+	) a,
+	(
+		select answer_agent,count(*) countNum from oper_question 
+		where convert(varchar(19),addtime,120) between @beginTime and @endTime 
+		group by answer_agent
+	) b
+	where a.respondent=b.answer_agent
+ 
+	open talk_in_cur
+	fetch next from talk_in_cur into @coun,@svm,@resp
+	while(@@fetch_status=0)
+	begin
+	insert into #tmp_telephone_value values(@coun,@svm,@resp,'呼入')
+	fetch next from talk_in_cur into @coun,@svm,@resp
+	end
+	close talk_in_cur
+	deallocate talk_in_cur
+	--呼出电话总数、时长统计
+	declare talk_out_cur cursor for 
+		select count(*) as coun, sum(convert(int,isnull(touch_keeptime,0)))/1000 
+		as svm,respondent from cc_talk 
+		where respondent_type='OUTINGAGENT' 
+			and respondent is not null 
+			and touch_begintime>=@beginTime
+			and touch_begintime<@endTime
+	
+		group by respondent
+	open talk_out_cur
+	fetch next from talk_out_cur into @coun,@svm,@resp
+	while(@@fetch_status=0)
+	begin
+	insert into #tmp_telephone_value values(@coun,@svm,@resp,'呼出')
+	fetch next from talk_out_cur into @coun,@svm,@resp
+	end
+	close talk_out_cur
+	deallocate talk_out_cur	
+
+
+
+
+	--临时使用
+	select distinct respondent as xaxis from cc_talk where respondent is not null and is_delete='0' order by respondent
+	--得到横坐标标签结果集（全体坐席人员）	
+	--select xaxis from #tmp_telephone_xaxis
+	--得到纵坐标标签结果集	
+	select yaxis from #tmp_telephone_yaxis
+	--得到统计结果集
+	if(@condition='count')
+		select coun as statValue,respondent, teltype from #tmp_telephone_value
+	else 
+		select svm as statValue, respondent, teltype from #tmp_telephone_value
+END
+2栏目咨询量统计
+	要求首次进入日期默认为当月的
+	修改
+	1)jsp
+	stat/useQuery.jsp
+	//用这个函数替换以前的js函数
+	function setTime(){
+				var time = new Date();
+				document.forms[0].endTime.value = time.format('yyyy-MM-dd');//time.getYear()+"-"+(time.getMonth()+1)+"-"+time.getDate();
+				//time.setYear(time.getYear()-1);
+				var timeStr = time.format('yyyy-MM-dd');
+				timeStr=timeStr.substring(0,7)+'-01';
+				document.forms[0].beginTime.value=timeStr;
+				//document.forms[0].beginTime.value = time.format('yyyy-MM-dd');//time.getYear()+"-"+(time.getMonth()+1)+"-"+time.getDate();			
+	}
+	
+	2)存储过程 proc_use
+	proc_use
+	
+	select @sum1=count(*) FROM oper_question INNER JOIN
+	oper_custinfo ON oper_question.cust_id = oper_custinfo.cust_id
+	where oper_question.dict_question_type1 = @lm
+	and oper_question.addtime >= @begintime and oper_question.addtime <= @endtime 
+	and oper_custinfo.cust_addr like '%'+ @address +'%'
+	替换成
+	select @sum1=count(*) FROM oper_question INNER JOIN
+	oper_custinfo ON oper_question.cust_id = oper_custinfo.cust_id
+	where oper_question.dict_question_type1 = @lm
+	and convert(varchar(10),oper_question.addtime,120) between @begintime and  @endtime 
+	and oper_custinfo.cust_addr like '%'+ @address +'%'
+	/############结束修改#############/
+	存储过程 
+	proc_use
+	主要sql
+	select @sum1=count(*) FROM oper_question INNER JOIN
+	oper_custinfo ON oper_question.cust_id = oper_custinfo.cust_id
+	where oper_question.dict_question_type1 = @lm
+	and oper_question.addtime >= @begintime and oper_question.addtime <= @endtime 
+	and oper_custinfo.cust_addr like '%'+ @address +'%'
+	hql
+	from OperQuestion oq 
+	where 1 = 1  and  Convert(varchar(10),addtime,120) between '2009-02-01' and '2009-02-12' 
+	and dictQuestionType1 like '政策咨询%' order by addtime desc
+3地区咨询统计
+	1 问题座席登录 在服务记录统计里没有地区字段无法核对对不对  ##未解决
+	2 jsp addressQuery.jsp日期默认是当月的 改完
+	function time(){    //用这个替换time函数
+				var time = new Date();
+				document.forms[0].endTime.value = time.format('yyyy-MM-dd');//time.getYear()+"-"+(time.getMonth()+1)+"-"+time.getDate();
+				//time.setYear(time.getYear()-1);
+				var timeStr = time.format('yyyy-MM-dd');
+				timeStr=timeStr.substring(0,7)+'-01';
+				document.forms[0].beginTime.value=timeStr;
+				//document.forms[0].beginTime.value = time.format('yyyy-MM-dd');//time.getYear()+"-"+(time.getMonth()+1)+"-"+time.getDate();			
+	 }	
+	 
+4 语音留言统计
+    1jsp
+    stat/voiceQuery.jsp替换js函数
+    function setTime(){
+			var time = new Date();
+				document.forms[0].endTime.value = time.format('yyyy-MM-dd');//time.getYear()+"-"+(time.getMonth()+1)+"-"+time.getDate();
+				//time.setYear(time.getYear()-1);
+				var timeStr = time.format('yyyy-MM-dd');
+				timeStr=timeStr.substring(0,7)+'-01';
+				document.forms[0].beginTime.value=timeStr;
+				//document.forms[0].beginTime.value = time.format('yyyy-MM-dd');//time.getYear()+"-"+(time.getMonth()+1)+"-"+time.getDate();			
+		}
+	2增加存储过程
+	--1\程序调用
+	CREATE procedure [dbo].[proc_voiceLeaveNew] 
+	(	
+		@begintime varchar(20),
+		@endtime varchar(20),
+		@menu varchar(50) --栏目
+	)	
+	AS
+	BEGIN
+		if ltrim(rtrim(ISNULL(@menu,'')))=''
+			BEGIN
+			exec [proc_voiceLeaveNewNoMenu] @beginTime, @endTime, @menu
+			END
+		else
+			BEGIN
+			exec [proc_voiceLeaveNewHasMenu] @beginTime, @endTime, @menu
+			END
+			
+	END
+	
+	
+	--2\语音留言统计子存储过程 有栏目的
+	CREATE procedure [dbo].[proc_voiceLeaveNewHasMenu] 
+	(	
+		@begintime varchar(20),
+		@endtime varchar(20),
+		@menu varchar(50) --栏目
+	)	
+	AS
+	BEGIN
+		declare @label varchar(100),@ddt varchar(50)
+		declare @sumLeaveCol int, @tdNum int, @dbNum int,@dzNum int
+		declare col_cur cursor for
+		select col,ddt,ISNULL(sumLeaveCol,0) sumLeaveCol,
+		sum(case ddt when 'customize1' then sumCol else 0 end) as tdNum,
+		sum(case ddt when 'customize2' then sumCol else 0 end) as dbNum,
+		sum(case ddt when 'orderProgramme1' then sumCol else 0 end) as dzNum
+		from
+		(
+		select col,ddt,sumLeaveCol,count(*) sumCol
+		from
+		dbo.uf_dateBtnTable(@begintime,@endtime) a
+		left join
+		(
+		select * from (
+		--定制退订
+		select menu_type,convert(varchar(10),menu_begintime,120) beginTime,ivr_tree_info_id,telnum,egressive_flag,menu_type+'1' ddt 
+		from order_menu
+		where menu_type in ('orderProgramme','customize') and telnum is not null and menu_endtime is not NULL and ivr_tree_info_id = @menu
+			  and convert(varchar(10),menu_begintime,120) between @begintime and @endtime
+		union all
+		--点播
+		select menu_type,convert(varchar(10),menu_begintime,120) beginTime,ivr_tree_info_id,telnum,egressive_flag,menu_type +'2' ddt
+		from order_menu
+		where menu_type = 'customize' and telnum is not null and menu_endtime is NULL and ivr_tree_info_id = @menu
+			  and convert(varchar(10),menu_begintime,120) between @begintime and @endtime
+		) a
+		left join
+		(
+		select ivrtype, count(*) sumLeaveCol from cc_voiceLeave 
+		where ivrtype = @menu
+			and convert(varchar(10),beginTime,120) between @begintime and @endtime
+		group by ivrtype
+		) b
+		on a.ivr_tree_info_id = b.ivrtype
+		) b
+		on a.col = beginTime
+		group by col,ddt,sumLeaveCol
+		) a
+		group by col,ddt,sumLeaveCol	
+	
+	
+		--临时表
+		create table #voiceTmp(menu varchar(100),dbNum int, dzNum int, tdNum int, lvNum int)
+		
+		open col_cur
+		fetch next from col_cur into @label,@ddt,@sumLeaveCol , @tdNum , @dbNum ,@dzNum 
+		while(@@fetch_status=0)
+		begin
+			if @ddt = NULL
+			begin
+				insert into #voiceTmp(menu ,dbNum , dzNum , tdNum , lvNum ) values(@label,0,0,0,@sumLeaveCol) 
+			end
+			else
+			begin
+				insert into #voiceTmp(menu ,dbNum , dzNum , tdNum , lvNum ) values(@label,@dbNum,@dzNum,@tdNum,@sumLeaveCol) 
+			end
+		fetch next from col_cur into @label,@ddt,@sumLeaveCol , @tdNum , @dbNum ,@dzNum 
+		end	
+		close col_cur
+		deallocate col_cur
+	
+		select * from #voiceTmp
+			
+	END
+	
+	
+	--3\语音留言统计子存储过程 无栏目的
+	CREATE procedure [dbo].[proc_voiceLeaveNewNoMenu] 
+	(	
+		@begintime varchar(20),
+		@endtime varchar(20),
+		@menu varchar(50)='' --栏目
+	)	
+	AS
+	BEGIN
+		declare @label varchar(100),@ddt varchar(50)
+		declare @sumLeaveCol int, @tdNum int, @dbNum int,@dzNum int
+		declare col_cur cursor for
+		select label,ddt,sumLeaveCol,
+		sum(case ddt when 'customize1' then sumCol else 0 end) as tdNum,
+		sum(case ddt when 'customize2' then sumCol else 0 end) as dbNum,
+		sum(case ddt when 'orderProgramme1' then sumCol else 0 end) as dzNum
+		from
+		(
+		select label,nickName,ddt,sumLeaveCol,count(*) sumCol
+		from
+		(
+		select *
+		from
+		(
+		select a.label,nickName,b.ddt,ISNULL(c.sumLeaveCol,0) sumLeaveCol
+		from 
+		(select label, nickName from base_tree where parent_id = 'SYS_TREE_0000001923' 	) a
+		left join
+		(
+		--定制退订
+		select menu_type,menu_begintime,menu_endtime,ivr_tree_info_id,telnum,egressive_flag,menu_type+'1' ddt 
+		from order_menu
+		where menu_type in ('orderProgramme','customize') and telnum is not null and menu_endtime is not NULL
+			  and convert(varchar(10),menu_begintime,120) between @begintime and @endtime
+		union all
+		--点播
+		select menu_type,menu_begintime,menu_endtime,ivr_tree_info_id,telnum,egressive_flag,menu_type +'2' ddt
+		from order_menu
+		where menu_type = 'customize' and telnum is not null and menu_endtime is NULL
+	          and convert(varchar(10),menu_begintime,120) between @begintime and @endtime
+		) b
+		on a.nickName = b.ivr_tree_info_id and ISNULL(b.ivr_tree_info_id,'') <> '' 
+		left join
+		(
+		select ivrtype,count(*) sumLeaveCol 
+		from cc_voiceLeave
+	    where convert(varchar(10),beginTime,120) between @begintime and @endtime
+		group by ivrtype
+		) c
+		on a.nickName = c.ivrtype
+		) a
+		) a
+		group by a.label,a.nickName,a.ddt,a.sumLeaveCol
+		) a
+		group by label,ddt,sumLeaveCol
+		order by a.label
+		--临时表
+		create table #voiceTmp(menu varchar(100),dbNum int, dzNum int, tdNum int, lvNum int)
+		
+		open col_cur
+		fetch next from col_cur into @label,@ddt,@sumLeaveCol , @tdNum , @dbNum ,@dzNum 
+		while(@@fetch_status=0)
+		begin
+			if @ddt = NULL
+			begin
+				insert into #voiceTmp(menu ,dbNum , dzNum , tdNum , lvNum ) values(@label,0,0,0,@sumLeaveCol) 
+			end
+			else
+			begin
+				insert into #voiceTmp(menu ,dbNum , dzNum , tdNum , lvNum ) values(@label,@dbNum,@dzNum,@tdNum,@sumLeaveCol) 
+			end
+		fetch next from col_cur into @label,@ddt,@sumLeaveCol , @tdNum , @dbNum ,@dzNum 
+		end	
+		close col_cur
+		deallocate col_cur
+	
+		select * from #voiceTmp
+			
+	END
+	
+	
+ 
+	
+

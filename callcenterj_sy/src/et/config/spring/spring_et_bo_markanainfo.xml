@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+	
+	<bean name="/markanainfo" class="et.bo.markanainfo.action.MarkanainfoAction" scope="singleton">
+		<property name="markinfo">
+			<ref bean="MarkanainfoService"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+		
+	</bean>
+	<bean id="MarkanainfoService" class="et.bo.markanainfo.service.impl.MarkanainfoServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="flowService">
+			<ref bean="FlowService"/>
+		</property>
+		
+	</bean>
+	
+</beans>

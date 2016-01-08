@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpelApplication name="atmFrontEnd" xmlns="http://jbpm.org/bpel"
+  xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://jbpm.org/bpel http://jbpm.org/bpel/bpel_application_1_0.xsd">
+
+  <partnerLinks>
+
+    <partnerLink name="ticketRelation">
+      <partnerRole>
+        <!-- ticket issuer service reference -->
+        <wsa:EndpointReference>
+          <wsa:Address>USE_ACTUAL_URI_FROM_CATALOG</wsa:Address>
+          <wsa:ServiceName xmlns:serviceNS="urn:samples:ticket">serviceNS:ticketService</wsa:ServiceName>
+        </wsa:EndpointReference>
+      </partnerRole>
+    </partnerLink>
+    
+    <partnerLink name="accountRelation">
+      <partnerRole>
+        <!-- account system service reference -->
+        <wsa:EndpointReference>
+          <wsa:Address>USE_ACTUAL_URI_FROM_CATALOG</wsa:Address>
+          <wsa:ServiceName xmlns:serviceNS="urn:samples:account">serviceNS:accountService</wsa:ServiceName>
+        </wsa:EndpointReference>
+      </partnerRole>
+    </partnerLink>    
+
+  </partnerLinks>
+  
+  <serviceCatalogs>
+    <!-- listing of locally published WSDL documents -->
+    <urlCatalog contextUrl="http://localhost:8080/">
+      <!-- published WSDL document of ticket issuer -->
+      <wsdl location="ticket/ticketIssuer?wsdl" />
+      <!-- published WSDL document of account system -->
+      <wsdl location="account/accountSystem?wsdl" />
+    </urlCatalog>
+  </serviceCatalogs>
+
+</bpelApplication>

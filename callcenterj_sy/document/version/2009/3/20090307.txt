@@ -1,0 +1,64 @@
+新版会议更新
+1、表结构
+（1）先删掉原有的表结构。
+drop table dbo.EasyConf_ChannelState
+（2）执行下列sql语句新建表结构
+USE [callcenterj_sy]
+GO
+/****** 对象:  Table [dbo].[EasyConf_ChannelState]    脚本日期: 03/09/2009 08:34:26 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[EasyConf_ChannelState](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[channelno] [int] NULL,
+	[Callerid] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[roomno] [int] NULL,
+	[currentstate] [int] NULL,
+	[Newstate] [int] NULL,
+	[delete_mark] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DF_EasyConf_ChannelState_delete_mark]  DEFAULT ('Y'),
+	[allowflag] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[addtime] [datetime] NULL CONSTRAINT [DF_EasyConf_ChannelState_addtime]  DEFAULT (getdate()),
+ CONSTRAINT [PK_EasyTQ_Channel_State] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'通道号' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'EasyConf_ChannelState', @level2type=N'COLUMN', @level2name=N'channelno'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'主叫号' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'EasyConf_ChannelState', @level2type=N'COLUMN', @level2name=N'Callerid'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'会议号' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'EasyConf_ChannelState', @level2type=N'COLUMN', @level2name=N'roomno'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'当前状态（１、能听能说；２、只听不说；３、挂机退出会议）' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'EasyConf_ChannelState', @level2type=N'COLUMN', @level2name=N'currentstate'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'申请新状态（１、能听能说；２、只听不说；３、挂机退出会议）' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'EasyConf_ChannelState', @level2type=N'COLUMN', @level2name=N'Newstate'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'删除标记' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'EasyConf_ChannelState', @level2type=N'COLUMN', @level2name=N'delete_mark'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'审批状态（null、无申请要求；0、未审批；1、已审批）' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'EasyConf_ChannelState', @level2type=N'COLUMN', @level2name=N'allowflag'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'插入时间' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'EasyConf_ChannelState', @level2type=N'COLUMN', @level2name=N'addtime'
+
+2、音频增加。把新增的“会议请求等待审批提示音.wav”和“会议申请发言提示音.wav”放到D:\Script\moonIvr\SysVox文件夹下。
+如果对录制的音频不满意，可以自己录制8K16bit的音频文件替换相应的音频。
+		音频名					音频内容						脚本名
+会议申请发言提示音.wav		您现在是旁听会议，申请发言请按1。		NewConfRoom.vds
+会议请求等待审批提示音.wav	您的申请已经记录，请等待管理员批准		NewConfRoom.vds
+
+3、脚本替换。把IvrRoot.vds、NewConfRoom.vds、Ondisconnected.vds、ontimer.vds四个脚本替换到D:\Script\moonIvr文件夹下。
+4、修改语音平台配置文件。D:\easyadmin\Easytq.ini里的DCBRecvDtmf=1，注意1后不要有空格，然后找个时间重启语音平台就好了。

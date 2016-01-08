@@ -1,0 +1,7 @@
+<identity>
+  <user name="bert" email="bert@sesamestreet.tv" password="theresabananainyourear" />
+  <user name="ernie" email="ernie@sesamestreet.tv" password="canthereyoubert,theresabananainmyear" />
+  <group name="sesameinhabitants" />
+  <group name="bananalovers" parent="sesameinhabitants" type="fruitpreference" />
+  <membership user="ernie" group="bananalovers" />
+</identity>

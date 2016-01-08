@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+<beans>
+
+	<bean id="datasource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:oracle:thin:@192.168.1.145:1521:orcl</value>
+		</property>
+		<property name="username">
+			<value>zhenai</value>
+		</property>
+		<property name="password">
+			<value>zhenai</value>
+		</property>
+	</bean>
+	
+<!-- 	
+	 <bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="jdbcUrl" value="jdbc:oracle:thin:@218.25.68.143:1521:orcl"/>
+        <property name="user" value="smtcl"/>
+        <property name="password" value="smtcl"/>
+        <property name="minPoolSize" value="2"/>
+        <property name="acquireIncrement" value="3"/>
+        <property name="maxPoolSize" value="5"/>
+    </bean>
+	-->
+	<!-- 
+	<bean id="datasource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>jdbc/c3p0-oracle</value>
+		</property>
+		<property name="resourceRef">
+			<value>true</value>
+		</property>
+		
+		<property name="expectedType">
+			<value>false</value>
+		</property>
+		
+	</bean>
+	-->
+	
+	
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+		destroy-method="destroy">
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.Oracle9Dialect
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+					
+	<value>com/hl/love/db/bean/AgInfoBasic.hbm.xml</value>
+		<value>com/hl/love/db/bean/AgInfoLink.hbm.xml</value>
+		<value>com/hl/love/db/bean/AgScoreOrder.hbm.xml</value>
+		<value>com/hl/love/db/bean/AuAccDetail.hbm.xml</value>
+		<value>com/hl/love/db/bean/AuAccMain.hbm.xml</value>
+		<value>com/hl/love/db/bean/AuUserFriend.hbm.xml</value>
+		<value>com/hl/love/db/bean/AuUserInfo.hbm.xml</value>
+		<value>com/hl/love/db/bean/AuUserLogin.hbm.xml</value>
+		<value>com/hl/love/db/bean/AuUserOther.hbm.xml</value>
+		<value>com/hl/love/db/bean/AuUserPost.hbm.xml</value>
+		<value>com/hl/love/db/bean/AuVDetail.hbm.xml</value>
+		<value>com/hl/love/db/bean/AuVMain.hbm.xml</value>
+		<value>com/hl/love/db/bean/CommonAd.hbm.xml</value>
+		<value>com/hl/love/db/bean/CommonClass.hbm.xml</value>
+		<value>com/hl/love/db/bean/CommonComment.hbm.xml</value>
+		<value>com/hl/love/db/bean/CommonHit.hbm.xml</value>
+		<value>com/hl/love/db/bean/CommonHitdayStat.hbm.xml</value>
+		<value>com/hl/love/db/bean/CommonHitOrder.hbm.xml</value>
+		<value>com/hl/love/db/bean/CommonTask.hbm.xml</value>
+		<value>com/hl/love/db/bean/CommonVoteDetail.hbm.xml</value>
+		<value>com/hl/love/db/bean/CommonVoteStat.hbm.xml</value>
+		<value>com/hl/love/db/bean/FormatDetail.hbm.xml</value>
+		<value>com/hl/love/db/bean/FormatInfo.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumArea.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumBallotDetail.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumCollection.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumDetailPoint.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumExperienceLevel.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumItemProperty.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumManager.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumMessages.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumPosts.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumPostsWeapon.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumPostContent.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumProperty.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumTopic.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumUserinfo.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumView.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumWeapon.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumTopTen.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumPunish.hbm.xml</value>
+		<value>com/hl/love/db/bean/SmCommand.hbm.xml</value>
+		<value>com/hl/love/db/bean/SmInfo.hbm.xml</value>
+		<value>com/hl/love/db/bean/SmLink.hbm.xml</value>
+		<value>com/hl/love/db/bean/SmPlay.hbm.xml</value>
+		<value>com/hl/love/db/bean/SysBuginfo.hbm.xml</value>
+		
+		
+		<value>com/hl/love/db/bean/NewsArticle.hbm.xml</value>
+		<value>com/hl/love/db/bean/NewsInfo.hbm.xml</value>
+		
+		
+		<value>com/hl/love/db/bean/SysDepartment.hbm.xml</value>
+		<value>com/hl/love/db/bean/SysGroup.hbm.xml</value>
+		<value>com/hl/love/db/bean/SysLog.hbm.xml</value>
+		<value>com/hl/love/db/bean/SysMod.hbm.xml</value>
+		<value>com/hl/love/db/bean/SysRightGroup.hbm.xml</value>
+		<value>com/hl/love/db/bean/SysRightUser.hbm.xml</value>
+		<value>com/hl/love/db/bean/SysRole.hbm.xml</value>
+		<value>com/hl/love/db/bean/SysSession.hbm.xml</value>
+		<value>com/hl/love/db/bean/SysTypeInfo.hbm.xml</value>
+		<value>com/hl/love/db/bean/SysTypeVal.hbm.xml</value>
+		<value>com/hl/love/db/bean/SysUser.hbm.xml</value>
+		<value>com/hl/love/db/bean/SysUserInfo.hbm.xml</value>
+		<value>com/hl/love/db/bean/SysUserLogin.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumLog.hbm.xml</value>
+		<value>com/hl/love/db/bean/ForumForbidden.hbm.xml</value>
+		
+		
+		
+	
+		
+			</list>
+		</property>
+		<property name="dataSource">
+			<ref bean="datasource" />
+		</property>
+	</bean>
+
+
+
+
+	<!-- 声明性事物开始 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+<!-- 
+	<bean id="transactionInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="transactionAttributeSource">
+			<value>
+				com.hl.frame.applogic.IBaseApplogic.load=PROPAGATION_REQUIRED
+				com.hl.frame.applogic.IBaseApplogic.store=PROPAGATION_REQUIRED
+			</value>
+		</property>
+	</bean>
+
+	<bean id="ServiceBeanNameAutoProxyCreator"
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<value>*Applogic</value>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+				<value>hibernateInterceptor</value>
+			</list>
+		</property>
+	</bean>
+-->
+	<!-- 声明性事物结束 -->
+
+
+	<!-- 自动代理生成开始-->
+	<bean id="DAOBeanNameAutoProxyCreator"
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<value>*Impl,*Service</value>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>DAOInterceptor</value>
+				<value>hibernateInterceptor</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 自动代理生成结束-->
+	<!-- aop拦截取代template-->
+
+	<bean id="hibernateInterceptor"
+		class="org.springframework.orm.hibernate3.HibernateInterceptor">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<!-- aop拦截取代template结束-->
+	<bean id="DAOInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+			<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

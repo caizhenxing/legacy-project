@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<head>
+  <title>userForm</title>
+  <link rel="stylesheet" type="text/css" href="../css/jbpm.css" />
+</head>
+
+<body>
+
+<ui:composition>
+<h:form id="taskform">
+<h:inputHidden id="taskInstanceId" value="#{taskBean.taskInstanceId}" />
+<h:inputHidden id="transitionName" value="#{taskBean.transitionName}" />
+
+<table class="form">
+  <tr class="form">
+    <td colspan="2" class="form">
+      <h2><h:outputText value="#{taskBean.taskInstance.name}" /></h2>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><img src="../images/formline.jpg" width="100%" height="24" border="0" alt=""/></td>
+  </tr>
+  
+  <!-- TASKFORM ROWS -->
+
+  <tr>
+    <td colspan="2"><img src="../images/formline.jpg" width="100%" height="24" border="0" alt=""/></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+    
+      <!-- TASKFORM BUTTONS -->
+
+    </td>
+  </tr>
+</table>
+
+</h:form>
+</ui:composition>
+
+</body>
+</html>

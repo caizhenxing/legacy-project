@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+		<!-- 客户模块表单bean信息 -->
+		<form-bean name="voiceLeave" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id"  type="java.lang.String" />
+			<form-property name="beginTime"     type="java.lang.String" />
+			<form-property name="endTime"      type="java.lang.String" />
+			<form-property name="wavPath"    type="java.lang.String" />
+			<form-property name="ifDispose"     type="java.lang.String" />
+			<form-property name="caller"     type="java.lang.String" />
+			<form-property name="disposeSuggest"     type="java.lang.String" />	
+			<form-property name="ivrtypeId" type="java.lang.String" />
+		</form-bean>		
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<!-- 语音留言action -->
+	<action
+      attribute="voiceLeave"
+      name="voiceLeave"
+      parameter="method"
+      path="/sys/voiceLeave"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy">
+      <forward name="list" path="/sys/voiceLeave/voiceLeaveList.jsp" />
+      <forward name="main" path="/sys/voiceLeave/voiceLeaveMain.jsp" />
+      <forward name="toInfo" path="/sys/voiceLeave/voiceLeaveInfo.jsp" />
+      <forward name="query" path="/sys/voiceLeave/voiceLeaveQuery.jsp" />
+      <forward name="disposeSuccess" path="/sys/voiceLeave.do?method=toVoiceLeaveList" />
+      <forward name="dispose" path="/sys/voiceLeave/goDispose.jsp" />
+    </action>
+		
+		<!-- 座席top页导航控制action -->
+	<action
+      parameter="method"
+      path="/sys/agentNav"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy">
+      <forward name="toAgentNavMain" path="/sys/agentNavControl/agentNavMain.jsp" />
+    </action>
+
+
+	</action-mappings>
+	
+</struts-config>
+

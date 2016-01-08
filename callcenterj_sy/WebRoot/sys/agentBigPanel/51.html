@@ -1,0 +1,369 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+		<style type="text/css">
+<!--
+
+body,td,tr,p {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #333333;
+	line-height:120%
+}
+.blue12{color:#000066}
+.white_12b{color:#ffffff; font-weight:bold; font-size:14px}
+
+.blue_14b{
+	color:#000000;
+	font-weight:bold;
+	font-size:16px;
+	filter:
+        Dropshadow(offx=1,offy=0,color=#f6f6f6)
+        Dropshadow(offx=0,offy=-1,color=#f6f6f6);
+        /*Dropshadow(offx=0,offy=1,color=white)
+        Dropshadow(offx=-1,offy=0,color=white);*/
+}
+a.blue_14b:link{color:#030335; font-weight:bold; font-size:14px}
+a.blue_14b:vistited{color:#030335; font-weight:bold; font-size:14px}
+
+.whtie_14b{color:#ffffff; font-weight:bold; font-size:16px}
+a.whtie_14b:link{color:#ffffff; font-weight:bold; font-size:14px}
+a.blue_14b:vistited{color:#ffffff; font-weight:bold; font-size:14px}
+
+.blue2_12b{color:#043D7D; font-weight:bold; font-size:14px}
+a.blue2_12b:link{color:#043D7D; font-weight:bold; font-size:12px}
+a.blue_12b:vistited{color:#043D7D; font-weight:bold; font-size:12px}
+
+.blue03_14b{color:#0066A7; font-size:16px; font-weight:bold}
+
+.blue03_14{color:#0066A7; font-size:14px; }
+
+.ta{padding-top:10px;padding-bottom:10px; background-color:#DFECFF;}
+.tb{padding-top:8px;padding-bottom:8px; }
+/**/
+.tdb{font-size:18px;font-weight:bold; color:#000000;}
+.tdnb{font-size:18px;color:#000000;}
+
+-->
+</style>
+		<title>12316金农热线服务实况 -- 话务实况</title>
+		<style type="text/css">
+
+<!--
+body {
+	margin: 0px;
+}
+-->
+
+</style>
+		<script language="javascript" src="./../../js/ajax.js"></script>
+		<script language="javascript" src="./../../js/all.js"></script>
+		<script language="javascript" src="./../../js/Table.js"></script>
+		<script language="javascript" src="./../../js/agentState.js"></script>
+	</head>
+
+	<body onload=startclock()>
+		<table width="1003" border="0" align="center" cellpadding="0"
+			cellspacing="0">
+			<tr>
+				<td width="25" valign="top" background="images/l_bg.jpg">
+					<p>
+						<img src="images/tt_01.jpg" width="25" height="659" alt="" />
+					</p>
+				</td>
+				<td valign="top">
+						<script language=JavaScript>
+var timerID = null;
+var timerRunning = false;
+function stopclock (){
+if(timerRunning)
+clearTimeout(timerID);
+timerRunning = false;}
+function startclock () {
+stopclock();
+showtime();}
+function showtime () {
+var now = new Date();
+var hours = now.getHours();
+var minutes = now.getMinutes();
+var seconds = now.getSeconds();
+var yy = now.getYear();
+var mm = now.getMonth() + 1;
+var dd = Date().split(" ")[2];
+var ww;
+switch (now.getDay()) {
+	case 0 :
+		ww = "星期日";
+		break;
+	case 1 :
+		ww = "星期一";
+		break;
+	case 2 :
+		ww = "星期二";
+		break;
+	case 3 :
+		ww = "星期三";
+		break;
+	case 4 :
+		ww = "星期四";
+		break;
+	case 5 :
+		ww = "星期五";
+		break;
+	case 6 :
+		ww = "星期六";
+		break;
+}
+var timeValue = yy + "年" + mm + "月" + dd + "日　" + ww + "　";// +((hours >= 12) ? "下午 " : "上午 " );
+timeValue += hours;//((hours >12) ? hours -12 :hours);
+timeValue += ((minutes < 10) ? ":0" : ":") + minutes;
+timeValue += ((seconds < 10) ? ":0" : ":") + seconds;
+//document.clock.thetime.value = timeValue;
+clock.innerText = timeValue;
+timerID = setTimeout("showtime()",1000);
+timerRunning = true;
+}
+
+</SCRIPT>
+
+<input type="button" onclick="showHuaWuShiKuang('tblId')"
+	value="test it!" />
+<table width="100%" height="82" border="0" cellpadding="0"
+	cellspacing="0" background="images/tt_02.jpg">
+	<tr>
+		<td>
+			<table width="100%" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td width="72%" height="42">
+						&nbsp;
+					</td>
+					<td width="28%" align="center" valign="bottom">
+						<span id=clock></span>
+					</td>
+				</tr>
+				<tr>
+					<td height="26" colspan="2" align="right" class="blue12"
+						style="padding-right:25px; padding-top:14px">
+						在线主持人:
+						<MM:BeginLock translatorClass="MM_ASPSCRIPT" type="script"
+							depFiles="" orig="%3C%25=hostsname%25%3E">
+							<MM_ASPSCRIPT> <MM:EndLock>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<table width="100%" height="80" border="0" cellpadding="0"
+	cellspacing="0" background="images/tt_04.jpg">
+	<tr>
+		<td>
+			<table width="100%" height="80" border="0" cellpadding="0"
+				cellspacing="0">
+				<tr>
+					<td width="22%">
+						&nbsp;
+					</td>
+					<td width="78%">
+						<table width="97%" border="0" cellpadding="0"
+							cellspacing="0">
+							<tr>
+								<td width="21%" height="42" align="center"
+									class="blue_14b">
+									咨询总量
+								</td>
+								<td width="19%" align="center" class="blue_14b">
+									今日咨询量
+								</td>
+								<td width="39%">
+									<table width="100%" border="0" cellspacing="0"
+										cellpadding="0">
+										<tr>
+											<td width="25%" align="center" class="blue_14b">
+												政策 |
+											</td>
+											<td width="25%" align="center" class="blue_14b">
+												市场 |
+											</td>
+											<td width="25%" align="center" class="blue_14b">
+												技术 |
+											</td>
+											<td width="25%" align="center" class="blue_14b">
+												其他&nbsp;&nbsp;
+											</td>
+										</tr>
+									</table>
+								</td>
+								<td width="21%" align="center" class="blue_14b">
+									值班专家
+								</td>
+							</tr>
+							<tr>
+								<td height="34" align="center" valign="top">
+									<span class="whtie_14b"><MM:BeginLock
+											translatorClass="MM_ASPSCRIPT" type="script"
+											depFiles="" orig="%3C%25=asknums%25%3E">
+											<MM_ASPSCRIPT> <MM:EndLock>
+									</span>
+								</td>
+								<td align="center" valign="top">
+									<span class="whtie_14b"><MM:BeginLock
+											translatorClass="MM_ASPSCRIPT" type="script"
+											depFiles="" orig="%3C%25=today_asknums%25%3E">
+											<MM_ASPSCRIPT> <MM:EndLock>
+									</span>
+								</td>
+								<td valign="top">
+									<table width="100%" border="0" cellspacing="0"
+										cellpadding="0">
+										<tr>
+											<td width="25%" align="center">
+												<span class="whtie_14b" style="padding-right:15px; "><MM:BeginLock
+														translatorClass="MM_ASPSCRIPT" type="script"
+														depFiles="" orig="%3C%25=today_asknums_zc%25%3E">
+														<MM_ASPSCRIPT> <MM:EndLock>
+												</span>
+											</td>
+											<td width="25%" align="center">
+												<span class="whtie_14b" style="padding-right:15px; "><MM:BeginLock
+														translatorClass="MM_ASPSCRIPT" type="script"
+														depFiles="" orig="%3C%25=today_asknums_sc%25%3E">
+														<MM_ASPSCRIPT> <MM:EndLock>
+												</span>
+											</td>
+											<td width="25%" align="center">
+												<span class="whtie_14b" style="padding-right:16px; "><MM:BeginLock
+														translatorClass="MM_ASPSCRIPT" type="script"
+														depFiles="" orig="%3C%25=today_asknums_js%25%3E">
+														<MM_ASPSCRIPT> <MM:EndLock>
+												</span>
+											</td>
+											<td width="25%" align="center">
+												<span class="whtie_14b" style="padding-right:18px; "><MM:BeginLock
+														translatorClass="MM_ASPSCRIPT" type="script"
+														depFiles="" orig="%3C%25=today_asknums_qt%25%3E">
+														<MM_ASPSCRIPT> <MM:EndLock>
+												</span>
+											</td>
+										</tr>
+									</table>
+								</td>
+								<td align="center" valign="top" class="white_12b">
+									<MM:BeginLock translatorClass="MM_ASPSCRIPT"
+										type="script" depFiles="" orig="%3C%25=h_experts%25%3E">
+										<MM_ASPSCRIPT> <MM:EndLock>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>
+			<img src="images/tt_05.jpg" width="951" height=12 " alt="" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<img src="images/tt_06.jpg" width="951" height="10" alt="" />
+		</td>
+	</tr>
+	<tr>
+		<td background="images/t_bg.gif">
+			<table width="951" border="0" align="center" cellpadding="0"
+				cellspacing="0">
+				<tr>
+					<td height="46" align="center" valign="bottom"
+						background="images/m01.jpg">
+						<table width="93%" height="44" border="0" cellpadding="0"
+							cellspacing="5" id="tblId">
+							<tr>
+								<td width="6%" align="center" class="blue2_12b">
+									序号
+								</td>
+								<td width="14%" align="center" class="blue2_12b">
+									时间
+								</td>
+								<td width="22%" align="center" class="blue2_12b">
+									来电情况
+								</td>
+								<td width="8%" align="center" class="blue2_12b">
+									受理座席
+								</td>
+								<td width="42%" align="center" class="blue2_12b">
+									咨询内容
+								</td>
+								<td align="center" class="blue2_12b" width="8%">
+									解决方式
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<div id="demo"
+							style="overflow:hidden;height:425px;padding-top:30px;">
+							<div id="demo1">
+								<table width="93%" border="0" cellpadding="5"
+									cellspacing="5">
+
+								</table>
+							</div>
+							<div id="demo2"></div>
+						</div>
+						<script>
+var speed=20
+var demo=document.getElementById("demo");
+var demo2=document.getElementById("demo2");
+var demo1=document.getElementById("demo1");
+demo2.innerHTML=demo1.innerHTML
+function Marquee(){
+	if(demo2.offsetTop-demo.scrollTop<=0)
+		demo.scrollTop-=demo1.offsetHeight
+	else{
+		demo.scrollTop++
+	}
+}
+var MyMar=setInterval(Marquee,speed)
+demo.onmouseover=function() {clearInterval(MyMar)}
+demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+</script>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												&nbsp;
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="images/tt_08.jpg" width="951" height="21" alt="" />
+								</td>
+							</tr>
+						</table>
+				</td>
+				<td width="27" valign="top" background="images/r_bg.jpg">
+					<img src="images/tt_03.jpg" width="27" height="659" alt="" />
+				</td>
+			</tr>
+		</table>
+		<table width="1003" border="0" align="center" cellpadding="0"
+			cellspacing="0">
+			<tr>
+				<td>
+					<img src="images/tt_09.jpg" width="1003" height="40" alt="" />
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

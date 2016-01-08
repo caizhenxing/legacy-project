@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+  <!-- ATM Front End -->
+  <servlet>
+    <servlet-name>frontEndServlet</servlet-name>
+    <!-- service implementation bean class -->
+    <servlet-class>org.jbpm.bpel.tutorial.atm.AtmFrontEnd_Impl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>frontEndServlet</servlet-name>
+    <url-pattern>/frontEnd</url-pattern>
+  </servlet-mapping>
+
+  <!-- Integration Service -->
+  <servlet>
+    <servlet-name>relationServlet</servlet-name>
+    <servlet-class>org.jbpm.bpel.integration.jms.IntegrationServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>relationServlet</servlet-name>
+    <url-pattern>/relation</url-pattern>
+  </servlet-mapping>
+
+  <!-- Scheduler Service -->
+  <servlet>
+    <servlet-name>SchedulerServlet</servlet-name>
+    <servlet-class>org.jbpm.scheduler.impl.SchedulerServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+    <init-param>
+      <param-name>interval</param-name>
+      <param-value>30000</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SchedulerServlet</servlet-name>
+    <url-pattern>/scheduler</url-pattern>
+  </servlet-mapping>
+
+  <resource-ref>
+    <!-- sole JMS connection factory -->
+    <res-ref-name>jms/ConnectionFactory</res-ref-name>
+    <res-type>javax.jms.ConnectionFactory</res-type>
+    <res-auth>Container</res-auth>
+    <res-sharing-scope>Shareable</res-sharing-scope>
+  </resource-ref>
+
+  <message-destination-ref>
+    <!-- queue assigned to atmRelation partner link -->
+    <message-destination-ref-name>jms/atmRelation</message-destination-ref-name>
+    <message-destination-type>javax.jms.Queue</message-destination-type>
+    <message-destination-usage>ConsumesProduces</message-destination-usage>
+  </message-destination-ref>
+
+</web-app>

@@ -1,0 +1,186 @@
+<project name="jbpm.designer.jpdl" basedir="." default="all">
+
+  <!-- version properties -->
+  <property file="${basedir}/../version.properties" />	
+  
+  <!-- TODO: 
+       REPLACE usage of jbpm.version with lib.jbpm.jpdl.version
+       REPLACE usage of jbpm.gpd.version with lib.jbpm.designer.version
+       REMOVE the version info from the feature and site zip files.  this version info should be in the manifest or readme instead.  don't forget to update the jpdl/dist/build.xml accordingly after the update.
+  -->
+  <property name="jbpm.version" value="3.2.Alpha1-SNAPSHOT" />
+  <property name="jbpm.gpd.version" value="3.0.11-SNAPSHOT" />
+  <property name="jbpm.gpd.version.tag" value="HEAD" />
+	
+  <!-- project specific properties -->
+  <property name="module.name" value="designer.jpdl" />
+  <property name="build.dir" value="target"/>
+  <property name="projects.dir" value="${build.dir}/projects"/>
+  <property name="workspace.dir" value="${build.dir}/workspace"/>
+
+  <!-- property files -->	
+  <property file="${user.home}/jbpm/build.properties" />
+  <property file="build.properties" />
+  <property file="${basedir}/../build/build.properties" />        <!-- if the project is checked out next to the main jbpm build project -->
+  <property file="${basedir}/../../../build/build.properties" />  <!-- if the build is running within the main jbpm build -->
+		
+  <available file="${basedir}/../org.jbpm.gd.jpdl.docs" property="docs.dir" value="${basedir}/../org.jbpm.gd.jpdl.docs" />
+  <available file="${basedir}/../org.jbpm.gd.jpdl.site" property="site.dir" value="${basedir}/../org.jbpm.gd.jpdl.site" />
+  <available file="${basedir}/../org.jbpm.gd.jpdl.feature" property="feature.dir" value="${basedir}/../org.jbpm.gd.jpdl.feature" />
+  <available file="${basedir}/../org.jbpm.gd.jpdl.ui" property="ui.dir" value="${basedir}/../org.jbpm.gd.jpdl.ui" />
+  <available file="${basedir}/../org.jbpm.gd.jpdl.help" property="help.dir" value="${basedir}/../org.jbpm.gd.jpdl.help" />
+	
+  <condition property="eclipse.uptodate">
+  	<and>
+   	  <available file="${eclipse.home}/${lib.eclipse.sdk.filename}.txt"/>
+   	  <available file="${eclipse.home}/${lib.eclipse.emf.filename}.txt"/>
+   	  <available file="${eclipse.home}/${lib.eclipse.gef.filename}.txt"/>
+   	  <available file="${eclipse.home}/${lib.eclipse.wtp.filename}.txt"/>
+   	  <available file="${eclipse.home}/${lib.eclipse.jem.filename}.txt"/>
+  	</and>
+  </condition>	
+	
+  <target name="clean">
+    <delete dir="${build.dir}" />
+  </target> 
+
+  <target name="all" depends="get.projects" description="main distribution target">
+    <antcall target="install.eclipse" />
+    <antcall target="plugin.docs" />
+  	<antcall target="prepare.workspace" />
+    <antcall target="run-eclipse-plugin-builder" />
+    <antcall target="move-feature" />
+    <antcall target="build-site" />
+  	<antcall target="publish.in.local.repository" />
+  </target> 
+	
+  <target name="publish.in.local.repository">
+    <mkdir dir="${local.repository}/jbpm/designer/jpdl/${buildId}" />
+	<copy file="${build.dir}/jbpm-gpd-feature-${buildId}.zip" todir="${local.repository}/jbpm/designer/jpdl/${buildId}" />
+	<copy file="${build.dir}/jbpm-gpd-site-${buildId}.zip" todir="${local.repository}/jbpm/designer/jpdl/${buildId}" />
+  </target>
+	
+  <target name="install.eclipse" unless="eclipse.uptodate">
+  	<delete dir="${eclipse.home}" />
+  	<mkdir dir="${eclipse.home}" />
+  	<touch file="${eclipse.home}/${lib.eclipse.sdk.filename}.txt" />
+  	<touch file="${eclipse.home}/${lib.eclipse.gef.filename}.txt" />
+	<touch file="${eclipse.home}/${lib.eclipse.emf.filename}.txt" />
+  	<touch file="${eclipse.home}/${lib.eclipse.wtp.filename}.txt" />
+  	<touch file="${eclipse.home}/${lib.eclipse.jem.filename}.txt" />
+    <unzip src="${lib.eclipse.sdk.local}" dest="${eclipse.home}/.." />
+    <unzip src="${lib.eclipse.wtp.local}" dest="${eclipse.home}/.." />
+    <unzip src="${lib.eclipse.gef.local}" dest="${eclipse.home}/.." />
+    <unzip src="${lib.eclipse.emf.local}" dest="${eclipse.home}/.." />
+    <unzip src="${lib.eclipse.jem.local}" dest="${eclipse.home}/.." />
+  </target>
+  
+  <target name="get.projects" depends="checkout.docs,checkout.site,checkout.feature,checkout.help,checkout.ui" />
+	
+  <target name="checkout.docs" unless="docs.dir" >
+    <property name="docs.dir" value="${basedir}/${projects.dir}/org.jbpm.gd.jpdl.docs" />
+    <mkdir dir="${docs.dir}" />
+    <cvs cvsRoot="${jbpm.cvs.root}" 
+         command="checkout -d ${docs.dir} -r ${jbpm.gpd.version.tag} jbpm.3/designer/jpdl/org.jbpm.gd.jpdl.docs" 
+         quiet="${quiet}" />  
+  </target>
+	
+  <target name="checkout.site" unless="site.dir">
+  	<property name="site.dir" value="${basedir}/${projects.dir}/org.jbpm.gd.jpdl.site" />
+  	<mkdir dir="${site.dir}" />
+  	<cvs cvsRoot="${jbpm.cvs.root}"
+  	     command="checkout -d ${site.dir} -r ${jbpm.gpd.version.tag} jbpm.3/designer/jpdl/org.jbpm.gd.jpdl.site"
+  	     quiet="${quiet}" />
+  </target>
+	
+  <target name="checkout.feature" unless="feature.dir">
+  	<property name="feature.dir" value="${basedir}/${projects.dir}/org.jbpm.gd.jpdl.feature" />
+  	<mkdir dir="${feature.dir}" />
+  	<cvs cvsRoot="${jbpm.cvs.root}"
+  	     command="checkout -d ${feature.dir} -r ${jbpm.gpd.version.tag} jbpm.3/designer/jpdl/org.jbpm.gd.jpdl.feature"
+  	     quiet="${quiet}" />
+  </target>
+	
+  <target name="checkout.help" unless="help.dir">
+  	<property name="help.dir" value="${basedir}/${projects.dir}/org.jbpm.gd.jpdl.help" />
+  	<mkdir dir="${help.dir}" />
+  	<cvs cvsRoot="${jbpm.cvs.root}"
+  	     command="checkout -d ${help.dir} -r ${jbpm.gpd.version.tag} jbpm.3/designer/jpdl/org.jbpm.gd.jpdl.help"
+  	     quiet="${quiet}" />
+  </target>
+	
+  <target name="checkout.ui" unless="ui.dir">
+  	<property name="ui.dir" value="${basedir}/${projects.dir}/org.jbpm.gd.jpdl.ui" />
+  	<mkdir dir="${ui.dir}"/>
+  	<cvs cvsRoot="${jbpm.cvs.root}"
+  	     command="checkout -d ${ui.dir} -r ${jbpm.gpd.version.tag} jbpm.3/designer/jpdl/org.jbpm.gd.jpdl.ui"
+  		 quiet="${quiet}" />
+  </target>
+	
+  <target name="prepare.workspace">
+  	<mkdir dir="${workspace.dir}/features" />
+  	<mkdir dir="${workspace.dir}/plugins" />
+  	<copy todir="${workspace.dir}/features/org.jbpm.gd.jpdl.feature" >
+      <fileset dir="${feature.dir}" />
+  	</copy>
+  	<copy todir="${workspace.dir}/plugins/org.jbpm.gd.jpdl.ui">
+      <fileset dir="${ui.dir}" />
+  	</copy>
+  	<copy todir="${workspace.dir}/plugins/org.jbpm.gd.jpdl.help">
+        <fileset dir="${help.dir}" />
+  	</copy>
+  </target>
+
+  <target name="plugin.docs" >
+    <ant antfile="build.xml" target="all.doc" dir="${docs.dir}/gpd.userguide" inheritall="false"> 
+    	<property name="docbook-support-dir" value="${local.repository}/docbook-support" />
+    </ant> 
+  </target>
+
+  <target name="run-eclipse-plugin-builder" description="launch the f**** atomic black box eclipse plugins build">
+    <java classname="org.eclipse.core.launcher.Main" fork="true"> 
+      <classpath path="${eclipse.home}/startup.jar" />
+      <arg line="-application org.eclipse.ant.core.antRunner" />
+      <arg line="-data ${basedir}/${workspace.dir}"/>
+      <arg line="-f mainTargets.xml"/>
+      <arg line="-Djbpm.cvs.root=${jbpm.cvs.root}" /> 
+      <arg line="-DbuildDirectory=${basedir}/${workspace.dir}" />
+      <arg line="-Ddocs.dir=${docs.dir}" />
+      <arg line="-Declipse.dir=${eclipse.home}" />
+      <arg line="-Djbpm.gpd.version=${jbpm.gpd.version}" />	
+      <arg line="-Djbpm.gpd.version.tag=${jbpm.gpd.version.tag}" /> 
+      <arg line="-Djbpm.version=${jbpm.version}" />
+      <arg line="-Dlocal.repository='${local.repository}'" />
+      <arg line="-DskipFetch=true" />
+    </java>
+  </target>
+
+  <target name="move-feature" description="fetch the feature archive from the place where the atomic eclipse plugin build has hidden it">
+	<copy file="${workspace.dir}/${buildLabel}/org.jbpm.gd.jpdl.feature-${buildId}.zip" tofile="${build.dir}/jbpm-gpd-feature-${buildId}.zip" />
+  </target>
+	
+  <target name="build-site" description="build a site from the feature">
+	<mkdir dir="${build.dir}/site" />
+	<copy todir="${build.dir}/site">
+      <fileset dir="${site.dir}" />
+  	</copy>
+	<unzip src="${build.dir}/jbpm-gpd-feature-${buildId}.zip" dest="${build.dir}/feature" />
+	<taskdef classpath="${lib.ant.contrib.local}" resource="net/sf/antcontrib/antlib.xml"/>
+	<foreach target="zipPluginDir" param="jarName" inheritAll="true" >
+		<path>
+			<dirset dir="${build.dir}/feature/eclipse/plugins" includes="*" />
+			<dirset dir="${build.dir}/feature/eclipse/features" includes="*" />
+		</path>
+	</foreach>
+  	<move todir="${build.dir}/site">
+  	  <fileset dir="${build.dir}/feature/eclipse" includes="*/*.jar" />
+  	</move>
+	<zip destfile="${build.dir}/jbpm-gpd-site-${buildId}.zip" basedir="${build.dir}/site" />
+  </target>
+  <target name="zipPluginDir">
+  	<!-- used by the build-site target in a foreach task -->
+    <zip destfile="${jarName}.jar" basedir="${jarName}" />
+  </target>
+
+
+</project>

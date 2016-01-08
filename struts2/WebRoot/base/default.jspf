@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%--@ page language="java" contentType="text/html; charset=GBK" pageEncoding="GBK"--%>
+<%@ include file = "/base/tablibs.jsp" %>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK"/>
+<title></title>
+
+<link rel="stylesheet" href="/<c:out value = "${sysParameter['publicResourceServer']}/css/style.css" />?<%= System.currentTimeMillis() %>" type="text/css" media="all" />
+<link rel="stylesheet" href="/<c:out value = "${sysParameter['publicResourceServer']}/css/style_page.css" />?<%= System.currentTimeMillis() %>" type="text/css" media="all" />
+<link rel="stylesheet" href="/<c:out value = "${sysParameter['publicResourceServer']}/css/style_buttom.css" />?<%= System.currentTimeMillis() %>" type="text/css" media="all" />
+<link rel="stylesheet" href="/<c:out value = "${sysParameter['publicResourceServer']}/css/print.css" />?<%= System.currentTimeMillis() %>" type="text/css" media="print" />
+
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/scripts/prototype.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/scripts/contextInfo.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/scripts/formUtils.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/scripts/dateUtils.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/scripts/dateComponent.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/scripts/styleControl.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/scripts/xmlhttp.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/scripts/staticTree.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/scripts/global.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/scripts/treeUtils.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/scripts/validator.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/scripts/tableSort.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/scripts/alt.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/scripts/panel.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/scripts/print.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/scripts/editPage.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/scripts/extendCombo.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/scripts/definedWin.js" />"></script>
+
+
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/js/search.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/js/common.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/js/msgInfo.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/js/showMsg.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/js/form.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/js/univerify.js" />"></script>
+<script type="text/javascript" src = "/<c:out value = "${sysParameter['publicResourceServer']}/base/js/choiceTbl.js" />"></script>
+</head>
+
+<%@ include file = "/base/messages.jspf" %>

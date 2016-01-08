@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<project name="jbpm.bpel.examples" default="redeploy-web">
+
+  <!-- ================== -->
+  <!-- === PROPERTIES === -->
+  <!-- ================== -->
+
+  <property file="ant.properties" />
+  <property file="${jbpm.bpel.home}/ant.properties" />
+
+  <!-- ================== -->
+  <!-- === CLASSPATHS === -->
+  <!-- ================== -->
+
+  <path id="jbpm.bpel.path">
+    <pathelement location="${jbpm.bpel.home}/output/jbpm-bpel-${jbpm.bpel.version}.jar" />
+  </path>
+
+  <!-- ======================= -->
+  <!-- === ANT DEFINITIONS === -->
+  <!-- ======================= -->
+
+  <macrodef name="iterate">
+    <attribute name="target" />
+    <sequential>
+      <subant target="@{target}" failonerror="off">
+        <fileset dir="${basedir}" includes="*/build.xml" />
+      </subant>
+    </sequential>
+  </macrodef>
+
+  <taskdef name="dbschema"
+           classname="org.jbpm.bpel.ant.DBSchemaTask"
+           classpathref="jbpm.bpel.path" />
+
+  <!-- ======================= -->
+  <!-- === DATABASE SCHEMA === -->
+  <!-- ======================= -->
+
+  <target name="create-schema" description="create the jbpm tables">
+    <dbschema action="create" />
+  </target>
+
+  <target name="drop-schema" description="drop the jbpm tables">
+    <dbschema action="drop" />
+  </target>
+
+  <!-- ================================== -->
+  <!-- === WEB APPLICATION DEPLOYMENT === -->
+  <!-- ================================== -->
+
+  <target name="redeploy-web"
+          description="regenerate artifacts and deploy all webservices">
+    <iterate target="redeploy-web" />
+  </target>
+
+  <target name="undeploy-web" description="undeploy all webservices">
+    <iterate target="undeploy-web" />
+  </target>
+
+  <!-- ====================== -->
+  <!-- === TEST EXECUTION === -->
+  <!-- ====================== -->
+
+  <target name="run-test" description="test all webservices">
+    <iterate target="run-test" />
+  </target>
+
+  <!-- =============== -->
+  <!-- === CLEANUP === -->
+  <!-- =============== -->
+
+  <target name="clean" description="removes all generated files">
+    <iterate target="clean" />
+    <delete dir="common/output" failonerror="no" />
+  </target>
+
+</project>

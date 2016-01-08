@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<contents>
+##ファイルパスの設定
+#set($path = "D:/shinsei/settings/webdoc/15.特別研究促進費若手")
+
+	<!-- ********** ページ１ ここから ********** -->
+	<page templateFilePath="$path/Page1.iod">
+		
+		<!-- ******* タイトル ******* -->
+		<field name="SHOZOKU_CD"						value="$!escape.getText($!shinseiDataInfo.daihyouInfo.shozokuCd)"/>
+<!--2007/02/09 劉長宇　修正　ここから　-->	
+		<field name="JIGYO_CD"						    value="$!escape.getText($!shinseiDataInfo.jigyoId.substring(4,6))"/>
+<!--2007/02/09 劉長宇　修正　ここまで　-->
+<!--2007/02/09 劉長宇　追加　ここから　-->	
+		<field name="SHINSA_NO"					        value="$!escape.getText($!shinseiDataInfo.jigyoId.substring(6,7))"/>
+<!--2007/02/09 劉長宇　追加　ここまで　-->	
+		<field name="BUNKASAIMOKU_CD"					value="$!escape.getText($!shinseiDataInfo.kadaiInfo.bunkaSaimokuCd)"/>
+		<field name="BUNKATSU_NO"						value="$!escape.getText($!shinseiDataInfo.kadaiInfo.bunkatsuNo)"/>
+		<field name="UKETUKE_NO"						value="$!escape.getText($!shinseiDataInfo.uketukeNo.substring(6))"/>
+		<field name="NENDO_SEIREKI"						value="(20$!escape.getText($!shinseiDataInfo.nendoSeireki)年度)"/>
+		$!dateUtil.setCal($!escape.getText($!shinseiDataInfo.sakuseiDate.toString()).substring(0,4),"4","1")
+	    #set($nendo = $!dateUtil.getNendo())
+		<field name="SAKUSEI_DATE_Y"					value="$!escape.getText($nendo)"/>
+		<field name="SAKUSEI_DATE_M"					value="$!escape.getText($dateFormat.getMonth($!shinseiDataInfo.sakuseiDate))"/>
+		<field name="SAKUSEI_DATE_D"					value="$!escape.getText($dateFormat.getDay($!shinseiDataInfo.sakuseiDate))"/>
+		<field name="EDITION"							value="$!escape.getText($!shinseiDataInfo.kadaiInfo.edition)"/>
+	#if($!escape.getText($!shinseiDataInfo.jigyoCd) == "00155")	
+		<field name="SYUMOKU"							value="若手研究(A)相当"/>
+	#elseif($!escape.getText($!shinseiDataInfo.jigyoCd) == "00156")
+		<field name="SYUMOKU"							value="若手研究(B)相当"/>
+	#end
+		<field name="JIGYO_CD"							value="$!escape.getText($!shinseiDataInfo.jigyoCd.substring(2,4))"/>
+		<field name="SHINSA_NO"							value="$!escape.getText($!shinseiDataInfo.jigyoId.substring(6,7))"/>
+
+				
+		<!-- ******* 申請区分 ******* -->
+	#set($shinseiKubun = ["", "新規",     "継続（研究計画の大幅な変更を行うとする課題）"])
+	#set($kadaiNo = ["", "", $shinseiFormat.concat( $shinseiFormat.concat( "(" , $!escape.getText($!shinseiDataInfo.kadaiNoKeizoku)) , ")")])
+	#set($shinseiFlgNo = ["", "応募する", "応募しない"])
+	#set($kadaiNoSaisyu = ["", $shinseiFormat.concat( $shinseiFormat.concat( "(" , $!escape.getText($!shinseiDataInfo.kadaiNoSaisyu)) , ")"), ""])
+	#set($buntankinFlg = ["", "有",       "無"])
+		<field name="SHINSEI_KUBUN"						value="$!escape.getText($shinseiFormat.getTextFromList($!shinseiDataInfo.shinseiKubun, $shinseiKubun))"/>
+		<field name="KADAI_NO"							value="$!escape.getText($shinseiFormat.getTextFromList($!shinseiDataInfo.shinseiKubun, $kadaiNo))"/>
+		<field name="SHINSEI_FLG_NO"					value="$!escape.getText($shinseiFormat.getTextFromList($!shinseiDataInfo.shinseiFlgNo, $shinseiFlgNo))"/>
+		<field name="KADAI_NO_SAISYU"					value="$!escape.getText($shinseiFormat.getTextFromList($!shinseiDataInfo.shinseiFlgNo, $kadaiNoSaisyu))"/>
+		<field name="NENDO"								value="平成$!escape.getIntValue($shinseiDataInfo.nendo)年度"/>
+		<field name="BUNTANKIN_FLG"						value="$!escape.getText($shinseiFormat.getTextFromList($!shinseiDataInfo.buntankinFlg, $buntankinFlg))"/>
+		<field name="BUNYA_NAME"						value="$!escape.getText($!shinseiDataInfo.kadaiInfo.bunya)"/>
+		<field name="BUNKA_NAME"						value="$!escape.getText($!shinseiDataInfo.kadaiInfo.bunka)"/>
+		<field name="SAIMOKU_NAME"						value="$!escape.getText($!shinseiDataInfo.kadaiInfo.saimokuName)"/>
+		<field name="KEYWORD"							value="$!escape.getText($!shinseiDataInfo.keyName)"/>
+		<field name="KEYWORD_IGAI"						value="$!escape.getText($!shinseiDataInfo.keyOtherName)"/>
+
+		<!-- ******* 研究代表者 ******* -->
+		<field name="NAME_KANJI"						value="$!escape.getText($!shinseiDataInfo.daihyouInfo.nameKanjiSei)　$!escape.getText($!shinseiDataInfo.daihyouInfo.nameKanjiMei)"/>
+		<field name="NAME_KANA"							value="$!escape.getText($!shinseiDataInfo.daihyouInfo.nameKanaSei)　$!escape.getText($!shinseiDataInfo.daihyouInfo.nameKanaMei)"/>
+		<field name="SHOZOKU_NAME"						value="$!escape.getText($!shinseiDataInfo.daihyouInfo.shozokuName)"/>
+		<field name="BUKYOKU_CD"						value="$!escape.getText($!shinseiDataInfo.daihyouInfo.bukyokuCd)"/>
+		<field name="BUKYOKU_NAME"						value="$!escape.getText($!shinseiDataInfo.daihyouInfo.bukyokuName)"/>
+		<field name="SHOKU_CD"							value="$!escape.getText($!shinseiDataInfo.daihyouInfo.shokushuCd)"/>
+		<field name="SHOKU_NAME_KANJI"					value="$!escape.getText($!shinseiDataInfo.daihyouInfo.shokushuNameKanji)"/>
+		<field name="KADAI_NAME_KANJI"					value="$!escape.getText($!shinseiDataInfo.kadaiInfo.kadaiNameKanji)"/>
+		<field name="KADAI_NAME_EIGO"					value="$!escape.getText($!shinseiDataInfo.kadaiInfo.kadaiNameEigo)"/>
+		
+		<!-- ******* 研究経費 ******* -->
+	#set($soukeiInfo = $shinseiDataInfo.kenkyuKeihiSoukeiInfo)
+	#foreach($keihiInfo in $soukeiInfo.kenkyuKeihi)
+	#set($count = $velocityCount - 1)
+	#set($nendo = $!escape.getIntValue($shinseiDataInfo.nendo) + $count)
+		<field name="NENDO${velocityCount}"				value="平成${nendo}年度"/>
+		<field name="KEIHI${velocityCount}"				value="$!escape.getText($shinseiFormat.numericFormat($!keihiInfo.keihi))"/>
+		#if(${velocityCount} == 1)
+			#set($keihi1 = $!escape.getText($shinseiFormat.numericFormat($!keihiInfo.keihi)))
+		#end
+		<field name="BIHINHI${velocityCount}"			value="$!escape.getText($shinseiFormat.numericFormat($!keihiInfo.bihinhi))"/>
+		<field name="SHOMOHINHI${velocityCount}"		value="$!escape.getText($shinseiFormat.numericFormat($!keihiInfo.shomohinhi))"/>
+		<field name="RYOHI${velocityCount}"				value="$!escape.getText($shinseiFormat.numericFormat($!keihiInfo.ryohi))"/>
+		<field name="SHAKIN${velocityCount}"			value="$!escape.getText($shinseiFormat.numericFormat($!keihiInfo.shakin))"/>
+		<field name="SONOTA${velocityCount}"			value="$!escape.getText($shinseiFormat.numericFormat($!keihiInfo.sonota))"/>
+	#end
+		<field name="KEIHI_TOTAL"						value="$!escape.getText($shinseiFormat.numericFormat($!soukeiInfo.keihiTotal))"/>
+		<field name="BIHINHI_TOTAL"						value="$!escape.getText($shinseiFormat.numericFormat($!soukeiInfo.bihinhiTotal))"/>
+		<field name="SHOMOHINHI_TOTAL"					value="$!escape.getText($shinseiFormat.numericFormat($!soukeiInfo.shomohinhiTotal))"/>
+		<field name="RYOHI_TOTAL"						value="$!escape.getText($shinseiFormat.numericFormat($!soukeiInfo.ryohiTotal))"/>
+		<field name="SHAKIN_TOTAL"						value="$!escape.getText($shinseiFormat.numericFormat($!soukeiInfo.shakinTotal))"/>
+		<field name="SONOTA_TOTAL"						value="$!escape.getText($shinseiFormat.numericFormat($!soukeiInfo.sonotaTotal))"/>
+		
+		<!-- ******* その他 ******* -->
+		<field name="KAIJIKIBO_FLG"						value="$!escape.getText($!shinseiDataInfo.kaijiKiboFlg)"/>
+		<field name="KAIGAIBUNYA_NAME"					value="$!escape.getText($!shinseiDataInfo.kaigaibunyaName)"/>
+		<field name="KENKYU_TAISHO"						value="$!escape.getText($!shinseiDataInfo.kadaiInfo.kenkyuTaisho)"/>
+
+	#set($info = $shinseiDataInfo.kenkyuSoshikiInfoList.get(0))
+		<field name="NENREI_KIKAN"						value="H$!escape.getIntValue($shinseiDataInfo.nendo).4.1現在"/>
+		<field name="NENREI"							value="$!escape.getText($info.nenrei)"/>
+		<field name="BIRTHDAY"							value="（${dateUtil.getJpyString($!shinseiDataInfo.birthDay)}生まれ）"/>
+		<field name="GAKUI"								value="$!escape.getText($info.gakui)"/>
+		<field name="SENMON"							value="$!escape.getText($info.senmon)"/>
+		<field name="EFFORT"							value="$!escape.getText($info.effort)％"/>
+		
+		<field name="JIGYO_NAME"                        value="$!escape.getText($!shinseiDataInfo.jigyoName)研究計画調書"/>
+	#set($nendo1 = $!escape.getIntValue($shinseiDataInfo.nendo) - 1 )
+	#if($!escape.getIntValue($!shinseiDataInfo.ouboShikaku) == 1)
+	    <field name="OUBOSIKAKU"                      value="(1)研究者名簿の登録最終締切日($!escape.getText($!shinseiDataInfo.meiboDateWareki))の翌日以降、新たに科学研究費補助金の応募資格を得た者"/>
+	#elseif($!escape.getIntValue($!shinseiDataInfo.ouboShikaku) == 2)
+		<field name="OUBOSIKAKU"                      value="(2)研究者名簿の登録最終締切日($!escape.getText($!shinseiDataInfo.meiboDateWareki))の翌日以降に、再び科学研究費補助金の応募資格を得た者"/>
+	#elseif($!escape.getIntValue($!shinseiDataInfo.ouboShikaku) == 3)
+		<field name="OUBOSIKAKU"                      value="(3)平成${nendo1}年度に産前産後の休暇又は育児休業を取得していたため、平成${nendo1}年11月に受付が行われた科学研究費補助金に応募できなかった者"/>
+	#end
+	
+	#if($!escape.getIntValue($!shinseiDataInfo.ouboShikaku) == 1)
+	    <field name="SIKAKU_TITLE"                      value="新たに科研費の応募資格を得た年月日"/>
+	#elseif($!escape.getIntValue($!shinseiDataInfo.ouboShikaku) == 2)
+		<field name="SIKAKU_TITLE"                      value="再び科研費の応募資格を得た年月日及び応募資格を得る前の所属研究機関等"/>
+	#elseif($!escape.getIntValue($!shinseiDataInfo.ouboShikaku) == 3)
+		<field name="SIKAKU_TITLE"                      value="産前産後の休暇の取得期間又は育児休業の取得期間"/>
+	#end
+	
+	#if($!escape.getIntValue($!shinseiDataInfo.ouboShikaku) == 1)
+	    <field name="SIKAKUSYUTOKU"                      value="$!dateUtil.getJpyString($!escape.getText($!shinseiDataInfo.sikakuDate.toString()).substring(0,4),$!escape.getText($!shinseiDataInfo.sikakuDate.toString()).substring(5,7),$!escape.getText($!shinseiDataInfo.sikakuDate.toString()).substring(8,10))"/>
+	#elseif($!escape.getIntValue($!shinseiDataInfo.ouboShikaku) == 2)
+		<field name="SIKAKUSYUTOKU"                      value="$!dateUtil.getJpyString($!escape.getText($!shinseiDataInfo.sikakuDate.toString()).substring(0,4),$!escape.getText($!shinseiDataInfo.sikakuDate.toString()).substring(5,7),$!escape.getText($!shinseiDataInfo.sikakuDate.toString()).substring(8,10)) $!escape.getText($!shinseiDataInfo.syuTokumaeKikan)"/>
+	#elseif($!escape.getIntValue($!shinseiDataInfo.ouboShikaku) == 3)
+		<field name="SIKAKUSYUTOKU"                      value="$!dateUtil.getJpyString($!escape.getText($!shinseiDataInfo.ikukyuStartDate.toString()).substring(0,4),$!escape.getText($!shinseiDataInfo.ikukyuStartDate.toString()).substring(5,7),$!escape.getText($!shinseiDataInfo.ikukyuStartDate.toString()).substring(8,10))～$!dateUtil.getJpyString($!escape.getText($!shinseiDataInfo.ikukyuEndDate.toString()).substring(0,4),$!escape.getText($!shinseiDataInfo.ikukyuEndDate.toString()).substring(5,7),$!escape.getText($!shinseiDataInfo.ikukyuEndDate.toString()).substring(8,10))"/>
+	#end
+	</page>
+	<!-- ********** ページ１ ここまで ********** -->
+	
+</contents> 

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+
+<!--<beans>-->
+<!---->
+<!---->
+<!--	<bean id="SessionFactory"-->
+<!--		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">-->
+<!--		<property name="configLocation">-->
+<!--			<value>-->
+<!--				file:src/et/config/hibernate/hibernate.cfg.xml-->
+<!--			</value>-->
+<!--		</property>-->
+<!--	</bean>-->
+<!--</beans>-->
+<beans>
+<import resource="classpath:excellence/framework/base/spring-base.xml" />
+	<bean id="datasource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://localhost:3306/etoa?useUnicode=true&amp;characterEncoding=GB2312</value>
+		</property>
+		<property name="username">
+			<value>oaee</value>
+		</property>
+		<property name="password">
+			<value>excellenceoa</value>
+<!--<value>root</value>-->
+		</property>
+	</bean>
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+		destroy-method="destroy">
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="connection.characterEncoding">
+					UTF-8
+				</prop>
+			</props>
+		</property>
+		
+		<property name="configLocation">
+       		<value>classpath:/et/config/hibernate/hibernate.cfg.xml</value>
+   		</property>
+		<property name="dataSource">
+		
+			<ref bean="datasource" />
+		</property>
+	</bean>
+	
+</beans>

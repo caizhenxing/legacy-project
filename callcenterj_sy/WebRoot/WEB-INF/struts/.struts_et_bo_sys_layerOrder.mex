@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/sys/layerOrder/layerOrder.do" location="135,75" dimension="358,84" />
+  <StrutsActivity path="/sys/layerOrder/layerOrderTree.jsp" location="195,270" dimension="244,48" />
+  <StrutsActivity path="/sys/layerOrder/toOrderTreeSuccess.jsp" location="675,90" dimension="268,48" />
+  <StrutsActivity path="/sys/layerOrder/execLayerOrder.jsp" />
+  <StrutsTransition id="/sys/layerOrder/layerOrder.do,toOrderTreeSuccess,/sys/layerOrder/layerOrder.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="314,117" />
+      <AbsolutePoint location="314,117" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/layerOrder/layerOrder.do,toOrderTreeSuccess,/sys/layerOrder/toOrderTreeSuccess.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="493,117" />
+      <AbsolutePoint location="675,117" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/layerOrder/layerOrder.do,toOrderTreeSuccess,/sys/layerOrder/execLayerOrder.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="314,117" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/layerOrder/layerOrder.do,toLayerOrderTree,/sys/layerOrder/layerOrderTree.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="314,159" />
+      <AbsolutePoint location="314,270" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

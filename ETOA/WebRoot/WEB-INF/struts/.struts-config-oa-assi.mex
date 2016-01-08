@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/oa/assissant/hrphoto.do" location="350,750" dimension="358,84" />
+  <StrutsActivity path="/oa/assissant/hr.do" location="9149,148" dimension="358,84" />
+  <StrutsActivity path="/oa/assissant/doc.do" location="3953,148" dimension="358,84" />
+  <StrutsActivity path="/oa/assissant/docUploadFile.do" location="8077,148" dimension="358,84" />
+  <StrutsActivity path="/oa/assissant/hr/upload.jsp" location="50,750" dimension="202,48" />
+  <StrutsActivity path="/oa/assissant/hr/hrManagerList.jsp" location="9034,562" dimension="244,48" />
+  <StrutsActivity path="/oa/assissant/hr/hrManagerLoad.jsp" location="9722,562" dimension="244,48" />
+  <StrutsActivity path="/oa/assissant/hr/hrManagerMain.jsp" location="9378,562" dimension="244,48" />
+  <StrutsActivity path="/oa/assissant/hr/hrManagerQuery.jsp" location="10066,562" dimension="250,48" />
+  <StrutsActivity path="/oa/assissant/hr/hrManagerDetail.jsp" location="8678,562" dimension="256,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerList.jsp" location="5970,562" dimension="286,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerQuery4.jsp" location="4770,562" dimension="298,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerList2.jsp" location="4378,562" dimension="292,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerUpdate.jsp" location="7146,562" dimension="298,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerDetail.jsp" location="6748,562" dimension="298,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerDelete.jsp" location="1176,562" dimension="298,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerMain4.jsp" location="0,562" dimension="292,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerShenPi.jsp" location="7544,562" dimension="298,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerLoadConference.jsp" location="1574,562" dimension="346,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerQuery3.jsp" location="778,562" dimension="298,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerQuery2.jsp" location="5168,562" dimension="298,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerMain.jsp" location="2020,562" dimension="286,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerList4.jsp" location="6356,562" dimension="292,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerQuery.jsp" location="3594,562" dimension="292,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerLoad.jsp" location="392,562" dimension="286,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerShenPi4.jsp" location="5566,562" dimension="304,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerDelete4.jsp" location="2798,562" dimension="304,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerList3.jsp" location="3986,562" dimension="292,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerMain2.jsp" location="3202,562" dimension="292,48" />
+  <StrutsActivity path="/oa/assissant/document/docUpload.jsp" location="7942,562" dimension="256,48" />
+  <StrutsActivity path="/oa/assissant/document/docManagerMain3.jsp" location="2406,562" dimension="292,48" />
+  <StrutsActivity path="/oa/assissant/document/docUploadFail.jsp" location="8298,562" dimension="280,48" />
+  <StrutsActivity path="/oa/assissant/document/uploadFile.jsp" location="8125,0" dimension="262,48" />
+  <StrutsTransition id="/oa/assissant/doc.do,main4,/oa/assissant/document/docManagerMain4.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3961,232" />
+      <AbsolutePoint location="3961,262" />
+      <AbsolutePoint location="146,262" />
+      <AbsolutePoint location="146,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,list4,/oa/assissant/document/docManagerList4.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4234,232" />
+      <AbsolutePoint location="4234,382" />
+      <AbsolutePoint location="6502,382" />
+      <AbsolutePoint location="6502,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/hr.do,query,/oa/assissant/hr/hrManagerQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="9507,220" />
+      <AbsolutePoint location="10191,220" />
+      <AbsolutePoint location="10191,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/hr.do,load,/oa/assissant/hr.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="9328,148" />
+      <AbsolutePoint location="9328,-75" />
+      <AbsolutePoint location="9857,-75" />
+      <AbsolutePoint location="9857,190" />
+      <AbsolutePoint location="9507,190" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,list3,/oa/assissant/document/docManagerList3.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4132,232" />
+      <AbsolutePoint location="4132,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,delete,/oa/assissant/document/docManagerDelete.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4012,232" />
+      <AbsolutePoint location="4012,352" />
+      <AbsolutePoint location="1325,352" />
+      <AbsolutePoint location="1325,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,query2,/oa/assissant/document/docManagerQuery2.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4183,232" />
+      <AbsolutePoint location="4183,472" />
+      <AbsolutePoint location="5317,472" />
+      <AbsolutePoint location="5317,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,docUpload,/oa/assissant/document/docUpload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4302,232" />
+      <AbsolutePoint location="4302,262" />
+      <AbsolutePoint location="7984,262" />
+      <AbsolutePoint location="7984,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/docUploadFile.do,success,/oa/assissant/document/docUpload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="8166,232" />
+      <AbsolutePoint location="8166,262" />
+      <AbsolutePoint location="8070,262" />
+      <AbsolutePoint location="8070,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/hr.do,info,/oa/assissant/hr/hrManagerLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="9328,190" />
+      <AbsolutePoint location="9844,586" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,shenpi,/oa/assissant/document/docManagerShenPi.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4285,232" />
+      <AbsolutePoint location="4285,292" />
+      <AbsolutePoint location="7693,292" />
+      <AbsolutePoint location="7693,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,list2,/oa/assissant/document/docManagerList2.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4149,232" />
+      <AbsolutePoint location="4149,532" />
+      <AbsolutePoint location="4524,532" />
+      <AbsolutePoint location="4524,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/docUploadFile.do,uploadfail,/oa/assissant/document/docUploadFail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="8345,232" />
+      <AbsolutePoint location="8345,262" />
+      <AbsolutePoint location="8438,262" />
+      <AbsolutePoint location="8438,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,main2,/oa/assissant/document/docManagerMain2.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4097,232" />
+      <AbsolutePoint location="4097,502" />
+      <AbsolutePoint location="3348,502" />
+      <AbsolutePoint location="3348,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,query3,/oa/assissant/document/docManagerQuery3.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3995,232" />
+      <AbsolutePoint location="3995,322" />
+      <AbsolutePoint location="927,322" />
+      <AbsolutePoint location="927,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/hr.do,list,/oa/assissant/hr/hrManagerList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="9263,232" />
+      <AbsolutePoint location="9263,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,list,/oa/assissant/document/docManagerList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4217,232" />
+      <AbsolutePoint location="4217,412" />
+      <AbsolutePoint location="6113,412" />
+      <AbsolutePoint location="6113,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,load,/oa/assissant/document/docManagerLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3978,232" />
+      <AbsolutePoint location="3978,292" />
+      <AbsolutePoint location="535,292" />
+      <AbsolutePoint location="535,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,detail,/oa/assissant/document/docManagerDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4251,232" />
+      <AbsolutePoint location="4251,352" />
+      <AbsolutePoint location="6897,352" />
+      <AbsolutePoint location="6897,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,query4,/oa/assissant/document/docManagerQuery4.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4166,232" />
+      <AbsolutePoint location="4166,502" />
+      <AbsolutePoint location="4919,502" />
+      <AbsolutePoint location="4919,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,shenpi4,/oa/assissant/document/docManagerShenPi4.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4200,232" />
+      <AbsolutePoint location="4200,442" />
+      <AbsolutePoint location="5718,442" />
+      <AbsolutePoint location="5718,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,main3,/oa/assissant/document/docManagerMain3.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4063,232" />
+      <AbsolutePoint location="4063,442" />
+      <AbsolutePoint location="2552,442" />
+      <AbsolutePoint location="2552,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/document/uploadFile.jsp,null,/oa/assissant/docUploadFile.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="8256,48" />
+      <AbsolutePoint location="8256,148" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,conferenceDocLoad,/oa/assissant/document/docManagerLoadConference.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4029,232" />
+      <AbsolutePoint location="4029,382" />
+      <AbsolutePoint location="1747,382" />
+      <AbsolutePoint location="1747,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,main,/oa/assissant/document/docManagerMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4046,232" />
+      <AbsolutePoint location="4046,412" />
+      <AbsolutePoint location="2163,412" />
+      <AbsolutePoint location="2163,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,query,/oa/assissant/document/docManagerQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4114,232" />
+      <AbsolutePoint location="4114,532" />
+      <AbsolutePoint location="3740,532" />
+      <AbsolutePoint location="3740,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/hr.do,detail,/oa/assissant/hr/hrManagerDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="9149,190" />
+      <AbsolutePoint location="8806,190" />
+      <AbsolutePoint location="8806,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/hrphoto.do,upload,/oa/assissant/hr/upload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="350,783" />
+      <AbsolutePoint location="252,783" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,delete4,/oa/assissant/document/docManagerDelete4.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4080,232" />
+      <AbsolutePoint location="4080,472" />
+      <AbsolutePoint location="2950,472" />
+      <AbsolutePoint location="2950,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/doc.do,update,/oa/assissant/document/docManagerUpdate.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4268,232" />
+      <AbsolutePoint location="4268,322" />
+      <AbsolutePoint location="7295,322" />
+      <AbsolutePoint location="7295,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/hr.do,main,/oa/assissant/hr/hrManagerMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="9393,232" />
+      <AbsolutePoint location="9393,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

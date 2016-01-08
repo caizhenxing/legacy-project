@@ -1,0 +1,80 @@
+body {
+		font:12px Arial, Helvetica, sans-serif;
+		background-color: #DDEAFA;
+	}
+	table td{
+		background-color: #DDEAFA;
+		z-index:0;
+	}
+	#container {
+		width: 180px;
+		background-color: #DDEAFA;
+		overflow-x:hidden;   
+		overflow-y:auto;
+		z-index:0;
+	}
+	H1 {
+		font-size: 11px;
+		margin: 0px;
+		padding:0px;
+		width: 178px;
+		cursor: pointer;
+		height: 22px;
+		line-height: 22px;	
+		
+	}
+	H1 a {
+		display: block;
+		padding-top: 1px;
+		padding-right: 8px;
+		padding-bottom: 0px;
+		padding-left: 20px;	
+		width: 175px;
+		color: #000;
+		height: 26px;
+		text-decoration: none;	
+		moz-outline-style: none;
+		background-repeat: repeat-x;
+	}
+	H1 a div{
+		margin:0px;
+		padding:0px;
+		width:20px;
+		height:20px;
+	}
+	.content{
+		padding-left: 8px;
+		background-color: #DDEAFA;
+	}
+	.content p{
+		margin-top:0px;
+		margin-bottom:0px;
+		width:165px;
+		margin-left:22px;
+		background-color: #DDEAFA;
+	}
+	p a:link {
+		color: #333333;
+		text-decoration: none;
+	}
+	p a:visited {
+		text-decoration: none;
+		color: #64A1CE;
+	}
+	p a:hover {
+		text-decoration: none;
+		color: #64A1CE;
+	}
+	p a:active {
+		text-decoration: none;
+		color: #333333;
+	}
+	body {
+			margin-left: 1px;
+			margin-top: 1px;
+			margin-right: 1px;
+			margin-bottom: 1px;
+			background-color: #DDEAFA;
+			width:180px;
+			overflow-x:hidden;
+		}

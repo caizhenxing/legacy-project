@@ -1,0 +1,63 @@
+修改人：王文权
+修改日期：2009-03-23
+说明：ivr按键加入农委大屏幕生产,市场,医疗,专题话务统计(###如果ivr栏目变了这个统计就不准了 ivr按键具体对应哪个栏目并不是同步的　##)
+修改内容：
+--得到话务总量 当日总量 生产质询 市场质询 政策质询 等大屏幕相关信息
+ALTER function [dbo].[screen_getHuawu](
+	@dateStr varchar(10)
+	)
+	returns varchar(2000)
+as 
+begin
+declare @sumNum varchar(50)
+declare @daySum varchar(50)
+declare @produceInquiry int --生产质询
+declare @marketInquiry int --市场质询
+declare @policyInquiry int --政策质询
+declare @medicalInquiry int --医疗质询
+declare @otherInquiry int --其它质询
+declare @ivr_produceInquiry int --生产质询
+declare @ivr_marketInquiry int --市场质询
+declare @ivr_medicalInquiry int --医疗质询
+declare @ivr_otherInquiry int --其它质询
+select @sumNum=(count(id)+300000) from cc_main
+select @daySum=count(id) from cc_main oq   where   Convert(varchar(10),oq.ring_begintime,120) = @dateStr
+--生产质询('养殖咨询','种植咨询')
+select @produceInquiry = count(id) from oper_question where 1=1 and dict_question_type1 in ('养殖咨询','种植咨询') and Convert(varchar(10),addtime,120) = @dateStr
+--市场质询('供求查询','供求发布','价格报送','价格行情')
+select @marketInquiry = count(id) from oper_question where 1=1 and dict_question_type1 in ('供求查询','供求发布','价格报送','价格行情') and Convert(varchar(10),addtime,120) = @dateStr
+--政策质询('政策咨询')
+select @policyInquiry = count(id) from oper_question where 1=1 and dict_question_type1 in ('政策咨询') and Convert(varchar(10),addtime,120) = @dateStr
+--医疗质询('医疗服务')
+select @medicalInquiry = count(id) from oper_question where 1=1 and dict_question_type1 in ('医疗服务') and Convert(varchar(10),addtime,120) = @dateStr
+--其它质询 not in ('养殖咨询','种植咨询','供求查询','供求发布','价格报送','价格行情','政策咨询','医疗服务')
+select @otherInquiry = count(id) from oper_question where 1=1 and dict_question_type1 not in ('养殖咨询','种植咨询','供求查询','供求发布','价格报送','价格行情','政策咨询','医疗服务') and Convert(varchar(10),addtime,120) = @dateStr
+
+--将ivr话务量加入 生产 市场 医疗 专题 
+--生产咨询
+ SELECT     @ivr_produceInquiry=COUNT(*)
+FROM         cc_ivr_date
+WHERE     module_id in ('5','6','7','9') and convert(varchar(10),module_begintime,120) like @dateStr
+
+--市场质询
+ SELECT     @ivr_marketInquiry=COUNT(*)
+FROM         cc_ivr_date
+WHERE     module_id in ('2','3','8')  and convert(varchar(10),module_begintime,120) like @dateStr
+
+--医疗质询
+ SELECT     @ivr_medicalInquiry=COUNT(*)
+FROM         cc_ivr_date
+WHERE     module_id in ('4')  and convert(varchar(10),module_begintime,120) like @dateStr
+
+--其它质询
+ SELECT     @ivr_otherInquiry=COUNT(*)
+FROM         cc_ivr_date
+WHERE     module_id in ('0')  and convert(varchar(10),module_begintime,120) like @dateStr
+
+--返回结果
+return @sumNum +'@'+ @daySum + '@' + convert(varchar(50),(@produceInquiry+@ivr_produceInquiry))+ '@' + convert(varchar(50),(@marketInquiry+@ivr_marketInquiry))+ '@' + convert(varchar(50),@policyInquiry)+ '@' + convert(varchar(50),(@medicalInquiry+@ivr_medicalInquiry))+ '@' + convert(varchar(50),(@otherInquiry+@ivr_otherInquiry))
+end
+
+
+
+

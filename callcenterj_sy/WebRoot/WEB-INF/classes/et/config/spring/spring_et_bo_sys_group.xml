@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<!--角色管理-->
+<beans>		
+	<bean id="GroupService"
+		class="et.bo.sys.group.service.impl.GroupServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	<bean name="/sys/group/Group"
+		class="et.bo.sys.group.action.GroupAction" scope="singleton">
+		<property name="groupService">
+			<ref bean="GroupService" />
+		</property>	
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>	
+</beans>

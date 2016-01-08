@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/sys/voiceLeave.do" location="420,90" dimension="358,84" />
+  <StrutsActivity path="/sys/voiceLeave/voiceLeaveList.jsp" location="45,285" dimension="244,48" />
+  <StrutsActivity path="/sys/voiceLeave/voiceLeaveMain.jsp" location="675,390" dimension="244,48" />
+  <StrutsActivity path="/sys/voiceLeave/voiceLeaveQuery.jsp" location="360,390" dimension="250,48" />
+  <StrutsActivity path="/sys/voiceLeave/goDispose.jsp" location="50,150" dimension="214,48" />
+  <StrutsTransition id="/sys/voiceLeave.do,main,/sys/voiceLeave/voiceLeaveMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="690,174" />
+      <AbsolutePoint location="690,390" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/voiceLeave.do,dispose,/sys/voiceLeave/goDispose.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="420,165" />
+      <AbsolutePoint location="264,165" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/voiceLeave.do,list,/sys/voiceLeave/voiceLeaveList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="625,174" />
+      <AbsolutePoint location="625,309" />
+      <AbsolutePoint location="289,309" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/voiceLeave.do,query,/sys/voiceLeave/voiceLeaveQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="595,174" />
+      <AbsolutePoint location="595,390" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

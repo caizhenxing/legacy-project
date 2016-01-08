@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource '/testwebsphere/WebRoot/login.jsp' to 'index.jsp'&#13;&#10;- Original element: 'login.jsp'" description="Rename resource 'login.jsp'" flags="7" id="org.eclipse.jdt.ui.rename.resource" input="WebRoot/login.jsp" name="index.jsp" stamp="1162199360493" version="1.0"/>
+</session>

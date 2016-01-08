@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+<!--  key -->
+	
+	<bean id="KeyService" class="excellence.common.key.impl.KeyServiceImpl">
+		<property name="sequenceService">
+			<ref bean="SequenceService" />
+		</property>
+	</bean>
+	
+	<bean id="SequenceService" class="et.bo.common.impl.SequenceServiceImpl">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+
+	<bean name="/sys/moduleLinkTreeSearch"
+		class="et.bo.sys.common.action.ModuleLinkTreeSearch" scope="singleton">
+		<property name="classTreeService">
+			<ref bean="ClassTreeService" />
+		</property>	
+	</bean>
+
+	<bean id="ClassTreeService"
+		class="excellence.common.classtree.impl.ClassTreeServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="classTreeLoadService">
+		     <ref bean="ClassTreeLoadService" />
+		</property>
+	</bean>
+
+	<bean id="ClassTreeLoadService"
+		class="et.bo.sys.classtree.impl.ClassTreeLoadServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+	<bean id="RoleClassTreeService"
+		class="et.bo.sys.roleClassTree.impl.RoleClassTreeServcieImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+
+<!-- right-->
+
+	<bean name="/sys/right" class="et.bo.sys.right.action.RightAction" >
+		<property name="rs">
+			<ref bean="RightService" />
+		</property>
+		
+	</bean>
+	<bean id="RightService" class="et.bo.sys.right.service.impl.RightServiceImpl" >
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+
+
+
+
+
+
+<!--  service begin -->
+	<bean id="groupService"
+		class="et.bo.sys.group.service.impl.GroupServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+			
+	</bean>
+	
+	
+	<bean id="userService"
+		class="et.bo.sys.user.service.impl.UserServiceImpl" scope="singleton">
+		<property name="groupService">
+			<ref bean="groupService" />
+		</property>
+		<property name="roleService">
+			<ref bean="RoleService" />
+		</property>	
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+		
+	<bean id="RoleService"
+		class="et.bo.sys.role.service.impl.RoleServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+<!-- service end -->	
+<!--  action begin -->
+<!-- group -->
+	<bean name="/sys/group/GroupOper"
+		class="et.bo.sys.group.action.GroupAction" scope="singleton">
+			
+		<property name="groupService">
+			<ref bean="groupService" />
+		</property>	
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>	
+	</bean>
+<!-- user -->	
+	<bean name="/sys/user/UserOper"
+		class="et.bo.sys.user.action.UserAction" scope="singleton">
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+	</bean>
+	
+</beans>

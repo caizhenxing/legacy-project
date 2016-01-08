@@ -1,0 +1,125 @@
+.wenzi1 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #666666;
+	text-align: center;
+}
+.wenzi5 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	color: #436E02;
+}
+
+
+.wenzi2 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	color: #666666;
+	text-align: left;
+	text-indent: 12px;
+}
+.wenzi3 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	color: #666666;
+	text-align: left;
+	text-indent: 24px;
+}
+.wenzi4 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #990000;
+	text-align: left;
+}
+.wenzi6 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: bold;
+	color: #333333;
+	text-align: right;
+}
+.wenzi7 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-align: center;
+}
+.wenzi8 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-align: right;
+}
+.wenzi9 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #FFFFFF;
+	text-align: left;
+	text-indent: 12px;
+}
+.e {
+	background-attachment: fixed;
+	background-image: url(2.gif);
+	background-repeat: repeat-x;
+	background-position: center center;
+}
+.t {
+	background-attachment: fixed;
+	background-image: url(../tp/2.gif);
+	background-repeat: repeat-x;
+	background-position: center center;
+	line-height: 22px;
+	width: 148px;
+	height: 24px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	display: table;
+	clear: both;
+	visibility: visible;
+	overflow: visible;
+	border-left: 0px;
+	border-right: 0px;
+	border-top: 0px;
+	text-indent: 2px;
+
+	onfocus="this.style.backgroundImage='url(3.gif)'
+	onblur="this.style.backgroundImage='url(2.gif)'
+; 	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	color: #599803;
+}

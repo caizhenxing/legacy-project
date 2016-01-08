@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee   http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+  <servlet>
+    <servlet-name>action</servlet-name>
+    <servlet-class>excellence.framework.base.action.GBKActionServlet</servlet-class>
+    <init-param>
+      <param-name>config</param-name>
+      <param-value>
+      /WEB-INF/struts-config.xml,
+      /WEB-INF/struts/struts-config-assay.xml,
+	  /WEB-INF/struts/struts-config-sys.xml,
+	  /WEB-INF/struts/struts-config-callinFirewall.xml,
+	  /WEB-INF/struts/struts-config-cclog.xml,
+	  /WEB-INF/struts/struts-config-operator.xml,
+	  /WEB-INF/struts/struts-config-operatorStatistic.xml,
+	  /WEB-INF/struts/struts-config-portCompare.xml
+      </param-value>
+      
+    </init-param>
+    
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>3</param-value>
+    </init-param>
+    <init-param>
+      <param-name>detail</param-name>
+      <param-value>3</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+      <servlet-name>log4j</servlet-name>
+      <servlet-class>excellence.framework.base.action.Log4jServlet</servlet-class>
+      <init-param>
+          <param-name>log4j</param-name>
+          <param-value>/WEB-INF/classes/et/config/log4j/log4j.xml</param-value>
+      </init-param>
+      <load-on-startup>0</load-on-startup>
+  </servlet>
+  <servlet>
+      <servlet-name>parameter</servlet-name>
+      <servlet-class>excellence.framework.base.action.ParameterServlet</servlet-class>
+      <init-param>
+          <param-name>path</param-name>
+          <param-value>/WEB-INF/classes/et/config/parameter/</param-value>
+
+      </init-param>
+      <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>OperatorMsg</servlet-name>
+    <servlet-class>et.bo.callcenter.server.svlt.OperatorMsg</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OperatorMsg</servlet-name>
+    <url-pattern>/servlet/OperatorMsg</url-pattern>
+  </servlet-mapping>
+  <error-page>
+  <error-code>404</error-code>
+  <location>/sys/error.jsp</location>
+  </error-page>
+  <error-page>
+  <error-code>500</error-code>
+  <location>/sys/error.jsp</location>
+  </error-page>
+  
+</web-app>
+

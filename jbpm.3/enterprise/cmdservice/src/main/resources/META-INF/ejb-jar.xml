@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN" "http://java.sun.com/dtd/ejb-jar_2_0.dtd">
+
+<ejb-jar>
+
+  <description>jBPM Command Service Bean</description>
+  <display-name>jBPM Command Service Bean</display-name>
+
+  <enterprise-beans>
+
+    <session>
+      <description>jBPM SLSB Command Service Bean</description>
+      <display-name>jBPM SLSB Command Service Bean</display-name>
+      <ejb-name>CommandServiceBean</ejb-name>
+      <home>
+        org.jbpm.ejb.RemoteCommandServiceHome
+      </home>
+      <remote>
+        org.jbpm.ejb.RemoteCommandService
+      </remote>
+      <local-home>
+        org.jbpm.ejb.LocalCommandServiceHome
+      </local-home>
+      <local>
+        org.jbpm.ejb.LocalCommandService
+      </local>
+      <ejb-class>org.jbpm.ejb.impl.CommandServiceBean</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+      <!-- 
+      <env-entry>
+        <env-entry-name>JbpmCfgResource</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>jbpm.xfg.xml</env-entry-value>
+      </env-entry>
+      -->
+    </session>
+
+  </enterprise-beans>
+
+  <assembly-descriptor>
+  </assembly-descriptor>
+
+</ejb-jar>

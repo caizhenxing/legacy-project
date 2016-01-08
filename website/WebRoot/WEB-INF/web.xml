@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee   http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+  <servlet>
+    <servlet-name>action</servlet-name>
+    <servlet-class>excellence.framework.base.action.GBKActionServlet</servlet-class>
+    <init-param>
+      <param-name>config</param-name>
+      <param-value>
+      /WEB-INF/struts-config.xml,
+	  /WEB-INF/struts/struts-config-news.xml,
+	  /WEB-INF/struts/struts-config-newsInfo.xml,
+	  /WEB-INF/struts/struts-config-forum-useroper.xml,
+	  /WEB-INF/struts/struts-config-newsFormat.xml,
+	  /WEB-INF/struts/struts-config-sys.xml
+<!--	  /WEB-INF/struts/struts-config-oa.xml,-->
+<!--	  /WEB-INF/struts/struts-config-communicate.xml,-->
+<!--	  /WEB-INF/struts/struts-config-oa-assi.xml,-->
+<!--	  /WEB-INF/struts/struts-config-privy.xml,	-->
+<!--	  /WEB-INF/struts/struts-config-wf.xml,-->
+<!--	  /WEB-INF/struts/struts-config-oa-resourcel.xml,-->
+<!--	  /WEB-INF/struts/struts-config-oa-addressList.xml,-->
+<!--	  /WEB-INF/struts/struts-config-commoninfo.xml,-->
+<!--	  /WEB-INF/struts/struts-config-oa-file.xml,-->
+<!--	  /WEB-INF/struts/struts-config-plan.xml	  -->
+      </param-value>
+    </init-param>
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>3</param-value>
+    </init-param>
+    <init-param>
+      <param-name>detail</param-name>
+      <param-value>3</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+      <servlet-name>log4j</servlet-name>
+      <servlet-class>excellence.framework.base.action.Log4jServlet</servlet-class>
+      <init-param>
+          <param-name>log4j</param-name>
+          <param-value>/WEB-INF/classes/et/config/log4j/log4j.xml</param-value>
+      </init-param>
+      <load-on-startup>0</load-on-startup>
+  </servlet>
+  <servlet>
+      <servlet-name>parameter</servlet-name>
+      <servlet-class>excellence.framework.base.action.ParameterServlet</servlet-class>
+      <init-param>
+          <param-name>path</param-name>
+          <param-value>/WEB-INF/classes/et/config/parameter/</param-value>
+
+      </init-param>
+      <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+</web-app>
+

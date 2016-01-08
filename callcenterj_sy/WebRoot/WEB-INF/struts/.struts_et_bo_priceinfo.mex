@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/operpriceinfo.do" location="399,0" dimension="308,88" />
+  <StrutsActivity path="/priceinfo/priceinfoStatisticQuery.jsp" location="50,550" dimension="268,48" />
+  <StrutsActivity path="/priceinfo/priceinfolist.jsp" location="950,50" dimension="150,49" />
+  <StrutsActivity path="/priceinfo/priceinfoQuery.jsp" location="50,450" dimension="167,49" />
+  <StrutsActivity path="/priceinfo/priceinfoLoadList.jsp" location="950,450" dimension="232,48" />
+  <StrutsActivity path="/priceinfo/priceinfoLoad.jsp" location="350,450" dimension="160,49" />
+  <StrutsActivity path="/priceinfo/priceinfoMain.jsp" location="650,450" dimension="159,49" />
+  <StrutsActivity path="/operPriceinfo/operPriceinfolist.jsp" location="0,188" dimension="194,49" />
+  <StrutsActivity path="/operPriceinfo/operPriceinfoQuery.jsp" location="294,188" dimension="211,49" />
+  <StrutsActivity path="/operPriceinfo/operPriceinfoLoad.jsp" location="605,188" dimension="204,49" />
+  <StrutsActivity path="/operPriceinfo/operPriceinfoMain.jsp" location="909,188" dimension="203,49" />
+  <StrutsActivity path="/priceinfo/operPriceinfolist.jsp" location="50,350" dimension="172,49" />
+  <StrutsActivity path="/priceinfo/operPriceinfoQuery.jsp" location="350,350" dimension="189,49" />
+  <StrutsActivity path="/priceinfo/operPriceinfoLoad.jsp" location="650,350" dimension="182,49" />
+  <StrutsActivity path="/priceinfo/operPriceinfoMain.jsp" location="950,350" dimension="181,49" />
+  <StrutsTransition id="/operpriceinfo.do,toOperPriceinfoLoad,/priceinfo/priceinfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="553,44" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operpriceinfo.do,toOperPriceinfoMain,/priceinfo/priceinfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="553,44" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operpriceinfo.do,toOperPriceinfoList,/priceinfo/priceinfolist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="553,44" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operpriceinfo.do,topriceinfoStatisticQuery,/priceinfo/priceinfoStatisticQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="553,44" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operpriceinfo.do,toOperPriceinfoQuery,/priceinfo/priceinfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="553,44" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operpriceinfo.do,toOperPriceinfoLoadList,/priceinfo/priceinfoLoadList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="553,44" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

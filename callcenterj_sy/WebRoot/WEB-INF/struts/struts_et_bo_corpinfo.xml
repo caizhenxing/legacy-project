@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+		<!-- 问题模块表单bean信息 -->
+		<form-bean name="operCorpinfoBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="corpRid" type="java.lang.String" />
+			<form-property name="expert" type="java.lang.String" />
+			<form-property name="custName" type="java.lang.String" />
+			<form-property name="custTel" type="java.lang.String" />
+			<form-property name="custAddr" type="java.lang.String" />
+			<form-property name="dictSate" type="java.lang.String" />
+			<form-property name="dictServiceType" type="java.lang.String" />
+			<form-property name="contents" type="java.lang.String" />
+			<form-property name="reply" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+			<form-property name="createTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="subid" type="java.lang.String" /><!-- 用于审核的提交人ID -->
+			<form-property name="accid" type="java.lang.String" /><!-- 用于审核的受理人ID -->
+			<form-property name="uploadfile" type="java.lang.String" /><!-- 用于记录上传图片的路径 -->
+
+			<form-property name="statisticType" type="java.lang.String" />
+			<form-property name="state" type="java.lang.String" />
+		</form-bean>
+
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<!-- 问题action -->
+		<action attribute="operCorpinfoBean" 
+				name="operCorpinfoBean" 
+				scope="request" 
+				path="/operCorpinfo" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="toOperCorpinfoMain" path="/corpinfo/corpinfoMain.jsp"/>
+			<forward name="toOperCorpinfoList" path="/corpinfo/corpinfolist.jsp"/>
+			<forward name="toOperCorpinfoLoad" path="/corpinfo/corpinfoLoad.jsp"/>
+			<forward name="toOperCorpinfoQuery" path="/corpinfo/corpinfoQuery.jsp"/>
+			<forward name="tocorpinfoStatisticQuery" path="/corpinfo/corpinfoStatisticQuery.jsp"/>
+			
+		</action>
+		
+		
+
+	</action-mappings>
+	
+</struts-config>
+

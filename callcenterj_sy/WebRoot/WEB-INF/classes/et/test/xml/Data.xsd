@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="chart">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="set" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="label" use="optional"/>
+                <xs:attribute type="xs:short" name="value" use="optional"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="caption"/>
+      <xs:attribute type="xs:string" name="xAxisName"/>
+      <xs:attribute type="xs:string" name="yAxisName"/>
+      <xs:attribute type="xs:byte" name="showValues"/>
+      <xs:attribute type="xs:byte" name="formatNumberScale"/>
+      <xs:attribute type="xs:byte" name="showBorder"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

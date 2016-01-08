@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="postQueryBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="name" type="java.lang.String" />
+      	  <form-property name="sex" type="java.lang.String" />
+      	  <form-property name="password" type="java.lang.String" />
+      	  <form-property name="birthday" type="java.lang.String" />
+	   </form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+     <action
+      attribute="postQueryBean"
+      name="postQueryBean"
+      path="/forum/postQuery"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="mySendPostList"      path="/forum/postQuery/mySendPostList.jsp"/>
+           <forward name="myAnswerPostList"    path="/forum/postQuery/myAnswerPostList.jsp"/>
+           <forward name="mySavePostList"      path="/forum/postQuery/mySavePostList.jsp"/>
+           <forward name="mySavePost"          path="/forum/postQuery.do?method=toMySavePostList"/>
+           <forward name="answerTopTenList"    path="/forum/postQuery/answerTopTenList.jsp"/>
+           <forward name="bestNewPostList"     path="/forum/postQuery/bestNewPostList.jsp"/>
+           <forward name="forumHostGroomList"  path="/forum/postQuery/forumHostGroomList.jsp"/>
+           <forward name="netfriendGroomList"  path="/forum/postQuery/netfriendGroomList.jsp"/>
+           <forward name="sendPostRankList"    path="/forum/postQuery/sendPostRankList.jsp"/>
+           <forward name="pointRankList"       path="/forum/postQuery/pointRankList.jsp"/>           
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/oa/privy/plan.do" location="780,0" dimension="358,84" />
+  <StrutsActivity path="/oa/privy/planDetail.do" location="1713,0" dimension="358,84" />
+  <StrutsActivity path="/oa/privy/plan/planList.jsp" location="0,204" dimension="202,48" />
+  <StrutsActivity path="/oa/privy/plan/top.jsp" location="302,204" dimension="172,48" />
+  <StrutsActivity path="/oa/privy/plan/query.jsp" location="574,204" dimension="184,48" />
+  <StrutsActivity path="/oa/privy/plan/planInfo.jsp" location="858,204" dimension="202,48" />
+  <StrutsActivity path="/sys/success.jsp" location="1444,204" dimension="136,48" />
+  <StrutsActivity path="/sys/error.jsp" location="1680,204" dimension="124,48" />
+  <StrutsActivity path="/oa/privy/plan/check.jsp" location="1160,204" dimension="184,48" />
+  <StrutsActivity path="/oa/privy/plan/detailList.jsp" location="1904,204" dimension="214,48" />
+  <StrutsActivity path="/oa/privy/plan/detailInfo.jsp" location="2218,204" dimension="214,48" />
+  <StrutsTransition id="/oa/privy/planDetail.do,error,/sys/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1847,84" />
+      <AbsolutePoint location="1847,114" />
+      <AbsolutePoint location="1773,114" />
+      <AbsolutePoint location="1773,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/planDetail.do,detailinfo,/oa/privy/plan/detailInfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2026,84" />
+      <AbsolutePoint location="2026,114" />
+      <AbsolutePoint location="2325,114" />
+      <AbsolutePoint location="2325,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/planDetail.do,success,/sys/success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1757,84" />
+      <AbsolutePoint location="1757,144" />
+      <AbsolutePoint location="1546,144" />
+      <AbsolutePoint location="1546,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/plan.do,success,/sys/success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1061,84" />
+      <AbsolutePoint location="1061,144" />
+      <AbsolutePoint location="1478,144" />
+      <AbsolutePoint location="1478,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/plan.do,query,/oa/privy/plan/query.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="907,84" />
+      <AbsolutePoint location="907,174" />
+      <AbsolutePoint location="666,174" />
+      <AbsolutePoint location="666,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/plan.do,top,/oa/privy/plan/top.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="856,84" />
+      <AbsolutePoint location="856,144" />
+      <AbsolutePoint location="388,144" />
+      <AbsolutePoint location="388,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/plan.do,error,/sys/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1112,84" />
+      <AbsolutePoint location="1112,114" />
+      <AbsolutePoint location="1711,114" />
+      <AbsolutePoint location="1711,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/planDetail.do,detaillist,/oa/privy/plan/detailList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1936,84" />
+      <AbsolutePoint location="1936,114" />
+      <AbsolutePoint location="2011,114" />
+      <AbsolutePoint location="2011,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/plan.do,check,/oa/privy/plan/check.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1010,84" />
+      <AbsolutePoint location="1010,174" />
+      <AbsolutePoint location="1252,174" />
+      <AbsolutePoint location="1252,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/plan.do,planlist,/oa/privy/plan/planList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="805,84" />
+      <AbsolutePoint location="805,114" />
+      <AbsolutePoint location="101,114" />
+      <AbsolutePoint location="101,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/plan.do,planinfo,/oa/privy/plan/planInfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="959,84" />
+      <AbsolutePoint location="959,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

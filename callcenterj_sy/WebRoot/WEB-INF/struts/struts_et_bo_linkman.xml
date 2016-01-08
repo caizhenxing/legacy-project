@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+   <form-beans>
+    <form-bean name="linkman" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      <form-property name="isOut" type="java.lang.String" />
+      <form-property name="custTelMob" type="java.lang.String" />
+      <form-property name="custTelHome" type="java.lang.String" />
+      <form-property name="custAddr" type="java.lang.String" />
+      <form-property name="dictQuestionType1" type="java.lang.String" />
+      <form-property name="custName" type="java.lang.String" />
+      <form-property name="addtime" type="java.lang.String" />
+      <form-property name="begintime" type="java.lang.String" />
+      <form-property name="endtime" type="java.lang.String" />
+      <form-property name="dictServiceType" type="java.lang.String" />
+      <form-property name="custTelWork" type="java.lang.String" />
+    </form-bean>
+</form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+    <action
+      attribute="linkman"
+      name="linkman"
+      parameter="method"
+      path="/linkman/linkman"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="toLinkmanQuery" path="/linkman/linkmanQuery.jsp" />
+      <forward name="toLinkmanList" path="/linkman/linkmanlist.jsp" />
+      <forward name="toLinkmanMain" path="/linkman/linkmanMain.jsp" />
+    </action>
+
+  </action-mappings>
+  
+</struts-config>
+

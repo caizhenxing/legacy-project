@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+  <subclass name="org.jbpm.bpel.def.StructuredActivity" extends="org.jbpm.bpel.def.CompositeActivity" 
+    discriminator-value="null">
+
+    <many-to-one name="begin" column="BEGIN_" foreign-key="FK_STRUCT_BEGIN" cascade="all" />
+    <many-to-one name="end" column="END_" foreign-key="FK_STRUCT_END" cascade="all" />
+
+    <list name="nodes" cascade="all">
+      <key column="STRUCTUREDACTIVITY_" />
+      <list-index column="NODECOLLECTIONINDEX_" />
+      <one-to-many class="org.jbpm.bpel.def.Activity" />
+    </list>
+
+    <!--Sequence-->
+    <subclass name="org.jbpm.bpel.def.Sequence" discriminator-value="i" />
+
+    <!--Flow-->
+    <subclass name="org.jbpm.bpel.def.Flow" discriminator-value="m">
+      <map name="links" cascade="all">
+        <key column="FLOW_" />
+        <index column="FLOWINDEX_" type="string" />
+        <one-to-many class="org.jbpm.bpel.def.LinkDefinition" />
+      </map>
+    </subclass>
+
+    <!--If-->
+    <subclass name="org.jbpm.bpel.def.If" discriminator-value="j">
+      <list name="conditions" cascade="all">
+        <key column="IF_" />
+        <list-index column="IFINDEX_" />
+        <one-to-many class="org.jbpm.bpel.sublang.def.Expression" />
+      </list>
+    </subclass>
+
+    <!--Pick-->
+    <subclass name="org.jbpm.bpel.def.Pick" discriminator-value="l">
+      <property name="createInstance" column="CREATEINSTANCE_" />
+      <list name="onMessages" cascade="all">
+        <key column="PICK_" />
+        <list-index column="PICKINDEX_" />
+        <one-to-many class="org.jbpm.bpel.integration.def.Receiver" />
+      </list>
+      <list name="onAlarms" cascade="all">
+        <key column="PICK_" />
+        <list-index column="PICKINDEX_" />
+        <one-to-many class="org.jbpm.bpel.alarm.Alarm" />
+      </list>
+    </subclass>
+
+    <!--While-->
+    <subclass name="org.jbpm.bpel.def.While" discriminator-value="k">
+      <many-to-one name="condition" column="CONDITION_" foreign-key="FK_WHILE_CONDITION" cascade="all" />
+      <many-to-one name="loopNode" column="LOOP_" foreign-key="FK_WHILE_LOOP" cascade="all" />
+    </subclass>
+
+  </subclass>
+
+  <!--Loop Node-->
+  <subclass name="org.jbpm.bpel.def.While$LoopNode" extends="org.jbpm.bpel.def.Activity" discriminator-value="L" />
+
+  <!--Structure Begin-->
+  <subclass name="org.jbpm.bpel.def.StructuredActivity$Begin" extends="org.jbpm.bpel.def.Activity"
+    discriminator-value="Y" />
+
+  <!--Structure End-->
+  <subclass name="org.jbpm.bpel.def.StructuredActivity$End" extends="org.jbpm.bpel.def.Activity"
+    discriminator-value="Z" />
+
+</hibernate-mapping>

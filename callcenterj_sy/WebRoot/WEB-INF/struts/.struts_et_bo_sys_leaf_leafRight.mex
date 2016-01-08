@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/sys/leafRight/leafRight.do" location="311,0" dimension="358,84" />
+  <StrutsActivity path="/sys/leaf/leafRight/leafRightDtlList.jsp" location="950,450" dimension="280,48" />
+  <StrutsActivity path="/sys/leaf/leafRight/leafRightMain.jsp" location="0,184" dimension="262,48" />
+  <StrutsActivity path="/sys/leaf/leafRight/leafRightDtl.jsp" location="362,184" dimension="256,48" />
+  <StrutsActivity path="/sys/leaf/leafRight/grantLeafSuccess.jsp" location="350,450" dimension="280,48" />
+  <StrutsActivity path="/sys/leaf/leafRight/nodeLeafRight.jsp" location="465,330" dimension="262,48" />
+  <StrutsActivity path="/sys/leaf/leafRight/moduleTree.jsp" location="718,184" dimension="244,48" />
+  <StrutsActivity path="/sys/leaf/leafRight/moduleOperTree.jsp" location="50,350" dimension="268,48" />
+  <StrutsActivity path="/sys/leaf/leafRight/leafOperMain.jsp" location="950,350" dimension="256,48" />
+  <StrutsActivity path="/sys/leaf/leafRight/personBatchRightTree.jsp" location="-120,450" dimension="304,48" />
+  <StrutsTransition id="/sys/leafRight/leafRight.do,treeList,/sys/leaf/leafRight/leafRightDtlList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="669,12" />
+      <AbsolutePoint location="1221,12" />
+      <AbsolutePoint location="1221,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/leafRight/leafRight.do,treeLoad,/sys/leaf/leafRight/leafRightDtl.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="460,84" />
+      <AbsolutePoint location="460,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/leafRight/leafRight.do,toLeafRightDtl,/sys/leaf/leafRight/leafRightDtl.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="490,84" />
+      <AbsolutePoint location="490,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/leafRight/leafRight.do,toLeafRightMain,/sys/leaf/leafRight/leafRightMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="370,84" />
+      <AbsolutePoint location="370,134" />
+      <AbsolutePoint location="131,134" />
+      <AbsolutePoint location="131,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/leafRight/leafRight.do,showLeafOperTree,/sys/leaf/leafRight/moduleOperTree.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="340,84" />
+      <AbsolutePoint location="340,363" />
+      <AbsolutePoint location="318,363" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/leafRight/leafRight.do,toNodeLeafRight,/sys/leaf/leafRight/nodeLeafRight.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="639,84" />
+      <AbsolutePoint location="639,330" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/leafRight/leafRight.do,grantLeafSuccess,/sys/leaf/leafRight/grantLeafSuccess.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="311,12" />
+      <AbsolutePoint location="-195,12" />
+      <AbsolutePoint location="-195,413" />
+      <AbsolutePoint location="490,413" />
+      <AbsolutePoint location="490,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/leafRight/leafRight.do,toLeafOperMain,/sys/leaf/leafRight/leafOperMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="669,42" />
+      <AbsolutePoint location="1078,42" />
+      <AbsolutePoint location="1078,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/leafRight/leafRight.do,showPersonBatchRightTree,/sys/leaf/leafRight/personBatchRightTree.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="311,42" />
+      <AbsolutePoint location="-15,42" />
+      <AbsolutePoint location="-15,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/leafRight/leafRight.do,showLeafRightTree,/sys/leaf/leafRight/moduleTree.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="609,84" />
+      <AbsolutePoint location="609,134" />
+      <AbsolutePoint location="840,134" />
+      <AbsolutePoint location="840,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

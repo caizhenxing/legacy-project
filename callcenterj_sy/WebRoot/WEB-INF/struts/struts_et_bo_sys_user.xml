@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<!-- 角色信息管理 -->
+<struts-config>
+	<data-sources />	
+	<form-beans>
+		<form-bean name="userform" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="userId" type="java.lang.String" />
+			
+			<form-property name="id" type="java.lang.String" />
+			
+			<form-property name="sysRole" type="java.lang.String" />
+			<form-property name="sysGroup" type="java.lang.String" />
+			<form-property name="skillGroup" type="java.lang.String" />
+			<form-property name="password" type="java.lang.String" />
+			<form-property name="repassword" type="java.lang.String" />	
+			<form-property name="repasswordAffirm" type="java.lang.String" />
+			<form-property name="userName" type="java.lang.String" />	
+			<form-property name="departmentId" type="java.lang.String" />				
+			<form-property name="deleteMark" type="java.lang.String" />			
+			<form-property name="freezeMark" type="java.lang.String" />
+			
+			<form-property name="isFreeze" type="java.lang.String" />
+			
+			<form-property name="remark" type="java.lang.String" />	
+			<!-- user info -->
+			<form-property name="realName" type="java.lang.String" />	
+			<form-property name="sexId" type="java.lang.String" />	
+			<form-property name="identityKind" type="java.lang.String" />	
+			<form-property name="identityCard" type="java.lang.String" />	
+			<form-property name="birthday" type="java.lang.String" />	
+			<form-property name="countryId" type="java.lang.String" />	
+			<form-property name="provinceId" type="java.lang.String" />	
+			<form-property name="qq" type="java.lang.String" />	
+			<form-property name="bloodType" type="java.lang.String" />	
+			<form-property name="address" type="java.lang.String" />	
+			<form-property name="postalcode" type="java.lang.String" />	
+			<form-property name="mobile" type="java.lang.String" />	
+			<form-property name="finishSchool" type="java.lang.String" />	
+			<form-property name="speciality" type="java.lang.String" />	
+			<form-property name="workId" type="java.lang.String" />	
+			<form-property name="homepage" type="java.lang.String" />
+			
+			<form-property name="auditings" type="java.lang.String[]" />
+			<form-property name="auditing" type="java.lang.String" />
+			
+			<form-property name="employeeId" type="java.lang.String" />	
+		</form-bean>		
+    </form-beans>
+	<global-exceptions />
+<!--	<global-forwards>-->
+<!--		<forward name="tologin" path="/message/tologin.jsp"/>-->
+<!--		<forward name="operfail" path="/fail.jsp" />-->
+<!--		<forward name="nologin" path="/cueLogin.jsp" />-->
+<!--		<forward name="operSuccess" path="/collection/collectionSuccess.jsp" />-->
+<!--		<forward name="success" path="/group/message/success.jsp" />-->
+<!--		<forward name="error" path="/group/message/error.jsp" />-->
+<!--	</global-forwards>-->
+	<action-mappings>
+		<action attribute="userform" 
+				name="userform" 
+				scope="request" 
+				path="/sys/user/UserOper" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main" path="/sys/user/main.jsp"/>
+			<forward name="info" path="/sys/user/info.jsp"/>
+			
+			<forward name="toUserLoginload" path="/sys/user/userInfo.jsp"/>
+			<forward name="userLoginList" path="/sys/user/userList.jsp"/>
+			
+			
+			<forward name="selectDep" path="/sys/dep/selectDep.jsp"/>
+			<forward name="toModifyPwd" path="/sys/user/modifyPwd/modifyPwd.jsp"/>
+			<forward name="toManagerModifyPwd" path="/sys/user/managerModifyPwd.jsp"/>
+			<forward name="modifyPwdSuccess" path="/sys/user/UserOper.do?method=toModifyPwd"/>
+			<forward name="tosearch" path="/sys/user/toSearch.jsp"/>
+			<forward name="searchresult" path="/sys/user/searchResult.jsp"/>
+			<forward name="success" path="/sys/success.jsp" />
+			<forward name="error" path="/sys/error.jsp" />
+			<forward name="popUser" path="/sys/user/popUser.jsp" />
+			
+		</action>	
+	</action-mappings>	
+</struts-config>

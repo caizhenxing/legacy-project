@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<project name="atm" default="redeploy-web">
+
+  <import file="../common/process.build.xml" />
+
+  <!-- ============================= -->
+  <!-- === INTERACTIVE EXECUTION === -->
+  <!-- ============================= -->
+
+  <target name="run-terminal"
+          depends="deploy-client, compile-test"
+          description="brings up the interactive terminal">
+    <java classname="org.jbpm.bpel.tutorial.atm.terminal.AtmTerminal"
+          fork="yes">
+      <classpath>
+        <path refid="test.path" />
+        <pathelement path="${output.test.classes.dir}" />
+      </classpath>
+    </java>
+    <antcall target="undeploy-client" />
+  </target>
+
+</project>

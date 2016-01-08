@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/customer.do" location="535,0" dimension="308,88" />
+  <StrutsActivity path="/linkman.do" location="69,1128" dimension="308,88" />
+  <StrutsActivity path="/pro.do" location="85,564" dimension="308,88" />
+  <StrutsActivity path="/linknote.do" location="83,846" dimension="308,88" />
+  <StrutsActivity path="/userComments.do" location="117,282" dimension="308,88" />
+  <StrutsActivity path="/integrated.do" location="1550,650" dimension="308,88" />
+  <StrutsActivity path="/crm/customer/customerList.jsp" location="1250,450" dimension="180,49" />
+  <StrutsActivity path="/crm/customer/customerMain.jsp" location="650,450" dimension="186,49" />
+  <StrutsActivity path="/crm/customer/customerLoad.jsp" location="1250,550" dimension="187,49" />
+  <StrutsActivity path="/crm/customer/customerQuery.jsp" location="950,650" dimension="194,49" />
+  <StrutsActivity path="/crm/customer/newQuery.jsp" location="1250,950" dimension="170,49" />
+  <StrutsActivity path="/crm/customer/sel.jsp" location="1550,150" dimension="133,49" />
+  <StrutsActivity path="/crm/customer/linkMain.jsp" location="1250,650" dimension="157,49" />
+  <StrutsActivity path="/crm/customer/addtel.jsp" location="1550,250" dimension="150,49" />
+  <StrutsActivity path="/crm/customer/linkman.jsp" location="650,350" dimension="155,49" />
+  <StrutsActivity path="/crm/customer/showlinkman.jsp" location="950,350" dimension="180,49" />
+  <StrutsActivity path="/crm/customer/showproduce.jsp" location="650,750" dimension="184,49" />
+  <StrutsActivity path="/crm/customer/produce.jsp" location="950,750" dimension="159,49" />
+  <StrutsActivity path="/crm/customer/showlinknote.jsp" location="1250,750" dimension="182,49" />
+  <StrutsActivity path="/crm/customer/linknote.jsp" location="650,850" dimension="157,49" />
+  <StrutsActivity path="/crm/customer/UserCommentsList.jsp" location="950,850" dimension="208,49" />
+  <StrutsActivity path="/crm/customer/UserCommentsLoad.jsp" location="1250,850" dimension="215,49" />
+  <StrutsActivity path="/crm/integratedsel/integratedsel.jsp" location="1550,850" dimension="202,49" />
+  <StrutsActivity path="/crm/integratedsel/customerAndPer.jsp" location="1850,850" dimension="218,49" />
+  <StrutsActivity path="/crm/integratedsel/newIntegratedsel.jsp" location="650,1050" dimension="224,49" />
+  <StrutsActivity path="/crm/integratedsel/customerIntegratedList.jsp" location="1550,450" dimension="251,49" />
+  <StrutsActivity path="/crmperson/linkmanIntegratedlist.jsp" location="1550,350" dimension="205,49" />
+  <StrutsActivity path="/crm/integratedsel/customerList.jsp" location="650,950" dimension="199,49" />
+  <StrutsActivity path="/crm/integratedsel/linkmanlist.jsp" location="1250,350" dimension="187,49" />
+  <StrutsActivity path="/sopho/customer/customerList.jsp" location="0,188" dimension="192,49" />
+  <StrutsActivity path="/sopho/customer/customerMain.jsp" location="292,188" dimension="198,49" />
+  <StrutsActivity path="/sopho/customer/customerLoad.jsp" location="590,188" dimension="199,49" />
+  <StrutsActivity path="/sopho/customer/customerQuery.jsp" location="889,188" dimension="206,49" />
+  <StrutsActivity path="/sopho/customer/linkMain.jsp" location="1195,188" dimension="169,49" />
+  <StrutsActivity path="/sopho/customer/linkman.jsp" location="0,1316" dimension="167,49" />
+  <StrutsActivity path="/sopho/customer/showlinkman.jsp" location="267,1316" dimension="192,49" />
+  <StrutsActivity path="/sopho/customer/showproduce.jsp" location="0,752" dimension="196,49" />
+  <StrutsActivity path="/sopho/customer/produce.jsp" location="296,752" dimension="171,49" />
+  <StrutsActivity path="/sopho/customer/showlinknote.jsp" location="0,1034" dimension="194,49" />
+  <StrutsActivity path="/sopho/customer/linknote.jsp" location="294,1034" dimension="169,49" />
+  <StrutsActivity path="/sopho/customer/UserCommentsList.jsp" location="0,470" dimension="220,49" />
+  <StrutsActivity path="/sopho/customer/UserCommentsLoad.jsp" location="320,470" dimension="227,49" />
+  <StrutsActivity path="/crm//customer/customerList.jsp" location="950,450" dimension="184,49" />
+  <StrutsActivity path="/crm//customer/customerLoad.jsp" location="650,550" dimension="191,49" />
+  <StrutsActivity path="/crm//customer/customerQuery.jsp" location="950,550" dimension="198,49" />
+  <StrutsActivity path="/crm//customer/linkMain.jsp" location="650,650" dimension="161,49" />
+  <StrutsActivity path="" location="1550,550" dimension="29,49" />
+  <StrutsActivity path="/crmperson/linkmanlist.jsp" location="950,950" dimension="153,49" />
+  <StrutsActivity path="/crmperson/newIntegratedsel.jsp" location="1550,950" dimension="190,49" />
+  <StrutsActivity path="/crm/integratedsel/perAndcustomer.jsp" />
+  <StrutsTransition id="/integrated.do,sel,/crm/customer/sel.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1715,650" />
+      <AbsolutePoint location="1715,174" />
+      <AbsolutePoint location="1683,174" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/customer.do,linkmain,/crm/customer/linkMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="689,88" />
+      <AbsolutePoint location="689,134" />
+      <AbsolutePoint location="1163,134" />
+      <AbsolutePoint location="1163,674" />
+      <AbsolutePoint location="1250,674" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/customer.do,sel,/crm/customer/sel.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="689,44" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/customer.do,load,/crm/customer/customerLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="843,14" />
+      <AbsolutePoint location="1512,14" />
+      <AbsolutePoint location="1512,574" />
+      <AbsolutePoint location="1437,574" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/integrated.do,loadCustomerUsercomments,/crm/customer/UserCommentsLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1550,684" />
+      <AbsolutePoint location="1512,684" />
+      <AbsolutePoint location="1512,874" />
+      <AbsolutePoint location="1465,874" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/integrated.do,PerAndCompDetail,/crm/integratedsel/perAndcustomer.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1704,694" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/integrated.do,integratedQuery,/crm/integratedsel/integratedsel.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1704,738" />
+      <AbsolutePoint location="1704,850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/linknote.do,showlinknote,/crm/customer/showlinknote.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="239,846" />
+      <AbsolutePoint location="239,816" />
+      <AbsolutePoint location="1341,816" />
+      <AbsolutePoint location="1341,799" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/customer.do,query,/crm/customer/customerQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="575,88" />
+      <AbsolutePoint location="575,614" />
+      <AbsolutePoint location="1047,614" />
+      <AbsolutePoint location="1047,650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pro.do,showproduce,/crm/customer/showproduce.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="393,614" />
+      <AbsolutePoint location="512,614" />
+      <AbsolutePoint location="512,774" />
+      <AbsolutePoint location="650,774" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/integrated.do,lmlist,/crmperson/linkmanIntegratedlist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1704,694" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/linkman.do,showlinkman,/crm/customer/showlinkman.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="223,1172" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/userComments.do,loadCustomerUsercomments,/crm/customer/UserCommentsLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="425,326" />
+      <AbsolutePoint location="1452,326" />
+      <AbsolutePoint location="1452,850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/customer.do,toaddTel,/crm/customer/addtel.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="689,44" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/integrated.do,toIntegratedsel,/crm/integratedsel/newIntegratedsel.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1767,738" />
+      <AbsolutePoint location="1767,1074" />
+      <AbsolutePoint location="874,1074" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/userComments.do,ListCustomerUsercomments,/crm/customer/UserCommentsList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="425,356" />
+      <AbsolutePoint location="934,356" />
+      <AbsolutePoint location="934,874" />
+      <AbsolutePoint location="950,874" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/customer.do,newquery,/crm/customer/newQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="689,0" />
+      <AbsolutePoint location="689,-75" />
+      <AbsolutePoint location="1482,-75" />
+      <AbsolutePoint location="1482,974" />
+      <AbsolutePoint location="1420,974" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/linknote.do,note,/crm/customer/linknote.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="391,884" />
+      <AbsolutePoint location="650,884" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/customer.do,list,/crm/customer/customerList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="843,44" />
+      <AbsolutePoint location="1379,44" />
+      <AbsolutePoint location="1379,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/integrated.do,cuslist,/crm/integratedsel/customerIntegratedList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1704,694" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/customer.do,main,/crm/customer/customerMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="843,74" />
+      <AbsolutePoint location="858,74" />
+      <AbsolutePoint location="858,474" />
+      <AbsolutePoint location="836,474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/integrated.do,PerAndCompDetail,/crm/integratedsel/customerAndPer.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1704,694" />
+      <AbsolutePoint location="1959,874" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pro.do,produce,/crm/customer/produce.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="239,652" />
+      <AbsolutePoint location="239,714" />
+      <AbsolutePoint location="1029,714" />
+      <AbsolutePoint location="1029,750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/linkman.do,linkman,/crm/customer/linkman.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="223,1172" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/integrated.do,CompAndPerDetail,/crm/integratedsel/customerAndPer.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1858,694" />
+      <AbsolutePoint location="1959,694" />
+      <AbsolutePoint location="1959,850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

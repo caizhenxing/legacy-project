@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+	
+	<bean name="/medical/medicinfo" class="et.bo.medical.medicinfo.action.MedicinfoAction" scope="singleton">
+		<property name="mis">
+			<ref bean="MedicinfoService"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	<bean id="MedicinfoService" class="et.bo.medical.medicinfo.service.impl.MedicinfoServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="flowService">
+			<ref bean="FlowService"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	
+
+	
+	<bean name="/medical/bookMedicinfo" class="et.bo.medical.bookMedicinfo.action.BookMedicinfoAction" scope="singleton">
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+		<property name="bmis">
+			<ref bean="BookMedicinfoService"/>
+		</property>
+	</bean>
+	<bean id="BookMedicinfoService" class="et.bo.medical.bookMedicinfo.service.impl.BookMedicinfoServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="flowService">
+			<ref bean="FlowService"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	
+	
+	
+</beans>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<!--角色管理-->
+<beans>		
+	<bean name="/sys/user/UserOper"
+		class="et.bo.sys.user.action.UserAction" scope="singleton">
+		<property name="userService">
+			<ref bean="UserService" />
+		</property>	
+					
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>	
+	</bean>
+	<bean id="UserService"
+		class="et.bo.sys.user.service.impl.UserServiceImpl" scope="singleton">
+		<property name="groupService">
+			<ref bean="GroupService" />
+		</property>
+		<property name="roleService">
+			<ref bean="RoleService" />
+		</property>	
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+</beans>

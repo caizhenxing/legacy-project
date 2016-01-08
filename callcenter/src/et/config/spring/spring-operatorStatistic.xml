@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+<beans>
+<!--  action begin -->
+<!--座席员统计-->
+<bean name="/pcc/operatorStatistic"
+		class="et.bo.pcc.operatorStatistic.action.OperatorStatisticAction" singleton="false">			
+		<property name="operatorStatisticService">
+			<ref bean="OperatorStatisticService" />
+		</property>			
+	</bean>
+<!-- action end -->
+<!--  service begin -->	
+<bean id="OperatorStatisticService"
+		class="et.bo.pcc.operatorStatistic.service.impl.OperatorStatisticServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>	
+<!--  service end   -->
+</beans>

@@ -1,0 +1,212 @@
+#parse( $commonSetting )
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+
+## スクリプト*************************************
+<script language=javascript>
+<!--
+	function on1stReferClick(systemNo){
+		window.open("","nw","toolbar=0,status=0,menubar=0,resizable=yes,scrollbars=yes");
+	
+		document.info_form.action="$link.setAction('/gyomu/shinsaJokyo/shinsaKekka1stRefer')";
+		document.info_form.systemNo.value = systemNo;
+		document.info_form.target="nw";
+		document.info_form.submit();
+	}
+	function onPageClick(startPosition){
+		document.page_form.action="$link.setAction('/gyomu/hyoka/dispatchApplication.do')";
+		document.page_form.startPosition.value = startPosition;
+		document.page_form.submit();
+	}
+//-->
+</script>
+## ***********************************************
+
+<form name="info_form" method="post" action="">
+  <input type="hidden" name="systemNo" value="">
+</form>
+
+## 変数の置き換え
+#set ($list= $result.list)
+
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="javascript:fncWindowOpen('$path/docs/manual3.pdf','help');"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/gyomu/logoff')"><IMG SRC="$path/images/header_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=20 border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#999966" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/gyomu/showMainMenu')">業務担当者向けメニュー</a>＞<a href="$link.setAction('/gyomu/hyoka/searchKiban')">評価一覧出力</a>（事業選択＞基盤研究等評価一覧検索＞<b>評価順一覧</b>）</font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><IMG SRC="$path/images/subtitle_img1.gif" WIDTH=61 HEIGHT=49 ALT=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+       評価順一覧</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <IMG SRC="$path/images/subtitle_img3.gif" WIDTH=213 HEIGHT=49 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+<!-- 本文ここから -->
+
+ <font color="black">$!escape.getText($!result.totalSize) 件該当しました。</font><br>
+ <font color="blue"><b>$!escape.getText($!result.currentPages)</b></font>
+ <font color="black"> ページ目を表示しています。</font><br>　　　
+ <font color="blue">
+ #foreach($page in $result.pageIndexs)
+   #if($velocityCount == $result.currentPages)
+     #if($velocityCount == $result.totalPages)
+			<b> $!escape.getText($velocityCount)</b>
+      #else
+         	<b> $!escape.getText($velocityCount)</b><font color="black">/</font>
+      #end
+   #else
+      #if($velocityCount == $result.totalPages)
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a> 
+      #else
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a><font color="black">/</font>
+      #end
+   #end
+ #end
+ </font>
+ <font color="black">ページに移動します。</font> <br> 　　　
+ #if($result.hasPreviousPage())
+   <A href="javascript:onPageClick('$!result.getStartOfPreviousPage()')"><img src="$path/images/bt_last.gif" width=64 height=24 alt="前ページ" border="0"></a>
+ #end
+
+ #if($result.hasNextPage())
+   <A href="javascript:onPageClick('$!result.getStartOfNextPage()');"><img src="$path/images/bt_next.gif" width=64 height=24 alt="次ページ" border="0"></a>
+ #end
+<br><br>
+ 
+<!-- 一覧用テーブルここから -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th>研究種目名</th>
+     <th>細目番号・細目名<br>審査希望分野</th>
+     <th>所属研究機関名・部局名・職名</th>
+     <th>応募者名</th>
+     <th>応募番号</th>
+     <th>総合評点</th>
+     <th>計</th>
+     <th>1次審査結果参照</th>
+    </tr>
+	#foreach($info in $result.list)
+    <tr>
+     <td>平成$!escape.getText($!info.NENDO)年度 #if($info.KAISU) 第$!escape.getText($!info.KAISU)回 #end $!escape.getText($!info.JIGYO_NAME)</td>
+	 #if("$!info.JIGYO_KUBUN" == "6")	
+	<td>$!escape.getText($!info.BUNKASAIMOKU_CD) $!escape.getText($!info.SAIMOKU_NAME)<br>$!escape.getText($!info.SHINSARYOIKI_NAME)</td>
+    #else
+	 <td>$!escape.getText($!info.BUNKASAIMOKU_CD) $!escape.getText($!info.SAIMOKU_NAME)<br>$!escape.getText($!info.KAIGAIBUNYA_NAME)</td>
+	 #end
+     <td>$!escape.getText($!info.SHOZOKU_NAME_RYAKU) $!escape.getText($!info.BUKYOKU_NAME_RYAKU) $!escape.getText($!info.SHOKUSHU_NAME_RYAKU)</td>
+     <td>$!escape.getText($!info.NAME_KANJI_SEI) $!escape.getText($!info.NAME_KANJI_MEI)</td>
+     <td>$!escape.getText($!info.UKETUKE_NO)</td>
+     <td>$!escape.getText($!info.KEKKA1_TEN_SORTED)</td>
+     <td>$!escape.getText($!info.KEKKA1_TEN)</td>
+     <td><a href="javascript:on1stReferClick('$!info.SYSTEM_NO')"><img src="$path/images/bt_refer.gif" width=64 height=24 alt="参照" border="0"></a></td>
+    </tr>
+	#end   
+   </table>
+  </td>
+ </tr>
+</table>
+<!-- 一覧用テーブルここまで-->
+<br>
+ <font color="blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#foreach($page in $result.pageIndexs)
+   #if($velocityCount == $result.currentPages)
+     #if($velocityCount == $result.totalPages)
+			<b> $!escape.getText($velocityCount)</b>
+      #else
+         	<b> $!escape.getText($velocityCount)</b><font color="black">/</font>
+      #end
+   #else
+      #if($velocityCount == $result.totalPages)
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a> 
+      #else
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a><font color="black">/</font>
+      #end
+   #end
+ #end
+ </font>
+ <font color="black">ページに移動します。</font> <br> 　　　
+ #if($result.hasPreviousPage())
+   <A href="javascript:onPageClick('$!result.getStartOfPreviousPage()')"><img src="$path/images/bt_last.gif" width=64 height=24 alt="前ページ" border="0"></a>
+ #end
+
+ #if($result.hasNextPage())
+   <A href="javascript:onPageClick('$!result.getStartOfNextPage()');"><img src="$path/images/bt_next.gif" width=64 height=24 alt="次ページ" border="0"></a>
+ #end
+<br>
+<!-- 本文ここまで -->
+
+<form name="page_form" action="" method="post">
+	<input type="hidden" name="startPosition" >
+</form>
+
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="$link.setAction('/gyomu/hyoka/searchKiban')"><img src="$path/images/bt_bk_gradesearch.gif" width=200 height=28 alt="評価一覧検索に戻る" border="0"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img1.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/gyomu/logoff')"><IMG SRC="$path/images/footer_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=26 border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img3.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+</body>
+</html>

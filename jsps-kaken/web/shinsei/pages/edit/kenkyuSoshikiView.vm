@@ -1,0 +1,248 @@
+## ***********************************************
+## 研究組織表画面(領域計画書入力)
+## ***********************************************
+##　2006/06/15 新規画面　　李義華
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+#parse($commonSetting)
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<!-- ADD　START 2007/07/16 BIS 張楠 -->
+<script language="javascript">
+    function onReg(){
+        document.kenkyuSoshiki.action="$link.setAction("/shinsei/sortingKenkyuSoshiki")";
+        document.kenkyuSoshiki.submit();
+    }        
+</script>
+<!-- ADD　END　 2007/07/16 BIS 張楠 -->
+
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+   <tr>
+    <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+    <td align="right" background="$path/images/header_bg2.gif">
+     <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+     <table border="0" cellpadding="0" cellspacing="1">
+      <tbody>
+       <tr>
+        <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+       </tr>
+       <tr>
+        <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+        <td><br></td>
+       </tr>
+      </tbody>
+     </table>
+     <!-- ヘルプ、ログアウトボタン用テーブルここまで --> </td>
+    <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+   </tr>
+  </tbody>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+   <tr>
+    <td width="1" bgcolor="#cccccc"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+    <td>
+     <!-- コンテンツエリアここから -->
+     <!-- サブ画面タイトル用テーブルここから -->
+     <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tbody>
+       <tr valign="bottom">
+        <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width="61" height="49" alt=""></td>
+        <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont">
+         <br>研究組織表
+        </td>
+        <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width="213" height="49" alt=""></td>
+       </tr>
+      </tbody>
+     </table>
+     <!-- サブ画面タイトル用テーブルここまで -->
+<!-- UPDATE　START 2007/07/16 BIS 張楠 -->
+
+     <!-- 本文ここから -->
+     #set ($list = $ryoikiGaiyoForm.shinseiDataInfo.kenkyuSoshikiInfoList)
+     <form name="kenkyuSoshiki" method="post" action="" onsubmit="">
+      <p align="left">研究組織を確認してください。</p>
+        	
+     		#set ($errorsList = $ryoikiGaiyoForm.errorsList)
+     		#if($errorsList)
+     			<font color="#FF3333"><p align="left"><b>
+     			#foreach($mes in $errorsList)
+     				<li>$mes</li>
+     			#end
+     			</b></p></font>
+     		#end
+     		
+      <font color="#003366"><b>研究組織</b></font>
+      <!-- 一覧用テーブルここから -->
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+       <tbody>
+        <tr>
+         <td>
+          <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+           <tbody>
+            <tr>
+             <th>表示順</th>
+             <th>研究区分</th>
+             <th>研究課題名</th>
+             <th>研究期間</th>
+             <th>代表者氏名</th>
+             <th>所属研究機関<br>部局<br>職</th>
+             <th>構成員数</th>
+            </tr>
+            #if(!$list || $list.size() == 0 )
+              ##該当件数が０件だった場合
+              <tr>
+               <td rowspan="3">&nbsp;</td>
+               <td rowspan="3">&nbsp;<br>&nbsp;<br>&nbsp;</td>
+               <td rowspan="3">&nbsp;<br>&nbsp;<br>&nbsp;</td>
+               <td rowspan="3">&nbsp;<br>&nbsp;<br>&nbsp;</td>
+               <td rowspan="3">&nbsp;<br>&nbsp;<br>&nbsp;</td>
+               <td>&nbsp;</td>
+               <td rowspan="3">&nbsp;</td>
+              </tr>
+              <tr>
+               <td>&nbsp;</td>
+              </tr>
+              <tr>
+               <td>&nbsp;</td>
+              </tr>
+            #else
+              #foreach($info in $list)
+              #set($count = $velocityCount - 1)
+              
+                <tr>
+                 #if($!escape.getText($!info.KOMOKU_NO) == "X00")
+                   <td rowspan="3">&nbsp;</td>
+                   <td rowspan="3">総括班</td>
+                 #elseif($!escape.getText($!info.KOMOKU_NO) == "Y00")
+                   <td rowspan="3">&nbsp;</td>
+                   <td rowspan="3">支援班</td>
+                 #else
+                   #if($!escape.getText($!info.CHOSEIHAN) == "1")
+					 <td rowspan="3">&nbsp;</td>
+                     <td rowspan="3">研究項目$!escape.getText($!info.KOMOKU_NO)<br>（調整班）</td>
+                   #elseif($!escape.getText($!info.CHOSEIHAN) == "0")
+					 <td rowspan="3">$!escape.getText($!info.KOMOKU_NO)-
+					 <input size="2" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].HYOJIJUN" value="$!escape.getText($!info.HYOJIJUN)"
+					 #errorColorForProperty("shinseiDataInfo.kenkyuSoshikiInfoList[$count].HYOJIJUN")
+					 />
+					 </td>
+                     <td rowspan="3">研究項目$!escape.getText($!info.KOMOKU_NO)<br>計画研究</td>
+                   #end
+                 #end
+                 <td rowspan="3">$!escape.getText($!info.KADAI_NAME_KANJI)</td>
+                 #set($niandu1 = $!escape.getIntValue($!info.NENDO)+1)
+                 #set($niandu2 = $!escape.getIntValue($!info.NENDO)+2)
+                 #set($niandu3 = $!escape.getIntValue($!info.NENDO)+3)
+                 #set($niandu4 = $!escape.getIntValue($!info.NENDO)+4)
+                 #set($niandu5 = $!escape.getIntValue($!info.NENDO)+5)
+                 #if ($!escape.getIntValue("$!info.KEIHI2") == 0)
+                   <td rowspan="3">平成$!escape.getText($!info.NENDO)年度</td>
+                 #elseif($!escape.getIntValue("$!info.KEIHI3") == 0)
+                   <td rowspan="3">平成$!escape.getText($!info.NENDO)年度～平成$niandu1年度</td>    
+                 #elseif($!escape.getIntValue("$!info.KEIHI4") == 0)
+                   <td rowspan="3">平成$!escape.getText($!info.NENDO)年度～平成$niandu2年度</td>    
+                 #elseif($!escape.getIntValue("$!info.KEIHI5") == 0)
+                   <td rowspan="3">平成$!escape.getText($!info.NENDO)年度～平成$niandu3年度</td>    
+                 #elseif($!escape.getIntValue("$!info.KEIHI6") == 0)
+                   <td rowspan="3">平成$!escape.getText($!info.NENDO)年度～平成$niandu4年度</td>    
+                 #else
+                   <td rowspan="3">平成$!escape.getText($!info.NENDO)年度～平成$niandu5年度</td>    
+                 #end
+                 <td rowspan="3">$!escape.getText($!info.KENKYU_NO)<br>$!escape.getText($!info.NAME_KANJI_SEI)&nbsp$!escape.getText($!info.NAME_KANJI_MEI)</td>
+                 <td>
+                  #if(!$!info.SHOZOKU_CD)
+                  #else
+                    ($!escape.getText($!info.SHOZOKU_CD))
+                  #end    
+                  #if(!$!info.SHOZOKU_NAME)
+                    &nbsp;
+                  #else    
+                    $!escape.getText($!info.SHOZOKU_NAME)
+                  #end
+                 </td>
+                 <td rowspan="3">$!escape.getText($!info.COUNT)人</td>
+                </tr>
+                <tr>
+                 <td>
+                  #if(! $!info.BUKYOKU_CD )
+                  #else    
+                    ($!escape.getText($!info.BUKYOKU_CD))
+                  #end  
+                  #if(! $!info.BUKYOKU_NAME) 
+                    &nbsp;
+                  #else
+                    $!escape.getText($!info.BUKYOKU_NAME)    
+                  #end
+                 </td>
+                </tr>
+                <tr>
+                 <td>
+                  #if(!$!info.SHOKUSHU_CD))
+                  #else
+                    ($!escape.getText($!info.SHOKUSHU_CD))
+                  #end
+                  #if(!$!info.SHOKUSHU_NAME_KANJI)
+                    &nbsp;
+                  #else
+                    $!escape.getText($!info.SHOKUSHU_NAME_KANJI)
+                  #end    
+                 </td>
+                </tr>
+              #end
+            #end 
+           </tbody>
+          </table>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+      <div align="center"><br></div>
+      <br>
+     </form>
+     <!-- 本文ここまで -->
+     <!-- ボタン用テーブルここから -->
+     <div align="center">
+      <table border="0" cellpadding="0" cellspacing="4">
+       <tr>
+        <td>
+        <a href="javascript:onReg()">
+        <img src="$path/images/bt_ok.gif" width="114" height="28" border="0" alt="OK"></a>
+        </td>
+        <td><a href="javascript:window.close()"><img src="$path/images/bt_close.gif" width=114 height=28 border="0" alt="閉じる"></a></td>
+       </tr>
+      </table>
+     </div>
+     <!-- ボタン用テーブルここまで -->
+<!-- UPDATE　END　 2007/07/16 BIS 張楠 -->
+     <!-- フッター用テーブルここから -->
+     <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tbody>
+       <tr bgcolor="#336699">
+        <td width="4" background="$path/images/footer_login2.gif"> <img src="$path/images/footer_login1.gif" width="4" height="11" alt=""></td>
+        <td background="$path/images/footer_login2.gif"><img src="$path/images/footer_login2.gif" width="4" height="11" alt=""></td>
+        <td width="4" align="right" background="$path/images/footer_login2.gif"> <img src="$path/images/footer_login3.gif" width="4" height="11" alt=""></td>
+       </tr>
+      </tbody>
+     </table>
+     <!-- フッター用テーブルここまで -->
+     <!-- コンテンツエリアここまで --> 
+     </td>
+     <td width="1" bgcolor="#cccccc"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+    </tr>
+   </tbody>
+  </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+</body>
+</html>

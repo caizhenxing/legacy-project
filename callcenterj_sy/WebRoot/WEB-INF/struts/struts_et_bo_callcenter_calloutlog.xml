@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+	<data-sources />
+	<form-beans>
+		
+		<!-- 电话查询 -->
+    <form-bean name="CallOutForm" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      <form-property name="telNum" type="java.lang.String" />
+      <form-property name="beginTime" type="java.lang.String" />
+      <form-property name="beginHour" type="java.lang.String" />
+      <form-property name="beginMinute" type="java.lang.String" />
+      <form-property name="betweetTime" type="java.lang.String" />
+      <form-property name="endHour" type="java.lang.String" />
+      <form-property name="endMinute" type="java.lang.String" />
+      <form-property name="endTime" type="java.lang.String" />
+      
+      <form-property name="calloutType" type="java.lang.String" />
+      <form-property name="filepath" type="java.lang.String" />
+      <form-property name="context" type="java.lang.String" />
+      <form-property name="id" type="java.lang.String" />
+      <form-property name="mainId" type="java.lang.String" />
+    </form-bean>
+    
+
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		
+    <action
+      attribute="CallOutForm"
+      name="CallOutForm"
+      path="/callcenter/cclog/calloutLog"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy">   
+      <forward name="list" path="/callcenter/calloutlog/calloutList.jsp" />
+      <forward name="query" path="/callcenter/calloutlog/calloutQuery.jsp" />
+      <forward name="main" path="/callcenter/calloutlog/calloutMain.jsp" />
+      <forward name="load" path="/callcenter/calloutlog/calloutLoad.jsp" />
+    </action>
+    
+	</action-mappings>
+
+</struts-config>
+

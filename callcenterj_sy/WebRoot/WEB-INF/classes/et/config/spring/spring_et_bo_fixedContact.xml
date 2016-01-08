@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<beans>
+	<!-- 固定联络员信息 -->
+	<bean name="/schema/fixedContact"
+		class="et.bo.schema.fixedContact.action.FixedContactAction"
+		scope="singleton">
+		<property name="fcs">
+			<ref bean="FixedContactService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+
+	<bean id="FixedContactService"
+		class="et.bo.schema.fixedContact.service.impl.FixedContactServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+
+	<!-- 上传图片 -->
+	<bean id="CheckUploadService"
+		class="et.bo.schema.fixedContact.upload.service.impl.CheckUploadServiceImpl"
+		scope="singleton" />
+	<bean name="/schema/fixedContactUpload"
+		class="et.bo.schema.fixedContact.action.FixedContactUploadAction"
+		scope="singleton">
+		<property name="cus">
+			<ref bean="CheckUploadService" />
+		</property>
+	</bean>
+</beans>

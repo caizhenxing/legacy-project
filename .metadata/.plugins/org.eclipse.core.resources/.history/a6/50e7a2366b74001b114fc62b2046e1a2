@@ -1,0 +1,318 @@
+/**
+ * 	@(#)WorkPlanAction.java   2006-11-9 下午04:49:51
+ *	版权所有 沈阳市卓越科技有限公司。 
+ *	卓越科技 保留一切权利
+ */
+package et.bo.oa.workplan.action;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+
+import et.bo.oa.workplan.service.WorkPlanService;
+import et.bo.sys.common.SysStaticParameter;
+import et.bo.sys.login.UserInfo;
+import excellence.common.classtree.ClassTreeService;
+import excellence.common.util.time.TimeUtil;
+import excellence.framework.base.action.BaseAction;
+import excellence.framework.base.dto.IBaseDTO;
+import excellence.framework.base.dto.impl.DynaBeanDTO;
+
+/**
+ * @author yifei zhao
+ * @version 2006-11-9
+ * @see
+ */
+public class WorkPlanAction extends BaseAction {
+
+	private WorkPlanService wps=null;
+	private ClassTreeService cts=null;
+	private ClassTreeService depT=null;
+	public ClassTreeService getCts() {
+		return cts;
+	}
+
+	public void setCts(ClassTreeService cts) {
+		this.cts = cts;
+	}
+
+	/**
+	 * 
+	 * @param
+	 * @version 2006-11-9
+	 * @return
+	 */
+	public ActionForward createPlan(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception 
+    {
+		IBaseDTO dto=(IBaseDTO)form;
+		try
+		{
+		UserInfo ui=(UserInfo)request.getSession().getAttribute(SysStaticParameter.USER_IN_SESSION);
+		dto.set("createUser",ui.getUserName());
+		dto.set("createTime",TimeUtil.getNowTimeSr());
+		IBaseDTO dto1=wps.createPlan(dto);
+		request.setAttribute("WorkPlanBean", dto1);
+		request.setAttribute("list",new ArrayList());
+		//UserInfo ui=(UserInfo)request.getSession().getAttribute(SysStaticParameter.USER_IN_SESSION);
+		List planList=wps.getPlanListByUseful(ui.getDep());
+		List planDomainList=cts.getLabelVaList("planType");
+		List planTimeList=cts.getLabelVaList("planTimeList");
+		List planViewList=cts.getLabelVaList("planViewList");
+		request.setAttribute("planList", planList);
+		request.setAttribute("planDomainList", planDomainList);
+		request.setAttribute("planTimeList", planTimeList);
+		request.setAttribute("planViewList", planViewList);
+		
+		return mapping.findForward("planinfo");
+		}catch(Exception e)
+		{
+			return mapping.findForward("error");
+		}
+    }
+	
+	/**
+	 * 
+	 * @param
+	 * @version 2006-11-9
+	 * @return
+	 */
+	public ActionForward createMission(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception 
+    {
+		IBaseDTO dto=(IBaseDTO)form;
+		UserInfo ui=(UserInfo)request.getSession().getAttribute(SysStaticParameter.USER_IN_SESSION);
+		try
+		{
+		wps.createMission(dto);
+		String planId=(String)dto.get("planId");
+		List list=wps.getMissions(planId);
+		IBaseDTO dto1=wps.getPlan(planId);
+		request.setAttribute("WorkPlanBean", dto1);
+		List planList=wps.getPlanListByUseful(ui.getDep());
+		List planDomainList=cts.getLabelVaList("planType");
+		List planTimeList=cts.getLabelVaList("planTimeList");
+		List planViewList=cts.getLabelVaList("planViewList");
+		request.setAttribute("planList", planList);
+		request.setAttribute("planDomainList", planDomainList);
+		request.setAttribute("planTimeList", planTimeList);
+		request.setAttribute("planViewList", planViewList);
+		
+		request.setAttribute("list",list);
+		
+		return mapping.findForward("planinfo");
+		
+		}catch(Exception e)
+		{
+			return mapping.findForward("error");
+		}
+    }
+	
+	/**
+	 * 
+	 * @param
+	 * @version 2006-11-9
+	 * @return
+	 */
+	public ActionForward updatePlan(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception 
+    {
+		IBaseDTO dto=(IBaseDTO)form;
+		try
+		{
+		wps.updatePlan(dto);
+		return mapping.findForward("success");
+		}catch(Exception e)
+		{
+			return mapping.findForward("error");
+		}
+    }
+	
+	/**
+	 * 
+	 * @param
+	 * @version 2006-11-9
+	 * @return
+	 */
+	public ActionForward updateMission(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception 
+    {
+		IBaseDTO dto=(IBaseDTO)form;
+		try
+		{
+		wps.updateMission(dto);
+		return mapping.findForward("success");
+		}catch(Exception e)
+		{
+			return mapping.findForward("error");
+		}
+    }
+	
+	/**
+	 * 
+	 * @param
+	 * @version 2006-11-9
+	 * @return
+	 */
+	public ActionForward delPlan(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception 
+    {
+		IBaseDTO dto=(IBaseDTO)form;
+		try
+		{
+		wps.delPlan((String)dto.get("id"));
+		return mapping.findForward("success");
+		}catch(Exception e)
+		{
+			return mapping.findForward("error");
+		}
+    }
+	
+	/**
+	 * 
+	 * @param
+	 * @version 2006-11-9
+	 * @return
+	 */
+	public ActionForward list(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception 
+    {
+		IBaseDTO dto=(IBaseDTO)form;
+		try
+		{
+		List l=wps.getActionPlan(dto);
+		request.setAttribute("list",l);
+		return mapping.findForward("list");
+		}catch(Exception e)
+		{
+			return mapping.findForward("error");
+		}
+    }
+	
+	/**
+	 * 
+	 * @param
+	 * @version 2006-11-9
+	 * @return
+	 */
+	public ActionForward topPlans(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception 
+    {
+		//IBaseDTO dto=(IBaseDTO)form;
+		UserInfo ui=(UserInfo)request.getSession().getAttribute(SysStaticParameter.USER_IN_SESSION);
+		try
+		{
+		List l=wps.getActionPlan(ui.getUserName());
+		request.setAttribute("list",l);
+		return mapping.findForward("topPlans");
+		}catch(Exception e)
+		{
+			return mapping.findForward("error");
+		}
+    }
+	/**
+	 * 
+	 * @param
+	 * @version 2006-11-9
+	 * @return
+	 */
+	public ActionForward nowMission(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception 
+    {
+		UserInfo ui=(UserInfo)request.getSession().getAttribute(SysStaticParameter.USER_IN_SESSION);
+		try
+		{
+		List l=wps.getMissionsByDate(ui.getUserName());
+		request.setAttribute("list",l);
+		return mapping.findForward("nowMission");
+		}catch(Exception e)
+		{
+			return mapping.findForward("error");
+		}
+    }
+	
+	/**
+	 * 
+	 * @param
+	 * @version 2006-11-9
+	 * @return
+	 */
+	public ActionForward add(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception 
+    {
+		UserInfo ui=(UserInfo)request.getSession().getAttribute(SysStaticParameter.USER_IN_SESSION);
+		List planList=wps.getPlanListByUseful(ui.getDep());
+		List planDomainList=cts.getLabelVaList("planType");
+		List planTimeList=cts.getLabelVaList("planTimeList");
+		List planViewList=cts.getLabelVaList("planViewList");
+		request.setAttribute("planList", planList);
+		request.setAttribute("planDomainList", planDomainList);
+		request.setAttribute("planTimeList", planTimeList);
+		request.setAttribute("planViewList", planViewList);
+		return mapping.findForward("add");
+    }
+	public ActionForward addmission(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception 
+    {
+		String planId=(String)request.getParameter("planId");
+		IBaseDTO dto=new DynaBeanDTO();
+		dto.set("planId",planId);
+		dto.set("name","任务");
+		String name="WorkMissionBean";
+		request.setAttribute(name,dto);
+		UserInfo ui=(UserInfo)request.getSession().getAttribute(SysStaticParameter.USER_IN_SESSION);
+		List planList=wps.getPlanListByUseful(ui.getDep());
+		List priTypeList=cts.getLabelVaList("priType");
+		List priList=cts.getLabelVaList("pri");
+		//List planViewList=cts.getLabelVaList("planViewList");
+		request.setAttribute("planList", planList);
+		request.setAttribute("priTypeList", priTypeList);
+		request.setAttribute("priList", priList);
+		//request.setAttribute("planViewList", planViewList);
+		return mapping.findForward("addMission");
+    }
+	/**
+	 * 
+	 * @param
+	 * @version 2006-11-9
+	 * @return
+	 */
+	public ActionForward query(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception 
+    {
+		return mapping.findForward("query");
+    }
+
+	public WorkPlanService getWps() {
+		return wps;
+	}
+
+	public void setWps(WorkPlanService wps) {
+		this.wps = wps;
+	}
+
+	public ClassTreeService getDepT() {
+		return depT;
+	}
+
+	public void setDepT(ClassTreeService depT) {
+		this.depT = depT;
+	}
+}

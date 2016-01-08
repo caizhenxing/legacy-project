@@ -1,0 +1,371 @@
+## ***********************************************
+## 承認・却下対象応募情報一覧
+## ***********************************************
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+#parse($commonSetting)
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+## スクリプト*************************************
+<script language="javascript">
+<!--
+	/* PDFダウンロード */
+	function onDownload(systemNo){
+		document.shinsei_form.action="$link.setAction("/shozoku/downloadPdf")";
+		document.shinsei_form.systemNo.value=systemNo;
+		document.shinsei_form.submit();
+	}
+	
+	/* 応募書情報 */
+	function onShinseishaData(shinseishaId){
+		window.open("","nw","toolbar=0,status=0,menubar=0,resizable=yes,scrollbars=yes");
+
+		document.shinseisha_form.action="$link.setAction("/shozoku/shinseiJohoKanri/shinseishaJoho")";
+		document.shinseisha_form.shinseishaId.value=shinseishaId;
+		document.shinseisha_form.target="nw";
+		document.shinseisha_form.submit();
+	}
+	
+    /* 応募却下確認 */
+	function onKyakka(systemNo){
+		document.shinsei_form.action="$link.setAction("/shozoku/shinseiJohoKanri/kyakka")";
+		document.shinsei_form.systemNo.value=systemNo;
+		document.shinsei_form.submit();
+	}
+	
+	/* ページ遷移 */
+    function onPageClick(startPosition){
+	    document.page_form.action="$link.setAction('/shozoku/shinseiJohoKanri/shoninKyakaList')";
+	    document.page_form.startPosition.value = startPosition;
+	    document.page_form.submit();
+    }
+	
+	/* 応募状況詳細 */
+	function onCommentConfirm(systemNo){
+		window.open("","nw2","toolbar=0,status=0,menubar=0,resizable=yes,scrollbars=yes");
+	
+		document.shinsei_form2.action="$link.setAction("/shozoku/shinseiJohoKanri/commentConfirm")";
+		document.shinsei_form2.systemNo.value=systemNo;
+		document.shinsei_form2.target="nw2";
+		document.shinsei_form2.submit();
+	}
+	/* 「全て選択」ボタン */
+    function checkCB(){
+	    //document.myFORM.myRD1.checked = true;
+	    for(i=0; i<200; i++){
+		    if(document.myFORM.elements["myRD1"+i] == null){
+			    break;
+		    }
+		    document.myFORM.elements["myRD1"+i].checked = true;
+	    }
+    }
+
+    /* 「全て解除」ボタン */
+    function checkCB2(){
+	    //document.myFORM.myRD2.checked = true;
+	    for(i=0; i<200; i++){
+		    if(document.myFORM.elements["myRD2"+i] == null){
+			    break;
+		    }
+		    document.myFORM.elements["myRD2"+i].checked = true;
+	    }
+    }
+
+    /* 「承認」ボタン処理 */
+    function onAddClick(){
+	    for(i=0; i<200; i++){
+		    if(document.myFORM.elements["myRD1"+i] == null){
+			    break;
+		    }
+		    if(document.myFORM.elements["myRD1"+i].checked){
+			    break;
+		    }
+	    }
+	
+	    //１つ以上選択されていたら登録処理を行う
+		document.myFORM.action="$link.setAction('/shozoku/shinseiJohoKanri/shonin')";
+		document.myFORM.submit();
+    }
+
+	/* キャンセル */
+	function goBack(){
+		document.goback_form.action="$link.setAction("/shozoku/shinseiJohoKanri/shoninKyakaList")";
+		document.goback_form.goBack.value = "goBack";
+		document.goback_form.submit();
+	}
+//-->
+</script>
+## ***********************************************
+</head>
+
+<body class="bodyStyle">
+ <form name="myFORM" action="" method="post">
+  <input type="hidden" name="$form.tokenName" value="$form.token"> 
+  <input type="hidden" name="screenFlg" value="1">
+  <div align="center">
+
+  <!-- ヘッダー 用テーブルここから-->
+  <table width="95%" border="0" cellpadding="0" cellspacing="0">
+   <tr>
+    <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+    <td align="right" background="$path/images/header_bg2.gif">
+     <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+     <table border="0" cellpadding="0" cellspacing="1">
+      <tr>
+       <td colspan="2"><img src="$path/images/spacer.gif"  width="1" height="15"></td>
+      </tr>
+      <tr>
+       <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+       <td><a href="$link.setAction('/shozoku/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width="72" height="20" border="0"></a></td>
+      </tr>
+     </table>
+     <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+    </td>
+    <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif"  width="6" height="58"></td>
+   </tr>
+  </table>
+  <!--  ヘッダー 用テーブルここまで-->
+  <!-- 左右の縦線用テーブルここから -->
+  <table width="95%" border="0" cellpadding="0" cellspacing="0">
+   <tr>
+    <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif"  width="1" height="1"></td>
+    <td>
+     <!-- コンテンツエリアここから -->
+     <!-- ログインユーザ、ルート情報用テーブルここから -->
+     <table width="100%" border="0" cellpadding="4" cellspacing="0">
+      <tr>
+       <td bgcolor="#CC6666" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/shozoku/showMainMenu')">所属研究機関担当者向けメニュー</a>＞承認・却下（<b>承認・却下対象応募情報一覧</b>）</font></td>
+      </tr>
+     </table>
+     <!-- ログインユーザ、ルート情報用テーブルここまで -->
+     <!-- サブ画面タイトル用テーブルここから -->
+     <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr valign="bottom">
+       <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width="61" height="49" ></td>
+       <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont">
+        <br>承認・却下対象応募情報一覧</td>
+       <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width="213" height="49" ></td>
+      </tr>
+     </table>
+     <!-- サブ画面タイトル用テーブルここまで -->
+
+     <!-- 本文ここから -->
+     <p class="comment"> ＜注意事項＞</p>
+     <ul>
+      <li class="comment">[承認]ボタンから研究計画調書を承認すると日本学術振興会へ研究計画調書が送信されます。</li>
+      <li class="comment">[却下]ボタンから研究計画調書を却下すると研究計画調書は日本学術振興会に送信されません。</li>
+      <li class="comment">PDFファイルの内容を確認するには、Adobe Acrobat Readerが必要です。まだインストールしていない方は下のボタンをクリックしてインストールしてください。
+       <br><a target="_blank" href="http://www.adobe.co.jp/products/acrobat/readstep2.html"><img src="$path/images/getreader.gif" border="0" height="31" width="88" alt="Get Adobe Reader"></a></li>
+	  ## 2006/06/16 劉佳 変更 ここから
+      <li class="comment">応募状況の意味は<a href="$path/code/status2.html" target="_blank">こちら</a>を参照してください。</li>
+	  ## 2006/06/16 劉佳 変更 ここまで
+	  ##2006/07/24 dyh delete start 理由：画面変更
+      ##<li class="comment">応募状況の文字がリンクになっている場合、日本学術振興会からコメントがありますのでクリックして確認してください。</li>
+	  #if($shinseiSearchForm.jigyoKbn && ($shinseiSearchForm.jigyoKbn == "1" || $shinseiSearchForm.jigyoKbn == "3"))
+        <li class="comment">応募状況の文字がリンクになっている場合、日本学術振興会からコメントがありますのでクリックして確認してください。</li>
+	  #end
+      ##2006/07/24 dyh delete end
+      <li class="comment">承認されると「承認・却下対象応募情報一覧」からは表示されなくなります。再確認したい場合は「応募情報管理」メニューから行います。</li>
+     </ul>
+     #errorMarkup() 
+     <font color="black">$!escape.getText($!result.totalSize) 件該当しました。</font><br>
+     <font color="blue"><b>$!escape.getText($!result.currentPages)</b></font>
+     <font color="black"> ページ目を表示しています。</font><br>　　　
+     <font color="blue">
+      #foreach($page in $result.pageIndexs)
+        #if($velocityCount == $result.currentPages)
+          #if($velocityCount == $result.totalPages)
+            <b> $!escape.getText($velocityCount)</b>
+          #else
+            <b> $!escape.getText($velocityCount)</b><font color="black">/</font>
+          #end
+        #else
+          #if($velocityCount == $result.totalPages)
+            <a href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a> 
+          #else
+            <a href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a><font color="black">/</font>
+          #end
+        #end
+      #end
+     </font>
+     <font color="black">ページに移動します。</font> <br> 　　　
+     #if($result.hasPreviousPage())
+       <a href="javascript:onPageClick('$!result.getStartOfPreviousPage()')"><img src="$path/images/bt_last.gif" width="64" height="24" alt="前ページ" border="0"></a>
+     #end
+
+     #if($result.hasNextPage())
+       <a href="javascript:onPageClick('$!result.getStartOfNextPage()');"><img src="$path/images/bt_next.gif" width="64" height="24" alt="次ページ" border="0"></a>
+     #end
+     <br><br>
+     <!-- 一覧用テーブルここから -->
+     <a href="javascript:onAddClick();"><img src="$path/images/bt_all_shonin.gif" alt="承認" width="114" height="28" border="0"></a>
+     <br>
+     <a href="javascript:checkCB()"><img src="$path/images/bt_all_select.gif" width="80" height="24" alt="全て選択" border="0"></a>
+     <a href="javascript:checkCB2()"><img src="$path/images/bt_all_cancel.gif" width="80" height="24" alt="全て解除" border="0"></a>
+
+     <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+      <tr>
+       <td>
+        <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+         <tr>
+          <th>承認</th>
+          <th>研究種目名</th>
+          <th>学振受付期限</th>
+          <th>応募者名</th>
+          <th>部局名・職名</th>
+          <th>研究者番号</th>
+          <th>研究課題名</th>
+          <th>作成日</th>
+          <th>所属研究機関承認日</th>
+          <th>研究計画調書確認</th>
+          <th>応募状況</th>
+         </tr>
+         #if($result.list.size() == 0)
+           ##該当件数が0件だった場合
+           <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+           </tr>
+         #else
+           #foreach($info in $result.list)
+             #set($count = $velocityCount - 1)
+             <tr>
+##2007/03/3 劉長宇　更新　ここから
+##			  #if($info.UKETUKE_END_FLAG == "TRUE")
+		      #if($info.UKETUKE_END_FLAG == "TRUE" && $info.SAISHINSEI_FLG != "1")
+##2007/03/3 劉長宇　更新　ここまで
+			   <td><input id="myRD1$count" type="hidden" name="tantoSystemNo[$count]" value="" checked>
+				   <input id="myRD2$count" type="hidden" name="tantoSystemNo[$count]" value=""></td>
+			  #else
+               <td><input id="myRD1$count" type="radio" name="tantoSystemNo[$count]" value="$!info.SYSTEM_NO" checked>する
+                   <input id="myRD2$count" type="radio" name="tantoSystemNo[$count]" value="">しない</td>
+			  #end
+              <td>平成$!escape.getText($!info.NENDO)年度 #if($info.KAISU.toString() != '1') 第$!escape.getText($!info.KAISU)回 #end $!escape.getText($!info.JIGYO_NAME)</td>
+              <td>$!escape.getText($!dateFormat.format($!info.UKETUKEKIKAN_END))</td>
+              <td>
+               <a href="javascript:onShinseishaData('$!info.SHINSEISHA_ID')">$!escape.getText($!info.NAME_KANJI_SEI) $!escape.getText($!info.NAME_KANJI_MEI)</a>
+              </td>
+              <td>$!escape.getText($!info.BUKYOKU_NAME_RYAKU) $!escape.getText($!info.SHOKUSHU_NAME_RYAKU)</td>
+              <td>$!escape.getText($!info.KENKYU_NO)</td>
+              <td>$!escape.getText($!info.KADAI_NAME_KANJI)</td>
+              <td>$!escape.getText($!dateFormat.format($!info.SAKUSEI_DATE))</td>
+              <td>$!escape.getText($!dateFormat.format($!info.SHONIN_DATE))</td>
+              <td>
+               #if($info.JOKYO_ID != "02")
+               <a href="javascript:onDownload('$!info.SYSTEM_NO')"><img src="$path/images/bt_download.gif" alt="ダウンロード" width="64" height="24" border="0"></a>
+               #end
+              </td>
+              <td>
+				
+               #if($info.JURI_BIKO && ($info.JOKYO_ID.toString() == "02" || $info.JOKYO_ID.toString() == "03" || $info.JOKYO_ID.toString() == "05" || $info.JOKYO_ID.toString() == "07" || ($info.JOKYO_ID.toString() == "04" && $info.SAISHINSEI_FLG.toString() == "1")))
+                 ##備考確認画面リンクを表示
+                 <a href="javascript:onCommentConfirm('$!info.SYSTEM_NO')">
+                 ##表示フラグを設定
+                 #set($biko_flg = true)
+               #end
+               $!escape.getText($info.JOKYO_NAME)
+               #if($biko_flg)
+                 </a><br>
+               #end
+               #if($info.JOKYO_ID == "03")
+                 <br><a href="javascript:onKyakka('$!info.SYSTEM_NO')"><img src="$path/images/bt_reject.gif" width="36" height="22" border="0" alt="却下"></a>
+               #end
+              </td> 
+             </tr>
+           #end
+         #end
+        </table>
+       </td>
+      </tr>
+     </table>
+
+     <!-- 一覧用テーブルここまで-->
+     <br>
+     <font color="blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      #foreach($page in $result.pageIndexs)
+        #if($velocityCount == $result.currentPages)
+          #if($velocityCount == $result.totalPages)
+            <b> $!escape.getText($velocityCount)</b>
+          #else
+            <b> $!escape.getText($velocityCount)</b><font color="black">/</font>
+          #end
+        #else
+          #if($velocityCount == $result.totalPages)
+            <a href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a> 
+          #else
+            <a href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a><font color="black">/</font>
+          #end
+        #end
+      #end
+     </font>
+     <font color="black">ページに移動します。</font> <br> 　　　
+     #if($result.hasPreviousPage())
+       <a href="javascript:onPageClick('$!result.getStartOfPreviousPage()')"><img src="$path/images/bt_last.gif" width="64" height="24" alt="前ページ" border="0"></a>
+     #end
+
+     #if($result.hasNextPage())
+       <a href="javascript:onPageClick('$!result.getStartOfNextPage()');"><img src="$path/images/bt_next.gif" width="64" height="24" alt="次ページ" border="0"></a>
+     #end
+     <br>
+     <!-- 本文ここまで -->
+     <!-- ボタン用テーブルここから -->  
+     <div align="center">
+      <table border="0" cellpadding="0" cellspacing="4">
+       <tr>
+	    <td><a href="javascript:goBack()" ><img src="$path/images/bt_bk_menu.gif" width="114" height="28" border="0" alt="メニューに戻る" ></a></td>
+       </tr>                                                                                  
+      </table>
+     </div>
+     <!-- ボタン用テーブルここまで -->
+     <!-- サブ画面フッター用テーブルここから -->
+     <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr bgcolor="#336699">
+       <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width="8" height="26" ></td>
+       <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shozoku/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width="72" height="26" border="0"></a></td>
+       <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width="8" height="26" ></td>
+      </tr>
+     </table>
+     <!-- サブ画面フッター用テーブルここまで -->
+     <!-- コンテンツエリアここまで -->
+    </td>
+    <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif"  width="1" height="1"></td>
+   </tr>
+  </table>
+  <!-- 左右の縦線用テーブルここまで -->
+ </div>
+ </form>
+ <form name="shinsei_form" method="post" action="">
+   <input type="hidden" name="systemNo" value="">
+   <input type="hidden" name="screenFlg" value="1">
+   <input type="hidden" name="shinseiDataInfo.systemNo" value="">
+ </form>
+    
+ <form name="shinsei_form2" method="post" action="">
+   <input type="hidden" name="systemNo" value="">
+ </form>
+    
+ <form name="shinseisha_form" method="post" action="">
+   <input type="hidden" name="shinseishaId" value="">
+ </form>
+ <form name="page_form" action="" method="post">
+   <input type="hidden" name="startPosition" >
+ </form>
+ <form name="goback_form" action="" method="post">
+   <input type="hidden" name="goBack" value="">
+ </form>
+ </body>
+</html>

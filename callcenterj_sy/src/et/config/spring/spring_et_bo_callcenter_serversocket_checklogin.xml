@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+
+	<!-- socket服务启动线程 -->
+	<bean id="LoginMapService"
+		class="et.bo.callcenter.serversocket.checklogin.impl.LoginMapServiceImpl">
+		<property name="portCompareService">
+			<ref bean="PortCompareService" />
+		</property>
+	</bean>
+
+</beans>

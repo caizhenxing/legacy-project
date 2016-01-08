@@ -1,0 +1,45 @@
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.anniu {font-family: "宋体";
+	border:0px solid #FFFFFF;
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #1D3C5E;
+	text-align: center;
+	width: 91px;
+	height: 22px;
+}
+.wenben {	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #9BCAEC; LINE-HEIGHT: 18px; FONT-STYLE: normal; FONT-FAMILY: "宋体"; HEIGHT: 12px
+}
+.xiala {	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 13px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #3183C6;
+}
+
+.wenzi7 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-align: center;
+}
+.ag_biaoti{
+	background-color:#9EC3EB;
+}
+/*座席面板显示部分的样式文件 by zhangfeng*/
+.mianban{
+	background-color:#9BCAEC;
+}

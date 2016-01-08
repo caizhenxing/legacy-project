@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="moduleManager"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+		  <form-property name="forumName" type="java.lang.String" />
+		  <form-property name="forumSort" type="java.lang.String" />
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="topicTitle" type="java.lang.String" />
+      	  <form-property name="topicPhoto" type="java.lang.String" />
+      	  <form-property name="parentId" type="java.lang.String" />
+      	  <form-property name="topicDescribe" type="java.lang.String" />
+	   </form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+     <action
+      attribute="moduleManager"
+      name="moduleManager"
+      path="/forum/moduleManager"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="main"    path="/forum/moduleManager/moduleManagerMain.jsp"/>
+           <forward name="query"   path="/forum/moduleManager/moduleManagerQuery.jsp"/>
+           <forward name="load"    path="/forum/moduleManager/moduleManagerLoad.jsp"/>
+           <forward name="loadSuccess" path="/forum/moduleManager.do?method=toModuleList"/>
+           <forward name="parentLoad" path="/forum/moduleManager/parentModuleLoad.jsp"/>
+           <forward name="list"    path="/forum/moduleManager/moduleManagerList.jsp"/>
+           <forward name="detail"  path="/forum/moduleManager/moduleManagerDetail.jsp"/>            
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

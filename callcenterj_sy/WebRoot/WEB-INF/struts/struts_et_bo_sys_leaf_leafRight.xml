@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+   <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="leafTreeBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			
+		  <!--叶子节点权限信息-->
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="treeId" type="java.lang.String"/>
+      	  <form-property name="treeName" type="java.lang.String"/>
+      	  <form-property name="label" type="java.lang.String"/>
+      	  <form-property name="icon" type="java.lang.String"/>
+      	  <form-property name="type" type="java.lang.String"/>
+      	  <form-property name="treeType" type="java.lang.String"/>
+      	  <form-property name="nickName" type="java.lang.String"/>
+      	  <form-property name="deleteMark" type="java.lang.String"/>
+      	  <form-property name="remark" type="java.lang.String"/>
+  </form-bean>
+  
+</form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+  
+  
+<!-- 叶子节点权限action -->
+     <action
+      attribute="leafTreeBean"
+      name="leafTreeBean"
+      parameter="method"
+      path="/sys/leafRight/leafRight"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy">
+      <forward name="toLeafRightDtl" path="/sys/leaf/leafRight/leafRightDtl.jsp" />
+      <forward name="toLeafRightMain" path="/sys/leaf/leafRight/leafRightMain.jsp" />
+      <forward name="grantLeafSuccess" path="/sys/leaf/leafRight/grantLeafSuccess.jsp" />
+      <forward name="toNodeLeafRight" path="/sys/leaf/leafRight/nodeLeafRight.jsp" />
+      <forward name="showLeafRightTree" path="/sys/leaf/leafRight/moduleTree.jsp" />
+      <forward name="showLeafOperTree" path="/sys/leaf/leafRight/moduleOperTree.jsp" />
+      <forward name="toLeafOperMain" path="/sys/leaf/leafRight/leafOperMain.jsp" />
+      <forward name="showPersonBatchRightTree" path="/sys/leaf/leafRight/personBatchRightTree.jsp" />
+      <forward name="treeLoad" path="/sys/leaf/leafRight/leafRightDtl.jsp" />
+      <forward name="treeList" path="/sys/leaf/leafRight/leafRightDtlList.jsp" />
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

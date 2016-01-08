@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<!-- 组信息管理 -->
+<struts-config>
+	<data-sources />	
+	<form-beans>
+		<form-bean name="groupform" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="name" type="java.lang.String" />
+			<form-property name="delMark" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />	
+			<form-property name="isSys" type="java.lang.String" />										
+		</form-bean>		
+    </form-beans>
+	<global-exceptions />
+	<global-forwards>
+		<forward name="tologin" path="/message/tologin.jsp"/>
+		<forward name="operfail" path="/fail.jsp" />
+		<forward name="nologin" path="/cueLogin.jsp" />
+		<forward name="operSuccess" path="/collection/collectionSuccess.jsp" />
+		<forward name="success" path="/group/message/success.jsp" />
+		<forward name="error" path="/group/message/error.jsp" />
+	</global-forwards>
+	<action-mappings>
+		<action attribute="groupform"
+               name="groupform"
+               path="/sys/group/Group"
+               parameter="method"
+               scope="request"
+               type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="main"  path="/sys/group/groupMain.jsp"/>
+           <forward name="query" path="/sys/group/groupQuery.jsp"/>
+           <forward name="load"  path="/sys/group/groupLoad.jsp"/>
+           <forward name="list"  path="/sys/group/groupList.jsp"/>
+           <forward name="pop"  path="/sys/group/popGroup.jsp"/>
+        </action>		
+	</action-mappings>	
+</struts-config>

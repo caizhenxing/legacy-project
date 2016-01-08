@@ -1,0 +1,606 @@
+.rq {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #ffffff;
+	text-align: center;
+}
+
+/*查询页面body样式*/
+.conditionBody {
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #E5F3F6;
+}
+
+/*登陆页背景颜色样式*/
+.bodyLogin {
+	margin-left: 1px;
+	margin-top: 1px;
+	margin-right: 1px;
+	margin-bottom: 1px;
+	background-color: #CCCCCC;
+}
+/**
+样式规范在基础上进行后续的扩展、完善
+*/
+.wenzi7 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-align: center;
+}
+/*导航条外围table*/
+.navigateTable {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 20px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #FFFFFF;
+	background-color: #4EA0CF;
+	text-align: right;
+	text-indent: 8px;
+}
+
+/*导航条样式*/
+.navigateStyle {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 25px;
+	font-weight: normal;
+	color: #ffffff;
+	text-align: left;
+	font-family: "宋体";
+	font-variant: normal;
+	background-color: #4EA0CF;
+	text-indent: 7px;
+}
+
+/*查询条件外围table*/
+.conditionTable {
+	background: #ffffff;
+}
+
+/*文字标签样式*/
+.labelStyle {
+	color: #0066CC;
+	text-indent: 20px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 25px;
+	font-weight: normal;
+	font-variant: normal;
+	background-color: #C2DFF1;
+}
+/*查询标签样式*/
+.queryLabelStyle {
+	color: #0066CC;
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 25px;
+	font-weight: normal;
+	font-variant: normal;
+	background-color: #C2DFF1;
+}
+/*选择下拉框样式*/
+.selectStyle {
+	color: #3E80CA;
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 25px;
+	font-weight: normal;
+	background-color: #FFFFFF;
+}
+
+/*可输入文本框样式*/
+.writeTextStyle {
+	color: #0066CC;
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	text-align: left;
+	background-color: #FFFFFF;
+}
+
+/*可输入文本框样式2*/
+.writeTextStyle2 {
+	color: #006600;
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	text-align: left;
+	background-color: #FFFFFF;
+	width: 70px;
+}
+
+/*只读文本框样式*/
+.readTextStyle {
+	background: #999999;
+}
+
+/*按钮区域样式*/
+.buttonAreaStyle {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 25px;
+	font-weight: normal;
+	color: #666666;
+	background-color: #4EA0CF;
+	text-align: right;
+}
+
+/*普通按钮样式*/
+.buttonStyle {
+	background: #FFFFFF;
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	color: #666666;
+	text-align: center;
+}
+
+/**/
+.listBody {
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #E5F3F6;
+}
+
+/*列表显示页面的列表标题样式*/
+.listTitleStyle {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 23px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-align: center;
+	background-image: url(images/tiaoti.jpg);
+}
+
+/*列表偶数行样式*/
+.oddStyle {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 25px;
+	font-weight: normal;
+	color: #666666;
+	text-align: center;
+	font-family: "宋体";
+	font-variant: normal;
+	background-color: #ffffff;
+}
+
+/*列表奇数行样式*/
+.evenStyle {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 17px;
+	font-weight: normal;
+	color: #666666;
+	text-align: center;
+	font-family: "宋体";
+	font-variant: normal;
+	background-color: #E3EFF9;
+}
+
+/*加载页面body样式*/
+.loadBody{
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	overflow: auto;
+}
+
+/*分页部分的样式*/
+.pageTable {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	color: #666666;
+	text-align: center;
+	background-color: #C2DFF1;
+	line-height: 25px;
+	text-indent: 8px;
+}
+
+/*查询页面输入框所在td的样式*/
+.valueStyle {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 25px;
+	font-weight: normal;
+	color: #0066CC;
+	background-color: #E3EFF9;
+}
+
+/*底部空白页样式*/
+.emptyBodyStyle {
+	background-color: #E5F3F6;
+}
+
+/*导航树样式*/
+.text-selected {
+	background-color: #2482BF;
+	color: #FFFFFF;
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+}
+.text-unselected{
+	color: #333333;
+	font-size: 12px;
+	font-family: "宋体";
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+}
+
+.wenzi1 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #666666;
+	text-align: center;
+}
+.wenzi5 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	color: #048BF8;
+}
+
+
+.wenzi2 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	color: #666666;
+	text-align: left;
+	text-indent: 12px;
+}
+.wenzi3 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	color: #666666;
+	text-align: left;
+	text-indent: 24px;
+}
+.wenzi4 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #990000;
+	text-align: left;
+}
+.wenzi6 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: bold;
+	color: #333333;
+	text-align: right;
+}
+.wenzi7 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-align: center;
+}
+.wenzi8 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-align: right;
+}
+.wenzi9 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #FFFFFF;
+	text-align: left;
+	text-indent: 12px;
+}
+.e {
+	background-attachment: fixed;
+	background-image: url(2.png);
+	background-repeat: repeat-x;
+	background-position: center center;
+}
+.t {
+	background-attachment: fixed;
+	background-image: url(../tp/2.gif);
+	background-repeat: repeat-x;
+	background-position: center center;
+	line-height: 22px;
+	width: 148px;
+	height: 24px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	display: table;
+	clear: both;
+	visibility: visible;
+	overflow: visible;
+	border-left: 0px;
+	border-right: 0px;
+	border-top: 0px;
+	text-indent: 2px;
+
+	onfocus="this.style.backgroundImage='url(3.gif)'
+	onblur="this.style.backgroundImage='url(2.gif)'
+; 	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	color: #599803;
+}
+.tdbgcolorquerytitle1 {
+	background-image: url(../../金农服务中心html/tp/dl42.jpg);
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	color: #666666;
+}
+.tdbgcolorquerytitle2 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	color: #666666;
+	background-image: url(../../金农服务中心html/tp/dl43.jpg);
+}
+.ztb{
+background:url(../tp/dl14.jpg)
+}
+.zx{
+    background:url(../tp/dl16.jpg)
+}
+.zxb{
+    background:url(../tp/dl17.jpg)
+}
+.rwb{
+	background-image: url(images/zx/dl59.jpg);
+}
+.gnb{
+	background-image: url(../tp/dl60.jpg);
+}
+.zt{
+    background:url(../tp/dl13.jpg)
+}
+.dh{
+	background-image: url(images/zx/sy2.jpg);
+}
+.xxl{
+    background:url(../tp/dl42.jpg)
+}  
+.xxb{
+    background:url(../tp/dl53.jpg)
+}
+.xxbtb{
+    background:url(../tp/dl43.jpg)
+}
+.an1{
+	width: 94px;
+	background-image: url(../tp/dl60.gif);
+	line-height: 21px;
+	height: 16px;
+	font-family: "宋体";
+	font-size: 12px;
+	color: #FFFFFF;
+}
+.xl{
+	height: 23px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 13px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #3366CC;
+	text-align: left;
+	border: 1px solid #0066CC;
+}
+.lanmu{
+	height: 23px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 13px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #3366CC;
+	text-align: left;
+	border: 1px solid #59A4DD;
+}
+.anys{
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 17px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #FFFFFF;
+	background-color: #4698D7;
+	text-align: center;
+	margin: 1px;
+	padding: 1px;
+	height: 15px;
+	width: 140px;
+	border: 1px outset #FFFFFF;
+}
+.zxts{
+	font-family: "宋体";
+	font-size: 13px;
+	line-height: 15px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #003366;
+	text-align: center;
+}
+.mouseout {
+BORDER-RIGHT: #2C59AA 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #2C59AA 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#C3DAF5); BORDER-LEFT: #2C59AA 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #2C59AA 1px solid
+}
+.mouseover {
+BORDER-RIGHT: #2C59AA 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #2C59AA 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#D7E7FA); BORDER-LEFT: #2C59AA 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #2C59AA 1px solid
+}
+.mousedown
+{
+BORDER-RIGHT: #FFE400 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #FFE400 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#C3DAF5); BORDER-LEFT: #FFE400 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #FFE400 1px solid
+}
+.mouseup {
+BORDER-RIGHT: #2C59AA 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #2C59AA 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#C3DAF5); BORDER-LEFT: #2C59AA 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #2C59AA 1px solid
+}
+/*页面边距*/
+.lundong{
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 15px;
+	font-weight: normal;
+	color: #328BE7;
+	height: 340px;
+	width: 275px;
+	border: 1px solid #40A1E8;
+}
+/*链接样式*/
+/* 网站链接总的css定义:可定义内容为链接字体颜色、样式等 */
+a{text-decoration: none;} /* 链接无下划线,有为underline */ 
+a:link {color: #666666;;} /* 未访问的链接 */
+a:visited {color: #666666;} /* 已访问的链接 */
+a:hover{color: #006699;} /* 鼠标在链接上 */ 
+a:active {color: #666666;} /* 点击激活链接 */
+
+/* CSS Document */
+body {
+	background-color: #CCCCCC;
+	margin-left: 1px;
+	margin-top: 1px;
+	margin-right: 1px;
+	margin-bottom: 1px;
+}
+/*时间*/
+.shijian{
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 15px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-align: center;
+}
+/*登录文字*/
+.jimian{
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 15px;
+	font-weight: normal;
+	color: #67A3D9;
+	text-align: center;
+}
+.xiala{
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #666666;
+	text-align: center;
+	border: 1px solid #83B0D1;
+	height: 17px;
+	width: 166px;
+}
+.wenben{
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 15px;
+	font-weight: normal;
+	color: #66A2D8;
+	text-align: left;
+	height: 17px;
+	width: 167px;
+}
+.yanzhengma{
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 15px;
+	font-weight: normal;
+	color: #8EA867;
+	text-align: left;
+	text-indent: 2px;
+	width: 54px;
+}
+
+.imageBody {
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-image: url(images/background.jpg);
+}
+.backcolor{
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #469BD7;
+}
+
+/*列表中的信息*/
+.listTable tr.over td{
+	background-color: #9BCEE0;	
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--saved from url=(0040)-->
+## 20050809 タイトルを変更
+<HTML><HEAD><TITLE>細目表キーワード一覧</TITLE>
+## Horikoshi
+#parse( $commonSetting )
+
+<META http-equiv=Content-Type content="text/html; charset=Shift_JIS">
+<STYLE type=text/css>BODY {
+	MARGIN-TOP: 20px; FONT-SIZE: 10pt; MARGIN-LEFT: 20px; LINE-HEIGHT: 14pt; MARGIN-RIGHT: 20px
+}
+H1 {
+	FONT-SIZE: 16pt; LINE-HEIGHT: 20pt
+}
+.text_01 {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; LINE-HEIGHT: 16pt
+}
+.table_01 {
+	FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: #000000; LINE-HEIGHT: 125%; BORDER-COLLAPSE: collapse
+}
+A:link {
+	COLOR: #3359cc; TEXT-DECORATION: underline
+}
+A:visited {
+	COLOR: #3359cc; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: #ff6666; TEXT-DECORATION: none
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1400" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff><A name=top></A>
+<CENTER>
+## 20050809 タイトルを変更
+<H1>細目表キーワード一覧</H1></CENTER><BR>
+## Horikoshi
+<CENTER>
+
+  <!--索引ここから-->
+  <TABLE class=table_01 cellSpacing=3 width=600 border=0>
+    <TBODY>
+    <TR>	
+	#foreach($user in $index)
+     <TD align=middle bgColor=#eeffbb><A 
+        href="#$!escape.getText($user.get("BUNYA_CD"))">$!escape.getText($user.get("BUNYA_NAME"))</A></TD>
+	#end
+    </TR>
+    </TBODY>
+   </TABLE>
+  <!--索引ここまで-->
+
+</CENTER><BR>
+<HR noShade SIZE=1>
+<BR>
+<CENTER>
+
+<!--一覧ここから-->
+#foreach($user in $search)
+<!--テーブルここから-->
+##索引からのリンク
+<A name=$escape.getText($user.get("BUNYA_CD"))></A>
+
+##分野ごとの繰り返し ---ここから
+<TABLE class=table_01 borderColor=#666666 cellSpacing=0 cellPadding=3 border=1 width=800>
+ <TBODY>
+	<TR>
+		<TD class=text_01 bgColor=#eeffbb colSpan="6">$!escape.getText($user.get("BUNYA_NAME"))</TD>
+	</TR>
+	<TR bgColor=#888888>
+		<TD align=middle width="15%"><FONT color=#ffffff>分科</FONT></TD>
+		<TD align=middle width="30%"><FONT color=#ffffff>細目</FONT></TD>
+		<TD align=middle width="10%"><FONT color=#ffffff>細目番号</FONT></TD>	
+		<TD align=middle width="10%"><FONT color=#ffffff>分割番号</FONT></TD>		
+		<TD align=middle width="10%"><FONT color=#ffffff>記号</FONT></TD>	
+		<TD align=middle width="25%"><FONT color=#ffffff>キーワード</FONT></TD>		
+	</TR>
+
+	##分野ごとの分科リストを取得
+	#set ($bunkaList = $user.get("BUNKA_LIST"))
+	
+	##分科ごとの繰り返し ---ここから
+	#foreach($user2 in $bunkaList)	
+		#set ($saimokuList= $user2.get("SAIMOKU_LIST"))
+		##細目リストのサイズを取得
+		#set ($rowSpan= $!saimokuList.size())
+
+		#set($saimoku_cnt = 1)
+		#set($bunkatu_cnt = 1)
+		#set($sabun = 1)
+		##細目ごとの繰り返し ---ここから
+	    #foreach( $saimoku in $saimokuList )
+		##細目の表示
+			<TR>
+				##分科名は一行目のみ
+				#if($velocityCount == 1)
+				  <TD vAlign=top bgColor=#dddddd rowSpan=$rowSpan>$!escape.getText($user2.get("BUNKA_NAME"))</TD>
+				#end
+			
+				##細目表示
+				#if($saimoku_cnt == $velocityCount)
+	  			  ##細目の件数
+	  			  #set ($saimoku_cnt = $!escape.getIntValue($saimoku.get("SAIMOKU_CNT")))
+        		  <TD vAlign=top rowspan=$saimoku_cnt>$!escape.getText($saimoku.get("SAIMOKU_NAME"))</TD>
+        		  <TD vAlign=top rowspan=$saimoku_cnt align="middle">$!escape.getText($saimoku.get("BUNKASAIMOKU_CD"))</TD>
+	  			  #set ($saimoku_cnt = $velocityCount + $!escape.getIntValue($saimoku.get("SAIMOKU_CNT")))
+				#end
+				
+				##分割番号表示
+				#if($bunkatu_cnt == $velocityCount)
+				  ##分割番号件数
+	  			  #set ($bunkatu_cnt = $!escape.getIntValue($saimoku.get("BUNKATSU_CNT")))
+				  <TD vAlign=top align="middle" rowspan="$bunkatu_cnt">
+					#if(!$escape.getText($saimoku.get("BUNKATSU_NO")).equals("-"))
+						$!escape.getText($saimoku.get("BUNKATSU_NO"))
+					#else
+						&nbsp;
+					#end
+			  	  </TD>
+	  			  #set ($bunkatu_cnt = $velocityCount + $!escape.getIntValue($saimoku.get("BUNKATSU_CNT")))
+			  	#end
+
+				<TD align=middle>$!escape.getText($saimoku.get("KEYWORD_CD"))</TD>
+				<TD>$!escape.getText($saimoku.get("KEYWORD"))</TD>
+			</TR>
+	    #end
+	    ##細目ごとの繰り返し ---ここまで
+	#end
+	##分科ごとの繰り返し ---ここから
+
+
+ </TBODY>
+</TABLE>
+##分野ごとの繰り返し ---ここまで
+<!--テーブルここまで-->
+<DIV align=left><A 
+href="#top">このページのトップへ</A></DIV>
+<BR>
+#end
+<!--一覧ここまで-->
+
+    <!--ボタン用テーブルここから--> 
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="javascript:window.close()"><img src="$path/images/bt_close.gif" width=114 height=28 border="0" alt="閉じる"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!--ボタン用テーブルここまで-->
+
+</BODY></HTML>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	   <!-- forumpost add -->
+       <form-bean name="forumPostBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	  <form-property name="id" type="java.lang.String" />
+		  <form-property name="itemid" type="java.lang.String" />
+		  <form-property name="userkey" type="java.lang.String" />
+		  <form-property name="parentid" type="java.lang.String" />
+		  <form-property name="clicktimes" type="java.lang.String" />
+		  <form-property name="forumcollection" type="java.lang.String" />
+		  <form-property name="hotposts" type="java.lang.String" />
+		  <form-property name="dicttoptype" type="java.lang.String" />
+		  <form-property name="istop" type="java.lang.String" />
+		  <form-property name="titlelock" type="java.lang.String" />
+		  <form-property name="titleimage" type="java.lang.String" />
+		  <form-property name="titletype" type="java.lang.String" />
+		  <form-property name="title" type="java.lang.String" />
+		  <form-property name="titledescribe" type="java.lang.String" />
+		  <form-property name="itemimage" type="java.lang.String" />
+		  <form-property name="postat" type="java.lang.String" />
+		  <form-property name="ipfrom" type="java.lang.String" />
+		  <form-property name="vote" type="java.lang.String" />
+		  <form-property name="elite" type="java.lang.String" />
+		  <form-property name="isvalidate" type="java.lang.String" />
+		  <form-property name="isdel" type="java.lang.String" />
+		  <form-property name="isrecommend" type="java.lang.String" />
+		  <form-property name="posttype" type="java.lang.String" />
+		  <form-property name="state" type="java.lang.String" />
+		  <form-property name="checkcent" type="java.lang.String" />
+		  <form-property name="modtime" type="java.lang.String" />
+		  <form-property name="content" type="java.lang.String" />
+		  <form-property name="username" type="java.lang.String" />
+		  <form-property name="postsid" type="java.lang.String" />
+		  <form-property name="collname" type="java.lang.String" />
+		  <form-property name="remark" type="java.lang.String" />
+	   </form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+     <action
+      attribute="forumPostBean"
+      name="forumPostBean"
+      path="/forum/postOper/oper"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="sendpost"  path="/forum/postOper/sendPosts.jsp"/> 
+           <forward name="answerpost" path="/forum/postOper/answerPosts.jsp"/>
+    </action>
+  </action-mappings>
+  
+</struts-config>

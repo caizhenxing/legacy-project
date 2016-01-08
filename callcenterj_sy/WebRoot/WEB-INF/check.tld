@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib
+  PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+         "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+
+<taglib>
+
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>1.2</jsp-version>
+	<short-name>check</short-name>
+	<description>
+		JSP tag library containing custom GUI controls used in the
+		forecast Application,made by zhaoyifei.
+	</description>
+
+	<!-- ========== Check Tag ======================================== -->
+	<!-- ========== 标识用户是否为管理员     ============================= -->
+
+	<tag>
+
+		<name>admin</name>
+		<tag-class>et.bo.common.taglib.CheckAdmin</tag-class>
+		<body-content>empty</body-content>
+		<description>* 判断用户是否是管理员</description>
+
+		<attribute>
+			<name>userkey</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>* 用户userkey</description>
+		</attribute>
+
+		<attribute>
+			<name>imagePath</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>* 图片路径</description>
+		</attribute>
+
+		<attribute>
+			<name>clickUrl</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>* 点击后执行的链接</description>
+		</attribute>
+
+		<attribute>
+			<name>showAlt</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>* 图片上显示的链接</description>
+		</attribute>
+
+	</tag>
+
+</taglib>

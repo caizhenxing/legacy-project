@@ -1,0 +1,1025 @@
+<?xml version="1.0" encoding="WINDOWS-31J"?>
+
+<form-validation>
+ <global>
+<!-- 入力画面 -->
+ <!-- 共通項目-->
+  <!-- 経費の上限 -->
+  <constant><constant-name>KEIHI_MAX</constant-name><constant-value>9999999</constant-value></constant>
+  <!-- 経費内訳の上限 -->
+  <constant><constant-name>KEIHI_UTIWAKE_MAX</constant-name><constant-value>30</constant-value></constant>
+  <!-- 〒の最大文字数 -->
+  <constant><constant-name>ZIP_NUM</constant-name><constant-value>8</constant-value></constant>
+  <!-- 住所の最大文字数 -->
+  <constant><constant-name>ADDRESS_NUM</constant-name><constant-value>100</constant-value></constant>
+  <!-- 電話の最大文字数 -->
+  <constant><constant-name>TEL_NUM</constant-name><constant-value>50</constant-value></constant>
+  <!-- FAXの最大文字数 -->
+  <constant><constant-name>FAX_NUM</constant-name><constant-value>50</constant-value></constant>
+  <!-- E-Mailの最大文字数 -->
+  <constant><constant-name>MAIL_NUM</constant-name><constant-value>50</constant-value></constant>
+  <!-- 氏名の最大文字数 -->
+  <constant><constant-name>NAME_NUM</constant-name><constant-value>16</constant-value></constant>
+  <!-- 所属研究機関番号の桁数  -->
+  <constant><constant-name>SHOZOKU_CD_NUM</constant-name><constant-value>5</constant-value></constant>
+  <!-- 所属研究機関名の最大文字数  -->
+  <constant><constant-name>SHOZOKU_NAME_NUM</constant-name><constant-value>40</constant-value></constant>
+  <!-- 部局番号の桁数  -->
+  <constant><constant-name>BUKYOKU_CD_NUM</constant-name><constant-value>3</constant-value></constant>
+  <!-- 部局名の最大文字数 -->
+  <constant><constant-name>BUKYOKU_NAME_NUM</constant-name><constant-value>50</constant-value></constant>
+  <!-- 職名番号の桁数  -->
+  <constant><constant-name>SHOKUSHU_CD_NUM</constant-name><constant-value>2</constant-value></constant>
+  <!-- 職名の最大文字数 -->
+  <constant><constant-name>JOB_NAME_NUM</constant-name><constant-value>20</constant-value></constant>
+  <!-- アップロードファイル名の最大文字数 -->
+  <constant><constant-name>FILE_NAME_NUM</constant-name><constant-value>200</constant-value></constant>
+  <!-- ファイル拡張子 -->
+  <constant><constant-name>FILE_EXTENSION</constant-name><constant-value>doc,pdf</constant-value></constant>
+  <!-- ファイルサイズの最大バイト数 -->
+  <constant><constant-name>FILE_MAX_SIZE</constant-name><constant-value>3M</constant-value></constant>
+  
+ <!-- その他項目 -->
+  <!-- 応募領域名の最大文字数 -->
+  <constant><constant-name>RYOIKI_NAME_NUM</constant-name><constant-value>40</constant-value></constant>
+  <!-- 応募領域名（英訳名）の最大文字数  -->
+  <constant><constant-name>RYOIKI_NAME_EIGO_NUM</constant-name><constant-value>200</constant-value></constant>
+  <!-- 領域略称名の最大文字数 -->
+  <constant><constant-name>RYOIKI_NAME_RYAKU_NUM</constant-name><constant-value>8</constant-value></constant>
+  <!-- 応募領域の研究概要の最大文字数 -->
+  <constant><constant-name>KENKYU_GAIYOU_NUM</constant-name><constant-value>400</constant-value></constant>
+  <!-- 準備研究・事前調査の状況-その他の最大文字数 -->
+  <constant><constant-name>JIZENCHOUSA_SONOTA_NUM</constant-name><constant-value>20</constant-value></constant>
+  <!-- 過去の特定領域の応募状況の最大文字数 -->
+  <constant><constant-name>KAKO_OUBOJYOUKYOU_NUM</constant-name><constant-value>100</constant-value></constant>
+  <!-- 最終年度前年度にあたる領域番号の桁数  -->
+  <constant><constant-name>ZENNENDO_OUBO_NO_NUM</constant-name><constant-value>3</constant-value></constant>
+  <!-- 関連分野（細目番号）の桁数 -->
+  <constant><constant-name>BUNKASAIMOKU_CD_NUM</constant-name><constant-value>4</constant-value></constant>
+  <!-- 関連分野（分野）の最大文字数 -->
+  <constant><constant-name>BUNYA_NAME_NUM</constant-name><constant-value>50</constant-value></constant>
+  <!-- 関連分野（分科）の最大文字数 -->
+  <constant><constant-name>BUNKA_NAME_NUM</constant-name><constant-value>50</constant-value></constant>
+  <!-- 関連分野（細目）の最大文字数 -->
+  <constant><constant-name>SAIMOKU_NAME_NUM</constant-name><constant-value>50</constant-value></constant>
+  <!-- 関連分野の研究者（現在の専門）の最大文字数  -->
+  <constant><constant-name>KANREN_SENMON_NUM</constant-name><constant-value>20</constant-value></constant>
+  
+<!-- 判別 -->
+  <!-- TODO -->
+ </global>
+
+  <formset>
+   <!-- 領域計画書入力 -->
+ <form name="ryoikiGaiyoForm">
+ 
+   <field depends="required" property="ryoikikeikakushoInfo.kiboubumonCd" page="2">
+     <arg0 key="審査希望部門（系等）" resource="false"/>
+   </field>
+
+   <field depends="required" property="ryoikikeikakushoInfo.ryoikiName" page="2">
+     <arg0 key="応募領域名" resource="false"/>
+   </field>
+   <field depends="maxlength" property="ryoikikeikakushoInfo.ryoikiName" page="0">
+     <arg0 key="応募領域名" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${RYOIKI_NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="required" property="ryoikikeikakushoInfo.ryoikiNameEigo" page="2">
+     <arg0 key="応募領域名（英訳名）" resource="false"/>
+   </field>
+   <field depends="mask_roma" property="ryoikikeikakushoInfo.ryoikiNameEigo" page="0">
+     <arg0 key="応募領域名（英訳名）" resource="false"/>
+   </field>
+   
+   <field depends="required" property="ryoikikeikakushoInfo.ryoikiNameRyaku" page="2">
+     <arg0 key="領域略称名" resource="false"/>
+   </field>
+   <field depends="maxlength" property="ryoikikeikakushoInfo.ryoikiNameRyaku" page="0">
+     <arg0 key="領域略称名" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${RYOIKI_NAME_RYAKU_NUM}</var-value>
+     </var>
+   </field>
+
+   <field depends="maxlength" property="ryoikikeikakushoInfo.bukyokuName" page="0">
+     <arg0 key="部局名" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${BUKYOKU_NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="validateIf,required" property="ryoikikeikakushoInfo.bukyokuName" page="2">
+     <arg0 key="部局名" resource="false"/>
+        <var>
+          <var-name>field[0]</var-name>
+          <var-value>ryoikikeikakushoInfo.bukyokuCd</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[0]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[0]</var-name>
+          <var-value>709</var-value>
+        </var>          
+        <var>
+          <var-name>field[1]</var-name>
+          <var-value>ryoikikeikakushoInfo.bukyokuCd</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[1]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[1]</var-name>
+          <var-value>875</var-value>
+        </var>          
+        <var>
+          <var-name>field[2]</var-name>
+          <var-value>ryoikikeikakushoInfo.bukyokuCd</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[2]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[2]</var-name>
+          <var-value>899</var-value>
+        </var>          
+        <var>
+          <var-name>field[3]</var-name>
+          <var-value>ryoikikeikakushoInfo.bukyokuCd</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[3]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[3]</var-name>
+          <var-value>901</var-value>
+        </var>          
+        <var>
+          <var-name>field[4]</var-name>
+          <var-value>ryoikikeikakushoInfo.bukyokuCd</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[4]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[4]</var-name>
+          <var-value>903</var-value>
+        </var>          
+        <var>
+          <var-name>field[5]</var-name>
+          <var-value>ryoikikeikakushoInfo.bukyokuCd</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[5]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[5]</var-name>
+          <var-value>913</var-value>
+        </var>
+        <var>
+          <var-name>field[6]</var-name>
+          <var-value>ryoikikeikakushoInfo.bukyokuCd</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[6]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[6]</var-name>
+          <var-value>999</var-value>
+        </var>
+        <var>
+          <var-name>fieldJoin</var-name>
+          <var-value>OR</var-value>
+        </var>          
+   </field>
+
+   <field depends="maxlength" property="ryoikikeikakushoInfo.shokushuNameKanji" page="0">
+     <arg0 key="職" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${JOB_NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="validateIf,required" property="ryoikikeikakushoInfo.shokushuNameKanji" page="2">
+     <arg0 key="職" resource="false"/>
+        <var>
+          <var-name>field[0]</var-name>
+          <var-value>ryoikikeikakushoInfo.shokushuCd</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[0]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[0]</var-name>
+          <var-value>25</var-value>
+        </var>          
+   </field>
+
+   <field depends="required" property="ryoikikeikakushoInfo.kenkyuGaiyou" page="2">
+     <arg0 key="応募領域の研究概要" resource="false"/>
+   </field>
+   
+   <field depends="required" property="ryoikikeikakushoInfo.jizenchousaFlg" page="2">
+     <arg0 key="準備研究・事前調査の状況" resource="false"/>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.jizenchousaSonota" page="0">
+     <arg0 key="準備研究・事前調査の状況（その他）" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${JIZENCHOUSA_SONOTA_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="validateIf,required" property="ryoikikeikakushoInfo.jizenchousaSonota" page="0">
+     <arg0 key="準備研究・事前調査の状況（その他）" resource="false"/>
+        <var>
+          <var-name>field[0]</var-name>
+          <var-value>ryoikikeikakushoInfo.jizenchousaFlg</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[0]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[0]</var-name>
+          <var-value>3</var-value>
+        </var>          
+   </field>
+   
+   <field depends="required" property="ryoikikeikakushoInfo.zennendoOuboFlg" page="2">
+     <arg0 key="研究領域最終年度前年度の応募の有無" resource="false"/>
+   </field>
+   
+   <field depends="length" property="ryoikikeikakushoInfo.zennendoOuboNo" page="0">
+     <arg0 key="最終年度前年度にあたる領域番号" resource="false"/>
+     <arg1 key="${var:length}" name="length" resource="false"/>
+     <var>
+       <var-name>length</var-name>
+       <var-value>${ZENNENDO_OUBO_NO_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="validateIf,required" property="ryoikikeikakushoInfo.zennendoOuboNo" page="0">
+     <arg0 key="最終年度前年度にあたる領域番号" resource="false"/>
+        <var>
+          <var-name>field[0]</var-name>
+          <var-value>ryoikikeikakushoInfo.zennendoOuboFlg</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[0]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[0]</var-name>
+          <var-value>1</var-value>
+        </var>          
+   </field>
+   
+   <field depends="required" property="ryoikikeikakushoInfo.bunkasaimokuCd1" page="2">
+     <arg0 key="関連分野（細目番号）1" resource="false"/>
+   </field>
+   
+   <field depends="numeric,length,maxValue" property="ryoikikeikakushoInfo.bunkasaimokuCd1" page="0">
+     <msg key="errors.5058" name="maxValue" resource="false"/>
+     <arg0 key="関連分野（細目番号）1" resource="false"/>
+     <arg1 key="${var:length}" name="length" resource="false"/>
+     <var>
+       <var-name>length</var-name>
+       <var-value>${BUNKASAIMOKU_CD_NUM}</var-value>
+     </var>
+     <var>
+       <var-name>maxValue</var-name>
+       <var-value>8999</var-value>
+    </var>
+   </field>
+   
+   <field depends="numeric,length,maxValue" property="ryoikikeikakushoInfo.bunkasaimokuCd2" page="0">
+     <msg key="errors.5058" name="maxValue" resource="false"/>
+     <arg0 key="関連分野（細目番号）2" resource="false"/>
+     <arg1 key="${var:length}" name="length" resource="false"/>
+     <var>
+       <var-name>length</var-name>
+       <var-value>${BUNKASAIMOKU_CD_NUM}</var-value>
+     </var>
+     <var>
+       <var-name>maxValue</var-name>
+       <var-value>8999</var-value>
+    </var>
+   </field>
+ 
+   <field depends="required" property="ryoikikeikakushoInfo.kanrenbunyaBunruiNo" page="2">
+     <arg0 key="関連分野１５分類" resource="false"/>
+   </field>
+   
+   <field depends="maxlengthb,mask" property="ryoikikeikakushoInfo.daihyouZip" page="0">
+     <arg0 key="領域代表者（郵便番号）" resource="false"/>
+     <arg1 key="${var:maxlengthb}" name="maxlengthb" resource="false"/>
+     <msg name="mask" key="errors.mask_zip" />
+     <var>
+       <var-name>maxlengthb</var-name>
+       <var-value>${ZIP_NUM}</var-value>
+     </var>
+     <var>
+      <var-name>mask</var-name>
+      <var-value>${zip.mask}</var-value>
+     </var>     
+   </field>
+   
+   <field depends="required" property="ryoikikeikakushoInfo.daihyouZip" page="2">
+     <arg0 key="領域代表者（郵便番号）" resource="false"/>
+   </field>
+
+   <field depends="maxlengthb" property="ryoikikeikakushoInfo.daihyouAddress" page="0">
+     <arg0 key="領域代表者（住所）" resource="false"/>
+     <arg1 key="${var:maxlengthb}" name="maxlengthb" resource="false"/>
+     <var>
+       <var-name>maxlengthb</var-name>
+       <var-value>${ADDRESS_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="required" property="ryoikikeikakushoInfo.daihyouAddress" page="2">
+     <arg0 key="領域代表者（住所）" resource="false"/>
+   </field> 
+
+   <field depends="maxlengthb" property="ryoikikeikakushoInfo.daihyouTel" page="0">
+     <arg0 key="領域代表者（電話）" resource="false"/>
+     <arg1 key="${var:maxlengthb}" name="maxlengthb" resource="false"/>
+     <var>
+       <var-name>maxlengthb</var-name>
+       <var-value>${TEL_NUM}</var-value>
+     </var>
+   </field>
+   <field depends="required" property="ryoikikeikakushoInfo.daihyouTel" page="2">
+     <arg0 key="領域代表者（電話）" resource="false"/>
+   </field> 
+
+   <field depends="maxlengthb" property="ryoikikeikakushoInfo.daihyouFax" page="0">
+     <arg0 key="領域代表者（FAX）" resource="false"/>
+     <arg1 key="${var:maxlengthb}" name="maxlengthb" resource="false"/>
+     <var>
+       <var-name>maxlengthb</var-name>
+       <var-value>${FAX_NUM}</var-value>
+     </var>
+   </field>
+   <field depends="required" property="ryoikikeikakushoInfo.daihyouFax" page="2">
+     <arg0 key="領域代表者（FAX）" resource="false"/>
+   </field> 
+
+   <field depends="email,maxlength" property="ryoikikeikakushoInfo.daihyouEmail" page="0">
+     <arg0 key="領域代表者（メールアドレス）" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${MAIL_NUM}</var-value>
+     </var>
+   </field>
+   <field depends="required" property="ryoikikeikakushoInfo.daihyouEmail" page="2">
+     <arg0 key="領域代表者（メールアドレス）" resource="false"/>
+   </field>
+   
+   <field depends="required" property="ryoikikeikakushoInfo.jimutantoNameKanaSei" page="2">
+     <arg0 key="事務担当者フリガナ-姓" resource="false"/>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.jimutantoNameKanaSei" page="0">
+     <arg0 key="事務担当者フリガナ-姓" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="required" property="ryoikikeikakushoInfo.jimutantoNameKanaMei" page="2">
+     <arg0 key="事務担当者フリガナ-名" resource="false"/>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.jimutantoNameKanaMei" page="0">
+     <arg0 key="事務担当者フリガナ-名" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="required" property="ryoikikeikakushoInfo.jimutantoNameKanjiSei" page="2">
+     <arg0 key="事務担当者氏名（漢字等-姓）" resource="false"/>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.jimutantoNameKanjiSei" page="0">
+     <arg0 key="事務担当者氏名（漢字等-姓）" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="required" property="ryoikikeikakushoInfo.jimutantoNameKanjiMei" page="2">
+     <arg0 key="事務担当者氏名（漢字等-名）" resource="false"/>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.jimutantoNameKanjiMei" page="0">
+     <arg0 key="事務担当者氏名（漢字等-名）" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="required" property="ryoikikeikakushoInfo.jimutantoShozokuCd" page="2">
+     <arg0 key="事務担当者所属研究機関番号" resource="false"/>
+   </field>
+   
+   <field depends="length" property="ryoikikeikakushoInfo.jimutantoShozokuCd" page="0">
+     <arg0 key="事務担当者所属研究機関番号" resource="false"/>
+     <arg1 key="${var:length}" name="length" resource="false"/>
+     <var>
+       <var-name>length</var-name>
+       <var-value>${SHOZOKU_CD_NUM}</var-value>
+     </var>
+   </field>
+
+   <field depends="required" property="ryoikikeikakushoInfo.jimutantoBukyokuCd" page="2">
+     <arg0 key="事務担当者部局番号" resource="false"/>
+   </field>
+   
+   <field depends="length" property="ryoikikeikakushoInfo.jimutantoBukyokuCd" page="0">
+     <arg0 key="事務担当者部局番号" resource="false"/>
+     <arg1 key="${var:length}" name="length" resource="false"/>
+     <var>
+       <var-name>length</var-name>
+       <var-value>${BUKYOKU_CD_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.jimutantoBukyokuName" page="0">
+     <arg0 key="事務担当者部局名" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${BUKYOKU_NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="validateIf,required" property="ryoikikeikakushoInfo.jimutantoBukyokuName" page="2">
+     <arg0 key="事務担当者部局名" resource="false"/>
+        <var>
+          <var-name>field[0]</var-name>
+          <var-value>ryoikikeikakushoInfo.jimutantoBukyokuCd</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[0]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[0]</var-name>
+          <var-value>709</var-value>
+        </var>          
+        <var>
+          <var-name>field[1]</var-name>
+          <var-value>ryoikikeikakushoInfo.jimutantoBukyokuCd</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[1]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[1]</var-name>
+          <var-value>875</var-value>
+        </var>          
+        <var>
+          <var-name>field[2]</var-name>
+          <var-value>ryoikikeikakushoInfo.jimutantoBukyokuCd</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[2]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[2]</var-name>
+          <var-value>899</var-value>
+        </var>          
+        <var>
+          <var-name>field[3]</var-name>
+          <var-value>ryoikikeikakushoInfo.jimutantoBukyokuCd</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[3]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[3]</var-name>
+          <var-value>903</var-value>
+        </var>          
+        <var>
+          <var-name>field[4]</var-name>
+          <var-value>ryoikikeikakushoInfo.jimutantoBukyokuCd</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[4]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[4]</var-name>
+          <var-value>913</var-value>
+        </var>          
+        <var>
+          <var-name>field[5]</var-name>
+          <var-value>ryoikikeikakushoInfo.jimutantoBukyokuCd</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[5]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[5]</var-name>
+          <var-value>999</var-value>
+        </var>          
+        <var>
+          <var-name>field[6]</var-name>
+          <var-value>ryoikikeikakushoInfo.jimutantoBukyokuCd</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[6]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[6]</var-name>
+          <var-value>901</var-value>
+        </var>          
+        <var>
+          <var-name>fieldJoin</var-name>
+          <var-value>OR</var-value>
+        </var>          
+   </field>
+   
+   <field depends="required" property="ryoikikeikakushoInfo.jimutantoShokushuCd" page="2">
+     <arg0 key="事務担当者職名番号" resource="false"/>
+   </field>
+   
+   <field depends="length" property="ryoikikeikakushoInfo.jimutantoShokushuCd" page="0">
+     <arg0 key="事務担当者職名番号" resource="false"/>
+     <arg1 key="${var:length}" name="length" resource="false"/>
+     <var>
+       <var-name>length</var-name>
+       <var-value>${SHOKUSHU_CD_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.jimutantoShokushuNameKanji" page="0">
+     <arg0 key="事務担当者職名（和文）" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${JOB_NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="validateIf,required" property="ryoikikeikakushoInfo.jimutantoShokushuNameKanji" page="2">
+     <arg0 key="事務担当者職名（和文）" resource="false"/>
+        <var>
+          <var-name>field[0]</var-name>
+          <var-value>ryoikikeikakushoInfo.jimutantoShokushuCd</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[0]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[0]</var-name>
+          <var-value>25</var-value>
+        </var>          
+   </field>
+
+   <field depends="maxlengthb,mask" property="ryoikikeikakushoInfo.jimutantoZip" page="0">
+     <arg0 key="事務担当者（郵便番号）" resource="false"/>
+     <arg1 key="${var:maxlengthb}" name="maxlengthb" resource="false"/>
+     <msg name="mask" key="errors.mask_zip" />
+     <var>
+       <var-name>maxlengthb</var-name>
+       <var-value>${ZIP_NUM}</var-value>
+     </var>
+     <var>
+      <var-name>mask</var-name>
+      <var-value>${zip.mask}</var-value>
+     </var>     
+   </field>
+   
+   <field depends="required" property="ryoikikeikakushoInfo.jimutantoZip" page="2">
+     <arg0 key="事務担当者（郵便番号）" resource="false"/>
+   </field>
+
+   <field depends="maxlengthb" property="ryoikikeikakushoInfo.jimutantoAddress" page="0">
+     <arg0 key="事務担当者（住所）" resource="false"/>
+     <arg1 key="${var:maxlengthb}" name="maxlengthb" resource="false"/>
+     <var>
+       <var-name>maxlengthb</var-name>
+       <var-value>${ADDRESS_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="required" property="ryoikikeikakushoInfo.jimutantoAddress" page="2">
+     <arg0 key="事務担当者（住所）" resource="false"/>
+   </field> 
+
+   <field depends="maxlengthb" property="ryoikikeikakushoInfo.jimutantoTel" page="0">
+     <arg0 key="事務担当者（電話）" resource="false"/>
+     <arg1 key="${var:maxlengthb}" name="maxlengthb" resource="false"/>
+     <var>
+       <var-name>maxlengthb</var-name>
+       <var-value>${TEL_NUM}</var-value>
+     </var>
+   </field>
+   <field depends="required" property="ryoikikeikakushoInfo.jimutantoTel" page="2">
+     <arg0 key="事務担当者（電話）" resource="false"/>
+   </field> 
+
+   <field depends="maxlengthb" property="ryoikikeikakushoInfo.jimutantoFax" page="0">
+     <arg0 key="事務担当者（FAX）" resource="false"/>
+     <arg1 key="${var:maxlengthb}" name="maxlengthb" resource="false"/>
+     <var>
+       <var-name>maxlengthb</var-name>
+       <var-value>${FAX_NUM}</var-value>
+     </var>
+   </field>
+   <field depends="required" property="ryoikikeikakushoInfo.jimutantoFax" page="2">
+     <arg0 key="事務担当者（FAX）" resource="false"/>
+   </field> 
+
+   <field depends="email,maxlength" property="ryoikikeikakushoInfo.jimutantoEmail" page="0">
+     <arg0 key="事務担当者（メールアドレス）" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${MAIL_NUM}</var-value>
+     </var>
+   </field>
+   <field depends="required" property="ryoikikeikakushoInfo.jimutantoEmail" page="2">
+     <arg0 key="事務担当者（メールアドレス）" resource="false"/>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.kanrenShimei1" page="0">
+     <arg0 key="関連分野の研究者（氏名）1" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.kanrenKikan1" page="0">
+     <arg0 key="関連分野の研究者（所属研究機関）1" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${SHOZOKU_NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.kanrenBukyoku1" page="0">
+     <arg0 key="関連分野の研究者（部局）1" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${BUKYOKU_NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.kanrenShoku1" page="0">
+     <arg0 key="関連分野の研究者（職）1" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${JOB_NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.kanrenSenmon1" page="0">
+     <arg0 key="関連分野の研究者（現在の専門）1" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${KANREN_SENMON_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlengthb" property="ryoikikeikakushoInfo.kanrenTel1" page="0">
+     <arg0 key="関連分野の研究者（勤務先電話）1" resource="false"/>
+     <arg1 key="${var:maxlengthb}" name="maxlengthb" resource="false"/>
+     <var>
+       <var-name>maxlengthb</var-name>
+       <var-value>${TEL_NUM}</var-value>
+     </var>
+   </field> 
+   
+   <field depends="maxlengthb" property="ryoikikeikakushoInfo.kanrenJitakutel1" page="0">
+     <arg0 key="関連分野の研究者（自宅電話）1" resource="false"/>
+     <arg1 key="${var:maxlengthb}" name="maxlengthb" resource="false"/>
+     <var>
+       <var-name>maxlengthb</var-name>
+       <var-value>${TEL_NUM}</var-value>
+     </var>
+   </field>  
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.kanrenShimei2" page="0">
+     <arg0 key="関連分野の研究者（氏名）2" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.kanrenKikan2" page="0">
+     <arg0 key="関連分野の研究者（所属研究機関）2" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${SHOZOKU_NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.kanrenBukyoku2" page="0">
+     <arg0 key="関連分野の研究者（部局）2" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${BUKYOKU_NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.kanrenShoku2" page="0">
+     <arg0 key="関連分野の研究者（職）2" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${JOB_NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.kanrenSenmon2" page="0">
+     <arg0 key="関連分野の研究者（現在の専門）2" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${KANREN_SENMON_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlengthb" property="ryoikikeikakushoInfo.kanrenTel2" page="0">
+     <arg0 key="関連分野の研究者（勤務先電話）2" resource="false"/>
+     <arg1 key="${var:maxlengthb}" name="maxlengthb" resource="false"/>
+     <var>
+       <var-name>maxlengthb</var-name>
+       <var-value>${TEL_NUM}</var-value>
+     </var>
+   </field> 
+   
+   <field depends="maxlengthb" property="ryoikikeikakushoInfo.kanrenJitakutel2" page="0">
+     <arg0 key="関連分野の研究者（自宅電話）2" resource="false"/>
+     <arg1 key="${var:maxlengthb}" name="maxlengthb" resource="false"/>
+     <var>
+       <var-name>maxlengthb</var-name>
+       <var-value>${TEL_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.kanrenShimei3" page="0">
+     <arg0 key="関連分野の研究者（氏名）3" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.kanrenKikan3" page="0">
+     <arg0 key="関連分野の研究者（所属研究機関）3" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${SHOZOKU_NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.kanrenBukyoku3" page="0">
+     <arg0 key="関連分野の研究者（部局）3" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${BUKYOKU_NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.kanrenShoku3" page="0">
+     <arg0 key="関連分野の研究者（職）3" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${JOB_NAME_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlength" property="ryoikikeikakushoInfo.kanrenSenmon3" page="0">
+     <arg0 key="関連分野の研究者（現在の専門）3" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${KANREN_SENMON_NUM}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlengthb" property="ryoikikeikakushoInfo.kanrenTel3" page="0">
+     <arg0 key="関連分野の研究者（勤務先電話）3" resource="false"/>
+     <arg1 key="${var:maxlengthb}" name="maxlengthb" resource="false"/>
+     <var>
+       <var-name>maxlengthb</var-name>
+       <var-value>${TEL_NUM}</var-value>
+     </var>
+   </field> 
+   
+   <field depends="maxlengthb" property="ryoikikeikakushoInfo.kanrenJitakutel3" page="0">
+     <arg0 key="関連分野の研究者（自宅電話）3" resource="false"/>
+     <arg1 key="${var:maxlengthb}" name="maxlengthb" resource="false"/>
+     <var>
+       <var-name>maxlengthb</var-name>
+       <var-value>${TEL_NUM}</var-value>
+     </var>
+   </field> 
+
+   <field depends="maxlength,extension,maxfilesize" property="uploadFile" page="0">
+     <arg0 key="応募内容ファイル" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <arg1 key="${var:extension}" name="extension" resource="false"/>
+     <arg1 key="${var:maxfilesize}" name="maxfilesize" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${FILE_NAME_NUM}</var-value>
+     </var>
+     <var>
+       <var-name>extension</var-name>
+       <var-value>${FILE_EXTENSION}</var-value>
+     </var>
+     <var>
+       <var-name>maxfilesize</var-name>
+       <var-value>${FILE_MAX_SIZE}</var-value>
+     </var>
+     <msg name="extension" key="errors.extensionfixed"/>
+   </field>
+<!-- 2006/08/25 dyh delete 原因：仕様変更
+   <field depends="required" property="ryoikikeikakushoInfo.kenkyuSyokei1" page="2">
+     <arg0 key="研究経費小計 1年目" resource="false"/>
+   </field> 
+   <field depends="numeric,maxValue" property="ryoikikeikakushoInfo.kenkyuSyokei1" page="0">
+     <arg0 key="研究経費小計 1年目" resource="false"/>
+     <arg1 key="${var:maxValue}" name="maxValue" resource="false"/>
+     <var>
+       <var-name>maxValue</var-name>
+       <var-value>${KEIHI_MAX}</var-value>
+     </var>
+   </field>
+-->
+   <field depends="required" property="ryoikikeikakushoInfo.kenkyuSyokei2" page="2">
+     <arg0 key="研究経費小計 2年目" resource="false"/>
+   </field> 
+   <field depends="numeric,maxValue" property="ryoikikeikakushoInfo.kenkyuSyokei2" page="0">
+     <arg0 key="研究経費小計 2年目" resource="false"/>
+     <arg1 key="${var:maxValue}" name="maxValue" resource="false"/>
+     <var>
+       <var-name>maxValue</var-name>
+       <var-value>${KEIHI_MAX}</var-value>
+     </var>
+   </field>
+   
+   <field depends="required" property="ryoikikeikakushoInfo.kenkyuSyokei3" page="2">
+     <arg0 key="研究経費小計 3年目" resource="false"/>
+   </field> 
+   <field depends="numeric,maxValue" property="ryoikikeikakushoInfo.kenkyuSyokei3" page="0">
+     <arg0 key="研究経費小計 3年目" resource="false"/>
+     <arg1 key="${var:maxValue}" name="maxValue" resource="false"/>
+     <var>
+       <var-name>maxValue</var-name>
+       <var-value>${KEIHI_MAX}</var-value>
+     </var>
+   </field>
+   
+   <field depends="required" property="ryoikikeikakushoInfo.kenkyuSyokei4" page="2">
+     <arg0 key="研究経費小計 4年目" resource="false"/>
+   </field> 
+   <field depends="numeric,maxValue" property="ryoikikeikakushoInfo.kenkyuSyokei4" page="0">
+     <arg0 key="研究経費小計 4年目" resource="false"/>
+     <arg1 key="${var:maxValue}" name="maxValue" resource="false"/>
+     <var>
+       <var-name>maxValue</var-name>
+       <var-value>${KEIHI_MAX}</var-value>
+     </var>
+   </field>
+   
+   <field depends="required" property="ryoikikeikakushoInfo.kenkyuSyokei5" page="2">
+     <arg0 key="研究経費小計 5年目" resource="false"/>
+   </field> 
+   <field depends="numeric,maxValue" property="ryoikikeikakushoInfo.kenkyuSyokei5" page="0">
+     <arg0 key="研究経費小計 5年目" resource="false"/>
+     <arg1 key="${var:maxValue}" name="maxValue" resource="false"/>
+     <var>
+       <var-name>maxValue</var-name>
+       <var-value>${KEIHI_MAX}</var-value>
+     </var>
+   </field>
+   
+   <field depends="required" property="ryoikikeikakushoInfo.kenkyuSyokei6" page="2">
+     <arg0 key="研究経費小計 6年目" resource="false"/>
+   </field> 
+   <field depends="numeric,maxValue" property="ryoikikeikakushoInfo.kenkyuSyokei6" page="0">
+     <arg0 key="研究経費小計 6年目" resource="false"/>
+     <arg1 key="${var:maxValue}" name="maxValue" resource="false"/>
+     <var>
+       <var-name>maxValue</var-name>
+       <var-value>${KEIHI_MAX}</var-value>
+     </var>
+   </field>
+
+<!-- 2006/08/25 dyh delete 原因：仕様変更
+   <field depends="maxlength" property="ryoikikeikakushoInfo.kenkyuUtiwake1" page="0">
+     <arg0 key="研究経費内訳 1年目" resource="false"/>
+     <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+     <var>
+       <var-name>maxlength</var-name>
+       <var-value>${KEIHI_UTIWAKE_MAX}</var-value>
+     </var>
+   </field>
+-->
+
+   <field depends="maxlengthb" property="ryoikikeikakushoInfo.kenkyuUtiwake2" page="0">
+     <arg0 key="研究経費内訳 2年目" resource="false"/>
+     <arg1 key="${var:maxlengthb}" name="maxlengthb" resource="false"/>
+     <var>
+       <var-name>maxlengthb</var-name>
+       <var-value>${KEIHI_UTIWAKE_MAX}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlengthb" property="ryoikikeikakushoInfo.kenkyuUtiwake3" page="0">
+     <arg0 key="研究経費内訳 3年目" resource="false"/>
+     <arg1 key="${var:maxlengthb}" name="maxlengthb" resource="false"/>
+     <var>
+       <var-name>maxlengthb</var-name>
+       <var-value>${KEIHI_UTIWAKE_MAX}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlengthb" property="ryoikikeikakushoInfo.kenkyuUtiwake4" page="0">
+     <arg0 key="研究経費内訳 4年目" resource="false"/>
+     <arg1 key="${var:maxlengthb}" name="maxlengthb" resource="false"/>
+     <var>
+       <var-name>maxlengthb</var-name>
+       <var-value>${KEIHI_UTIWAKE_MAX}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlengthb" property="ryoikikeikakushoInfo.kenkyuUtiwake5" page="0">
+     <arg0 key="研究経費内訳 5年目" resource="false"/>
+     <arg1 key="${var:maxlengthb}" name="maxlengthb" resource="false"/>
+     <var>
+       <var-name>maxlengthb</var-name>
+       <var-value>${KEIHI_UTIWAKE_MAX}</var-value>
+     </var>
+   </field>
+   
+   <field depends="maxlengthb" property="ryoikikeikakushoInfo.kenkyuUtiwake6" page="0">
+     <arg0 key="研究経費内訳 6年目" resource="false"/>
+     <arg1 key="${var:maxlengthb}" name="maxlengthb" resource="false"/>
+     <var>
+       <var-name>maxlengthb</var-name>
+       <var-value>${KEIHI_UTIWAKE_MAX}</var-value>
+     </var>
+   </field>
+   
+ </form>
+  </formset>
+</form-validation>

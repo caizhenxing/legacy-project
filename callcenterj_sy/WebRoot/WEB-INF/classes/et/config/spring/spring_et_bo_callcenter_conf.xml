@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<beans>
+	<!--  action begin -->
+
+	<!--呼叫中心日志-->
+	<bean name="/callcenter/conf"
+		class="et.bo.callcenter.bo.conf.action.ConfAction"
+		scope="singleton">
+		<property name="cs">
+			<ref bean="ConfService" />
+		</property>
+	</bean>
+
+	<!--	  service begin -->
+	<bean id="ConfService"
+		class="et.bo.callcenter.bo.conf.impl.ConfImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+
+</beans>

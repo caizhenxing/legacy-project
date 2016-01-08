@@ -1,0 +1,3987 @@
+Found a 85 line (223 tokens) duplication in the following files: 
+Starting at line 32 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeGrantTag.java
+Starting at line 71 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeControlTag.java
+
+public class TreeControlTag extends TagSupport {
+
+
+    /**
+     * The default directory name for icon images.
+     */
+    static final String DEFAULT_IMAGES = "image/tree/depart/";
+    
+    static final String OPEN_IMG = "folder_open.gif";
+    
+    static final String ClOSE_IMG = "folder_close.gif";
+    
+    static final String NONE_IMG = "pic_dept.gif";
+
+    /**
+     * The name of the directory containing the images for our icons,
+     * relative to the page including this tag.
+     */
+    protected String images = DEFAULT_IMAGES;
+
+    public String getImages() {
+    	if(this.images.indexOf("/")!=0)
+    		this.images = "/"+Constants.getProperty("publicResourceServer")+"/"+images;
+        return (this.images);
+    }
+
+    public void setImages(String images) {
+    	this.images = "/"+Constants.getProperty("publicResourceServer")+"/"+images;
+    }
+   
+   
+
+
+    /**
+     * The CSS style <code>class</code> to be applied to the entire tree.
+     */
+    protected String style = null;
+
+    public String getStyle() {
+        return (this.style);
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
+
+
+
+
+
+    /**
+     * The name of the attribute (in the specified scope) under which our
+     * <code>TreeControl</code> instance is stored.
+     */
+    protected String tree = null;
+
+    public String getTree() {
+        return (this.tree);
+    }
+
+    public void setTree(String tree) {
+        this.tree = tree;
+    }
+
+
+    // --------------------------------------------------------- Public Methods
+    private String script = "<script type=\"text/javascript\">"+
+    "function changeExp(id)"+
+    "{"+
+    "	var img=document.getElementById('img_'+id);"+
+    "	var tr=document.getElementById('tr_'+id);"+
+    "	if(tr.style.display == 'block')"+
+    "	{"+
+    "		tr.style.display = 'none';"+
+    "		img.src = '"+this.getImages()+ClOSE_IMG+"';"+
+    "		img.title = '点击此处展开节点';"+
+    "	}else"+
+    "	{"+
+    "		tr.style.display = 'block';"+
+    "		img.src = '"+this.getImages()+OPEN_IMG+"';"+
+    "		img.title = '点击此处关闭节点';"+
+    "	"+
+    "	}"+
+    "}"+
+=====================================================================
+Found a 24 line (142 tokens) duplication in the following files: 
+Starting at line 123 of D:\newworkplace\struts2\src\base\zyf\common\ftp\impl\FtpServiceImpl.java
+Starting at line 156 of D:\newworkplace\struts2\src\base\zyf\common\ftp\impl\FtpServiceImpl.java
+
+	public void  download(String namePath,OutputStream os) {
+		// TODO Auto-generated method stub
+		FTPClient ftp=new FTPClient();
+		try {
+			  int i=url.lastIndexOf(":");
+			  if(i==-1)
+			  ftp.connect(url);
+			  else
+			  {
+				  String com=url.substring(i+1,url.length());
+				  ftp.connect(url.substring(0,i),Integer.parseInt(com));
+			  }
+			  ftp.login(userName,passWord);
+			  int o=namePath.lastIndexOf("/");
+			  String name=null;
+			  if(o!=-1)
+			  {
+			  String path=namePath.substring(0,o);
+			  name=namePath.substring(o+1,namePath.length());
+			  changedir(path,ftp);
+			  }
+			  else
+				  name=namePath;
+			  ftp.retrieveFile(name,os);
+=====================================================================
+Found a 30 line (137 tokens) duplication in the following files: 
+Starting at line 25 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchMemberTag.java
+Starting at line 25 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchDeptTag.java
+
+public class SearchDeptTag extends TagSupport {
+
+	private String  code;
+	private String  name;
+	private String  valueDefault;
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getValueDefault() {
+		return valueDefault;
+	}
+	public void setValueDefault(String valueDefault) {
+		this.valueDefault = valueDefault;
+	}
+	public int doEndTag() throws JspException {
+		// TODO Auto-generated method stub
+		JspWriter out = pageContext.getOut();
+		Map conditions = (Map)ExpressionEvaluationUtils.evaluate("valueDefault","${conditions}", pageContext);
+		String codeDefault=(String)conditions.get(code);
+		String nameDefault=(String)conditions.get(name);
+=====================================================================
+Found a 37 line (128 tokens) duplication in the following files: 
+Starting at line 12 of D:\newworkplace\struts2\src\base\zyf\tools\FileBean.java
+Starting at line 11 of D:\newworkplace\struts2\src\base\zyf\common\util\file\FileBean.java
+
+public class FileBean {
+
+	private String id=null;
+	private String name=null;
+	private String parentId=null;
+	private boolean isFolder;
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	public boolean isFolder() {
+		return isFolder;
+	}
+	public void setFolder(boolean isFolder) {
+		this.isFolder = isFolder;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getParentId() {
+		return parentId;
+	}
+	public void setParentId(String parentId) {
+		this.parentId = parentId;
+	}
+	public File getFile()
+	{
+		return new File(id);
+	}
+}
+=====================================================================
+Found a 30 line (112 tokens) duplication in the following files: 
+Starting at line 245 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeGrantTag.java
+Starting at line 233 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeControlTag.java
+
+    }
+
+
+    // ------------------------------------------------------ Protected Methods
+
+
+    /**
+     * Return the <code>TreeControl</code> instance for the tree control that
+     * we are rendering.
+     *
+     * @exception JspException if no TreeControl instance can be found
+     */
+    protected TreeViewI getTreeRoot() throws JspException {
+    	TreeViewI tvi;
+            tvi = (TreeViewI)pageContext.findAttribute(tree);
+        if (tvi == null)
+            tvi =
+            	(TreeViewI)pageContext.getAttribute(tree, PageContext.PAGE_SCOPE);
+        else if (tvi == null)
+            tvi =
+            	(TreeViewI)pageContext.getAttribute(tree, PageContext.REQUEST_SCOPE);
+        else if (tvi == null)
+            tvi =
+            	(TreeViewI)pageContext.getAttribute(tree, PageContext.SESSION_SCOPE);
+        else if (tvi == null)
+            tvi =
+            	(TreeViewI)pageContext.getAttribute(tree, PageContext.APPLICATION_SCOPE);
+        return tvi;
+
+    }
+=====================================================================
+Found a 19 line (104 tokens) duplication in the following files: 
+Starting at line 94 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\SearchJspfData.java
+Starting at line 111 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspData.java
+
+					st.append(MessageFormat.format(tr.toString(),new Object[]{im.getTag()}));
+				}
+			}
+			if(count==tdMax)
+			{
+				st.append(MessageFormat.format(tr.toString(),new Object[]{temp.toString()}));
+				count=0;
+				temp=new StringBuffer();
+			}
+		}
+		if(count!=0)
+		{
+			temp.append(SearchMeta.getNullTag());
+			st.append(MessageFormat.format(tr.toString(),new Object[]{temp.toString()}));
+			//st.append(MessageFormat.format(tr.toString(),new Object[]{temp.}));
+		}
+		return st.toString();
+	}
+	public void createFiles(String realPath)
+=====================================================================
+Found a 40 line (103 tokens) duplication in the following files: 
+Starting at line 85 of D:\newworkplace\struts2\src\com\cc\sys\db\SysModule.java
+Starting at line 45 of D:\newworkplace\struts2\src\com\cc\sys\db\SysDepartment.java
+
+	}
+
+
+	// Property accessors
+
+	
+
+	public String getRemarks() {
+		return this.remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
+	public String getParentId() {
+		return this.parentId;
+	}
+
+	public void setParentId(String parentId) {
+		this.parentId = parentId;
+	}
+
+	public String getTagShow() {
+		return this.tagShow;
+	}
+
+	public void setTagShow(String tagShow) {
+		this.tagShow = tagShow;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAdmin() {
+=====================================================================
+Found a 29 line (101 tokens) duplication in the following files: 
+Starting at line 16 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\SearchMeta.java
+Starting at line 18 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoMeta.java
+
+public class InfoMeta {
+
+	private static String enter="\r\n";
+	private static String tab="\t";
+	private static StringBuffer td=new StringBuffer();
+	/**
+	 * 
+	 * {0}->viewClass
+	 * {1}->inputClass
+	 * {2}->disPlayName
+	 * {3}->tag
+	 */
+	static
+	{
+		td.append(tab+tab);
+		td.append("<td {0}>{2}</td>");
+		td.append(enter);
+		td.append(tab+tab);
+		td.append("<td {1}>");
+		td.append(enter);
+		td.append("{3}");
+		td.append(enter);
+		td.append(tab+tab);
+		td.append("</td>");
+		td.append(enter);
+	}
+	
+	
+	public static final String dataType="document.getElementById(''{0}'').dataType = ''{1}'';";
+=====================================================================
+Found a 25 line (98 tokens) duplication in the following files: 
+Starting at line 161 of D:\newworkplace\struts2\src\com\cc\sys\db\SysModule.java
+Starting at line 142 of D:\newworkplace\struts2\src\com\cc\sys\db\SysDepartment.java
+
+	}
+
+	public int getWidth() {
+		int width = this.layer;
+		if(this.isExpanded())
+		{
+			List<SysModule> l = this.getChildren();
+			for(SysModule sm : l){
+				width = width>sm.getWidth() ? width : sm.getWidth();
+			}
+		}
+		return width;
+	}
+
+	private boolean isExpanded;
+	public boolean isExpanded() {
+		
+		return this.isExpanded;
+	}
+
+	public boolean isLast() {
+		return this.getChildren().size() == 0;
+	}
+
+	public void setAction(String string) {
+=====================================================================
+Found a 23 line (94 tokens) duplication in the following files: 
+Starting at line 46 of D:\newworkplace\struts2\src\base\zyf\tools\FileUtil.java
+Starting at line 75 of D:\newworkplace\struts2\src\base\zyf\tools\FileUtil.java
+
+			InputStream is=new FileInputStream(sf);
+			byte[] buffer=new byte[1024*10];
+			int len=is.available();
+			
+			while(0<len)
+			{
+				int count=is.read(buffer);
+				os.write(buffer);
+				size+=count;
+				len=is.available();
+			}
+			os.close();
+			is.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return size;
+	}
+	public long copy(String source,String target)
+=====================================================================
+Found a 19 line (89 tokens) duplication in the following files: 
+Starting at line 53 of D:\newworkplace\struts2\src\base\zyf\common\ftp\impl\FtpServiceImpl.java
+Starting at line 191 of D:\newworkplace\struts2\src\base\zyf\common\ftp\impl\FtpServiceImpl.java
+
+	public String changePath(String path) {
+		// TODO Auto-generated method stub
+		FTPClient ftp=new FTPClient();
+		try {
+			  int i=url.lastIndexOf(":");
+			  if(i==-1)
+			  ftp.connect(url);
+			  else
+			  {
+				  String com=url.substring(i+1,url.length());
+				  ftp.connect(url.substring(0,i),Integer.parseInt(com));
+				  
+			  }
+			  ftp.login(userName,passWord);
+			  changedir(path,ftp);
+			  
+			 
+			  //ftp.logout();
+			  ftp.disconnect();
+=====================================================================
+Found a 8 line (87 tokens) duplication in the following files: 
+Starting at line 233 of D:\newworkplace\struts2\src\base\zyf\common\mail\MailBean.java
+Starting at line 263 of D:\newworkplace\struts2\src\base\zyf\common\mail\MailBean.java
+
+	        if (part.isMimeType("multipart/*")) {    
+	            Multipart mp = (Multipart) part.getContent();    
+	            for (int i = 0; i < mp.getCount(); i++) {    
+	                BodyPart mpart = mp.getBodyPart(i);    
+	                String disposition = mpart.getDisposition();    
+	                if ((disposition != null)    
+	                        && ((disposition.equals(Part.ATTACHMENT)) || (disposition    
+	                                .equals(Part.INLINE)))) {    
+=====================================================================
+Found a 13 line (87 tokens) duplication in the following files: 
+Starting at line 111 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+Starting at line 183 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+
+		dc.add(Restrictions.isNotNull(asc));
+		List l= hibernateTemplate.findByCriteria(dc);
+		hibernateTemplate.deleteAll(l);
+		if(ids==null)
+			return;
+		for(int i=0;i<ids.length;i++)
+		{
+			CommonTableViewSet ctvs=new CommonTableViewSet();
+			
+			ctvs.setUserId(userId);
+			ctvs.setOrderNum(new Integer(i));
+			CommonTableView commonTableView=(CommonTableView)hibernateTemplate.load(CommonTableView.class,ids[i]);
+			ctvs.setCommonTableView(commonTableView);
+=====================================================================
+Found a 25 line (84 tokens) duplication in the following files: 
+Starting at line 18 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\SearchJspfData.java
+Starting at line 24 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspData.java
+
+public class InfoJspData {
+
+	private static String enter="\r\n";
+	private static String tab="\t";
+	private static StringBuffer tr=new StringBuffer();
+	/**
+	 * 
+	 * {0}->具体的td
+	 */
+	static
+	{
+		tr.append(tab+tab);
+		tr.append("<tr>");
+		tr.append(enter);
+		tr.append("{0}");
+		tr.append(enter);
+		tr.append(tab+tab);
+		tr.append("</tr>");
+		tr.append(enter);
+	}
+
+	
+	private String fileName;
+	private String absPath;
+	private String submit;
+=====================================================================
+Found a 13 line (81 tokens) duplication in the following files: 
+Starting at line 53 of D:\newworkplace\struts2\src\base\zyf\common\ftp\impl\FtpServiceImpl.java
+Starting at line 123 of D:\newworkplace\struts2\src\base\zyf\common\ftp\impl\FtpServiceImpl.java
+
+	public void removeFile(String namePath) {
+		// TODO Auto-generated method stub
+		FTPClient ftp=new FTPClient();
+		try {
+			  int i=url.lastIndexOf(":");
+			  if(i==-1)
+			  ftp.connect(url);
+			  else
+			  {
+				  String com=url.substring(i+1,url.length());
+				  ftp.connect(url.substring(0,i),Integer.parseInt(com));
+			  }
+			  ftp.login(userName,passWord);
+=====================================================================
+Found a 21 line (80 tokens) duplication in the following files: 
+Starting at line 143 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\AutoCreateSearchJspfByXml.java
+Starting at line 62 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspCreateByXml.java
+Starting at line 88 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspCreateByXml.java
+Starting at line 62 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\entry\EntryJspCreateByXml.java
+
+			EntryJspCreateByXml auto=(EntryJspCreateByXml)br.parse(new File(name));
+			this.files=auto.files;
+			this.realPath=auto.realPath;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see com.zyf.tools.auto.create.AutoCreateFile#readMetaData()
+	 */
+	protected void readMetaData() {
+		// TODO Auto-generated method stub
+		BeanReader br=new BeanReader();
+		br.getXMLIntrospector().setWrapCollectionsInElement(false);
+		try {
+			br.registerBeanClass(EntryJspMeta.class);
+=====================================================================
+Found a 15 line (78 tokens) duplication in the following files: 
+Starting at line 200 of D:\newworkplace\struts2\src\base\zyf\web\view\tag\ExtendComboTextTag.java
+Starting at line 72 of D:\newworkplace\struts2\src\base\zyf\web\view\tag\ExtendComboCompositeTag.java
+
+			c.add(buffer.toString());
+		}
+				
+		for (Iterator iter = c.iterator(); iter.hasNext(); ) {
+			String forEach = String.valueOf(iter.next());
+			javaScriptArrayContent.append("\"");
+			javaScriptArrayContent.append(forEach);
+			javaScriptArrayContent.append("\"");
+			if (iter.hasNext()) {
+				javaScriptArrayContent.append(", ");
+			}
+		}
+			
+		return javaScriptArrayContent.toString();
+	}
+=====================================================================
+Found a 17 line (77 tokens) duplication in the following files: 
+Starting at line 63 of D:\newworkplace\struts2\src\base\zyf\common\util\regex\AnalyseString.java
+Starting at line 109 of D:\newworkplace\struts2\src\base\zyf\common\util\regex\AnalyseString.java
+
+		StringBuffer key=new StringBuffer();
+		
+		
+		for(int i=0,size=keyList.length;i<size;i++)
+		{
+			if(i!=0)
+				key.append("|");
+			key.append(keyList[i]);
+			
+		
+		}
+		
+		PatternCompiler pc=new Perl5Compiler();
+
+		try {
+			Pattern pattern=pc.compile(key.toString());
+			PatternMatcher pm=new Perl5Matcher();
+=====================================================================
+Found a 25 line (76 tokens) duplication in the following files: 
+Starting at line 193 of D:\newworkplace\struts2\src\com\cc\sys\db\SysModule.java
+Starting at line 185 of D:\newworkplace\struts2\src\com\cc\sys\db\SysDepartment.java
+
+	}
+
+	public Object getExtender() {
+		return null;
+	}
+
+	public String getLabel() {
+		return this.name;
+	}
+
+	private int layer = -1;
+	public int getLayer() {
+		
+		if(layer == -1)
+		{
+			if(this.getParent() != null)
+			{
+				layer = this.getParent().getLayer() + 1;
+			}else
+			{
+				layer = 1;
+			}
+		}
+		return layer;
+	}
+=====================================================================
+Found a 19 line (74 tokens) duplication in the following files: 
+Starting at line 363 of D:\newworkplace\struts2\src\base\zyf\common\util\date\DateUtil.java
+Starting at line 386 of D:\newworkplace\struts2\src\base\zyf\common\util\date\DateUtil.java
+
+	static public Date getLastDay(int year, int month) throws ParseException {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = format.parse(year + "-" + month + "-1");
+
+		Calendar scalendar = new GregorianCalendar();
+		scalendar.setTime(date);
+		scalendar.add(Calendar.MONTH, 1);
+		scalendar.add(Calendar.DATE, -1);
+		date = scalendar.getTime();
+		return date;
+	}
+
+	/**
+	 * 得到当前年月日的信息(返回yyyy-MM-dd)
+	 * 
+	 * @return
+	 * @throws ParseException
+	 */
+	static public String getTodayStr() throws ParseException {
+=====================================================================
+Found a 14 line (71 tokens) duplication in the following files: 
+Starting at line 46 of D:\newworkplace\struts2\src\base\zyf\tools\FileUtil.java
+Starting at line 110 of D:\newworkplace\struts2\src\base\zyf\tools\FileUtil.java
+
+			OutputStream os=new FileOutputStream(tf);
+			byte[] buffer=new byte[1024*10];
+			int len=is.available();
+			
+			while(0<len)
+			{
+				int count=is.read(buffer);
+				os.write(buffer);
+				size+=count;
+				len=is.available();
+			}
+			os.close();
+			is.close();
+		} catch (FileNotFoundException e) {
+=====================================================================
+Found a 22 line (70 tokens) duplication in the following files: 
+Starting at line 121 of D:\newworkplace\struts2\src\base\zyf\common\mail\ReceiveMail.java
+Starting at line 146 of D:\newworkplace\struts2\src\base\zyf\common\mail\ReceiveMail.java
+
+        urln = new URLName(IMAP_STR, this.imap, this.imapPort, null,   
+                this.user, this.password);   
+        
+		try {
+			store = session.getStore(urln);
+			store.connect();
+			this.inbox = store.getFolder("INBOX");  
+		} catch (NoSuchProviderException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}   
+		return true;
+	}
+	/* (non-Javadoc)
+	 * @see base.zyf.common.mail.ReceiveMailService#close()
+	 */
+	public boolean close()
+=====================================================================
+Found a 8 line (68 tokens) duplication in the following files: 
+Starting at line 269 of D:\newworkplace\struts2\src\base\zyf\common\tree\ModuleTreeViewTag.java
+Starting at line 439 of D:\newworkplace\struts2\src\base\zyf\common\tree\ModuleTreeViewTag.java
+
+        if (moduleRights.get(node.getId()).isExpand())
+    	{
+            List<TreeNodeI> children = node.getChildren();
+            int lastIndex = children.size() - 1;
+            int newLevel = level + 1;
+            for (int i = 0; i < children.size(); i++) {
+                render(out, (TreeViewI)children.get(i), newLevel, i == lastIndex);
+            }
+=====================================================================
+Found a 8 line (63 tokens) duplication in the following files: 
+Starting at line 49 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+Starting at line 104 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+
+	public void saveRows(String[] ids, String userId, String pageId) {
+		// TODO Auto-generated method stub
+		DetachedCriteria dc = DetachedCriteria.forClass(CommonTableViewSet.class);
+		dc.add(Restrictions.eq("userId", userId));
+		
+		dc.createAlias("commonTableView","commonTableView");
+		dc.add(Restrictions.eq("commonTableView.tableName", pageId));
+		dc.add(Restrictions.isNull("orderAsc"));
+=====================================================================
+Found a 20 line (61 tokens) duplication in the following files: 
+Starting at line 142 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspData.java
+Starting at line 76 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\entry\EntryJspMeta.java
+
+				pw.println(MessageFormat.format(temp,new Object[]{name,arrSb}));
+				
+			}
+			br.close();
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			try {
+				br.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			pw.close();
+			FileUtil.removeFile(path);
+		
+		}
+	}
+	private String getArr()
+=====================================================================
+Found a 8 line (61 tokens) duplication in the following files: 
+Starting at line 146 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+Starting at line 176 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+
+	public void saveRows(String[] ids, String userId, String pageId, String asc) {
+		// TODO Auto-generated method stub
+		DetachedCriteria dc = DetachedCriteria.forClass(CommonTableViewSet.class);
+		dc.add(Restrictions.eq("userId", userId));
+		
+		dc.createAlias("commonTableView","commonTableView");
+		dc.add(Restrictions.eq("commonTableView.tableName", pageId));
+		dc.add(Restrictions.isNotNull(asc));
+=====================================================================
+Found a 11 line (59 tokens) duplication in the following files: 
+Starting at line 1353 of D:\newworkplace\struts2\src\base\zyf\chart\action\chart\Graph.java
+Starting at line 70 of D:\newworkplace\struts2\src\base\zyf\chart\action\chart\Bar.java
+
+	}
+
+	String implode(String glue, List<String> array) {
+		StringBuilder sb = new StringBuilder();
+		for (String element : array) {
+			if (sb.length() > 0)
+				sb.append(glue);
+			sb.append(element);
+		}
+		return sb.toString();
+	}
+=====================================================================
+Found a 7 line (59 tokens) duplication in the following files: 
+Starting at line 172 of D:\newworkplace\struts2\src\base\zyf\hibernate\dao\HibernateTemplatePlus.java
+Starting at line 334 of D:\newworkplace\struts2\src\base\zyf\hibernate\dao\HibernateTemplatePlus.java
+
+			propertyName = lastAlias + name.substring(name.lastIndexOf(PROPERTY_SEPARATOR));
+		}
+				
+		try {	
+			Constructor constructor = SimpleExpression.class.getDeclaredConstructor(new Class[] {String.class, Object.class, String.class});
+			constructor.setAccessible(true);
+			SimpleExpression expression = (SimpleExpression) constructor.newInstance(new Object[] {propertyName, value, operator});					
+=====================================================================
+Found a 11 line (59 tokens) duplication in the following files: 
+Starting at line 105 of D:\newworkplace\struts2\src\base\zyf\spring\SpringContainer.java
+Starting at line 46 of D:\newworkplace\struts2\src\base\zyf\common\util\Constants.java
+
+		String path = Constants.class.getResource(classpath).getPath();
+		path = path.substring(1, path.length());
+
+		// for linux or unix
+		if (!path.substring(0, 1).equals("/")
+				&& !path.substring(1, 2).equals(":")) {
+
+			path = "/" + path;
+		}
+
+		File f = new File(path);
+=====================================================================
+Found a 19 line (59 tokens) duplication in the following files: 
+Starting at line 131 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspMeta.java
+Starting at line 142 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspData.java
+
+					pw.println(MessageFormat.format(temp,new Object[]{info,js}));
+					
+				}
+				br.close();
+				pw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				try {
+					br.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				pw.close();
+				FileUtil.removeFile(path);
+			
+			}
+		}
+=====================================================================
+Found a 14 line (58 tokens) duplication in the following files: 
+Starting at line 200 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeGrantTag.java
+Starting at line 194 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeControlTag.java
+
+    private void printChildren(JspWriter out, List<TreeViewI> l,String id, boolean exp) throws IOException
+    {
+    	if(l.size() == 0)
+    		return;
+    	if(exp)
+    	{
+    		out.println("<tr id=\"tr_" + id + "\" style='display:block'><td></td><td>");
+    	}else
+    	{
+    		out.println("<tr id=\"tr_" + id + "\" style='display:none'><td></td><td>");
+    	}
+    	out.println("<table>");
+    	for(TreeViewI tvi:l)
+    	{
+=====================================================================
+Found a 5 line (57 tokens) duplication in the following files: 
+Starting at line 493 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 501 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+				else if ((i < 15) && (i > 11)
+						&& (strFen.charAt(lenIntFen - 1) != '0')
+						&& (strNow.charAt(0) == '零')
+						&& (strNow.charAt(1) == '亿')
+						&& (strNow.charAt(3) == '仟'))
+=====================================================================
+Found a 12 line (56 tokens) duplication in the following files: 
+Starting at line 166 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeGrantTag.java
+Starting at line 165 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeControlTag.java
+
+    	TreeViewI root = getTreeRoot();
+        JspWriter out = pageContext.getOut();
+        try {
+        	out.print(script);
+            out.print
+                ("<table id='tree' border=\"0\" cellspacing=\"0\" cellpadding=\"0\"");
+            if (style != null) {
+                out.print(" class=\"");
+                out.print(style);
+                out.print("\"");
+            }
+            out.println(">");
+=====================================================================
+Found a 17 line (56 tokens) duplication in the following files: 
+Starting at line 103 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspMeta.java
+Starting at line 171 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspData.java
+
+				js.append(MessageFormat.format(temp,new Object[]{submit,create,validate.toString()}));
+				js.append("\r\n");
+			}
+			br.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			try {
+				br.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		return js.toString();
+	}
+	public String getSubmit() {
+=====================================================================
+Found a 8 line (56 tokens) duplication in the following files: 
+Starting at line 176 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+Starting at line 201 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+
+public void saveRows(String[] ids, String userId, String pageId,boolean asc) {
+	// TODO Auto-generated method stub
+	DetachedCriteria dc = DetachedCriteria.forClass(CommonTableViewSet.class);
+	dc.add(Restrictions.eq("userId", userId));
+	
+	dc.createAlias("commonTableView","commonTableView");
+	dc.add(Restrictions.eq("commonTableView.tableName", pageId));
+	dc.add(Restrictions.isNotNull("orderAsc"));
+=====================================================================
+Found a 9 line (55 tokens) duplication in the following files: 
+Starting at line 999 of D:\newworkplace\struts2\src\base\zyf\chart\action\chart\Graph.java
+Starting at line 1020 of D:\newworkplace\struts2\src\base\zyf\chart\action\chart\Graph.java
+
+		String type = "hlc" + this.next_line();
+
+		String description = alpha + "," + line_width + "," + colour + ","
+				+ text + "," + size;
+
+		this.lines.add(new Line(type, description));
+
+		List<String> a = new ArrayList<String>();
+		for (Hlc anHlc : data) {
+=====================================================================
+Found a 7 line (55 tokens) duplication in the following files: 
+Starting at line 159 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+Starting at line 201 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+
+public void saveRows(String[] ids, String userId, String pageId,boolean asc) {
+	// TODO Auto-generated method stub
+	DetachedCriteria dc = DetachedCriteria.forClass(CommonTableViewSet.class);
+	dc.add(Restrictions.eq("userId", userId));
+	
+	dc.createAlias("commonTableView","commonTableView");
+	dc.add(Restrictions.eq("commonTableView.tableName", pageId));
+=====================================================================
+Found a 7 line (54 tokens) duplication in the following files: 
+Starting at line 37 of D:\newworkplace\struts2\src\base\zyf\struts\convert\DateConvert.java
+Starting at line 48 of D:\newworkplace\struts2\src\base\zyf\struts\convert\DateConvert.java
+
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        if(pattern.matcher(values[0]).find())   
+        {   
+            try {   
+                return dateFormat.parse(values[0]);   
+            } catch (ParseException e) {
+				log.error(arg2.toString()+" "+values[0]+" 不能转换成时间类型，时间类型支持 yyyy-MM-dd HH:mm:ss");
+=====================================================================
+Found a 22 line (53 tokens) duplication in the following files: 
+Starting at line 523 of D:\newworkplace\struts2\src\base\zyf\common\util\date\DateUtil.java
+Starting at line 547 of D:\newworkplace\struts2\src\base\zyf\common\util\date\DateUtil.java
+
+			java.sql.Date afterdate) throws ParseException {
+		long dayCount = 0;
+
+		try {
+			dayCount = (afterdate.getTime() - beforedate.getTime())
+					/ (24 * 60 * 60 * 1000);
+
+		} catch (Exception e) {
+			// System.out.println("Date parse error!");
+			// // throw e;
+		}
+		return dayCount;
+	}
+
+	/**
+	 * 获得到今天相隔的天数
+	 * 
+	 * @param beforedate
+	 * @return
+	 * @throws ParseException
+	 */
+	static public long getDistinceDay(String beforedate) throws ParseException {
+=====================================================================
+Found a 13 line (53 tokens) duplication in the following files: 
+Starting at line 127 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\AutoCreateSearchJspf.java
+Starting at line 134 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspMeta.java
+
+				br.close();
+				pw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				try {
+					br.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				pw.close();
+				FileUtil.removeFile(path);
+=====================================================================
+Found a 8 line (53 tokens) duplication in the following files: 
+Starting at line 49 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+Starting at line 146 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+
+	public List getRows(String userId, String pageId, String asc) {
+		// TODO Auto-generated method stub
+		DetachedCriteria dc = DetachedCriteria.forClass(CommonTableViewSet.class);
+		dc.add(Restrictions.eq("userId", userId));
+		
+		dc.createAlias("commonTableView","commonTableView");
+		dc.add(Restrictions.eq("commonTableView.tableName", pageId));
+		dc.add(Restrictions.eq("orderAsc", asc));
+=====================================================================
+Found a 9 line (53 tokens) duplication in the following files: 
+Starting at line 58 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchMemberTag.java
+Starting at line 55 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchDeptTag.java
+
+		if(StringUtils.isBlank(codeDefault))
+			codeDefault="";
+		if(StringUtils.isBlank(nameDefault))
+			nameDefault="";
+		StringBuffer tr=new StringBuffer();
+		tr.append("<input name=\"conditions({0}).name\" type=\"hidden\" value=\"{0}\"/>");
+		tr.append("<input name=\"conditions({0}).operator\" type=\"hidden\" value=\"=\"/>");
+		tr.append("<input name=\"conditions({0}).type\" type=\"hidden\" value=\"java.lang.String\"/>");
+		tr.append("<input id=\"{0}\" name=\"conditions({0}).value\" type=\"hidden\" value=\"{1}\" />");
+=====================================================================
+Found a 19 line (53 tokens) duplication in the following files: 
+Starting at line 102 of D:\newworkplace\struts2\src\com\cc\sys\db\SysUser.java
+Starting at line 131 of D:\newworkplace\struts2\src\com\cc\sys\db\SysTree.java
+
+	}
+
+	public String getStaffSign() {
+		return this.staffSign;
+	}
+
+	public void setStaffSign(String staffSign) {
+		this.staffSign = staffSign;
+	}
+
+	public String getIsFreeze() {
+		return this.isFreeze;
+	}
+
+	public void setIsFreeze(String isFreeze) {
+		this.isFreeze = isFreeze;
+	}
+
+	public String getRemark() {
+=====================================================================
+Found a 17 line (50 tokens) duplication in the following files: 
+Starting at line 181 of D:\newworkplace\struts2\src\com\cc\sys\db\SysTree.java
+Starting at line 132 of D:\newworkplace\struts2\src\com\cc\sys\db\SysDepartment.java
+
+	public void setChildren(List children) {
+		this.children = children;
+	}
+
+	public String getAction() {
+		return null;
+	}
+
+	public String getIcon() {
+		return null;
+	}
+
+	public int getWidth() {
+		int width = this.layer;
+		if(this.isExpanded())
+		{
+			List<SysModule> l = this.getChildren();
+=====================================================================
+Found a 6 line (49 tokens) duplication in the following files: 
+Starting at line 71 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchMemberTag.java
+Starting at line 69 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchDeptTag.java
+
+		tr.append("<input type=\"button\" id=\"select_fromtree\" onClick=\"showCgmlTreeWindow({4}{0}{4},{4}conditions({0}).value{4},{4}conditions({2}).value{4},{4}{4},{4}1{4})\">");
+		tr.append("<input type=\"button\" id=\"opera_clear\" onclick=\"FormUtils.cleanValues($({4}conditions({0}).value{4}), $({4}conditions({2}).value{4}))\"/> ");
+		tr.append("<input name=\"conditions({0}).createAlias\" type=\"hidden\" value=\"false\"/>");
+		tr.append("<input name=\"conditions({2}).createAlias\" type=\"hidden\" value=\"false\"/>");
+		try {
+			out.print(MessageFormat.format(tr.toString(), new Object[]{code,codeDefault,name,nameDefault,"'"}));
+=====================================================================
+Found a 10 line (48 tokens) duplication in the following files: 
+Starting at line 69 of D:\newworkplace\struts2\src\base\zyf\common\util\regex\AnalyseString.java
+Starting at line 147 of D:\newworkplace\struts2\src\base\zyf\common\util\regex\AnalyseString.java
+
+				key.append(anyis);
+			key.append(keyList[i]);
+		}
+		
+		PatternCompiler pc=new Perl5Compiler();
+
+		try {
+			Pattern pattern=pc.compile(key.toString());
+			PatternMatcher pm=new Perl5Matcher();
+			PatternMatcherInput pmi=new PatternMatcherInput(source);
+=====================================================================
+Found a 13 line (48 tokens) duplication in the following files: 
+Starting at line 50 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\SearchJspfData.java
+Starting at line 53 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspData.java
+
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getAbsPath() {
+		return absPath;
+	}
+	public void setAbsPath(String absPath) {
+		this.absPath = absPath;
+	}
+	public List getInfoMetas() {
+=====================================================================
+Found a 6 line (48 tokens) duplication in the following files: 
+Starting at line 234 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonServiceImpl.java
+Starting at line 246 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonServiceImpl.java
+
+	public int deleteAll(Class c, List oids) {
+		// TODO Auto-generated method stub
+		int num = oids.size();
+		for (int i = 0; i < num; i++) {
+			String id = oids.get(i).toString().trim();
+			this.delete(this.load(c, id));
+=====================================================================
+Found a 7 line (48 tokens) duplication in the following files: 
+Starting at line 146 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+Starting at line 159 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+
+	public List getRows(String userId, String pageId, boolean asc) {
+		// TODO Auto-generated method stub
+		DetachedCriteria dc = DetachedCriteria.forClass(CommonTableViewSet.class);
+		dc.add(Restrictions.eq("userId", userId));
+		
+		dc.createAlias("commonTableView","commonTableView");
+		dc.add(Restrictions.eq("commonTableView.tableName", pageId));
+=====================================================================
+Found a 8 line (47 tokens) duplication in the following files: 
+Starting at line 109 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 95 of D:\newworkplace\struts2\src\base\zyf\common\util\time\TimeUtil.java
+
+		String style="yyyy-MM-dd HH:mm:ss";
+		if(d.getHours()+d.getMinutes()+d.getSeconds()==0)
+			style="yyyy-MM-dd";
+		SimpleDateFormat sdf=new SimpleDateFormat(style);
+		return sdf.format(d);
+	}
+	
+	public static String getShortTime() {
+=====================================================================
+Found a 13 line (47 tokens) duplication in the following files: 
+Starting at line 149 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspMeta.java
+Starting at line 110 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\entry\EntryJspMeta.java
+
+	}
+	public String getAbsPath() {
+		return absPath;
+	}
+	public void setAbsPath(String absPath) {
+		this.absPath = absPath;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+=====================================================================
+Found a 7 line (47 tokens) duplication in the following files: 
+Starting at line 49 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+Starting at line 159 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+
+	public List getRows(String userId, String pageId, boolean asc) {
+		// TODO Auto-generated method stub
+		DetachedCriteria dc = DetachedCriteria.forClass(CommonTableViewSet.class);
+		dc.add(Restrictions.eq("userId", userId));
+		
+		dc.createAlias("commonTableView","commonTableView");
+		dc.add(Restrictions.eq("commonTableView.tableName", pageId));
+=====================================================================
+Found a 14 line (47 tokens) duplication in the following files: 
+Starting at line 37 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTimeTag.java
+Starting at line 36 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchMemberTag.java
+
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getValueDefault() {
+		return valueDefault;
+	}
+	public void setValueDefault(String valueDefault) {
+		this.valueDefault = valueDefault;
+	}
+	public int doEndTag() throws JspException {
+=====================================================================
+Found a 12 line (46 tokens) duplication in the following files: 
+Starting at line 24 of D:\newworkplace\struts2\src\base\zyf\web\view\OptionBean.java
+Starting at line 30 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchMemberTag.java
+
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+=====================================================================
+Found a 18 line (45 tokens) duplication in the following files: 
+Starting at line 226 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeGrantTag.java
+Starting at line 214 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeControlTag.java
+
+            	 out.print("<tr><td ><img src=\""+ this.getImages()+NONE_IMG +"\"/></td><td style=\"cursor:hand\" title='点击此处显示详细' onclick=\"viewDetail('"+tvi.getId()+"')\">"+ tvi.getName() +"</td></tr>");
+            }
+    	}
+    	out.println("</table>");
+    	out.println("</td></tr>");
+    }
+
+    /**
+     * Release all state information set by this tag.
+     */
+    public void release() {
+
+       
+        this.images = DEFAULT_IMAGES;
+      
+        this.style = null;
+      
+        this.tree = null;
+=====================================================================
+Found a 4 line (44 tokens) duplication in the following files: 
+Starting at line 145 of D:\newworkplace\struts2\src\base\zyf\hibernate\dao\HibernateTemplatePlus.java
+Starting at line 300 of D:\newworkplace\struts2\src\base\zyf\hibernate\dao\HibernateTemplatePlus.java
+
+		}
+		if (String[].class.isInstance(value)) {
+			value = ((String[]) value)[0].trim();
+			if(StringUtils.isBlank((String)value))
+=====================================================================
+Found a 4 line (44 tokens) duplication in the following files: 
+Starting at line 140 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 182 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+		char[] temp1=new char[sub1s.length()];
+		for(int i=0,size=temp1.length;i<size;i++)
+			temp1[i]='0';
+		long size1=Long.parseLong("1"+new String(temp1));
+=====================================================================
+Found a 7 line (44 tokens) duplication in the following files: 
+Starting at line 117 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspMeta.java
+Starting at line 127 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspData.java
+
+		return st.toString();
+	}
+	public void createFiles(String realPath)
+	{
+		
+			String path=realPath+this.getAbsPath()+this.getFileName();
+			BufferedReader br=FileUtil.getFileReader(this.getClass().getResourceAsStream("info.jsp"));
+=====================================================================
+Found a 8 line (43 tokens) duplication in the following files: 
+Starting at line 124 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspMeta.java
+Starting at line 135 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspData.java
+
+			String info=this.getInfoTag();
+			String js=this.getJs();
+			String temp;
+			try {
+				while((temp=br.readLine())!=null)
+				{
+					
+					pw.println(MessageFormat.format(temp,new Object[]{info,js}));
+=====================================================================
+Found a 7 line (42 tokens) duplication in the following files: 
+Starting at line 1001 of D:\newworkplace\struts2\src\base\zyf\chart\action\chart\Graph.java
+Starting at line 1042 of D:\newworkplace\struts2\src\base\zyf\chart\action\chart\Graph.java
+
+		String description = line_width + "," + colour + "," + text + ","
+				+ size;
+
+		this.lines.add(new Line(type, description));
+
+		List<String> a = new ArrayList<String>();
+		for (Point p : data) {
+=====================================================================
+Found a 9 line (41 tokens) duplication in the following files: 
+Starting at line 370 of D:\newworkplace\struts2\src\base\zyf\common\tree\ModuleTreeViewTag.java
+Starting at line 414 of D:\newworkplace\struts2\src\base\zyf\common\tree\ModuleTreeViewTag.java
+
+                    out.print(labelStyle);
+                    out.print("\"");
+                }
+                // to refresh the tree in the same 'self' frame
+                out.print(" onclick=\"");
+                out.print("changeCl('" + node.getId() + "')");
+                out.print("\"");
+                out.print(">");
+            } else if (labelStyle != null) {
+=====================================================================
+Found a 11 line (41 tokens) duplication in the following files: 
+Starting at line 49 of D:\newworkplace\struts2\src\base\zyf\common\util\time\TimeUtil.java
+Starting at line 63 of D:\newworkplace\struts2\src\base\zyf\common\util\time\TimeUtil.java
+
+		SimpleDateFormat sdf=new SimpleDateFormat(style);
+		Date date=null;
+		try {
+			date=sdf.parse(t);
+		} catch (ParseException e) {
+			throw new RuntimeException(e);
+		}
+		return date;
+		
+	}
+	public static String getTheTimeStr(Date time,String style)
+=====================================================================
+Found a 6 line (41 tokens) duplication in the following files: 
+Starting at line 117 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspMeta.java
+Starting at line 63 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\entry\EntryJspMeta.java
+
+		arrs.put(key, value);
+	}
+	public void createFiles(String realPath)
+	{
+		String path=realPath+this.getAbsPath()+this.getFileName();
+		BufferedReader br=FileUtil.getFileReader(this.getClass().getResourceAsStream("entry.jsp"));
+=====================================================================
+Found a 7 line (41 tokens) duplication in the following files: 
+Starting at line 111 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+Starting at line 208 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+
+	dc.add(Restrictions.isNotNull("orderAsc"));
+	List l= hibernateTemplate.findByCriteria(dc);
+	hibernateTemplate.deleteAll(l);
+	if(ids==null)
+		return;
+	for(int i=0;i<ids.length;i++)
+	{
+=====================================================================
+Found a 3 line (40 tokens) duplication in the following files: 
+Starting at line 219 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeGrantTag.java
+Starting at line 208 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeControlTag.java
+
+    		if(!tvi.isLast())
+            {
+            	out.print("<tr><td ><img id=\"img_"+tvi.getId()+"\" src=\""+ this.getImages()+ClOSE_IMG +"\" onclick=\"changeExp('"+tvi.getId()+"')\" title='点击此处关闭节点'/></td><td style=\"cursor:hand\" title='点击此处显示详细' onclick=\"viewDetail('"+tvi.getId()+"')\">"+ tvi.getName() +"</td></tr>");
+=====================================================================
+Found a 3 line (40 tokens) duplication in the following files: 
+Starting at line 181 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeGrantTag.java
+Starting at line 177 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeControlTag.java
+
+            if(!root.isLast())
+            {
+            	out.print("<tr><td ><img id=\"img_"+root.getId()+"\" src=\""+ this.getImages()+ClOSE_IMG +"\" onclick=\"changeExp('"+root.getId()+"')\" title='点击此处关闭节点'/></td><td style=\"cursor:hand\" title='点击此处显示详细' onclick=\"viewDetail('"+root.getId()+"')\">"+ root.getName() +"</td></tr>");
+=====================================================================
+Found a 9 line (40 tokens) duplication in the following files: 
+Starting at line 115 of D:\newworkplace\struts2\src\base\zyf\common\util\regex\AnalyseString.java
+Starting at line 147 of D:\newworkplace\struts2\src\base\zyf\common\util\regex\AnalyseString.java
+
+				key.append(anyis);
+			key.append(keyList[i]);
+		}
+		
+		PatternCompiler pc=new Perl5Compiler();
+
+		try {
+			Pattern pattern=pc.compile(key.toString());
+			PatternMatcher pm=new Perl5Matcher();
+=====================================================================
+Found a 14 line (40 tokens) duplication in the following files: 
+Starting at line 82 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspCreateByXml.java
+Starting at line 108 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspCreateByXml.java
+
+			br.registerBeanClass(InfoJspData.class);
+			
+		} catch (IntrospectionException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			return;
+		}
+		
+		//br.getBindingConfiguration().setMapIDs(false);
+		
+		
+		try {
+			for(int i=0,size=files.size();i<size;i++)
+			{
+=====================================================================
+Found a 13 line (40 tokens) duplication in the following files: 
+Starting at line 38 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspCreateByXml.java
+Starting at line 38 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\entry\EntryJspCreateByXml.java
+
+			eim.createFiles(this.realPath);
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see com.zyf.tools.auto.create.AutoCreateFile#findFiles(java.lang.String)
+	 */
+	protected void findFiles(String name) {
+		// TODO Auto-generated method stub
+		BeanReader br=new BeanReader();
+		br.getXMLIntrospector().setWrapCollectionsInElement(false);
+		try {
+			br.registerBeanClass(EntryJspCreateByXml.class);
+=====================================================================
+Found a 14 line (40 tokens) duplication in the following files: 
+Starting at line 159 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\AutoCreateSearchJspfByXml.java
+Starting at line 82 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspCreateByXml.java
+
+			br.registerBeanClass(ListJspMeta.class);
+			
+		} catch (IntrospectionException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			return;
+		}
+		
+		//br.getBindingConfiguration().setMapIDs(false);
+		
+		
+		try {
+			for(int i=0,size=files.size();i<size;i++)
+			{
+=====================================================================
+Found a 4 line (40 tokens) duplication in the following files: 
+Starting at line 252 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\TableTag.java
+Starting at line 281 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\TableTag.java
+
+					if(StringUtils.isNotBlank(va.getStyle()))
+						style=va.getStyle();
+					try{
+					out.print(this.changeScript(va.getRowName(), link,Tools.abbreviate(Tools.changeHtml(value.toString()),Integer.parseInt(style)),object));
+=====================================================================
+Found a 8 line (39 tokens) duplication in the following files: 
+Starting at line 862 of D:\newworkplace\struts2\src\base\zyf\chart\action\chart\Graph.java
+Starting at line 931 of D:\newworkplace\struts2\src\base\zyf\chart\action\chart\Graph.java
+Starting at line 985 of D:\newworkplace\struts2\src\base\zyf\chart\action\chart\Graph.java
+
+		String type = "bar_fade" + this.next_line();
+
+		String description = alpha + "," + colour + "," + text + "," + size;
+
+		this.lines.add(new Line(type, description));
+	}
+
+	public void candle(List<Bar> data, String alpha, String line_width,
+=====================================================================
+Found a 8 line (39 tokens) duplication in the following files: 
+Starting at line 365 of D:\newworkplace\struts2\src\base\zyf\common\tree\ModuleTreeViewTag.java
+Starting at line 404 of D:\newworkplace\struts2\src\base\zyf\common\tree\ModuleTreeViewTag.java
+
+                out.print(" <a href=\"");
+                out.print(hyperlink);
+                out.print("\"");
+                if(target != null) {
+                    out.print(" target=\"");
+                    out.print(target);
+                    out.print("\"");
+                }
+=====================================================================
+Found a 20 line (39 tokens) duplication in the following files: 
+Starting at line 75 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeGrantTag.java
+Starting at line 139 of D:\newworkplace\struts2\src\base\zyf\common\tree\ModuleTreeViewTag.java
+
+    }
+
+
+    /**
+     * The name of the attribute (in the specified scope) under which our
+     * <code>TreeControl</code> instance is stored.
+     */
+    protected String tree = null;
+
+    public String getTree() {
+        return (this.tree);
+    }
+
+    public void setTree(String tree) {
+        this.tree = tree;
+    }
+
+
+    // --------------------------------------------------------- Public Methods
+    private String script = "<script type=\"text/javascript\">"+
+=====================================================================
+Found a 13 line (39 tokens) duplication in the following files: 
+Starting at line 204 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 247 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+			set=map.keySet();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return set;
+=====================================================================
+Found a 17 line (38 tokens) duplication in the following files: 
+Starting at line 154 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeControlTag.java
+Starting at line 167 of D:\newworkplace\struts2\src\base\zyf\common\tree\ModuleTreeViewTag.java
+
+    "	dd.className='"+this.getStyleSelected()+"';"+
+    "}"+
+    "</script>";
+
+    /**
+     * Render this tree control.
+     *
+     * @exception JspException if a processing error occurs
+     */
+    public int doEndTag() throws JspException {
+
+    	TreeViewI root = getTreeRoot();
+        JspWriter out = pageContext.getOut();
+        try {
+        	out.print(script);
+            out.print
+                ("<table id='treetab' border=\"0\" cellspacing=\"0\" cellpadding=\"0\"");
+=====================================================================
+Found a 11 line (38 tokens) duplication in the following files: 
+Starting at line 205 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 229 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+=====================================================================
+Found a 11 line (38 tokens) duplication in the following files: 
+Starting at line 338 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\TableTag.java
+Starting at line 198 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonServiceImpl.java
+
+					dict.put(r,display);
+				} catch (NoSuchMethodException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+=====================================================================
+Found a 4 line (37 tokens) duplication in the following files: 
+Starting at line 444 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 452 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+					if ((strFen.charAt(lenIntFen - 1) == '0')
+							&& (strNow.charAt(0) == '万')
+							&& (strNow.charAt(2) == '仟'))
+						strBig = "亿" + "零"
+=====================================================================
+Found a 5 line (37 tokens) duplication in the following files: 
+Starting at line 425 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 431 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+					strBig = "零" + strBig;
+				// 拾万－仟万中一位为零且其前一位（万以上）也为零的情况时跨过
+				else if ((i < 11) && (i > 7)
+						&& (strFen.charAt(lenIntFen - 1) == '0')
+						&& (strNow.charAt(0) == '万')) {
+=====================================================================
+Found a 5 line (37 tokens) duplication in the following files: 
+Starting at line 406 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 412 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+					strBig = "零" + strBig;
+				// 拾－仟中一位为零且其前一位（元以上）也为零的情况时跨过
+				else if ((i < 7) && (i > 3)
+						&& (strFen.charAt(lenIntFen - 1) == '0')
+						&& (strNow.charAt(0) == '零')) {
+=====================================================================
+Found a 5 line (37 tokens) duplication in the following files: 
+Starting at line 118 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+Starting at line 221 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+
+		CommonTableViewSet ctvs=new CommonTableViewSet();
+		
+		ctvs.setUserId(userId);
+		ctvs.setOrderNum(new Integer(i));
+		CommonTableView commonTableView=(CommonTableView)hibernateTemplate.load(CommonTableView.class,id.split("-")[0]);
+=====================================================================
+Found a 7 line (36 tokens) duplication in the following files: 
+Starting at line 107 of D:\newworkplace\struts2\src\base\zyf\tools\Betwixts.java
+Starting at line 164 of D:\newworkplace\struts2\src\base\zyf\tools\Betwixts.java
+
+	        Writer ow=new FileWriter("d:\\list.xml");
+			BeanWriter bw=new BeanWriter(ow);
+			bw.setEndOfLine("\r\n");
+			bw.setIndent("\t");
+			bw.enablePrettyPrint();
+			bw.setWriteEmptyElements(true);
+			bw.write(bean);
+=====================================================================
+Found a 3 line (36 tokens) duplication in the following files: 
+Starting at line 483 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 488 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+				else if ((i < 15) && (i > 11)
+						&& (strFen.charAt(lenIntFen - 1) == '0')
+						&& (strNow.charAt(0) == '零')) {
+=====================================================================
+Found a 5 line (36 tokens) duplication in the following files: 
+Starting at line 475 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 486 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+				}
+				// 拾亿－仟亿中一位为零且其前一位为亿位且为零的情况时跨过
+				else if ((i < 15) && (i > 11)
+						&& (strFen.charAt(lenIntFen - 1) == '0')
+						&& (strNow.charAt(0) == '零')) {
+=====================================================================
+Found a 3 line (36 tokens) duplication in the following files: 
+Starting at line 433 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 438 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+				else if ((i < 11) && (i > 7)
+						&& (strFen.charAt(lenIntFen - 1) == '0')
+						&& (strNow.charAt(0) == '零')) {
+=====================================================================
+Found a 3 line (36 tokens) duplication in the following files: 
+Starting at line 414 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 419 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+				else if ((i < 7) && (i > 3)
+						&& (strFen.charAt(lenIntFen - 1) == '0')
+						&& (strNow.charAt(0) == '元')) {
+=====================================================================
+Found a 10 line (36 tokens) duplication in the following files: 
+Starting at line 146 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspData.java
+Starting at line 174 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspData.java
+
+			br.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			try {
+				br.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+=====================================================================
+Found a 7 line (36 tokens) duplication in the following files: 
+Starting at line 136 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspData.java
+Starting at line 70 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\entry\EntryJspMeta.java
+
+		String arrSb=getArr();
+		String temp;
+		try {
+			while((temp=br.readLine())!=null)
+			{
+				
+				pw.println(MessageFormat.format(temp,new Object[]{name,arrSb}));
+=====================================================================
+Found a 10 line (36 tokens) duplication in the following files: 
+Starting at line 135 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspMeta.java
+Starting at line 174 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspData.java
+
+			br.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			try {
+				br.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+=====================================================================
+Found a 7 line (36 tokens) duplication in the following files: 
+Starting at line 125 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspMeta.java
+Starting at line 70 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\entry\EntryJspMeta.java
+
+		String arrSb=getArr();
+		String temp;
+		try {
+			while((temp=br.readLine())!=null)
+			{
+				
+				pw.println(MessageFormat.format(temp,new Object[]{name,arrSb}));
+=====================================================================
+Found a 10 line (36 tokens) duplication in the following files: 
+Starting at line 106 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspMeta.java
+Starting at line 135 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspMeta.java
+
+				pw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				try {
+					br.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+=====================================================================
+Found a 8 line (36 tokens) duplication in the following files: 
+Starting at line 96 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspMeta.java
+Starting at line 164 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspData.java
+
+		BufferedReader br=FileUtil.getFileReader(this.getClass().getResourceAsStream("info.js-"));
+		String temp;
+		try {
+			while((temp=br.readLine())!=null)
+			{
+				//temp="'"+temp;
+				//System.out.println(temp);
+				js.append(MessageFormat.format(temp,new Object[]{submit,create,validate.toString()}));
+=====================================================================
+Found a 10 line (36 tokens) duplication in the following files: 
+Starting at line 128 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\AutoCreateSearchJspf.java
+Starting at line 106 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspMeta.java
+
+			br.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			try {
+				br.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+=====================================================================
+Found a 4 line (36 tokens) duplication in the following files: 
+Starting at line 151 of D:\newworkplace\struts2\src\base\zyf\web\view\tag\ExtendComboCompositeTag.java
+Starting at line 245 of D:\newworkplace\struts2\src\base\zyf\web\view\ComboSupportList.java
+
+		List keyValues = convertData2KeyValues();
+		for (Iterator iter = keyValues.iterator(); iter.hasNext(); ) {
+			KeyValue keyValue = (KeyValue) iter.next();
+			if (selectedValues.contains(keyValue.getKey())) {
+=====================================================================
+Found a 7 line (35 tokens) duplication in the following files: 
+Starting at line 186 of D:\newworkplace\struts2\src\base\zyf\hibernate\dao\HibernateTemplatePlus.java
+Starting at line 342 of D:\newworkplace\struts2\src\base\zyf\hibernate\dao\HibernateTemplatePlus.java
+
+		} catch (Exception e) {
+			if (logger.isErrorEnabled()) {
+				logger.error("动态构造查询条件出错 : " + e);
+			}
+			throw new RuntimeException("动态构造查询条件出错", e);
+		} 	
+	} 
+=====================================================================
+Found a 3 line (35 tokens) duplication in the following files: 
+Starting at line 477 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 483 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+				else if ((i < 15) && (i > 11)
+						&& (strFen.charAt(lenIntFen - 1) == '0')
+						&& (strNow.charAt(0) == '亿')) {
+=====================================================================
+Found a 3 line (35 tokens) duplication in the following files: 
+Starting at line 427 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 438 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+				else if ((i < 11) && (i > 7)
+						&& (strFen.charAt(lenIntFen - 1) == '0')
+						&& (strNow.charAt(0) == '零')) {
+=====================================================================
+Found a 3 line (35 tokens) duplication in the following files: 
+Starting at line 408 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 419 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+				else if ((i < 7) && (i > 3)
+						&& (strFen.charAt(lenIntFen - 1) == '0')
+						&& (strNow.charAt(0) == '元')) {
+=====================================================================
+Found a 36 line (35 tokens) duplication in the following files: 
+Starting at line 38 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspCreateByXml.java
+Starting at line 41 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspCreateByXml.java
+
+			ijd.createFiles(realPath);
+//			String path=realPath+ijd.getAbsPath()+ijd.getFileName();
+//			BufferedReader br=FileUtil.getFileReader(this.getClass().getResourceAsStream("info.jsp"));
+//			PrintWriter pw=FileUtil.getFileWriter(path);
+//			files.add(path);
+//			String temp;
+//			try {
+//				while((temp=br.readLine())!=null)
+//				pw.println(MessageFormat.format(temp,new Object[]{ijd.getInfoTag()}));
+//				br.close();
+//				pw.close();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//				try {
+//					br.close();
+//				} catch (IOException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+//				pw.close();
+//				FileUtil.removeFile(path);
+//				break;
+//			}
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see com.zyf.tools.auto.create.AutoCreateFile#findFiles(java.lang.String)
+	 */
+	protected void findFiles(String name) {
+		// TODO Auto-generated method stub
+		BeanReader br=new BeanReader();
+		br.getXMLIntrospector().setWrapCollectionsInElement(false);
+		try {
+			br.registerBeanClass(this.getClass());
+=====================================================================
+Found a 4 line (35 tokens) duplication in the following files: 
+Starting at line 67 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTimeTag.java
+Starting at line 70 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTextTag.java
+
+		Map<String, Condition> conditions = (Map)ExpressionEvaluationUtils.evaluate("valueDefault","${conditions}", pageContext);
+		
+		if(StringUtils.isBlank(name))
+			name=(String)ExpressionEvaluationUtils.evaluate("elName",elName, pageContext);
+=====================================================================
+Found a 4 line (35 tokens) duplication in the following files: 
+Starting at line 57 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SetTableTag.java
+Starting at line 67 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SetTableTag.java
+
+				for(int i=0,size=l1.size();i<size;i++)
+				{
+					CommonTableViewSet ctv=(CommonTableViewSet)l1.get(i);
+					if(!StringUtils.isBlank(ctv.getOrderAsc()))
+=====================================================================
+Found a 16 line (34 tokens) duplication in the following files: 
+Starting at line 107 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeControlTag.java
+Starting at line 101 of D:\newworkplace\struts2\src\base\zyf\common\tree\ModuleTreeViewTag.java
+
+    protected String style = null;
+
+    public String getStyle() {
+        return (this.style);
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
+
+    /**
+     * The CSS style <code>class</code> to be applied to the text
+     * of selected nodes.
+     */
+    protected String styleSelected = null;
+=====================================================================
+Found a 10 line (34 tokens) duplication in the following files: 
+Starting at line 94 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeControlTag.java
+Starting at line 78 of D:\newworkplace\struts2\src\base\zyf\common\tree\ModuleTreeViewTag.java
+
+        return (this.images);
+    }
+
+    public void setImages(String images) {
+    	
+        
+        this.images = "/"+Constants.getProperty("publicResourceServer")+"/"+images;
+    }
+    
+    protected String target;
+=====================================================================
+Found a 16 line (34 tokens) duplication in the following files: 
+Starting at line 67 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeGrantTag.java
+Starting at line 101 of D:\newworkplace\struts2\src\base\zyf\common\tree\ModuleTreeViewTag.java
+
+    protected String style = null;
+
+    public String getStyle() {
+        return (this.style);
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
+
+    /**
+     * The CSS style <code>class</code> to be applied to the text
+     * of selected nodes.
+     */
+    protected String styleSelected = null;
+=====================================================================
+Found a 10 line (34 tokens) duplication in the following files: 
+Starting at line 54 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeGrantTag.java
+Starting at line 78 of D:\newworkplace\struts2\src\base\zyf\common\tree\ModuleTreeViewTag.java
+
+        return (this.images);
+    }
+
+    public void setImages(String images) {
+    	
+        
+        this.images = "/"+Constants.getProperty("publicResourceServer")+"/"+images;
+    }
+    
+    protected String target;
+=====================================================================
+Found a 4 line (34 tokens) duplication in the following files: 
+Starting at line 461 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 466 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+								+ strBig.substring(1, strBig.length());
+					// 亿位不为零且万全为零不存在仟位时，去掉万
+					else if ((strNow.charAt(0) == '万')
+							&& (strNow.charAt(2) != '仟'))
+=====================================================================
+Found a 6 line (34 tokens) duplication in the following files: 
+Starting at line 438 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 488 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+				else if ((i < 15) && (i > 11)
+						&& (strFen.charAt(lenIntFen - 1) == '0')
+						&& (strNow.charAt(0) == '零')) {
+				}
+				// 亿位为零且不存在仟万位和十亿以上时去掉上次写入的零
+				else if ((i < 15) && (i > 11)
+=====================================================================
+Found a 4 line (34 tokens) duplication in the following files: 
+Starting at line 427 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 477 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+				else if ((i < 15) && (i > 11)
+						&& (strFen.charAt(lenIntFen - 1) == '0')
+						&& (strNow.charAt(0) != '零')
+						&& (strNow.charAt(0) != '亿'))
+=====================================================================
+Found a 6 line (34 tokens) duplication in the following files: 
+Starting at line 414 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 438 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+				else if ((i < 11) && (i > 7)
+						&& (strFen.charAt(lenIntFen - 1) == '0')
+						&& (strNow.charAt(0) == '零')) {
+				}
+				// 万位为零且存在仟位和十万以上时，在万仟间补零
+				else if ((i < 11) && (i > 8)
+=====================================================================
+Found a 4 line (34 tokens) duplication in the following files: 
+Starting at line 408 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 427 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+				else if ((i < 11) && (i > 7)
+						&& (strFen.charAt(lenIntFen - 1) == '0')
+						&& (strNow.charAt(0) != '零')
+						&& (strNow.charAt(0) != '万'))
+=====================================================================
+Found a 16 line (34 tokens) duplication in the following files: 
+Starting at line 48 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\TableTag.java
+Starting at line 38 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\PopSelectTag.java
+
+	private static String script1="<script language=\"javascript\">\r\n"+
+	"var listObject = new Object();\r\n"+
+	"CurrentPage.onLoadSelect = function(){\r\n"+
+	"listObject = new ListUtil.Listing('listObject', 'listtable');\r\n"+
+	"listObject.init();\r\n"+
+	"top.definedWin.selectListing = function(inum) {\r\n";
+	
+		//<c:if test="${theForm.popSelectType == 'radio'}">listObject.selectWindow(1);</c:if>
+		//<c:if test="${theForm.popSelectType == 'checkbox'}">listObject.selectWindow(2);</c:if>
+	private static String script2="}\r\n"+
+	"top.definedWin.closeListing = function(inum) {\r\n"+
+	"listObject.selectWindow();\r\n"+
+	"}\r\n"+
+"}\r\n"+
+"CurrentPage.onLoadSelect();\r\n"+
+	"</script>"; 
+=====================================================================
+Found a 3 line (34 tokens) duplication in the following files: 
+Starting at line 107 of D:\newworkplace\struts2\src\base\zyf\web\view\ComboSupportList.java
+Starting at line 245 of D:\newworkplace\struts2\src\base\zyf\web\view\ComboSupportList.java
+
+		List keyValues = convertData2KeyValues();
+		for (Iterator iter = keyValues.iterator(); iter.hasNext(); ) {
+			KeyValue keyValue = (KeyValue) iter.next();
+=====================================================================
+Found a 6 line (34 tokens) duplication in the following files: 
+Starting at line 178 of D:\newworkplace\struts2\src\base\zyf\web\view\tag\ExtendComboCompositeTag.java
+Starting at line 203 of D:\newworkplace\struts2\src\base\zyf\web\view\tag\ExtendComboCompositeTag.java
+
+			Object lastElement = selectedTexts.get(filteredSelectedTexts.size() - 1);
+			return MiscUtils.nullSafeToString(lastElement);
+		}
+		
+		KeyValue keyValue = lookUpKeyValue();
+		return keyValue == null ? "" : MiscUtils.nullSafeToString(keyValue.getValue());
+=====================================================================
+Found a 3 line (34 tokens) duplication in the following files: 
+Starting at line 151 of D:\newworkplace\struts2\src\base\zyf\web\view\tag\ExtendComboCompositeTag.java
+Starting at line 107 of D:\newworkplace\struts2\src\base\zyf\web\view\ComboSupportList.java
+
+		List keyValues = convertData2KeyValues();
+		for (Iterator iter = keyValues.iterator(); iter.hasNext(); ) {
+			KeyValue keyValue = (KeyValue) iter.next();
+=====================================================================
+Found a 7 line (33 tokens) duplication in the following files: 
+Starting at line 892 of D:\newworkplace\struts2\src\base\zyf\chart\action\chart\Graph.java
+Starting at line 907 of D:\newworkplace\struts2\src\base\zyf\chart\action\chart\Graph.java
+
+		String description = alpha + "," + offset + "," + colour + ","
+				+ colour_outline + "," + text + "," + size;
+
+		this.lines.add(new Line(type, description));
+	}
+
+	public void bar_3D(String alpha) {
+=====================================================================
+Found a 7 line (33 tokens) duplication in the following files: 
+Starting at line 171 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeGrantTag.java
+Starting at line 183 of D:\newworkplace\struts2\src\base\zyf\common\tree\ModuleTreeViewTag.java
+
+                ("<table id='treetab' border=\"0\" cellspacing=\"0\" cellpadding=\"0\"");
+            if (style != null) {
+                out.print(" class=\"");
+                out.print(style);
+                out.print("\"");
+            }
+            out.println(">");
+=====================================================================
+Found a 6 line (33 tokens) duplication in the following files: 
+Starting at line 29 of D:\newworkplace\struts2\src\base\zyf\common\util\BytesHelper.java
+Starting at line 38 of D:\newworkplace\struts2\src\base\zyf\common\util\BytesHelper.java
+
+        for (int i = 1; i >= 0; i--) {
+            result[i] = (byte) ((0xFFl & value) + Byte.MIN_VALUE);
+            value >>>= 8;
+        }
+        return result;
+    }
+=====================================================================
+Found a 4 line (33 tokens) duplication in the following files: 
+Starting at line 195 of D:\newworkplace\struts2\src\base\zyf\common\util\date\DateUtil.java
+Starting at line 208 of D:\newworkplace\struts2\src\base\zyf\common\util\date\DateUtil.java
+Starting at line 221 of D:\newworkplace\struts2\src\base\zyf\common\util\date\DateUtil.java
+
+	static public int dayOfDate(Date s) throws ParseException {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		String d = format.format(s);
+		return Integer.parseInt(d.substring(8, 10));
+=====================================================================
+Found a 7 line (33 tokens) duplication in the following files: 
+Starting at line 123 of D:\newworkplace\struts2\src\base\zyf\hibernate\usertype\UserEntityUserType.java
+Starting at line 133 of D:\newworkplace\struts2\src\base\zyf\hibernate\usertype\CodeWrapperType.java
+
+	public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor session) 
+		throws HibernateException, SQLException {
+		
+		String name = null;
+		if (value != null) {
+			Assert.isInstanceOf(returnedClass(), value, " 类型声明错误 ");
+			name = ((CodeWrapper) value).getCode();
+=====================================================================
+Found a 3 line (33 tokens) duplication in the following files: 
+Starting at line 452 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 458 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+					else if ((strFen.charAt(lenIntFen - 1) == '0')
+							&& (strNow.charAt(0) == '万')
+							&& (strNow.charAt(2) != '仟'))
+=====================================================================
+Found a 5 line (32 tokens) duplication in the following files: 
+Starting at line 80 of D:\newworkplace\struts2\src\base\zyf\common\util\file\FileUtil.java
+Starting at line 97 of D:\newworkplace\struts2\src\base\zyf\common\util\file\FileUtil.java
+Starting at line 114 of D:\newworkplace\struts2\src\base\zyf\common\util\file\FileUtil.java
+Starting at line 131 of D:\newworkplace\struts2\src\base\zyf\common\util\file\FileUtil.java
+Starting at line 148 of D:\newworkplace\struts2\src\base\zyf\common\util\file\FileUtil.java
+
+	public static boolean theFileIsDirectory(String pathFile) {
+		boolean flag = false;
+		if (!pathFile.equals("")) {
+			File path = new File(pathFile);
+			if (path.isDirectory()) {
+=====================================================================
+Found a 11 line (32 tokens) duplication in the following files: 
+Starting at line 124 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\AutoCreateSearchJspfByXml.java
+Starting at line 40 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspCreateByXml.java
+
+	}
+
+	/* (non-Javadoc)
+	 * @see com.zyf.tools.auto.create.AutoCreateFile#findFiles(java.lang.String)
+	 */
+	protected void findFiles(String name) {
+		// TODO Auto-generated method stub
+		BeanReader br=new BeanReader();
+		br.getXMLIntrospector().setWrapCollectionsInElement(false);
+		try {
+			br.registerBeanClass(ListJspCreateByXml.class);
+=====================================================================
+Found a 11 line (32 tokens) duplication in the following files: 
+Starting at line 92 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\TableTag.java
+Starting at line 35 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchSelectTag.java
+
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int doEndTag() throws JspException {
+=====================================================================
+Found a 3 line (32 tokens) duplication in the following files: 
+Starting at line 188 of D:\newworkplace\struts2\src\base\zyf\web\view\tag\ExtendComboTextTag.java
+Starting at line 103 of D:\newworkplace\struts2\src\base\zyf\web\view\tag\ExtendComboCompositeTag.java
+
+		SysCodeSubSysMap map  = (SysCodeSubSysMap)ExpressionEvaluationUtils.evaluate(SOURCE_ATTRIBUTE, "${sysCodes}", pageContext);		
+		Object evaledSource = map.get(source);
+		if (evaledSource == null) {
+=====================================================================
+Found a 3 line (31 tokens) duplication in the following files: 
+Starting at line 56 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+Starting at line 169 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+
+			dc.add(Restrictions.isNull("orderAsc"));
+		dc.addOrder(Order.asc("orderNum"));
+		List l= hibernateTemplate.findByCriteria(dc);
+=====================================================================
+Found a 3 line (31 tokens) duplication in the following files: 
+Starting at line 65 of D:\newworkplace\struts2\src\base\zyf\web\view\tag\ExtendComboCompositeTag.java
+Starting at line 151 of D:\newworkplace\struts2\src\base\zyf\web\view\tag\ExtendComboCompositeTag.java
+
+		List keyValues = convertData2KeyValues();
+		for (Iterator iter = keyValues.iterator(); iter.hasNext(); ) {
+			KeyValue keyValue = (KeyValue) iter.next();
+=====================================================================
+Found a 7 line (30 tokens) duplication in the following files: 
+Starting at line 113 of D:\newworkplace\struts2\src\base\zyf\common\mail\SendMailBean.java
+Starting at line 125 of D:\newworkplace\struts2\src\base\zyf\common\mail\SendMailBean.java
+
+			String disposition, String description)
+	{
+		if(this.attachments == null)
+		{
+			this.attachments = new ArrayList<EmailAttachment>();
+		}
+		EmailAttachment attachment = new EmailAttachment();
+=====================================================================
+Found a 8 line (30 tokens) duplication in the following files: 
+Starting at line 193 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeGrantTag.java
+Starting at line 187 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeControlTag.java
+
+            throw new JspException(e);
+        }
+
+        return (EVAL_PAGE);
+
+    }
+
+    private void printChildren(JspWriter out, List<TreeViewI> l,String id, boolean exp) throws IOException
+=====================================================================
+Found a 4 line (30 tokens) duplication in the following files: 
+Starting at line 474 of D:\newworkplace\struts2\src\base\zyf\common\util\date\DateUtil.java
+Starting at line 501 of D:\newworkplace\struts2\src\base\zyf\common\util\date\DateUtil.java
+
+		long dayCount = 0;
+		try {
+			java.util.Date d1 = d.parse(beforedate);
+			java.util.Date d2 = d.parse(afterdate);
+=====================================================================
+Found a 16 line (30 tokens) duplication in the following files: 
+Starting at line 332 of D:\newworkplace\struts2\src\base\zyf\common\util\date\DateUtil.java
+Starting at line 348 of D:\newworkplace\struts2\src\base\zyf\common\util\date\DateUtil.java
+
+	static public Date getFirstDay(int year, int month) throws ParseException {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		return format.parse(year + "-" + month + "-1");
+	}
+
+	/**
+	 * 得到指定年月的最后一天
+	 * 
+	 * @param year
+	 *            年
+	 * @param month
+	 *            月
+	 * @return
+	 * @throws ParseException
+	 */
+	static public Date getLastDay(String year, String month)
+=====================================================================
+Found a 8 line (30 tokens) duplication in the following files: 
+Starting at line 57 of D:\newworkplace\struts2\src\base\zyf\hibernate\usertype\UserEntity.java
+Starting at line 31 of D:\newworkplace\struts2\src\base\zyf\hibernate\Entity.java
+
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+=====================================================================
+Found a 6 line (30 tokens) duplication in the following files: 
+Starting at line 68 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\SearchJspfData.java
+Starting at line 85 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspData.java
+
+	public String getInfoTag()
+	{
+		StringBuffer st=new StringBuffer();
+		int count=0;
+		StringBuffer temp=new StringBuffer();
+		for(int i=0,size=infoMetas.size();i<size;i++)
+=====================================================================
+Found a 6 line (30 tokens) duplication in the following files: 
+Starting at line 64 of D:\newworkplace\struts2\src\base\zyf\web\page\taglib\PageTaglib.java
+Starting at line 117 of D:\newworkplace\struts2\src\base\zyf\web\page\taglib\PageTaglib.java
+
+				out.print(table);
+				out.print(hidden);
+				out.print(tr);
+
+				out.print(td_center);
+				out.print(pt.getShowSummary());
+=====================================================================
+Found a 13 line (29 tokens) duplication in the following files: 
+Starting at line 39 of D:\newworkplace\struts2\src\base\zyf\common\socket\SocketClientTest.java
+Starting at line 117 of D:\newworkplace\struts2\src\base\zyf\common\socket\SocketClientTest.java
+
+            dataout.writeUTF("0020 "+"1111 "+"1234");
+            sleep(1000*60);
+        }
+        catch (IOException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
+    public SocketClientTest()
+=====================================================================
+Found a 4 line (29 tokens) duplication in the following files: 
+Starting at line 66 of D:\newworkplace\struts2\src\base\zyf\common\util\regex\AnalyseString.java
+Starting at line 144 of D:\newworkplace\struts2\src\base\zyf\common\util\regex\AnalyseString.java
+
+		for(int i=0,size=keyList.length;i<size;i++)
+		{
+			if(i!=0)
+				key.append(anyis);
+=====================================================================
+Found a 3 line (29 tokens) duplication in the following files: 
+Starting at line 132 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 174 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+			char[] temp=new char[sub1s.length()-sub2s.length()];
+			for(int i=0,size=temp.length;i<size;i++)
+				temp[i]='0';
+=====================================================================
+Found a 12 line (29 tokens) duplication in the following files: 
+Starting at line 123 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspCreateByXml.java
+Starting at line 97 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\entry\EntryJspCreateByXml.java
+
+				metas.add(ejm);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
+=====================================================================
+Found a 9 line (29 tokens) duplication in the following files: 
+Starting at line 28 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspCreateByXml.java
+Starting at line 27 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\entry\EntryJspCreateByXml.java
+
+	List metas=new ArrayList();
+	/* (non-Javadoc)
+	 * @see com.zyf.tools.auto.create.AutoCreateFile#createJsp(java.lang.String)
+	 */
+	public void createJsp(String name) {
+		// TODO Auto-generated method stub
+		findFiles(name);
+		readMetaData();
+		for(int i=0,size=metas.size();i<size;i++)
+=====================================================================
+Found a 12 line (29 tokens) duplication in the following files: 
+Starting at line 97 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspCreateByXml.java
+Starting at line 123 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspCreateByXml.java
+
+				infoJspDatas.add(ijd);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
+=====================================================================
+Found a 11 line (29 tokens) duplication in the following files: 
+Starting at line 27 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspCreateByXml.java
+Starting at line 28 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspCreateByXml.java
+
+	List infoJspDatas=new ArrayList();
+	
+	
+	/* (non-Javadoc)
+	 * @see com.zyf.tools.auto.create.AutoCreateFile#createJsp(java.lang.String)
+	 */
+	public void createJsp(String name)
+	{
+		findFiles(name);
+		readMetaData();
+		for(int i=0,size=infoJspDatas.size();i<size;i++)
+=====================================================================
+Found a 5 line (29 tokens) duplication in the following files: 
+Starting at line 92 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspMeta.java
+Starting at line 160 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspData.java
+
+		}
+	private String getJs()
+	{
+		StringBuffer js=new StringBuffer();
+		BufferedReader br=FileUtil.getFileReader(this.getClass().getResourceAsStream("info.js-"));
+=====================================================================
+Found a 9 line (29 tokens) duplication in the following files: 
+Starting at line 90 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\AutoCreateSearchJspf.java
+Starting at line 27 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspCreateByXml.java
+
+	List ljms=new ArrayList();
+	/* (non-Javadoc)
+	 * @see com.zyf.tools.auto.create.AutoCreateFile#createJspf(java.lang.String)
+	 */
+	public void createJsp(String name) {
+		// TODO Auto-generated method stub
+		findFiles(name);
+		readMetaData();
+		for(int i=0,size=ljms.size();i<size;i++)
+=====================================================================
+Found a 12 line (29 tokens) duplication in the following files: 
+Starting at line 174 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\AutoCreateSearchJspfByXml.java
+Starting at line 97 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspCreateByXml.java
+
+				ljms.add(ljm);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
+=====================================================================
+Found a 10 line (29 tokens) duplication in the following files: 
+Starting at line 310 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\SearchMeta.java
+Starting at line 235 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoMeta.java
+
+		this.selectModuleCode = selectModuleCode;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+=====================================================================
+Found a 4 line (29 tokens) duplication in the following files: 
+Starting at line 283 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\SearchMeta.java
+Starting at line 297 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoMeta.java
+
+			tags=MessageFormat.format(tag.toString(),new Object[]{name,pattern,valueDefault,span});
+		}
+		
+		return MessageFormat.format(td.toString(), new Object[]{this.viewClass,this.inputClass,this.displayName,tags});
+=====================================================================
+Found a 5 line (29 tokens) duplication in the following files: 
+Starting at line 128 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonServiceImpl.java
+Starting at line 275 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonServiceImpl.java
+
+		String user = 	ucn.getName();
+		ViewBean vb=new ViewBean();
+		List rs=ctvs.getRows(user, pageId);
+		vb.setViewRow(rs);
+		vb.setViewList(data);
+=====================================================================
+Found a 9 line (29 tokens) duplication in the following files: 
+Starting at line 207 of D:\newworkplace\struts2\src\com\cc\sys\db\SysTree.java
+Starting at line 160 of D:\newworkplace\struts2\src\com\cc\sys\db\SysDepartment.java
+
+	}
+
+	public boolean isLast() {
+		return this.getChildren().size() == 0;
+	}
+
+	public void setAction(String string) {
+		
+	}
+=====================================================================
+Found a 5 line (28 tokens) duplication in the following files: 
+Starting at line 485 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 490 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+						&& (strNow.charAt(0) == '零')) {
+				}
+				// 亿位为零且不存在仟万位和十亿以上时去掉上次写入的零
+				else if ((i < 15) && (i > 11)
+						&& (strFen.charAt(lenIntFen - 1) != '0')
+=====================================================================
+Found a 3 line (28 tokens) duplication in the following files: 
+Starting at line 445 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 463 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+					else if ((strNow.charAt(0) == '万')
+							&& (strNow.charAt(2) == '仟'))
+						strBig = strNum + strDW + "零"
+=====================================================================
+Found a 11 line (28 tokens) duplication in the following files: 
+Starting at line 73 of D:\newworkplace\struts2\src\com\cc\sys\db\SysGroup.java
+Starting at line 90 of D:\newworkplace\struts2\src\com\cc\sys\db\SysDepartment.java
+
+	}
+
+	public String getIsSys() {
+		return this.isSys;
+	}
+
+	public void setIsSys(String isSys) {
+		this.isSys = isSys;
+	}
+
+	public Set getSysUsers() {
+=====================================================================
+Found a 11 line (28 tokens) duplication in the following files: 
+Starting at line 46 of D:\newworkplace\struts2\src\com\cc\sys\db\SysGroup.java
+Starting at line 74 of D:\newworkplace\struts2\src\com\cc\sys\db\SysDepartment.java
+
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAdmin() {
+=====================================================================
+Found a 12 line (28 tokens) duplication in the following files: 
+Starting at line 88 of D:\newworkplace\struts2\src\com\cc\sys\db\SysLog.java
+Starting at line 89 of D:\newworkplace\struts2\src\base\zyf\web\crud\db\CommonTableView.java
+
+	}
+
+	public String getRemark() {
+		return this.remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+
+	public Set getCommonTableViewSets() {
+=====================================================================
+Found a 14 line (28 tokens) duplication in the following files: 
+Starting at line 109 of D:\newworkplace\struts2\src\com\cc\sys\db\SysModule.java
+Starting at line 46 of D:\newworkplace\struts2\src\com\cc\sys\db\SysGroup.java
+
+	}
+
+	// Property accessors
+
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDelMark() {
+=====================================================================
+Found a 11 line (28 tokens) duplication in the following files: 
+Starting at line 99 of D:\newworkplace\struts2\src\com\cc\sys\db\SysTree.java
+Starting at line 101 of D:\newworkplace\struts2\src\com\cc\sys\db\SysModule.java
+
+	}
+
+	public String getTagShow() {
+		return this.tagShow;
+	}
+
+	public void setTagShow(String tagShow) {
+		this.tagShow = tagShow;
+	}
+
+	public String getName() {
+=====================================================================
+Found a 11 line (28 tokens) duplication in the following files: 
+Starting at line 83 of D:\newworkplace\struts2\src\com\cc\sys\db\SysTree.java
+Starting at line 117 of D:\newworkplace\struts2\src\com\cc\sys\db\SysModule.java
+
+	}
+
+	public String getLayerOrder() {
+		return this.layerOrder;
+	}
+
+	public void setLayerOrder(String layerOrder) {
+		this.layerOrder = layerOrder;
+	}
+
+	public String getIsSys() {
+=====================================================================
+Found a 11 line (28 tokens) duplication in the following files: 
+Starting at line 94 of D:\newworkplace\struts2\src\com\cc\sys\db\SysUser.java
+Starting at line 65 of D:\newworkplace\struts2\src\com\cc\sys\db\SysGroup.java
+
+	}
+
+	public String getRemark() {
+		return this.remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public String getIsSys() {
+=====================================================================
+Found a 14 line (28 tokens) duplication in the following files: 
+Starting at line 60 of D:\newworkplace\struts2\src\com\cc\sys\db\SysUser.java
+Starting at line 41 of D:\newworkplace\struts2\src\com\cc\sys\db\SysRightGroup.java
+
+	}
+
+	public SysGroup getSysGroup() {
+		return this.sysGroup;
+	}
+
+	public void setSysGroup(SysGroup sysGroup) {
+		this.sysGroup = sysGroup;
+	}
+
+	/**
+	 * @return the modId
+	 */
+	public String getModId() {
+=====================================================================
+Found a 19 line (28 tokens) duplication in the following files: 
+Starting at line 32 of D:\newworkplace\struts2\src\com\cc\sys\tree\service\impl\SysTreeServiceImpl.java
+Starting at line 44 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonServiceImpl.java
+
+	private HibernateTemplate hibernateTemplate;
+	/**
+	 * @return the hibernateTemplate
+	 */
+	public HibernateTemplate getHibernateTemplate() {
+		return hibernateTemplate;
+	}
+
+	/**
+	 * @param hibernateTemplate the hibernateTemplate to set
+	 */
+	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+		this.hibernateTemplate = hibernateTemplate;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.zyf.common.crud.service.CommonService#add(com.zyf.framework.persistent.Entity)
+	 */
+	public void add(Object e) {
+=====================================================================
+Found a 20 line (28 tokens) duplication in the following files: 
+Starting at line 30 of D:\newworkplace\struts2\src\com\cc\sys\tree\service\impl\SysTreeServiceImpl.java
+Starting at line 36 of D:\newworkplace\struts2\src\com\cc\sys\module\service\impl\SysModuleServiceImpl.java
+
+		ModuleLoadService {
+	private HibernateTemplate hibernateTemplate;
+	/**
+	 * @return the hibernateTemplate
+	 */
+	public HibernateTemplate getHibernateTemplate() {
+		return hibernateTemplate;
+	}
+
+	/**
+	 * @param hibernateTemplate the hibernateTemplate to set
+	 */
+	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+		this.hibernateTemplate = hibernateTemplate;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.cc.sys.module.service.impl.SysModuleService#loadAll()
+	 */
+	public TreeNodeI loadAll() {
+=====================================================================
+Found a 5 line (27 tokens) duplication in the following files: 
+Starting at line 48 of D:\newworkplace\struts2\src\base\zyf\common\code\impl\SysCodeServiceImpl.java
+Starting at line 52 of D:\newworkplace\struts2\src\base\zyf\common\code\impl\SysCodeServiceImpl.java
+
+		} catch (InstantiationException e) {
+			logger.error(e);
+			logger.error("类路径："+s[0]+"无法创建实体");
+			return null;
+		} catch (IllegalAccessException e) {
+=====================================================================
+Found a 3 line (27 tokens) duplication in the following files: 
+Starting at line 174 of D:\newworkplace\struts2\src\base\zyf\common\mail\MailBean.java
+Starting at line 176 of D:\newworkplace\struts2\src\base\zyf\common\mail\MailBean.java
+
+	        } else if (part.isMimeType("text/html") && !conname) {    
+	            bodytext.append((String) part.getContent());    
+	        } else if (part.isMimeType("multipart/*")) {    
+=====================================================================
+Found a 8 line (27 tokens) duplication in the following files: 
+Starting at line 154 of D:\newworkplace\struts2\src\base\zyf\hibernate\dao\HibernateTemplatePlus.java
+Starting at line 305 of D:\newworkplace\struts2\src\base\zyf\hibernate\dao\HibernateTemplatePlus.java
+
+		}
+		if (LIKE.equals(operator)) {
+			value = "%" + value + "%";
+		}
+		operator = " " + operator + " ";
+		
+		// 处理关联查询
+		String lastAlias = null;		
+=====================================================================
+Found a 7 line (27 tokens) duplication in the following files: 
+Starting at line 48 of D:\newworkplace\struts2\src\base\zyf\hibernate\usertype\UserEntity.java
+Starting at line 81 of D:\newworkplace\struts2\src\base\zyf\hibernate\usertype\UserEntity.java
+
+	{
+		// TODO Auto-generated method stub
+		UserEntity ue = new UserEntity();
+        ue.setName(getName());
+        ue.setUserId(getUserId());
+        return ue;
+	}
+=====================================================================
+Found a 8 line (27 tokens) duplication in the following files: 
+Starting at line 135 of D:\newworkplace\struts2\src\base\zyf\tools\Betwixts.java
+Starting at line 174 of D:\newworkplace\struts2\src\base\zyf\tools\Betwixts.java
+
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+=====================================================================
+Found a 8 line (27 tokens) duplication in the following files: 
+Starting at line 58 of D:\newworkplace\struts2\src\base\zyf\tools\FileUtil.java
+Starting at line 85 of D:\newworkplace\struts2\src\base\zyf\common\util\Constants.java
+
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+=====================================================================
+Found a 1 line (27 tokens) duplication in the following files: 
+Starting at line 99 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\SearchJspfData.java
+Starting at line 107 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\SearchJspfData.java
+
+			st.append(MessageFormat.format(tr.toString(),new Object[]{temp.toString()}));
+=====================================================================
+Found a 15 line (27 tokens) duplication in the following files: 
+Starting at line 44 of D:\newworkplace\struts2\src\base\zyf\web\crud\db\CommonTableViewSet.java
+Starting at line 43 of D:\newworkplace\struts2\src\base\zyf\web\crud\db\CommonTableView.java
+
+	}
+
+
+
+	// Property accessors
+
+	public String getId() {
+		return this.id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getTableName() {
+=====================================================================
+Found a 14 line (27 tokens) duplication in the following files: 
+Starting at line 30 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\ViewBean.java
+Starting at line 21 of D:\newworkplace\struts2\src\base\zyf\chart\action\chart\Title.java
+
+	private String style;
+	/**
+	 * @return the style
+	 */
+	public String getStyle() {
+		return style;
+	}
+	/**
+	 * @param style the style to set
+	 */
+	public void setStyle(String style) {
+		this.style = style;
+	}
+	public String getText() {
+=====================================================================
+Found a 8 line (27 tokens) duplication in the following files: 
+Starting at line 201 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonServiceImpl.java
+Starting at line 247 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+			set=map.keySet();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+=====================================================================
+Found a 19 line (27 tokens) duplication in the following files: 
+Starting at line 31 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+Starting at line 44 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonServiceImpl.java
+
+	private HibernateTemplate hibernateTemplate;
+	/**
+	 * @return the hibernateTemplate
+	 */
+	public HibernateTemplate getHibernateTemplate() {
+		return hibernateTemplate;
+	}
+
+	/**
+	 * @param hibernateTemplate the hibernateTemplate to set
+	 */
+	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+		this.hibernateTemplate = hibernateTemplate;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.zyf.common.crud.service.CommonService#add(com.zyf.framework.persistent.Entity)
+	 */
+	public void add(Object e) {
+=====================================================================
+Found a 22 line (27 tokens) duplication in the following files: 
+Starting at line 34 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchMemberTag.java
+Starting at line 57 of D:\newworkplace\struts2\src\base\zyf\hibernate\usertype\CodeWrapper.java
+
+		return code;
+	}
+
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+=====================================================================
+Found a 5 line (27 tokens) duplication in the following files: 
+Starting at line 63 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTimeTag.java
+Starting at line 66 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTextTag.java
+
+	}
+	public int doEndTag() throws JspException {
+		// TODO Auto-generated method stub
+		JspWriter out = pageContext.getOut();
+		Map<String, Condition> conditions = (Map)ExpressionEvaluationUtils.evaluate("valueDefault","${conditions}", pageContext);
+=====================================================================
+Found a 3 line (27 tokens) duplication in the following files: 
+Starting at line 364 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\TableTag.java
+Starting at line 366 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\TableTag.java
+
+			publicResourceServer=(String) pageContext.getAttribute("initParam['publicResourceServer']",PageContext.REQUEST_SCOPE);
+		if(publicResourceServer==null||publicResourceServer.equals(""))
+			publicResourceServer=(String) pageContext.getAttribute("initParam['publicResourceServer']",PageContext.SESSION_SCOPE);
+=====================================================================
+Found a 8 line (27 tokens) duplication in the following files: 
+Starting at line 341 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\TableTag.java
+Starting at line 247 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+			set=map.keySet();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+=====================================================================
+Found a 6 line (27 tokens) duplication in the following files: 
+Starting at line 187 of D:\newworkplace\struts2\src\base\zyf\web\view\tag\ExtendComboCompositeTag.java
+Starting at line 121 of D:\newworkplace\struts2\src\base\zyf\common\util\MiscUtils.java
+
+    	return (List) CollectionUtils.select(list, new Predicate() {
+			public boolean evaluate(Object object) {
+				return object != null;
+			}
+    	});
+    }
+=====================================================================
+Found a 11 line (27 tokens) duplication in the following files: 
+Starting at line 88 of D:\newworkplace\struts2\src\com\cc\sys\db\SysLog.java
+Starting at line 65 of D:\newworkplace\struts2\src\com\cc\sys\db\SysGroup.java
+
+	}
+
+	public String getRemark() {
+		return this.remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public String getIsSys() {
+=====================================================================
+Found a 11 line (27 tokens) duplication in the following files: 
+Starting at line 125 of D:\newworkplace\struts2\src\com\cc\sys\db\SysModule.java
+Starting at line 73 of D:\newworkplace\struts2\src\com\cc\sys\db\SysGroup.java
+
+	}
+
+	public String getIsSys() {
+		return this.isSys;
+	}
+
+	public void setIsSys(String isSys) {
+		this.isSys = isSys;
+	}
+
+	public Set getSysRightGroups() {
+=====================================================================
+Found a 11 line (27 tokens) duplication in the following files: 
+Starting at line 147 of D:\newworkplace\struts2\src\com\cc\sys\db\SysTree.java
+Starting at line 88 of D:\newworkplace\struts2\src\com\cc\sys\db\SysLog.java
+
+	}
+
+	public String getRemark() {
+		return this.remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public Set getSysLogDetails() {
+=====================================================================
+Found a 11 line (27 tokens) duplication in the following files: 
+Starting at line 118 of D:\newworkplace\struts2\src\com\cc\sys\db\SysUser.java
+Starting at line 90 of D:\newworkplace\struts2\src\com\cc\sys\db\SysDepartment.java
+
+	}
+
+	public String getIsSys() {
+		return this.isSys;
+	}
+
+	public void setIsSys(String isSys) {
+		this.isSys = isSys;
+	}
+
+	public Set getSysUsers() {
+=====================================================================
+Found a 11 line (27 tokens) duplication in the following files: 
+Starting at line 94 of D:\newworkplace\struts2\src\com\cc\sys\db\SysUser.java
+Starting at line 88 of D:\newworkplace\struts2\src\com\cc\sys\db\SysLog.java
+
+	}
+
+	public String getRemark() {
+		return this.remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public Set getSysLogDetails() {
+=====================================================================
+Found a 12 line (27 tokens) duplication in the following files: 
+Starting at line 41 of D:\newworkplace\struts2\src\com\cc\sys\db\SysUser.java
+Starting at line 62 of D:\newworkplace\struts2\src\base\zyf\web\crud\db\CommonTableViewSet.java
+
+	}
+
+	public String getUserId() {
+		return this.userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	
+	public String getOrderAsc() {
+=====================================================================
+Found a 19 line (27 tokens) duplication in the following files: 
+Starting at line 32 of D:\newworkplace\struts2\src\com\cc\sys\tree\service\impl\SysTreeServiceImpl.java
+Starting at line 31 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonTableViewServiceImpl.java
+
+	private HibernateTemplate hibernateTemplate;
+	/**
+	 * @return the hibernateTemplate
+	 */
+	public HibernateTemplate getHibernateTemplate() {
+		return hibernateTemplate;
+	}
+
+	/**
+	 * @param hibernateTemplate the hibernateTemplate to set
+	 */
+	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+		this.hibernateTemplate = hibernateTemplate;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.zyf.common.crud.service.CommonTableViewService#getRows(java.lang.String, java.lang.Class)
+	 */
+	public List getRows(String userId, String pageId) {
+=====================================================================
+Found a 4 line (26 tokens) duplication in the following files: 
+Starting at line 864 of D:\newworkplace\struts2\src\base\zyf\chart\action\chart\Graph.java
+Starting at line 1001 of D:\newworkplace\struts2\src\base\zyf\chart\action\chart\Graph.java
+
+		String description = alpha + "," + line_width + "," + colour + ","
+				+ text + "," + size;
+
+		this.lines.add(new Line(type, description));
+=====================================================================
+Found a 14 line (26 tokens) duplication in the following files: 
+Starting at line 200 of D:\newworkplace\struts2\src\base\zyf\common\mail\ReceiveMail.java
+Starting at line 219 of D:\newworkplace\struts2\src\base\zyf\common\mail\ReceiveMail.java
+Starting at line 237 of D:\newworkplace\struts2\src\base\zyf\common\mail\ReceiveMail.java
+
+			count = inbox.getUnreadMessageCount();
+			inbox.close(false);
+			
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		return count;
+	}
+	/* (non-Javadoc)
+	 * @see base.zyf.common.mail.ReceiveMailService#getDeleteMailCount()
+	 */
+	public int getDeleteMailCount()
+=====================================================================
+Found a 14 line (26 tokens) duplication in the following files: 
+Starting at line 66 of D:\newworkplace\struts2\src\base\zyf\common\socket\SocketClientTest.java
+Starting at line 100 of D:\newworkplace\struts2\src\base\zyf\common\socket\SocketClientTest.java
+
+        	System.out.println(cmd);
+        	}
+        	}
+        }
+        catch (IOException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        catch (Exception e) {
+            // TODO: handle exception
+        }
+    } 
+    public void sendLogin2Server()
+=====================================================================
+Found a 2 line (26 tokens) duplication in the following files: 
+Starting at line 222 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeGrantTag.java
+Starting at line 210 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeControlTag.java
+
+            	out.print("<tr><td ><img id=\"img_"+tvi.getId()+"\" src=\""+ this.getImages()+ClOSE_IMG +"\" onclick=\"changeExp('"+tvi.getId()+"')\" title='点击此处关闭节点'/></td><td style=\"cursor:hand\" title='点击此处显示详细' onclick=\"viewDetail('"+tvi.getId()+"')\">"+ tvi.getName() +"</td></tr>");
+            	printChildren(out, tvi.getChildren(), tvi.getId(), false);
+=====================================================================
+Found a 2 line (26 tokens) duplication in the following files: 
+Starting at line 183 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeGrantTag.java
+Starting at line 179 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeControlTag.java
+
+            	out.print("<tr><td ><img id=\"img_"+root.getId()+"\" src=\""+ this.getImages()+ClOSE_IMG +"\" onclick=\"changeExp('"+root.getId()+"')\" title='点击此处关闭节点'/></td><td style=\"cursor:hand\" title='点击此处显示详细' onclick=\"viewDetail('"+root.getId()+"')\">"+ root.getName() +"</td></tr>");
+            	printChildren(out, root.getChildren(), root.getId(), true);
+=====================================================================
+Found a 21 line (26 tokens) duplication in the following files: 
+Starting at line 31 of D:\newworkplace\struts2\src\base\zyf\tools\FileBean.java
+Starting at line 58 of D:\newworkplace\struts2\src\base\zyf\hibernate\usertype\CodeWrapper.java
+
+	}
+
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+=====================================================================
+Found a 9 line (26 tokens) duplication in the following files: 
+Starting at line 146 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\AutoCreateSearchJspfByXml.java
+Starting at line 176 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\AutoCreateSearchJspfByXml.java
+Starting at line 175 of D:\newworkplace\struts2\src\base\zyf\tools\Betwixts.java
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+	}
+=====================================================================
+Found a 8 line (26 tokens) duplication in the following files: 
+Starting at line 87 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\SearchJspfData.java
+Starting at line 104 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspData.java
+
+					count+=im.getWidth();
+				}
+				else
+				{
+					/**
+					 * 没有很好的扩展，没有考虑2列以上情况
+					 */
+					st.append(MessageFormat.format(tr.toString(),new Object[]{im.getTag()}));
+=====================================================================
+Found a 11 line (26 tokens) duplication in the following files: 
+Starting at line 49 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\SearchJspfData.java
+Starting at line 158 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspMeta.java
+
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getListName() {
+=====================================================================
+Found a 8 line (26 tokens) duplication in the following files: 
+Starting at line 201 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonServiceImpl.java
+Starting at line 204 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+			return PropertyUtils.getProperty(object, propertyname);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+=====================================================================
+Found a 8 line (26 tokens) duplication in the following files: 
+Starting at line 35 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchMemberTag.java
+Starting at line 31 of D:\newworkplace\struts2\src\base\zyf\tools\FileBean.java
+
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getParentId() {
+=====================================================================
+Found a 10 line (26 tokens) duplication in the following files: 
+Starting at line 57 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchSelectTag.java
+Starting at line 74 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchDeptTag.java
+
+			out.print(MessageFormat.format(tr.toString(), new Object[]{code,codeDefault,name,nameDefault,"'"}));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return super.doEndTag();
+	}
+	
+}
+=====================================================================
+Found a 8 line (26 tokens) duplication in the following files: 
+Starting at line 35 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchSelectTag.java
+Starting at line 32 of D:\newworkplace\struts2\src\base\zyf\common\mail\MailAttachment.java
+
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getSize() {
+=====================================================================
+Found a 9 line (26 tokens) duplication in the following files: 
+Starting at line 48 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTextTag.java
+Starting at line 35 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchMemberTag.java
+
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getValueDefault() {
+=====================================================================
+Found a 11 line (26 tokens) duplication in the following files: 
+Starting at line 42 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTextTag.java
+Starting at line 177 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoMeta.java
+
+	}
+
+	public String getValueDefault() {
+		return valueDefault;
+	}
+
+	public void setValueDefault(String valueDefault) {
+		this.valueDefault = valueDefault;
+	}
+
+	public String getStyle() {
+=====================================================================
+Found a 4 line (26 tokens) duplication in the following files: 
+Starting at line 94 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTimeTag.java
+Starting at line 54 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchSelectTag.java
+
+		tr.append("<input name=\"conditions[{1}{0}{1}].createAlias\" type=\"hidden\"  value=\"false\" />"+enter);
+		try {
+			
+			out.print(MessageFormat.format(tr.toString(), new Object[]{name, "'"}));
+=====================================================================
+Found a 8 line (26 tokens) duplication in the following files: 
+Starting at line 50 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTimeTag.java
+Starting at line 54 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTextTag.java
+
+	}
+	public String getOper() {
+		return oper;
+	}
+	public void setOper(String oper) {
+		this.oper = oper;
+	}
+	public String getType() {
+=====================================================================
+Found a 8 line (26 tokens) duplication in the following files: 
+Starting at line 42 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTimeTag.java
+Starting at line 42 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTextTag.java
+
+	}
+	public String getValueDefault() {
+		return valueDefault;
+	}
+	public void setValueDefault(String valueDefault) {
+		this.valueDefault = valueDefault;
+	}
+	public String getName() {
+=====================================================================
+Found a 8 line (26 tokens) duplication in the following files: 
+Starting at line 341 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\TableTag.java
+Starting at line 204 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+			return PropertyUtils.getProperty(object, propertyname);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+=====================================================================
+Found a 8 line (26 tokens) duplication in the following files: 
+Starting at line 92 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\TableTag.java
+Starting at line 32 of D:\newworkplace\struts2\src\base\zyf\common\mail\MailAttachment.java
+
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getSize() {
+=====================================================================
+Found a 9 line (26 tokens) duplication in the following files: 
+Starting at line 84 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\TableTag.java
+Starting at line 29 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\PopSelectTag.java
+
+	private String formName;
+	
+	public String getFormName() {
+		return formName;
+	}
+
+	public void setFormName(String formName) {
+		this.formName = formName;
+	}
+=====================================================================
+Found a 9 line (26 tokens) duplication in the following files: 
+Starting at line 326 of D:\newworkplace\struts2\src\com\cc\sys\db\SysUserInfo.java
+Starting at line 94 of D:\newworkplace\struts2\src\com\cc\sys\db\SysUser.java
+
+	}
+
+	public String getRemark() {
+		return this.remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+=====================================================================
+Found a 9 line (25 tokens) duplication in the following files: 
+Starting at line 1008 of D:\newworkplace\struts2\src\base\zyf\chart\action\chart\Graph.java
+Starting at line 1049 of D:\newworkplace\struts2\src\base\zyf\chart\action\chart\Graph.java
+
+			a.add(p.toString("", ""));
+		}
+		this.data.add(implode(",", a));
+	}
+
+	//
+	// Patch by, Jeremy Miller (14th Nov, 2007)
+	//
+	public void pie(int alpha, String line_colour, String label_colour) {
+=====================================================================
+Found a 7 line (25 tokens) duplication in the following files: 
+Starting at line 864 of D:\newworkplace\struts2\src\base\zyf\chart\action\chart\Graph.java
+Starting at line 892 of D:\newworkplace\struts2\src\base\zyf\chart\action\chart\Graph.java
+Starting at line 961 of D:\newworkplace\struts2\src\base\zyf\chart\action\chart\Graph.java
+
+		String description = alpha + "," + colour + "," + outline_colour + ","
+				+ text + "," + size;
+
+		this.lines.add(new Line(type, description));
+	}
+
+	public void bar_fade(String alpha) {
+=====================================================================
+Found a 5 line (25 tokens) duplication in the following files: 
+Starting at line 48 of D:\newworkplace\struts2\src\base\zyf\common\code\impl\SysCodeServiceImpl.java
+Starting at line 56 of D:\newworkplace\struts2\src\base\zyf\common\code\impl\SysCodeServiceImpl.java
+
+		} catch (IllegalAccessException e) {
+			logger.error(e);
+			logger.error("类路径："+s[0]+"无法创建实体");
+			return null;
+		}
+=====================================================================
+Found a 14 line (25 tokens) duplication in the following files: 
+Starting at line 200 of D:\newworkplace\struts2\src\base\zyf\common\mail\ReceiveMail.java
+Starting at line 255 of D:\newworkplace\struts2\src\base\zyf\common\mail\ReceiveMail.java
+
+			count = inbox.getDeletedMessageCount();
+			inbox.close(false);
+			
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		return count;
+	}
+	/* (non-Javadoc)
+	 * @see base.zyf.common.mail.ReceiveMailService#getMailList(int, int)
+	 */
+	public List<MailBean> getMailList(int start, int end)
+=====================================================================
+Found a 17 line (25 tokens) duplication in the following files: 
+Starting at line 62 of D:\newworkplace\struts2\src\base\zyf\common\mail\SendMail.java
+Starting at line 341 of D:\newworkplace\struts2\src\base\zyf\common\mail\ReceiveMail.java
+
+	}
+	/* (non-Javadoc)
+	 * @see base.zyf.common.mail.ReceiveMailService#getUser()
+	 */
+	public String getUser() {
+		return user;
+	}
+	/* (non-Javadoc)
+	 * @see base.zyf.common.mail.ReceiveMailService#setUser(java.lang.String)
+	 */
+	public void setUser(String user) {
+		this.user = user;
+	}
+	/* (non-Javadoc)
+	 * @see base.zyf.common.mail.ReceiveMailService#getPassword()
+	 */
+	public String getPassword() {
+=====================================================================
+Found a 8 line (25 tokens) duplication in the following files: 
+Starting at line 185 of D:\newworkplace\struts2\src\base\zyf\common\tree\TreeControlTag.java
+Starting at line 192 of D:\newworkplace\struts2\src\base\zyf\common\tree\ModuleTreeViewTag.java
+
+            out.println("</table>");
+        } catch (IOException e) {
+            throw new JspException(e);
+        }
+
+        return (EVAL_PAGE);
+
+    }
+=====================================================================
+Found a 3 line (25 tokens) duplication in the following files: 
+Starting at line 61 of D:\newworkplace\struts2\src\base\zyf\common\util\Constants.java
+Starting at line 74 of D:\newworkplace\struts2\src\base\zyf\common\util\Constants.java
+
+								ft.getName().length());
+						if (type.equals("xml"))
+							sysParameter.loadFromXML(new FileInputStream(ft));
+=====================================================================
+Found a 4 line (25 tokens) duplication in the following files: 
+Starting at line 297 of D:\newworkplace\struts2\src\base\zyf\common\util\date\DateUtil.java
+Starting at line 368 of D:\newworkplace\struts2\src\base\zyf\common\util\date\DateUtil.java
+
+		Calendar scalendar = new GregorianCalendar();
+		scalendar.setTime(date);
+		scalendar.add(Calendar.MONTH, 1);
+		scalendar.add(Calendar.DATE, -1);
+=====================================================================
+Found a 8 line (25 tokens) duplication in the following files: 
+Starting at line 31 of D:\newworkplace\struts2\src\base\zyf\tools\FileBean.java
+Starting at line 32 of D:\newworkplace\struts2\src\base\zyf\common\mail\MailAttachment.java
+
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getSize() {
+=====================================================================
+Found a 4 line (25 tokens) duplication in the following files: 
+Starting at line 475 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 491 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+				}
+				// 亿位为零且不存在仟万位和十亿以上时去掉上次写入的零
+				else if ((i < 15) && (i > 11)
+						&& (strFen.charAt(lenIntFen - 1) != '0')
+=====================================================================
+Found a 3 line (25 tokens) duplication in the following files: 
+Starting at line 433 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+Starting at line 443 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+				else if ((i < 11) && (i > 8)
+						&& (strFen.charAt(lenIntFen - 1) == '0')
+						&& (strNow.charAt(0) == '万')
+=====================================================================
+Found a 7 line (25 tokens) duplication in the following files: 
+Starting at line 65 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\entry\EntryJspCreateByXml.java
+Starting at line 136 of D:\newworkplace\struts2\src\base\zyf\tools\Betwixts.java
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IntrospectionException e) {
+=====================================================================
+Found a 6 line (25 tokens) duplication in the following files: 
+Starting at line 45 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\entry\EntryJspCreateByXml.java
+Starting at line 77 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\entry\EntryJspCreateByXml.java
+
+	protected void readMetaData() {
+		// TODO Auto-generated method stub
+		BeanReader br=new BeanReader();
+		br.getXMLIntrospector().setWrapCollectionsInElement(false);
+		try {
+			br.registerBeanClass(EntryJspMeta.class);
+=====================================================================
+Found a 7 line (25 tokens) duplication in the following files: 
+Starting at line 125 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspCreateByXml.java
+Starting at line 136 of D:\newworkplace\struts2\src\base\zyf\tools\Betwixts.java
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IntrospectionException e) {
+=====================================================================
+Found a 6 line (25 tokens) duplication in the following files: 
+Starting at line 103 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspCreateByXml.java
+Starting at line 45 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\entry\EntryJspCreateByXml.java
+
+	protected void findFiles(String name) {
+		// TODO Auto-generated method stub
+		BeanReader br=new BeanReader();
+		br.getXMLIntrospector().setWrapCollectionsInElement(false);
+		try {
+			br.registerBeanClass(EntryJspCreateByXml.class);
+=====================================================================
+Found a 7 line (25 tokens) duplication in the following files: 
+Starting at line 91 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspCreateByXml.java
+Starting at line 136 of D:\newworkplace\struts2\src\base\zyf\tools\Betwixts.java
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IntrospectionException e) {
+=====================================================================
+Found a 6 line (25 tokens) duplication in the following files: 
+Starting at line 71 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspCreateByXml.java
+Starting at line 103 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspCreateByXml.java
+
+	protected void readMetaData() {
+		// TODO Auto-generated method stub
+		BeanReader br=new BeanReader();
+		br.getXMLIntrospector().setWrapCollectionsInElement(false);
+		try {
+			br.registerBeanClass(InfoJspData.class);
+=====================================================================
+Found a 8 line (25 tokens) duplication in the following files: 
+Starting at line 58 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspData.java
+Starting at line 110 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\entry\EntryJspMeta.java
+
+	}
+	public String getAbsPath() {
+		return absPath;
+	}
+	public void setAbsPath(String absPath) {
+		this.absPath = absPath;
+	}
+	public String getFileName() {
+=====================================================================
+Found a 7 line (25 tokens) duplication in the following files: 
+Starting at line 161 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoMeta.java
+Starting at line 32 of D:\newworkplace\struts2\src\base\zyf\tools\FileBean.java
+
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getParentId() {
+=====================================================================
+Found a 7 line (25 tokens) duplication in the following files: 
+Starting at line 99 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspCreateByXml.java
+Starting at line 136 of D:\newworkplace\struts2\src\base\zyf\tools\Betwixts.java
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IntrospectionException e) {
+=====================================================================
+Found a 6 line (25 tokens) duplication in the following files: 
+Starting at line 77 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspCreateByXml.java
+Starting at line 71 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspCreateByXml.java
+
+	protected void findFiles(String name) {
+		// TODO Auto-generated method stub
+		BeanReader br=new BeanReader();
+		br.getXMLIntrospector().setWrapCollectionsInElement(false);
+		try {
+			br.registerBeanClass(this.getClass());
+=====================================================================
+Found a 7 line (25 tokens) duplication in the following files: 
+Starting at line 65 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspCreateByXml.java
+Starting at line 136 of D:\newworkplace\struts2\src\base\zyf\tools\Betwixts.java
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IntrospectionException e) {
+=====================================================================
+Found a 6 line (25 tokens) duplication in the following files: 
+Starting at line 45 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspCreateByXml.java
+Starting at line 77 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspCreateByXml.java
+
+	protected void readMetaData() {
+		// TODO Auto-generated method stub
+		BeanReader br=new BeanReader();
+		br.getXMLIntrospector().setWrapCollectionsInElement(false);
+		try {
+			br.registerBeanClass(ListJspMeta.class);
+=====================================================================
+Found a 8 line (25 tokens) duplication in the following files: 
+Starting at line 149 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\list\ListJspMeta.java
+Starting at line 58 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoJspData.java
+
+	}
+	public String getAbsPath() {
+		return absPath;
+	}
+	public void setAbsPath(String absPath) {
+		this.absPath = absPath;
+	}
+	public List getInfoMetas() {
+=====================================================================
+Found a 7 line (25 tokens) duplication in the following files: 
+Starting at line 146 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\AutoCreateSearchJspfByXml.java
+Starting at line 136 of D:\newworkplace\struts2\src\base\zyf\tools\Betwixts.java
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IntrospectionException e) {
+=====================================================================
+Found a 6 line (25 tokens) duplication in the following files: 
+Starting at line 126 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\AutoCreateSearchJspfByXml.java
+Starting at line 154 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\AutoCreateSearchJspfByXml.java
+
+	protected void readMetaData() {
+		// TODO Auto-generated method stub
+		BeanReader br=new BeanReader();
+		br.getXMLIntrospector().setWrapCollectionsInElement(false);
+		try {
+			br.registerBeanClass(SearchJspfData.class);
+=====================================================================
+Found a 8 line (25 tokens) duplication in the following files: 
+Starting at line 55 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\SearchJspfData.java
+Starting at line 110 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\entry\EntryJspMeta.java
+
+	}
+	public String getAbsPath() {
+		return absPath;
+	}
+	public void setAbsPath(String absPath) {
+		this.absPath = absPath;
+	}
+	public String getFileName() {
+=====================================================================
+Found a 9 line (25 tokens) duplication in the following files: 
+Starting at line 245 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\SearchMeta.java
+Starting at line 209 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoMeta.java
+
+		this.viewClass = viewClass;
+	}
+
+	public String getInputClass() {
+		return inputClass;
+	}
+
+	public void setInputClass(String inputClass) {
+		if(StringUtils.isBlank(inputClass))
+=====================================================================
+Found a 9 line (25 tokens) duplication in the following files: 
+Starting at line 205 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\search\SearchMeta.java
+Starting at line 184 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoMeta.java
+
+		this.valueDefault = valueDefault;
+	}
+
+	public String getStyle() {
+		return style;
+	}
+
+	public void setStyle(String style) {
+		if(!StringUtils.isBlank(style))
+=====================================================================
+Found a 11 line (25 tokens) duplication in the following files: 
+Starting at line 78 of D:\newworkplace\struts2\src\base\zyf\web\condition\Condition.java
+Starting at line 161 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoMeta.java
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
+
+	public String getInfoType() {
+=====================================================================
+Found a 12 line (25 tokens) duplication in the following files: 
+Starting at line 31 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\ViewBean.java
+Starting at line 116 of D:\newworkplace\struts2\src\base\zyf\web\crud\db\CommonTableView.java
+
+	public String getStyle() {
+		return style;
+	}
+
+	public void setStyle(String style) {
+		this.style = style;
+	}
+
+	/**
+	 * @return the dictName
+	 */
+	public String getDictName() {
+=====================================================================
+Found a 7 line (25 tokens) duplication in the following files: 
+Starting at line 202 of D:\newworkplace\struts2\src\base\zyf\web\crud\service\impl\CommonServiceImpl.java
+Starting at line 229 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+=====================================================================
+Found a 11 line (25 tokens) duplication in the following files: 
+Starting at line 41 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchDeptTag.java
+Starting at line 177 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoMeta.java
+
+	}
+
+	public String getValueDefault() {
+		return valueDefault;
+	}
+
+	public void setValueDefault(String valueDefault) {
+		this.valueDefault = valueDefault;
+	}
+
+	public String getStyle() {
+=====================================================================
+Found a 9 line (25 tokens) duplication in the following files: 
+Starting at line 36 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchDeptTag.java
+Starting at line 78 of D:\newworkplace\struts2\src\base\zyf\web\condition\Condition.java
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getOperator() {
+=====================================================================
+Found a 8 line (25 tokens) duplication in the following files: 
+Starting at line 35 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchDeptTag.java
+Starting at line 32 of D:\newworkplace\struts2\src\base\zyf\common\mail\MailAttachment.java
+
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getSize() {
+=====================================================================
+Found a 10 line (25 tokens) duplication in the following files: 
+Starting at line 30 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchDeptTag.java
+Starting at line 262 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoMeta.java
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+	
+	
+	public String getTag()
+=====================================================================
+Found a 11 line (25 tokens) duplication in the following files: 
+Starting at line 41 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchMemberTag.java
+Starting at line 177 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoMeta.java
+
+	}
+
+	public String getValueDefault() {
+		return valueDefault;
+	}
+
+	public void setValueDefault(String valueDefault) {
+		this.valueDefault = valueDefault;
+	}
+
+	public String getStyle() {
+=====================================================================
+Found a 9 line (25 tokens) duplication in the following files: 
+Starting at line 36 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchMemberTag.java
+Starting at line 78 of D:\newworkplace\struts2\src\base\zyf\web\condition\Condition.java
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getOperator() {
+=====================================================================
+Found a 8 line (25 tokens) duplication in the following files: 
+Starting at line 35 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchMemberTag.java
+Starting at line 32 of D:\newworkplace\struts2\src\base\zyf\common\mail\MailAttachment.java
+
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getSize() {
+=====================================================================
+Found a 10 line (25 tokens) duplication in the following files: 
+Starting at line 30 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchMemberTag.java
+Starting at line 262 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoMeta.java
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+	
+	
+	public String getTag()
+=====================================================================
+Found a 9 line (25 tokens) duplication in the following files: 
+Starting at line 35 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchSelectTag.java
+Starting at line 35 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchMemberTag.java
+
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getValueDefault() {
+=====================================================================
+Found a 11 line (25 tokens) duplication in the following files: 
+Starting at line 111 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTextTag.java
+Starting at line 54 of D:\newworkplace\struts2\src\base\zyf\hibernate\Entity.java
+
+    }
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public Integer getVersion() {
+=====================================================================
+Found a 3 line (25 tokens) duplication in the following files: 
+Starting at line 70 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTextTag.java
+Starting at line 47 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchSelectTag.java
+
+		JspWriter out = pageContext.getOut();
+		if(StringUtils.isBlank(name))
+			name=(String)ExpressionEvaluationUtils.evaluate("elName",elName, pageContext);
+=====================================================================
+Found a 9 line (25 tokens) duplication in the following files: 
+Starting at line 49 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTextTag.java
+Starting at line 78 of D:\newworkplace\struts2\src\base\zyf\web\condition\Condition.java
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getOperator() {
+=====================================================================
+Found a 11 line (25 tokens) duplication in the following files: 
+Starting at line 48 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTextTag.java
+Starting at line 35 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchSelectTag.java
+
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int doEndTag() throws JspException {
+=====================================================================
+Found a 9 line (25 tokens) duplication in the following files: 
+Starting at line 106 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTimeTag.java
+Starting at line 117 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTextTag.java
+
+	}
+	public String getElName() {
+		return elName;
+	}
+	public void setElName(String elName) {
+		this.elName = elName;
+	}
+
+}
+=====================================================================
+Found a 3 line (25 tokens) duplication in the following files: 
+Starting at line 67 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTimeTag.java
+Starting at line 47 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchSelectTag.java
+
+		JspWriter out = pageContext.getOut();
+		if(StringUtils.isBlank(name))
+			name=(String)ExpressionEvaluationUtils.evaluate("elName",elName, pageContext);
+=====================================================================
+Found a 11 line (25 tokens) duplication in the following files: 
+Starting at line 56 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTimeTag.java
+Starting at line 194 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoMeta.java
+
+	}
+
+	public String getPattern() {
+		return pattern;
+	}
+
+	public void setPattern(String pattern) {
+		this.pattern = pattern;
+	}
+
+	public String getViewClass() {
+=====================================================================
+Found a 9 line (25 tokens) duplication in the following files: 
+Starting at line 37 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTimeTag.java
+Starting at line 78 of D:\newworkplace\struts2\src\base\zyf\web\condition\Condition.java
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getOperator() {
+=====================================================================
+Found a 7 line (25 tokens) duplication in the following files: 
+Starting at line 342 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\TableTag.java
+Starting at line 229 of D:\newworkplace\struts2\src\base\zyf\tools\Tools.java
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+=====================================================================
+Found a 8 line (25 tokens) duplication in the following files: 
+Starting at line 92 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\TableTag.java
+Starting at line 48 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTextTag.java
+
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getOper() {
+=====================================================================
+Found a 14 line (25 tokens) duplication in the following files: 
+Starting at line 46 of D:\newworkplace\struts2\src\base\zyf\web\page\taglib\PageTaglib.java
+Starting at line 114 of D:\newworkplace\struts2\src\base\zyf\web\crud\db\CommonTableView.java
+
+	}
+
+	public String getStyle() {
+		return style;
+	}
+
+	public void setStyle(String style) {
+		this.style = style;
+	}
+
+	/**
+	 * @return the dictName
+	 */
+	public String getDictName() {
+=====================================================================
+Found a 9 line (25 tokens) duplication in the following files: 
+Starting at line 40 of D:\newworkplace\struts2\src\base\zyf\web\page\taglib\PageTaglib.java
+Starting at line 37 of D:\newworkplace\struts2\src\base\zyf\web\crud\tag\SearchTimeTag.java
+
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+	public String getValueDefault() {
+=====================================================================
+Found a 17 line (25 tokens) duplication in the following files: 
+Starting at line 31 of D:\newworkplace\struts2\src\base\zyf\web\view\OptionBean.java
+Starting at line 57 of D:\newworkplace\struts2\src\base\zyf\hibernate\usertype\CodeWrapper.java
+
+		return code;
+	}
+
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+=====================================================================
+Found a 10 line (25 tokens) duplication in the following files: 
+Starting at line 24 of D:\newworkplace\struts2\src\base\zyf\web\view\OptionBean.java
+Starting at line 262 of D:\newworkplace\struts2\src\base\zyf\tools\auto\create\info\InfoMeta.java
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+	
+	
+	public String getTag()
+=====================================================================
+Found a 7 line (25 tokens) duplication in the following files: 
+Starting at line 233 of D:\newworkplace\struts2\src\com\cc\sys\db\SysTree.java
+Starting at line 205 of D:\newworkplace\struts2\src\com\cc\sys\db\SysModule.java
+
+	}
+	private int layer = -1;
+	public int getLayer() {
+		
+		if(layer == -1)
+		{
+			if(this.getParent() != null)

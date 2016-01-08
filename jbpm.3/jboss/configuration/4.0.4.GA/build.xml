@@ -1,0 +1,39 @@
+<project name="jbpm.jboss.configuration.4.0.4.GA" basedir="." default="install">
+
+  <!-- project specific properties -->
+  <property name="artifact.name" value="jbpm-jboss-configuration.zip" />
+  <property name="module.name" value="jboss" />
+  <property name="jbpm.root" value="../../.." />
+  <property file="../../version.properties" />
+
+  <!-- properties files -->
+  <property file="${user.home}/jbpm/build.properties" />
+  <property file="build.properties" />
+  <property file="${jbpm.root}/build/build.properties" />
+
+  <!-- import base project build file -->
+  <import file="${jbpm.root}/build/base.project.build.xml" />
+
+  <target name="package">
+    <ant antfile="../../db/build.xml" inheritall="false" />
+    <ant antfile="../../../console/build.xml" inheritall="false" />
+    
+    <mkdir dir="target/configuration/data/hypersonic" />
+    <unzip src="${local.repository}/jbpm/jboss/${lib.jbpm.jboss.version}/lib/jbpm-jboss-db.zip"  dest="target/configuration/data/hypersonic" />
+
+    <mkdir dir="target/configuration/deploy" />
+    <copy todir="target/configuration/deploy" file="${local.repository}/jbpm/console/${lib.jbpm.console.version}/lib/jbpm-console.war" />
+
+    <zip destfile="target/${artifact.name}">
+      <fileset dir="target/configuration" />
+      <fileset dir="src/main/resources" />
+      <fileset dir="${local.repository}/${lib.commons.collections.dir}/..">
+        <include name="lib/commons-collections.jar" />
+      </fileset>
+      <fileset dir="${local.repository}/${lib.ehcache.dir}/..">
+        <include name="lib/ehcache.jar" />
+      </fileset>
+    </zip>
+  </target>
+
+</project>

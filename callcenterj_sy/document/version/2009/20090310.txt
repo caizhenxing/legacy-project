@@ -1,0 +1,14 @@
+修改人：王文权
+组加个TelConference，属于这个组的人登录进入会议面板
+坐席从新登陆后叫机修把ocx空件做还原卡里
+
+
+==========================================================
+作者：李丹
+参数ID(*):SYS_TREE_0000002901
+参数名(*):调查信息管理
+动作:screen/scrspesur.do?method=toSSSMain
+
+上级节点：系&nbsp;&nbsp;&nbsp;&nbsp;统&nbsp;&nbsp;&nbsp;&nbsp;管&nbsp;&nbsp;&nbsp;&nbsp;理
+节点图标：expanded=folderOpen.gif;closed=folderClose.gif;leaf=leaf.gif;
+==========================================================

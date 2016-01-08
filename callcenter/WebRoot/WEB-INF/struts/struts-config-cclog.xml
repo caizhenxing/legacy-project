@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="cclogBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="clientIp" type="java.lang.String" />
+      	  <form-property name="inPort" type="java.lang.String" />
+      	  <form-property name="operatorPort" type="java.lang.String" />
+    	  <form-property name="phoneNum" type="java.lang.String" />
+    	  <form-property name="fuzzNo" type="java.lang.String" />
+    	  <form-property name="department" type="java.lang.String" />
+          <form-property name="beginTime" type="java.lang.String" />
+	      <form-property name="operateTime" type="java.lang.String" />
+	      <form-property name="endTime" type="java.lang.String"/>
+	      <form-property name="recFile" type="java.lang.String"/>
+	      <form-property name="isvalidin" type="java.lang.String"/>
+	      <form-property name="cmd" type="java.lang.String"/>
+	      <form-property name="taginfo" type="java.lang.String"/>
+	      <form-property name="remark" type="java.lang.String"/>
+	   </form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+     <action
+      attribute="cclogBean"
+      name="cclogBean"
+      path="/pcc/cclog"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="main"  path="/pcc/cclog/cclogMain.jsp"/>
+           <forward name="query" path="/pcc/cclog/cclogQuery.jsp"/>
+           <forward name="load"  path="/pcc/cclog/cclogLoad.jsp"/>
+           <forward name="list"  path="/pcc/cclog/cclogList.jsp"/>
+           <forward name="detail"  path="/pcc/cclog/cclogDetail.jsp"/>
+           <forward name="slist"  path="/pcc/cclog/operList.jsp"/>
+           <forward name="depmain"  path="/pcc/cclog/departmentMain.jsp"/>
+           <forward name="depquery" path="/pcc/cclog/departmentQuery.jsp"/> 
+           <forward name="deplist"  path="/pcc/cclog/departmentList.jsp"/>   
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

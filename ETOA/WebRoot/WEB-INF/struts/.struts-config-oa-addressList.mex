@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/oa/privy/addressList.do" location="2400,0" dimension="358,84" />
+  <StrutsActivity path="/oa/privy/addressListSort.do" location="6702,0" dimension="358,84" />
+  <StrutsActivity path="/oa/privy/addressList/addressListManagerList.jsp" location="0,294" dimension="328,48" />
+  <StrutsActivity path="/oa/privy/addressList/companyAddressListDetail.jsp" location="428,294" dimension="340,48" />
+  <StrutsActivity path="/oa/privy/addressList/companyAddressListManagerMain.jsp" location="868,294" dimension="370,48" />
+  <StrutsActivity path="/oa/privy/addressList/addressListManagerMain.jsp" location="1338,294" dimension="328,48" />
+  <StrutsActivity path="/oa/privy/addressList/addressListManagerLoad.jsp" location="1766,294" dimension="328,48" />
+  <StrutsActivity path="/oa/privy/addressList/addressListManagerQuery.jsp" location="2194,294" dimension="334,48" />
+  <StrutsActivity path="/oa/privy/addressList/addressListManagerDetail.jsp" location="2628,294" dimension="340,48" />
+  <StrutsActivity path="/oa/privy/addressList/companyAddressListManagerList.jsp" location="3068,294" dimension="370,48" />
+  <StrutsActivity path="/oa/privy/addressList/companyAddressListQuery.jsp" location="3538,294" dimension="334,48" />
+  <StrutsActivity path="/oa/privy/addressList/commonAddressListManagerMain.jsp" location="3972,294" dimension="364,48" />
+  <StrutsActivity path="/oa/privy/addressList/personalAddressListManagerMain.jsp" location="4436,294" dimension="376,48" />
+  <StrutsActivity path="/oa/privy/addressList/docUpload.jsp" location="4912,294" dimension="250,48" />
+  <StrutsActivity path="/oa/privy/addressListSort/addressListSortManagerList.jsp" location="5262,294" dimension="376,48" />
+  <StrutsActivity path="/oa/privy/addressListSort/addressListSortManagerMain.jsp" location="5738,294" dimension="376,48" />
+  <StrutsActivity path="/oa/privy/addressListSort/addressListSortManagerLoad.jsp" location="6214,294" dimension="376,48" />
+  <StrutsActivity path="/oa/privy/addressListSort/addressListSortManagerQuery.jsp" location="6690,294" dimension="382,48" />
+  <StrutsActivity path="/oa/privy/addressListSort/test1.jsp" location="7172,294" dimension="250,48" />
+  <StrutsActivity path="/oa/privy/addressListSort/addressListSortManagerDetail.jsp" location="7522,294" dimension="388,48" />
+  <StrutsActivity path="/oa/privy/addressListSort/commonAddressListSortManagerMain.jsp" location="8010,294" dimension="412,48" />
+  <StrutsActivity path="/oa/privy/addressListSort/personalAddressListSortManagerMain.jsp" location="8522,294" dimension="424,48" />
+  <StrutsTransition id="/oa/privy/addressListSort.do,load,/oa/privy/addressListSort/addressListSortManagerLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6841,84" />
+      <AbsolutePoint location="6841,204" />
+      <AbsolutePoint location="6402,204" />
+      <AbsolutePoint location="6402,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressList.do,personalMain,/oa/privy/addressList/personalAddressListManagerMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2713,84" />
+      <AbsolutePoint location="2713,144" />
+      <AbsolutePoint location="4624,144" />
+      <AbsolutePoint location="4624,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressListSort.do,list,/oa/privy/addressListSort/addressListSortManagerList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6761,84" />
+      <AbsolutePoint location="6761,144" />
+      <AbsolutePoint location="5450,144" />
+      <AbsolutePoint location="5450,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressList.do,compangyMain,/oa/privy/addressList/companyAddressListManagerMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2475,84" />
+      <AbsolutePoint location="2475,174" />
+      <AbsolutePoint location="1053,174" />
+      <AbsolutePoint location="1053,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressList.do,load,/oa/privy/addressList/addressListManagerLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2534,84" />
+      <AbsolutePoint location="2534,234" />
+      <AbsolutePoint location="1930,234" />
+      <AbsolutePoint location="1930,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressList.do,main,/oa/privy/addressList/addressListManagerMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2504,84" />
+      <AbsolutePoint location="2504,204" />
+      <AbsolutePoint location="1502,204" />
+      <AbsolutePoint location="1502,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressList.do,query,/oa/privy/addressList/addressListManagerQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2564,84" />
+      <AbsolutePoint location="2564,264" />
+      <AbsolutePoint location="2361,264" />
+      <AbsolutePoint location="2361,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressList.do,companyQuery,/oa/privy/addressList/companyAddressListQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2654,84" />
+      <AbsolutePoint location="2654,204" />
+      <AbsolutePoint location="3705,204" />
+      <AbsolutePoint location="3705,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressListSort.do,detail,/oa/privy/addressListSort/addressListSortManagerDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6960,84" />
+      <AbsolutePoint location="6960,174" />
+      <AbsolutePoint location="7716,174" />
+      <AbsolutePoint location="7716,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressListSort.do,query,/oa/privy/addressListSort/addressListSortManagerQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6881,84" />
+      <AbsolutePoint location="6881,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressList.do,companyList,/oa/privy/addressList/companyAddressListManagerList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2624,84" />
+      <AbsolutePoint location="2624,234" />
+      <AbsolutePoint location="3253,234" />
+      <AbsolutePoint location="3253,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressListSort.do,personalMain,/oa/privy/addressListSort/personalAddressListSortManagerMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7040,84" />
+      <AbsolutePoint location="7040,114" />
+      <AbsolutePoint location="8734,114" />
+      <AbsolutePoint location="8734,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressList.do,companyAddressListDetail,/oa/privy/addressList/companyAddressListDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2445,84" />
+      <AbsolutePoint location="2445,144" />
+      <AbsolutePoint location="598,144" />
+      <AbsolutePoint location="598,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressList.do,detail,/oa/privy/addressList/addressListManagerDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2594,84" />
+      <AbsolutePoint location="2594,264" />
+      <AbsolutePoint location="2798,264" />
+      <AbsolutePoint location="2798,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressList.do,list,/oa/privy/addressList/addressListManagerList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2415,84" />
+      <AbsolutePoint location="2415,114" />
+      <AbsolutePoint location="164,114" />
+      <AbsolutePoint location="164,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressListSort.do,docUpload,/oa/privy/addressList/docUpload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6721,84" />
+      <AbsolutePoint location="6721,114" />
+      <AbsolutePoint location="5099,114" />
+      <AbsolutePoint location="5099,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressListSort.do,commonMain,/oa/privy/addressListSort/commonAddressListSortManagerMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="7000,84" />
+      <AbsolutePoint location="7000,144" />
+      <AbsolutePoint location="8216,144" />
+      <AbsolutePoint location="8216,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressListSort.do,main,/oa/privy/addressListSort/addressListSortManagerMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6801,84" />
+      <AbsolutePoint location="6801,174" />
+      <AbsolutePoint location="5926,174" />
+      <AbsolutePoint location="5926,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressList.do,docUpload,/oa/privy/addressList/docUpload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2743,84" />
+      <AbsolutePoint location="2743,114" />
+      <AbsolutePoint location="4974,114" />
+      <AbsolutePoint location="4974,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressListSort.do,ok,/oa/privy/addressListSort/test1.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="6920,84" />
+      <AbsolutePoint location="6920,204" />
+      <AbsolutePoint location="7297,204" />
+      <AbsolutePoint location="7297,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/privy/addressList.do,commonMain,/oa/privy/addressList/commonAddressListManagerMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2683,84" />
+      <AbsolutePoint location="2683,174" />
+      <AbsolutePoint location="4154,174" />
+      <AbsolutePoint location="4154,294" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

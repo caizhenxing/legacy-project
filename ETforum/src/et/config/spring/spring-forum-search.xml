@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean name="/forum/search"
+		class="et.bo.forum.search.action.SearchAction" singleton="false">			
+		<property name="searchService">
+			<ref bean="SearchService" />
+		</property>
+		<property name="moduleManagerService">
+			<ref bean="ModuleManagerService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>			
+	</bean>
+	
+	<!--  service begin -->	
+	<bean id="SearchService"
+		class="et.bo.forum.search.service.impl.SearchServiceImpl" singleton="true">
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="ForumDao" />
+		</property>
+	</bean>	
+</beans>

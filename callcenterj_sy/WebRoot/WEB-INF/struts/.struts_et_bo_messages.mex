@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/messages/messages.do" location="950,150" dimension="358,84" />
+  <StrutsActivity path="/messages/messagesList.jsp" location="50,350" dimension="196,48" />
+  <StrutsActivity path="/messages/messagesOpen.jsp" location="650,50" dimension="196,48" />
+  <StrutsActivity path="/messages/messagesMain.jsp" location="350,350" dimension="196,48" />
+  <StrutsActivity path="/messages/messagesQuery.jsp" location="650,350" dimension="202,48" />
+  <StrutsActivity path="/messages/messagesLoad.jsp" location="950,350" dimension="196,48" />
+  <StrutsActivity path="/messages/messagesShow.jsp" location="50,450" dimension="196,48" />
+  <StrutsActivity path="/flow/flowList.jsp" location="0,184" dimension="148,48" />
+  <StrutsActivity path="/flow/flowMain.jsp" location="248,184" dimension="148,48" />
+  <StrutsActivity path="/flow/flowQuery.jsp" location="496,184" dimension="154,48" />
+  <StrutsActivity path="/flow/flowLoad.jsp" location="750,184" dimension="148,48" />
+  <StrutsActivity path="/messages/select.jsp" location="350,450" dimension="160,48" />
+  <StrutsActivity path="/messages/selectUser.jsp" location="650,450" dimension="184,48" />
+  <StrutsTransition id="/messages/messages.do,select,/messages/selectUser.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1191,234" />
+      <AbsolutePoint location="1191,474" />
+      <AbsolutePoint location="834,474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/messages/messages.do,show,/messages/messagesShow.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1221,234" />
+      <AbsolutePoint location="1221,573" />
+      <AbsolutePoint location="148,573" />
+      <AbsolutePoint location="148,498" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/messages/messages.do,query,/messages/messagesQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,199" />
+      <AbsolutePoint location="913,199" />
+      <AbsolutePoint location="913,374" />
+      <AbsolutePoint location="852,374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/messages/messages.do,load,/messages/messagesLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1129,234" />
+      <AbsolutePoint location="1129,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/messages/messages.do,list,/messages/messagesList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1069,234" />
+      <AbsolutePoint location="1069,279" />
+      <AbsolutePoint location="133,279" />
+      <AbsolutePoint location="133,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/messages/messages.do,main,/messages/messagesMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,169" />
+      <AbsolutePoint location="448,169" />
+      <AbsolutePoint location="448,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/messages/messages.do,selectFrame,/messages/select.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1161,234" />
+      <AbsolutePoint location="1161,413" />
+      <AbsolutePoint location="430,413" />
+      <AbsolutePoint location="430,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/messages/messages.do,open,/messages/messagesOpen.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1129,192" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

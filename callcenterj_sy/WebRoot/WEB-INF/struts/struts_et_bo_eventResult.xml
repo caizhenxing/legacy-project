@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+
+		<form-bean name="event" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id"       			type="java.lang.String" />
+			<form-property name="topic"       		type="java.lang.String" />
+			<form-property name="contents"       	type="java.lang.String" />
+			<form-property name="eventdate"       	type="java.lang.String" />
+			<form-property name="principal"       	type="java.lang.String" />
+			<form-property name="actor"       		type="java.lang.String" />
+			<form-property name="addtime"       	type="java.lang.String" />
+			<form-property name="adduser"       	type="java.lang.String" />
+			
+			<form-property name="beginTime"       	type="java.lang.String" />
+			<form-property name="endTime"       	type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="eventResult" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id"       			type="java.lang.String" />
+			<form-property name="event_id"       	type="java.lang.String" />
+			<form-property name="linkman_id"       	type="java.lang.String" />
+			<form-property name="linkman"       	type="java.lang.String" />
+			<form-property name="feedback"       	type="java.lang.String" />
+			<form-property name="feedback_date"    	type="java.lang.String" />
+			<form-property name="addtime"       	type="java.lang.String" />
+			<form-property name="adduser"       	type="java.lang.String" />
+			
+			<form-property name="topic"       		type="java.lang.String" />
+			<form-property name="principal"       	type="java.lang.String" />
+			
+			<form-property name="beginTime"       	type="java.lang.String" />
+			<form-property name="endTime"       	type="java.lang.String" />
+			
+			<form-property name="cust_id"       	type="java.lang.String" />
+			<form-property name="cust_name"       	type="java.lang.String" />
+		</form-bean>
+		
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		
+		<action attribute="event" 
+				name="event" 
+				scope="request" 
+				path="/event/event" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main"  path="/event/eventMain.jsp"/>
+			<forward name="list"  path="/event/eventList.jsp"/>
+			<forward name="load"  path="/event/eventLoad.jsp"/>
+			<forward name="query" path="/event/eventQuery.jsp"/>
+		</action>
+
+		<action attribute="eventResult" 
+				name="eventResult" 
+				scope="request" 
+				path="/eventResult/eventResult" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main"  path="/eventResult/eventResultMain.jsp"/>
+			<forward name="list"  path="/eventResult/eventResultList.jsp"/>
+			<forward name="load"  path="/eventResult/eventResultLoad.jsp"/>
+			<forward name="query" path="/eventResult/eventResultQuery.jsp"/>
+			<!-- 联络员事件反馈显示联络员 -->
+			<forward name="selectFrame"  path="/eventResult/select.jsp"/>
+            <forward name="select"  path="/eventResult/selectUser.jsp"/>
+		</action>
+	</action-mappings>
+	
+</struts-config>
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- specifies the location of the process definition -->
+<bpelDefinition location="atm.bpel" 
+  xsi:schemaLocation="http://jbpm.org/bpel http://jbpm.org/bpel/bpel_definition_1_0.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://jbpm.org/bpel">
+  
+  <!-- makes WSDL interface elements available to the process -->
+  <imports>
+    <wsdl namespace="urn:samples:atm" location="atm.wsdl"/>
+  </imports>
+  
+</bpelDefinition>

@@ -1,0 +1,1196 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+
+	<form-beans>
+		<!-- 通用FROM   王立春-->
+		<form-bean name="commonForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="question" type="java.lang.String" />
+			<form-property name="name" type="java.lang.String" />
+			<form-property name="reportCount" type="java.lang.String" />
+			<form-property name="priceCount" type="java.lang.String" />
+			<form-property name="infoCount" type="java.lang.String" />
+			<form-property name="count" type="java.lang.String" />
+			<form-property name="count1" type="java.lang.String" />
+			<form-property name="count2" type="java.lang.String" />
+			<form-property name="serviceType" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+			<form-property name="date" type="java.lang.String" />
+			<form-property name="agentId" type="java.lang.String" />
+			<form-property name="custName" type="java.lang.String" />
+			<form-property name="navigator" type="java.lang.String" />
+			<form-property name="dictProductType2" type="java.lang.String" />
+			<form-property name="dictProductType1" type="java.lang.String" />
+		</form-bean>
+		<!-- 电话 -->
+		<form-bean name="telStatForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="condition" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="ivrForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+			<form-property name="qtype" type="java.lang.String" />
+			<form-property name="num" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="medicinfoPForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+			<form-property name="statType" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="bookMedicinfoPForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+			<form-property name="statType" type="java.lang.String" />
+		</form-bean>
+
+
+		<form-bean name="corpinfoPForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+			<form-property name="selType" type="java.lang.String" />
+		</form-bean>
+
+
+
+		<!-- 价格 -->
+		<form-bean name="priceStatForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="proName" type="java.lang.String" />
+			<form-property name="count" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+		</form-bean>
+		<!-- 专家接听 -->
+		<form-bean name="expertStatForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="qtype" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+		</form-bean>
+		<!-- 热点调查 -->
+		<form-bean name="inquiryStatForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="num1" type="java.lang.String" />
+			<form-property name="num2" type="java.lang.String" />
+			<form-property name="topic" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+		</form-bean>
+		<!-- 使用情况 -->
+		<form-bean name="useStatForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="address" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="smsStatForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 外呼计费 -->
+		<form-bean name="moneyForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="outTelNum" type="java.lang.String" />
+			<form-property name="sum_touchKeeptime" type="java.lang.String" />
+			<form-property name="price" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 语音留言 -->
+		<form-bean name="voiceForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="telNum" type="java.lang.String" />
+			<form-property name="menu" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+			<form-property name="num" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 地区统计 -->
+		<form-bean name="addressForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="qtype" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+			<form-property name="address" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 用户评价统计 -->
+		<form-bean name="appraiseForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="agentNum" type="java.lang.String" />
+			<form-property name="count" type="java.lang.String" />
+			<form-property name="count1" type="java.lang.String" />
+			<form-property name="count2" type="java.lang.String" />
+			<form-property name="rowCount" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+			<form-property name="qtype" type="java.lang.String" />
+			<form-property name="qitem" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 农产品价格库统计 -->
+		<form-bean name="argPriceForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+
+			<form-property name="dictProductType1"
+				type="java.lang.String" />
+			<form-property name="dict_product_type2_span"
+				type="java.lang.String" />
+			<form-property name="product_name_span"
+				type="java.lang.String" />
+			<form-property name="min" type="java.lang.String" />
+			<form-property name="max" type="java.lang.String" />
+
+			<form-property name="custAddr" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+		</form-bean>
+		<!-- 用户拨打统计 -->
+		<form-bean name="userDialForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="telnum" type="java.lang.String" />
+			<!--			<form-property name="condition" type="java.lang.String" />-->
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+		</form-bean>
+		<!-- 普通案例库用户受理案件统计 -->
+		<form-bean name="userCaseForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="caseRid" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+			<form-property name="nums" type="java.lang.String" />
+		</form-bean>
+		<!-- 案件统计 -->
+		<form-bean name="caseForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="caseType" type="java.lang.String" />
+			<form-property name="export" type="java.lang.String" />
+			<form-property name="count" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+			<form-property name="caseAttr1" type="java.lang.String" />
+			<form-property name="caseAttr2" type="java.lang.String" />
+			<form-property name="caseAttr3" type="java.lang.String" />
+			<form-property name="bill_num" type="java.lang.String" />
+			<form-property name="caseExpert" type="java.lang.String" />
+			<form-property name="agentNum" type="java.lang.String" />
+		</form-bean>
+		<!-- 普通案例库用户受理各审核状态下的案件统计 -->
+		<form-bean name="stateCaseForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="caseRid" type="java.lang.String" />
+			<form-property name="stateType" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 焦点案例每一案例属性下的案例数量统计 -->
+		<form-bean name="focusCaseInfoForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="userId" type="java.lang.String" />
+			<form-property name="caseProperty" type="java.lang.String" />
+			<form-property name="count" type="java.lang.String" />
+			<form-property name="caseAttr3" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+			<form-property name="agentNum" type="java.lang.String" />
+			<form-property name="caseAttr4" type="java.lang.String" />
+		</form-bean>
+		<!-- 焦点案例每一案例属性下的案例数量统计 王文权 -->
+		<form-bean name="focusCaseInfoStatisticsForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="agentNum" type="java.lang.String" />
+			<form-property name="col1" type="java.lang.String" />
+			<form-property name="col1Title" type="java.lang.String" />
+			<form-property name="caseProperty" type="java.lang.String" />
+			<form-property name="count" type="java.lang.String" />
+			<form-property name="caseAttr3" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+		</form-bean>
+		<!-- 全部座席员和每一座席员受理的各审核状态下的案例数量 王文权 -->
+		<form-bean name="HZCaseInfoStatisticsByStateForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="agentNum" type="java.lang.String" />
+			<form-property name="col1" type="java.lang.String" />
+			<form-property name="col1Title" type="java.lang.String" />
+			<form-property name="caseProperty" type="java.lang.String" />
+			<form-property name="count" type="java.lang.String" />
+			<form-property name="caseAttr3" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+		</form-bean>
+	
+		<!-- 会诊案例全部座席员和每一座席员受理的案例数量统计 -->
+		<form-bean name="hzCaseInfoForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="condition" type="java.lang.String" />
+			<form-property name="count" type="java.lang.String" />
+			<form-property name="caseAttr1" type="java.lang.String" />
+			<form-property name="caseAttr2" type="java.lang.String" />
+			<form-property name="caseAttr3" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+			<form-property name="agentNum" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 会诊案例座席员受理的案例数量统计 -->
+		<form-bean name="hzCaseInfoSeatForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="workNum" type="java.lang.String" />
+			<form-property name="count" type="java.lang.String" />
+			<form-property name="caseAttr1" type="java.lang.String" />
+			<form-property name="caseAttr2" type="java.lang.String" />
+			<form-property name="caseAttr3" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 效果案例座席员受理的案例数量统计 -->
+		<form-bean name="effectCaseInfoSeatForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="workNum" type="java.lang.String" />
+			<form-property name="count" type="java.lang.String" />
+			<form-property name="caseAttr1" type="java.lang.String" />
+			<form-property name="caseAttr2" type="java.lang.String" />
+			<form-property name="caseAttr3" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+			<form-property name="agentId" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 效果案例每一案例属性下的案例数量统计 -->
+		<form-bean name="effectCaseInfoPropertyForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="agentNum" type="java.lang.String"/>
+			<form-property name="condition" type="java.lang.String" />
+			<form-property name="count" type="java.lang.String" />
+			<form-property name="caseAttr1" type="java.lang.String" />
+			<form-property name="caseAttr2" type="java.lang.String" />
+			<form-property name="caseAttr3" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+			<form-property name="agentId" type="java.lang.String" />
+			<form-property name="caseAttr5" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 各产品价格的最大值、最小值、平均值统计 -->
+		<form-bean name="productPriceForDateForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="productName" type="java.lang.String" />
+			<form-property name="date" type="java.lang.String" />
+			<form-property name="count" type="java.lang.String" />
+			<form-property name="maxValue" type="java.lang.String" />
+			<form-property name="minValue" type="java.lang.String" />
+			<form-property name="avgValue" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 各产品的价格数量统计统计 -->
+		<form-bean name="priceStatByProductForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="productName" type="java.lang.String" />
+			<form-property name="date" type="java.lang.String" />
+			<form-property name="count" type="java.lang.String" />
+			<form-property name="maxValue" type="java.lang.String" />
+			<form-property name="minValue" type="java.lang.String" />
+			<form-property name="avgValue" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+
+			<form-property name="dictPriceState"
+				type="java.lang.String" />
+			<form-property name="dictPriceType" type="java.lang.String" />
+			<form-property name="dictProductType1"
+				type="java.lang.String" />
+			<form-property name="dictProductType2"
+				type="java.lang.String" />
+			<form-property name="dict_product_type1"
+				type="java.lang.String[]" />
+			<form-property name="dict_product_type2"
+				type="java.lang.String[]" />
+			<form-property name="product_name"
+				type="java.lang.String[]" />
+			<form-property name="dict_price_type"
+				type="java.lang.String[]" />
+			<form-property name="product_price"
+				type="java.lang.String[]" />
+			<form-property name="remarkj" type="java.lang.String[]" />
+		</form-bean>
+
+		<!-- 各产地各产品价格的最大值、最小值、平均值 -->
+		<form-bean name="priceStatForProductForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="dictProductType1" type="java.lang.String" />
+			<form-property name="dictProductType2" type="java.lang.String" />
+			<form-property name="productName" type="java.lang.String" />
+			<form-property name="address" type="java.lang.String" />
+			<form-property name="date" type="java.lang.String" />
+			<form-property name="count" type="java.lang.String" />
+			<form-property name="maxValue" type="java.lang.String" />
+			<form-property name="minValue" type="java.lang.String" />
+			<form-property name="avgValue" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+			<form-property name="productType" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 农产品价格库统计内容与显示内容 -->
+		<form-bean name="priceInfoForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="case_id" type="java.lang.String" />
+			<form-property name="count1" type="java.lang.String" />
+			<form-property name="count2" type="java.lang.String" />
+			<form-property name="count3" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="caseAttr3" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+			<form-property name="priceType" type="java.lang.String" />
+			<form-property name="date" type="java.lang.String" />
+			<form-property name="productName" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 咨询总量统计 -->
+		<form-bean name="callCountStatForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="dateType" type="java.lang.String" />
+			<form-property name="count" type="java.lang.String" />
+			<form-property name="count2" type="java.lang.String" />
+			<form-property name="count3" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="caseAttr3" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+			<form-property name="infoType" type="java.lang.String" />
+			<form-property name="date" type="java.lang.String" />
+		</form-bean>
+		<!-- 产品供求库统计每一座席员受理的产品供求数量统计 -->
+		<form-bean name="priceAgentProCountForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+			<form-property name="agentId" type="java.lang.String" />
+		</form-bean>
+		<!-- 普通案例库全部座席员和每一座席员受理案例的各审核状态下的案例数量统计 -->
+		<form-bean name="commonStateCaseForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="caseRid" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+		</form-bean>
+		<!-- 产品价格供求全部座席员和每一座席员受理的各审核状态下的产品供求数量统计 -->
+		<form-bean name="productPriceStatisticsByStateForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="caseRid" type="java.lang.String" />
+			<form-property name="chartType" type="java.lang.String" />
+			<form-property name="is3d" type="java.lang.String" />
+		</form-bean>
+	</form-beans>
+	<global-exceptions />
+	<global-forwards>
+		<forward name="chartDisplay" path="/stat/chartDisplay.jsp"></forward>
+		<forward name="chartDisplayForShow"
+			path="/stat/chartDisplayForShow.jsp">
+		</forward>
+	</global-forwards>
+	<action-mappings>
+		<!-- 电话 -->
+		<action attribute="telStatForm" name="telStatForm"
+			scope="request" path="/stat/telephone"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/telMain.jsp" />
+			<forward name="query" path="/stat/telQuery.jsp" />
+			<forward name="report" path="/stat/telReport.jsp" />
+		</action>
+
+
+		<!--IVR -->
+		<action attribute="ivrForm" name="ivrForm" scope="request"
+			path="/stat/ivr"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="ivrmain" path="/stat/ivrMain.jsp" />
+			<forward name="ivrquery" path="/stat/ivrQuery.jsp" />
+			<forward name="ivrreport" path="/stat/ivrReport.jsp" />
+		</action>
+		<!--普通医疗 -->
+		<action attribute="medicinfoPForm" name="medicinfoPForm"
+			scope="request" path="/stat/medicinfoP"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="tomedicinfoPMain"
+				path="/stat/medicinfoPMain.jsp" />
+			<forward name="tomedicinfoPQuery"
+				path="/stat/medicinfoPQuery.jsp" />
+			<forward name="medicinfoPreport"
+				path="/stat/medicinfoPReport.jsp" />
+		</action>
+		<!--预约医疗 -->
+		<action attribute="bookMedicinfoPForm" name="bookMedicinfoPForm"
+			scope="request" path="/stat/bookMedicinfoP"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="tobookMedicinfoPMain"
+				path="/stat/bookMedicinfoPMain.jsp" />
+			<forward name="tobookMedicinfoPQuery"
+				path="/stat/bookMedicinfoPQuery.jsp" />
+			<forward name="bookMedicinfoPreport"
+				path="/stat/bookMedicinfoPReport.jsp" />
+		</action>
+		<!--企业 -->
+		<action attribute="corpinfoPForm" name="corpinfoPForm"
+			scope="request" path="/stat/corpinfoP"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="tocorpinfoPMain"
+				path="/stat/corpinfoPMain.jsp" />
+			<forward name="tocorpinfoPQuery"
+				path="/stat/corpinfoPQuery.jsp" />
+
+			<forward name="corpinfoPreport"
+				path="/stat/corpinfoPReport.jsp" />
+		</action>
+
+
+		<!-- 价格 -->
+		<action attribute="priceStatForm" name="priceStatForm"
+			scope="request" path="/stat/price"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/priceMain.jsp" />
+			<forward name="query" path="/stat/priceQuery.jsp" />
+			<forward name="report" path="/stat/priceReport.jsp" />
+		</action>
+		<!-- 专家接听 -->
+		<action attribute="expertStatForm" name="expertStatForm"
+			scope="request" path="/stat/expert"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/expertMain.jsp" />
+			<forward name="query" path="/stat/expertQuery.jsp" />
+			<forward name="report" path="/stat/expertReport.jsp" />
+		</action>
+		<!-- 热点调查 -->
+		<action attribute="inquiryStatForm" name="inquiryStatForm"
+			scope="request" path="/stat/inquiry"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/inquiryMain.jsp" />
+			<forward name="query" path="/stat/inquiryQuery.jsp" />
+			<forward name="report" path="/stat/inquiryReport.jsp" />
+		</action>
+		<!-- 使用情况 -->
+		<action attribute="useStatForm" name="useStatForm"
+			scope="request" path="/stat/use"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/useMain.jsp" />
+			<forward name="query" path="/stat/useQuery.jsp" />
+			<forward name="report" path="/stat/useReport.jsp" />
+		</action>
+		<!-- 短息发送统计 -->
+		<action attribute="smsStatForm" name="smsStatForm"
+			scope="request" path="/stat/smsStat"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="toSmsStatMain" path="/stat/smsStatMain.jsp" />
+			<forward name="toSmsStatQuery"
+				path="/stat/smsStatQuery.jsp" />
+			<forward name="toSmsStatReport"
+				path="/stat/smsStatReport.jsp" />
+		</action>
+		<!-- 外呼计费 -->
+		<action attribute="moneyForm" name="moneyForm" scope="request"
+			path="/stat/money"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/moneyMain.jsp" />
+			<forward name="query" path="/stat/moneyQuery.jsp" />
+			<forward name="report" path="/stat/moneyReport.jsp" />
+		</action>
+		<!-- 语音留言 -->
+		<action attribute="voiceForm" name="voiceForm" scope="request"
+			path="/stat/voiceLeave"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/voiceMain.jsp" />
+			<forward name="query" path="/stat/voiceQuery.jsp" />
+			<forward name="report" path="/stat/voiceReport.jsp" />
+		</action>
+		<!-- 地区统计 -->
+		<action attribute="addressForm" name="addressForm"
+			scope="request" path="/stat/address"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/addressMain.jsp" />
+			<forward name="query" path="/stat/addressQuery.jsp" />
+			<forward name="report" path="/stat/addressReport.jsp" />
+		</action>
+		<!-- 评价统计 -->
+		<action attribute="appraiseForm" name="appraiseForm"
+			scope="request" path="/stat/appraise"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/appraiseMain.jsp" />
+			<forward name="query" path="/stat/appraiseQuery.jsp" />
+			<forward name="report" path="/stat/appraiseReport.jsp" />
+		</action>
+
+		<!-- 农产品价格库 -->
+		<action attribute="argPriceForm" name="argPriceForm"
+			scope="request" path="/stat/agrprice"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/argPriceMain.jsp" />
+			<forward name="query" path="/stat/argPriceQuery.jsp" />
+			<forward name="report" path="/stat/argPriceReport.jsp" />
+		</action>
+		<!-- 用户拨打统计 -->
+		<action attribute="userDialForm" name="userDialForm"
+			scope="request" path="/stat/userdial"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/userDialMain.jsp" />
+			<forward name="query" path="/stat/userDialQuery.jsp" />
+			<forward name="report" path="/stat/userDialReport.jsp" />
+		</action>
+		<!-- 普通案例库用户受理案件统计 -->
+		<action attribute="userCaseForm" name="userCaseForm"
+			scope="request" path="/stat/usercase"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/userCaseMain.jsp" />
+			<forward name="query" path="/stat/userCaseQuery.jsp" />
+			<forward name="report" path="/stat/userCaseReport.jsp" />
+		</action>
+		<!-- 案件统计 -->
+		<action attribute="caseForm" name="caseForm" scope="request"
+			path="/stat/case"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/caseMain.jsp" />
+			<forward name="query" path="/stat/caseQuery.jsp" />
+			<forward name="report" path="/stat/caseReport.jsp" />
+		</action>
+		<!-- 普通案例库用户受理各审核状态下的案件统计 -->
+		<action attribute="stateCaseForm" name="stateCaseForm"
+			scope="request" path="/stat/statecase"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/stateCaseMain.jsp" />
+			<forward name="query" path="/stat/stateCaseQuery.jsp" />
+			<forward name="report" path="/stat/stateCaseReport.jsp" />
+		</action>
+
+		<!-- 焦点案例每一案例属性下的案例数量统计 -->
+		<action attribute="focusCaseInfoForm" name="focusCaseInfoForm"
+			scope="request" path="/stat/focusCaseInfo"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/focusCaseInfoMain.jsp" />
+			<forward name="query" path="/stat/focusCaseInfoQuery.jsp" />
+			<forward name="report" path="/stat/focusCaseInfoReport.jsp" />
+		</action>
+		<!-- 全部座席员和每一座席员受理的各审核状态下的案例数量 王文权  -->
+		<action attribute="focusCaseInfoStatisticsForm" name="focusCaseInfoStatisticsForm"
+			scope="request" path="/stat/focusCaseInfoStatistics"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/focusCaseInfoStatisticsMain.jsp" />
+			<forward name="query" path="/stat/focusCaseInfoStatisticsQuery.jsp" />
+			<forward name="report" path="/stat/focusCaseInfoStatisticsReport.jsp" />
+		</action>
+		<!-- 全部座席员和每一座席员受理的各审核状态下的案例数量 王文权  -->
+		<action attribute="HZCaseInfoStatisticsByStateForm" name="HZCaseInfoStatisticsByStateForm"
+			scope="request" path="/stat/HZCaseInfoStatisticsByState"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/HZCaseInfoStatisticsByStateMain.jsp" />
+			<forward name="query" path="/stat/HZCaseInfoStatisticsByStateQuery.jsp" />
+			<forward name="report" path="/stat/HZCaseInfoStatisticsByStateReport.jsp" />
+		</action>
+		<!-- 会诊案例全部座席员和每一座席员受理的案例数量统计 -->
+		<action attribute="hzCaseInfoForm" name="hzCaseInfoForm"
+			scope="request" path="/stat/hzCaseInfo"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/hzCaseInfoMain.jsp" />
+			<forward name="query" path="/stat/hzCaseInfoQuery.jsp" />
+			<forward name="report" path="/stat/hzCaseInfoReport.jsp" />
+		</action>
+
+		<!-- 会诊案例座席员受理的案例数量统计 -->
+		<action attribute="hzCaseInfoSeatForm" name="hzCaseInfoSeatForm"
+			scope="request" path="/stat/hzCaseInfoSeat"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/hzCaseInfoSeatMain.jsp" />
+			<forward name="query" path="/stat/hzCaseInfoSeatQuery.jsp" />
+			<forward name="report"
+				path="/stat/hzCaseInfoSeatReport.jsp" />
+		</action>
+
+		<!-- 效果案例座席员受理的案例数量统计 -->
+		<action attribute="effectCaseInfoSeatForm"
+			name="effectCaseInfoSeatForm" scope="request"
+			path="/stat/effectCaseInfoSeat"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main"
+				path="/stat/effectCaseInfoSeatMain.jsp" />
+			<forward name="query"
+				path="/stat/effectCaseInfoSeatQuery.jsp" />
+			<forward name="report"
+				path="/stat/effectCaseInfoSeatReport.jsp" />
+		</action>
+
+		<!-- 效果案例座席员受理的案例数量统计 -->
+		<action attribute="effectCaseInfoPropertyForm"
+			name="effectCaseInfoPropertyForm" scope="request"
+			path="/stat/effectCaseInfoProperty"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main"
+				path="/stat/effectCaseInfoPropertyMain.jsp" />
+			<forward name="query"
+				path="/stat/effectCaseInfoPropertyQuery.jsp" />
+			<forward name="report"
+				path="/stat/effectCaseInfoPropertyReport.jsp" />
+		</action>
+		
+		<!-- 效果案例库全部座席员和每一座席员受理的各审核状态下的案例数量 -->
+		<action attribute="effectCaseInfoPropertyForm"
+			name="effectCaseInfoPropertyForm" scope="request"
+			path="/stat/effectStat"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main"
+				path="/stat/effectStatMain.jsp" />
+			<forward name="query"
+				path="/stat/effectStatQuery.jsp" />
+			<forward name="report"
+				path="/stat/effectStatReport.jsp" />
+		</action>
+
+		<!-- 各产品价格的最大值、最小值、平均值统计 -->
+		<action attribute="productPriceForDateForm"
+			name="productPriceForDateForm" scope="request"
+			path="/stat/productPriceForDate"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main"
+				path="/stat/productPriceStatForDateMain.jsp" />
+			<forward name="query"
+				path="/stat/productPriceStatForDateQuery.jsp" />
+			<forward name="report"
+				path="/stat/productPriceStatForDateReport.jsp" />
+		</action>
+
+		<!-- 各产品的价格数量统计 -->
+		<action attribute="priceStatByProductForm"
+			name="priceStatByProductForm" scope="request"
+			path="/stat/priceStatByProduct"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main"
+				path="/stat/priceStatByProductMain.jsp" />
+			<forward name="query"
+				path="/stat/priceStatByProductQuery.jsp" />
+			<forward name="report"
+				path="/stat/priceStatByProductReport.jsp" />
+		</action>
+
+		<!-- 各产地各产品价格的最大值、最小值、平均值统计 -->
+		<action attribute="priceStatForProductForm"
+			name="priceStatForProductForm" scope="request"
+			path="/stat/priceStatForProduct"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main"
+				path="/stat/priceStatForProductMain.jsp" />
+			<forward name="query"
+				path="/stat/priceStatForProductQuery.jsp" />
+			<forward name="report"
+				path="/stat/priceStatForProductReport.jsp" />
+		</action>
+
+		<!-- 焦点案例全部座席员和每一座席员受理的案例数量。 -->
+		<action attribute="focusCaseInfoForm" name="focusCaseInfoForm"
+			parameter="method" path="/stat/focusCaseInfoUser" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="main" path="/stat/focusCaseInfoUserMain.jsp" />
+			<forward name="query"
+				path="/stat/focusCaseInfoUserQuery.jsp" />
+			<forward name="report"
+				path="/stat/focusCaseInfoUserReport.jsp" />
+		</action>
+
+		<!-- 农产品价格库统计内容与显示内容,全部座席员和每一座席员受理的价格数量 -->
+		<action attribute="priceInfoForm" name="priceInfoForm"
+			parameter="method" path="/stat/priceInfo" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="main" path="/stat/priceInfoMain.jsp" />
+			<forward name="query" path="/stat/priceInfoQuery.jsp" />
+			<forward name="report" path="/stat/priceInfoReport.jsp" />
+		</action>
+		<!-- 农产品价格库统计内容与显示内容,各价格类型（收购价、批发价、零售价）下的价格数量 -->
+		<action attribute="priceInfoForm" name="priceInfoForm"
+			parameter="method" path="/stat/priceInfoForType" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="main" path="/stat/priceInfoForTypeMain.jsp" />
+			<forward name="query"
+				path="/stat/priceInfoForTypeQuery.jsp" />
+			<forward name="report"
+				path="/stat/priceInfoForTypeReport.jsp" />
+		</action>
+		<!--普通案例- 专家受理数量统计 -->
+		<action attribute="caseForm" name="caseForm" parameter="method"
+			path="/sate/caseinfoForExport" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="main" path="/stat/caseInfoForExportMain.jsp" />
+			<forward name="query"
+				path="/stat/caseInfoForExportQuery.jsp" />
+			<forward name="report"
+				path="/stat/caseInfoForExportReport.jsp" />
+		</action>
+
+
+		<!-- 咨询总量统计 -->
+		<action attribute="callCountStatForm" name="callCountStatForm"
+			parameter="method" path="/stat/callCountStat" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="main" path="/stat/callCountStatMain.jsp" />
+			<forward name="query" path="/stat/callCountStatQuery.jsp" />
+			<forward name="report" path="/stat/callCountStatReport.jsp" />
+		</action>
+		<!-- 会诊案例库 专家受理数量统计 -->
+		<action attribute="caseForm" name="caseForm" parameter="method"
+			path="/stat/hzCaseInfoForExport" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="main"
+				path="/stat/hzCaseInfoForExportMain.jsp" />
+			<forward name="query"
+				path="/stat/HZCaseInfoForExportQuery.jsp" />
+			<forward name="report"
+				path="/stat/HZCaseInfoForExportReport.jsp" />
+		</action>
+		<!-- 产品供求库统计内容与显示内容,各产品的供求数量 -->
+		<action attribute="priceStatForm" name="priceStatForm"
+			parameter="method" path="/stat/sadInfoForProduct" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="main" path="/stat/sadInfoForProductMain.jsp" />
+			<forward name="query"
+				path="/stat/sadInfoForProductQuery.jsp" />
+			<forward name="report"
+				path="/stat/sadInfoForProductReport.jsp" />
+		</action>
+		<!--农产品价格库统计内容与显示内容, 各联络员的报价次数和报价条数 -->
+		<action attribute="commonForm" name="commonForm"
+			parameter="method" path="/stat/productPriceStatForServiceType"
+			scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="main"
+				path="/stat/productPriceForTypeMain.jsp" />
+			<forward name="main1"
+				path="/stat/productPriceForTypeMain1.jsp" />
+			<forward name="query"
+				path="/stat/productPriceForTypeQuery.jsp" />
+			<forward name="report"
+				path="/stat/productPriceForTypeReport.jsp" />
+		</action>
+
+		<!--预约医疗服务信息库统计内容与显示内容, 各服务类型下的医疗信息条数和用户数量 -->
+		<action attribute="commonForm" name="commonForm"
+			parameter="method" path="/stat/medicInfoForService" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="main"
+				path="/stat/medicInfoForServiceMain.jsp" />
+			<forward name="query"
+				path="/stat/medicInfoForServiceQuery.jsp" />
+			<forward name="report"
+				path="/stat/medicInfoForServiceReport.jsp" />
+		</action>
+		<!--预约医疗服务信息库统计内容与显示内容, 导诊员导诊次数 -->
+		<action attribute="commonForm" name="commonForm"
+			parameter="method" path="/stat/medicInfoForNavigator" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="main"
+				path="/stat/medicInfoForNavigatorMain.jsp" />
+			<forward name="query"
+				path="/stat/medicInfoForNavigatorQuery.jsp" />
+			<forward name="report"
+				path="/stat/medicInfoForNavigatorReport.jsp" />
+		</action>
+		<action attribute="commonForm" name="commonForm"
+			parameter="method" path="/stat/medicInfoForVisit" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="main" path="/stat/medicInfoForVisitMain.jsp" />
+			<forward name="query"
+				path="/stat/medicInfoForVisitQuery.jsp" />
+			<forward name="report"
+				path="/stat/medicInfoForVisitReport.jsp" />
+		</action>
+		<action attribute="commonForm" name="commonForm"
+			parameter="method" path="/stat/inquiryStatisticsForType"
+			scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="main"
+				path="/stat/inquiryStatisticsForTypeMain.jsp" />
+			<forward name="query"
+				path="/stat/inquiryStatisticsForTypeQuery.jsp" />
+			<forward name="report"
+				path="/stat/inquiryStatisticsForTypeReport.jsp" />
+		</action>
+
+		<!-- 医疗服务信息处理系统,　各用户接收医疗服务次数 -->
+		<action attribute="commonForm" name="commonForm"
+			parameter="method" path="/stat/medicInfoByUser" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="main" path="/stat/medicInfoByUserMain.jsp" />
+			<forward name="query" path="/stat/medicInfoByUserQuery.jsp" />
+			<forward name="report"
+				path="/stat/medicInfoByUserReport.jsp" />
+		</action>
+		<!-- 医疗服务信息处理系统,　是否参加新农合数量 -->
+		<action attribute="commonForm" name="commonForm"
+			parameter="method" path="/stat/medicInfoByParter" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="main" path="/stat/medicInfoByParterMain.jsp" />
+			<forward name="query"
+				path="/stat/medicInfoByParterQuery.jsp" />
+			<forward name="report"
+				path="/stat/medicInfoByParterReport.jsp" />
+		</action>
+		<!-- 企业信息库统计内容与显示内容,各服务类型下的企业信息数量和用户数量。   -->
+		<action attribute="commonForm" name="commonForm"
+			parameter="method" path="/stat/corpInfoByServiceType" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="main"
+				path="/stat/corpInfoByServiceTypeMain.jsp" />
+			<forward name="query"
+				path="/stat/corpInfoByServiceTypeQuery.jsp" />
+			<forward name="report"
+				path="/stat/corpInfoByServiceTypeReport.jsp" />
+		</action>
+		<!-- 产品供求库统计内容与显示内容, 各供求类型（预供、预求、现供、现求）下的产品供求数量。   -->
+		<action attribute="commonForm" name="commonForm"
+			parameter="method" path="/stat/sadStatisticsByType" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="main"
+				path="/stat/sadStatisticsByTypeMain.jsp" />
+			<forward name="query"
+				path="/stat/sadStatisticsByTypeQuery.jsp" />
+			<forward name="report"
+				path="/stat/sadStatisticsByTypeReport.jsp" />
+		</action>
+		<!-- 产品供求库统计每一座席员受理的产品供求数量统计 -->
+		<action attribute="priceAgentProCountForm" name="priceAgentProCountForm"
+			scope="request" path="/stat/priceAgentProCount"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/priceAgentProCountMain.jsp" />
+			<forward name="query" path="/stat/priceAgentProCountQuery.jsp" />
+			<forward name="report" path="/stat/priceAgentProCountReport.jsp" />
+		</action>
+		
+		<!-- 金农信息焦点追踪库全部责任编辑和每一责任编辑的产品数量统计 -->
+		<action attribute="commonForm" name="commonForm"
+			scope="request" path="/stat/focusInfoByEditor"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/focusInfoByEditorMain.jsp" />
+			<forward name="query" path="/stat/focusInfoByEditorQuery.jsp" />
+			<forward name="report" path="/stat/focusInfoByEditorReport.jsp" />
+		</action>
+		
+		<!-- 普通案例库用户受理案件统计 -->
+		<action attribute="commonStateCaseForm" name="commonStateCaseForm"
+			scope="request" path="/stat/commonStateCase"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/commonStateCaseMain.jsp" />
+			<forward name="query" path="/stat/commonStateCaseQuery.jsp" />
+			<forward name="report" path="/stat/commonStateCaseReport.jsp" />
+		</action>
+		
+		
+		<!-- 金农信息焦点追踪库全部版别和各版别的产品数量统计 -->
+		<action attribute="commonForm" name="commonForm"
+			scope="request" path="/stat/focusInfoByType"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/focusInfoByTypeMain.jsp" />
+			<forward name="query" path="/stat/focusInfoByTypeQuery.jsp" />
+			<forward name="report" path="/stat/focusInfoByTypeReport.jsp" />
+		</action>
+		
+		<!-- 金农信息焦点追踪库每一责任编辑各版别的产品数量统计 -->
+		<action attribute="commonForm" name="commonForm"
+			scope="request" path="/stat/focusInfoOneEditor"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/focusInfoOneEditorMain.jsp" />
+			<forward name="query" path="/stat/focusInfoOneEditorQuery.jsp" />
+			<forward name="report" path="/stat/focusInfoOneEditorReport.jsp" />
+		</action>
+		
+		<!-- 金农信息焦点追踪库全部责任编辑和各编辑被领导批示过的产品数量统计 -->
+		<action attribute="commonForm" name="commonForm"
+			scope="request" path="/stat/focusInfoAllEditor"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/focusInfoAllEditorMain.jsp" />
+			<forward name="query" path="/stat/focusInfoAllEditorQuery.jsp" />
+			<forward name="report" path="/stat/focusInfoAllEditorReport.jsp" />
+		</action>
+		
+		<!-- 市场分析库全部责任编辑和各编辑的产品数量统计 -->
+		<action attribute="commonForm" name="commonForm"
+			scope="request" path="/stat/markanaInfoByEditor"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/markanaInfoByEditorMain.jsp" />
+			<forward name="uniteMain" path="/stat/markanaInfoByEditorUniteMain.jsp" />
+			<forward name="query" path="/stat/markanaInfoByEditorQuery.jsp" />
+			<forward name="report" path="/stat/markanaInfoByEditorReport.jsp" />
+		</action>
+		
+		<!-- 市场分析库全部评别和各评别产品数量统计 -->
+		<action attribute="commonForm" name="commonForm"
+			scope="request" path="/stat/markanaInfoByType"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/markanaInfoByTypeMain.jsp" />
+			<forward name="query" path="/stat/markanaInfoByTypeQuery.jsp" />
+			<forward name="report" path="/stat/markanaInfoByTypeReport.jsp" />
+		</action>
+		
+		<!-- 市场分析库全部品种和各品种的产品数量统计 -->
+		<action attribute="commonForm" name="commonForm"
+			scope="request" path="/stat/markanaInfoByProduct"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/markanaInfoByProductMain.jsp" />
+			<forward name="query" path="/stat/markanaInfoByProductQuery.jsp" />
+			<forward name="report" path="/stat/markanaInfoByProductReport.jsp" />
+		</action>
+		
+		<!-- 市场分析库每一责任编辑各评别的产品数量统计 -->
+		<action attribute="commonForm" name="commonForm"
+			scope="request" path="/stat/markanaInfoByProductType"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/markanaInfoByProductTypeMain.jsp" />
+			<forward name="query" path="/stat/markanaInfoByProductTypeQuery.jsp" />
+			<forward name="report" path="/stat/markanaInfoByProductTypeReport.jsp" />
+		</action>
+
+		<!-- 产品价格供求全部座席员和每一座席员受理的各审核状态下的产品供求数量统计 -->
+		<action attribute="productPriceStatisticsByStateForm" name="productPriceStatisticsByStateForm"
+			scope="request" path="/stat/productPriceStatisticsByState"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/productPriceStatisticsByStateMain.jsp" />
+			<forward name="query" path="/stat/productPriceStatisticsByStateQuery.jsp" />
+			<forward name="report" path="/stat/productPriceStatisticsByStateReport.jsp" />
+		</action>
+
+		
+		<!-- 企业信息库全部座席员和每一座席员受理企业服务次数统计 -->
+		<action attribute="commonForm" name="commonForm"
+			scope="request" path="/stat/corpInfoBySeat"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/corpInfoBySeatMain.jsp" />
+			<forward name="query" path="/stat/corpInfoBySeatQuery.jsp" />
+			<forward name="report" path="/stat/corpInfoBySeatReport.jsp" />
+		</action>
+		
+		<!-- 企业信息库全部座席员和每一座席员受理的各审核状态下的企业信息数量统计 -->
+		<action attribute="commonForm" name="commonForm"
+			scope="request" path="/stat/corpInfoByState"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/corpInfoByStateMain.jsp" />
+			<forward name="query" path="/stat/corpInfoByStateQuery.jsp" />
+			<forward name="report" path="/stat/corpInfoByStateReport.jsp" />
+		</action>
+		
+		<!-- 普通医疗信息库全部座席员和每一座席员受理的医疗服务次数统计 -->
+		<action attribute="commonForm" name="commonForm"
+			scope="request" path="/stat/medicInfoBySeat"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/medicInfoBySeatMain.jsp" />
+			<forward name="query" path="/stat/medicInfoBySeatQuery.jsp" />
+			<forward name="report" path="/stat/medicInfoBySeatReport.jsp" />
+		</action>
+		
+		<!-- 普通医疗信息库全部专家和每一专家受理医疗服务次数统计 -->
+		<action attribute="commonForm" name="commonForm"
+			scope="request" path="/stat/medicInfoByExpert"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/medicInfoByExpertMain.jsp" />
+			<forward name="query" path="/stat/medicInfoByExpertQuery.jsp" />
+			<forward name="report" path="/stat/medicInfoByExpertReport.jsp" />
+		</action>
+		
+		<!-- 普通医疗信息库全部座席员和每一座席员受理的各审核状态下的医疗信息数量统计 -->
+		<action attribute="commonForm" name="commonForm"
+			scope="request" path="/stat/medicInfoByState"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/medicInfoByStateMain.jsp" />
+			<forward name="query" path="/stat/medicInfoByStateQuery.jsp" />
+			<forward name="report" path="/stat/medicInfoByStateReport.jsp" />
+		</action>
+		
+		<!-- 调查问卷设计库各机构发起的调查次数统计 -->
+		<action attribute="commonForm" name="commonForm"
+			scope="request" path="/stat/inquiryInfoByOrganization"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/inquiryInfoByOrganizationMain.jsp" />
+			<forward name="query" path="/stat/inquiryInfoByOrganizationQuery.jsp" />
+			<forward name="report" path="/stat/inquiryInfoByOrganizationReport.jsp" />
+		</action>
+		
+		<!-- 调查问卷设计库各组织者组织完成的调查次数统计 -->
+		<action attribute="commonForm" name="commonForm"
+			scope="request" path="/stat/inquiryStatisticsByOrganizers"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/inquiryStatisticsByOrganizersMain.jsp" />
+			<forward name="query" path="/stat/inquiryStatisticsByOrganizersQuery.jsp" />
+			<forward name="report" path="/stat/inquiryStatisticsByOrganizersReport.jsp" />
+		</action>
+		
+		<!-- 调查问卷分析库全部座席员和每一座席员完成的问题与用户调查数量统计 -->
+		<action attribute="userCaseForm" name="userCaseForm"
+			scope="request" path="/stat/inquiryStatisticsBySeat"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/inquiryStatisticsBySeatMain.jsp" />
+			<forward name="query" path="/stat/inquiryStatisticsBySeatQuery.jsp" />
+			<forward name="report" path="/stat/inquiryStatisticsBySeatReport.jsp" />
+		</action>
+		
+		<!-- 调查问卷分析库每一调查问题的回答数量统计 -->
+		<action attribute="commonForm" name="commonForm"
+			scope="request" path="/stat/inquiryStatisticsByQuestion"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/inquiryStatisticsByQuestionMain.jsp" />
+			<forward name="query" path="/stat/inquiryStatisticsByQuestionQuery.jsp" />
+			<forward name="report" path="/stat/inquiryStatisticsByQuestionReport.jsp" />
+		</action>
+		
+		<!-- 调查问卷分析库每一调查问题下各答案的数量统计 -->
+		<action attribute="commonForm" name="commonForm"
+			scope="request" path="/stat/inquiryStatisticsByAnswer"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/stat/inquiryStatisticsByAnswerMain.jsp" />
+			<forward name="query" path="/stat/inquiryStatisticsByAnswerQuery.jsp" />
+			<forward name="report" path="/stat/inquiryStatisticsByAnswerReport.jsp" />
+		</action>
+		
+	</action-mappings>
+</struts-config>
+

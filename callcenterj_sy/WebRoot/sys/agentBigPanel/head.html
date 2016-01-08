@@ -1,0 +1,379 @@
+<MM:BeginLock translatorClass="MM_SSI" type="ssi_comment" orig="%3C!-- #include file=%22adminZB/conn.asp%22 --%3E" fileRef="adminZB/conn.asp" depFiles="file:///C|/Documents and Settings/aaa/桌面/shengxun_zhibo_web/adminZB/conn.asp"><MM:BeginLock translatorClass="MM_ASPSCRIPT" type="DynamicSource" depFiles="" orig="%3C%25
+'	================数据库连接========================
+	Dim ConnString , Conn 
+	Dim strServerName '服务器名称或地址
+	Dim strSqlUserName '数据库的用户名（帐号）
+	Dim strSqlPassword '数据库的密码
+	Dim strSqlServerName '数据库的名称
+'	-------------------------------------------------
+	strServerName = %22(local)%22
+	strSqlUserName = %22jnrx%22
+	strSqlPassword = %2216808080%22
+	strSqlServerName = %22shengxun_zhibo%22
+'	-------------------------------------------------
+	ConnString = %22Driver={SQL Server};Server=%22 & strServerName & %22;Database=%22 & strSqlServerName & %22;Uid=%22 & strSqlUserName & %22;Pwd=%22 & strSqlPassword & %22;%22
+	Set Conn = Server.CreateObject(%22ADOdb.Connection%22)
+	Conn.open ConnString
+	If Conn.state %3C%3E 1 Then Response.Write %22数据库连接出错%22
+	Sub endConnection()
+		Conn.close
+		Set Conn=Nothing
+	End Sub	
+
+'*************************************
+'	-------------------------------------------------
+	strServerName = %22(local)%22
+	strSqlUserName = %22jnrx%22
+	strSqlPassword = %2216808080%22
+	strSqlServerName = %2216808080%22
+'	-------------------------------------------------
+	ConnString = %22Driver={SQL Server};Server=%22 & strServerName & %22;Database=%22 & strSqlServerName & %22;Uid=%22 & strSqlUserName & %22;Pwd=%22 & strSqlPassword & %22;%22
+	Set Conn_Sun = Server.CreateObject(%22ADOdb.Connection%22)
+	Conn_Sun.open ConnString
+	If Conn_Sun.state %3C%3E 1 Then Response.Write %22数据库连接出错%22
+	Sub endConnection()
+		Conn_Sun.close
+		Set Conn_Sun = Nothing
+	End Sub	
+
+'	================数据库连接结束===================
+
+'==========================变量定义=======================
+Const DEF_ADMIN_SITENAME = %22金农热线服务实况直播系统%22
+Const DEF_ADMIN_SOFT_VERSION = %22金农热线电话：16808080%22
+Const DEF_ADMIN_PAGESIZE = 20
+
+'=========================常用函数========================
+'**********防SQL注入函数
+FUNCTION CHECKSTR(ISTR)
+	DIM ISTR_FORM,SQL_KILL,SQL_KILL_1,SQL_KILL_2,ISTR_KILL 
+	IF ISTR=%22%22 THEN EXIT FUNCTION
+	ISTR=LCase(ISTR)
+	ISTR_FORM=ISTR
+	SQL_KILL=%22'|and|or|--|exec|insert|select|delete|update|count|*|%25|chr|mid|master|truncate|char|declare|set|;|from|=%22
+	SQL_KILL_1=SPLIT(SQL_KILL,%22|%22)
+	FOR EACH SQL_KILL_2 IN SQL_KILL_1
+		ISTR=REPLACE(ISTR,SQL_KILL_2,%22%22)
+	NEXT
+	CHECKSTR=ISTR
+	ISTR_KILL=REPLACE(ISTR_FORM,ISTR,%22%22)
+	IF ISTR%3C%3EISTR_FORM THEN
+		RESPONSE.WRITE %22警告: 您提交的数据[%22&ISTR_FORM&%22]中含有非法字符 [%22&ISTR_KILL&%22]%22
+		RESPONSE.END
+	END IF
+END FUNCTION
+
+'=======================该函数用于后台的修改功能，主要是将数据库中的数据提取出来
+'strFields为要获取的字段，用%22,%22隔开，
+'strTable为表名
+'id为数据库中的id字段名称
+'intID为记录的查询编号，应为数字
+'返回值为空或字符串二维数组。
+Public Function GetData(strFields,strTable,id,intID)
+	If strFields = %22%22 Or strTable = %22%22 Or id = %22%22 Or Not IsNumeric(intID) Then
+		GetData = %22要修改的数据库字段、表名和数据库中的id字段名称不能为空，且id要为数值型%22
+		Exit Function
+	End If
+	Dim Rs,Sql
+	Set Rs = Server.CreateObject(%22ADOdb.Recordset%22)
+	Sql = %22Select %22 & strFields & %22 From %22 & strTable & %22 Where %22 & id & %22 = %22 & intID
+	Rs.Open Sql,Conn,1,1
+	If Rs.Eof And Rs.Bof Then
+		'GetData = %22数据库中暂无记录，SQL语句如下：%3Cbr%3E%22& Sql
+		Response.Write %22数据库中没有检索到相关记录%22
+		Response.End()
+	Else
+		GetData = Rs.GetRows()
+	End If
+	Rs.Close
+	Set Rs = Nothing
+End Function
+
+'=================该函数用于得到类别，以下拉列表的形式显示%3Cselect%3E
+'strFields为要获取的字段，用%22,%22隔开。一定要有两个字段，且先是id，后是类别名称。切记！！因为此函数用了Rs(0)和Rs(1)
+'strTable为表名
+'strOrderBy为排序字符串
+'intTypeId为信息表中的类别id字段值
+Public Sub GetSelect(strFields,strTable,strOrderBy,intTypeId)
+	If strFields = %22%22 Or strTable = %22%22 Then
+		Response.Write %22要显示的数据库字段、表名不能为空%22
+		Exit Sub
+	End If
+	Dim Rs,Sql,Id,Tname,SelectFlag
+	Set Rs = Server.CreateObject(%22ADOdb.Recordset%22)
+	Sql = %22Select %22 & strFields & %22 From %22 & strTable & %22 %22 & strOrderBy
+	'Response.Write Sql
+	Rs.Open Sql,Conn,1,1
+	If Rs.Eof And Rs.Bof Then
+		Response.Write %22数据库中暂无记录，SQL语句如下：%3Cbr%3E%22& Sql
+	Else
+		While Not Rs.Eof
+			Set Id = Rs(0)
+			Set Tname = Rs(1)
+			If intTypeId = Tname Then 
+				SelectFlag = %22 selected%22 
+			Else
+				SelectFlag = %22 %22 
+			End If
+			Response.Write %22%3Coption value=%22%22%22& Tname & %22%22%22%22& SelectFlag &%22 %3E%22& Tname & %22%3C/option%3E%22
+		Rs.MoveNext
+		Wend
+	End If
+	Rs.Close
+	Set Rs = Nothing
+End Sub
+
+'********************************************************************
+'
+'Code：     Dolphin 2005.7.18
+'Purpose：  该函数用于截取字符。
+'Input：    strName是要截取的字符串变量
+'           intNum是截取的长度
+'Return：   返回一个处理后的字符串
+'注：       字母和数字视为一个字符，而汉字（一个非ANSI字符）视为两个字符
+'
+'********************************************************************
+Public Function GetString(strName, intNum)
+    If IsNull(strName) Then Exit Function
+    If Not IsNumeric(intNum) Then
+        Response.Write %22截取长度应为数值%22
+        Response.End
+    End If
+    Dim l, t, c, i, r
+    l = Len(strName)
+    t = 0
+    For i = 1 To l
+        c = Abs(Asc(Mid(strName, i, 1)))
+        If c %3E 255 Then
+            t = t + 2
+        Else
+            t = t + 1
+        End If
+        If t %3E= intNum Then
+            r = Left(strName, i) & %22...%22
+            Exit For
+        Else
+            r = strName & %22%22
+        End If
+    Next
+    GetString = r
+End Function
+
+
+'选择年
+Sub Select_Year(strYear)
+	Dim i, ss
+	For i = 2000 To Year(Date)
+		If Cint(i) = Cint(strYear) Then
+			ss = %22 selected%22
+		Else
+			ss = %22%22
+		End if
+		Response.Write %22%3Coption value=%22& i & ss &%22%3E%22& i &%22%3C/option%3E%22
+	Next
+End Sub
+
+'选择月
+Sub Select_Month(strMonth)
+	Dim i, ss
+	For i = 1 To 12
+		If Cint(i) = Cint(strMonth) Then
+			ss = %22 selected%22
+		Else
+			ss = %22%22
+		End if
+		Response.Write %22%3Coption value=%22& i & ss &%22%3E%22& i &%22%3C/option%3E%22
+	Next
+End Sub
+
+'选择日
+Sub Select_Day(strDay)
+	Dim i, ss
+	For i = 1 To 31
+		If Cint(i) = Cint(strDay) Then
+			ss = %22 selected%22
+		Else
+			ss = %22%22
+		End if
+		Response.Write %22%3Coption value=%22& i & ss &%22%3E%22& i &%22%3C/option%3E%22
+	Next
+End Sub
+%25%3E" ><MM_RECORDSET NAME="Rs" DYNAMICSOURCE=1></MM_RECORDSET><MM:EndLock>
+
+<MM:EndLock>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<script language=JavaScript>
+var timerID = null;
+var timerRunning = false;
+function stopclock (){
+if(timerRunning)
+clearTimeout(timerID);
+timerRunning = false;}
+function startclock () {
+stopclock();
+showtime();}
+function showtime () {
+var now = new Date();
+var hours = now.getHours();
+var minutes = now.getMinutes();
+var seconds = now.getSeconds();
+var yy = now.getYear();
+var mm = now.getMonth() + 1;
+var dd = Date().split(" ")[2];
+var ww;
+switch (now.getDay()) {
+	case 0 :
+		ww = "星期日";
+		break;
+	case 1 :
+		ww = "星期一";
+		break;
+	case 2 :
+		ww = "星期二";
+		break;
+	case 3 :
+		ww = "星期三";
+		break;
+	case 4 :
+		ww = "星期四";
+		break;
+	case 5 :
+		ww = "星期五";
+		break;
+	case 6 :
+		ww = "星期六";
+		break;
+}
+var timeValue = yy + "年" + mm + "月" + dd + "日　" + ww + "　";// +((hours >= 12) ? "下午 " : "上午 " );
+timeValue += hours;//((hours >12) ? hours -12 :hours);
+timeValue += ((minutes < 10) ? ":0" : ":") + minutes;
+timeValue += ((seconds < 10) ? ":0" : ":") + seconds;
+//document.clock.thetime.value = timeValue;
+clock.innerText = timeValue;
+timerID = setTimeout("showtime()",1000);
+timerRunning = true;
+}
+
+</SCRIPT>
+<MM:BeginLock translatorClass="MM_ASPSCRIPT" type="DynamicSource" depFiles="" orig="%3C%25
+Dim h_rs, h_sql
+'在线主持人
+Dim hostsname
+h_sql = %22Select Top 1 hostsname From jnrxfwskzb_hosts%22
+Set h_rs = Server.CreateObject(%22Adodb.Recordset%22)
+h_rs.Open h_sql,Conn,1,1
+If Not h_rs.Eof Then
+	hostsname = h_rs(0)
+End If
+h_rs.Close
+'咨询总量
+Dim asknums
+h_sql = %22Select Top 1 asknums From jnrxfwskzb_asknums%22
+h_rs.Open h_sql,Conn,1,1
+If Not h_rs.Eof Then
+	asknums = h_rs(0)
+End If
+h_rs.Close
+'今日咨询量
+Dim today_asknums
+h_sql = %22Select Count(*) From CRM_SUNTEK_TRANSACTION Where DateDiff(d,CST_DATETIME,'%22& Date() &%22')=0%22
+h_rs.Open h_sql,Conn_Sun,1,1
+If Not h_rs.Eof Then
+	today_asknums = h_rs(0)
+End If
+h_rs.Close
+'政策
+Dim today_asknums_zc
+h_sql = %22Select Count(*) From CRM_SUNTEK_TRANSACTION Where DateDiff(d,CST_DATETIME,'%22& Date() &%22')=0 AND CST_HEADCODE = '0010'%22
+h_rs.Open h_sql,Conn_Sun,1,1
+If Not h_rs.Eof Then
+	today_asknums_zc = h_rs(0)
+End If
+h_rs.Close
+'市场
+Dim today_asknums_sc
+h_sql = %22Select Count(*) From CRM_SUNTEK_TRANSACTION Where DateDiff(d,CST_DATETIME,'%22& Date() &%22')=0 AND (CST_HEADCODE = '0002' OR CST_HEADCODE = '0003')%22
+h_rs.Open h_sql,Conn_Sun,1,1
+If Not h_rs.Eof Then
+	today_asknums_sc = h_rs(0)
+End If
+h_rs.Close
+'技术
+Dim today_asknums_js
+h_sql = %22Select Count(*) From CRM_SUNTEK_TRANSACTION Where DateDiff(d,CST_DATETIME,'%22& Date() &%22')=0 AND (CST_HEADCODE = '0004' OR CST_HEADCODE = '0011')%22
+h_rs.Open h_sql,Conn_Sun,1,1
+If Not h_rs.Eof Then
+	today_asknums_js = h_rs(0)
+End If
+h_rs.Close
+'其他
+Dim today_asknums_qt
+h_sql = %22Select Count(*) From CRM_SUNTEK_TRANSACTION Where DateDiff(d,CST_DATETIME,'%22& Date() &%22')=0 AND (CST_HEADCODE = '0000' OR CST_HEADCODE = '0005' OR CST_HEADCODE = '0012')%22
+h_rs.Open h_sql,Conn_Sun,1,1
+If Not h_rs.Eof Then
+	today_asknums_qt = h_rs(0)
+End If
+h_rs.Close
+'值班专家
+Dim h_experts
+h_sql = %22Select Top 1 expertsname From jnrxfwskzb_experts%22
+h_rs.Open h_sql,Conn,1,1
+If Not h_rs.Eof Then
+	h_experts = h_rs(0)
+End If
+h_rs.Close
+Set h_rs = Nothing
+%25%3E" ><MM_RECORDSET NAME="h_rs" DYNAMICSOURCE=1></MM_RECORDSET><MM:EndLock>
+<table width="100%" height="82" border="0" cellpadding="0" cellspacing="0" background="images/tt_02.jpg">
+      <tr>
+        <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="72%" height="42">&nbsp;</td>
+            <td width="28%" align="center" valign="bottom" ><span id=clock></span></td>
+          </tr>
+          <tr>
+            <td height="26" colspan="2" align="right" class="blue12" style="padding-right:25px; padding-top:14px" >在线主持人: <MM:BeginLock translatorClass="MM_ASPSCRIPT" type="script" depFiles="" orig="%3C%25=hostsname%25%3E" ><MM_ASPSCRIPT><MM:EndLock></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table>
+<table width="100%" height="80" border="0" cellpadding="0" cellspacing="0" background="images/tt_04.jpg">
+        <tr>
+          <td><table width="100%" height="80" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td width="22%">&nbsp;</td>
+              <td width="78%"><table width="97%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="21%" height="42" align="center" class="blue_14b">咨询总量</td>
+                  <td width="19%" align="center" class="blue_14b">今日咨询量</td>
+                  <td width="39%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td width="25%" align="center" class="blue_14b">政策 |</td>
+                      <td width="25%" align="center" class="blue_14b">市场 |</td>
+                      <td width="25%" align="center" class="blue_14b">技术 |</td>
+                      <td width="25%" align="center" class="blue_14b">其他&nbsp;&nbsp; </td>
+                    </tr>
+                  </table></td>
+                  <td width="21%" align="center" class="blue_14b">值班专家</td>
+                </tr>
+                <tr>
+                  <td height="34" align="center" valign="top"><span class="whtie_14b"><MM:BeginLock translatorClass="MM_ASPSCRIPT" type="script" depFiles="" orig="%3C%25=asknums%25%3E" ><MM_ASPSCRIPT><MM:EndLock></span></td>
+                  <td align="center" valign="top"><span class="whtie_14b"><MM:BeginLock translatorClass="MM_ASPSCRIPT" type="script" depFiles="" orig="%3C%25=today_asknums%25%3E" ><MM_ASPSCRIPT><MM:EndLock></span></td>
+                  <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td width="25%" align="center"><span class="whtie_14b" style="padding-right:15px; "><MM:BeginLock translatorClass="MM_ASPSCRIPT" type="script" depFiles="" orig="%3C%25=today_asknums_zc%25%3E" ><MM_ASPSCRIPT><MM:EndLock></span></td>
+                      <td width="25%" align="center"><span class="whtie_14b" style="padding-right:15px; "><MM:BeginLock translatorClass="MM_ASPSCRIPT" type="script" depFiles="" orig="%3C%25=today_asknums_sc%25%3E" ><MM_ASPSCRIPT><MM:EndLock></span></td>
+                      <td width="25%" align="center"><span class="whtie_14b" style="padding-right:16px; "><MM:BeginLock translatorClass="MM_ASPSCRIPT" type="script" depFiles="" orig="%3C%25=today_asknums_js%25%3E" ><MM_ASPSCRIPT><MM:EndLock></span></td>
+                      <td width="25%" align="center"><span class="whtie_14b" style="padding-right:18px; "><MM:BeginLock translatorClass="MM_ASPSCRIPT" type="script" depFiles="" orig="%3C%25=today_asknums_qt%25%3E" ><MM_ASPSCRIPT><MM:EndLock></span></td>
+                    </tr>
+                  </table></td>
+                  <td align="center" valign="top" class="white_12b"><MM:BeginLock translatorClass="MM_ASPSCRIPT" type="script" depFiles="" orig="%3C%25=h_experts%25%3E" ><MM_ASPSCRIPT><MM:EndLock></td>
+                </tr>
+              </table></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table>	
+<MM:BeginLock translatorClass="MM_ASPSCRIPT" type="script" depFiles="" orig="%3C%25
+
+%25%3E" ><MM_ASPSCRIPT><MM:EndLock>

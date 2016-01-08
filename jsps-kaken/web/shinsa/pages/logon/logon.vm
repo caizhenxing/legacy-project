@@ -1,0 +1,165 @@
+#parse( $commonSetting )
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム ログイン</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowClose.js"></script>
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="http://www-shinsei.jsps.go.jp/kakenhi/" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td>&nbsp;</td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- ログイン、メニュー画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr>
+      <td width="92" valign="bottom"><IMG SRC="$path/images/title_img1.gif" width=92 height=53 ALT=""></td>
+      <td width="98%" valign="bottom" class="menuTitle">審査員ログイン</td>
+      <td width="214" valign="bottom"><IMG SRC="$path/images/title_img5.gif" width=214 height=38 ALT=""></td>
+     </tr>
+     <tr>
+      <td width="92"><IMG SRC="$path/images/title_img2.gif" width=92 height=29 ALT=""></td>
+      <td background="$path/images/title_img3.gif"><IMG SRC="$path/images/title_img3.gif" width=8 height=29 ALT=""></td>
+      <td width="214"><IMG SRC="$path/images/title_img6.gif" width=214 height=29 ALT=""></td>
+     </tr>
+    </table>
+    <!-- ログイン、メニュー画面タイトル用テーブルここまで -->
+    <!-- ログイン入力フォーム、メニュー項目用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr>
+      <td width="92" valign="top"><IMG SRC="$path/images/title_img7.gif" width=92 height=38 ALT=""></td>
+      <td width="52" class="menuLine"><img src="$path/images/spacer.gif" width="52" height="1"></td>
+      <td width="90%" align="left"> <br>
+        #errorMarkup()
+       <!-- ログインフォーム、ボタン用テーブルここから -->
+       <form method="post" action="$link.setAction('/shinsa/logonCheck')">
+        <table border="0">
+         <tr>
+          <td width="50" align="center">&nbsp;</td>
+          <td align="center"><font color="#0066CC"><strong>ID</strong></font></td>
+          <td><img src="$path/images/mark1.gif" alt="" width="12" height="12"></td>
+          <td>
+           <input type="text" name="userid" value="$!escape.getText($!logonForm.userid)">
+          </td>
+         </tr>
+         <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+         </tr>
+         <tr>
+          <td>&nbsp;</td>
+          <td><font color="#0066CC"><strong>パスワード</strong></font></td>
+          <td><img src="$path/images/mark1.gif" alt="" width="12" height="12"></td>
+          <td><input type="password" name="password" value="" size="20">
+          </td>
+         </tr>
+         <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+         </tr>
+         <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td><input type="image" src="$path/images/bt_login.gif" alt="ログイン" width="114" height="28" border="0"></td>
+         </tr>
+         <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          </tr>
+        </table>
+       </form>
+       <!-- ログインフォーム、ボタン用テーブルここまで -->
+       <br>
+      </td>
+     </tr>
+    </table>
+
+	<!-- ベリサインここから -->
+    <table>
+      <tr>
+      <td>
+      
+## 2005/04/04 削除 ここから----------------------------
+## 理由 ベリサインシール張替え
+##      <a target="_blank" href="https://digitalid.verisign.com/cgi-bin/Xquery.exe?issuerSerial=4188ea273125c039e0bacd79247479c3&Template=retailCertByIssuer&form_file=$path/fdf/srv_userQueryResult.fdf&qmCompileAlways=yes">
+##      <IMG SRC="$path/images/VeriSignSeal_w70.gif" BORDER="0" HEIGHT="69" WIDTH="70" alt="VeriSign"></a>
+## 削除 ここまで----------------------------------------
+
+## 2005/04/04 追加 ここから----------------------------
+## 理由 ベリサインシール張替え
+		<script src="https://seal.verisign.com/getseal?host_name=www-kaken.jsps.go.jp&size=S&use_flash=YES&use_transparent=YES&lang=ja"></script>
+## 追加 ここまで----------------------------------------
+
+      </td>
+      <td><font size = "2">
+		電子申請システムでは、インターネット上のセキュリティを<br>確保するため、SSL暗号化通信を導入しています。<br>
+		<b>証明書のご確認は、左のシールをクリックして下さい。</b>
+      </td>
+	  <tr>
+      <td>&nbsp;</td>
+      </tr>
+      <tr>
+      <td colspan="2">
+      <!-- <p class="comment">電子申請システムの共通注意事項等は<a href="http://www-shinsei.jsps.go.jp/" target="_blank">こちら</a>をご覧下さい。</p> -->
+      <p class="comment">よくあるご質問・簡易版手引・注意事項等は<a href="http://www-shinsei.jsps.go.jp/kakenhi/" target="_blank">審査員専用ページ</a>をご覧下さい。</p>
+      </td>
+     </tr>   
+    </table>
+	<!-- ベリサインここまで -->
+	
+    <!-- ログイン入力フォーム、メニュー項目用テーブルここまで -->
+    <br>
+    <br>
+    <!-- ログイン画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="4" background="$path/images/footer_login2.gif"> <IMG SRC="$path/images/footer_login1.gif" width=4 height=11 ALT=""></td>
+      <td background="$path/images/footer_login2.gif"><IMG SRC="$path/images/footer_login2.gif" width=4 height=11 ALT=""></td>
+      <td width="4" align="right" background="$path/images/footer_login2.gif"> <IMG SRC="$path/images/footer_login3.gif" width=4 height=11 ALT=""></td>
+     </tr>
+    </table>
+    <!-- ログイン画面フッター用テーブルここまで -->
+
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+  <!-- 左右の縦線用テーブルここまで -->
+</div>
+</body>
+</html>
+

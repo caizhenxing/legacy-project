@@ -1,0 +1,119 @@
+<project name="jbpm.ear" basedir="." default="install">
+
+  <!-- project specific properties -->
+  <property name="artifact.name" value="jbpm.ear" />
+  <property name="module.name" value="enterprise" />
+  <property name="jbpm.root" value="../.." />
+  <property file="../version.properties" />
+
+  <!-- properties files -->
+  <property file="${user.home}/jbpm/build.properties" />
+  <property file="build.properties" />
+  <property file="${jbpm.root}/build/build.properties" />
+
+  <!-- import base project build file -->
+  <import file="${jbpm.root}/build/base.project.build.xml"/>
+
+  <!-- project specific targets -->
+  <target name="package" 
+          depends="create.manifest, customize.war"
+          description="packages the ear file">
+    <ant antfile="../cmdlistener/build.xml" inheritall="false" />
+    <ant antfile="../cmdservice/build.xml" inheritall="false" />
+
+    <jar jarfile="target/${artifact.name}"
+         manifest="target/manifest/MANIFEST.MF">
+      <fileset dir="src/main/resources" />
+      <fileset dir="${local.repository}/${lib.jbpm.enterprise.dir}">
+        <include name="jbpm-cmdservice.jar" />
+        <include name="jbpm-cmdlistener.jar" />
+      </fileset>
+      <fileset dir="target">
+        <include name="jbpm-console.war" />
+        <include name="jbpm-configs.jar" />
+      </fileset>
+      <fileset dir="${local.repository}/${lib.ehcache.dir}">
+        <include name="ehcache.jar" />
+      </fileset>
+      <fileset dir="${local.repository}/${lib.jbpm.jpdl.dir}">
+        <include name="jbpm-jpdl.jar" />
+      </fileset>
+      <fileset dir="${local.repository}/${lib.jbpm.identity.dir}">
+        <include name="jbpm-identity.jar" />
+      </fileset>
+    </jar>
+  </target>
+  
+  <target name="customize.war">
+    <ant antfile="../../console/build.xml" inheritall="false" />
+    <mkdir dir="target/customizedwar" />
+    <unzip src="${local.repository}/${lib.jbpm.console.dir}/jbpm-console.war" dest="target/customizedwar" />
+    
+    <!-- remove the libraries cause they will move up in the .ear file -->
+    <delete>
+      <fileset dir="target/customizedwar/WEB-INF/lib">
+        <include name="jbpm-jpdl.jar" />
+        <include name="jbpm-identity.jar" />
+        <include name="ehcache.jar" />
+      </fileset>
+    </delete>
+
+    <!-- update the manifest -->
+    <replace file="target/customizedwar/META-INF/MANIFEST.MF">
+      <replacetoken><![CDATA[Implementation-Title: jbpm-console.war]]></replacetoken>
+      <replacevalue><![CDATA[Implementation-Title: jbpm-console.war (JTA configuration)]]></replacevalue>
+    </replace>
+
+    <manifest file="target/customizedwar/META-INF/MANIFEST.MF">
+      <attribute name="Implementation-Title" value="${artifact.name}"/>
+      <attribute name="Implementation-Version" value="${module.version} (date:${now})"/>
+      <attribute name="Implementation-URL" value="http://www.jboss.org/"/>
+      <attribute name="Implementation-Vendor" value="JBoss Inc."/>
+      <attribute name="Implementation-Vendor-Id" value="http://www.jboss.org/"/>
+      <attribute name="Class-Path" value="jbpm-jpdl.jar jbpm-identity.jar jbpm-configs.jar ehcache.jar"/>
+    </manifest>
+
+    <!-- move the configuration files as they will be deployed in a separate jar file -->
+    <mkdir dir="target/jbpm.configs" />
+    <move todir="target/jbpm.configs">
+      <fileset dir="target/customizedwar/WEB-INF/classes">
+        <include name="*.xml" />
+      </fileset>
+    </move>
+    
+    <zip destfile="target/jbpm-console.war">
+      <fileset dir="target/customizedwar" />
+    </zip>
+    
+    <!-- comment the jdbc connection properties -->
+    <replace file="target/jbpm.configs/hibernate.cfg.xml">
+      <replacetoken><![CDATA[<!-- JDBC connection properties (begin) -->]]></replacetoken>
+      <replacevalue><![CDATA[<!-- JDBC connection properties (begin) ===]]></replacevalue>
+    </replace>
+    <replace file="target/jbpm.configs/hibernate.cfg.xml">
+      <replacetoken><![CDATA[<!-- JDBC connection properties (end) -->]]></replacetoken>
+      <replacevalue><![CDATA[==== JDBC connection properties (end) -->]]></replacevalue>
+    </replace>
+
+    <!-- uncomment the jta transaction properties -->
+    <replace file="target/jbpm.configs/hibernate.cfg.xml">
+      <replacetoken><![CDATA[<!-- JTA transaction properties (begin) ===]]></replacetoken>
+      <replacevalue><![CDATA[<!-- JTA transaction properties (begin) -->]]></replacevalue>
+    </replace>
+    <replace file="target/jbpm.configs/hibernate.cfg.xml">
+      <replacetoken><![CDATA[==== JTA transaction properties (end) -->]]></replacetoken>
+      <replacevalue><![CDATA[<!-- JTA transaction properties (end) -->]]></replacevalue>
+    </replace>
+    
+    <jar destfile="target/jbpm-configs.jar">
+      <fileset dir="target/jbpm.configs" />
+    </jar>
+    
+  </target>
+
+  <target name="deploy"
+          depends="package">
+    <get dest="target/deployresult.html" src="http://localhost:8080/jmx-console/HtmlAdaptor?action=invokeOpByName&amp;name=jboss.system:service%3DMainDeployer&amp;methodName=redeploy&amp;argType=java.net.URL&amp;arg0=file://${basedir}/target/${artifact.name}" /> 
+  </target>
+
+</project>

@@ -1,0 +1,24 @@
+.style1 { 
+font-size: 12px;
+background: #CCCCFF;
+border-width: thin thin thin thin;
+border-color: #CCCCFF #CCCCCC #CCCCCC #CCCCFF
+}
+.style2 { 
+font-size: 12px;
+font-weight: bold;
+background: #CCFFCC;
+border-width: thin medium medium thin; 
+border-color: #CCFF99 #999999 #999999 #CCFF99
+}
+.button{
+border:1px solid #666666;
+font-size:9pt;
+height:17px;
+BACKGROUND-COLOR: #ffffff;
+color:#ffffff"
+}
+.tablebgcolorjing {
+	background-color: #B2C4D6;
+}
+

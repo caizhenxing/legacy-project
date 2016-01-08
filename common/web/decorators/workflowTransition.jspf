@@ -1,0 +1,91 @@
+<script type="text/javascript">
+if (Workflow == null) {
+	var Workflow = {};
+}
+workflowSelectActionCallback = function(actionId, nextStepPointType) {
+
+}
+</script>
+
+<div class="update_subhead">
+	<span class=" switch_open" onClick="StyleControl.switchDiv(this, $('publicWorkflowTransitionTable'))" title="点击收缩表格">工作流审批</span>
+</div>
+<% 
+	String taskId = request.getParameter("taskId");
+	String urlKey = request.getParameter("urlKey");
+%>
+
+<input type="hidden" name = "workflowStatus" value = "${requestScope['workflow.objectName'].workflowStatus}" />
+<input type="hidden" name="<c:out value = "${requestScope['workflow.objectName']}" />.taskId" value="<%= taskId%>" />
+<input type="hidden" name="urlKey" value="<%= urlKey%>" />
+<input type="hidden" value="" name="nextStepSpecialObj" />
+
+<table border="0" cellpadding="0" cellspacing="0" class="Update" id="publicWorkflowTransitionTable">
+<tr>
+	<td class="text">流程状态</td>
+	<td colspan="3">
+	    <c:set var="dtoClassName" value="${requestScope['workflow.workflowInfo']}" scope="request"/>
+	    <c:set var="oid" value="${requestScope['workflow.workflowInfo'].id}" scope="request"/>	  
+		<span class="font_master"><c:out value = "${requestScope['workflow.workflowInfo'].workflowStatusName}" /></span>&nbsp;&nbsp;&nbsp;&nbsp;		
+		<a target="_blank" href ='<%=request.getContextPath()%>/wf/GraphicsAction.do?step=wfinfo&oid=<%=request.getAttribute("oid").toString() %>&dtoClassName=<%=request.getAttribute("dtoClassName").getClass().getName() %>'/>
+		[查看工作流图形]</a>		
+	</td>
+</tr>
+
+
+<tr>
+	<td class="text">当前步骤</td>
+	<td colspan="3">
+		<span class="font_master"><c:out value = "${requestScope['workflow.workflowInfo'].currentStep.name}" />	</span>&nbsp;
+		<c:forEach var = "stepMetaData" items = "${requestScope['workflow.workflowInfo'].currentStep.metadata}">
+			<input type="hidden" name="workflow.step[<c:out value = "${requestScope['workflow.workflowInfo'].currentStep.id}" />].metadata.<c:out value = "${stepMetaData.key}" />" value = "<c:out value = "${stepMetaData.value}" />" />
+		</c:forEach>
+	</td>
+</tr>
+
+<c:set var = "hasAvailableActions" value = "${not empty requestScope['workflow.workflowInfo'].currentStep.availableActions[0]}" scope = "page" />
+<c:choose>														
+<c:when test = "${pageScope['hasAvailableActions']}">
+<tr>
+	<td class="text" rowspan="2">请选择操作</td>
+	<td colspan="3">																																																																			
+		<c:forEach var = "action" items = "${requestScope['workflow.workflowInfo'].currentStep.availableActions}" varStatus="status">
+			<c:if test = "${empty action.metadata['invisible']}">																	
+				
+					<input type="radio" name="<c:out value = "${requestScope['workflow.objectName']}" />.actionId" value="<c:out value = "${action.id}" />" onClick="workflowSelectActionCallback('<c:out value = "${action.id}" />','<c:out value = "${action.nextStep.id}" />','<c:out value = "${action.nextStep.pointType}" />','<c:out value = "${action.nextStep.specialObject}" />')">
+					<c:out value = "${action.name}" /> [ 下一步 ] --> <c:out value = "${action.nextStep.name}" default="完成"/><br>
+
+				<div style="display:none" id="divId_selectedSigners_<c:out value = "${action.id}" />_msg">已选择的待办人:
+				<table border="0" cellpadding="0" cellspacing="0" class="Listing" id="divId_selectedSigners_<c:out value = "${action.id}" />" >
+				<thead>
+					<tr>
+					<td>姓名</td>
+					<td>职务</td>
+					<td>所属部门</td>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+				</table>
+				</div>
+				<c:forEach var = "actionMetadata" items = "${action.metadata}">
+					<input type="hidden" name="workflow.action[<c:out value = "${action.id}" />].metadata.<c:out value = "${actionMetadata.key}" />" value = "<c:out value = "${actionMetadata.value}" />" />
+				</c:forEach>
+			</c:if>
+		</c:forEach>		
+		请输入您的意见
+		<input type="text" name="<c:out value = "${requestScope['workflow.objectName']}" />.currentStep.opinion" value="<c:out value = "${requestScope['workflow.workflowInfo'].currentStep.opinion}" />"  style="width:300px"/>								
+		<input type="button" id="edit_longText" onclick="definedWin.openLongTextWin($('<c:out value = "${requestScope['workflow.objectName']}" />.currentStep.opinion'));"/>
+	</td>
+</tr>
+</c:when>	
+<c:otherwise>
+<tr>
+	<td class="text">请选择操作</td>
+    <td height="35">
+	<span class="font_master">无可用操作</span>
+    </td>
+</tr>
+</c:otherwise>
+</c:choose>
+</table>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/news/format.do" location="350,50" dimension="358,84" />
+  <StrutsActivity path="/news/format/formatList.jsp" location="50,350" dimension="202,48" />
+  <StrutsActivity path="/news/format/formatMain.jsp" location="950,50" dimension="202,48" />
+  <StrutsActivity path="/news/format/formatQuery.jsp" location="650,350" dimension="208,48" />
+  <StrutsActivity path="/news/format/formatLoad.jsp" location="950,350" dimension="202,48" />
+  <StrutsActivity path="/news/format/FormatInsert.jsp" location="950,150" dimension="214,48" />
+  <StrutsActivity path="/news/newsInfo/newsInfo.jsp" location="78,184" dimension="202,48" />
+  <StrutsActivity path="/news/format/FormatList.jsp" location="350,250" dimension="202,48" />
+  <StrutsActivity path="/news/format/FormatQuery.jsp" location="650,250" dimension="208,48" />
+  <StrutsActivity path="/news/format/FormatLoad.jsp" location="950,250" dimension="202,48" />
+  <StrutsTransition id="/news/format.do,main,/news/format/formatMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="708,83" />
+      <AbsolutePoint location="950,83" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/news/format.do,list,/news/format/formatList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="529,92" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/news/format.do,load,/news/format/formatLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="529,92" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/news/format.do,query,/news/format/formatQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="529,92" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

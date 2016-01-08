@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/forum/register/declare.jsp" location="0,204" dimension="202,48" />
+  <StrutsActivity path="/forum/register/register.jsp" location="302,204" dimension="208,48" />
+  <StrutsActivity path="/forum/register/upUserInfo.jsp" location="610,204" dimension="220,48" />
+  <StrutsActivity path="/forum/register/error.jsp" location="930,204" dimension="190,48" />
+  <StrutsActivity path="/forum/register/login.jsp" location="1220,204" dimension="190,48" />
+  <StrutsActivity path="/forum/register/success.jsp" location="1510,204" dimension="202,48" />
+  <StrutsActivity path="/user/userOper/register.do" location="50,350" dimension="358,84" />
+  <StrutsActivity path="/user/register/declare.jsp" />
+  <StrutsActivity path="/user/register/register.jsp" />
+  <StrutsActivity path="/user/register/upUserInfo.jsp" />
+  <StrutsActivity path="/user/register/error.jsp" />
+  <StrutsActivity path="/user/register/login.jsp" />
+  <StrutsActivity path="/user/register/success.jsp" />
+  <StrutsTransition id="/user/userOper/register.do,error,/user/register/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/userOper/register.do,tologin,/forum/register/login.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="962,84" />
+      <AbsolutePoint location="962,144" />
+      <AbsolutePoint location="1315,144" />
+      <AbsolutePoint location="1315,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user/userOper/register.do,toRegister,/user/register/register.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user/userOper/register.do,toRegister,/forum/register/register.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="317,350" />
+      <AbsolutePoint location="317,252" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/userOper/register.do,toDeclare,/forum/register/declare.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="723,84" />
+      <AbsolutePoint location="723,114" />
+      <AbsolutePoint location="101,114" />
+      <AbsolutePoint location="101,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user/userOper/register.do,toUpdate,/user/register/upUserInfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user/userOper/register.do,error,/forum/register/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,392" />
+      <AbsolutePoint location="1025,392" />
+      <AbsolutePoint location="1025,252" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user/userOper/register.do,toDeclare,/user/register/declare.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/userOper/register.do,toRegister,/forum/register/register.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="783,84" />
+      <AbsolutePoint location="783,144" />
+      <AbsolutePoint location="406,144" />
+      <AbsolutePoint location="406,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/userOper/register.do,toUpdate,/forum/register/upUserInfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="842,84" />
+      <AbsolutePoint location="842,174" />
+      <AbsolutePoint location="720,174" />
+      <AbsolutePoint location="720,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user/userOper/register.do,toDeclare,/forum/register/declare.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="187,350" />
+      <AbsolutePoint location="187,252" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user/userOper/register.do,tologin,/forum/register/login.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,422" />
+      <AbsolutePoint location="1315,422" />
+      <AbsolutePoint location="1315,252" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user/userOper/register.do,toUpdate,/forum/register/upUserInfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,362" />
+      <AbsolutePoint location="720,362" />
+      <AbsolutePoint location="720,252" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user/userOper/register.do,register,/user/register/success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/userOper/register.do,error,/forum/register/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="902,84" />
+      <AbsolutePoint location="902,174" />
+      <AbsolutePoint location="1025,174" />
+      <AbsolutePoint location="1025,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user/userOper/register.do,register,/forum/register/success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,350" />
+      <AbsolutePoint location="229,297" />
+      <AbsolutePoint location="1611,297" />
+      <AbsolutePoint location="1611,252" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user/userOper/register.do,tologin,/user/register/login.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/userOper/register.do,register,/forum/register/success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1021,84" />
+      <AbsolutePoint location="1021,114" />
+      <AbsolutePoint location="1611,114" />
+      <AbsolutePoint location="1611,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

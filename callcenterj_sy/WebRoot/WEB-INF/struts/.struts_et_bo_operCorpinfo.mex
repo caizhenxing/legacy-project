@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/sad/sadlist.jsp" location="0,188" dimension="102,49" />
+  <StrutsActivity path="/sad/sadMain.jsp" location="202,188" dimension="111,49" />
+  <StrutsActivity path="/sad/sadQuery.jsp" location="413,188" dimension="119,49" />
+  <StrutsActivity path="/sad/sadLoad.jsp" location="632,188" dimension="112,49" />
+  <StrutsActivity path="/operCorpinfo.do" location="950,150" dimension="308,88" />
+  <StrutsActivity path="/operCorpinfo/sadlist.jsp" location="50,350" dimension="148,49" />
+  <StrutsActivity path="/operCorpinfo/sadMain.jsp" location="350,350" dimension="157,49" />
+  <StrutsActivity path="/operCorpinfo/sadQuery.jsp" location="650,350" dimension="165,49" />
+  <StrutsActivity path="/operCorpinfo/sadLoad.jsp" location="950,350" dimension="158,49" />
+  <StrutsActivity path="/operCorpinfo/operCorpinfolist.jsp" location="50,450" dimension="194,49" />
+  <StrutsActivity path="/operCorpinfo/operCorpinfoLoad.jsp" location="350,450" dimension="204,49" />
+  <StrutsActivity path="/operCorpinfo/operCorpinfoMain.jsp" location="650,450" dimension="203,49" />
+  <StrutsActivity path="/operCorpinfo/operCorpinfoQuery.jsp" location="950,450" dimension="211,49" />
+  <StrutsTransition id="/sad.do,toSadLoad,/sad/sadLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="480,88" />
+      <AbsolutePoint location="480,138" />
+      <AbsolutePoint location="688,138" />
+      <AbsolutePoint location="688,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toSadList,/sad/sadlist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,173" />
+      <AbsolutePoint location="51,173" />
+      <AbsolutePoint location="51,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sad.do,toSadMain,/sad/sadMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="326,88" />
+      <AbsolutePoint location="326,138" />
+      <AbsolutePoint location="257,138" />
+      <AbsolutePoint location="257,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toSadQuery,/operCorpinfo/sadQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,203" />
+      <AbsolutePoint location="759,203" />
+      <AbsolutePoint location="759,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toOperCorpinfoMain,/operCorpinfo/operCorpinfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,203" />
+      <AbsolutePoint location="830,203" />
+      <AbsolutePoint location="830,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toSadMain,/operCorpinfo/operCorpinfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,203" />
+      <AbsolutePoint location="830,203" />
+      <AbsolutePoint location="830,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toOperCorpinfoLoad,/operCorpinfo/operCorpinfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1093,238" />
+      <AbsolutePoint location="1093,283" />
+      <AbsolutePoint location="522,283" />
+      <AbsolutePoint location="522,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toSadList,/operCorpinfo/sadlist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,173" />
+      <AbsolutePoint location="124,173" />
+      <AbsolutePoint location="124,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toSadList,/operCorpinfo/operCorpinfolist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,173" />
+      <AbsolutePoint location="-75,173" />
+      <AbsolutePoint location="-75,474" />
+      <AbsolutePoint location="50,474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toSadQuery,/operCorpinfo/operCorpinfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1123,238" />
+      <AbsolutePoint location="1123,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toSadLoad,/operCorpinfo/sadLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1093,238" />
+      <AbsolutePoint location="1093,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toSadLoad,/operCorpinfo/operCorpinfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1093,238" />
+      <AbsolutePoint location="1093,283" />
+      <AbsolutePoint location="522,283" />
+      <AbsolutePoint location="522,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toSadLoad,/sad/sadLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,203" />
+      <AbsolutePoint location="744,203" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sad.do,toSadQuery,/sad/sadQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="403,88" />
+      <AbsolutePoint location="403,138" />
+      <AbsolutePoint location="472,138" />
+      <AbsolutePoint location="472,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toOperCorpinfoList,/operCorpinfo/operCorpinfolist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1104,194" />
+      <AbsolutePoint location="147,474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toSadMain,/sad/sadMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1134,238" />
+      <AbsolutePoint location="1134,313" />
+      <AbsolutePoint location="257,313" />
+      <AbsolutePoint location="257,237" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toSadMain,/operCorpinfo/sadMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1063,238" />
+      <AbsolutePoint location="1063,283" />
+      <AbsolutePoint location="428,283" />
+      <AbsolutePoint location="428,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toOperCorpinfoQuery,/operCorpinfo/operCorpinfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1123,238" />
+      <AbsolutePoint location="1123,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sad.do,toSadList,/sad/sadlist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="249,88" />
+      <AbsolutePoint location="249,138" />
+      <AbsolutePoint location="51,138" />
+      <AbsolutePoint location="51,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toSadQuery,/sad/sadQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1104,238" />
+      <AbsolutePoint location="1104,253" />
+      <AbsolutePoint location="472,253" />
+      <AbsolutePoint location="472,237" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean name="/forum/postQuery"
+		class="et.bo.forum.postQuery.action.PostQueryAction" singleton="false">			
+		<property name="postQueryService">
+			<ref bean="PostQueryService" />
+		</property>			
+	</bean>
+<!--  service begin -->	
+<bean id="PostQueryService"
+		class="et.bo.forum.postQuery.service.impl.PostQueryServiceImpl" singleton="true">
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>	
+		<property name="dao">
+			<ref bean="ForumDao" />
+		</property>
+	</bean>	
+</beans>

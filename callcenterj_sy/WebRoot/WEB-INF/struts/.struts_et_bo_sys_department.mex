@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/sys/department/deptTree.do" location="270,0" dimension="308,88" />
+  <StrutsActivity path="/sys/dep/selectDep.jsp" location="950,150" dimension="140,49" />
+  <StrutsActivity path="/sys/department/deptPersonMain.jsp" location="750,0" dimension="208,49" />
+  <StrutsActivity path="/sys/selecttree.jsp" location="950,250" dimension="119,49" />
+  <StrutsActivity path="/sys/department/departmentTree.jsp" location="0,188" dimension="209,49" />
+  <StrutsActivity path="/sys/department/departmentTreeMain.jsp" location="309,188" dimension="231,49" />
+  <StrutsActivity path="/sys/department/departmentTreeDtl.jsp" location="640,188" dimension="222,49" />
+  <StrutsActivity path="/sys/dep/select.jsp" location="50,350" dimension="121,49" />
+  <StrutsActivity path="/sys/deptPersonMain.jsp" location="405,315" dimension="148,49" />
+  <StrutsActivity path="/sys/department/departmentOperTree.jsp" location="650,350" dimension="268,48" />
+  <StrutsTransition id="/sys/department/deptTree.do,showParamOperTree,/sys/department/departmentOperTree.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="578,64" />
+      <AbsolutePoint location="877,64" />
+      <AbsolutePoint location="877,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/department/deptTree.do,toParamDtl,/sys/department/departmentTreeDtl.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="527,88" />
+      <AbsolutePoint location="527,138" />
+      <AbsolutePoint location="751,138" />
+      <AbsolutePoint location="751,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/department/deptTree.do,selecttree,/sys/selecttree.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="557,88" />
+      <AbsolutePoint location="557,274" />
+      <AbsolutePoint location="950,274" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/department/deptTree.do,toDeptPersonMain,/sys/department/deptPersonMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="578,34" />
+      <AbsolutePoint location="750,34" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/department/deptTree.do,selectDep,/sys/dep/selectDep.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="424,88" />
+      <AbsolutePoint location="424,173" />
+      <AbsolutePoint location="950,173" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/department/deptTree.do,select,/sys/dep/select.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="291,88" />
+      <AbsolutePoint location="291,374" />
+      <AbsolutePoint location="171,374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/department/deptTree.do,toParamMain,/sys/department/departmentTreeMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="394,88" />
+      <AbsolutePoint location="394,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/department/deptTree.do,showParamTree,/sys/department/departmentTree.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="321,88" />
+      <AbsolutePoint location="321,138" />
+      <AbsolutePoint location="104,138" />
+      <AbsolutePoint location="104,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

@@ -1,0 +1,307 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+## ************************************************
+#parse( $commonSetting )
+## 変数の置き換え
+#set ($list= $result.list)
+
+## ***********************************************
+
+## ***********************************************
+##スクリプト
+<SCRIPT LANGUAGE=javascript>
+<!--
+function onShinsaKekka1stReferClick(systemNo){
+	window.open("","nw","toolbar=0,status=0,menubar=0,resizable=yes,scrollbars=yes");	
+	
+	document.next_form.action="$link.setAction('/system/shinseiKanri/shinsaKekka1stRefer')";
+	document.next_form.target="nw";
+	document.next_form.systemNo.value = systemNo;
+	document.next_form.submit();
+}
+function onPageClick(startPosition){
+	document.page_form.action="$link.setAction('/system/shinseiKanri/searchList')";
+	document.page_form.startPosition.value = startPosition;
+	document.page_form.submit();
+}
+function onShinseiDownloadFile(systemNo){
+	document.download_form.action="$link.setAction('/system/shinseiKanri/shinseiDownloadFile')";
+	document.download_form.systemNo.value=systemNo;
+	document.download_form.submit();
+}
+function onWordDownloadFile(systemNo){
+	document.download_form.action="$link.setAction('/system/shinseiKanri/tenpuDownloadFile')";
+	document.download_form.systemNo.value=systemNo;
+	document.download_form.submit();
+}
+/* 応募データ削除確認 */
+function onDeleteConfirm(systemNo){
+	document.shinsei_form.action="$link.setAction('/system/shinseiKanri/deleteConfirm')";
+	document.shinsei_form.systemNo.value=systemNo;
+	document.shinsei_form.submit();
+}
+//-->
+</SCRIPT>
+## ***********************************************
+
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="javascript:fncWindowOpen('$path/docs/manual5.pdf','help');"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/system/logoff')"><IMG SRC="$path/images/header_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=20 border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#339999" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/system/showMainMenu')">システム管理者向けメニュー</a>＞<a href="$link.setAction('/system/shinseiKanri/search')">応募情報検索</a>＞<b>応募情報一覧</b></font></td>   
+	 </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><IMG SRC="$path/images/subtitle_img1.gif" WIDTH=61 HEIGHT=49 ALT=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+       応募情報一覧</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <IMG SRC="$path/images/subtitle_img3.gif" WIDTH=213 HEIGHT=49 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+
+<!-- 本文ここから -->
+#errorMarkup()
+<p align="left">
+ <font color="black">$!escape.getText($!result.totalSize) 件該当しました。</font><br>
+ <font color="blue"><b>$!escape.getText($!result.currentPages)</b></font>
+ <font color="black"> ページ目を表示しています。</font><br>&nbsp;&nbsp;&nbsp;&nbsp;　
+ <font color="blue">
+ #foreach($page in $result.pageIndexs)
+   #if($velocityCount == $result.currentPages)
+     #if($velocityCount == $result.totalPages)
+			<b> $!escape.getText($velocityCount)</b>
+      #else
+         	<b> $!escape.getText($velocityCount)</b><font color="black">/</font>
+      #end
+   #else
+      #if($velocityCount == $result.totalPages)
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a> 
+      #else
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a><font color="black">/</font>
+      #end
+   #end
+ #end
+ </font>
+ <font color="black">ページに移動します。</font> <br> 　　　
+ #if($result.hasPreviousPage())
+   <A href="javascript:onPageClick('$!result.getStartOfPreviousPage()')"><img src="$path/images/bt_last.gif" width=64 height=24 alt="前ページ" border="0"></a>
+ #end
+ #if($result.hasNextPage())
+   <A href="javascript:onPageClick('$!result.getStartOfNextPage()');"><img src="$path/images/bt_next.gif" width=64 height=24 alt="次ページ" border="0"></a>
+ #end
+<br><br>
+</p>
+<!-- 一覧用テーブルここから -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+      <th rowspan="2">システム受付番号</th>
+      <th rowspan="2">研究種目名</th>
+      <th rowspan="2">事業ID</th>
+      <th rowspan="2">応募番号</th>
+      <th rowspan="2">研究課題名</th>
+      <th colspan="2">応募者</th>
+##2007/2/25 劉長宇　更新　ここから	  
+##    <th rowspan="2">応募内容ファイル(Word)</th>
+	  <th rowspan="2">応募内容ファイル(Word・PDF)</th>
+##2007/2/25 劉長宇　更新　ここまで
+      <th rowspan="2">研究計画調書確認</th>
+      <th rowspan="2">応募状況</th>
+    </tr>
+    <tr>
+      <th>氏名</th><th>所属研究機関名・部局名・職名</th>
+    </tr>
+   #if($list.size() == 0)
+		##該当件数が０件だった場合
+	    <tr>
+	    	<td>&nbsp;</td>
+	    	<td>&nbsp;</td>
+	    	<td>&nbsp;</td>
+	    	<td>&nbsp;</td>
+	    	<td>&nbsp;</td>
+	    	<td>&nbsp;</td>
+	    	<td>&nbsp;</td>
+	    	<td>&nbsp;</td>
+	    	<td>&nbsp;</td>
+	    	<td>&nbsp;</td>
+	    </tr>
+    #else
+		#foreach($user in $list)
+	    <tr>
+	      <td>$!escape.getText($!user.SYSTEM_NO)</td>
+	      <td>
+	     	#if($user.KAISU.toString() == '0' || $user.KAISU.toString() == '1')
+	     		平成$!escape.getText($!user.NENDO)年度 $!escape.getText($!user.JIGYO_NAME)
+	     	#else
+	     		平成$!escape.getText($!user.NENDO)年度 第$!escape.getText($!user.KAISU)回 $!escape.getText($!user.JIGYO_NAME)
+			#end
+	      </td>
+	      <td>$!escape.getText($!user.JIGYO_ID)</td>
+	      <td>$!escape.getText($!user.UKETUKE_NO)</td>
+	      <td>$!escape.getText($!user.KADAI_NAME_KANJI)</td>
+	      <td>$!escape.getText($!user.NAME_KANJI_SEI) $!escape.getText($!user.NAME_KANJI_MEI)</td>
+	      <td>
+	 		#if($user.SHOZOKU_NAME_RYAKU)
+	 			$!escape.getText($!user.SHOZOKU_NAME_RYAKU) 
+	 		#end
+	 		#if($user.BUKYOKU_NAME_RYAKU)
+	 			$!escape.getText($!user.BUKYOKU_NAME_RYAKU) 
+	 		#end
+	 		#if($user.SHOKUSHU_NAME_RYAKU)
+	 			$!escape.getText($!user.SHOKUSHU_NAME_RYAKU)
+	 		#end
+	      </td>
+	      <td>
+	      	#if($user.TENPUFILE_FLG == 'TRUE')
+	      		<a href="javascript:onWordDownloadFile('$user.SYSTEM_NO');"><img src="$path/images/bt_download.gif" alt="ダウンロード" width="64" height="24" border="0"></a>
+	      	#end
+	      </td>
+	      <td>
+	      	#if($user.PDF_PATH_FLG == 'TRUE')
+	      		<a href="javascript:onShinseiDownloadFile('$user.SYSTEM_NO');"><img src="$path/images/bt_download.gif" alt="ダウンロード" width="64" height="24" border="0"></a>
+	      	#end
+	      </td>
+	      <td>
+	     	$!escape.getText($!user.JOKYO_NAME)<br>
+			##応募状況:審査員割り振り処理後:08以上の場合
+			#if($user.JOKYO_ID == '08' || $user.JOKYO_ID == '09' || $user.JOKYO_ID == '10' || $user.JOKYO_ID == '11' || $user.JOKYO_ID == '12')
+				<a href="javascript:onShinsaKekka1stReferClick('$user.SYSTEM_NO');"><img src="$path/images/bt_refer_1exam.gif" width=109 height=22 alt="1次審査結果参照" border="0"></a><br>
+			#end
+##2007/2/25 劉長宇　追加　ここから
+	        #if($user.DEL_FLG.toString() == '0')
+##2007/03/20 劉長宇　更新　ここから
+##			  #if($user.JOKYO_ID == '01' || $user.JOKYO_ID == '02' || $user.JOKYO_ID == '03' || $user.JOKYO_ID == '05')
+		      #if($user.JOKYO_ID == '01' || $user.JOKYO_ID == '02' || $user.JOKYO_ID == '03' || $user.JOKYO_ID == '05' || $user.JOKYO_ID == '21' || $user.JOKYO_ID == '22' || $user.JOKYO_ID == '23' || $user.JOKYO_ID == '24')
+##2007/03/20 劉長宇　更新　ここまで
+				<a href="javascript:onDeleteConfirm('$user.SYSTEM_NO');"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a> 
+			   #end
+			#elseif($user.DEL_FLG.toString() == '1')
+				削除済み
+			#end
+##2007/2/25 劉長宇　追加　ここまで
+	      </td>
+	    </tr>		    
+		#end
+	#end
+   </table>
+  </td>
+ </tr>
+</table>
+<!-- 一覧用テーブルここまで-->
+<br>
+ <font color="blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#foreach($page in $result.pageIndexs)
+   #if($velocityCount == $result.currentPages)
+     #if($velocityCount == $result.totalPages)
+			<b> $!escape.getText($velocityCount)</b>
+      #else
+         	<b> $!escape.getText($velocityCount)</b><font color="black">/</font>
+      #end
+   #else
+      #if($velocityCount == $result.totalPages)
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a> 
+      #else
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a><font color="black">/</font>
+      #end
+   #end
+ #end
+ </font>
+ <font color="black">ページに移動します。</font> <br> 　　　
+ #if($result.hasPreviousPage())
+   <A href="javascript:onPageClick('$!result.getStartOfPreviousPage()')"><img src="$path/images/bt_last.gif" width=64 height=24 alt="前ページ" border="0"></a>
+ #end
+ #if($result.hasNextPage())
+   <A href="javascript:onPageClick('$!result.getStartOfNextPage()');"><img src="$path/images/bt_next.gif" width=64 height=24 alt="次ページ" border="0"></a>
+ #end
+<!-- 本文ここまで -->
+
+
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+	  <form method="POST" action="$link.setAction('/system/shinseiKanri/searchList')?startPosition=0">
+      <tr>
+       <td><input type="image" name="$form.cancelName" src="$path/images/bt_bk_appsearch.gif" width=228 height=28 border="0" alt="応募情報検索に戻る"></td>
+      </tr>
+      </form>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img1.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/system/logoff')"><IMG SRC="$path/images/footer_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=26 border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img3.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+
+##隠しフォーム情報----------
+<form name="next_form" action="" method="post">
+	<input type="hidden" name="systemNo" >
+</form>
+<form name="page_form" action="" method="post">
+	<input type="hidden" name="startPosition" >
+</form>
+<form name="download_form" action="" method="post">
+	<input type="hidden" name="systemNo" >
+</form>
+##2007/2/25 劉長宇　追加　ここから
+<form name="shinsei_form" action="" method="post">
+	<input type="hidden" name="systemNo" >
+</form>
+##2007/2/25 劉長宇　追加　ここまで
+##----------
+
+</body>
+</html>

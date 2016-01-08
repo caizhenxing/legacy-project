@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+   <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="paramTreeBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			
+		  <!--类型树信息-->
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="nickName" type="java.lang.String"/>
+      	  <form-property name="label" type="java.lang.String"/>
+      	  <form-property name="parentId" type="java.lang.String"/>
+      	  <form-property name="parentName" type="java.lang.String"/>
+      	  <form-property name="action" type="java.lang.String"/>
+      	  <form-property name="icon" type="java.lang.String"/>
+      	  <form-property name="type" type="java.lang.String"/>
+      	  <form-property name="isShow" type="java.lang.String"/>
+      	  <form-property name="remark" type="java.lang.String"/>
+      	  <form-property name="operType" type="java.lang.String"/>
+      	  <form-property name="target" type="java.lang.String"/>
+      	  <form-property name="deleteMark" type="java.lang.String"/>
+      	  <form-property name="createTime" type="java.lang.String"/>
+      	  <form-property name="modifyTime" type="java.lang.String"/>
+  		  <form-property name="operator" type="java.lang.String"/>
+  		  <form-property name="isRoot" type="java.lang.String"/>
+  		  <form-property name="layerOrder" type="java.lang.String"/>
+		  <!--  view_tree_dict type字段		  -->
+  		  <form-property name="dictType" type="java.lang.String"/>
+  
+  		  <!--  CcIvrTreeInfo  -->
+  		  	<form-property name="Ccontent" type="java.lang.String" />
+			<form-property name="CdeleteMark" type="java.lang.String" />
+			<form-property name="Cfunctype" type="java.lang.String" />
+			<form-property name="Cid" type="java.lang.String" />
+			
+			<form-property name="ClanguageType" type="java.lang.String" />
+			<form-property name="Cnickname" type="java.lang.String" />
+			<form-property name="ClengthSize" type="java.lang.String" />
+			<form-property name="CtelKey" type="java.lang.String" />
+			
+			<form-property name="CtelNum" type="java.lang.String" />
+			<form-property name="CcheckValue" type="java.lang.String" />
+			<form-property name="CvoiceType" type="java.lang.String" />
+			<form-property name="CcheckType" type="java.lang.String" />
+			<form-property name="CorderProgramme" type="java.lang.String" />
+			<form-property name="CcustomizeCancel" type="java.lang.String" />
+			<form-property name="CexpertId" type="java.lang.String" />
+  </form-bean>
+  
+</form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+  
+  
+<!-- 公司基本信息的action -->
+     <action
+      attribute="paramTreeBean"
+      name="paramTreeBean"
+      parameter="method"
+      path="/sys/ivr/paramTree"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy">
+      <forward name="showParamTreeYuyin" path="/yuyin/yuyin.jsp" />
+      <forward name="toParamMain" path="/sys/ivr/parameterTreeMain.jsp" />
+      <forward name="showParamTree" path="/sys/ivr/parameterTree.jsp" />
+      <forward name="toParamDtl" path="/sys/ivr/parameterTreeDtl.jsp" />
+      <forward name="showSubParamTree" path="/sys/ivr/subParameterTree.jsp" />
+      <forward name="operSuggest" path="/sys/ivr/operSuggest.jsp" />
+      <forward name="toSubParamMain" path="/sys/ivr/subParameterTreeMain.jsp" />
+      <forward name="ivrRecord" path="/sys/ivr/ivrRecord.jsp" />
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="urn:samples:atm"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:tns="urn:samples:atm" xmlns:atm="urn:samples:atm" 
+  xmlns:tic="urn:samples:ticket" xmlns:acc="urn:samples:account"
+  xmlns:bpel="http://schemas.xmlsoap.org/ws/2003/03/business-process/" 
+  xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <import namespace="urn:samples:atm" location="interface/frontend.wsdl" />
+  <import namespace="urn:samples:ticket" location="interface/ticket.wsdl" />
+  <import namespace="urn:samples:account" location="interface/account.wsdl" />
+  
+  <!-- customer name token -->
+  <bpel:property name="customerId" type="xsd:string" />
+  
+  <!-- location of costumerId inside messages -->
+  <bpel:propertyAlias propertyName="tns:customerId" messageType="atm:logOnRequest" part="customerName" />
+  <bpel:propertyAlias propertyName="tns:customerId" messageType="atm:operationRequest" part="customerName" />
+  <bpel:propertyAlias propertyName="tns:customerId" messageType="acc:customerMessage" part="customerName" />
+  <bpel:propertyAlias propertyName="tns:customerId" messageType="acc:accountOperation" part="body"
+    query="/body/@customerName" />
+    
+  <!-- ticket number token -->
+  <bpel:property name="ticketId" type="xsd:int" />
+  
+  <!-- location of ticketId inside messages -->
+  <bpel:propertyAlias propertyName="tns:ticketId" messageType="tic:ticketMessage" part="ticketNo" />
+  <bpel:propertyAlias propertyName="tns:ticketId" messageType="atm:logOnRequest" part="ticketNo" />
+  
+  <!-- relationship between the ATM and the process -->
+  <plt:partnerLinkType name="atm-front">
+    <plt:role name="frontEnd">
+      <plt:portType name="atm:atmFrontEnd" />
+    </plt:role>
+  </plt:partnerLinkType>
+  
+  <!-- relationship between the process and the ticket issuer -->
+  <plt:partnerLinkType name="front-ticket">
+    <plt:role name="ticketIssuer">
+      <plt:portType name="tic:ticketIssuer" />
+    </plt:role>
+  </plt:partnerLinkType>
+  
+  <!-- relationship between the process and the account system -->
+  <plt:partnerLinkType name="front-account">
+    <plt:role name="accountSystem">
+      <plt:portType name="acc:accountSystem" />
+    </plt:role>
+  </plt:partnerLinkType>  
+
+</definitions>

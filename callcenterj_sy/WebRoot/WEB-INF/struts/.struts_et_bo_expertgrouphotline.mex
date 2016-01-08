@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/screen/expertGroupHL.do" location="490,0" dimension="308,88" />
+  <StrutsActivity path="/screen/expertgrouphotline/expertHLList.jsp" location="0,188" dimension="243,49" />
+  <StrutsActivity path="/screen/expertgrouphotline/expertHLMain.jsp" location="343,188" dimension="249,49" />
+  <StrutsActivity path="/screen/expertgrouphotline/expertHLQuery.jsp" location="692,188" dimension="257,49" />
+  <StrutsActivity path="/screen/expertgrouphotline/expertHLLoad.jsp" location="1049,188" dimension="250,49" />
+  <StrutsTransition id="/screen/expertGroupHL.do,list,/screen/expertgrouphotline/expertHLList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="528,88" />
+      <AbsolutePoint location="528,123" />
+      <AbsolutePoint location="121,123" />
+      <AbsolutePoint location="121,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/screen/expertGroupHL.do,query,/screen/expertgrouphotline/expertHLQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="682,88" />
+      <AbsolutePoint location="682,153" />
+      <AbsolutePoint location="820,153" />
+      <AbsolutePoint location="820,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/screen/expertGroupHL.do,main,/screen/expertgrouphotline/expertHLMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="605,88" />
+      <AbsolutePoint location="605,153" />
+      <AbsolutePoint location="467,153" />
+      <AbsolutePoint location="467,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/screen/expertGroupHL.do,load,/screen/expertgrouphotline/expertHLLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="759,88" />
+      <AbsolutePoint location="759,123" />
+      <AbsolutePoint location="1174,123" />
+      <AbsolutePoint location="1174,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

@@ -1,0 +1,75 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>电话呼入</title>
+<script type="text/javascript">
+function agentAnswer()
+{
+	//调用agengPanel.jsp接听按钮单击
+	opener.document.getElementById("btnAnswer").click();
+	opener.handleOpenWin = -1;
+	window.close();
+}
+//上父页把外线号找到 写到本页
+function writeOutLine()
+{
+	document.getElementById('showOutLine').innerHTML = opener.document.getElementById("outlineNum").value;
+}
+function resetParentHandle()
+{
+	opener.handleOpenWin = -1;
+}
+</script>
+<style type="text/css">
+<!--
+body {
+	margin-left: 1px;
+	margin-top: 1px;
+	margin-right: 1px;
+	margin-bottom: 1px;
+	background-color: #D9D9D9;
+	overflow:hidden;
+	margin-top:10px;
+}
+.wenzi2{
+	font-size: 16px;
+	color: #003366;
+	font-family: "黑体";
+	font-weight: 900;
+	font-style: normal;
+}
+-->
+</style>
+</head>
+
+<body onload="writeOutLine()" onunload="resetParentHandle()">
+<table width="43" border="0" align="center" cellpadding="0" cellspacing="0">
+
+    <td height="262"><table width="494" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="64" colspan="3" class="wenzi2"><img src="../images/callIn2Agent/call1.jpg" width="500" height="64"></td>
+      </tr>
+      <tr>
+        <td width="23" height="125" background="../images/callIn2Agent/call2.jpg">&nbsp;</td>
+        <td width="165" align="center" background="../images/callIn2Agent/call3.jpg"><img src="../images/callIn2Agent/call7.gif" width="125" height="75"></td>
+        <td width="312" background="../images/callIn2Agent/call4.jpg">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="38" colspan="3" align="center" valign="middle" background="../images/callIn2Agent/call5.jpg"><table width="85%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="8%"><img src="../images/callIn2Agent/call8.jpg" width="36" height="20"></td>
+            <td width="2%">&nbsp;</td>
+            <td width="72%" valign="bottom" class="wenzi2" id="showOutLine">024-885863214</td>
+            <td width="18%"><img style="cursor:hand;" onclick="agentAnswer()" src="../images/callIn2Agent/call9.jpg" width="74" height="26"></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td height="33" colspan="3" valign="top" background="../images/callIn2Agent/call3.png"><img src="../images/callIn2Agent/call6.jpg" width="500" height="33"></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>
+

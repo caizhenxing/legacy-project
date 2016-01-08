@@ -1,0 +1,25 @@
+修改人：王文权
+修改日期：2009-02-25
+
+需求：权限管理要求有按钮授权
+
+修改说明:
+1 后台数据库表说明
+表sys_leaf_right 
+字段
+tree_id               label        nickName       remark
+SYS_TREE_0000002554   服务记录增加    question_add   节点名称服务记录@节点action/callcenterj_sy/question/question.do?method=toQuestionMain
+主要字段  
+nickName 与标签的 nickName对应 /####/
+remark 是点击模块的action信息:callcenterj_sy/question/question.do?method=toQuestionMain 
+
+
+2 标签说明
+1)按钮
+<leafRight:btn width="80px;" style="height:30px;"  nickName="question_add" value="增加" onclick="alert('增加按钮点击了')" styleId="addBtn" name="addBtn" scopeName="userRoleLeafRightInsession" />
+2)图片
+<leafRight:img alt="详细" nickName="Group_add"  src="./style/chun/images/detail.gif" onclick="alert('增加按钮点击了')" border="0"  styleId="addBtn" name="addBtn" width="16px;" style="height:16px;" scopeName="userRoleLeafRightInsession"  />
+
+3 修改步骤
+1根据表sys_leaf_right的remark字段找到对应的模块 
+2根据对应的模块找到jsp页面 将<leafRight:btn 和 <leafRight:img 贴入相应的jsp页完成前台页面修改

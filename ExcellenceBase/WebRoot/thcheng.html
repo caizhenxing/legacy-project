@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>DOM_text01</title>
+<style type="text/css">
+body,span,div,td{font-size:12px;line-height:1.5em;color:#849BCA;}
+#bodyL{
+float:left;
+width:84px;
+margin-right:2px;
+}
+a.od{
+width:80px;
+height:25px;
+line-height:25px;
+text-align:center;
+font-weight:bold;
+border: 2px solid #849BCA;
+display:block;
+color:#547BC9;
+float:left;
+text-decoration:none;
+margin-top:2px;
+}
+a.od:link{
+background:#EEF1F8;
+}
+a.od:visited{
+background:#EEF1F8;
+}
+a.od:hover{
+background:#EEE;
+}
+a.od:active{
+background:#EEE;
+}
+#fd{
+width:500px;
+height:200px;
+background:#EDF1F8;
+border: 2px solid #849BCA;
+margin-top:20px;
+margin-left:20px;
+float:left;
+overflow:hidden;
+position:absolute;
+left:0px;
+top:0px;
+cursor:move;
+float:left;
+/*filter:alpha(opacity=50);*/
+
+}
+.content{
+padding:10px;
+}
+</style>
+</head>
+<body>
+<div id="bodyL">
+<a href="#" class="od" onclick = "show('fd',1000,400);return false;">
+[打开层]
+</a>
+<a href="#" class="od" onclick = "closeed('fd');return false;">
+[关闭层]
+</a>
+</div>
+<div id="fd" style="display:none;filter:alpha(opacity=100);opacity:1;">
+<div class="content" onclick="closeed('fd');return false;">移动层</div>
+<iframe src="datepicker.html" name="test" width="1000" height="800"></iframe>
+</div>
+
+
+<script language="javascript" src="js/et/panel.js"></script>
+
+</body>
+</html>

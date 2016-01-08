@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+		<!-- 审核模块表单bean信息 -->
+		<form-bean name="flow" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="flow_id"       	type="java.lang.String" />
+			<form-property name="type"     			type="java.lang.String" />
+			<form-property name="submit_id"   		type="java.lang.String" />
+			<form-property name="submit_id_end"   	type="java.lang.String" />
+			<form-property name="submit_time"   	type="java.lang.String" />
+			<form-property name="submit_time_end"   type="java.lang.String" />
+			<form-property name="state" 			type="java.lang.String" />
+			<form-property name="is_read" 				type="java.lang.String" />
+			
+			<form-property name="begin1" 			type="java.lang.String" />
+			<form-property name="begin2" 			type="java.lang.String" />
+			<form-property name="end1" 				type="java.lang.String" />
+			<form-property name="end2" 				type="java.lang.String" />
+			<form-property name="sub" 				type="java.lang.String" />
+			
+			
+		</form-bean>
+		
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+
+		<action attribute="flow" 
+				name="flow" 
+				scope="request" 
+				path="/flow/flow" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main"  path="/flow/flowMain.jsp"/>
+			<forward name="list"  path="/flow/flowList.jsp"/>
+			<forward name="load"  path="/flow/flowLoad.jsp"/>
+			<forward name="query" path="/flow/flowQuery.jsp"/>
+		</action>
+
+	</action-mappings>
+	
+</struts-config>
+

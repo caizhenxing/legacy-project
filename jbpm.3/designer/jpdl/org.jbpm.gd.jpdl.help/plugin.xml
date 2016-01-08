@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin
+   id="org.jbpm.gd.jpdl.help"
+   name="jBPM Help Plug-in"
+   version="3.0.12"
+   provider-name="JBoss, Inc.">
+   <requires>
+      <import plugin="org.eclipse.help"/>
+   </requires>
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc.xml"
+            primary="true"/>
+      <toc file="tocconcepts.xml"/>
+      <toc file="tocgettingstarted.xml"/>
+   </extension>
+
+</plugin>

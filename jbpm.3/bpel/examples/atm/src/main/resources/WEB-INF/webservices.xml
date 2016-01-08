@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webservices version="1.1" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/j2ee_web_services_1_1.xsd">
+
+  <webservice-description>
+
+    <!-- descriptive name for the service -->
+    <webservice-description-name>ATM Front End</webservice-description-name>
+    <!-- WSDL implementation file -->
+    <wsdl-file>WEB-INF/wsdl/service.wsdl</wsdl-file>
+    <!-- Java<->XML mapping file -->
+    <jaxrpc-mapping-file>WEB-INF/jaxrpc-mapping.xml</jaxrpc-mapping-file>
+
+    <port-component>
+
+      <!-- logical name for the port (unique within the module) -->
+      <port-component-name>frontEndPort</port-component-name>
+      <!-- WSDL port element (in WSDL implementation file) -->
+      <wsdl-port xmlns:portNS="urn:samples:atm">portNS:atmRelationPort</wsdl-port>
+      <!-- service endpoint interface class -->
+      <service-endpoint-interface>org.jbpm.bpel.tutorial.atm.AtmFrontEnd</service-endpoint-interface>
+      <!-- associated servlet (in web-app descriptor) -->
+      <service-impl-bean>
+        <servlet-link>frontEndServlet</servlet-link>
+      </service-impl-bean>
+
+      <handler>
+
+        <!-- logical name for the handler (unique within the module) -->
+        <handler-name>frontEndHandler</handler-name>
+        <!-- handler class (in jBPM BPEL library) -->
+        <handler-class>org.jbpm.bpel.integration.server.SoapHandler</handler-class>
+
+        <init-param>
+          <description>name of the associated partner link</description>
+          <param-name>portName</param-name>
+          <param-value>atmRelation</param-value>
+        </init-param>
+        <init-param>
+          <description>time to wait for response messages, in milliseconds</description>
+          <param-name>responseTimeout</param-name>
+          <param-value>5000</param-value>
+        </init-param>
+        <init-param>
+          <description>time to expire one-way messages, in milliseconds</description>
+          <param-name>oneWayTimeout</param-name>
+          <param-value>60000</param-value>
+        </init-param>
+
+      </handler>
+
+    </port-component>
+
+  </webservice-description>
+
+</webservices>

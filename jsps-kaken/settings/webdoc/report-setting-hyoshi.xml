@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+
+<contents>
+##ファイルパスの設定
+#set($path = "D:/shinsei/settings/webdoc/hyoshi")
+    #set($jigyoKbnFlg = $!escape.getText($!shinseiDataInfo.jigyoKbn))
+    
+    <!-- ********** 基盤研究の場合 ********** -->
+	#if($jigyoKbnFlg == "4")
+		<!-- ********** ページ１ ここから ********** -->
+		#if($!shinseiDataInfo.shinkiCount > 0)
+			<page templateFilePath="$path/Page1.iod">
+				<!-- ******* タイトル ******* -->
+				<field name="JIGYO_NAME"			value="$!escape.getText($!shinseiDataInfo.jigyoName) 新規"/>
+				<field name="SHOZOKU_CD"			value="$!escape.getText($!shinseiDataInfo.shozokuCd)"/>
+				<field name="SHOZOKU_NAME_KANJI"	value="$!escape.getText($!shinseiDataInfo.shozokuName)"/>
+				<field name="KENSU"					value="$!escape.getText($!shinseiDataInfo.shinkiCount)"/>
+			</page>
+		#end
+		<!-- ********** ページ１ ここまで ********** -->
+		<!-- ********** ページ2 ここから ********** -->
+		#if($!shinseiDataInfo.keizokuCount > 0)
+			<page templateFilePath="$path/Page1.iod">
+				<!-- ******* タイトル ******* -->
+				<field name="JIGYO_NAME"			value="$!escape.getText($!shinseiDataInfo.jigyoName) 継続"/>
+				<field name="SHOZOKU_CD"			value="$!escape.getText($!shinseiDataInfo.shozokuCd)"/>
+				<field name="SHOZOKU_NAME_KANJI"	value="$!escape.getText($!shinseiDataInfo.shozokuName)"/>
+				<field name="KENSU"					value="$!escape.getText($!shinseiDataInfo.keizokuCount)"/>
+			</page>
+		#end
+		<!-- ********** ページ2 ここまで ********** -->
+		
+	<!-- ********** 若手スタートアップの場合 ********** -->
+	#elseif($jigyoKbnFlg == "6")
+	    #if($!shinseiDataInfo.shinkiCount > 0)
+		    <page templateFilePath="$path/Page3.iod">
+			    <!-- ******* タイトル ******* -->
+			    <field name="JIGYO_NAME"			value="$!escape.getText($!shinseiDataInfo.jigyoName)"/>
+			    <field name="SHOZOKU_CD"			value="$!escape.getText($!shinseiDataInfo.shozokuCd)"/>
+			    <field name="SHOZOKU_NAME_KANJI"	value="$!escape.getText($!shinseiDataInfo.shozokuName)"/>
+			    <field name="KENSU"					value="$!escape.getText($!shinseiDataInfo.shinkiCount)"/>
+		    </page>
+		#end
+		
+	<!-- ********** 特別研究促進費の場合 ********** -->
+    #elseif($jigyoKbnFlg == "7")
+        #if($!shinseiDataInfo.shinkiCount > 0)
+		    <page templateFilePath="$path/Page4.iod">
+			    <!-- ******* タイトル ******* -->
+			    <field name="JIGYO_NAME"			value="$!escape.getText($!shinseiDataInfo.jigyoName)"/>
+			    <field name="SHOZOKU_CD"			value="$!escape.getText($!shinseiDataInfo.shozokuCd)"/>
+			    <field name="SHOZOKU_NAME_KANJI"	value="$!escape.getText($!shinseiDataInfo.shozokuName)"/>
+			    <field name="KENSU"					value="$!escape.getText($!shinseiDataInfo.shinkiCount)"/>
+		    </page>
+		#end
+		
+	<!-- ********** 特定領域の場合 ********** -->
+	#else
+	    <!-- ********** ページ1 ここから ********** -->
+		#if($!shinseiDataInfo.shinkiCount > 0)
+			<page templateFilePath="$path/Page2.iod">
+				<!-- ******* タイトル ******* -->
+				<field name="JIGYO_NAME"			value="$!escape.getText($!shinseiDataInfo.jigyoName) 新規"/>
+				<field name="SHOZOKU_CD"			value="$!escape.getText($!shinseiDataInfo.shozokuCd)"/>
+				<field name="SHOZOKU_NAME_KANJI"	value="$!escape.getText($!shinseiDataInfo.shozokuName)"/>
+				<field name="KENSU"					value="$!escape.getText($!shinseiDataInfo.shinkiCount)"/>
+			</page>
+		#end
+		<!-- ********** ページ1 ここまで ********** -->
+		<!-- ********** ページ2 ここから ********** -->
+		#if($!shinseiDataInfo.keizokuCount > 0)
+			<page templateFilePath="$path/Page2.iod">
+				<!-- ******* タイトル ******* -->
+				<field name="JIGYO_NAME"			value="$!escape.getText($!shinseiDataInfo.jigyoName) 継続"/>
+				<field name="SHOZOKU_CD"			value="$!escape.getText($!shinseiDataInfo.shozokuCd)"/>
+				<field name="SHOZOKU_NAME_KANJI"	value="$!escape.getText($!shinseiDataInfo.shozokuName)"/>
+				<field name="KENSU"					value="$!escape.getText($!shinseiDataInfo.keizokuCount)"/>
+			</page>
+		#end
+		<!-- ********** ページ2 ここまで ********** -->
+	#end
+	
+</contents> 

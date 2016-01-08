@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+
+	<!-- 刷新座席面板 -->
+	<bean id="RefreshPanelService" class="et.bo.callcenter.serversocket.panel.impl.RefreshPanelImpl">
+    	<property name="experterService">
+    		<ref bean="OperExperterService" />
+    	</property>
+    </bean>
+    <!-- CcAgentInfo 操作 -->
+    <bean id="OperAgentInfoService" class="et.bo.callcenter.serversocket.panel.impl.OperAgentInfoImpl">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+	</bean>
+</beans>

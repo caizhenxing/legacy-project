@@ -1,0 +1,164 @@
+/*整个页面大的div层居中的标记*/
+#wrapper{
+	width:470px;
+	position:relative;
+	left:50%;
+	margin-left:-397px;
+}
+/* 大div；宽470*/
+.div{
+	width: 470px;
+	height: 586px;
+}
+/* 眉头*/
+.Brow1{
+	background-image: url(../images/ivryuyin/ivr1.gif);
+	float: left;
+	height: 57px;
+	width: 470px;
+}
+.Brow2{
+	background-image: url(../images/ivryuyin/ivr2.gif);
+	float: left;
+	height: 31px;
+	width: 157px;
+}
+.Brow3{
+	float: left;
+	height: 30px;
+	width: 313px;
+	background-image: url(../images/ivryuyin/ivr3.gif);
+}
+/*两个按钮*/
+.Button1{
+	height: 22px;
+	width: 152px;
+	text-align: center;
+	background-image: url(../images/ivryuyin/Button1.gif);
+	
+}
+.Button2{
+	height: 22px;
+	width: 140px;
+	text-align: center;
+	background-image: url(../images/ivryuyin/Button2.gif);
+}
+/*内容div样式*/
+.Content{
+	width: 470px;
+	height: 480px;
+	background-color: #D7DEE5;
+	float: left;
+}
+/*内容table样式*/
+.Contenttable{
+    width: 470px;
+	height: 498px;
+	background-color: #D7DEE5;
+}
+/*内容按钮部分table样式*/
+.ContentButton{
+    width: 450px;
+	height: 450px;
+	background-color: #D7DEE5;
+}
+/*内容按钮部分,左侧按钮*/
+.Bluebutton{
+	height: 21px;
+	width: 163px;
+	background-image: url(../images/ivryuyin/Blue%20button.gif);
+}
+/*内容按钮部分,右侧按钮*/
+.Bluebutton2{
+	height: 21px;
+	width: 260px;
+	background-image: url(../images/ivryuyin/Blue%20button2.gif);
+}
+/*右侧文本*/
+.Text{
+	height: 410px;
+	width: 256px;
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 17px;
+	color: #3B6EB3;
+	text-align: left;
+	text-indent: 3px;
+}
+/*深蓝色文字*/
+.Bluewriting{
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 15px;
+	font-weight: normal;
+	color: #3B6EB3;
+	text-align: left;
+	height: 21px;
+	width: 160px;
+	background-image: url(../images/ivryuyin/Blue%20button2.gif);
+	vertical-align: middle;
+	text-indent: 4px;
+}
+/*深蓝色文字*/
+.Bluewriting2{
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 15px;
+	font-weight: normal;
+	color: #3B6EB3;
+	text-align: left;
+	height: 21px;
+	width: 280px;
+	background-image: url(../images/ivryuyin/Blue%20button2.gif);
+	vertical-align: middle;
+	text-indent: 2px;
+}
+/*深蓝色文字，无背景*/
+.Bluewriting3{
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 15px;
+	color: #3B6EB3;
+	text-align: left;
+	text-indent: 3px;
+}  
+
+/*文字输入框样式*/
+.writingdiv{
+	padding-top: 4px;
+	padding-right: 5px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+}
+/*播报页面*/
+.Decorationchart{
+	height: 133px;
+	width: 138px;
+	background-image: url(../images/ivryuyin/Decoration%20chart.gif);
+}
+/*装饰背景图*/
+.Decoration{
+	background-image: url(../images/ivryuyin/Decoration%20chart2.gif);
+	height: 287px;
+	width: 138px;
+}
+.Decoration1{
+	background-image: url(../images/ivryuyin/Decoration1.gif);
+	height: 40px;
+	width: 138px;
+	text-align: center;
+}
+/*按钮周围的div样式*/
+.Buttonstyle{
+	height: 30px;
+	width: 105px;
+	margin-top: 0px;
+	margin-right: 10px;
+	margin-bottom: 6px;
+	margin-left: 15px;
+}
+/*播报页面部分的文本框*/
+.Text2{
+	height: 465px;
+	width: 270px;
+}

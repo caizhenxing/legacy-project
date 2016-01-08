@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<project name="translator" default="redeploy-web">
+
+  <import file="../../../doc/examples/common/webservice.build.xml" />
+
+</project>

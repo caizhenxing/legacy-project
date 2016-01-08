@@ -1,0 +1,107 @@
+import org.apache.commons.lang.StringUtils;
+
+import com.coheg.framework.authentication.service.AuthenticationService;
+import com.coheg.framework.authentication.entity.Department;
+import com.coheg.framework.authentication.entity.User;
+import com.coheg.framework.authentication.entity.Role;
+import com.coheg.framework.codename.UserCodeName;
+
+import com.coheg.exception.UnexpectedException;
+
+import com.coheg.security.SecurityServiceProvider;
+import com.coheg.security.app.user.manager.UserManager;
+import com.coheg.security.app.organization.manager.OrganizationManager;
+import com.coheg.security.app.user.manager.RoleManager;
+
+import com.coheg.security.acegi.RemoteUserContextUtils;
+
+import org.hibernate.ObjectNotFoundException;
+
+authenticationService = new AuthenticationService() {
+	userManager = SecurityServiceProvider.getUserManager();
+	organizationManager = SecurityServiceProvider.getOrganizationManager();
+	roleManager = SecurityServiceProvider.getRoleManager();
+	
+	loadDepartment(departmentId) {
+        Department department = null;
+        try {
+            o = organizationManager.load(departmentId);
+            department = new Department();
+            department.id = o.id;
+            department.name = o.name;
+        } catch (Exception e) {
+            if (e.getClass() == ObjectNotFoundException.class) {
+                throw new IllegalArgumentException("没有id=[" + departmentId + "]的部门");
+            }
+            throw new UnexpectedException("检索部门错误,id=" + departmentId, e);
+        }
+        return department;
+	}
+	
+	loadUser(username) {
+        User user = null;
+        try {
+            u = userManager.loadByUsername(username);
+            user = new User();
+            user.username = username;
+            user.name = u.chineseName;
+            
+            Department d = new Department();
+            d.id = u.organization.id;
+            d.name = u.organization.name;
+            user.department = d;
+            List list = new ArrayList(u.roles.size());
+            
+            for (r : u.roles) {
+            	Role role = new Role();
+            	role.code = r.name;
+            	role.name = r.description;
+            	role.job = !r.systemRole;
+            	role.department = d.clone();
+            	list.add(role);
+            }
+            user.roles = list;
+        } catch (Exception e) {
+            if (e.getClass() == ObjectNotFoundException.class) {
+                throw new IllegalArgumentException("没有登录名=[" + username + "]的用户");
+            }
+            throw new UnexpectedException("检索用户错误,id=" + username, e);
+        }
+        return user;
+	}
+	
+	loadRole(roleCode) {
+		r = roleManager.loadByRoleName(roleCode);
+		role = new Role();
+		role.code = r.name;
+		role.name = r.description;
+		role.job = !r.systemRole;
+		return role;
+	}
+	
+	getContextUser() {
+		cn = new UserCodeName();
+		if (RemoteUserContextUtils.isRemoteUserAvaliable()) {
+			u = RemoteUserContextUtils.getRemoteUser();
+			user = loadUser(u.username);
+			cn.copyFrom(user);
+		} else {
+			u = com.coheg.core.User.EMPTY_USER;
+			cn.code = u.username;
+			cn.name = u.chineseName;
+		}
+		return cn;
+	}
+	
+	legacy() {
+		if (RemoteUserContextUtils.isRemoteUserAvaliable()) {
+			user = RemoteUserContextUtils.getRemoteUser();
+			u = new com.coheg.core.User(user.username, user.chineseName, user.organization.id, user.organization.name, Arrays.asList(RemoteUserContextUtils.getRemoteUserRoles()));
+		} else {
+			u = com.coheg.core.User.EMPTY_USER;
+		}
+		return u;
+	}
+};
+
+return (AuthenticationService) authenticationService;

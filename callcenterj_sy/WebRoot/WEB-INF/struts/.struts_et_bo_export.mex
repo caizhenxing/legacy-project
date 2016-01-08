@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/export/export.do" location="350,50" dimension="358,84" />
+  <StrutsActivity path="/export/exportList.jsp" location="400,228" dimension="150,100" />
+  <StrutsActivity path="/export/exportMain.jsp" location="210,210" dimension="150,100" />
+  <StrutsActivity path="/export/exportLoad.jsp" location="588,196" dimension="150,100" />
+  <StrutsActivity path="/export/zztj6.jsp" location="950,150" dimension="142,48" />
+  <StrutsActivity path="/export/exportQuery.jsp" location="30,180" dimension="150,100" />
+  <StrutsActivity path="/export/zjtj6.jsp" />
+  <StrutsTransition id="/export/export.do,query,/export/exportQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="350,92" />
+      <AbsolutePoint location="105,92" />
+      <AbsolutePoint location="105,180" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/export/export.do,load,/export/exportLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="603,134" />
+      <AbsolutePoint location="603,196" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/export/export.do,list2,/export/zjtj6.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="529,92" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/export/export.do,main,/export/exportMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="350,62" />
+      <AbsolutePoint location="285,62" />
+      <AbsolutePoint location="285,210" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/export/export.do,list,/export/exportList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="529,134" />
+      <AbsolutePoint location="529,228" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/export/export.do,list2,/export/zztj6.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="529,92" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

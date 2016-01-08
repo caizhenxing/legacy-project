@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://getahead.org/dwr/dwr20.dtd">
+<dwr>
+	<allow>
+		<!-- 专家 -->
+		<create javascript="expertService" creator="new">
+			<param name="class" value="et.bo.common.ExpertService" />
+		</create>
+		<!-- 短消息操作 -->
+		<create javascript="messageService" creator="new">
+			<param name="class" value="et.bo.messages.show.MessageCollection" />
+		</create>
+		<!-- 判断内线用户的列表的信息 -->
+		<create javascript="agentListService" creator="new">
+			<param name="class" value="et.bo.common.AgentUserList" />
+		</create>
+		<!-- 座席面板服务总时 座席接电话 时:分:秒 -->
+		<create javascript="agentWorkSumTimeService" creator="new">
+			<param name="class" value="et.bo.agentDb.dwr.WorkSumTimeDwr" />
+		</create>
+		<!-- 座席面板当日资讯量统计 -->
+		<create javascript="agentDayQuestionVolumeService" creator="new">
+			<param name="class" value="et.bo.agentDb.dwr.DayQuestionVolumeDwr" />
+		</create>
+		<!-- 座席面板当日来电统计 电话以:分隔 23824132:23824135 -->
+		<create javascript="agentIncommingNoteService" creator="new">
+			<param name="class" value="et.bo.agentDb.dwr.IncommingNoteDwr" />
+		</create>
+		<!-- 座席三方通话时 将专家信息插入数据库expert_answer_log -->
+		<create javascript="expertAnswerLogService" creator="new">
+			<param name="class" value="et.bo.agentDb.dwr.ExpertAnswerLogDwr" />
+		</create>
+		<!-- 案列类型 -->
+		<create creator="new" javascript="casetype">   
+		    <param name="class" value="et.bo.caseinfo.casetype.CaseTypeDWR"/>   
+		</create>   
+		<!-- 市县乡村的查询 选城市列出所有县 选县列出所有村 oper_address -->
+		<create javascript="addressMaintenanceService" creator="new">
+			<param name="class" value="et.bo.addressMaintenance.AddressMainDwr" />
+		</create>
+		<!-- 会议列表信息维护 -->
+		<create javascript="confManagerService" creator="new">
+			<param name="class" value="et.bo.confManager.ConfManagerDwr" />
+		</create>
+		<!-- 操作大屏幕，得到统计数据等 -->
+		<create javascript="operScreen1" creator="new">
+			<param name="class" value="et.bo.screen.oper.OperScreen" />
+		</create>
+		<create javascript="operScreen" creator="new">
+			<param name="class" value="et.bo.xml.CallLogStaticXmlDWR" />
+		</create>
+		<!-- 操作大屏幕，得到年电话量xml -->
+		<create javascript="telStatic" creator="new">
+			<param name="class" value="et.bo.xml.TelStaticXmlDWR" />
+		</create>
+		<!-- 常量信息维护 key value 形式的 -->
+		<create javascript="constKeyValueService" creator="new">
+			<param name="class" value="et.bo.constKeyValue.ConstKeyValueDwr" />
+		</create>
+		<!-- 农产品类型管理 -->
+		<create javascript="productTypeService" creator="new">
+			<param name="class" value="et.bo.productTypeDwr.service.impl.ProductTypeDwrService" />
+		</create>
+	</allow>
+</dwr>

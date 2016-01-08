@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/GovOper.do" location="0,0" dimension="358,84" />
+  <StrutsActivity path="tologin;6" location="0,277" dimension="166,72" />
+  <StrutsActivity path="operfail;6" location="0,542" dimension="100,72" />
+  <StrutsActivity path="nologin;6" location="621,277" dimension="124,72" />
+  <StrutsActivity path="operSuccess;6" location="403,0" dimension="244,72" />
+  <StrutsActivity path="success;6" location="211,277" dimension="166,72" />
+  <StrutsActivity path="error;6" location="422,277" dimension="154,72" />
+  <StrutsActivity path="/manage/govMain.jsp" location="102,184" dimension="154,48" />
+  <StrutsActivity path="/message/tologin.jsp" location="3,449" dimension="160,48" />
+  <StrutsActivity path="/fail.jsp" location="3,714" dimension="94,48" />
+  <StrutsActivity path="/cueLogin.jsp" location="624,449" dimension="118,48" />
+  <StrutsActivity path="/collection/collectionSuccess.jsp" location="406,172" dimension="238,48" />
+  <StrutsActivity path="/message/success.jsp" location="214,449" dimension="160,48" />
+  <StrutsActivity path="/message/error.jsp" location="425,449" dimension="148,48" />
+  <StrutsTransition id="error;6,null,/message/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="499,349" />
+      <AbsolutePoint location="499,449" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="operSuccess;6,null,/collection/collectionSuccess.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="525,72" />
+      <AbsolutePoint location="525,172" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="operfail;6,null,/fail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="50,614" />
+      <AbsolutePoint location="50,714" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="tologin;6,null,/message/tologin.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="83,349" />
+      <AbsolutePoint location="83,449" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="nologin;6,null,/cueLogin.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="683,349" />
+      <AbsolutePoint location="683,449" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/GovOper.do,govmain,/manage/govMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="179,84" />
+      <AbsolutePoint location="179,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="success;6,null,/message/success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="294,349" />
+      <AbsolutePoint location="294,449" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

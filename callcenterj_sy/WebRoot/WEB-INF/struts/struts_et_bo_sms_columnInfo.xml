@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="columnInfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			
+		    <form-property name="id" type="java.lang.String" />
+			<form-property name="mobileNum" type="java.lang.String" />
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="sendDate" type="java.lang.String" />
+			<form-property name="orderType" type="java.lang.String" />
+			 <!-- 栏目信息 -->
+			<form-property name="sendTime" type="java.lang.String" />
+			<form-property name="beginDate" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+			<form-property name="nickname" type="java.lang.String" />
+            <form-property name="chkId" type="java.lang.String[]" /> 
+            <form-property name="chk" type="java.lang.String[]" />
+            <form-property name="chkall" type="java.lang.String[]" /> 
+            
+            <form-property name="columnInfo" type="java.lang.String" />
+            <form-property name="content" type="java.lang.String" />
+            <form-property name="columnName" type="java.lang.String" />
+            <form-property name="endTime" type="java.lang.String" />
+            <form-property name="messageName" type="java.lang.String" />
+	   </form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+     <action
+      attribute="columnInfoBean"
+      name="columnInfoBean"
+      path="/sms/columnInfo"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+		   <forward name="main" path="/sms/columnInfo/columnInfoMain.jsp"/>
+		   <forward name="query" path="/sms/columnInfo/columnInfoQuery.jsp"/>
+		   <forward name="list" path="/sms/columnInfo/columnInfoList.jsp"/>
+		   <forward name="load" path="/sms/columnInfo/columnInfoLoad.jsp"/>
+		   <forward name="error" path="/sms/columnInfo/error.jsp"/>
+		   <forward name="settime" path="/sms/columnInfo/columnInfoSetList.jsp"/>
+		   <forward name="timeSet" path="/sms/columnInfo/columnInfoSettime.jsp"/>
+      	   <forward name="orderLoad" path="/sms/columnInfo/columnInfoOrderLoad.jsp" />
+           <forward name="set" path="/sms/columnInfo/columnInfoSet.jsp" />
+           
+           <forward name="message" path="/sms/columnInfo/addMessage.jsp" />
+      	   <forward name="messageMain" path="/sms/columnInfo/addMessageMain.jsp" />
+      	   <forward name="messageQuery" path="/sms/columnInfo/messageQuery.jsp" />
+      	   <forward name="messageList" path="/sms/columnInfo/messageList.jsp" />
+      	   <forward name="messageLoad" path="/sms/columnInfo/messageLoad.jsp" />
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

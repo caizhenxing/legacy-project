@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+	<!-- 客户信息 -->
+	<bean name="/custinfo/custinfo" class="et.bo.custinfo.action.CustinfoAction" scope="singleton">
+		<property name="custinfoService">
+			<ref bean="CustinfoService"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	
+	<!-- 来电弹出窗口 -->
+	<bean name="/custinfo/openwin" class="et.bo.custinfo.action.OpenwinAction" scope="singleton">
+		<property name="custinfoService">
+			<ref bean="CustinfoService"/>
+		</property>
+		<property name="questionService">
+			<ref bean="QuestionService"/>
+		</property>
+		<property name="sadService">
+			<ref bean="sadService"/>
+		</property>
+		<property name="priceinfoService">
+			<ref bean="PriceinfoService"/>
+		</property>
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	
+	<bean id="CustinfoService" class="et.bo.custinfo.service.impl.CustinfoServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	
+	<!-- 电话本信息 -->
+	<bean id="PhoneinfoService"
+		class="et.bo.custinfo.service.impl.PhoneinfoServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+	
+	<!-- phoneinfo -->
+	<bean name="/custinfo/phoneinfo"
+		class="et.bo.custinfo.phoneinfo.action.PhoneinfoAction"
+		scope="singleton">
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+		<property name="pis">
+			<ref bean="PhoneinfoService" />
+		</property>
+	</bean>
+	
+</beans>

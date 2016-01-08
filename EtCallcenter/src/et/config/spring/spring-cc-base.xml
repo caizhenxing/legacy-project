@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "spring-beans.dtd" >
+<beans>
+	<bean id="InitService" class="et.bo.callcenter.operation.dongjin.InitDongjin">
+		<property name="idi" ref="IDongjinInit"></property>
+		<property name="idv" ref="IDongjinVoice"></property>
+		<property name="idih">
+			<ref bean="IDongjinInHook" />
+		</property>
+		<property name="idc">
+			<ref bean="IDongjinConf" />
+		</property>
+		<property name="idr">
+			<ref bean="IDongjinRecord" />
+		</property>
+	</bean>
+	<bean id="LineService" class="et.bo.callcenter.operation.dongjin.LineDongjin" singleton="false">
+		<property name="idih">
+			<ref bean="IDongjinInHook" />
+		</property>
+		<property name="idoh">
+			<ref bean="IDongjinOutHook" />
+		</property>
+		<property name="idf">
+			<ref bean="IDongjinFsk" />
+		</property>
+		<property name="idd">
+			<ref bean="IDongjinDtmf" />
+		</property>
+		<property name="idp">
+			<ref bean="IDongjinPlay" />
+		</property>
+		<property name="idv" ref="IDongjinVoice"></property>
+		<property name="idr">
+			<ref bean="IDongjinRecord" />
+		</property>
+	</bean>
+	<bean id="LinkService" class="et.bo.callcenter.operation.dongjin.LinkDongjin">
+		<property name="idl">
+			<ref bean="IDongjinLink" />
+		</property>
+	</bean>
+	<bean id="ConferenceService" class="et.bo.callcenter.operation.dongjin.ConferenceDongjinImpl">
+		<property name="idc">
+			<ref bean="IDongjinConf" />
+		</property>
+	</bean>
+	<bean id="VoiceFileChange" class="et.bo.callcenter.operation.dongjin.VoiceChangeDongjin">
+		<property name="idrc">
+			<ref bean="IDongjinRecordChange" />
+		</property>
+	</bean>
+</beans>

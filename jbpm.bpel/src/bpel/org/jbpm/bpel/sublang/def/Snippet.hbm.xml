@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+
+  <class name="org.jbpm.bpel.sublang.def.Snippet" table="BPEL_SCRIPT" discriminator-value="null">
+
+    <cache usage="nonstrict-read-write" />
+    <id name="id" column="ID_">
+      <generator class="native" />
+    </id>
+    <discriminator type="char" column="CLASS_" />
+
+    <property name="text" column="TEXT_" />
+    <property name="language" column="LANGUAGE_" />
+
+    <set name="namespaces" table="BPEL_SCRIPT_NAMESPACE">
+      <cache usage="nonstrict-read-write" />
+      <key column="SCRIPT_" />
+      <many-to-many class="org.jbpm.bpel.def.Namespace" column="NAMESPACE_" />
+    </set>
+
+    <subclass name="org.jbpm.bpel.sublang.def.Expression" discriminator-value="e" />
+
+    <subclass name="org.jbpm.bpel.sublang.def.Query" discriminator-value="q" />
+
+    <subclass name="org.jbpm.bpel.sublang.def.JoinCondition" discriminator-value="j" />
+
+  </class>
+
+</hibernate-mapping>

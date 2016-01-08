@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+	
+	<bean name="/sad" class="et.bo.sad.action.SadAction" scope="singleton">
+		<property name="ss">
+			<ref bean="sadService"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	<bean name="/sadUploadFile" class="et.bo.sad.action.SadUploadAction" scope="singleton">
+		<property name="ss">
+			<ref bean="sadService"/>
+		</property>
+	</bean>
+
+
+	<bean id="sadService" class="et.bo.sad.service.impl.SadServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="flowService">
+			<ref bean="FlowService"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	
+</beans>

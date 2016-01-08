@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<installations>
+<installation location="${workspace_loc}/../.." name="JBoss jBPM 3.2-alpha1" version="jbpm-3.2"/>
+</installations>

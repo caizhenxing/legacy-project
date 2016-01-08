@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/pcc/portCompare/portCompareList.jsp" location="0,184" dimension="256,48" />
+  <StrutsActivity path="/pcc/portCompare/portCompareMain.jsp" location="356,184" dimension="256,48" />
+  <StrutsActivity path="/pcc/portCompare/portCompareLoad.jsp" location="712,184" dimension="256,48" />
+  <StrutsActivity path="/pcc/portCompare/portCompareQuery.jsp" location="1068,184" dimension="262,48" />
+  <StrutsActivity path="/pcc/portCompare/portCompareDetail.jsp" location="1430,184" dimension="268,48" />
+  <StrutsActivity path="/user/userList.jsp" location="650,350" dimension="148,48" />
+  <StrutsActivity path="/user/userMain.jsp" location="950,350" dimension="148,48" />
+  <StrutsActivity path="/user/userLoad.jsp" location="650,450" dimension="148,48" />
+  <StrutsActivity path="/user/userQuery.jsp" location="950,450" dimension="154,48" />
+  <StrutsActivity path="/user/userDetail.jsp" location="50,550" dimension="160,48" />
+  <StrutsTransition id="/user.do,main,/user/userMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,413" />
+      <AbsolutePoint location="1024,413" />
+      <AbsolutePoint location="1024,398" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/portCompare.do,load,/pcc/portCompare/portCompareLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="840,84" />
+      <AbsolutePoint location="840,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/portCompare.do,list,/pcc/portCompare/portCompareList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="696,84" />
+      <AbsolutePoint location="696,119" />
+      <AbsolutePoint location="128,119" />
+      <AbsolutePoint location="128,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user.do,detail,/user/userDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="195,434" />
+      <AbsolutePoint location="195,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user.do,list,/user/userList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,383" />
+      <AbsolutePoint location="650,383" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/portCompare.do,main,/pcc/portCompare/portCompareMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="768,84" />
+      <AbsolutePoint location="768,149" />
+      <AbsolutePoint location="484,149" />
+      <AbsolutePoint location="484,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/portCompare.do,query,/pcc/portCompare/portCompareQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="911,84" />
+      <AbsolutePoint location="911,149" />
+      <AbsolutePoint location="1199,149" />
+      <AbsolutePoint location="1199,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user.do,load,/user/userLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="259,434" />
+      <AbsolutePoint location="259,474" />
+      <AbsolutePoint location="650,474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/portCompare.do,detail,/pcc/portCompare/portCompareDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="983,84" />
+      <AbsolutePoint location="983,119" />
+      <AbsolutePoint location="1564,119" />
+      <AbsolutePoint location="1564,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user.do,query,/user/userQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,434" />
+      <AbsolutePoint location="229,673" />
+      <AbsolutePoint location="1027,673" />
+      <AbsolutePoint location="1027,498" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

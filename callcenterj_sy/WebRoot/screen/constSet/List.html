@@ -1,0 +1,236 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<!-- 引入dwr -->	
+<script type='text/javascript' src='/callcenterj_sy/dwr/interface/constKeyValueService.js'></script>
+<script type='text/javascript' src='/callcenterj_sy/dwr/engine.js'></script>
+<script type='text/javascript' src='/callcenterj_sy/dwr/util.js'></script>
+<script language="javascript">
+function changeSelect(obj,name)
+{
+	var checks = document.getElementsByName(name);
+	var checked = obj.checked;
+	
+	for(var i=0; i<checks.length; i++)
+	{
+		checks[i].checked = false;
+	}
+	if(checked)
+	{
+		obj.checked = true;
+	}
+	else
+		obj.checked = false;
+	//obj.chenced = checked;
+}
+function getCheckedValue(name)
+{
+	var checks = document.getElementsByName(name);
+	
+	for(var i=0; i<checks.length; i++)
+	{
+		if(checks[i].checked)
+		{
+			return checks[i].value;
+		}
+	}
+	return "";
+} 
+function execScreenExpertAdd()
+{
+	var type=getCheckedValue('expertScreen');
+	if(type!="")
+	{
+		alert(type);
+	}
+	else
+	{
+		alert("请选择专家类别");
+	}
+}
+
+function prepOper(ids,isSee)
+{
+
+	cancelOper(ids,isSee)
+}
+function cancelOper(ids,isSee)
+{
+	if(ids.indexOf("|")==-1)
+	{
+		document.getElementById(ids).style.display=isSee;
+	}
+	else
+	{
+		var idArr = ids.split("|");
+		for(var i=0; i<idArr.length; i++)
+		{
+			if(idArr[i])
+			{
+				idArr[i].style.display=isSee;
+			}
+		}
+	}
+}
+function execOper(ids,valueId,errInfo,type,key)
+{
+	cancelOper('screen_expert_first','none');
+	var obj = document.getElementById(valueId);
+	
+	if(obj.value==0)
+	{
+		alert(errInfo);
+	}
+	else
+	{
+		constKeyValueService.addOrUpdateConstKeyValue(type,key,obj.value,execState);
+	
+	}
+}
+function execState(v)
+{
+		if(v==0)
+		{
+			alert('操作成功');
+		}
+		else
+		{
+			alert('操作失败');
+		}
+}
+</script>
+<style type="text/css">
+<!--
+.blue {	background-color: #DDE7F0;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #000000;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #A8BACF;
+}
+.white2 {	background-color: #FFFFFF;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #88AACD;
+	font-family: "宋体";
+	font-size: 12px;
+	color: #000000;
+}
+.writing2 {	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	line-height: 18px;
+}
+.writing6 {	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #000000;
+	text-align: center;
+}
+.writing7 {	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	line-height: 18px;
+	text-align: center;
+}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.writing3 {	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #333333;
+	line-height: 18px;
+	text-indent: 12px;
+	vertical-align: bottom;
+}
+.text{
+	font-family: "宋体";
+	font-size: 12px;
+	color: #333333;
+	background-color: #FFFFFF;
+	width: 300;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #FFFFFF;
+	border-left-color: #333333;
+}
+.submit{
+	font-family: "宋体";
+	font-size: 12px;
+	background-image: url(images/InboxList1.jpg);
+	width: 40;
+	border: 1px solid #FFFFFF;
+}
+-->
+</style>
+</head>
+
+<body>
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>
+	      <table width="100%" border="0" cellpadding="0" cellspacing="1">
+	      <tr>
+	        <td height="25" colspan="3" align="center" background="images/InboxList2.jpg" class="writing6">标题</td>
+	      </tr>
+	      <tr>
+	        <td width="15%" height="25" align="center" background="images/InboxList2.jpg" class="white2"><span class="writing6">分析类别</span></td>
+	        <td width="70%" height="25" align="center" class="blue"><table width="90%" border="0" cellpadding="0" cellspacing="0">
+	          <tr>
+	            <td>
+	              <span class="writing2" style="cursor:hand;" onclick="prepOper('screen_expert_first','inline')">+首席专家</span><input name="textfield2" type="text" class="text" id="screen_expert_first" style="display:none;">
+	  			</td>
+	          </tr>
+	        </table>
+        </td>
+        <td width="15%" height="25" align="center" background="images/InboxList2.jpg" class="blue">
+        	<input name="button2" type="button" class="submit" id="button2" value="保存" onclick="execOper('screen_expert_first','screen_expert_first','请填写专家内容','screen','expert_first')"> 
+        	<input name="button2" type="button" class="submit" id="button2" value="取消" onclick="cancelOper('screen_expert_first','none')">
+        </td>
+      </tr>
+      
+      <tr>
+	        <td width="15%" height="25" align="center" background="images/InboxList2.jpg" class="white2"><span class="writing6">分析类别</span></td>
+	        <td width="70%" height="25" align="center" class="blue"><table width="90%" border="0" cellpadding="0" cellspacing="0">
+	          <tr>
+	            <td>
+	              <span class="writing2" style="cursor:hand;" onclick="prepOper('screen_expert_class','inline')">+值班专家</span><input name="textfield2" type="text" class="text" id="screen_expert_class" style="display:none;">
+	  			</td>
+	          </tr>
+	        </table>
+        </td>
+        <td width="15%" height="25" align="center" background="images/InboxList2.jpg" class="blue">
+        	<input name="button2" type="button" class="submit" id="button2" value="保存" onclick="execOper('screen_expert_class','screen_expert_class','请填写专家内容','screen','expert_class')"> 
+        	<input name="button2" type="button" class="submit" id="button2" value="取消" onclick="cancelOper('screen_expert_class','none')">
+        </td>
+      </tr>
+      
+      
+    </td>
+  </tr>
+  
+  
+  
+  
+  
+  
+</table>
+</body>
+</html>

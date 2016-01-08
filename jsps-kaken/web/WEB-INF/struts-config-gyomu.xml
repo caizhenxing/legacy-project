@@ -1,0 +1,2027 @@
+<?xml version="1.0" encoding="WINDOWS-31J"?>
+
+<!DOCTYPE struts-config PUBLIC 
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+  <form-beans>
+    <!-- [共通]メニュー→一覧表示用 -->
+    <form-bean name="baseSearchForm"
+               type="jp.go.jsps.kaken.web.struts.BaseSearchForm"/>
+    <!-- ログイン -->
+    <form-bean name="logonForm"
+               type="jp.go.jsps.kaken.web.logon.LogonForm"/>
+    <!-- Password変更 -->
+    <form-bean name="passwordChangeForm"
+               type="jp.go.jsps.kaken.web.gyomu.passwordChange.PasswordChangeForm"/>
+    <!-- 受理登録 add by dyh 2006/05/30 原因：仕様追加-->
+    <form-bean name="juriSearchForm"
+               type="jp.go.jsps.kaken.web.gyomu.juri.JuriSearchForm"/>
+    <form-bean name="juriListForm"
+               type="jp.go.jsps.kaken.web.gyomu.juri.JuriListForm"/>
+    <!-- 申請者管理 -->
+    <form-bean name="shinseishaForm"
+               type="jp.go.jsps.kaken.web.gyomu.shinseishaKanri.ShinseishaForm"/>
+    <form-bean name="shinseishaSearchForm"
+               type="jp.go.jsps.kaken.web.gyomu.shinseishaKanri.ShinseishaSearchForm"/>
+    <!-- 所属担当者管理 -->
+    <form-bean name="shozokuForm"
+               type="jp.go.jsps.kaken.web.gyomu.shozokuKanri.ShozokuForm"/>
+    <form-bean name="shozokuSearchForm"
+               type="jp.go.jsps.kaken.web.gyomu.shozokuKanri.ShozokuSearchForm"/>
+    <!-- 事業管理 -->
+    <form-bean name="jigyoKanriForm"
+               type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.JigyoKanriForm"/>
+    <!-- 書類管理 -->
+    <form-bean name="shoruiKanriForm"
+               type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.ShoruiKanriForm"/>
+    <!-- 審査員管理 -->
+    <form-bean name="shinsainForm"
+               type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.ShinsainForm"/>
+    <form-bean name="shinsainSearchForm"
+               type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.ShinsainSearchForm"/>
+    <!-- 審査員割り振り -->
+    <form-bean name="warifuriForm"
+               type="jp.go.jsps.kaken.web.gyomu.warifuri.WarifuriForm"/>
+    <form-bean name="warifuriSearchForm"
+               type="jp.go.jsps.kaken.web.gyomu.warifuri.WarifuriSearchForm"/>
+    <form-bean name="warifuriShinsainSearchForm"
+               type="jp.go.jsps.kaken.web.gyomu.warifuri.ShinsainSearchForm"/>
+    <!-- 公開確定 -->
+    <form-bean name="kokaiKakuteiForm"
+               type="jp.go.jsps.kaken.web.gyomu.kokaiKakutei.KokaiKakuteiForm"/>
+    <form-bean name="kokaiKakuteiSearchForm"
+               type="jp.go.jsps.kaken.web.gyomu.kokaiKakutei.KokaiKakuteiSearchForm"/>
+    <!-- 申請情報管理 -->
+    <form-bean name="shinseiSearchForm"
+               type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.ShinseiSearchForm"/>
+    <form-bean name="simpleShinseiForm"
+               type="jp.go.jsps.kaken.web.shinsei.SimpleShinseiForm"/>
+    <form-bean name="juriAddForm"
+               type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.JuriAddForm"/>
+    <form-bean name="shinsaKekka1stForm"
+               type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.ShinsaKekka1stForm"/>
+    <form-bean name="shinsaKekka2ndForm"
+               type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.ShinsaKekka2ndForm"/>
+    <form-bean name="shinsaKekkaForm"
+               type="jp.go.jsps.kaken.web.shinsa.shinsaJigyo.ShinsaKekkaForm"/>
+    <form-bean name="shinsaKekkaReferForm"
+               type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.ShinsaKekkaReferForm"/>
+    <form-bean name="suisenshoAddForm"
+               type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.SuisenshoAddForm"/>
+    <form-bean name="shinsaKekkaReferForm"
+               type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.ShinsaKekkaReferForm"/>
+    <form-bean name="simpleShinsainForm"
+               type="jp.go.jsps.kaken.web.gyomu.warifuri.SimpleShinsainForm"/>
+    <!-- 審査状況確認 -->
+    <form-bean name="shinsaJokyoSearchForm"
+               type="jp.go.jsps.kaken.web.gyomu.shinsaJokyo.ShinsaJokyoSearchForm"/>
+    <form-bean name="shinsaJokyoForm"
+               type="jp.go.jsps.kaken.web.gyomu.shinsaJokyo.ShinsaJokyoForm"/>
+    <!-- 評価一覧 -->
+    <form-bean name="hyokaSearchForm"
+               type="jp.go.jsps.kaken.web.gyomu.hyoka.HyokaSearchForm"/>
+    <!-- データ保管 -->
+    <form-bean name="dataHokanForm"
+               type="jp.go.jsps.kaken.web.gyomu.datahokan.DataHokanForm"/>
+    <!--関連分野検索-->
+    <form-bean name="kanrenSearchForm"
+               type="jp.go.jsps.kaken.web.gyomu.kanren.KanrenSearchForm"/>
+    <form-bean name="kanrenForm"
+               type="jp.go.jsps.kaken.web.gyomu.kanren.KanrenForm"/>
+     <!-- パンチデータ出力 -->
+    <form-bean name="punchDataForm"
+               type="jp.go.jsps.kaken.web.gyomu.punchData.PunchDataForm"/>
+    <!-- チェックリスト管理 -->
+    <form-bean name="checkListForm"
+               type="jp.go.jsps.kaken.web.gyomu.checkList.CheckListForm"/>
+    <!-- チェックリスト検索管理 -->
+    <form-bean name="checkListSearchForm"
+               type="jp.go.jsps.kaken.web.gyomu.checkList.CheckListSearchForm"/>
+    <!-- 領域計画書 -->
+    <form-bean name="ryoikiGaiyoForm" type="jp.go.jsps.kaken.web.shinsei.RyoikiGaiyoForm"/>
+<!-- 20050719 -->
+    <!-- 受理チェックリスト -->
+    <form-bean name="juriCheckListForm"
+               type="jp.go.jsps.kaken.web.gyomu.checkList.JuriCheckListForm"/>
+<!-- Horikoshi -->
+    
+    <!-- 提出書類検索用 2006/06/16 lwj add -->
+    <form-bean name="teishutsuShoruiSearchForm"
+               type="jp.go.jsps.kaken.web.gyomu.teishutsuShorui.TeishutsuShoruiSearchForm"/>
+    <!-- 提出書類管理（特定領域（新規）） 2006/06/15 dyh add -->
+    <form-bean name="juriGaiyoForm"
+               type="jp.go.jsps.kaken.web.gyomu.teishutsuShorui.JuriGaiyoForm"/>
+
+    <!-- ご意見ご要望検索 -->
+    <form-bean name="ikenSearchForm" type="jp.go.jsps.kaken.web.iken.IkenSearchForm"/>
+    <form-bean name="ikenForm" type="jp.go.jsps.kaken.web.iken.IkenForm"/>
+
+  </form-beans>
+
+  <global-exceptions>
+    <exception handler="jp.go.jsps.kaken.web.struts.ApplicationExceptionHandler"
+               key="errors.application" path="/pages/common/appError.vm"
+               scope="request"
+               type="jp.go.jsps.kaken.model.exceptions.ApplicationException"/>
+    <exception handler="jp.go.jsps.kaken.web.struts.SystemExceptionHandler"
+               key="errors.system" path="/pages/common/sysError.vm"
+               type="jp.go.jsps.kaken.model.exceptions.SystemException"/>
+    <exception handler="jp.go.jsps.kaken.web.struts.ApplicationExceptionHandler"
+               key="errors.fileio" path="/pages/common/downloadError.vm"
+               scope="request"
+               type="jp.go.jsps.kaken.model.exceptions.FileIOException"/>
+  </global-exceptions>
+
+  <global-forwards>
+    <forward name="session" path="/pages/common/timeoutError.vm" redirect="false"/>
+    <forward name="token" path="/tokenError.do" redirect="false"/>
+    <forward name="welcome" path="/logon.do" redirect="false"/>
+  </global-forwards>
+
+  <action-mappings type="jp.go.jsps.kaken.web.struts.ActionMapping">
+    <!-- ### ご意見ご要望検索条件入力画面 ### -->
+    <action path="/ikenSearch" scope="session" name="ikenSearchForm"
+            type="jp.go.jsps.kaken.web.iken.IkenJyokenAction"
+            unknown="false" validate="false">
+      <forward name="success" path="/pages/ikenSearch/ikenSearch.vm" redirect="false"/>
+    </action>
+
+    <!-- ### ご意見ご要望検索結果表示処理 ### -->
+    <action path="/ikenList" scope="session" name="ikenSearchForm"
+            type="jp.go.jsps.kaken.web.iken.IkenSearchAction"
+            unknown="false" validate="true"
+            input="/pages/ikenSearch/ikenSearch.vm">
+      <forward name="success" path="/pages/ikenSearch/ikenList.vm" redirect="false"/>
+    </action>
+
+    <!-- ### ご意見ご要望表示処理 ### -->
+    <action path="/ikenInfo" scope="session" name="ikenForm"
+            type="jp.go.jsps.kaken.web.iken.IkenDispAction"
+            unknown="false" validate="false">
+      <forward name="success" path="/pages/ikenSearch/ikenInfo.vm" redirect="false"/>
+    </action>
+
+    <!-- 意見CSV出力 -->
+    <action path="/ikenCsvOut" scope="session" name="ikenSearchForm"
+            type="jp.go.jsps.kaken.web.iken.CsvOutAction"
+            unknown="false" validate="false">
+      <set-property property="description" value=""/>
+      <set-property property="description" value=""/>
+    </action>
+
+    <!-- ### ログアウト ### -->
+    <action path="/logoff" scope="request"
+            type="jp.go.jsps.kaken.web.logon.LogoffAction"
+            unknown="false" validate="false">
+      <set-property property="logonCheck" value="false"/>
+      <set-property property="description" value="ログアウト"/>
+      <forward name="success" path="/logon.do" redirect="false"/>
+    </action>
+
+    <!-- ### ログイン ### -->
+    <action path="/logon" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction"
+            unknown="true" validate="false">
+      <set-property property="logonCheck" value="false"/>
+      <set-property property="description" value="ログイン"/>
+      <forward name="success" path="/pages/logon/logon.vm" redirect="false"/>
+    </action>
+    <action path="/logonCheck" scope="request" name="logonForm"
+            parameter="gyomutanto.logon.service"
+            type="jp.go.jsps.kaken.web.logon.LogonCheckAction"
+            unknown="false" validate="true" input="/pages/logon/logon.vm">
+      <set-property property="logonCheck" value="false"/>
+      <set-property property="memoryCheck" value="false"/>
+      <set-property property="description" value="ログイン完了"/>
+      <forward contextRelative="false" name="success" path="/showMainMenu.do"
+               redirect="false"/>
+    </action>
+
+    <!-- ### 共通 ### -->
+    <action path="/tokenError" scope="request"
+            type="jp.go.jsps.kaken.web.struts.TokenErrorAction"
+            unknown="false" validate="false">
+    </action>
+
+    <!-- ### Password変更 ### -->
+    <!-- Password変更 -->
+    <action path="/passwordChange" scope="session" name="passwordChangeForm"
+            type="jp.go.jsps.kaken.web.gyomu.passwordChange.ChangeAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="Password変更"/>
+      <forward name="success" path="/pages/passwordChange/change.vm" redirect="false"/>
+    </action>
+    <!-- Password変更完了 -->
+    <action path="/passwordChangeSave" scope="session" name="passwordChangeForm"
+            type="jp.go.jsps.kaken.web.gyomu.passwordChange.ChangeSaveAction"
+            unknown="false" validate="true" input="/pages/passwordChange/change.vm">
+      <set-property property="description" value="Password変更完了"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/passwordChange/changeSave.vm" redirect="false"/>
+    </action>
+
+    <!-- ### 応募者管理 ### -->
+    <!-- 申請者登録 -->
+    <action path="/shinseishaKanri/add" scope="session" name="shinseishaForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseishaKanri.AddAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="申請者登録"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseishaKanri/add.vm" redirect="false"/>
+    </action>
+    <!-- 申請者登録確認 -->
+    <action path="/shinseishaKanri/addCheck" scope="session" name="shinseishaForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseishaKanri.AddCheckAction"
+            unknown="false" validate="true" input="/pages/shinseishaKanri/add.vm">
+      <set-property property="description" value="申請者登録確認"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseishaKanri/addCheck.vm" redirect="false"/>
+    </action>
+    <!-- 申請者登録通知書 -->
+    <action path="/shinseishaKanri/addSave" scope="session" name="shinseishaForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseishaKanri.AddSaveAction"
+            unknown="false" validate="false" input="/pages/shinseishaKanri/addCheck.vm">
+      <set-property property="description" value="申請者登録通知書"/>
+      <forward name="cancel" path="/pages/shinseishaKanri/add.vm"
+               redirect="false"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseishaKanri/addSave.vm" redirect="false"/>
+    </action>
+    <!-- 申請者情報削除確認 -->
+    <action path="/shinseishaKanri/delete" scope="session" name="shinseishaForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseishaKanri.DeleteAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="申請者情報削除確認"/>
+      <forward name="success" path="/shinseishaKanri/deleteCheck.do"
+               redirect="false"/>
+    </action>
+    <!-- 申請者削除 -->
+    <action path="/shinseishaKanri/deleteCheck" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction"
+            unknown="false" validate="false">
+      <set-property property="description" value=""/>
+      <forward name="success" path="/pages/shinseishaKanri/deleteCheck.vm"
+               redirect="false"/>
+    </action>
+    <!-- 申請者情報削除完了 -->
+    <action path="/shinseishaKanri/deleteSave" scope="session" name="shinseishaForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseishaKanri.DeleteSaveAction"
+            unknown="false" validate="false" input="/pages/shinseishaKanri/deleteCheck.vm">
+      <set-property property="description" value="申請者情報削除完了"/>
+      <forward name="success" path="/pages/shinseishaKanri/deleteSave.vm"
+               redirect="false"/>
+    </action>
+    <!-- 申請者修正 -->
+    <action path="/shinseishaKanri/edit" scope="session" name="shinseishaForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseishaKanri.EditAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="申請者情報修正"/>
+      <forward name="success" path="/pages/shinseishaKanri/edit.vm"
+               redirect="false"/>
+    </action>
+    <!-- 申請者情報修正確認 -->
+    <action path="/shinseishaKanri/editCheck" scope="session" name="shinseishaForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseishaKanri.EditCheckAction"
+            unknown="false" validate="true" input="/pages/shinseishaKanri/edit.vm">
+      <set-property property="description" value="申請者情報修正確認"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseishaKanri/editCheck.vm" redirect="false"/>
+    </action>
+    <!-- 申請者情報修正完了 -->
+    <action path="/shinseishaKanri/editSave" scope="session" name="shinseishaForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseishaKanri.EditSaveAction"
+            unknown="false" validate="false" input="/pages/shinseishaKanri/editCheck.vm">
+      <set-property property="description" value="申請者情報修正完了"/>
+      <forward name="cancel" path="/pages/shinseishaKanri/edit.vm"
+               redirect="false"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseishaKanri/editSave.vm" redirect="false"/>
+    </action>
+    <!-- 申請者検索 -->
+    <action path="/shinseishaKanri/search" scope="session" name="shinseishaSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseishaKanri.SearchAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="申請者情報検索"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseishaKanri/search.vm" redirect="false"/>
+      <forward name="cancel" path="/pages/shinseishaKanri/search.vm" redirect="false"/>
+    </action>
+    <!-- 申請者情報一覧 -->
+    <action path="/shinseishaKanri/searchList" scope="session" name="shinseishaSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseishaKanri.SearchListAction"
+            unknown="false" validate="true" input="/pages/shinseishaKanri/search.vm">
+      <set-property property="description" value="申請者情報一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseishaKanri/searchList.vm" redirect="false"/>
+      <forward name="cancel" path="/pages/shinseishaKanri/search.vm" redirect="false"/>
+    </action>
+    <!-- CSV出力 -->
+    <action path="/shinseishaKanri/csvOut" scope="session" name="shinseishaSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseishaKanri.CsvOutAction"
+            unknown="false" validate="false">
+      <set-property property="description" value=""/>
+      <set-property property="description" value=""/>
+    </action>
+    <!-- 申請者管理メニュー -->
+    <action path="/shinseishaKanri/showMenu" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="申請者管理メニュー"/>
+      <forward name="success" path="/pages/shinseishaKanri/menu.vm"
+               redirect="false"/>
+    </action>
+    <!-- 非公募応募可フラグ -->
+    <action path="/shinseishaKanri/deleteHikoboFlg" scope="session" name="shinseishaSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseishaKanri.DeleteHikoboFlgAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="推薦チェック削除"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseishaKanri/deleteHikoboFlg.vm" redirect="false"/>
+    </action>
+    <!-- 申請者情報一覧 -->
+    <action path="/shinseishaKanri/deleteHikoboFlgSave" scope="session" name="shinseishaSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseishaKanri.DeleteHikoboFlgSaveAction"
+            unknown="false" validate="false" input="/pages/shinseishaKanri/deleteHikoboFlg.vm">
+      <set-property property="description" value="申請者情報一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/shinseishaKanri/searchList.do" redirect="false"/>
+    </action>
+
+    <!-- ### 所属研究機関検索 ### -->
+    <!-- 所属研究機関情報検索 -->
+    <action path="/shozokuKanri/search" scope="session" name="shozokuSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shozokuKanri.SearchAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="所属機関情報検索"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shozokuKanri/search.vm" redirect="false"/>
+    </action>
+    <!-- 所属機関情報一覧 -->
+    <action path="/shozokuKanri/searchList" scope="session" name="shozokuSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shozokuKanri.SearchListAction"
+            unknown="false" validate="true" input="/pages/shozokuKanri/search.vm">
+      <set-property property="description" value="所属機関情報一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shozokuKanri/searchList.vm" redirect="false"/>
+           <forward name="cancel" path="/pages/shozokuKanri/search.vm"
+               redirect="false"/>
+    </action>
+    <!-- 所属機関情報確認 -->
+    <action path="/shozokuKanri/shozokuInfo" scope="session" name="shozokuForm"
+            type="jp.go.jsps.kaken.web.gyomu.shozokuKanri.ShozokuInfoAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="所属機関情報確認"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shozokuKanri/shozokuInfo.vm" redirect="false"/>
+    </action>
+    <!-- CSV出力 -->
+    <action path="/shozokuKanri/csvOut" scope="session" name="shozokuSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shozokuKanri.CsvOutAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="所属機関CSV出力"/>
+    </action>
+
+    <!-- ### 事業管理 ### -->
+    <!-- 事業登録 -->
+    <action path="/jigyoKanri/add" scope="session" name="jigyoKanriForm"
+            type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.AddAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="事業登録"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/jigyoKanri/add.vm" redirect="false"/>
+    </action>
+    <!-- 事業登録確認 -->
+    <action path="/jigyoKanri/addCheck" scope="session" name="jigyoKanriForm"
+            type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.AddCheckAction"
+            unknown="false" validate="true" input="/pages/jigyoKanri/add.vm">
+      <set-property property="description" value="事業登録確認"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/jigyoKanri/addCheck.vm" redirect="false"/>
+      <forward contextRelative="false" name="cancel"
+               path="/pages/jigyoKanri/add.vm" redirect="false"/>
+    </action>
+    <!-- 事業登録完了 -->
+    <action path="/jigyoKanri/addSave" scope="session" name="jigyoKanriForm"
+            type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.AddSaveAction"
+            unknown="false" validate="false" input="/pages/jigyoKanri/addCheck.vm">
+      <set-property property="description" value="事業登録完了"/>
+      <forward name="cancel" path="/pages/jigyoKanri/add.vm"
+               redirect="false"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/jigyoKanri/addSave.vm" redirect="false"/>
+    </action>
+    <!-- 事業削除 -->
+    <action path="/jigyoKanri/delete" scope="session" name="jigyoKanriForm"
+            type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.DeleteAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="事業削除"/>
+      <forward name="success" path="/jigyoKanri/deleteCheck.do"
+               redirect="false"/>
+    </action>
+    <!-- 事業削除確認 -->
+    <action path="/jigyoKanri/deleteCheck" scope="session"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="事業削除確認"/>
+      <forward name="success" path="/pages/jigyoKanri/deleteCheck.vm"
+               redirect="false"/>
+    </action>
+    <!-- 事業削除完了 -->
+    <action path="/jigyoKanri/deleteSave" scope="session"
+            type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.DeleteSaveAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="事業削除完了"/>
+      <forward name="success" path="/pages/jigyoKanri/deleteSave.vm"
+               redirect="false"/>
+    </action>
+    <!-- 事業修正 -->
+    <action path="/jigyoKanri/edit" scope="session" name="jigyoKanriForm"
+            type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.EditAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="事業修正"/>
+      <forward name="success" path="/pages/jigyoKanri/edit.vm"
+               redirect="false"/>
+    </action>
+    <!-- 事業修正確認 -->
+    <action path="/jigyoKanri/editCheck" scope="session" name="jigyoKanriForm"
+            type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.EditCheckAction"
+            unknown="false" validate="true" input="/pages/jigyoKanri/edit.vm">
+      <set-property property="description" value="事業修正確認"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/jigyoKanri/editCheck.vm" redirect="false"/>
+    </action>
+    <!-- 事業修正完了 -->
+    <action path="/jigyoKanri/editSave" scope="session" name="jigyoKanriForm"
+            type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.EditSaveAction"
+            unknown="false" validate="false" input="/pages/jigyoKanri/editCheck.vm">
+      <set-property property="description" value="事業修正完了"/>
+      <forward name="cancel" path="/pages/jigyoKanri/edit.vm"
+               redirect="false"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/jigyoKanri/editSave.vm" redirect="false"/>
+    </action>
+    <!-- 事業一覧 -->
+    <action path="/jigyoKanri/searchList" scope="session" name="baseSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.SearchListAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="事業一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/jigyoKanri/searchList.vm" redirect="false"/>
+    </action>
+    <!-- 書類登録 -->
+    <action path="/jigyoKanri/shoruiAdd" scope="session" name="shoruiKanriForm"
+            type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.ShoruiAddAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="書類登録"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/jigyoKanri/shoruiAdd.vm" redirect="false"/>
+    </action>
+    <!-- 書類登録完了 -->
+    <action path="/jigyoKanri/shoruiAddSave" scope="session" name="shoruiKanriForm"
+            type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.ShoruiAddSaveAction"
+            unknown="false" validate="true" input="/pages/jigyoKanri/shoruiAdd.vm">
+      <set-property property="description" value="書類登録完了"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/jigyoKanri/shoruiAdd.vm" redirect="false"/>
+    </action>
+    <!-- 書類削除完了 -->
+    <action path="/jigyoKanri/shoruiDeleteSave" scope="session" name="shoruiKanriForm"
+            type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.ShoruiDeleteSaveAction"
+            unknown="false" validate="false" input="/pages/jigyoKanri/shoruiAdd.vm">
+      <set-property property="description" value="書類削除完了"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/jigyoKanri/shoruiAdd.vm" redirect="false"/>
+      <forward contextRelative="false" name="false"
+               path="/pages/jigyoKanri/shoruiAdd.vm" redirect="false"/>
+    </action>
+    <!-- 事業削除確認・修正ファイルダウンロード -->
+    <action path="/jigyoKanri/regDownloadFile" scope="session" name="jigyoKanriForm"
+            type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.RegDownloadFileAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="事業削除確認・修正時の登録済みファイルダウンロード "/>
+    </action>
+    <!-- 事業登録確認・修正確認ファイルダウンロード -->
+    <action path="/jigyoKanri/downloadFile" scope="session" name="jigyoKanriForm"
+            type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.DownloadFileAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="事業登録確認・修正確認時の確認用ファイルダウンロード "/>
+    </action>
+    <!-- 事業削除確認・修正ファイル一時削除 -->
+    <action path="/jigyoKanri/deleteFile" scope="session" name="jigyoKanriForm"
+            type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.DeleteFileAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="登録済みファイル削除 "/>
+      <forward name="success" path="/pages/jigyoKanri/edit.vm"
+               redirect="false"/>
+    </action>
+    <!-- 書類ファイルダウンロード -->
+    <action path="/jigyoKanri/shoruiDownloadFile" scope="session" name="shoruiKanriForm"
+            type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.DownloadShoruiFileAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="書類ファイルダウンロード "/>
+    </action>
+    <!-- 事業管理メニュー -->
+    <action path="/jigyoKanri/showMenu" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="事業管理メニュー "/>
+      <forward name="success" path="/pages/jigyoKanri/menu.vm"
+               redirect="false"/>
+    </action>
+
+    <!-- ### 審査員管理 ### -->
+    <!-- 審査員登録 -->
+    <action path="/shinsainKanri/addGakuso" scope="session" name="shinsainForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.AddAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="審査員登録"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinsainKanri/addGakuso.vm" redirect="false"/>
+    </action>
+    <!-- 審査員登録確認 -->
+    <action path="/shinsainKanri/addCheckGakuso" scope="session" name="shinsainForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.AddCheckAction" unknown="false"
+            validate="true" input="/pages/shinsainKanri/addGakuso.vm">
+      <set-property property="description" value="審査員登録確認"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinsainKanri/addCheckGakuso.vm" redirect="false"/>
+    </action>
+    <!-- 審査員登録通知書 -->
+    <action path="/shinsainKanri/addSaveGakuso" scope="session" name="shinsainForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.AddSaveAction" unknown="false"
+            validate="false" input="/pages/shinsainKanri/addCheckGakuso.vm">
+      <set-property property="description" value="審査員登録通知書"/>
+      <forward name="cancel" path="/pages/shinsainKanri/addGakuso.vm"
+               redirect="false"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinsainKanri/addSaveGakuso.vm" redirect="false"/>
+    </action>
+    <!-- 審査員削除 -->
+    <action path="/shinsainKanri/deleteGakuso" scope="session" name="shinsainForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.DeleteAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="審査員削除確認"/>
+      <forward name="success" path="/shinsainKanri/deleteCheckGakuso.do"
+               redirect="false"/>
+    </action>
+    <!-- 審査員削除確認 -->
+    <action path="/shinsainKanri/deleteCheckGakuso" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="審査員削除確認"/>
+      <forward name="success" path="/pages/shinsainKanri/deleteCheckGakuso.vm"
+               redirect="false"/>
+    </action>
+    <!-- 審査員削除完了 -->
+    <action path="/shinsainKanri/deleteSaveGakuso" scope="session" name="shinsainForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.DeleteSaveAction"
+            unknown="false" validate="false" input="/pages/shinsainKanri/deleteCheckGakuso.vm">
+      <set-property property="description" value="審査員削除完了"/>
+      <forward name="success" path="/pages/shinsainKanri/deleteSaveGakuso.vm"
+               redirect="false"/>
+    </action>
+    <!-- 基盤研究審査員削除 -->
+    <action path="/shinsainKanri/deleteKiban" scope="session" name="shinsainForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.DeleteAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="審査員削除確認"/>
+      <forward name="success" path="/shinsainKanri/deleteCheckKiban.do"
+               redirect="false"/>
+    </action>
+    <action path="/shinsainKanri/deleteCheckKiban" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="審査員削除確認"/>
+      <forward name="success" path="/pages/shinsainKanri/deleteCheckKiban.vm"
+               redirect="false"/>
+    </action>
+    <action path="/shinsainKanri/deleteSaveKiban" scope="session" name="shinsainForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.DeleteSaveAction"
+            unknown="false" validate="false" input="/pages/shinsainKanri/deleteCheckKiban.vm">
+      <set-property property="description" value="審査員削除完了"/>
+      <forward name="success" path="/pages/shinsainKanri/deleteSaveKiban.vm"
+               redirect="false"/>
+    </action>
+    <!-- 審査員修正 -->
+    <action path="/shinsainKanri/editGakuso" scope="session" name="shinsainForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.EditAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="審査員修正"/>
+      <forward name="success" path="/pages/shinsainKanri/editGakuso.vm"
+               redirect="false"/>
+    </action>
+    <action path="/shinsainKanri/editCheckGakuso" scope="session" name="shinsainForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.EditCheckAction"
+            unknown="false" validate="true" input="/pages/shinsainKanri/editGakuso.vm">
+      <set-property property="description" value="審査員修正確認"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinsainKanri/editCheckGakuso.vm" redirect="false"/>
+    </action>
+    <action path="/shinsainKanri/editSaveGakuso" scope="session" name="shinsainForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.EditSaveAction" unknown="false"
+            validate="false" input="/pages/shinsainKanri/editCheckGakuso.vm">
+      <set-property property="description" value="審査員修正完了"/>
+      <forward name="cancel" path="/pages/shinsainKanri/editGakuso.vm"
+               redirect="false"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinsainKanri/editSaveGakuso.vm" redirect="false"/>
+    </action>
+    <!-- 基盤研究審査員修正 -->
+    <action path="/shinsainKanri/editKiban" scope="session" name="shinsainForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.EditAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="審査員修正"/>
+      <forward name="success" path="/pages/shinsainKanri/editKiban.vm"
+               redirect="false"/>
+    </action>
+    <action path="/shinsainKanri/editCheckKiban" scope="session" name="shinsainForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.EditCheckAction"
+            unknown="false" validate="true" input="/pages/shinsainKanri/editKiban.vm">
+      <set-property property="description" value="審査員修正確認"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinsainKanri/editCheckKiban.vm" redirect="false"/>
+    </action>
+    <action path="/shinsainKanri/editSaveKiban" scope="session" name="shinsainForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.EditSaveAction" unknown="false"
+            validate="false" input="/pages/shinsainKanri/editCheckKiban.vm">
+      <set-property property="description" value="審査員修正完了"/>
+      <forward name="cancel" path="/pages/shinsainKanri/editKiban.vm"
+               redirect="false"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinsainKanri/editSaveKiban.vm" redirect="false"/>
+    </action>
+    <!-- 審査員検索 -->
+    <action path="/shinsainKanri/searchGakuso" scope="session" name="shinsainSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.SearchAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="審査員検索"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinsainKanri/searchGakuso.vm" redirect="false"/>
+    </action>
+    <action path="/shinsainKanri/searchListGakuso" scope="session" name="shinsainSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.SearchListAction"
+            unknown="false" validate="true" input="/pages/shinsainKanri/searchGakuso.vm">
+      <set-property property="description" value="審査員検索結果一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinsainKanri/searchListGakuso.vm" redirect="false"/>
+    </action>
+    <!-- 基盤研究審査員検索 -->
+    <action path="/shinsainKanri/searchKiban" scope="session" name="shinsainSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.SearchAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="審査員検索"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinsainKanri/searchKiban.vm" redirect="false"/>
+    </action>
+    <action path="/shinsainKanri/searchListKiban" scope="session" name="shinsainSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.SearchListAction"
+            unknown="false" validate="true" input="/pages/shinsainKanri/searchKiban.vm">
+      <set-property property="description" value="審査員検索結果一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinsainKanri/searchListKiban.vm" redirect="false"/>
+    </action>
+    <!-- CSV出力 -->
+    <action path="/shinsainKanri/csvOut" scope="session" name="shinsainSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.CsvOutAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="審査員CSV出力"/>
+    </action>
+    <!-- 事業選択 -->
+    <action path="/shinsainKanri/showMenu" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="事業選択"/>
+      <forward name="success" path="/pages/shinsainKanri/menu.vm"
+               redirect="false"/>
+    </action>
+    <!-- 学術創成研究費審査員管理メニュー -->
+    <action path="/shinsainKanri/menuGakuso" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="学術創成研究費審査員管理メニュー"/>
+      <forward name="success" path="/pages/shinsainKanri/menuGakuso.vm"
+               redirect="false"/>
+    </action>
+    <!-- 基盤研究審査員管理メニュー -->
+    <action path="/shinsainKanri/menuKiban" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="基盤研究審査員管理メニュー"/>
+      <forward name="success" path="/pages/shinsainKanri/menuKiban.vm"
+               redirect="false"/>
+    </action>
+    <!-- 審査員パスワード再設定 -->
+    <action path="/shinsainKanri/reconfigureGakuso" scope="session" name="shinsainForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.ReconfigurePasswordAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="パスワード再設定"/>
+      <forward name="success" path="/shinsainKanri/reconfigurePasswordCheckGakuso.do"
+               redirect="false"/>
+    </action>
+    <action path="/shinsainKanri/reconfigurePasswordCheckGakuso" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="パスワード再設定"/>
+      <forward name="success" path="/pages/shinsainKanri/reconfigurePasswordCheckGakuso.vm"
+               redirect="false"/>
+    </action>
+    <action path="/shinsainKanri/reconfigurePasswordSaveGakuso" scope="session" name="shinsainForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.ReconfigurePasswordSaveAction"
+            unknown="false" validate="false" input="/pages/shinsainKanri/reconfigurePasswordCheckGakuso.vm">
+      <set-property property="description" value="パスワード再設定通知書"/>
+      <forward name="success" path="/pages/shinsainKanri/reconfigurePasswordSaveGakuso.vm"
+               redirect="false"/>
+    </action>
+    <!-- 基盤研究審査員パスワード再設定 -->
+    <action path="/shinsainKanri/reconfigureKiban" scope="session" name="shinsainForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.ReconfigurePasswordAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="パスワード再設定"/>
+      <forward name="success" path="/shinsainKanri/reconfigurePasswordCheckKiban.do"
+               redirect="false"/>
+    </action>
+    <action path="/shinsainKanri/reconfigurePasswordCheckKiban" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="パスワード再設定"/>
+      <forward name="success" path="/pages/shinsainKanri/reconfigurePasswordCheckKiban.vm"
+               redirect="false"/>
+    </action>
+    <action path="/shinsainKanri/reconfigurePasswordSaveKiban" scope="session" name="shinsainForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.ReconfigurePasswordSaveAction"
+            unknown="false" validate="false" input="/pages/shinsainKanri/reconfigurePasswordCheckKiban.vm">
+      <set-property property="description" value="パスワード再設定通知書"/>
+      <forward name="success" path="/pages/shinsainKanri/reconfigurePasswordSaveKiban.vm"
+               redirect="false"/>
+    </action>
+    <!-- 審査依頼通知書出力（審査員管理用） -->
+    <action path="/shinsainKanri/createIraisho" scope="session" name="shinsainSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsainKanri.CreateIraishoAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="審査依頼通知書出力（審査員管理用）"/>
+    </action>
+
+    <!-- ### 審査員割り振り ### -->
+    <!-- 割り振り結果検索 -->
+    <action path="/warifuri/search" scope="session" name="warifuriSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.warifuri.SearchAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="割り振り結果検索"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/warifuri/search.vm" redirect="false"/>
+    </action>
+    <action path="/warifuri/searchList" scope="session" name="warifuriSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.warifuri.SearchListAction"
+            unknown="false" validate="true" input="/pages/warifuri/search.vm">
+      <set-property property="description" value="割り振り結果一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/warifuri/searchList.vm" redirect="false"/>
+      <forward contextRelative="false" name="cancel"
+               path="/pages/warifuri/search.vm" redirect="false"/>
+    </action>
+    <!-- 申請書PDFファイルダウンロードアクション -->
+    <action path="/warifuri/downloadPdf" scope="request" name="simpleShinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.DownloadPdfAction" unknown="false"
+            validate="false">
+      <set-property property="description" value=""/>
+    </action>
+    <!-- 審査員検索 -->
+    <action path="/warifuri/shinsainSearch" scope="session" name="warifuriShinsainSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.warifuri.ShinsainSearchAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="審査員情報検索"/>
+           <set-property property="errorClose" value="true"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/warifuri/shinsainSearch.vm" redirect="false"/>
+    </action>
+    <action path="/warifuri/shinsainSearchList" scope="session" name="warifuriShinsainSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.warifuri.ShinsainSearchListAction"
+            unknown="false" validate="true" input="/pages/warifuri/shinsainSearch.vm">
+      <set-property property="description" value="審査員一覧"/>
+           <set-property property="errorClose" value="true"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/warifuri/shinsainSearchList.vm" redirect="false"/>
+    </action>
+    <!-- 審査員連絡先 -->
+    <action path="/warifuri/shinsainInfo" scope="session" name="warifuriShinsainSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.warifuri.ShinsainInfoAction" unknown="false"
+            validate="false">
+      <set-property property="errorClose" value="true"/>
+      <set-property property="description" value="審査員連絡先"/>
+<!--      <forward name="cancel" path="/pages/warifuri/shinsainSearch.vm"
+               redirect="false"/>
+-->
+      <forward name="success" path="/pages/warifuri/shinsainInfo.vm"
+               redirect="false"/>
+    </action>
+    <!-- 審査員割り振り結果修正 -->
+    <action path="/warifuri/warifuriEdit" scope="session" name="warifuriForm"
+            type="jp.go.jsps.kaken.web.gyomu.warifuri.WarifuriEditAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="審査員割り振り結果修正"/>
+      <forward name="success" path="/pages/warifuri/warifuriEdit.vm"
+               redirect="false"/>
+    </action>
+    <action path="/warifuri/warifuriEditSave" scope="session" name="warifuriForm"
+            type="jp.go.jsps.kaken.web.gyomu.warifuri.WarifuriEditSaveAction"
+            unknown="false" validate="true" input="/pages/warifuri/warifuriEdit.vm">
+      <set-property property="description" value="割り振り結果一覧（修正後）"/>
+      <forward name="cancel" path="/pages/warifuri/searchList.vm"
+               redirect="false"/>
+      <forward contextRelative="false" name="success"
+               path="/warifuri/searchList.do" redirect="false"/>
+    </action>
+    <!-- 審査員割り振り結果削除 -->
+    <action path="/warifuri/warifuriDeleteSave" scope="session" name="warifuriForm"
+            type="jp.go.jsps.kaken.web.gyomu.warifuri.WarifuriDeleteSaveAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="審査員割り振り結果削除"/>
+      <forward name="cancel" path="/pages/warifuri/searchList.vm"
+               redirect="false"/>
+      <forward name="success" path="/warifuri/searchList.do"
+               redirect="false"/>
+    </action>
+    <!-- 審査依頼通知書出力 -->
+    <action path="/warifuri/csvOut" scope="session" name="warifuriSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.warifuri.CsvOutAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="審査依頼通知書出力"/>
+      <forward name="failure" path="/warifuri/searchList.do"
+               redirect="false"/>
+    </action>
+
+    <!-- ### 評価一覧出力 ### -->
+    <!-- 事業選択 -->
+    <action path="/hyoka/showMenu" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="事業選択"/>
+      <forward name="success" path="/pages/hyoka/menu.vm"
+               redirect="false"/>
+    </action>
+    <!-- 学術創成研究費評価一覧検索 -->
+    <action path="/hyoka/searchGakuso" scope="session" name="hyokaSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.hyoka.SearchAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="学術創成研究費一覧検索"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/hyoka/searchGakuso.vm" redirect="false"/>
+    </action>
+    <!-- 学術創成研究費評価検索処理 -->
+    <action path="/hyoka/searchListGakuso" scope="session" name="hyokaSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.hyoka.SearchListAction"
+            unknown="false" validate="true" input="/pages/hyoka/searchGakuso.vm">
+      <set-property property="description" value="評価検索結果一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/hyoka/searchListGakuso.vm" redirect="false"/>
+    </action>
+    <!-- 評価結果CSV出力 -->
+    <action path="/hyoka/hyokaKekkaOut" scope="session" name="hyokaSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.hyoka.HyokaKekkaOutAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="評価結果出力"/>
+    </action>
+
+    <!-- CSV出力 -->
+    <action path="/hyoka/csvFileOut" scope="session" name="hyokaSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.hyoka.CsvFileOutAction"
+            unknown="false" validate="false">
+      <set-property property="description" value=""/>
+      <set-property property="description" value=""/>
+    </action>
+    <!-- 基盤研究評価一覧検索 -->
+    <action path="/hyoka/searchKiban" scope="session" name="hyokaSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.hyoka.SearchAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="基盤研究評価一覧検索"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/hyoka/searchKiban.vm" redirect="false"/>
+    </action>
+    <!-- 検索処理振り分けアクション -->
+    <action path="/hyoka/dispatchApplication" scope="session" name="hyokaSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.hyoka.DispatchApplicationAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="検索処理振分"/>
+      <!-- 評価一覧 -->
+      <forward name="1" path="/hyoka/searchHyokaListKiban.do"
+               redirect="false"/>
+      <!-- コメント一覧 -->
+      <forward name="2" path="/hyoka/commentListKiban.do"
+               redirect="false"/>
+    </action>
+    <!-- 基盤研究評価検索処理 -->
+    <action path="/hyoka/searchHyokaListKiban" scope="session" name="hyokaSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.hyoka.SearchListAction"
+            unknown="false" validate="true" input="/pages/hyoka/searchKiban.vm">
+      <set-property property="description" value="評価検索結果一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/hyoka/searchHyokaListKiban.vm" redirect="false"/>
+    </action>
+    <!-- 基盤研究評価検索処理 -->
+    <action path="/hyoka/commentListKiban" scope="session" name="hyokaSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.hyoka.SearchListAction"
+            unknown="false" validate="true" input="/pages/hyoka/searchKiban.vm">
+      <set-property property="description" value="コメント一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/hyoka/commentListKiban.vm" redirect="false"/>
+    </action>
+
+
+    <!-- ### 公開確定 ### -->
+    <!-- 公開確定 -->
+    <action path="/kokaiKakutei/kokaiKakutei" scope="session" name="kokaiKakuteiSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.kokaiKakutei.SearchListAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="公開確定"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/kokaiKakutei/kokaiKakutei.vm" redirect="false"/>
+    </action>
+    <!-- 公開確定確認画面からキャンセルボタンで公開確定画面から戻る場合（parameter="back"を追加） -->
+    <action path="/kokaiKakutei/kokaiKakuteiBack" scope="session" name="kokaiKakuteiSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.kokaiKakutei.SearchListAction"
+            unknown="false" validate="false" parameter="back">
+      <set-property property="description" value="公開確定確認画面からキャンセルボタンで公開確定画面から戻る場合"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/kokaiKakutei/kokaiKakutei.vm" redirect="false"/>
+    </action>
+    <!-- 公開確定確認 -->
+    <action path="/kokaiKakutei/kokaiKakuteiCheck" scope="session" name="kokaiKakuteiSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.kokaiKakutei.KokaiKakuteiCheckAction"
+            unknown="false" validate="true" input="/kokaiKakutei/kokaiKakutei.do">
+      <set-property property="description" value="公開確定確認"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/kokaiKakutei/kokaiKakuteiCheck.vm" redirect="false"/>
+    </action>
+    <action path="/kokaiKakutei/kokaiKakuteiSave" scope="session" name="kokaiKakuteiForm"
+            type="jp.go.jsps.kaken.web.gyomu.kokaiKakutei.KokaiKakuteiSaveAction" unknown="false"
+            validate="true" input="/kokaiKakutei/kokaiKakuteiCheck.do">
+      <set-property property="description" value="公開確定完了"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/kokaiKakutei/kokaiKakuteiSave.vm" redirect="false"/>
+      <forward name="cancel" path="/kokaiKakutei/kokaiKakuteiBack.do"
+               redirect="false"/>
+    </action>
+
+
+    <!-- ### 関連分野の研究者リスト作成 ### -->
+    <!--関連分野の研究者検索-->
+    <action path="/kanren/search" scope="session" name="kanrenSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.kanren.SearchAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="関連分野の研究者検索"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/kanren/search.vm" redirect="false"/>
+    </action>
+
+    <action path="/kanren/searchList" scope="session" name="kanrenSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.kanren.SearchListAction"
+            unknown="false" validate="true" input="/pages/kanren/search.vm">
+      <set-property property="description" value="関連分野の研究者一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/kanren/searchList.vm" redirect="false"/>
+      <forward contextRelative="false" name="cancel"
+               path="/pages/kanren/search.vm" redirect="false"/>
+      <forward name="cancel" path="/pages/kanren/search.vm"
+               redirect="false"/>
+    </action>
+    <!-- CSV出力 -->
+    <action path="/kanren/csvOut" scope="session" name="kanrenSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.kanren.CsvOutAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="関連分野の研究者CSV出力"/>
+    </action>
+
+    <!-- =================== 2006/06/14 dyh add start ================== -->
+    <!-- ### 提出書類管理（特定領域（新規）） ### -->
+    <!-- 提出書類検索 2006/06/14 lwj add -->
+    <action path="/teishutsuShorui/search" scope="session" name="teishutsuShoruiSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.teishutsuShorui.SearchAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="提出書類検索"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/teishutsuShorui/search.vm" redirect="false"/>
+    </action>
+    <!-- 提出書類一覧 2006/06/14 lwj add -->
+    <action path="/teishutsuShorui/searchList" scope="session" name="teishutsuShoruiSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.teishutsuShorui.SearchListAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="提出書類一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/teishutsuShorui/searchList.vm" redirect="false"/>
+      <forward contextRelative="false" name="cancel"
+               path="/pages/teishutsuShorui/search.vm" redirect="false"/>
+      <forward contextRelative="false" name="failure"
+               path="/pages/teishutsuShorui/search.vm" redirect="false"/>
+    </action>
+    <!-- 研究計画調書一覧 -->
+    <action path="/teishutsuShorui/kenkyoKeikakuList" scope="session" name="teishutsuShoruiSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.teishutsuShorui.KenkyoKeikakuListAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="研究計画調書一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/juri/kenkyoKeikakuList.vm" redirect="false"/>
+      <forward name="failure" path="/teishutsuShorui/searchList.do" redirect="false"/>
+    </action>
+    <!-- 領域計画書確認ダウンロード -->
+    <action path="/gaiyoDownload" scope="session" name="ryoikiGaiyoForm"
+            type="jp.go.jsps.kaken.web.shinsei.DownloadRyoikiGaiyoPdfAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="領域計画書確認ダウンロード"/>
+    </action>
+    <!-- 飛び番号リスト -->
+    <action path="/teishutsuShorui/tobilistSinki" scope="session" name="juriGaiyoForm"
+            type="jp.go.jsps.kaken.web.gyomu.teishutsuShorui.TobiSinkiListAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="飛び番号リスト"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/teishutsuShorui/tobilistSinki.vm" redirect="false"/>
+      <forward contextRelative="false" name="failure"
+               path="/teishutsuShorui/searchList.do" redirect="false"/>
+    </action>
+    <!-- 受理登録 -->
+    <action path="/teishutsuShorui/juriAdd" scope="session" name="juriGaiyoForm"
+            type="jp.go.jsps.kaken.web.gyomu.teishutsuShorui.JuriAddAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="受理登録中"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/teishutsuShorui/juriAdd.vm" redirect="false"/>
+      <forward contextRelative="false" name="failure"
+               path="/pages/teishutsuShorui/juriAdd.vm" redirect="false"/>
+    </action>
+    <action path="/teishutsuShorui/juriAddSave" scope="session" name="juriGaiyoForm"
+            type="jp.go.jsps.kaken.web.gyomu.teishutsuShorui.JuriAddSaveAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="受理登録完了"/>
+      <forward contextRelative="false" name="success"
+               path="/teishutsuShorui/searchList.do" redirect="false"/>
+      <forward contextRelative="false" name="failure"
+               path="/pages/teishutsuShorui/juriAdd.vm" redirect="false"/>
+    </action>
+    <!-- 受理解除 -->
+    <action path="/teishutsuShorui/juriCancel" scope="session" name="juriGaiyoForm"
+            type="jp.go.jsps.kaken.web.gyomu.teishutsuShorui.JuriCancelAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="受理解除中"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/teishutsuShorui/juriCancel.vm" redirect="false"/>
+      <forward contextRelative="false" name="failure"
+               path="" redirect="false"/>
+    </action>
+    <action path="/teishutsuShorui/juriCancelSave" scope="session" name="juriGaiyoForm"
+            type="jp.go.jsps.kaken.web.gyomu.teishutsuShorui.JuriCancelSaveAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="受理解除完了"/>
+      <forward contextRelative="false" name="success"
+               path="/teishutsuShorui/searchList.do" redirect="false"/>
+      <forward contextRelative="false" name="failure"
+               path="" redirect="false"/>
+    </action>
+    <!-- 承認解除 -->
+    <action path="/teishutsuShorui/syoninCancel" scope="session" name="juriGaiyoForm"
+            type="jp.go.jsps.kaken.web.gyomu.teishutsuShorui.SyoninCancelAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="承認解除中"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/teishutsuShorui/syoninCancel.vm" redirect="false"/>
+      <forward contextRelative="false" name="failure"
+               path="/teishutsuShorui/searchList.do" redirect="false"/>
+    </action>
+    <action path="/teishutsuShorui/syoninCancelSave" scope="session" name="juriGaiyoForm"
+            type="jp.go.jsps.kaken.web.gyomu.teishutsuShorui.SyoninCancelSaveAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="承認解除完了"/>
+      <forward contextRelative="false" name="success"
+               path="/teishutsuShorui/searchList.do" redirect="false"/>
+      <forward contextRelative="false" name="failure"
+               path="/pages/teishutsuShorui/syoninCancel.vm" redirect="false"/>
+    </action>
+    <!-- 一括受理 -->
+    <action path="/teishutsuShorui/ikkatsuJuri" scope="session" name="juriGaiyoForm"
+            type="jp.go.jsps.kaken.web.gyomu.teishutsuShorui.IkkatsuJuriAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="一括受理中"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/teishutsuShorui/IkkatsuJuriAdd.vm" redirect="false"/>
+      <forward contextRelative="false" name="failure"
+               path="/teishutsuShorui/searchList.do" redirect="false"/>
+    </action>
+    <action path="/teishutsuShorui/ikkatsuJuriSave" scope="session" name="juriGaiyoForm"
+            type="jp.go.jsps.kaken.web.gyomu.teishutsuShorui.IkkatsuJuriSaveAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="一括受理完了"/>
+      <forward contextRelative="false" name="success"
+               path="/teishutsuShorui/searchList.do" redirect="false"/>
+      <forward contextRelative="false" name="failure"
+               path="/pages/teishutsuShorui/IkkatsuJuriAdd.vm" redirect="false"/>
+    </action>
+    <!-- ==================== 2006/06/14 dyh add end =================== -->
+
+    <!-- ### 受理登録 ### -->
+    <!-- 受理登録対象応募情報検索 -->
+    <action path="/juri/search" scope="session" name="juriSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.juri.SearchAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="受理登録対象応募情報検索"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/juri/search.vm" redirect="false"/>
+    </action>
+    <!-- 受理登録対象応募情報一覧 -->
+    <action path="/juri/searchList" scope="session" name="juriSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.juri.SearchListAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="受理登録対象応募情報一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/juri/searchList.vm" redirect="false"/>
+      <forward contextRelative="false" name="cancel"
+               path="/juri/search.do" redirect="false"/>
+      <forward contextRelative="false" name="failure"
+               path="/pages/juri/search.vm" redirect="false"/>
+    </action>
+    <!-- 一括受理（学創、特推、基盤）確認 -->
+    <!--20060605 LiWanjun formのname加入-->
+    <action path="/juri/ikkatsuJuri" scope="request" name="juriListForm"
+            type="jp.go.jsps.kaken.web.gyomu.juri.IkkatsuJuriAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="一括受理確認"/>
+      <forward contextRelative="false" name="success" 
+               path="/pages/juri/ikkatsuJuri.vm" redirect="false"/>
+      <forward contextRelative="false" name="cancel" path="/pages/juri/search.vm" redirect="false"/>
+      <!--20060606 LiWanjun 失敗時、自画面遷移 -->
+      <forward contextRelative="false" name="failure"
+               path="/juri/searchList.do" redirect="false"/>
+      <forward name="goBack" contextRelative="false"
+               path="/juri/searchList.do" redirect="false"/> 
+               
+    </action>
+    <!-- 一括受理（学創、特推、基盤） -->
+    <!--20060605 dyh formのname加入-->
+    <action path="/juri/ikkatsuJuriSave" scope="session" name="juriListForm"
+            type="jp.go.jsps.kaken.web.gyomu.juri.IkkatsuJuriSaveAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="一括受理"/>
+      <!-- 成功時、受理登録対象応募情報一覧画面へ遷移 -->
+      <forward contextRelative="false" name="success" path="/juri/searchList.do" redirect="false"/>
+      <!-- 失敗時、自画面遷移 -->
+      <forward contextRelative="false" name="failure" path="/pages/juri/ikkatsuJuri.vm" redirect="false"/>
+    </action>
+
+    <!-- 申請書ダウンロード -->
+    <!-- 20060202 重複定義の為、不要となる
+    <action name="simpleShinseiForm" path="/shinseiKanri/shinseiDownloadFile" scope="session"
+            type="jp.go.jsps.kaken.web.shinsei.DownloadPdfAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="申請書ダウンロード"/>
+    </action>
+    -->
+
+    <!-- 受理登録 -->
+    <action path="/juri/juriAdd" scope="session" name="juriAddForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.JuriAddAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="受理登録"/>
+      <forward contextRelative="false" name="success" path="/pages/juri/juriAdd.vm" redirect="false"/>
+    </action>
+    <!-- 受理登録完了 -->
+    <action path="/juri/juriAddSave" scope="session" name="juriAddForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.JuriAddSaveAction"
+            unknown="false" validate="true" input="/pages/juri/juriAdd.vm">
+      <set-property property="description" value="受理登録完了"/>
+      <forward contextRelative="false" name="success" path="/juri/searchList.do" redirect="false"/>
+      <!-- 失敗時の遷移先を追加 -->
+      <forward name="failure" path="/pages/juri/juriAdd.vm" redirect="false"/>
+    </action>
+
+    <!-- 推薦書登録 -->
+    <action path="/juri/suisenshoAdd" scope="session" name="suisenshoAddForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.SuisenshoAddAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="推薦書登録"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/juri/suisenshoAdd.vm" redirect="false"/>
+    </action>
+    <action path="/juri/suisenshoAddSave" scope="session" name="suisenshoAddForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.SuisenshoAddSaveAction"
+            unknown="false" validate="true" input="/pages/juri/suisenshoAdd.vm">
+      <set-property property="description" value="推薦書登録"/>
+      <forward contextRelative="false" name="success"
+               path="/juri/searchList.do" redirect="false"/>
+    </action>
+    <action path="/juri/suisenshoDeleteSave" scope="session" name="suisenshoAddForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.SuisenshoDeleteSaveAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="推薦書登録（削除）"/>
+      <forward contextRelative="false" name="success"
+               path="/juri/searchList.do" redirect="false"/>
+    </action>
+
+    <!-- ### 申請情報管理 ### -->
+    <!-- 申請情報検索 -->
+    <action path="/shinseiKanri/search" scope="session" name="shinseiSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.SearchAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="申請情報検索"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseiKanri/search.vm" redirect="false"/>
+    </action>
+    <action path="/shinseiKanri/searchList" scope="session" name="shinseiSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.SearchListAction"
+            unknown="false" validate="true" input="/pages/shinseiKanri/search.vm">
+      <set-property property="description" value="申請情報一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseiKanri/searchList.vm" redirect="false"/>
+      <forward contextRelative="false" name="cancel"
+               path="/pages/shinseiKanri/search.vm" redirect="false"/>
+    </action>
+    <!-- CSV出力振り分け -->
+    <action path="/shinseiKanri/csvDispatch" scope="request" name="shinseiSearchForm"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="CSV出力振り分け"/>
+      <forward name="success" path="/pages/shinseiKanri/csvDispatch.vm" redirect="false"/>
+    </action>
+    <!-- 申請情報CSV出力 -->
+    <action path="/shinseiKanri/csvOut" scope="session" name="shinseiSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.CsvOutAction"
+            unknown="false" validate="false"
+            input="/pages/shinseiKanri/csvDispatch.vm">
+      <set-property property="description" value="申請情報CSV出力"/>
+    </action>
+    <!-- 研究組織CSV出力 -->
+    <action path="/shinseiKanri/kenkyuSoshikiCsvOut" scope="session" name="shinseiSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.KenkyuSoshikiCsvOutAction"
+            unknown="false" validate="false"
+            input="/pages/shinseiKanri/csvDispatch.vm">
+      <set-property property="description" value="研究組織CSV出力"/>
+    </action>
+    <!-- 申請書ダウンロード -->
+    <action path="/shinseiKanri/shinseiDownloadFile" scope="session" name="simpleShinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.DownloadPdfAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="申請書ダウンロード"/>
+    </action>
+    <!-- 推薦書ダウンロード -->
+    <action path="/shinseiKanri/suisenDownloadFile" scope="session" name="simpleShinseiForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.DownloadSuisenAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="推薦書ダウンロード"/>
+    </action>
+    <!-- 受理登録 -->
+    <action path="/shinseiKanri/juriAdd" scope="session" name="juriAddForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.JuriAddAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="受理登録"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseiKanri/juriAdd.vm" redirect="false"/>
+    </action>
+    <action path="/shinseiKanri/juriAddSave" scope="session" name="juriAddForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.JuriAddSaveAction"
+            unknown="false" validate="true" input="/pages/shinseiKanri/juriAdd.vm">
+      <set-property property="description" value="受理登録完了"/>
+      <forward contextRelative="false" name="success"
+               path="/shinseiKanri/searchList.do" redirect="false"/>
+      <forward name="failure" path="/pages/shinseiKanri/juriAdd.vm" redirect="false"/>
+    </action>
+    <!-- 1次審査結果参照 -->
+    <action path="/shinseiKanri/shinsaKekka1stRefer" scope="session" name="shinsaKekka1stForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.ShinsaKekka1stReferAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="1次審査結果参照"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseiKanri/shinsaKekka1stRefer.vm" redirect="false"/>
+    </action> 
+    <action path="/shinseiKanri/shinsaKekka1stReferSave" scope="session" name="shinsaKekka1stForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.ShinsaKekka1stReferSaveAction"
+            unknown="false" validate="true" input="/pages/shinseiKanri/shinsaKekka1stRefer.vm">
+      <set-property property="description" value="1次審査結果参照完了"/>
+      <forward contextRelative="false" name="success"
+               path="/shinseiKanri/searchList.do" redirect="false"/>
+    </action>
+    <!-- 2次審査結果登録 -->
+    <action path="/shinseiKanri/shinsaKekka2ndAdd" scope="session" name="shinsaKekka2ndForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.ShinsaKekka2ndAddAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="2次審査結果登録"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseiKanri/shinsaKekka2ndAdd.vm" redirect="false"/>
+    </action> 
+    <action path="/shinseiKanri/shinsaKekka2ndAddSave" scope="session" name="shinsaKekka2ndForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.ShinsaKekka2ndAddSaveAction"
+            unknown="false" validate="true" input="/pages/shinseiKanri/shinsaKekka2ndAdd.vm">
+      <set-property property="description" value="2次審査結果登録完了"/>
+      <forward contextRelative="false" name="success"
+               path="/shinseiKanri/searchList.do" redirect="false"/>
+    </action>
+  <!-- 2004/11/11対応 -->
+    <!-- 審査結果表示画面振り分けアクション -->
+    <action path="/shinseiKanri/dispatchKekkaReference" scope="session" name="shinsaKekkaReferForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.DispatchJigyoKubunAction" unknown="false"
+            validate="false">
+      <!-- 学創 -->
+      <forward name="1" path="/pages/shinseiKanri/shinsaKekkaRefer.vm"
+               redirect="false"/>
+      <!-- 基盤 -->
+      <forward name="4" path="/pages/shinseiKanri/shinsaKekkaReferKiban.vm"
+               redirect="false"/>
+      <!-- 若手 -->
+      <forward name="6" path="/pages/shinseiKanri/shinsaKekkaReferWakate.vm"
+               redirect="false"/>
+      <!-- 特別研究促進費 -->
+      <forward name="7" path="/pages/shinseiKanri/shinsaKekkaReferKiban.vm"
+               redirect="false"/>
+      <set-property property="description" value="審査結果参照画面振り分けアクション"/>
+    </action>
+    <!-- 審査結果参照 -->
+    <action path="/shinseiKanri/shinsaKekkaRefer" scope="session" name="shinsaKekkaReferForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.ShinsaKekkaReferAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="審査結果参照"/>
+      <forward contextRelative="false" name="success"
+               path="/shinseiKanri/dispatchKekkaReference.do" redirect="false"/>
+    </action>
+    <!-- 添付ファイル・登録済み -->
+    <action path="/shinseiKanri/regTenpuFileDownload" scope="session" name="shinsaKekkaForm"
+            type="jp.go.jsps.kaken.web.shinsa.shinsaJigyo.DownloadRegHyokaFileAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="添付ファイル・登録済みファイルダウンロード"/>
+    </action>
+    <!-- 推薦書登録 -->
+    <action path="/shinseiKanri/suisenshoAdd" scope="session" name="suisenshoAddForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.SuisenshoAddAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="推薦書登録"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseiKanri/suisenshoAdd.vm" redirect="false"/>
+    </action>
+    <action path="/shinseiKanri/suisenshoAddSave" scope="session" name="suisenshoAddForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.SuisenshoAddSaveAction"
+            unknown="false" validate="true" input="/pages/shinseiKanri/suisenshoAdd.vm">
+      <set-property property="description" value="推薦書登録"/>
+      <forward contextRelative="false" name="success"
+               path="/shinseiKanri/searchList.do" redirect="false"/>
+    </action> 
+    <action path="/shinseiKanri/suisenshoDeleteSave" scope="session" name="suisenshoAddForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.SuisenshoDeleteSaveAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="推薦書登録（削除）"/>
+      <forward contextRelative="false" name="success"
+               path="/shinseiKanri/searchList.do" redirect="false"/>
+    </action>
+
+    <!-- ### 審査状況確認 ### -->
+    <!--  審査状況検索 -->
+    <action path="/shinsaJokyo/search" scope="session" name="shinsaJokyoSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsaJokyo.SearchAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="審査状況検索"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinsaJokyo/search.vm" redirect="false"/>
+    </action>
+
+    <!-- 検索処理振り分けアクション -->
+    <action path="/shinsaJokyo/dispatchApplication" scope="session" name="shinsaJokyoSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsaJokyo.DispatchApplicationAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="検索処理振分"/>
+      <!-- 審査状況一覧 -->
+      <forward name="1" path="/shinsaJokyo/searchList.do"
+               redirect="false"/>
+      <!-- 審査件数一覧 -->
+      <forward name="2" path="/shinsaJokyo/searchListKensu.do"
+               redirect="false"/>
+    </action>
+    <!--審査状況検索処理 -->
+    <action path="/shinsaJokyo/searchList" scope="session" name="shinsaJokyoSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsaJokyo.SearchListAction"
+            unknown="false" validate="true" input="/pages/shinsaJokyo/search.vm">
+      <set-property property="description" value="審査状況一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinsaJokyo/searchList.vm" redirect="false"/>
+      <forward contextRelative="false" name="cancel"
+               path="/pages/shinsaJokyo/search.vm" redirect="false"/>
+    </action>
+    <!-- 審査件数検索処理 -->
+    <action path="/shinsaJokyo/searchListKensu" scope="session" name="shinsaJokyoSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsaJokyo.SearchListAction"
+            unknown="false" validate="true" input="/pages/shinsaJokyo/search.vm">
+      <set-property property="description" value="審査件数一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinsaJokyo/searchListKensu.vm" redirect="false"/>
+    </action>
+    <!-- 1次審査結果参照 -->
+    <action path="/shinsaJokyo/shinsaKekka1stRefer" scope="session" name="shinsaKekka1stForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.ShinsaKekka1stReferAction"
+            unknown="false" validate="false">
+      <set-property property="errorClose" value="true"/>
+      <set-property property="description" value="1次審査結果参照"/>
+      <forward name="success"
+               path="/pages/shinsaJokyo/shinsaKekka1stRefer.vm" redirect="false"/>
+    </action>
+    <!-- CSV出力 -->
+    <action path="/shinsaJokyo/csvOut" scope="session" name="shinsaJokyoSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsaJokyo.CsvOutAction"
+            unknown="false" validate="false">
+      <set-property property="description" value=""/>
+    </action>
+    <!-- 再審査設定 -->
+    <action path="/shinsaJokyo/saishinsa" scope="session" name="shinsaJokyoForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsaJokyo.SaishinsaAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="再審査設定確認"/>
+      <forward name="success" path="/shinsaJokyo/saishinsaCheck.do"
+               redirect="false"/>
+    </action>
+    <action path="/shinsaJokyo/saishinsaCheck" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <set-property property="description" value=""/>
+      <forward name="success" path="/pages/shinsaJokyo/saishinsaCheck.vm"
+               redirect="false"/>
+    </action>
+    <action path="/shinsaJokyo/saishinsaSave" scope="session" name="shinsaJokyoForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsaJokyo.SaishinsaSaveAction"
+            unknown="false" validate="false" input="/pages/shinsaJokyo/saishinsaCheck.vm">
+      <set-property property="description" value="再審査設定完了"/>
+      <forward name="success" path="/pages/shinsaJokyo/saishinsaSave.vm"
+               redirect="false"/>
+    </action>
+    <!-- 審査結果クリア -->
+    <action path="/shinsaJokyo/clearShinsaKekka" scope="session" name="shinsaJokyoForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsaJokyo.ClearShinsaKekkaAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="審査結果クリア確認"/>
+      <forward name="success" path="/pages/shinsaJokyo/clearShinsaKekkaCheck.vm"
+               redirect="false"/>
+    </action>
+    <action path="/shinsaJokyo/clearShinsaKekkaSave" scope="session" name="shinsaJokyoForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsaJokyo.ClearShinsaKekkaSaveAction"
+            unknown="false" validate="false" input="/pages/shinsaJokyo/clearShinsaKekkaCheck.vm">
+      <set-property property="description" value="審査結果クリア実行"/>
+      <forward name="success" path="/pages/shinsaJokyo/clearShinsaKekkaSave.vm"
+               redirect="false"/>
+    </action>
+    <!--  利害関係再入力確認 -->
+    <action path="/shinsaJokyo/clearRiekiSouhanJyokyo" scope="session" name="shinsaJokyoForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsaJokyo.ClearRiekiSouhanJyokyoAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="利害関係再入力確認"/>
+      <forward name="success" path="/pages/shinsaJokyo/clearRiekiSouhanJyokyoCheck.vm"
+               redirect="false"/>
+    </action>
+    <!--  利害関係再入力完了 -->
+    <action path="/shinsaJokyo/clearRiekiSouhanJyokyoSave" scope="session" name="shinsaJokyoForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinsaJokyo.ClearRiekiSouhanJyokyoSaveAction" unknown="false"
+            validate="false"
+            input="/pages/shinsaJokyo/clearRiekiSouhanJyokyoCheck.vm">
+      <set-property property="description" value="利害関係再入力完了"/>
+      <forward name="success" path="/pages/shinsaJokyo/clearRiekiSouhanJyokyoSave.vm"
+               redirect="false"/>
+    </action>
+
+    <!-- ### データ保管 ### -->
+    <!-- データ保管メニュー -->
+    <action path="/dataHokan/showMenu" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="データ保管メニュー"/>
+      <forward name="success" path="/pages/dataHokan/menu.vm"
+               redirect="false"/>
+    </action>
+    <!-- データ保管画面生成アクション -->
+    <action path="/dataHokan/dataHokan" scope="session" name="dataHokanForm"
+            type="jp.go.jsps.kaken.web.gyomu.datahokan.DataHokanAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="データ保管画面生成アクション"/>
+      <forward name="success" path="/pages/dataHokan/datahokan.vm"
+               redirect="false"/>
+    </action>
+    <!-- 処理中画面転送アクション -->
+    <action path="/dataHokan/dataHokanQuery" scope="session" name="dataHokanForm"
+            type="jp.go.jsps.kaken.web.gyomu.datahokan.DataHokanQueryAction" unknown="false"
+            validate="true" input="/pages/dataHokan/datahokan.vm">
+      <set-property property="description" value="処理中画面転送アクション"/>
+      <forward name="success" path="/pages/dataHokan/datahokanInvoke.vm"
+               redirect="false"/>
+    </action>
+    <!-- データ保管処理起動アクション -->
+    <action path="/dataHokan/dataHokanInvoke" scope="session" name="dataHokanForm"
+            type="jp.go.jsps.kaken.web.gyomu.datahokan.DataHokanInvokeAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="データ保管処理起動アクション"/>
+      <forward name="success" path="/pages/dataHokan/datahokanOk.vm" redirect="false"/>
+      <forward name="failure" path="/pages/dataHokan/datahokan.vm" redirect="false"/>
+    </action>
+    <!-- 検索画面生成アクション -->
+    <action path="/dataHokan/search" scope="session" name="dataHokanForm"
+            type="jp.go.jsps.kaken.web.gyomu.datahokan.SearchAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="検索画面生成アクション"/>
+      <forward name="success" path="/pages/dataHokan/search.vm"
+               redirect="false"/>
+    </action>
+    <!-- 検索アクション -->
+    <action path="/dataHokan/searchList" scope="session" name="dataHokanForm"
+            type="jp.go.jsps.kaken.web.gyomu.datahokan.SearchListAction" unknown="false"
+            validate="true" input="/pages/dataHokan/search.vm">
+      <set-property property="description" value="検索アクション"/>
+      <forward name="success" path="/pages/dataHokan/searchList.vm"
+               redirect="false"/>
+    </action>
+    <!-- 推薦書ダウンロード -->
+    <action path="/dataHokan/suisenDownloadFile" scope="session" name="simpleShinseiForm"
+            type="jp.go.jsps.kaken.web.gyomu.datahokan.DownloadSuisenAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="推薦書ダウンロードアクション"/>
+    </action>
+    <!-- PDFダウンロードアクション -->
+    <action path="/dataHokan/downloadPdf" scope="request" name="simpleShinseiForm"
+            type="jp.go.jsps.kaken.web.gyomu.datahokan.DownloadPdfAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="PDFダウンロードアクション"/>
+    </action>
+    <!-- CSV出力振り分け -->
+    <action path="/dataHokan/csvDispatch" scope="request" name="dataHokanForm"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="CSV出力振り分け"/>
+      <forward name="success" path="/pages/dataHokan/csvDispatch.vm" redirect="false"/>
+    </action>
+    <!-- 申請情報CSV出力 -->
+    <action path="/dataHokan/csvOut" scope="session" name="dataHokanForm"
+            type="jp.go.jsps.kaken.web.gyomu.datahokan.CsvOutAction"
+            unknown="false" validate="false"
+            input="/pages/dataHokan/csvDispatch.vm">
+      <set-property property="description" value="申請情報CSV出力"/>
+    </action>
+    <!-- 研究組織CSV出力 -->
+    <action path="/dataHokan/kenkyuSoshikiCsvOut" scope="session" name="dataHokanForm"
+            type="jp.go.jsps.kaken.web.gyomu.datahokan.KenkyuSoshikiCsvOutAction"
+            unknown="false" validate="false"
+            input="/pages/dataHokan/csvDispatch.vm">
+      <set-property property="description" value="研究組織CSV出力"/>
+    </action>
+    <!-- 審査結果参照アクション -->
+    <action path="/dataHokan/shinsaKekkaRefer" scope="session" name="simpleShinseiForm"
+            type="jp.go.jsps.kaken.web.gyomu.datahokan.ShinsaKekkaReferAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="審査結果参照アクション"/>
+      <forward name="success" path="/pages/dataHokan/shinsaKekkaRefer.vm"
+               redirect="false"/>
+    </action>
+    <!-- 審査結果評価ファイルダウンロードアクション -->
+    <action path="/dataHokan/regTenpuFileDownload" scope="session" name="shinsaKekkaForm"
+            type="jp.go.jsps.kaken.web.gyomu.datahokan.DownloadRegHyokaFileAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="審査結果評価ファイルダウンロードアクション"/>
+    </action>
+    <!-- 審査結果（詳細）参照アクション -->
+    <action path="/dataHokan/shinsaKekkaReferDetail" scope="session" name="shinsaKekkaReferForm" 
+            type="jp.go.jsps.kaken.web.gyomu.datahokan.ShinsaKekkaReferDetailAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="審査結果参照（詳細）アクション"/>
+<!--
+      <forward contextRelative="false" name="success"
+               path="/pages/dataHokan/shinsaKekkaReferDetail.vm" redirect="false"/>
+-->
+      <forward contextRelative="false" name="success"
+               path="/dataHokan/dispatchKekkaReference.do" redirect="false"/>
+    </action>
+    <!-- 審査結果表示画面振り分けアクション -->
+    <action path="/dataHokan/dispatchKekkaReference" scope="session" name="shinsaKekkaReferForm"
+            type="jp.go.jsps.kaken.web.gyomu.datahokan.DispatchJigyoKubunAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="審査結果参照画面振り分けアクション"/>
+      <!-- 学創 -->
+      <forward name="1" path="/pages/dataHokan/shinsaKekkaReferDetail.vm"
+               redirect="false"/>
+      <!-- 基盤 -->
+      <forward name="4" path="/pages/dataHokan/shinsaKekkaReferDetailKiban.vm"
+               redirect="false"/>
+      <!-- 若手 -->
+      <forward name="6" path="/pages/dataHokan/shinsaKekkaReferDetailWakate.vm"
+               redirect="false"/>
+      <!-- 特別研究促進費 -->
+      <forward name="7" path="/pages/dataHokan/shinsaKekkaReferDetailKiban.vm"
+               redirect="false"/>
+    </action>
+
+
+    <!-- ### 業務担当者向けメニュー ### -->
+    <action path="/showMainMenu" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="業務担当者向けメニュー"/>
+      <forward name="success" path="/pages/menu/mainMenu.vm" redirect="false"/>
+    </action>
+
+    <!-- ### 審査催促メール送信アクション ### -->
+    <action path="/shinsaSaisoku" scope="request"
+            type="jp.go.jsps.kaken.web.gyomu.ShinsaSaisokuAction"
+            unknown="false" validate="false">
+      <set-property property="logonCheck" value="false"/> 
+      <set-property property="description" value="審査催促メール送信アクション"/>
+    </action>
+
+    <!-- ### 承認確認メール自動通知送信アクション ### -->
+    <action path="/shoninTsuchi" scope="request"
+            type="jp.go.jsps.kaken.web.gyomu.ShoninTsuchiAction"
+            unknown="false" validate="false">
+      <set-property property="logonCheck" value="false"/> 
+      <set-property property="description" value="承認確認メール自動通知送信アクション"/>
+    </action>
+
+    <!-- ### 確認メール自動通知送信アクション ### -->
+    <action path="/kakuninTokusoku" scope="request"
+            type="jp.go.jsps.kaken.web.gyomu.KakuninTokusokuAction"
+            unknown="false" validate="false">
+      <set-property property="logonCheck" value="false"/> 
+      <set-property property="description" value="確認メール自動通知送信アクション"/>
+    </action>
+    
+    <!-- ### 承認メール自動通知送信アクション ### -->
+    <action path="/shoninTokusoku" scope="request"
+            type="jp.go.jsps.kaken.web.gyomu.ShoninTokusokuAction"
+            unknown="false" validate="false">
+      <set-property property="logonCheck" value="false"/> 
+      <set-property property="description" value="承認メール自動通知送信アクション"/>
+    </action>
+    
+    <!-- ### パンチデータ出力 ### -->
+    <!-- パンチデータ出力画面生成アクション -->
+    <action path="/punchData/punchDataList" scope="session" name="punchDataForm"
+            type="jp.go.jsps.kaken.web.gyomu.punchData.PunchDataAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="パンチデータ出力"/>
+      <forward name="success" path="/pages/punchData/punchDataList.vm" redirect="false"/>
+    </action>
+
+    <!--パンチデータ出力-->
+    <action path="/punchData/punchDataOut" scope="session" name="punchDataForm"
+            type="jp.go.jsps.kaken.web.gyomu.punchData.PunchDataOutAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="パンチデータ出力"/>
+    </action>
+
+    <!-- 処理中画面転送アクション -->
+    <action path="/punchData/punchInvoke" scope="session" name="punchDataForm"
+            type="jp.go.jsps.kaken.web.gyomu.punchData.PunchDataInvokeAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="パンチデータ作成処理中"/>
+      <forward name="success" path="/pages/punchData/punchInvoke.vm" redirect="false"/>
+      <forward name="cancel" path="/pages/punchData/punchDataList.vm" redirect="false"/>
+    </action>
+    <!-- パンチデータ作成完了アクション -->
+    <action path="/punchData/createPunch" scope="session" name="punchDataForm"
+            type="jp.go.jsps.kaken.web.gyomu.punchData.CreatePunchAction"
+            unknown="false" validate="true" input="/pages/punchData/punchDataList.vm">
+      <set-property property="description" value="パンチデータ作成完了"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/punchData/punchDataCompleted.vm" redirect="false"/>
+    </action>
+
+    <!-- 所属機関コード表 -->
+    <action path="/kikanList" scope="session"
+            type="jp.go.jsps.kaken.web.code.kikan.SearchListAction"
+            unknown="false" validate="false" >
+      <set-property property="logonCheck" value="false"/>
+      <set-property property="errorClose" value="true"/>
+      <set-property property="description" value="所属機関番号一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/code/pages/kikan/codeList.vm" redirect="false"/>
+    </action>
+
+    <!-- ### チェックリスト ### -->
+    <!-- チェックリスト検索 -->
+    <action path="/checkList/search" scope="session" name="checkListSearchForm" 
+            type="jp.go.jsps.kaken.web.gyomu.checkList.SearchAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="チェックリスト検索"/>
+      <forward name="success" path="/pages/checkList/search.vm" redirect="false"/>
+    </action>
+
+    <!-- チェックリスト一覧 -->
+    <action path="/checkList/searchList" scope="session" name="checkListSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.SearchCheckListAction"
+            unknown="false" validate="true" input="/pages/checkList/search.vm">
+      <set-property property="description" value="チェックリスト一覧"/>
+      <forward name="success" path="/pages/checkList/searchList.vm" redirect="false"/>
+      <forward contextRelative="false" name="cancel"
+               path="/pages/checkList/search.vm" redirect="false"/>
+    </action>
+
+    <!-- チェックリスト -->
+    <action path="/checkList/checkList" scope="session" name="checkListForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.CheckListAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="チェックリスト"/>
+      <forward name="success" path="/pages/checkList/checkList.vm" redirect="false"/>
+    </action>
+
+    <!-- チェックリスト確定解除確認 -->
+    <action path="/checkList/checkCancelCheck" scope="session" name="checkListForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.CheckCancelCheckAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="チェックリスト確定解除確認"/>
+      <forward name="success" path="/pages/checkList/checkCancel.vm" redirect="false"/>
+    </action>
+
+    <!-- チェックリスト確定解除 -->
+    <action path="/checkList/checkCancel" scope="session" name="checkListForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.CheckCancelAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="チェックリスト確定解除"/>
+      <forward name="success" path="/checkList/searchList.do" redirect="true"/>
+      <forward name="failure" path="/checkList/checkList.do" redirect="false"/>
+    </action>
+
+    <!-- 表紙ダウンロード -->
+    <action path="/checkList/coverDownload" scope="session" name="checkListForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.DownloadCoverAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="表紙ダウンロード"/>
+      <forward name="failure" path="/pages/common/downloadError.vm" redirect="false"/>
+    </action>
+    <!-- CSV出力 -->
+    <action path="/checkList/csvOut" scope="session" name="CheckListSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.CsvOutAction"
+            unknown="false" validate="false">
+      <set-property property="description" value=""/>
+    </action>
+    <!-- CSV一覧出力 -->
+    <action path="/checkList/csvOutIchiran" scope="session" name="CheckListSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.CsvOutIchiranAction"
+            unknown="false" validate="false">
+      <set-property property="description" value=""/>
+    </action>
+    <!-- 飛び番号リスト -->
+    <action path="/checkList/tobiList" scope="session" name="checkListForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.TobiListAction"
+            unknown="false" validate="false"
+            input="/pages/checkList/tobiList.vm">
+      <set-property property="description" value="飛び番号リスト"/>
+      <forward name="success" path="/pages/checkList/tobiList.vm"
+               redirect="false"/>
+    </action>
+    <!-- 申請書PDFファイルダウンロードアクション -->
+    <action path="/downloadPdf" scope="request" name="simpleShinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.DownloadPdfAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="申請書PDFファイルダウンロード"/>
+    </action>
+    <!-- 受理登録 -->
+    <action path="/checkList/juriAdd" scope="session" name="juriAddForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.JuriAddAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="受理登録"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/juri/juriAdd.vm" redirect="false"/>
+    </action>
+    <!-- 受理登録完了 -->
+    <action path="/checkList/juriAddSave" scope="session" name="juriAddForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.JuriAddSaveAction"
+            unknown="false" validate="true" input="/pages/juri/juriAdd.vm">
+      <set-property property="description" value="受理登録完了"/>
+      <forward contextRelative="false" name="success"
+               path="/checkList/searchList.do" redirect="false"/>
+      <forward name="failure" path="/pages/juri/juriAdd.vm" redirect="false"/>
+    </action>
+    <!-- 一括受理確認 -->
+    <action path="/checkList/ikkatsuJuri" scope="session" name="checkListForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.IkkatsuJuriAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="一括受理確認"/>
+      <forward name="success" path="/pages/checkList/ikkatsuJuri.vm" redirect="false"/>
+      <forward name="failure" path="/checkList/searchList.do" redirect="false"/>
+    </action>
+    <!-- 一括受理中 -->
+    <action path="/checkList/ikkatsuJuriSave" scope="session" name="checkListForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.IkkatsuJuriCheckAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="一括受理中"/>
+      <forward name="success" path="/pages/checkList/ikkatsuApplication.vm" redirect="false"/>
+    </action>
+    <!-- 一括受理 -->
+    <action path="/checkList/ikkatsuJuriSaveEnd" scope="session" name="checkListForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.IkkatsuJuriSaveAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="一括受理"/>
+      <forward name="success" path="/checkList/searchList.do" redirect="false"/>
+      <!-- 一括受理失敗時の画面遷移を追加 ※失敗時の画面遷移が変更された場合に対応するため -->
+      <forward name="failure" path="/checkList/searchList.do" redirect="false"/>
+    </action>
+    <!-- 受理確認 -->
+    <action path="/checkList/juri" scope="session" name="checkListForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.JuriAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="受理確認"/>
+      <forward name="success" path="/pages/checkList/juri.vm" redirect="false"/>
+    </action>
+    <!-- 受理登録 -->
+    <action path="/checkList/juriSave" scope="session" name="juriCheckListForm" 
+            type="jp.go.jsps.kaken.web.gyomu.checkList.JuriSaveAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="受理登録"/>
+      <forward name="success" path="/checkList/searchList.do" redirect="false"/>
+    <forward name="failure" path="/checkList/searchList.do" redirect="false"/>
+    </action>
+    <!-- 受理確認 -->
+    <action path="/checkList/juriCancel" scope="session" name="checkListForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.JuriCancelAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="受理解除確認"/>
+      <forward name="success" path="/pages/checkList/juriCancel.vm" redirect="false"/>
+    </action>
+    <!-- 受理解除 -->
+    <action path="/checkList/juriCancelSave" scope="session" name="checkListForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.JuriCancelSaveAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="受理解除"/>
+      <forward name="success" path="/checkList/searchList.do" redirect="false"/>
+    </action>
+
+
+<!-- 20050606 Start 特定領域 -->
+    <!-- チェックリスト検索 -->
+    <action path="/checkList/searchTokutei" scope="session" name="checkListSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.SearchTokuteiAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="チェックリスト検索（特定領域）"/>
+      <forward name="success" path="/pages/checkList/searchTokutei.vm" redirect="false"/>
+    </action>
+    <!-- チェックリスト一覧 -->
+    <action path="/checkList/searchListTokutei" scope="session" name="checkListSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.SearchCheckListTokuteiAction" unknown="false"
+            input="/pages/checkList/searchTokutei.vm" validate="true">
+      <set-property property="description" value="チェックリスト一覧（特定領域）"/>
+      <forward name="success" path="/pages/checkList/searchListTokutei.vm" redirect="false"/>
+      <forward contextRelative="false" name="cancel"
+               path="/pages/checkList/searchTokutei.vm" redirect="false"/>
+    </action>
+    <!-- チェックリスト -->
+    <action path="/checkList/checkListTokutei" scope="session" name="checkListForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.CheckListTokuteiAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="チェックリスト（特定領域）"/>
+      <forward name="success" path="/pages/checkList/checkListTokutei.vm" redirect="false"/>
+    </action>
+    <!-- 飛び番号リスト -->
+    <action path="/checkList/tobiListTokutei" scope="session" name="checkListForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.TobiListTokuteiAction" unknown="false"
+            input="/pages/checkList/tobiListTokutei.vm" validate="false">
+      <set-property property="description" value="飛び番号リスト（特定領域）"/>
+      <forward name="success" path="/pages/checkList/tobiListTokutei.vm"
+               redirect="false"/>
+    </action>
+    <!-- 受理確認 -->
+    <action path="/checkList/juriTokutei" scope="session" name="checkListForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.JuriTokuteiAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="受理確認（特定領域）"/>
+      <forward name="success" path="/pages/checkList/juriTokutei.vm" redirect="false"/>
+    </action>
+    <!-- 受理登録 -->
+    <action path="/checkList/juriSaveTokutei"
+            scope="session"
+            name="juriCheckListForm" 
+            type="jp.go.jsps.kaken.web.gyomu.checkList.JuriSaveTokuteiAction"
+            unknown="false"
+            input="/pages/checkList/juriTokutei.vm"
+            validate="true">
+      <set-property property="description" value="受理登録（特定領域）"/>
+      <forward name="success" path="/checkList/searchListTokutei.do" redirect="false"/>
+      <forward name="failure" path="/checkList/searchListTokutei.do" redirect="false"/>
+    </action>
+    <!-- 受理解除 -->
+    <action path="/checkList/juriCancelTokutei" scope="session" name="checkListForm" 
+            type="jp.go.jsps.kaken.web.gyomu.checkList.JuriCancelTokuteiAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="受理解除確認（特定領域）"/>
+      <forward name="success" path="/pages/checkList/juriCancelTokutei.vm" redirect="false"/>
+    </action>
+    <!-- 受理解除 -->
+    <action path="/checkList/juriCancelSaveTokutei" scope="session" name="checkListForm" 
+            type="jp.go.jsps.kaken.web.gyomu.checkList.JuriCancelSaveTokuteiAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="受理解除（特定領域）"/>
+      <forward name="success" path="/checkList/searchListTokutei.do" redirect="false"/>
+    </action>
+
+    <!-- チェックリスト確定解除 -->
+    <action path="/checkList/checkCancelTokutei" scope="session" name="checkListForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.CheckCancelTokuteiAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="チェックリスト確定解除（特定領域）"/>
+      <forward name="success" path="/checkList/searchListTokutei.do" redirect="true"/>
+      <forward name="failure" path="/checkList/checkListTokutei.do" redirect="false"/>
+    </action>
+    <!-- チェックリスト確定解除確認 -->
+    <action path="/checkList/checkCancelCheckTokutei" scope="session" name="checkListForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.CheckCancelCheckTokuteiAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="チェックリスト確定解除確認（特定領域）"/>
+      <forward name="success" path="/pages/checkList/checkCancelTokutei.vm" redirect="false"/>
+    </action>
+
+    <!-- 受理登録(検索からの受理登録) 
+    <action name="juriAddForm" path="/shinseiKanri/juriAddTokutei"
+            scope="session" type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.JuriAddTokuteiAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="受理登録（特定領域）"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseiKanri/juriAddTokutei.vm" redirect="false"/>
+    </action>
+    <action input="/pages/shinseiKanri/juriAddTokutei.vm" name="juriAddForm" 
+        path="/shinseiKanri/juriAddSave"
+            scope="session" type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.JuriAddSaveTokuteiAction"
+            unknown="false" validate="true">
+      <set-property property="description" value="受理登録完了（特定領域）"/>
+      <forward contextRelative="false" name="success"
+               path="/shinseiKanri/searchList.do" redirect="false"/>
+    </action>
+-->
+
+    <!-- 受理登録(チェックリストからの受理登録) -->
+    <action path="/checkList/juriAddTokutei" scope="session" name="juriAddForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.JuriAddTokuteiAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="受理登録（特定領域）"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/juri/juriAddTokutei.vm" redirect="false"/>
+    </action>
+    <action path="/checkList/juriAddSave" scope="session" name="juriAddForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseiKanri.JuriAddSaveTokuteiAction"
+            unknown="false" validate="true" input="/pages/juri/juriAddTokutei.vm">
+      <set-property property="description" value="受理登録完了（特定領域）"/>
+      <forward contextRelative="false" name="success"
+               path="/checkList/searchListTokutei.do" redirect="false"/>
+    </action>
+
+    <!-- 一括受理確認 -->
+    <action path="/checkList/ikkatsuJuriTokutei" scope="session" name="checkListForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.IkkatsuJuriTokuteiAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="一括受理確認（特定領域）"/>
+      <forward name="success" path="/pages/checkList/ikkatsuJuriTokutei.vm" redirect="false"/>
+      <forward name="failure" path="/checkList/searchListTokutei.do" redirect="false"/>
+    </action>
+    <!-- 一括受理中 -->
+    <action path="/checkList/ikkatsuJuriSaveTokutei" scope="session" name="checkListForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.IkkatsuJuriCheckTokuteiAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="一括受理中（特定領域）"/>
+      <forward name="success" path="/pages/checkList/ikkatsuApplicationTokutei.vm" redirect="false"/>
+    </action>
+    <!-- 一括受理 -->
+    <action path="/checkList/ikkatsuJuriSaveEndTokutei" scope="session" name="checkListForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.IkkatsuJuriSaveTokuteiAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="一括受理（特定領域）"/>
+      <forward name="success" path="/checkList/searchListTokutei.do" redirect="false"/>
+      <!-- 一括受理失敗時の画面遷移を追加 -->
+      <forward name="failure" path="/checkList/searchListTokutei.do" redirect="false"/>
+    </action>
+
+    <!-- CSV出力 -->
+    <action path="/checkList/csvOutTokutei" scope="session" name="CheckListSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.CsvOutTokuteiAction"
+            unknown="false" validate="false">
+      <set-property property="description" value=""/>
+    </action>
+    <!-- CSV一覧出力 -->
+    <action path="/checkList/csvOutIchiranTokutei" scope="session" name="CheckListSearchForm"
+            type="jp.go.jsps.kaken.web.gyomu.checkList.CsvOutIchiranTokuteiAction"
+            unknown="false" validate="false">
+      <set-property property="description" value=""/>
+    </action>
+<!-- 2007/02/12 劉長宇　追加 ここから -->
+    <!-- 申請内容ファイル（WORD）ダウンロード -->
+    <action path="/shinseiKanri/tenpuDownloadFile" scope="session" name="simpleShinseiForm"
+            type="jp.go.jsps.kaken.web.system.shinseiKanri.DownloadTenpuFileAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="申請内容ファイル（WORD）ダウンロード"/>
+    </action>
+<!-- 2007/02/12 劉長宇　追加 ここまで -->
+<!-- Horikoshi End -->
+
+    <!-- ### ステータスリフレッシュアクション ### -->
+    <action path="/refreshStatus" scope="request"
+            type="jp.go.jsps.kaken.web.gyomu.RefreshAction"
+            unknown="false" validate="false">
+      <set-property property="logonCheck" value="false"/> 
+      <set-property property="description" value="ステータスリフレッシュアクション"/>
+    </action>
+
+  </action-mappings>
+
+  <controller processorClass="jp.go.jsps.kaken.web.struts.RequestProcessor"/>
+
+  <message-resources null="false"
+                     parameter="jp.go.jsps.kaken.web.resources.Application"/>
+
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property property="pathnames"
+                  value="/WEB-INF/validation-default.xml,/WEB-INF/validation-gyomu.xml,/WEB-INF/validator-rules.xml"/>
+  </plug-in>
+
+</struts-config>

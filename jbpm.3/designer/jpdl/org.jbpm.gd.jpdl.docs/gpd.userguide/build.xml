@@ -1,0 +1,12 @@
+<project name="jbpm.jpdl.userguide" default="all" basedir=".">
+
+  <property name="build.dir" value="${basedir}/target"/>
+  <import file="${user.home}/jbpm/repository/docbook-support/support.xml" />
+	
+  <target name="all">
+  	<antcall target="lang.dochtml">
+  		<param name="lang" value="en"/>
+  	</antcall>
+  </target>	
+	
+</project>

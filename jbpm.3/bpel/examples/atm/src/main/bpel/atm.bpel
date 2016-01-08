@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process name="atmFrontEnd" targetNamespace="urn:samples:atm"
+  xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+  xmlns:tns="urn:samples:atm" xmlns:atm="urn:samples:atm" xmlns:typ="urn:samples:atm:types"
+  xmlns:tic="urn:samples:ticket" xmlns:acc="urn:samples:account" 
+  xmlns:bpel="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://schemas.xmlsoap.org/ws/2003/03/business-process/
+   http://schemas.xmlsoap.org/ws/2003/03/business-process/">
+
+  <partnerLinks>
+    <!-- relationship with the ATM -->
+    <partnerLink name="atmRelation" partnerLinkType="tns:atm-front" myRole="frontEnd" />
+    <!-- relationship with the ticket issuer -->
+    <partnerLink name="ticketRelation" partnerLinkType="tns:front-ticket" partnerRole="ticketIssuer" />
+    <!-- relationship with the account system -->
+    <partnerLink name="accountRelation" partnerLinkType="tns:front-account" partnerRole="accountSystem" />
+  </partnerLinks>
+
+  <variables>
+    <!-- ATM connection request -->
+    <variable name="connectReq" messageType="atm:connectRequest" />
+    <!-- ticket creation request -->
+    <variable name="ticketReq" messageType="tic:ticketRequest" />
+    <!-- ticket number wrapper -->
+    <variable name="ticketMsg" messageType="tic:ticketMessage" />
+    <!-- ATM connection flag -->
+    <variable name="connected" type="xsd:boolean" />
+    <!-- customer session flag -->
+    <variable name="logged" type="xsd:boolean" />
+  </variables>
+
+  <correlationSets>
+    <!-- conversation with a connected ATM -->
+    <correlationSet name="atmInteraction" properties="tns:ticketId" />
+  </correlationSets>
+
+  <sequence name="mainSequence">
+
+    <!-- receive a connection request -->
+    <receive operation="connect" partnerLink="atmRelation" portType="atm:atmFrontEnd" 
+      variable="connectReq" createInstance="yes" />
+
+    <!-- generate a ticket number -->
+    <invoke operation="createTicket" partnerLink="ticketRelation" portType="tic:ticketIssuer"
+      inputVariable="ticketReq" outputVariable="ticketMsg">
+      <correlations>
+        <correlation set="atmInteraction" pattern="in" initiate="yes" />
+      </correlations>
+    </invoke>
+
+    <!-- initialize the status flags -->
+    <assign name="initConnection">
+      <copy>
+        <from expression="true()" />
+        <to variable="connected" />
+      </copy>
+      <copy>
+        <from expression="false()" />
+        <to variable="logged" />
+      </copy>
+    </assign>
+
+    <!-- send the ticket number back to the ATM -->
+    <reply operation="connect" partnerLink="atmRelation" portType="atm:atmFrontEnd" variable="ticketMsg">
+      <correlations>
+        <correlation set="atmInteraction" />
+      </correlations>
+    </reply>
+
+    <!-- handle the ATM connection -->
+    <scope name="connectionUnit">
+
+      <variables>
+        <!-- customer log on request -->
+        <variable name="logOnReq" messageType="atm:logOnRequest" />
+        <!-- connection status response -->
+        <variable name="statusRsp" messageType="atm:statusResponse" />
+      </variables>
+
+      <eventHandlers>
+
+        <!-- listen for connection status requests -->
+        <onMessage operation="status" partnerLink="atmRelation" portType="atm:atmFrontEnd" variable="ticketMsg">
+
+          <correlations>
+            <correlation set="atmInteraction" />
+          </correlations>
+          
+          <!-- report the connection status -->
+          <sequence name="statusSequence">
+          
+            <!-- set a status string depending on the flag values -->
+            <switch name="statusSwitch">
+
+              <case condition="bpel:getVariableData('logged')">
+
+                <assign name="setStatusLogged">
+                  <copy>
+                    <from expression="'logged'" />
+                    <to variable="statusRsp" part="status" />
+                  </copy>
+                </assign>
+
+              </case>
+
+              <case condition="bpel:getVariableData('connected')">
+
+                <assign name="setStatusConnected">
+                  <copy>
+                    <from expression="'connected'" />
+                    <to variable="statusRsp" part="status" />
+                  </copy>
+                </assign>
+
+              </case>
+
+              <otherwise>
+
+                <assign name="setStatusDisconnected">
+                  <copy>
+                    <from expression="'disconnected'" />
+                    <to variable="statusRsp" part="status" />
+                  </copy>
+                </assign>
+
+              </otherwise>
+
+            </switch>
+            
+            <!-- send the status back to the ATM -->
+            <reply operation="status" partnerLink="atmRelation" portType="atm:atmFrontEnd" variable="statusRsp" />
+
+          </sequence>
+
+        </onMessage>
+
+      </eventHandlers>
+
+      <!-- process ATM requests, one at a time -->
+      <while name="connectionLoop" condition="bpel:getVariableData('connected')">
+
+        <!-- listen for either disconnect or log on request -->
+        <pick name="connectionMenu">
+
+          <onMessage operation="disconnect" partnerLink="atmRelation" portType="atm:atmFrontEnd"
+            variable="ticketMsg">
+
+            <correlations>
+              <correlation set="atmInteraction" />
+            </correlations>
+            
+            <!-- turn off connected flag for breaking the connection loop -->
+            <assign name="setDisconnected">
+              <copy>
+                <from expression="false()" />
+                <to variable="connected" />
+              </copy>
+            </assign>
+
+          </onMessage>
+
+          <onMessage operation="logOn" partnerLink="atmRelation" portType="atm:atmFrontEnd" variable="logOnReq">
+
+            <correlations>
+              <correlation set="atmInteraction" />
+            </correlations>
+            
+            <!-- handle the customer session -->
+            <scope name="customerUnit">
+
+              <variables>
+                <!-- customer name wrapper -->
+                <variable name="customerMsg" messageType="acc:customerMessage" />
+                <!-- access check response -->
+                <variable name="accessMsg" messageType="acc:accessMessage" />
+                <!-- customer log on response -->
+                <variable name="logOnRsp" messageType="atm:logOnResponse" />
+                <!-- customer operation fault -->
+                <variable name="operationFlt" messageType="atm:operationFault" />
+                <!-- account balance wrapper -->
+                <variable name="balanceMsg" messageType="acc:balanceMessage" />
+                <!-- customer operation request -->
+                <variable name="operationReq" messageType="atm:operationRequest" />
+                <!-- account system operation request -->
+                <variable name="accountOperation" messageType="acc:accountOperation" />
+                <!-- resulting balance after withdraw -->
+                <variable name="newBalance" type="xsd:double" />
+              </variables>
+              
+              <correlationSets>
+                <!-- conversation with a logged customer -->
+                <correlationSet name="customerInteraction" properties="tns:customerId" />
+              </correlationSets>                
+              
+              <sequence name="customerSequence">
+              
+                <!-- populate access check request -->
+                <assign name="fillAccessCheck">
+                  <copy>
+                    <from variable="logOnReq" part="customerName" />
+                    <to variable="customerMsg" part="customerName" />
+                  </copy>
+                </assign>
+                
+                <!-- check account access privilege -->
+                <invoke operation="checkAccess" partnerLink="accountRelation" portType="acc:accountSystem"
+                  inputVariable="customerMsg" outputVariable="accessMsg">
+                  <correlations>
+                    <correlation set="customerInteraction" pattern="out" initiate="yes"/>
+                  </correlations>
+                </invoke>
+                
+                <!-- decide outcome of customer session request -->
+                <switch name="accessDecision">
+
+                  <case condition="bpel:getVariableData('accessMsg', 'granted')">
+                  
+                    <!-- accept customer session -->
+                    <sequence name="accessGrantedSequence">
+
+                      <!-- turn on logged flag for starting session loop  -->
+                      <assign name="setLoggedOn">
+                        <copy>
+                          <from expression="true()" />
+                          <to variable="logged" />
+                        </copy>
+                      </assign>
+
+                      <!-- send acknowledgement back to ATM -->
+                      <reply operation="logOn" partnerLink="atmRelation" portType="atm:atmFrontEnd" 
+                        variable="logOnRsp" />
+                    
+                    </sequence>
+
+                  </case>
+
+                  <otherwise>
+                  
+                    <!-- reject customer session -->
+                    <sequence name="accessDeniedSequence">
+                    
+                      <!-- populate the log on fault -->
+                      <assign name="fillAccessDenial">
+                        <copy>
+                          <from>
+                            <typ:operationError code="access_denied" />
+                          </from>
+                          <to variable="operationFlt" part="detail" />
+                        </copy>
+                      </assign>
+                      
+                      <!-- send fault back to the ATM -->
+                      <reply operation="logOn" partnerLink="atmRelation" portType="atm:atmFrontEnd"
+                        variable="operationFlt" faultName="atm:logOnFault" />
+
+                    </sequence>
+
+                  </otherwise>
+
+                </switch>
+                
+                <!-- process customer requests, one at a time -->
+                <while name="customerLoop" condition="bpel:getVariableData('logged')">
+
+                  <pick name="customerMenu">
+
+                    <onMessage operation="logOff" partnerLink="atmRelation" portType="atm:atmFrontEnd"
+                      variable="customerMsg">
+
+                      <correlations>
+                        <correlation set="customerInteraction" />
+                      </correlations>
+                      
+                      <!-- turn off logged flag for breaking the customer loop -->
+                      <assign name="setLoggedOff">
+                        <copy>
+                          <from expression="false()" />
+                          <to variable="logged" />
+                        </copy>
+                      </assign>
+
+                    </onMessage>
+
+                    <onMessage operation="getBalance" partnerLink="atmRelation" portType="atm:atmFrontEnd"
+                      variable="customerMsg">
+
+                      <correlations>
+                        <correlation set="customerInteraction" />
+                      </correlations>
+
+                      <sequence name="balanceSequence">
+                      
+                        <!-- get current account balance -->
+                        <invoke operation="queryBalance" partnerLink="accountRelation" portType="acc:accountSystem"
+                          inputVariable="customerMsg" outputVariable="balanceMsg">
+                          <correlations>
+                            <correlation set="customerInteraction" pattern="out" />
+                          </correlations>
+                        </invoke>
+                        
+                        <!-- hand the balance back to the ATM -->
+                        <reply operation="getBalance" partnerLink="atmRelation" portType="atm:atmFrontEnd"
+                          variable="balanceMsg" />
+
+                      </sequence>
+
+                    </onMessage>
+
+                    <onMessage operation="deposit" partnerLink="atmRelation" portType="atm:atmFrontEnd"
+                      variable="operationReq">
+
+                      <correlations>
+                        <correlation set="customerInteraction" />
+                      </correlations>
+
+                      <sequence name="depositSequence">
+                      
+                        <!-- populate balance update request -->
+                        <assign name="fillDepositUpdate">
+                          <copy>
+                            <from variable="operationReq" part="customerName" />
+                            <to variable="accountOperation" part="body" query="/body/@customerName" />
+                          </copy>
+                          <copy>
+                            <from variable="operationReq" part="amount" />
+                            <to variable="accountOperation" part="body" query="/body/@amount" />
+                          </copy>
+                        </assign>
+                        
+                        <!-- post positive balance update -->
+                        <invoke operation="updateBalance" partnerLink="accountRelation" portType="acc:accountSystem"
+                          inputVariable="accountOperation" outputVariable="balanceMsg">
+                          <correlations>
+                            <correlation set="customerInteraction" pattern="out" />
+                          </correlations>
+                        </invoke>
+                        
+                        <!-- make new balance available to ATM -->
+                        <reply operation="deposit" partnerLink="atmRelation" portType="atm:atmFrontEnd"
+                          variable="balanceMsg" />
+
+                      </sequence>
+
+                    </onMessage>
+
+                    <onMessage operation="withdraw" partnerLink="atmRelation" portType="atm:atmFrontEnd"
+                      variable="operationReq">
+
+                      <correlations>
+                        <correlation set="customerInteraction" />
+                      </correlations>
+
+                      <sequence name="withdrawSequence">
+                      
+                        <!-- populate balance query request -->
+                        <assign name="fillWithdrawQuery">
+                          <copy>
+                            <from variable="operationReq" part="customerName" />
+                            <to variable="customerMsg" part="customerName" />
+                          </copy>
+                        </assign>
+                        
+                        <!-- get current account balance -->
+                        <invoke operation="queryBalance" partnerLink="accountRelation" portType="acc:accountSystem"
+                          inputVariable="customerMsg" outputVariable="balanceMsg">
+                          <correlations>
+                            <correlation set="customerInteraction" pattern="out" />
+                          </correlations>
+                        </invoke>
+                        
+                        <!-- compute amount that would remain in the account -->
+                        <assign name="decreaseBalance">
+                          <copy>
+                            <from expression="bpel:getVariableData('balanceMsg', 'balance') -
+                                              bpel:getVariableData('operationReq', 'amount')" />
+                            <to variable="newBalance" />
+                          </copy>
+                        </assign>
+                        
+                        <!-- decide outcome of withdraw request -->
+                        <switch name="balanceDecision">
+
+                          <case condition="bpel:getVariableData('newBalance') &gt;= 0.0">
+                          
+                            <!-- accept withdrawing -->
+                            <sequence name="positiveBalanceSequence">
+                            
+                              <!-- populate balance update request -->
+                              <assign name="fillWithdrawUpdate">
+                                <copy>
+                                  <from variable="operationReq" part="customerName" />
+                                  <to variable="accountOperation" part="body" query="/body/@customerName" />
+                                </copy>
+                                <copy>
+                                  <from expression="-bpel:getVariableData('operationReq', 'amount')" />
+                                  <to variable="accountOperation" part="body" query="/body/@amount" />
+                                </copy>
+                              </assign>
+                              
+                              <!-- post negative balance update -->
+                              <invoke operation="updateBalance" partnerLink="accountRelation"
+                                portType="acc:accountSystem" inputVariable="accountOperation"
+                                outputVariable="balanceMsg">
+                                <correlations>
+                                  <correlation set="customerInteraction" pattern="out" />
+                                </correlations>
+                              </invoke>
+                              
+                              <!-- return new balance to ATM -->
+                              <reply operation="withdraw" partnerLink="atmRelation" portType="atm:atmFrontEnd"
+                                variable="balanceMsg" />
+
+                            </sequence>
+
+                          </case>
+
+                          <otherwise>
+                          
+                            <!-- reject withdrawing -->
+                            <sequence name="negativeBalanceSequence">
+                            
+                              <!-- populate withdraw fault -->
+                              <assign name="fillNoFunds">
+                                <copy>
+                                  <from>
+                                    <typ:operationError code="not_enough_funds" />
+                                  </from>
+                                  <to variable="operationFlt" part="detail" />
+                                </copy>
+                              </assign>
+                              
+                              <!-- return fault to ATM -->
+                              <reply operation="withdraw" partnerLink="atmRelation" portType="atm:atmFrontEnd"
+                                variable="operationFlt" faultName="atm:withdrawFault" />
+
+                            </sequence>
+
+                          </otherwise>
+
+                        </switch>
+
+                      </sequence>
+
+                    </onMessage>
+
+                    <onAlarm for="'PT30S'">
+                    
+                      <!-- log off after 30 seconds of inactivity -->
+                      <assign name="setLoggedOff">
+                        <copy>
+                          <from expression="false()" />
+                          <to variable="logged" />
+                        </copy>
+                      </assign>
+
+                    </onAlarm>
+
+                  </pick>
+
+                </while>
+
+              </sequence>
+
+            </scope>
+
+          </onMessage>
+
+        </pick>
+
+      </while>
+
+    </scope>
+
+  </sequence>
+
+</process>

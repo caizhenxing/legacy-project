@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+##$!passwordChangeForm
+## ************************************************
+#parse( $commonSetting )
+## ***********************************************
+
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/shinsei/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width=72 height=20 border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <form method="post" action="$link.setAction('/shinsei/passwordChangeSave')">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#6699CC" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/shinsei/showMainMenu')">応募者向けメニュー</a>＞<b>パスワード変更</b><font size="1">＞パスワード変更完了</font></font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <br>
+    <br>
+    <!-- ログイン、メニュー画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr>
+      <td width="92" valign="bottom"><img src="$path/images/title_img1.gif" width=92 height=53 alt=""></td>
+      <td width="98%" valign="bottom" class="menuTitle">パスワード変更</td>
+      <td width="214" valign="bottom"><img src="$path/images/title_img5.gif" width=214 height=38 alt=""></td>
+     </tr>
+     <tr>
+      <td width="92"><img src="$path/images/title_img2.gif" width=92 height=29 alt=""></td>
+      <td background="$path/images/title_img3.gif"><img src="$path/images/title_img3.gif" width=8 height=29 alt=""></td>
+      <td width="214"><img src="$path/images/title_img6.gif" width=214 height=29 alt=""></td>
+     </tr>
+    </table>
+    <!-- ログイン、メニュー画面タイトル用テーブルここまで -->
+    <!-- ログイン入力フォーム、メニュー項目用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr>
+      <td width="92" valign="top"><img src="$path/images/title_img7.gif" width=92 height=38 alt=""></td>
+      <td width="52" class="menuLine"><img src="$path/images/spacer.gif" width="52" height="1"></td>
+      <td width="90%" align="left">
+      #errorMarkup()<br>
+       <!-- メニュー用テーブルここから -->
+       <table border="0" cellspacing="6">
+        <tr>
+         <td>現在のパスワード</td>
+         <td><input type="password" name="password" value=""></td>
+        </tr>
+        <tr>
+         <td>新しいパスワード</td>
+         <td><input type="password" name="newPassword1" value=""></td>
+        </tr>
+        <tr>
+         <td>確認のため、もう一度新しいパスワード</td>
+         <td><input type="password" name="newPassword2" value=""></td>
+        </tr>
+       </table>
+       <!-- メニュー用テーブルここまで -->
+<p class="comment">＜注意事項＞</p>
+  <ul>
+    <li class="comment">
+      パスワードは半角英数字6～10文字を入力してください。</li>
+  </ul>
+      <br>
+       <br>
+       <br>
+       <br>
+      </td>
+     </tr>
+    </table>
+	<!-- ボタン用テーブルここから -->
+	<div align="center">
+	     <table border="0" cellpadding="0" cellspacing="4">
+	      <tr>
+	       <td>
+	           ## A hidden form field with the transaction token
+	           <input type="hidden" name="$form.tokenName" value="$form.token">
+			   ##
+	       	   <input type="image" src="$path/images/bt_ok.gif" alt="OK" width="114" height="28" border="0"></td>
+	       <td><a href="$link.setAction('/shinsei/showMainMenu')"><img src="$path/images/bt_cancel.gif" width=114 height=28 border="0" alt="キャンセル"></a></td>
+	      </tr>
+	     </table>
+	</div>
+	</form>
+	<!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width=8 height=26 alt=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shinsei/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width=72 height=26 border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width=8 height=26 alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+  <!-- 左右の縦線用テーブルここまで -->
+</div>
+</body>
+</html>
+

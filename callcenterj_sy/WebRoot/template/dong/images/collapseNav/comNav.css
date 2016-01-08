@@ -1,0 +1,79 @@
+	body {
+		font:12px Arial, Helvetica, sans-serif;
+		color: #000;
+	}
+	#container {
+		width: 175px;
+		background-color: #EEF9FF;
+	}
+	H1 {
+		font-size: 11px;
+		margin: 0px;
+		width: 175px;
+		cursor: pointer;
+		height: 22px;
+		line-height: 20px;	
+	}
+	H1 a {
+		display: block;
+		padding-top: 1px;
+		padding-right: 8px;
+		padding-bottom: 0px;
+		padding-left: 8px;	
+		width: 175px;
+		color: #000;
+		height: 22px;
+		text-decoration: none;	
+		moz-outline-style: none;
+		background-repeat: repeat-x;
+	}
+	H1 a div{
+		margin:0px;
+		padding:0px;
+		width:20px;
+		height:20px;
+	}
+	.content{
+		padding-left: 8px;
+		background-color: #D3F0D2;
+	}
+	.content p{
+		margin-top:0px;
+		margin-bottom:0px;
+		width:165px;
+		margin-left:22px;
+		background-color: #D3F0D2;
+	}
+	p a:link {
+		color: #333333;
+		text-decoration: none;
+	}
+	p a:visited {
+		text-decoration: none;
+		color: #61A2DC;
+	}
+	p a:hover {
+		text-decoration: none;
+		color: #333333;
+	}
+	p a:active {
+		text-decoration: none;
+		color: #61A2DC;
+	}
+		body {
+			margin-left: 1px;
+			margin-top: 1px;
+			margin-right: 1px;
+			margin-bottom: 1px;
+			background-color: #D3F0D2;
+		}
+		.wenzi {
+			font-family: "ËÎÌו";
+			font-size: 12px;
+			font-style: normal;
+			line-height: 14px;
+			font-weight: normal;
+			font-variant: normal;
+			color: #476074;
+			text-align: left;
+		}

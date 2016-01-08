@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="newsInfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="name" type="java.lang.String" />
+      	  <form-property name="sex" type="java.lang.String" />
+      	  <form-property name="password" type="java.lang.String" />
+      	  <form-property name="birthday" type="java.lang.String" />
+	   </form-bean>
+	   
+	   <form-bean name="newsAreaBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="newsAreaName" type="java.lang.String" />
+      	  <form-property name="styleId" type="java.lang.String" />
+      	  <form-property name="remark" type="java.lang.String" />
+<!--      	  <form-property name="birthday" type="java.lang.String" />-->
+	   </form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+     <action
+      attribute="newsInfoBean"
+      name="newsInfoBean"
+      path="/news/newsInfo"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="newsList"          path="/news/newsInfo/newsList.jsp"/>
+           <forward name="newsMore"          path="/news/newsInfo/newsMore.jsp"/>
+           <forward name="newsInfo"          path="/news/newsInfo/newsInfo.jsp"/>
+           <forward name="newsListTest"      path="/news/newsInfo/newsListTest.jsp"/>
+           <forward name="newsTypeSelect"    path="/news/newsInfo/newsTypeSelect.jsp"/>
+           <forward name="toNewsStyleTest"   path="/news/newsInfo/newsStyleTest.jsp"/>
+           <forward name="toStyleModuleOne"  path="/news/newsInfo/styleModuleOne.jsp"/>
+    </action>
+    
+    <action
+      attribute="newsAreaBean"
+      name="newsAreaBean"
+      path="/news/newsArea"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="main"             path="/news/area/areaMain.jsp"/>
+           <forward name="query"            path="/news/area/areaQuery.jsp"/>
+           <forward name="load"             path="/news/area/areaLoad.jsp"/>
+           <forward name="list"             path="/news/area/areaList.jsp"/>
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

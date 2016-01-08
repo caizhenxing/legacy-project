@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	<!-- 联络员报价情况 -->
+	<form-beans>
+		
+		<form-bean name="quoteCircs" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="beginTime" 				type="java.lang.String" />
+			<form-property name="endTime" 					type="java.lang.String" />
+			<form-property name="custAddr" 					type="java.lang.String" />
+			<form-property name="custName" 					type="java.lang.String" />
+			<form-property name="custId" 					type="java.lang.String" />
+		</form-bean>
+
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		
+		<action attribute="quoteCircs" 
+				name="quoteCircs" 
+				scope="request" 
+				path="/quoteCircs/quoteCircs" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main" path="/quoteCircs/quoteCircsMain.jsp"/>
+			<forward name="list" path="/quoteCircs/quoteCircsList.jsp"/>
+			<forward name="load" path="/quoteCircs/quoteCircsLoad.jsp"/>
+			<forward name="query" path="/quoteCircs/quoteCircsQuery.jsp"/>
+		</action>
+		
+		
+
+	</action-mappings>
+	
+</struts-config>
+

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java-wsdl-mapping xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee    http://www.ibm.com/webservices/xsd/j2ee_jaxrpc_mapping_1_1.xsd">
+<package-mapping>
+<package-type>org.jbpm.bpel.tutorial.account</package-type>
+<namespaceURI>urn:samples:account</namespaceURI>
+</package-mapping>
+<package-mapping>
+<package-type>org.jbpm.bpel.tutorial.account.types</package-type>
+<namespaceURI>urn:samples:account:types</namespaceURI>
+</package-mapping>
+<package-mapping>
+<package-type>org.jbpm.bpel.tutorial.account.types</package-type>
+<namespaceURI>urn:samples:account:types</namespaceURI>
+</package-mapping>
+<java-xml-type-mapping>
+<java-type>org.jbpm.bpel.tutorial.account.types.TAccountOperation</java-type>
+<root-type-qname xmlns:typeNS="urn:samples:account:types">typeNS:tAccountOperation</root-type-qname>
+<qname-scope>complexType</qname-scope>
+<variable-mapping>
+<java-variable-name>customerName</java-variable-name>
+<xml-attribute-name>customerName</xml-attribute-name>
+</variable-mapping>
+<variable-mapping>
+<java-variable-name>amount</java-variable-name>
+<xml-attribute-name>amount</xml-attribute-name>
+</variable-mapping>
+</java-xml-type-mapping>
+<service-interface-mapping>
+<service-interface>org.jbpm.bpel.tutorial.account.AccountService</service-interface>
+<wsdl-service-name xmlns:serviceNS="urn:samples:account">serviceNS:accountService</wsdl-service-name>
+<port-mapping>
+<port-name>accountPort</port-name>
+<java-port-name>accountPort</java-port-name>
+</port-mapping>
+</service-interface-mapping>
+<service-endpoint-interface-mapping>
+<service-endpoint-interface>org.jbpm.bpel.tutorial.account.AccountSystem</service-endpoint-interface>
+<wsdl-port-type xmlns:portTypeNS="urn:samples:account">portTypeNS:accountSystem</wsdl-port-type>
+<wsdl-binding xmlns:bindingNS="urn:samples:account">bindingNS:accountBinding</wsdl-binding>
+<service-endpoint-method-mapping>
+<java-method-name>checkAccess</java-method-name>
+<wsdl-operation>checkAccess</wsdl-operation>
+<method-param-parts-mapping>
+<param-position>0</param-position>
+<param-type>java.lang.String</param-type>
+<wsdl-message-mapping>
+<wsdl-message xmlns:wsdlMsgNS="urn:samples:account">wsdlMsgNS:customerMessage</wsdl-message>
+<wsdl-message-part-name>customerName</wsdl-message-part-name>
+<parameter-mode>IN</parameter-mode>
+</wsdl-message-mapping>
+</method-param-parts-mapping>
+<wsdl-return-value-mapping>
+<method-return-value>boolean</method-return-value>
+<wsdl-message xmlns:wsdlMsgNS="urn:samples:account">wsdlMsgNS:accessMessage</wsdl-message>
+<wsdl-message-part-name>granted</wsdl-message-part-name>
+</wsdl-return-value-mapping>
+</service-endpoint-method-mapping>
+<service-endpoint-method-mapping>
+<java-method-name>queryBalance</java-method-name>
+<wsdl-operation>queryBalance</wsdl-operation>
+<method-param-parts-mapping>
+<param-position>0</param-position>
+<param-type>java.lang.String</param-type>
+<wsdl-message-mapping>
+<wsdl-message xmlns:wsdlMsgNS="urn:samples:account">wsdlMsgNS:customerMessage</wsdl-message>
+<wsdl-message-part-name>customerName</wsdl-message-part-name>
+<parameter-mode>IN</parameter-mode>
+</wsdl-message-mapping>
+</method-param-parts-mapping>
+<wsdl-return-value-mapping>
+<method-return-value>double</method-return-value>
+<wsdl-message xmlns:wsdlMsgNS="urn:samples:account">wsdlMsgNS:balanceMessage</wsdl-message>
+<wsdl-message-part-name>balance</wsdl-message-part-name>
+</wsdl-return-value-mapping>
+</service-endpoint-method-mapping>
+<service-endpoint-method-mapping>
+<java-method-name>updateBalance</java-method-name>
+<wsdl-operation>updateBalance</wsdl-operation>
+<method-param-parts-mapping>
+<param-position>0</param-position>
+<param-type>org.jbpm.bpel.tutorial.account.types.TAccountOperation</param-type>
+<wsdl-message-mapping>
+<wsdl-message xmlns:wsdlMsgNS="urn:samples:account">wsdlMsgNS:accountOperation</wsdl-message>
+<wsdl-message-part-name>body</wsdl-message-part-name>
+<parameter-mode>IN</parameter-mode>
+</wsdl-message-mapping>
+</method-param-parts-mapping>
+<wsdl-return-value-mapping>
+<method-return-value>double</method-return-value>
+<wsdl-message xmlns:wsdlMsgNS="urn:samples:account">wsdlMsgNS:balanceMessage</wsdl-message>
+<wsdl-message-part-name>balance</wsdl-message-part-name>
+</wsdl-return-value-mapping>
+</service-endpoint-method-mapping>
+</service-endpoint-interface-mapping>
+</java-wsdl-mapping>

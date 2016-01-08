@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+		<!-- 问题模块表单bean信息 -->
+		<form-bean name="priceinfoBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="priceId" type="java.lang.String" />
+			<form-property name="dictSadType" type="java.lang.String" />
+			<form-property name="priceRid" type="java.lang.String" />
+			<form-property name="priceExpert" type="java.lang.String" />
+			<form-property name="operTime" type="java.lang.String" />
+			<form-property name="custName" type="java.lang.String" />
+			<form-property name="custAddr" type="java.lang.String" />
+			<form-property name="custTel" type="java.lang.String" />
+			<form-property name="dictPriceState" type="java.lang.String" />
+			<form-property name="dictPriceType" type="java.lang.String" />
+			<form-property name="dictProductType1" type="java.lang.String" />
+			<form-property name="dictProductType2" type="java.lang.String" />
+			<form-property name="productName" type="java.lang.String" />
+			<form-property name="productScale" type="java.lang.String" />
+			<form-property name="productPrice" type="java.lang.String" />
+			<form-property name="priceUnit" type="java.lang.String" />
+			<form-property name="deployTime" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+			<form-property name="question_id" type="java.lang.String" />
+			<form-property name="agent_id" type="java.lang.String" />
+			<form-property name="dict_product_type1" 	type="java.lang.String[]" />
+			<form-property name="dict_product_type2" 	type="java.lang.String[]" />
+			<form-property name="product_name" 	type="java.lang.String[]" />
+			<form-property name="dict_price_type" 	type="java.lang.String[]" />
+			<form-property name="product_price" 		type="java.lang.String[]" />
+			<form-property name="remarkj" 				type="java.lang.String[]" />
+			
+			<form-property name="cust_id" type="java.lang.String" />
+			
+			<form-property name="subid" type="java.lang.String" /><!-- 用于审核的提交人ID -->
+			<form-property name="accid" type="java.lang.String" /><!-- 用于审核的受理人ID --> 
+			
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			
+			<form-property name="statisticType" type="java.lang.String" />	
+			
+			<form-property name="state" type="java.lang.String" />	
+
+		</form-bean>
+
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<!-- 问题action -->
+		<action attribute="priceinfoBean" 
+				name="priceinfoBean" 
+				scope="request" 
+				path="/operpriceinfo" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="toOperPriceinfoMain" path="/priceinfo/priceinfoMain.jsp"/>
+			<forward name="toOperPriceinfoList" path="/priceinfo/priceinfolist.jsp"/>
+			<forward name="toOperPriceinfoLoad" path="/priceinfo/priceinfoLoad.jsp"/>
+			<forward name="toOperPriceinfoLoadList" path="/priceinfo/priceinfoLoadList.jsp"/>
+			<forward name="toOperPriceinfoQuery" path="/priceinfo/priceinfoQuery.jsp"/>
+			<forward name="toOperPriceinfoExcelList" path="/commonExcelServlet"></forward>
+			<forward name="topriceinfoStatisticQuery" path="/priceinfo/priceinfoStatisticQuery.jsp"/>
+		</action>
+	</action-mappings>
+	
+</struts-config>
+

@@ -1,0 +1,879 @@
+
+#V4.5 IOTHE-Printerfile
+#
+#
+
+cd=Ｙｓｓ
+it=n
+doc={
+t=
+st=
+c=
+ap=
+ss=e487av1Tav1Tav1Tav1Tav1Tav+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+#
+}
+pagesize=a4 v 595 842
+pr=0 a4 v 595 842 0 0 100 n
+opt=255 255 255
+addole={
+}
+page
+ptype=overlay
+pagesize=a4 v 595 842
+sheet=1 0 0 0 0 4 0 0 |
+figs={
+}
+page
+ptype=normal
+figs={
+tvp=1
+tuf=1
+ts=12
+tw=1
+td=0
+tr=0
+ti=0
+tb=0
+twh=ＭＳ ゴシック
+twz=ＭＳ ゴシック
+twk=ＭＳ ゴシック
+tc=0 0 0
+tov=1
+FT={
+xy=30 35
+str=研究組織（研究代表者及び研究分担者）
+}
+pf=1
+pw=2
+pk=0
+pc=0 0 0
+ff=-1
+fc=255 255 255
+fb=0
+jo=2
+ml=10
+PL={
+p={
+30 44
+560 44
+}
+}
+pw=0
+PL={
+p={
+30 75
+560 75
+}
+}
+pw=2
+PL={
+p={
+30 44
+30 795
+}
+}
+PL={
+p={
+560 44
+560 795
+}
+}
+pw=0
+PL={
+p={
+30 145
+560 145
+}
+}
+PL={
+p={
+30 495
+560 495
+}
+}
+PL={
+p={
+30 565
+560 565
+}
+}
+PL={
+p={
+30 775
+560 775
+}
+}
+PL={
+p={
+43 45
+43 775
+}
+}
+PL={
+p={
+134 45
+134 775
+}
+}
+PL={
+p={
+333 45
+334 795
+}
+}
+PL={
+p={
+487 45
+487 795
+}
+}
+PL={
+p={
+533 45
+533 795
+}
+}
+ts=10.5
+tb=1
+FT={
+xy=57 65.5
+str=氏名（年齢）
+}
+FT={
+xy=202 55.5
+str=所属研究機関
+}
+FT={
+xy=223 65.5
+str=部局
+}
+FT={
+xy=228.25 75.5
+str=職
+}
+FT={
+xy=392 55.5
+str=現在の専門
+}
+FT={
+xy=407 65.5
+str=学位
+}
+FT={
+xy=397 75.5
+str=役割分担
+}
+PL={
+p={
+30 215
+560 215
+}
+}
+PL={
+p={
+30 285
+560 285
+}
+}
+PL={
+p={
+30 355
+560 355
+}
+}
+PL={
+p={
+30 425
+560 425
+}
+}
+PL={
+p={
+30 635
+560 635
+}
+}
+PL={
+p={
+30 705
+560 705
+}
+}
+tvp=0
+ts=9
+tb=0
+tov=0
+pf=0
+TF={
+name=NAME_KANA#1
+xywh=44 87 90 27
+}
+TF={
+name=KENKYU_NO#1
+xywh=44 77 36 9
+}
+TF={
+name=SHOZOKU_NAME#1
+xywh=135 77 198 27
+}
+TF={
+name=BUKYOKU_NAME#1
+xywh=135 106 198 27
+}
+TF={
+name=SHOKU_NAME#1
+xywh=135 135 198 10
+}
+TF={
+name=SENMON#1
+xywh=334 77 153 18
+}
+TF={
+name=GAKUI#1
+xywh=334 97 153 18
+}
+TF={
+name=BUNTAN#1
+xywh=334 117 153 27
+}
+tvp=1
+tb=1
+tov=1
+FT={
+xy=493 65.5
+str=研究経費
+}
+FT={
+xy=534 55.5
+str=エフォ
+}
+FT={
+xy=500 75.5
+str=(千円)
+}
+FT={
+xy=540 65.5
+str=ート
+}
+FT={
+xy=540 75.5
+str=(%)
+}
+tvp=0
+tb=0
+tov=0
+TF={
+name=KENKYU_NO#2
+xywh=46 147 36 9
+}
+TF={
+name=SENMON#2
+xywh=334 147 153 18
+}
+TF={
+name=GAKUI#2
+xywh=334 167 153 18
+}
+TF={
+name=BUNTAN#2
+xywh=334 187 153 27
+}
+TF={
+name=SENMON#3
+xywh=334 217 153 18
+}
+TF={
+name=GAKUI#3
+xywh=334 237 153 18
+}
+TF={
+name=BUNTAN#3
+xywh=334 257 153 27
+}
+ts=12
+TF={
+name=PAGENUM
+xywh=282 796 40 20
+}
+ts=9
+TF={
+name=NAME_KANJI#1
+xywh=44 117 90 27
+}
+TF={
+name=SHOZOKU_NAME#2
+xywh=135 147 198 27
+}
+TF={
+name=BUKYOKU_NAME#2
+xywh=135 176 198 27
+}
+TF={
+name=SHOKU_NAME#2
+xywh=135 205 198 10
+}
+TF={
+name=NAME_KANA#2
+xywh=44 157 90 27
+}
+TF={
+name=NAME_KANJI#2
+xywh=44 187 90 27
+}
+TF={
+name=SHOZOKU_NAME#3
+xywh=135 217 198 27
+}
+TF={
+name=BUKYOKU_NAME#3
+xywh=135 247 198 27
+}
+TF={
+name=SHOKU_NAME#3
+xywh=135 275 198 10
+}
+TF={
+name=KENKYU_NO#3
+xywh=46 217 36 9
+}
+TF={
+name=NAME_KANA#3
+xywh=44 227 90 27
+}
+TF={
+name=NAME_KANJI#3
+xywh=44 257 90 27
+}
+TF={
+name=KENKYU_NO#4
+xywh=46 287 36 9
+}
+TF={
+name=SENMON#4
+xywh=334 287 153 18
+}
+TF={
+name=GAKUI#4
+xywh=334 307 153 18
+}
+tuf=0
+TF={
+name=BUNTAN#4
+xywh=334 327 153 27
+}
+tuf=1
+TF={
+name=SHOZOKU_NAME#4
+xywh=135 287 198 27
+}
+TF={
+name=BUKYOKU_NAME#4
+xywh=135 316 198 27
+}
+TF={
+name=SHOKU_NAME#4
+xywh=135 345 198 10
+}
+TF={
+name=NAME_KANA#4
+xywh=44 297 90 27
+}
+TF={
+name=NAME_KANJI#4
+xywh=44 327 90 27
+}
+TF={
+name=KENKYU_NO#5
+xywh=46 357 36 9
+}
+TF={
+name=SENMON#5
+xywh=334 357 153 18
+}
+TF={
+name=GAKUI#5
+xywh=334 377 153 18
+}
+TF={
+name=BUNTAN#5
+xywh=334 397 153 27
+}
+TF={
+name=SHOZOKU_NAME#5
+xywh=135 357 198 27
+}
+TF={
+name=BUKYOKU_NAME#5
+xywh=135 386 198 27
+}
+TF={
+name=SHOKU_NAME#5
+xywh=135 415 198 10
+}
+TF={
+name=NAME_KANA#5
+xywh=44 367 90 27
+}
+TF={
+name=NAME_KANJI#5
+xywh=44 397 90 27
+}
+tuf=0
+TF={
+name=KENKYU_NO#6
+xywh=46 427 36 9
+}
+tuf=1
+TF={
+name=SENMON#6
+xywh=334 427 153 18
+}
+TF={
+name=GAKUI#6
+xywh=334 447 153 18
+}
+TF={
+name=BUNTAN#6
+xywh=334 467 153 27
+}
+TF={
+name=SHOZOKU_NAME#6
+xywh=135 427 198 27
+}
+TF={
+name=BUKYOKU_NAME#6
+xywh=135 456 198 27
+}
+TF={
+name=SHOKU_NAME#6
+xywh=135 485 198 10
+}
+TF={
+name=NAME_KANA#6
+xywh=44 437 90 27
+}
+TF={
+name=NAME_KANJI#6
+xywh=44 467 90 27
+}
+TF={
+name=KENKYU_NO#9
+xywh=46 637 36 9
+}
+TF={
+name=SENMON#9
+xywh=334 637 153 18
+}
+TF={
+name=GAKUI#9
+xywh=334 657 153 18
+}
+TF={
+name=BUNTAN#9
+xywh=334 677 153 27
+}
+TF={
+name=SHOZOKU_NAME#9
+xywh=135 637 198 27
+}
+TF={
+name=BUKYOKU_NAME#9
+xywh=135 666 198 27
+}
+TF={
+name=SHOKU_NAME#9
+xywh=135 695 198 10
+}
+TF={
+name=NAME_KANA#9
+xywh=44 647 90 27
+}
+TF={
+name=NAME_KANJI#9
+xywh=44 677 90 27
+}
+TF={
+name=KENKYU_NO#10
+xywh=46 707 36 9
+}
+TF={
+name=SENMON#10
+xywh=334 707 153 18
+}
+TF={
+name=GAKUI#10
+xywh=334 727 153 18
+}
+TF={
+name=BUNTAN#10
+xywh=334 747 153 27
+}
+TF={
+name=SHOZOKU_NAME#10
+xywh=135 707 198 27
+}
+TF={
+name=BUKYOKU_NAME#10
+xywh=135 736 198 27
+}
+TF={
+name=SHOKU_NAME#10
+xywh=135 765 198 10
+}
+TF={
+name=NAME_KANA#10
+xywh=44 717 90 27
+}
+TF={
+name=NAME_KANJI#10
+xywh=44 747 90 27
+}
+TF={
+name=KENKYU_NO#7
+xywh=46 497 36 9
+}
+TF={
+name=SENMON#7
+xywh=334 497 153 18
+}
+TF={
+name=GAKUI#7
+xywh=334 517 153 18
+}
+TF={
+name=BUNTAN#7
+xywh=334 537 153 27
+}
+TF={
+name=SHOZOKU_NAME#7
+xywh=135 497 198 27
+}
+TF={
+name=BUKYOKU_NAME#7
+xywh=135 526 198 27
+}
+TF={
+name=SHOKU_NAME#7
+xywh=135 555 198 10
+}
+TF={
+name=NAME_KANA#7
+xywh=44 507 90 27
+}
+TF={
+name=NAME_KANJI#7
+xywh=44 537 90 27
+}
+TF={
+name=KENKYU_NO#8
+xywh=46 567 36 9
+}
+TF={
+name=SENMON#8
+xywh=334 567 153 18
+}
+TF={
+name=GAKUI#8
+xywh=334 587 153 18
+}
+TF={
+name=BUNTAN#8
+xywh=334 607 153 27
+}
+TF={
+name=SHOZOKU_NAME#8
+xywh=135 567 198 27
+}
+TF={
+name=BUKYOKU_NAME#8
+xywh=135 596 198 27
+}
+TF={
+name=SHOKU_NAME#8
+xywh=135 625 198 10
+}
+TF={
+name=NAME_KANA#8
+xywh=44 577 90 27
+}
+TF={
+name=NAME_KANJI#8
+xywh=44 607 90 27
+}
+tb=1
+TF={
+name=BUNTAN_FLG#2
+xywh=32 157.5 9 45
+}
+TF={
+name=BUNTAN_FLG#1
+xywh=32 85 9 50
+}
+TF={
+name=BUNTAN_FLG#3
+xywh=32 227.5 9 45
+}
+TF={
+name=BUNTAN_FLG#4
+xywh=32 297.5 9 45
+}
+TF={
+name=BUNTAN_FLG#5
+xywh=32 367.5 9 45
+}
+TF={
+name=BUNTAN_FLG#6
+xywh=32 437.5 9 45
+}
+TF={
+name=BUNTAN_FLG#7
+xywh=32 507.5 9 45
+}
+TF={
+name=BUNTAN_FLG#8
+xywh=32 577.5 9 45
+}
+TF={
+name=BUNTAN_FLG#9
+xywh=32 647.5 9 45
+}
+TF={
+name=BUNTAN_FLG#10
+xywh=32 717.5 9 45
+}
+tb=0
+TF={
+name=NENREI#1
+xywh=99 77 36 9
+}
+TF={
+name=NENREI#2
+xywh=99 147 36 9
+}
+TF={
+name=NENREI#3
+xywh=99 217 36 9
+}
+TF={
+name=NENREI#4
+xywh=99 287 36 9
+}
+TF={
+name=NENREI#5
+xywh=99 357 36 9
+}
+TF={
+name=NENREI#6
+xywh=99 427 36 9
+}
+TF={
+name=NENREI#7
+xywh=99 497 36 9
+}
+TF={
+name=NENREI#8
+xywh=99 567 36 9
+}
+TF={
+name=NENREI#9
+xywh=99 637 36 9
+}
+TF={
+name=NENREI#10
+xywh=99 707 36 9
+}
+tvp=1
+ts=10.5
+tb=1
+tov=1
+FT={
+xy=53.5 790.25
+str=合計
+}
+tvp=0
+tov=0
+TF={
+name=KENKYU_NINZU
+xywh=86.5 779 30 12
+}
+tvp=1
+tov=1
+FT={
+xy=113.5 790.25
+str=名　（うち他機関の分担者数
+}
+tvp=0
+tov=0
+TF={
+name=TAKIKAN_NINZU
+xywh=261.5 779 30 12
+}
+tvp=1
+tov=1
+FT={
+xy=288.5 790.25
+str=名）
+}
+FT={
+xy=379 790.25
+str=研究経費合計
+}
+pf=1
+pw=2
+PL={
+name=x
+p={
+30 795
+560 795
+}
+}
+ts=9
+tov=0
+RT={
+xy=487 55
+id=NENDO
+fm=X(10)
+}
+pw=0
+PL={
+p={
+535 795
+535 795
+}
+}
+PL={
+p={
+533 795
+560 775
+}
+}
+tb=0
+RT={
+xy=489.75 114.5
+id=KEIHI#1
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=489.75 184.5
+id=KEIHI#2
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=489.75 254.5
+id=KEIHI#3
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=489.75 324.5
+id=KEIHI#4
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=489.75 394.5
+id=KEIHI#5
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=489.75 464.5
+id=KEIHI#6
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=489.75 534.5
+id=KEIHI#7
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=489.75 604.5
+id=KEIHI#8
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=489.75 674.5
+id=KEIHI#9
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=489.75 744.5
+id=KEIHI#10
+fm=Z,ZZZ,ZZ9
+}
+tb=1
+RT={
+xy=489.75 789.5
+id=KEIHI1
+fm=Z,ZZZ,ZZ9
+}
+tb=0
+RT={
+xy=539.75 114.5
+id=EFFORT#1
+fm=ZZ9
+}
+RT={
+xy=539.75 184.5
+id=EFFORT#2
+fm=ZZ9
+}
+RT={
+xy=539.75 254.5
+id=EFFORT#3
+fm=ZZ9
+}
+RT={
+xy=539.75 324.5
+id=EFFORT#4
+fm=ZZ9
+}
+RT={
+xy=539.75 394.5
+id=EFFORT#5
+fm=ZZ9
+}
+RT={
+xy=539.75 464.5
+id=EFFORT#6
+fm=ZZ9
+}
+RT={
+xy=539.75 534.5
+id=EFFORT#7
+fm=ZZ9
+}
+RT={
+xy=539.75 604.5
+id=EFFORT#8
+fm=ZZ9
+}
+RT={
+xy=539.75 674.5
+id=EFFORT#9
+fm=ZZ9
+}
+RT={
+xy=539.75 744.5
+id=EFFORT#10
+fm=ZZ9
+}
+ts=10
+tov=1
+FT={
+xy=330 30
+str=研究分担者も応募資格を有する者であり、
+}
+FT={
+xy=330 42
+str=本研究計画に常時参加する者です。
+}
+FT={
+xy=315 30
+str=※
+}
+ts=12
+tov=0
+RT={
+xy=435 810
+id=SERIAL_NO
+fm=X(21)
+}
+}

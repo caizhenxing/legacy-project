@@ -1,0 +1,81 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Chapter&nbsp;2.&nbsp;Introduction to jBPM BPEL</title><link rel="stylesheet" href="css/html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.65.1"><link rel="home" href="index.html" title="JBoss jBPM BPEL User Guide"><link rel="up" href="index.html" title="JBoss jBPM BPEL User Guide"><link rel="previous" href="overview.html" title="Chapter&nbsp;1.&nbsp;Overview of BPEL"><link rel="next" href="getstarted.html" title="Chapter&nbsp;3.&nbsp;Getting started"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter&nbsp;2.&nbsp;Introduction to jBPM BPEL</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="overview.html">Prev</a>&nbsp;</td><th width="60%" align="center">&nbsp;</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="getstarted.html">Next</a></td></tr></table><hr></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="introduction"></a>Chapter&nbsp;2.&nbsp;Introduction to jBPM BPEL</h2></div></div><div></div></div><p>jBPM is a platform for graph-based execution languages. Its design and pluggable architecture makes 
+    it possible to support different languages that can be shown as a graph and 
+    represent some sort of execution. The goal of this project is to fully implement the 
+    BPEL specification by leveraging the jBPM foundation.</p><p>jPDL is jBPM's core workflow language. It was designed to fully fledge the 
+    capabilities of the jBPM API. BPEL is an emerging standard for assembling a 
+    set of discrete services into an end-to-end process flow. Even when there is 
+    actually an overlap in their functionality, they are targeted at different 
+    audiences. Let us take a look at their similarities and differences. If 
+    you are a jBPM connoisseur and still wonder what BPEL is, this might 
+    help you get started.</p><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="introduction.flowcontrol"></a>2.1.&nbsp;Flow control</h2></div></div><div></div></div><p>jPDL specifies the execution flow of a process in terms of a directed graph 
+      of nodes. It includes a set of node types that intend to cover most routing 
+      scenarios. Furthermore, its flexibility allows including custom routing logic 
+      when facing an eccentric process scenario. In contrast, BPEL has a fixed set 
+      of structured activities represented by XML elements. They are nested together 
+      to model a particular execution path. Among them we can find control structures 
+      present in most programming languages like <tt class="literal">sequence</tt>, <tt class="literal">while</tt>, 
+      and <tt class="literal">switch</tt>.</p><p>A more advanced structured activity worth mentioning is <tt class="literal">flow</tt>. It describes 
+      parallel paths of execution. Most importantly, it can declare links, which are 
+      control dependencies between its enclosed activities. Links allow for modelling 
+      directed graph flows, OR / AND join conditions for the execution of activities 
+      and even make it possible to detect dead paths of execution. </p><p>Below, a simplified version of the jBAY auction process coded in BPEL:</p><pre class="programlisting">&lt;process name="auction" targetNamespace="http://www.jBAY.com"
+      xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"&gt;
+      ...
+      &lt;sequence&gt;  
+      &lt;!-- <span class="emphasis"><em>Seller registers a sale offering and bids from the clients are received.
+       The highest bid is taken</em></span> --&gt;
+      ...
+      &lt;flow&gt;
+      
+         &lt;sequence name="shippingSequence"&gt;
+           &lt;invoke name="sendItem" operation="shipItem" partnerLink="shipper"/&gt;
+           &lt;receive name="receiveItem" operation="confirmDelivery" partnerLink="shipper"/&gt;
+          &lt;/sequence&gt;
+
+         &lt;sequence name="billingSequence"&gt;
+           &lt;receive name="receiveMoney" operation="notifyDeposit" partnerLink="bank"/&gt;
+           &lt;invoke name="sendMoney" operation="depositMoney" partnerLink="bank"/&gt;
+         &lt;/sequence&gt;
+
+       &lt;/flow&gt;
+
+      &lt;/sequence&gt;
+
+    &lt;/process&gt;</pre><p>The <tt class="literal">receive</tt> and <tt class="literal">invoke</tt> elements nested in the structured 
+    elements of the jBAY process are basic activities. They perform the actual work. 
+    The <tt class="literal">receiveMoney</tt> and <tt class="literal">receiveItem</tt> activities act as <span class="emphasis"><em>wait 
+    states</em></span>. In jPDL, any node that interrupts the execution path is a wait 
+    state, whereas in BPEL this behavior is given by the <tt class="literal">receive</tt>, <tt class="literal">wait</tt> 
+    and <tt class="literal">pick</tt> activities. In general, the execution of a process is only 
+    interrupted to wait for either an alarm to go off or a message to arrive.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="introduction.datahandling"></a>2.2.&nbsp;Data Handling</h2></div></div><div></div></div><p>jPDL's variable context is based on POJOs. Process data can be manipulated 
+      by inserting BeanShell code in a script node or invoking the methods of class 
+      <tt class="classname">ContextInstance</tt> inside action handlers. BPEL's variable context is 
+      made up by XML constructs. You can manipulate data within the assign activity 
+      using XPath expressions and in the <tt class="literal">receive</tt> and <tt class="literal">invoke</tt> activities, 
+      where message content is received either by an external call or by the return 
+      value of a service invocation.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="introduction.interaction"></a>2.3.&nbsp;Interaction with the process</h2></div></div><div></div></div><p>Clients of a jPDL definition are expected to start or resume process instances 
+      through the jBPM API. Methods such as <tt class="classname">ProcessDefinition</tt>.
+      <tt class="methodname">createProcessInstance</tt> and <tt class="classname">Token</tt>.
+      <tt class="methodname">signal</tt> allow client code to interact directly with an executing 
+      process.</p><p>BPEL takes a different approach. Instead of defining its own APIs, it accommodates
+      custom web service interfaces with which clients interact. These interfaces describe meaningful 
+      business operations and hide the fact that clients are actually "talking" 
+      to an orchestrator. In the next figure, the participants of the jBAY process 
+      interact with the auction endpoint. The orchestrator remains opaque.</p><div class="figure"><a name="introduction.auction.participants"></a><div class="mediaobject" align="center"><img src="images/auction.gif" align="middle" alt="Participants of the auction process"></div><p class="title"><b>Figure&nbsp;2.1.&nbsp;Participants of the auction process</b></p></div><p>The service operations are connected to the process definition through inbound message
+      activities. They mark <span class="emphasis"><em>entry points</em></span> inside a process definition. 
+      When a client invokes their corresponding operation they respond in one of two ways:</p><div class="orderedlist"><ol type="1"><li><p>behave as start states and trigger a new process instance</p></li><li><p>resume a process instance previously suspended</p></li></ol></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="introduction.invoking"></a>2.4.&nbsp;Invoking services</h2></div></div><div></div></div><p>jPDL processes use action handlers to invoke external services. Calls to Java 
+      component can be coded in an action handler and executed later inside a process. 
+      In BPEL, this behavior is achieved using the <tt class="literal">invoke</tt> activity. While 
+      it is only capable of calling web services right now, there are plans to use
+      <a href="http://ws.apache.org/wsif/" target="_top">Apache WSIF</a> to call any Java component 
+      described in a WSDL document</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="introduction.whichone"></a>2.5.&nbsp;Which one is for me?</h2></div></div><div></div></div><p>Some business processes involve frequent interactions with heterogeneous systems 
+      or partners. In these cases interoperability is essential, and XML is the obvious 
+      data transfer format. If you run into a similar scenario, we encourage you to 
+      choose BPEL. Manipulating XML documents with Java or any other non-XML language
+      is tedious, verbose and error-prone. BPEL alleviates much of this pain through the
+      following features:</p><div class="itemizedlist"><ul type="disc"><li><p>message exchange with efficiency (no Java/XML binding) 
+        and type safety (automatic format checking)</p></li><li><p>comfortable message content manipulation (XPath 1.0 expressions)</p></li><li><p>asynchronous message reception</p></li><li><p>encapsulation of the underlying web services machinery</p></li></ul></div><p>If this is not your case and you are mostly coordinating Java components, use 
+      jPDL. You'll find it easier to use and you will be able to model practically 
+      any imaginable scenario by leveraging jBPM's workflow-rich features.</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="overview.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="index.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="getstarted.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;1.&nbsp;Overview of BPEL&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;3.&nbsp;Getting started</td></tr></table></div></body></html>

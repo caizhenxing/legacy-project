@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<project name="ticket" default="redeploy-web">  
+  <import file="../common/webservice.build.xml"/>
+</project>

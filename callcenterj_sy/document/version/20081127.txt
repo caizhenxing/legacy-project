@@ -1,0 +1,20 @@
+修改人：王文权
+修改日期：2008-11-27
+修改内容：
+1、	座席端电话打入弹出页面实现接收功能
+页面：agentCallInOper.html(有一个按钮座席点击实现接听电话功能) agentPanel.jsp(座席面板)
+修改内容：
+1)agentPanel.jsp
+	1方便测试 增加一个测试按钮 电话来时点它 弹出agentCallInOper.html页面
+<input type="button" value="test" onclick="MyOpenWin('./agentCallInOper.html','电话呼入',450,240)" />
+	2如果测试通过 在agnentPanel.jsp页收索 *电话打入弹出 电话接听页面agentCallInOper.html* 两个星号之间的文字 到这里
+ //电话打入弹出 电话接听页面agentCallInOper.html
+ //MyOpenWin("./agentCallInOper.html","电话呼入",400,200);
+ 将注释去掉
+ 
+2)agentCallInOper.html 主要是一个js函数
+function agentAnswer()
+{
+	opener.document.getElementById("btnAnswer").click();
+}
+3）图片 将李睿的图片拷贝到 images/callIn2Agent 下

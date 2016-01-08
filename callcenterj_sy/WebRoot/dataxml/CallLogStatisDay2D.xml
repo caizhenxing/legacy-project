@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="GBK"?>
+<chart palette="2" caption="12316呼叫中心日话务分析" xAxisName="类别" yAxisName="接听次数" showValues="0" decimals="0" formatNumberScale="0" useRoundEdges="1">
+<set label="种植咨询" value="0"/>
+<set label="政策咨询" value="0"/>
+<set label="医疗服务" value="0"/>
+<set label="养殖咨询" value="0"/>
+<set label="信息定制" value="0"/>
+<set label="万事通" value="0"/>
+<set label="金农通" value="0"/>
+<set label="价格行情" value="0"/>
+<set label="价格报送" value="0"/>
+<set label="供求发布" value="0"/>
+<set label="供求查询" value="0"/>
+<set label="热线调查" value="0"/>
+</chart>

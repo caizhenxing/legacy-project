@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/mailbox.do" location="586,0" dimension="358,84" />
+  <StrutsActivity path="/mailbox/mailboxManagerList.jsp" location="0,184" dimension="226,48" />
+  <StrutsActivity path="/mailbox/mailboxManagerMain.jsp" location="326,184" dimension="226,48" />
+  <StrutsActivity path="/mailbox/mailboxManagerLoad.jsp" location="652,184" dimension="226,48" />
+  <StrutsActivity path="/mailbox/mailboxManagerQuery.jsp" location="978,184" dimension="232,48" />
+  <StrutsActivity path="/mailbox/mailboxManagerDetail.jsp" location="1310,184" dimension="238,48" />
+  <StrutsTransition id="/mailbox.do,load,/mailbox/mailboxManagerLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="765,84" />
+      <AbsolutePoint location="765,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/mailbox.do,query,/mailbox/mailboxManagerQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="836,84" />
+      <AbsolutePoint location="836,149" />
+      <AbsolutePoint location="1094,149" />
+      <AbsolutePoint location="1094,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/mailbox.do,detail,/mailbox/mailboxManagerDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="908,84" />
+      <AbsolutePoint location="908,119" />
+      <AbsolutePoint location="1429,119" />
+      <AbsolutePoint location="1429,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/mailbox.do,list,/mailbox/mailboxManagerList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="621,84" />
+      <AbsolutePoint location="621,119" />
+      <AbsolutePoint location="113,119" />
+      <AbsolutePoint location="113,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/mailbox.do,main,/mailbox/mailboxManagerMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="693,84" />
+      <AbsolutePoint location="693,149" />
+      <AbsolutePoint location="439,149" />
+      <AbsolutePoint location="439,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

@@ -1,0 +1,143 @@
+
+#V4.5 IOTHE-Printerfile
+#
+#
+
+cd=ÇxÇìÇì
+it=n
+doc={
+t=
+st=
+c=
+ap=
+ss=e487av1Tav1Tav1Tav1Tav1Tav+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+#
+}
+pagesize=a4 v 595 842
+pr=0 a4 v 595 842 0 0 100 n
+opt=255 255 255
+addole={
+}
+page
+ptype=overlay
+pagesize=a4 v 595 842
+sheet=1 0 0 0 0 4 0 0 |
+figs={
+}
+page
+ptype=normal
+figs={
+pf=1
+pw=2
+pk=0
+pc=0 0 0
+ff=-1
+fc=255 255 255
+fb=0
+jo=2
+ml=10
+B={
+xywh=75 71 475 700
+}
+pw=1
+PL={
+p={
+75 245
+550 245
+}
+}
+pw=0
+PL={
+p={
+75 416
+550 416
+}
+}
+PL={
+p={
+75 588
+550 588
+}
+}
+PL={
+p={
+267 245
+267 770
+}
+}
+tvp=1
+tuf=0
+ts=11
+tw=1
+td=0
+tr=0
+ti=0
+tb=0
+twh=
+twz=
+twk=
+tc=0 0 0
+tov=0
+FT={
+xy=73 57
+str=ólÅ@éÆÅ@É±Å|ÇRÅ|ÇQ
+}
+ts=30
+FT={
+xy=80 130
+str=å§ãÜéÌñ⁄ñº (êRç∏ãÊï™)
+}
+FT={
+xy=345 750
+str=(
+}
+FT={
+xy=520 750
+str=)
+}
+FT={
+xy=90 340
+str=ã@ ä÷ î‘ çÜ
+}
+FT={
+xy=100 510
+str=å§ãÜã@ä÷ñº
+}
+FT={
+xy=110 680
+str=åèÅ@Å@êî
+}
+FT={
+xy=500 680
+str=åè
+}
+FT={
+xy=430 750
+str=Å^
+}
+ts=28
+RT={
+xy=360.299028 678.5
+id=KENSU
+fm=Z,ZZ9
+}
+tvp=0
+pf=0
+TF={
+name=SHOZOKU_NAME_KANJI
+xywh=272 427 280 150
+}
+TF={
+name=JIGYO_NAME
+xywh=82 167 460 75
+}
+tvp=1
+RT={
+xy=360.299028 338.5
+id=SHOZOKU_CD
+fm=X(5)
+}
+pf=1
+B={
+xywh=520 660 0 0
+}
+}

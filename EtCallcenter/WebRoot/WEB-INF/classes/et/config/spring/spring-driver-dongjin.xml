@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "spring-beans.dtd" >
+<beans>
+	<bean id="IDongjinConf" class="et.bo.callcenter.plant.dongjin_c161a.impl.IDongjinConfImpl"></bean>
+	<bean id="IDongjinDtmf" class="et.bo.callcenter.plant.dongjin_c161a.impl.IDongjinDtmfImpl"></bean>
+	<bean id="IDongjinFsk" class="et.bo.callcenter.plant.dongjin_c161a.impl.IDongjinFskImpl"></bean>
+	<bean id="IDongjinInHook" class="et.bo.callcenter.plant.dongjin_c161a.impl.IDongjinInHookImpl"></bean>
+	<bean id="IDongjinInit" class="et.bo.callcenter.plant.dongjin_c161a.impl.IDongjinInitImpl"></bean>
+	<bean id="IDongjinLink" class="et.bo.callcenter.plant.dongjin_c161a.impl.IDongjinLinkImpl"></bean>
+	<bean id="IDongjinOutHook" class="et.bo.callcenter.plant.dongjin_c161a.impl.IDongjinOutHookImpl"></bean>
+	<bean id="IDongjinPlay" class="et.bo.callcenter.plant.dongjin_c161a.impl.IDongjinPlayImpl"></bean>
+	<bean id="IDongjinRecordChange" class="et.bo.callcenter.plant.dongjin_c161a.impl.IDongjinRecordChangeImpl"></bean>
+	<bean id="IDongjinRecord" class="et.bo.callcenter.plant.dongjin_c161a.impl.IDongjinRecordImpl"></bean>
+	<bean id="IDongjinVoice" class="et.bo.callcenter.plant.dongjin_c161a.impl.IDongjinVoiceImpl"></bean>
+</beans>

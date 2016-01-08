@@ -1,0 +1,339 @@
+## ***********************************************
+## 業務担当者向けメニュー
+## ***********************************************
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+#parse( $commonSetting )
+#set ($tantoJigyoKubun = $userContainer.userInfo.gyomutantoInfo.tantoJigyoKubun)
+#set ($tantoJigyoCd = $userContainer.userInfo.gyomutantoInfo.tantoJigyoCd)
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+ <script language="javascript">
+ <!--
+ /* チェックリスト・表紙出力クリック時 */
+ function onCheckListClick(inJigyoKbn){
+     document.checkList_form.action="$link.setAction('/gyomu/checkList/search')";
+     document.checkList_form.jigyoKbn.value=inJigyoKbn;
+     document.checkList_form.submit();
+ }
+ //-->
+ </script>
+</head>
+<body class="bodyStyle">
+
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS 独立行政法人 日本学術振興会 電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="javascript:fncWindowOpen('$path/docs/manual3.pdf','help');"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/gyomu/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width=72 height=20 border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- ログインユーザ、ルート情報用テーブルここから -->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#999966" class="rootFont"><font color="#FFFFFF"><b>業務担当者向けメニュー</b></font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで -->
+
+    <!-- ログイン、メニュー画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr>
+      <td width="92" valign="bottom"><img src="$path/images/title_img1.gif" width=92 height=53 alt=""></td>
+      <td width="98%" valign="bottom" class="menuTitle">業務担当者向けメニュー</td>
+      <td width="214" valign="bottom"><img src="$path/images/title_img5.gif" width=214 height=38 alt=""></td>
+     </tr>
+     <tr>
+      <td width="92"><img src="$path/images/title_img2.gif" width=92 height=29 alt=""></td>
+      <td background="$path/images/title_img3.gif"><img src="$path/images/title_img3.gif" width=8 height=29 alt=""></td>
+      <td width="214"><img src="$path/images/title_img6.gif" width=214 height=29 alt=""></td>
+     </tr>
+    </table>
+    <!-- ログイン、メニュー画面タイトル用テーブルここまで -->
+    <!-- ログイン入力フォーム、メニュー項目用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr>
+      <td width="92" valign="top"><img src="$path/images/title_img7.gif" width=92 height=38 alt=""></td>
+      <td width="52" class="menuLine"><img src="$path/images/spacer.gif" width="52" height="1"></td>
+      <td width="90%" align="left"> <br>
+
+       <!-- メニュー用テーブルここから -->
+       <table border="0" cellspacing="6">
+        <tr>
+         <td><img src="$path/images/mark_yellow.gif" alt="" width="16" height="16"></td>
+         <td class="menu">
+           ##set($JIGYO_KUBUN_ARRAY = [$JIGYO_KUBUN_GAKUSOU_HIKOUBO,$JIGYO_KUBUN_GAKUSOU_KOUBO,$JIGYO_KUBUN_TOKUSUI ])
+           ##accessKanriLinkArray($link.setAction('/gyomu/juri/searchList') '_self' '受理登録' $tantoJigyoKubun $JIGYO_KUBUN_ARRAY)
+           <!-- 事業コード：（00521,00522,00011,00031,00041,00043,00051,00053）の場合はリンク有効(20060530 董 仕様より変更) -->
+## 2007/02/07 張志男　修正ここから
+		   <!-- 事業コード：（00521,00522,00011,00031,00041,00043,00051,00053,00141,00142,00152,00153,00154,00155,00156）の場合はリンク有効    仕様より変更) -->
+		   ## #set($validJigyoCd = ['00521','00522','00011','00031','00041','00043','00051','00053'])
+		   ##UPDATE START 2007/07/02 BIS 趙一非
+		   ##特定領域（継続領域）と萌芽研究が完全電子化へ
+		   ##Ｈ１９科研完全電子化
+		   ###set($validJigyoCd = ['00521','00522','00011','00031','00041','00043','00051','00053','00141','00142','00152','00153','00154','00155','00156'])
+		   #set($validJigyoCd = ['00521','00522','00011','00021','00031','00041','00043','00051','00053','00111','00141','00142','00154'])
+			##UPDATE　END　 2007/06/28 BIS 趙一非
+## 2007/02/07　張志男　修正ここまで
+           #accessKanriLinkArray($link.setAction('/gyomu/juri/search') '_self' '受理登録' $tantoJigyoCd $validJigyoCd)
+         </td>
+         <td><img src="$path/images/mark_yellow.gif" alt="" width="16" height="16"></td>
+         <td class="menu">
+           <!-- 全事業リンク有効 -->
+           #accessKanriLink($link.setAction('/gyomu/jigyoKanri/showMenu') '_self' '事業管理' $tantoJigyoKubun $JIGYO_KUBUN_ANY)
+         </td>
+        </tr>
+        <tr>
+         <td>&nbsp;</td>
+         ##UPDATE START 2007/07/02 BIS 趙一非
+         ##特定領域（継続領域）と萌芽研究が完全電子化へ
+		   ##Ｈ１９科研完全電子化
+         <!--<td class="menu"><font size="-1">&nbsp;&nbsp;学術創成研究費・特別推進研究・基盤研究（S）（A）（B）</font></td>-->
+         <td class="menu"><font size="-1">&nbsp;&nbsp;学術創成研究費・特別推進研究・特定領域研究（継続領域）・基盤研究（S）（A）（B）</font></td>
+         ##UPDATE END 2007/07/02 BIS 趙一非
+         <td><img src="$path/images/mark_yellow.gif" alt="" width="16" height="16"></td>
+         <td class="menu">
+           <!-- 事業区分：1,2,4,6,7の場合はリンク有効(20060530 董 仕様より変更) -->
+           #set($JIGYO_KUBUN_ARRAY = [ $JIGYO_KUBUN_GAKUSOU_HIKOUBO, $JIGYO_KUBUN_GAKUSOU_KOUBO, $JIGYO_KUBUN_KIBAN, $JIGYO_KUBUN_WAKATE_START, $JIGYO_KUBUN_SHOKUSHINHI ])
+           #accessKanriLinkArray($link.setAction('/gyomu/shinsainKanri/showMenu') '_self' '審査員管理' $tantoJigyoKubun $JIGYO_KUBUN_ARRAY)
+         </td>
+        </tr>
+        <tr>
+## 2007/02/07 張志男　追加ここから
+         <td>&nbsp;</td>
+         ##UPDATE START 2007/07/02 BIS 趙一非
+         ##特定領域（継続領域）と萌芽研究が完全電子化へ
+		   ##Ｈ１９科研完全電子化
+         <!--<td class="menu"><font size="-1">&nbsp;&nbsp;若手研究（S）（スタートアップ）・（特別研究促進費（年複数回応募の試行））</font></td>-->
+         <td class="menu"><font size="-1">&nbsp;&nbsp;萌芽研究・若手研究（S）（スタートアップ）・（特別研究促進費（年複数回応募の試行））</font></td>
+		##UPDATE END 2007/07/02 BIS 趙一非
+## 2007/02/07　張志男　追加ここまで
+		 <td><img src="$path/images/mark_yellow.gif" alt="" width="16" height="16"></td>
+         <td class="menu">
+           <!-- 全事業リンク有効 -->
+           #accessKanriLink($link.setAction('/gyomu/punchData/punchDataList') '_self' 'パンチデータ出力' $tantoJigyoKubun $JIGYO_KUBUN_ANY)
+         </td>
+        </tr>
+        <tr>
+         <td><img src="$path/images/mark_yellow.gif" alt="" width="16" height="16"></td>
+         <td class="menu">
+           <!-- 事業コード：00022 -->
+           #if($tantoJigyoCd.contains('00022'))
+             <a href="$link.setAction('/gyomu/teishutsuShorui/search')">提出書類管理（特定領域（新規））</a>
+           #else 提出書類管理（特定領域（新規））
+           #end
+         </td>
+         <td><img src="$path/images/mark_yellow.gif" alt="" width="16" height="16"></td>
+         <td class="menu">
+           <!-- 全員リンク有効 -->
+           #accessKanriLink($link.setAction('/gyomu/shozokuKanri/search') '_self' '所属研究機関検索' $tantoJigyoKubun $JIGYO_KUBUN_ALL)
+         </td>
+        </tr>
+
+        <tr>
+         <td><img src="$path/images/mark_yellow.gif" alt="" width="16" height="16"></td>
+         <td class="menu">
+           ##if($tantoJigyoKubun.contains($JIGYO_KUBUN_KIBAN))
+             ##set ($JIGYO_KUBUN_ARRAY = $JIGYO_KUBUN_KIBAN)
+             ##<a href="javascript:onCheckListClick('4')">チェックリスト管理（基盤研究(C)・萌芽研究・若手研究）</a>
+           ##else チェックリスト管理（基盤研究(C)・萌芽研究・若手研究）
+           ##end
+           <!-- 事業コード：（00061,00062,00111,00121,00131）の場合はリンク有効(20060530 董 仕様より変更) -->
+           ##UPDATE START 2007/07/02 BIS 趙一非
+           ##特定領域（継続領域）と萌芽研究が完全電子化へ
+		   ##Ｈ１９科研完全電子化
+           ###set($validJigyoCd = ['00061','00062','00111','00121','00131'])
+           #set($validJigyoCd = ['00061','00062','00121','00131'])
+           ##UPDATE　END　 2007/06/28 BIS 趙一非
+		   #set ($isOk = "false")
+		   #foreach ($targetJigyoCd in $validJigyoCd)
+		     #if($tantoJigyoCd.contains($targetJigyoCd))
+		       #set ($isOk = "true")
+		     #end
+		   #end
+		   ##１つでも該当する事業区分が存在していた場合はリンクとする
+           #if($isOk == "true")
+           ##UPDATE START 2007/07/02 BIS 趙一非
+           ##特定領域（継続領域）と萌芽研究が完全電子化へ
+		   ##Ｈ１９科研完全電子化
+             <!--<a href="javascript:onCheckListClick('4')">チェックリスト管理（基盤研究（C）・萌芽研究・若手研究）</a>-->
+             <a href="javascript:onCheckListClick('4')">チェックリスト管理（基盤研究（C）・若手研究）</a>
+           ###else チェックリスト管理（基盤研究（C）・萌芽研究・若手研究）
+           #else チェックリスト管理（基盤研究（C）・若手研究）
+           ##UPDATE　END　 2007/06/28 BIS 趙一非
+           #end
+         </td>
+         <td><img src="$path/images/mark_yellow.gif" alt="" width="16" height="16"></td>
+         <td class="menu">
+           <!-- 全事業リンク有効 -->
+           #accessKanriLink($link.setAction('/gyomu/shinseishaKanri/search') '_self' '応募者管理' $tantoJigyoKubun $JIGYO_KUBUN_ANY)
+         </td>
+        </tr>
+
+        <tr>
+         <td><img src="$path/images/mark_yellow.gif" alt="" width="16" height="16"></td>
+         ##DEL START 2007/07/02 BIS 趙一非
+         ##特定領域（継続領域）と萌芽研究が完全電子化へ
+		   ##Ｈ１９科研完全電子化
+         #*
+         <td class="menu">
+           <!-- 事業コード：00021の場合はリンク有効 -->
+           #if($tantoJigyoCd.contains('00021'))
+             <a href="$link.setAction('/gyomu/checkList/searchTokutei')">チェックリスト管理（特定領域（継続））</a>
+           #else チェックリスト管理（特定領域（継続））
+           #end
+           ##<!-- 事業区分：5の場合はリンク有効 -->
+           ###set ($JIGYO_KUBUN_ARRAY = $JIGYO_KUBUN_TOKUTEI)
+           ###accessKanriLink($link.setAction('/gyomu/checkList/searchTokutei')  '_self' 'チェックリスト管理（特定領域（継続））' $tantoJigyoKubun $JIGYO_KUBUN_ARRAY)
+         </td>
+         *#
+         ##DEL END 2007/07/02 BIS 趙一非
+         ##ADD START 2007/07/02 BIS 趙一非
+         ##特定領域（継続領域）と萌芽研究が完全電子化へ
+		   ##Ｈ１９科研完全電子化
+          <td class="menu">
+           <!-- 全事業リンク有効 -->
+           #accessKanriLink($link.setAction('/gyomu/shinseiKanri/search') '_self' '応募情報検索' $tantoJigyoKubun $JIGYO_KUBUN_ANY)
+         </td>
+         ##ADD END 2007/07/02 BIS 趙一非
+         <td><img src="$path/images/mark_yellow.gif" alt="" width="16" height="16"></td>
+         <td class="menu">
+           <!-- 全員リンク有効 -->
+           #accessKanriLink($link.setAction('/gyomu/passwordChange') '_self' 'パスワード変更' $tantoJigyoKubun $JIGYO_KUBUN_ALL)
+         </td>
+        </tr>
+        <tr>
+         <td><img src="$path/images/mark_yellow.gif" alt="" width="16" height="16"></td>
+         ##DEL START 2007/07/02 BIS 趙一非
+         ##特定領域（継続領域）と萌芽研究が完全電子化へ
+		   ##Ｈ１９科研完全電子化
+         #*
+         <td class="menu">
+           <!-- 全事業リンク有効 -->
+           #accessKanriLink($link.setAction('/gyomu/shinseiKanri/search') '_self' '応募情報検索' $tantoJigyoKubun $JIGYO_KUBUN_ANY)
+         </td>
+         *#
+         ##DEL END 2007/07/02 BIS 趙一非
+         ##ADD START 2007/07/02 BIS 趙一非
+         ##特定領域（継続領域）と萌芽研究が完全電子化へ
+		   ##Ｈ１９科研完全電子化
+         <td class="menu">
+           <!-- 事業区分：1,2,4,6,7の場合はリンク有効 -->
+           #set ($JIGYO_KUBUN_ARRAY = [ $JIGYO_KUBUN_GAKUSOU_HIKOUBO, $JIGYO_KUBUN_GAKUSOU_KOUBO, $JIGYO_KUBUN_KIBAN, $JIGYO_KUBUN_WAKATE_START, $JIGYO_KUBUN_SHOKUSHINHI ])
+           #accessKanriLinkArray($link.setAction('/gyomu/warifuri/search') '_self' '審査員割り振り' $tantoJigyoKubun $JIGYO_KUBUN_ARRAY)
+         </td>
+         ##ADD END 2007/07/02 BIS 趙一非
+         <td><img src="$path/images/mark_yellow.gif" alt="" width="16" height="16"></td>
+         <td class="menu">
+           <!-- 全員リンク有効 -->
+           #accessKanriLink($link.setAction('/gyomu/ikenSearch') '_self' '意見・要望検索' $tantoJigyoKubun $JIGYO_KUBUN_ALL)
+         </td>
+        </tr>
+		##DEL START 2007/07/02 BIS 趙一非
+		##特定領域（継続領域）と萌芽研究が完全電子化へ
+		   ##Ｈ１９科研完全電子化
+		#*
+        <tr>
+         <td><img src="$path/images/mark_yellow.gif" alt="" width="16" height="16"></td>
+         <td class="menu">
+           <!-- 事業区分：1,2,4,6,7の場合はリンク有効 -->
+           #set ($JIGYO_KUBUN_ARRAY = [ $JIGYO_KUBUN_GAKUSOU_HIKOUBO, $JIGYO_KUBUN_GAKUSOU_KOUBO, $JIGYO_KUBUN_KIBAN, $JIGYO_KUBUN_WAKATE_START, $JIGYO_KUBUN_SHOKUSHINHI ])
+           #accessKanriLinkArray($link.setAction('/gyomu/warifuri/search') '_self' '審査員割り振り' $tantoJigyoKubun $JIGYO_KUBUN_ARRAY)
+         </td>
+         <td>&nbsp;</td>
+         <td>&nbsp;</td>
+        </tr>
+        *#
+		##DEL END 2007/07/02 BIS 趙一非
+        <tr>
+         <td><img src="$path/images/mark_yellow.gif" alt="" width="16" height="16"></td>
+         <td class="menu">
+           <!-- 事業区分：1,2,4,6,7の場合はリンク有効 -->
+           #set ($JIGYO_KUBUN_ARRAY = [ $JIGYO_KUBUN_GAKUSOU_HIKOUBO, $JIGYO_KUBUN_GAKUSOU_KOUBO, $JIGYO_KUBUN_KIBAN, $JIGYO_KUBUN_WAKATE_START, $JIGYO_KUBUN_SHOKUSHINHI  ])
+           #accessKanriLinkArray($link.setAction('/gyomu/shinsaJokyo/search') '_self' '審査状況確認' $tantoJigyoKubun $JIGYO_KUBUN_ARRAY)
+         </td>
+         <td>&nbsp;</td>
+         <td>&nbsp;</td>
+        </tr>
+        <tr>
+         <td><img src="$path/images/mark_yellow.gif" alt="" width="16" height="16"></td>
+         <td class="menu">
+           <!-- 事業区分：1,4,6,7の場合はリンク有効 -->
+           #set ($JIGYO_KUBUN_ARRAY = [ $JIGYO_KUBUN_GAKUSOU_HIKOUBO, $JIGYO_KUBUN_KIBAN, $JIGYO_KUBUN_WAKATE_START, $JIGYO_KUBUN_SHOKUSHINHI ])
+           #accessKanriLinkArray($link.setAction('/gyomu/hyoka/showMenu') '_self' '評価一覧出力' $tantoJigyoKubun $JIGYO_KUBUN_ARRAY)
+         </td>
+         <td>&nbsp;</td>
+         <td>&nbsp;</td>
+        </tr>
+
+        <tr>
+         <td><img src="$path/images/mark_yellow.gif" alt="" width="16" height="16"></td>
+         <td class="menu">
+           <!-- 事業区分：1,2,3,4の場合はリンク有効 -->
+           #set ($JIGYO_KUBUN_ARRAY = [ $JIGYO_KUBUN_GAKUSOU_HIKOUBO, $JIGYO_KUBUN_GAKUSOU_KOUBO, $JIGYO_KUBUN_TOKUSUI, $JIGYO_KUBUN_KIBAN])
+           #accessKanriLinkArray($link.setAction('/gyomu/kanren/search') '_self' '関連分野の研究者リスト作成' $tantoJigyoKubun $JIGYO_KUBUN_ARRAY)
+         </td>
+         <td>&nbsp;</td>
+         <td>&nbsp;</td>
+        </tr>
+        <tr>
+         <td><img src="$path/images/mark_yellow.gif" alt="" width="16" height="16"></td>
+         <td class="menu">
+           <!-- 全事業リンク有効 -->
+           #accessKanriLink($link.setAction('/gyomu/dataHokan/showMenu') '_self' 'データ保管' $tantoJigyoKubun $JIGYO_KUBUN_ANY)
+         </td>
+         <td>&nbsp;</td>
+         <td>&nbsp;</td>
+        </tr>
+       </table>
+       <!-- メニュー用テーブルここまで -->
+
+      </td>
+     </tr>
+    </table>
+    <br>
+    <br>
+     <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width=8 height=26 alt=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/gyomu/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width=72 height=26 border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width=8 height=26 alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <form name="checkList_form" method="post" action="">
+  <input type="hidden" name="jigyoKbn" value="">
+ </form>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+</body>
+</html>

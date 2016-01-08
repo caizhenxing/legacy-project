@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+    <form-bean name="ExportForm" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      <form-property name="photo" type="java.lang.String" />
+      <form-property name="id" type="java.lang.String" />
+      <form-property name="remark" type="java.lang.String" />
+      <form-property name="name" type="java.lang.String" />
+    </form-bean>
+
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+    <action
+      attribute="ExportForm"
+      name="ExportForm"
+      parameter="method"
+      path="/export/export"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="query" path="/export/exportQuery.jsp" />
+      <forward name="list" path="/export/exportList.jsp" />
+      <forward name="list2" path="/export/zjtj6.jsp" />
+      <forward name="load" path="/export/exportLoad.jsp" />
+      <forward name="main" path="/export/exportMain.jsp" />
+    </action>
+
+	</action-mappings>
+	
+</struts-config>
+

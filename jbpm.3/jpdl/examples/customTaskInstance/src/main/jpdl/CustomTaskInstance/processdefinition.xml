@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition
+  xmlns=""  name="CustomTaskInstance">
+   <swimlane name="salesman">
+   		<assignment pooled-actors="saleman"/>
+   	</swimlane>
+   <start-state name="start">
+      <transition name="" to="Place Order"></transition>
+   </start-state>
+   <end-state name="end1"></end-state>
+   <task-node name="Place Order">
+      <task name="Place Order" swimlane="salesman"></task>
+      <transition name="" to="end1"></transition>
+   </task-node>
+</process-definition>

@@ -1,0 +1,51 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Chapter&nbsp;4.&nbsp;Tutorial</title><link rel="stylesheet" href="css/html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.65.1"><link rel="home" href="index.html" title="JBoss jBPM BPEL User Guide"><link rel="up" href="index.html" title="JBoss jBPM BPEL User Guide"><link rel="previous" href="getstarted.html" title="Chapter&nbsp;3.&nbsp;Getting started"><link rel="next" href="tutorial.hello.html" title="Chapter&nbsp;5.&nbsp;Hello World Example"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter&nbsp;4.&nbsp;Tutorial</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="getstarted.html">Prev</a>&nbsp;</td><th width="60%" align="center">&nbsp;</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="tutorial.hello.html">Next</a></td></tr></table><hr></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="tutorial"></a>Chapter&nbsp;4.&nbsp;Tutorial</h2></div></div><div></div></div><p>The best way to get acquainted with BPEL is to see it in action. For this reason,
+    we included some examples that will help you get started quickly. At
+    this point, you should have the jBPM BPEL service running inside JBoss. If you
+    do not, please read the <a href="getstarted.html" title="Chapter&nbsp;3.&nbsp;Getting started">Getting started</a>
+    chapter first.</p><p>In this chapter we will guide you through the example setup procedure. The next two 
+    chapters contain the actual examples.</p><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.setup.jwsdp"></a>4.1.&nbsp;Getting the Java Web Services Development Pack</h2></div></div><div></div></div><p>jBPM BPEL relies on the Web Services for J2EE (WSEE) model for exposing the 
+      functionality a BPEL process delivers. Some of the server artifacts required for a WSEE 
+      deployment can be automatically generated from WSDL documents.</p><p>Starting from JBoss AS 4.0.4, the web services implementation features a
+      toolkit called <tt class="literal">wstools</tt>. If you are using that version of JBoss AS, no
+      further action is required in this section.</p><p>For earlier JBoss AS versions, JBoss recommended the <tt class="literal">wscompile</tt> 
+      tool from the Java Web Services Development Pack. Please refer to the <a href="http://java.sun.com/webservices/jwsdp/index.jsp" target="_top">Java WSDP</a> site for download
+      and installation instructions.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.setup.environment"></a>4.2.&nbsp;Defining the environment</h2></div></div><div></div></div><p>The resources related to each sample process reside in a separate subdirectory 
+       under <tt class="literal">doc/examples</tt>. Each subdirectory contains an Ant script to assist
+       in carrying out process deployment tasks.</p><p>Note that the individual scripts import a template located in the <tt class="literal">common
+      </tt> subdirectory. If you organize your resources in the same way as the examples,
+      you can take advantage of this template in your own project.</p><p>Each runtime environment is likely to be different from all others. For this
+      reason, the build template needs to be made aware of your particular environment.
+      Copy or rename file <tt class="literal">ant.example.properties</tt> in the <tt class="literal">doc/examples
+      </tt> subdirectory to <tt class="literal">ant.properties</tt>. Edit the values there to 
+      match your jBPM BPEL and JWSDP installation directories. The new values are shared
+      among all examples.</p><pre class="programlisting"># jBPM BPEL installation directory 
+jbpm.bpel.home=/jbpm/bpel/home
+
+# JWSDP installation directory
+# optional for JBoss 4.0.4+
+# required for JBoss 4.0.3-
+!jwsdp.home=/jwsdp/home</pre><p>Controlling multiple processes at once becomes as easy as controlling a single
+      process with the build file located in <tt class="literal">doc/examples</tt>. This script 
+      leverages the <tt class="literal">subant</tt> task for running build targets on a collection 
+      of projects.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.setup.dbschema"></a>4.3.&nbsp;Creating the database schema</h2></div></div><div></div></div><p>Starting with version 1.0 alpha 4, a web application deployed along the jBPM BPEL
+      service executes administrative requests such as creating the database schema and
+      deploying a process definition.</p><p>Before you deploy process definitions to the database, the jBPM schema must exist in
+      the database. The schema creation can be manual or automatic, at your choice.</p><p>Automatic schema creation is convenient for evaluation and development purposes.
+      This is why it is the default setting. To disable it, remove the <tt class="literal">
+      hibernate.hbm2ddl.auto</tt> property from <tt class="literal">hibernate.properties</tt> in 
+      <tt class="literal">src/resources/jbpm-bpel.sar</tt> and redeploy the jBPM BPEL service.
+    </p><p>When you turn off automatic schema creation, you need a way to create it manually. 
+      The global process deployment script provides some targets for posting administrative 
+      schema requests to the jBPM BPEL web application: <tt class="literal">create-schema</tt> and 
+      <tt class="literal">drop-schema</tt>.</p><p>Hibernate will emit a few log messages to the server console when the schema gets
+      created either way. The output below corresponds to manual creation.</p><pre class="screen">22:45:00,796 INFO  [SchemaExport] Running hbm2ddl schema export
+22:45:00,812 INFO  [SchemaExport] exporting generated schema to database
+22:45:00,828 INFO  [DatasourceConnectionProvider] Using datasource: java:/jbpmBpelDS
+22:45:00,921 INFO  [SchemaExport] schema export complete</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.setup.xmlapis"></a>4.4.&nbsp;Replacing the default implementation of the XML APIs</h2></div></div><div></div></div><p>There are known issues with the implementations of the XML APIs in Java SE 1.4.2 and 
+      1.5.0. The solution is to employ the Endorsed Standards Override Mechanism for replacing
+      these implementations with more recent versions of Apache Xalan and Apache Xerces.</p><p>You will find adequate replacement libraries in the <tt class="literal">lib/endorsed</tt> 
+      subdirectory of JBoss AS. Please follow the instructions for deploying endorsed standards
+      classes in the Java SE <a href="http://java.sun.com/j2se/1.4.2/docs/guide/standards/" target="_top">
+      Guide to Features</a>.</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="getstarted.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="index.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="tutorial.hello.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;3.&nbsp;Getting started&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;5.&nbsp;Hello World Example</td></tr></table></div></body></html>

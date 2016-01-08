@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="WINDOWS-31J"?>
+
+<!DOCTYPE struts-config PUBLIC 
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+  <form-beans>
+    <!-- アンケート結果 --> 
+    <form-bean name="questionForm"
+               type="jp.go.jsps.kaken.web.question.QuestionForm"/>
+  </form-beans>
+  
+  <global-exceptions>
+    <exception handler="jp.go.jsps.kaken.web.struts.ApplicationExceptionHandler"
+               key="errors.application" path="/common/appError.vm"
+               scope="request"
+               type="jp.go.jsps.kaken.model.exceptions.ApplicationException"/>
+    <exception handler="jp.go.jsps.kaken.web.struts.SystemExceptionHandler"
+               key="errors.system" path="/common/sysError.vm"
+               type="jp.go.jsps.kaken.model.exceptions.SystemException"/>
+  </global-exceptions>
+
+  <global-forwards>
+    <forward name="session" path="/common/timeoutError.vm" redirect="false"/>
+    <forward name="token" path="/tokenError.do" redirect="false"/>
+    <forward name="welcome" path="/logon.do" redirect="false"/>
+  </global-forwards>
+
+  <action-mappings type="jp.go.jsps.kaken.web.struts.ActionMapping">
+    <!-- ユーザチェック -->
+    <action path="/input" scope="session"
+            type="jp.go.jsps.kaken.web.logon.UserCheckAction"
+            unknown="false" validate="false" >
+      <set-property property="logonCheck" value="false"/>
+      <set-property property="description" value="ユーザチェック"/>
+      <forward name="success" path="/inputHyoji.do" redirect="false"/>
+    </action>
+    <!-- アンケート入力 -->
+    <action path="/inputHyoji" scope="session" name="questionForm"
+            type="jp.go.jsps.kaken.web.question.QuestionInputAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="アンケート入力"/>
+      <forward name="success" path="/pages/input.vm" redirect="false"/>
+    </action>
+    <!-- アンケート入力確認 -->
+    <action path="/check" scope="session" name="questionForm"
+            type="jp.go.jsps.kaken.web.question.QuestionCheckAction"
+            unknown="false" validate="true" input="/pages/input.vm">
+      <set-property property="description" value="アンケート入力確認"/>
+      <forward name="success" path="/pages/check.vm" redirect="false"/>
+    </action>
+    <!-- アンケート入力完了 -->
+    <action path="/save" scope="session" name="questionForm"
+            type="jp.go.jsps.kaken.web.question.QuestionSaveAction"
+            unknown="false" validate="false" input="/pages/check.vm">
+      <set-property property="description" value="アンケート入力完了"/> 
+      <forward name="cancel" path="/pages/input.vm" redirect="false"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/save.vm" redirect="false"/>
+    </action> 
+
+    <!-- ### 共通 ### --> 
+    <action path="/tokenError" scope="request"
+            type="jp.go.jsps.kaken.web.struts.TokenErrorAction" unknown="false"
+            validate="false">
+    </action>
+
+  </action-mappings>
+
+  <controller processorClass="jp.go.jsps.kaken.web.struts.RequestProcessor"/>
+
+  <message-resources null="false"
+                     parameter="jp.go.jsps.kaken.web.resources.Application"/>
+
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property property="pathnames"
+                  value="/WEB-INF/validation-default.xml
+                        ,/WEB-INF/validation-question-bukyoku.xml
+                        ,/WEB-INF/validator-rules.xml"/>
+  </plug-in>
+</struts-config>

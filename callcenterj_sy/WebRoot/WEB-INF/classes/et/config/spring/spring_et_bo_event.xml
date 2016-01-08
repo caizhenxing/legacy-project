@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+	
+	<bean name="/event/event" class="et.bo.event.action.EventAction" scope="singleton">
+		<property name="eventService">
+			<ref bean="EventService"/>
+		</property>
+	</bean>
+	<bean id="EventService" class="et.bo.event.service.impl.EventServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,20 @@
+#
+#Thu Feb 08 14:28:58 CST 2007
+genBasicCompId=true
+sessionFactoryName=
+profile=
+daoSFId=
+version=3.0
+jndiPath=
+springDaoFile=
+useJavaTypes=true
+keyGenerator=assigned
+libInstallFolder=WebRoot/WEB-INF/lib
+addLibs2Project=false
+genVersionTag=true
+sessionFactoryId=
+basePersistenceClass=
+reSettingsFile=
+configFile=/ETOA/src/et/config/hibernate/hibernate.cfg.xml
+createConfigFile=true
+addLibs2Classpath=false

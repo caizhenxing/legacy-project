@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<beans>
+	<bean name="/export/export" class="et.bo.export.action.ExportAction" scope="singleton">
+		<property name="exportService">
+			<ref bean="ExportService"/>
+		</property>
+	</bean>
+	<bean id="ExportService" class="et.bo.export.service.impl.ExportServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+	</bean>
+</beans>

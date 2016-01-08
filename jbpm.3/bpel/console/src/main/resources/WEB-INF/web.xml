@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	<!-- Process Archive Deployer -->
+  <servlet>
+    <servlet-name>DeployServlet</servlet-name>
+    <servlet-class>org.jbpm.bpel.web.deploy.DeployServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeployServlet</servlet-name>
+    <url-pattern>/deploy</url-pattern>
+  </servlet-mapping>
+  
+  <!-- DB Schema Manager -->
+  <servlet>
+    <servlet-name>DBSchemaServlet</servlet-name>
+    <servlet-class>org.jbpm.bpel.web.deploy.DBSchemaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DBSchemaServlet</servlet-name>
+    <url-pattern>/dbschema</url-pattern>
+  </servlet-mapping>  
+  
+</web-app>

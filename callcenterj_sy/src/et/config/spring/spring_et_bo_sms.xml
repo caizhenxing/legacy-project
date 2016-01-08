@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+
+
+<beans>
+	<bean name="/sms/modermSend" class="et.bo.sms.modermSend.action.ModermSendAction" scope="singleton">
+		<property name="ssns">
+			<ref bean="SmsSendNewService"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>	
+	</bean>
+
+	<bean id="SmsSendNewService" class="et.bo.sms.modermSend.service.impl.ModermSendServiceImpl" scope="singleton">
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>	
+</beans>

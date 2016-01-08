@@ -1,0 +1,31 @@
+                ╭═══════════════╮
+                ║       WAP之家资源站          ║
+  ╭══════┤     http://www.wapzj.com     ├══════╮
+  ║            ║                              ║            ║
+  ║            ║     http://down.wapzj.com     ║            ║
+  ║            ╰═══════════════╯            ║
+　║                                                          ║
+　║声明：                                                    ║
+  ║   1) 本站不保证所提供软件或程序的完整性和安全性。        ║
+  ║   2) 请在使用前查毒,尽管站长已经杀过。                   ║
+  ║   4) 转载本站提供的资源请勿删除本说明文件。              ║
+  ║   5) 本站提供的程序均为网上搜集，如果该程序涉及或侵害到您║
+  ║      的版权请立即写信通知我们。                          ║
+  ║   6) 本站提供软件只可供研究使用，请在下载24小时内删除,   ║
+  ║      切勿用于商业用途，由此引起一切后果与本站无关。      ║
+  ║                                                          ║
+  ║                                                          ║
+  ║                                                          ║
+  ║     1. 推荐使用：WinRAR V3.0以上版本解压本站软件         ║
+  ║                                                          ║
+　║     2. 本站统一解压缩密码：www.wapzj.com 或wapzj.com     ║
+  ║                                                          ║
+  ║          WAP之家 : http://www.wapzj.com                  ║
+  ║          WAP资源 : http://down.wapzj.com                 ║
+  ║          WAP手机 : http://wap.wapzj.com                  ║
+  ║                                                          ║
+  ║                                                          ║
+  ║                                                          ║
+  ║    ╭───────────────────────╮    ║
+  ╰══┤        WAP资源 : http://www.wapzy.com        ├══╯
+        ╰───────────────────────╯

@@ -1,0 +1,10 @@
+1，模块管理-->短信收发管理系统-->短信维护-->动作 
+   改为  /callcenterj_sy/sms/columnInfo.do?method=toMessageMain
+   
+ 2、模块管理-->其他业务管理-->群呼管理-->参数名
+   修改为 IVR群呼管理
+   
+ 3、模块管理-->其他业务管理
+   增加模块  参数名：群呼管理
+             别名：calloutsetText
+             动作：/callcenterj_sy/callcenter/callOutSet.do?method=textSet

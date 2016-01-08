@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="base" extends="struts-default">
+		<interceptors>
+			<interceptor name="AutoSearchConditionInterceptor"
+				class="base.zyf.struts.interceptor.AutoSearchConditionInterceptor" />
+			<interceptor name="ParamIdInterceptor"
+				class="base.zyf.struts.interceptor.ParamIdInterceptor" />
+			<interceptor-stack name="baseStack">
+				<interceptor-ref name="ParamIdInterceptor" />
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="AutoSearchConditionInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="baseStack"/>
+	</package>
+	<include file="conf/struts/sys/struts-sys.xml" />
+	<include file="conf/struts/chart/struts-chart.xml" />
+</struts>
+
+

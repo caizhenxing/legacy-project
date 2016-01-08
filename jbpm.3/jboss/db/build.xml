@@ -1,0 +1,68 @@
+<project name="jbpm.jboss.db" basedir="." default="install">
+
+  <!-- project specific properties -->
+  <property name="artifact.name" value="jbpm-jboss-db.zip" />
+  <property name="module.name" value="jboss" />
+  <property name="jbpm.root" value="../.." />
+  <property file="../version.properties" />
+
+  <!-- properties files -->
+  <property file="${user.home}/jbpm/build.properties" />
+  <property file="build.properties" />
+  <property file="${jbpm.root}/build/build.properties" />
+
+  <!-- import base project build file -->
+  <import file="${jbpm.root}/build/base.project.build.xml" />
+
+  <target name="package">
+
+    <ant antfile="${jbpm.root}/jpdl/examples/websale/build.xml" inheritall="false" />
+    <ant antfile="${jbpm.root}/jpdl/jar/build.xml" inheritall="false" />
+    <ant antfile="${jbpm.root}/identity/build.xml" inheritall="false" />
+
+    <!-- create the hibernate configuration -->
+    <mkdir dir="target/dbconfig" />
+    <copy todir="target/dbconfig">
+      <fileset dir="${jbpm.root}/jpdl/jar/src/main/config">
+        <include name="hibernate.cfg.xml" />
+      </fileset>
+    </copy>
+    <replace file="target/dbconfig/hibernate.cfg.xml"
+             token="jdbc:hsqldb:mem:jbpm"
+             value="jdbc:hsqldb:file:${basedir}/target/db/localDB" />
+    <replace file="target/dbconfig/hibernate.cfg.xml">
+      <replacetoken><![CDATA[identity mappings (begin) ===]]></replacetoken>
+      <replacevalue><![CDATA[identity mappings (begin) -->]]></replacevalue>
+    </replace>
+    <replace file="target/dbconfig/hibernate.cfg.xml">
+      <replacetoken><![CDATA[==== identity mappings (end)]]></replacetoken>
+      <replacevalue><![CDATA[<!-- identity mappings (end)]]></replacevalue>
+    </replace>
+
+    <!-- define the jbpm tasks with the hiberante configurations in the classpath -->
+    <taskdef resource="org/jbpm/ant/jbpm.ant.tasks.properties">
+      <classpath>
+        <pathelement path="target/dbconfig" />
+        <pathelement path="../jar/src/test/resources" />
+        <path refid="task.classpath.base"/>
+      </classpath>
+    </taskdef>
+
+    <!-- create the jbpm schema -->
+    <jbpmschema actions="create" quiet="true" />
+
+    <!-- create and deploy the websale example -->
+    <deployprocess process="${jbpm.root}/jpdl/examples/websale/target/websale.jpdl" />
+    
+    <!-- load the identities -->
+    <loadidentities file="src/main/resources/identities.xml" />
+
+    <!-- shutdown the hsqldb -->
+    <shutdownhsqldb />
+    
+    <zip destfile="target/${artifact.name}">
+      <fileset dir="target/db" />
+    </zip>
+  </target>
+
+</project>

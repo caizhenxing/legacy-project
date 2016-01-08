@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "spring-beans.dtd" >
+<beans>
+
+<bean name="/workplan"
+		class="et.bo.oa.workplan.action.WorkPlanAction" singleton="false">
+		
+		<property name="wps">
+			<ref local="WorkPlanService" />
+		</property>	
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+		<property name="depT">
+			<ref bean="DepTreeService" />
+		</property>
+		<property name="us">
+			<ref bean="userService" />
+		</property>	
+	</bean>
+	<bean name="/workmission"
+		class="et.bo.oa.workplan.action.WorkPlanAction" singleton="false">
+		
+		<property name="wps">
+			<ref local="WorkPlanService" />
+		</property>	
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+		<property name="depT">
+			<ref bean="DepTreeService" />
+		</property>
+		<property name="us">
+			<ref bean="userService" />
+		</property>	
+	</bean>
+	<bean id="WorkPlanService" class="et.bo.oa.workplan.service.impl.WorkPlanServiceImpl" singleton="false">		
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+		<property name="depT">
+			<ref bean="DepTreeService" />
+		</property>
+		<property name="ds">
+			<ref bean="DepService" />
+		</property>
+	</bean>
+</beans>

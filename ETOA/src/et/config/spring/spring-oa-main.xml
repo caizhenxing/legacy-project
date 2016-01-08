@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+
+<beans>
+<!--  service begin -->
+	<!--  service begin -->
+	<bean name="/oa/mainOper" class="et.bo.oa.main.action.MainAction" singleton="false">
+		<property name="mainService">
+			<ref local="MainService" />
+		</property>
+		<property name="articleService">
+			<ref bean="ArticleService"/>
+		</property>
+		<property name="aficheService">
+			<ref bean="AficheService"/>
+		</property>
+		<property name="workFlowService">
+			<ref bean="WorkFlowService"/>
+		</property>
+		<property name="emailService">
+			<ref bean="EmailService"/>
+		</property>
+		<property name="wps">
+			<ref bean="WorkPlanService" />
+		</property>
+		<property name="absenceService">
+		    <ref bean="AbsenceService"/>
+		</property>
+	</bean>
+	
+	<!-- main首页显示 -->
+	<bean id="MainService"
+		class="et.bo.oa.main.service.impl.MainServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+</beans>

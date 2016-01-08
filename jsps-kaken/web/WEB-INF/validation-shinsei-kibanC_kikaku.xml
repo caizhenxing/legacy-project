@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="WINDOWS-31J"?>
+
+<form-validation>
+  <global>
+    <constant>
+      <constant-name>KEIHI_MAX</constant-name>
+      <constant-value>9999999</constant-value>
+    </constant>
+  </global>
+
+  <formset>
+
+  	<!-- 申請書入力 -->
+	<form name="shinseiForm">
+<!-- 20050712 時限付き文化細目コード指定不可のため条件(9000より小さい)を追加 -->
+	  <field depends="numeric,length,maxValue" property="shinseiDataInfo.kadaiInfo.bunkaSaimokuCd" page="0">
+	    <msg key="errors.5058" name="maxValue" resource="false"/>
+	    <arg0 key="細目番号" resource="false"/>
+	    <arg1 key="${var:length}" name="length" resource="false"/>
+	    <var>
+	      <var-name>length</var-name>
+	      <var-value>4</var-value>
+	    </var>
+	    <var>
+	      <var-name>maxValue</var-name>
+	      <var-value>8999</var-value>
+	    </var>
+	  </field>
+<!-- Horikoshi -->
+	  <field depends="required" property="shinseiDataInfo.kadaiInfo.bunkaSaimokuCd" page="2">
+	    <arg0 key="細目番号" resource="false"/>
+	  </field>
+<!-- 2005.08.12 iso 分割番号[1,2]をはじくよう修正 -->
+<!--
+	  <field depends="length" property="shinseiDataInfo.kadaiInfo.bunkatsuNo" page="0">
+	    <arg0 key="分割番号" resource="false"/>
+	    <arg1 key="${var:length}" name="length" resource="false"/>
+	    <var>
+	      <var-name>length</var-name>
+	      <var-value>1</var-value>
+	    </var>
+	  </field>
+-->
+	  <field depends="mask_roma,length,notcontain" property="shinseiDataInfo.kadaiInfo.bunkatsuNo" page="0">
+        <msg name="notcontain" key="errors.notcontain"/>
+	    <arg0 key="分割番号" resource="false"/>
+	    <arg1 key="${var:length}" name="length" resource="false"/>
+	    <arg1 key="${var:notcontain}" name="notcontain" resource="false"/>
+	    <var>
+	      <var-name>length</var-name>
+	      <var-value>1</var-value>
+	    </var>
+        <var>
+          <var-name>notcontain</var-name>
+          <var-value>1,2</var-value>
+        </var>
+	  </field>
+
+<!-- 20050725 キーワードの存在チェック -->
+	  <field depends="required" property="shinseiDataInfo.kigou" page="2">
+	    <arg0 key="細目表キーワード" resource="false"/>
+	  </field>
+	  <field depends="length,mask_roma" property="shinseiDataInfo.kigou" page="0">
+	    <arg0 key="細目表キーワード" resource="false"/>
+	    <arg1 key="${var:length}" name="length" resource="false"/>
+	    <var>
+	      <var-name>length</var-name>
+	      <var-value>1</var-value>
+	    </var>
+	  </field>
+<!-- 2005/8/18 全角チェックを外す -->
+	  <!-- field depends="mask_zenkaku,maxlength" property="shinseiDataInfo.keyOtherName" page="0" -->
+	  <field depends="maxlength" property="shinseiDataInfo.keyOtherName" page="0">
+	    <arg0 key="細目表以外のキーワード" resource="false"/>
+	    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+	    <var>
+	      <var-name>maxlength</var-name>
+	      <var-value>20</var-value>
+	    </var>
+	  </field>
+<!-- Horikoshi -->
+	  <field depends="required" property="shinseiDataInfo.kadaiInfo.kenkyuTaisho" page="2">
+	    <arg0 key="研究対象の類型" resource="false"/>
+	  </field>
+	  <field depends="maxlength" property="shinseiDataInfo.daihyouInfo.bukyokuName" page="0">
+	    <arg0 key="部局" resource="false"/>
+	    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+	    <var>
+	      <var-name>maxlength</var-name>
+	      <var-value>50</var-value>
+	    </var>
+	  </field>
+<!--
+	  <field depends="validateIf,required" property="shinseiDataInfo.daihyouInfo.bukyokuName" page="2">
+	    <arg0 key="部局" resource="false"/>
+        <var>
+          <var-name>field[0]</var-name>
+          <var-value>shinseiDataInfo.daihyouInfo.bukyokuCd</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[0]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[0]</var-name>
+          <var-value>999</var-value>
+        </var>	    	    
+	  </field>
+-->
+	  <field depends="maxlength" property="shinseiDataInfo.daihyouInfo.shokushuNameKanji" page="0">
+	    <arg0 key="職" resource="false"/>
+	    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+	    <var>
+	      <var-name>maxlength</var-name>
+	      <var-value>20</var-value>
+	    </var>
+	  </field>
+	  <field depends="validateIf,required" property="shinseiDataInfo.daihyouInfo.shokushuNameKanji" page="2">
+	    <arg0 key="職" resource="false"/>
+        <var>
+          <var-name>field[0]</var-name>
+          <var-value>shinseiDataInfo.daihyouInfo.shokushuCd</var-value>
+        </var>
+        <var>
+          <var-name>fieldTest[0]</var-name>
+          <var-value>EQUAL</var-value>
+        </var>
+        <var>
+          <var-name>fieldValue[0]</var-name>
+          <var-value>25</var-value>
+        </var>	    	    
+	  </field>
+	  <field depends="mask_zenkaku,maxlength" property="shinseiDataInfo.kadaiInfo.kadaiNameKanji" page="0">
+	    <arg0 key="研究課題名（和文）" resource="false"/>
+	    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+	    <var>
+	      <var-name>maxlength</var-name>
+	      <var-value>40</var-value>
+	    </var>
+	  </field>
+	  <field depends="required" property="shinseiDataInfo.kadaiInfo.kadaiNameKanji" page="2">
+	    <arg0 key="研究課題名（和文）" resource="false"/>
+	  </field>	  
+  <!-- 研究経費 1年目 -->
+<!-- 20050803 -->
+	  <field depends="numeric,maxValue" property="shinseiDataInfo.kenkyuKeihiSoukeiInfo.meetingCost" page="0">
+	    <arg0 key="会議費 1行目" resource="false"/>
+	    <arg1 key="${var:maxValue}" name="maxValue" resource="false"/>
+	    <var>
+	      <var-name>maxValue</var-name>
+	      <var-value>${KEIHI_MAX}</var-value>
+	    </var>
+	  </field>
+	  <field depends="required" property="shinseiDataInfo.kenkyuKeihiSoukeiInfo.meetingCost" page="2">
+	    <arg0 key="会議費 1行目" resource="false"/>
+	  </field>
+
+	  <field depends="numeric,maxValue" property="shinseiDataInfo.kenkyuKeihiSoukeiInfo.printingCost" page="0">
+	    <arg0 key="印刷費 1行目" resource="false"/>
+	    <arg1 key="${var:maxValue}" name="maxValue" resource="false"/>
+	    <var>
+	      <var-name>maxValue</var-name>
+	      <var-value>${KEIHI_MAX}</var-value>
+	    </var>
+	  </field>
+	  <field depends="required" property="shinseiDataInfo.kenkyuKeihiSoukeiInfo.printingCost" page="2">
+	    <arg0 key="印刷費 1行目" resource="false"/>
+	  </field>		
+<!--
+	  <field depends="numeric,maxValue" property="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[0].bihinhi" page="0">
+	    <arg0 key="会議費 1行目" resource="false"/>
+	    <arg1 key="${var:maxValue}" name="maxValue" resource="false"/>
+	    <var>
+	      <var-name>maxValue</var-name>
+	      <var-value>${KEIHI_MAX}</var-value>
+	    </var>
+	  </field>
+	  <field depends="required" property="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[0].bihinhi" page="2">
+	    <arg0 key="会議費 1行目" resource="false"/>
+	  </field>	
+-->
+	  <field depends="numeric,maxValue" property="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[0].shomohinhi" page="0">
+	    <arg0 key="消耗品費 1行目" resource="false"/>
+	    <arg1 key="${var:maxValue}" name="maxValue" resource="false"/>
+	    <var>
+	      <var-name>maxValue</var-name>
+	      <var-value>${KEIHI_MAX}</var-value>
+	    </var>
+	  </field>
+	  <field depends="required" property="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[0].shomohinhi" page="2">
+	    <arg0 key="消耗品費 1行目" resource="false"/>
+	  </field>	
+<!-- Horikoshi -->
+
+	  <field depends="numeric,maxValue" property="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[0].ryohi" page="0">
+	    <arg0 key="旅費 1行目" resource="false"/>
+	    <arg1 key="${var:maxValue}" name="maxValue" resource="false"/>
+	    <var>
+	      <var-name>maxValue</var-name>
+	      <var-value>${KEIHI_MAX}</var-value>
+	    </var>
+	  </field>
+	  <field depends="required" property="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[0].ryohi" page="2">
+	    <arg0 key="旅費 1行目" resource="false"/>
+	  </field>		
+	  <field depends="numeric,maxValue" property="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[0].shakin" page="0">
+	    <arg0 key="謝金等 1行目" resource="false"/>
+	    <arg1 key="${var:maxValue}" name="maxValue" resource="false"/>
+	    <var>
+	      <var-name>maxValue</var-name>
+	      <var-value>${KEIHI_MAX}</var-value>
+	    </var>
+	  </field>
+	  <field depends="required" property="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[0].shakin" page="2">
+	    <arg0 key="謝金等 1行目" resource="false"/>
+	  </field>		
+	  <field depends="numeric,maxValue" property="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[0].sonota" page="0">
+	    <arg0 key="その他 1行目" resource="false"/>
+	    <arg1 key="${var:maxValue}" name="maxValue" resource="false"/>
+	    <var>
+	      <var-name>maxValue</var-name>
+	      <var-value>${KEIHI_MAX}</var-value>
+	    </var>
+	  </field>
+	  <field depends="required" property="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[0].sonota" page="2">
+	    <arg0 key="その他 1行目" resource="false"/>
+	  </field>			
+	  <field depends="required" property="shinseiDataInfo.buntankinFlg" page="2">
+	    <arg0 key="分担金の配分" resource="false"/>
+	  </field>
+	  <field depends="required" property="shinseiDataInfo.kaijikiboFlgNo" page="2">
+	    <arg0 key="開示希望の有無" resource="false"/>
+	  </field>
+
+	<!-- 研究組織表については、要素数が可変であるため個別に実装する。-->
+	<!-- ShinseiForm.validate() -->
+
+	</form>
+
+  </formset>
+</form-validation>

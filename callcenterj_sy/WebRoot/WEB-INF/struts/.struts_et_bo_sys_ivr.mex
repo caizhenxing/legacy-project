@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/sys/ivr/paramTree.do" location="701,0" dimension="358,84" />
+  <StrutsActivity path="/yuyin/yuyin.jsp" location="50,350" dimension="136,48" />
+  <StrutsActivity path="/sys/ivr/parameterTree.jsp" location="0,204" dimension="196,48" />
+  <StrutsActivity path="/sys/ivr/parameterTreeMain.jsp" location="296,204" dimension="220,48" />
+  <StrutsActivity path="/sys/ivr/parameterTreeDtl.jsp" location="616,204" dimension="214,48" />
+  <StrutsActivity path="/sys/ivr/subParameterTree.jsp" location="930,204" dimension="214,48" />
+  <StrutsActivity path="/sys/ivr/subParameterTreeMain.jsp" location="1244,204" dimension="238,48" />
+  <StrutsActivity path="/sys/ivr/operSuggest.jsp" location="1582,204" dimension="184,48" />
+  <StrutsActivity path="/sys/ivr/ivrRecord.jsp" />
+  <StrutsTransition id="/sys/ivr/paramTree.do,showSubParamTree,/sys/ivr/subParameterTree.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="909,84" />
+      <AbsolutePoint location="909,174" />
+      <AbsolutePoint location="1037,174" />
+      <AbsolutePoint location="1037,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/ivr/paramTree.do,operSuggest,/sys/ivr/operSuggest.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1029,84" />
+      <AbsolutePoint location="1029,114" />
+      <AbsolutePoint location="1674,114" />
+      <AbsolutePoint location="1674,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/ivr/paramTree.do,showParamTree,/sys/ivr/parameterTree.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="730,84" />
+      <AbsolutePoint location="730,114" />
+      <AbsolutePoint location="98,114" />
+      <AbsolutePoint location="98,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/ivr/paramTree.do,showParamTreeYuyin,/yuyin/yuyin.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="701,42" />
+      <AbsolutePoint location="241,42" />
+      <AbsolutePoint location="241,374" />
+      <AbsolutePoint location="186,374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/ivr/paramTree.do,toParamMain,/sys/ivr/parameterTreeMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="790,84" />
+      <AbsolutePoint location="790,144" />
+      <AbsolutePoint location="406,144" />
+      <AbsolutePoint location="406,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/ivr/paramTree.do,ivrRecord,/sys/ivr/ivrRecord.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="880,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/ivr/paramTree.do,toParamDtl,/sys/ivr/parameterTreeDtl.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="850,84" />
+      <AbsolutePoint location="850,174" />
+      <AbsolutePoint location="723,174" />
+      <AbsolutePoint location="723,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/ivr/paramTree.do,toSubParamMain,/sys/ivr/subParameterTreeMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="969,84" />
+      <AbsolutePoint location="969,144" />
+      <AbsolutePoint location="1363,144" />
+      <AbsolutePoint location="1363,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

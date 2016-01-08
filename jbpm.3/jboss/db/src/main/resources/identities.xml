@@ -1,0 +1,26 @@
+<identity>
+
+  <user name="cookie monster" password="cookie monster" email="cookie.monster@sesamestreet.tv" />
+  <user name="ernie"          password="ernie"          email="ernie@sesamestreet.tv" />
+  <user name="bert"           password="bert"           email="bert@sesamestreet.tv" />
+  <user name="grover"         password="grover"         email="grover@sesamestreet.tv" />
+
+  <group name="participant" type="security-role" />
+  <group name="manager" type="security-role" />
+  <group name="administrator" type="security-role" />
+
+  <group name="sales" type="organisation" />
+  <group name="hr" type="organisation" />
+
+  <membership user="cookie monster" group="participant" />
+  <membership user="ernie" group="participant" />
+  <membership user="ernie" group="manager" />
+  <membership user="ernie" group="administrator" />
+  <membership user="bert" group="participant" />
+
+  <membership user="cookie monster" group="sales" />
+  <membership user="ernie" group="sales" role="boss" />
+  <membership user="ernie" group="hr" />
+  <membership user="bert" group="hr" />
+  
+</identity>

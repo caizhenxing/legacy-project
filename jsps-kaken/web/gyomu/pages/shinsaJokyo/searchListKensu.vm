@@ -1,0 +1,689 @@
+## 審査状況検索フォーム情報→shinsaJokyoSearchForm
+## 検索結果ページ情報→result
+#parse( $commonSetting )
+#set($tantoJigyoCd = $userContainer.userInfo.gyomutantoInfo.tantoJigyoCd)
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+##スクリプト
+<SCRIPT LANGUAGE=javascript>
+<!--
+function onShinsainInfoClick(shinsainNo, jigyoKubun){
+	window.open("","nw1","toolbar=0,status=0,menubar=0,resizable=yes,scrollbars=yes");
+	
+	document.info_form.action="$link.setAction('/gyomu/warifuri/shinsainInfo')";
+	document.info_form.shinsainNo4View.value = shinsainNo;
+	document.info_form.jigyoKubun.value = jigyoKubun;
+	document.info_form.target="nw1";
+	document.info_form.submit();
+}
+function on1stReferClick(systemNo){
+	window.open("","nw2","toolbar=0,status=0,menubar=0,resizable=yes,scrollbars=yes");
+
+	document.info_form.action="$link.setAction('/gyomu/shinsaJokyo/shinsaKekka1stRefer')";
+	document.info_form.systemNo.value = systemNo;
+	document.info_form.target="nw2";
+	document.info_form.submit();
+}
+function onPageClick(startPosition){
+	document.page_form.action="$link.setAction('/gyomu/shinsaJokyo/dispatchApplication.do')";
+	document.page_form.startPosition.value = startPosition;
+	document.page_form.submit();
+}
+function onCsvOutClick(){
+	document.csvout_form.action="$link.setAction('/gyomu/shinsaJokyo/csvOut')";
+    document.csvout_form.submit();
+}
+function onSaishinsaClick(jigyoId, shinsainNo, jigyoKubun){
+	document.saishinsa_form.action="$link.setAction('/gyomu/shinsaJokyo/saishinsa')";
+	document.saishinsa_form.jigyoId.value = jigyoId;
+	document.saishinsa_form.shinsainNo.value = shinsainNo;
+	document.saishinsa_form.jigyoKubun.value = jigyoKubun;
+	document.saishinsa_form.submit();
+}
+function onShinsaResetClick(jigyoId, shinsainNo, jigyoKubun){
+	document.saishinsa_form.action="$link.setAction('/gyomu/shinsaJokyo/clearShinsaKekka')";
+	document.saishinsa_form.jigyoId.value = jigyoId;
+	document.saishinsa_form.shinsainNo.value = shinsainNo;
+	document.saishinsa_form.jigyoKubun.value = jigyoKubun;
+	document.saishinsa_form.submit();
+}
+
+function onPageClick(startPosition){
+	document.page_form.action="$link.setAction('/gyomu/shinsaJokyo/dispatchApplication.do')";
+	document.page_form.startPosition.value = startPosition;
+	document.page_form.submit();
+}
+//-->
+</SCRIPT>
+
+## 変数の置き換え
+#set ($list= $result.list)
+
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="javascript:fncWindowOpen('$path/docs/manual3.pdf','help');"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/gyomu/logoff')"><IMG SRC="$path/images/header_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=20 border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#999966" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/gyomu/showMainMenu')">業務担当者向けメニュー</a>＞<a href="$link.setAction('/gyomu/shinsaJokyo/search')">審査状況確認</a>（審査状況検索＞<b>審査件数一覧</b>）</font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><IMG SRC="$path/images/subtitle_img1.gif" WIDTH=61 HEIGHT=49 ALT=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+       審査件数一覧</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <IMG SRC="$path/images/subtitle_img3.gif" WIDTH=213 HEIGHT=49 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+<!-- 本文ここから -->
+<p align="left"><a href="javascript:onCsvOutClick();"><img src="$path/images/bt_csv.gif" alt="CSV出力" width=114 height=28 alt="CSV出力" border="0"></a></p>
+
+ <font color="black">$!escape.getText($!result.totalSize) 件該当しました。</font><br>
+ <font color="blue"><b>$!escape.getText($!result.currentPages)</b></font>
+ <font color="black"> ページ目を表示しています。</font><br>
+ <font color="blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ #foreach($page in $result.pageIndexs)
+   #if($velocityCount == $result.currentPages)
+     #if($velocityCount == $result.totalPages)
+			<b> $!escape.getText($velocityCount)</b>
+      #else
+         	<b> $!escape.getText($velocityCount)</b><font color="black">/</font>
+      #end
+   #else
+      #if($velocityCount == $result.totalPages)
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a> 
+      #else
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a><font color="black">/</font>
+      #end
+   #end
+ #end
+ </font>
+ <font color="black">ページに移動します。</font> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ #if($result.hasPreviousPage())
+   <A href="javascript:onPageClick('$!result.getStartOfPreviousPage()')"><img src="$path/images/bt_last.gif" width=64 height=24 alt="前ページ" border="0"></a>
+ #end
+
+ #if($result.hasNextPage())
+   <A href="javascript:onPageClick('$!result.getStartOfNextPage()');"><img src="$path/images/bt_next.gif" width=64 height=24 alt="次ページ" border="0"></a>
+ #end
+<br><br>
+ 
+<!-- 一覧用テーブルここから -->
+## 2006/10/25 于広偉　追加
+#if($shinsaJokyoSearchForm.Values.size()==0)
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+     <tr>
+     <th rowspan="2">審査員</th>
+     <th rowspan="2">審査員<br>連絡先</th>
+     <th rowspan="2">最終ログイン日</th>
+     <th colspan="2">合計</th>
+## 2006/11/1 于広偉　 #if()と #end 追加 ここから
+	 #if($tantoJigyoCd.contains('00031'))	
+     <th colspan="2">基盤研究(S)</th>
+	 #end
+ 	 #if($tantoJigyoCd.contains('00041'))	
+     <th colspan="2">基盤研究(A)一般</th>
+	 #end
+	 #if($tantoJigyoCd.contains('00043'))	
+     <th colspan="2">基盤研究(A)海外学術調査</th>
+	 #end
+	 #if($tantoJigyoCd.contains('00051'))	
+     <th colspan="2">基盤研究(B)一般</th>
+	 #end
+	 #if($tantoJigyoCd.contains('00053'))	
+     <th colspan="2">基盤研究(B)海外学術調査</th>
+	 #end
+	 #if($tantoJigyoCd.contains('00061'))	
+     <th colspan="2">基盤研究(C)一般</th>
+	 #end
+	 #if($tantoJigyoCd.contains('00062'))	
+     <th colspan="2">基盤研究(C)企画調査</th>
+	 #end
+	 #if($tantoJigyoCd.contains('00111'))	
+	 <th colspan="2">萌芽研究</th>
+	 #end
+##2007/02/25 苗　追加ここから
+	 #if($tantoJigyoCd.contains('00120'))	
+	 <th colspan="2">若手研究(S)</th>
+	 #end
+##2007/02/25 苗　追加ここまで
+	 #if($tantoJigyoCd.contains('00121'))	
+     <th colspan="2">若手研究(A)</th>
+	 #end
+	 #if($tantoJigyoCd.contains('00131'))	
+     <th colspan="2">若手研究(B)</th>
+	 #end
+	 #if($tantoJigyoCd.contains('00141'))	
+	 <th colspan="2">若手研究(スタートアップ)</th>
+	 #end	
+##20060523 追加ここから
+##	 #if($tantoJigyoCd.contains('00152'))
+##     <th colspan="2">特別研究促進費(基盤研究(A)相当)</th>
+##	 #end
+##	 #if($tantoJigyoCd.contains('00153'))	
+##     <th colspan="2">特別研究促進費(基盤研究(B)相当)</th>
+##	 #end
+	 #if($tantoJigyoCd.contains('00154'))	
+     ##<th colspan="2">特別研究促進費(基盤研究(C)相当)</th>
+	 <th colspan="2">特別研究促進費（年複数回応募の試行）</th>
+	 #end
+##	 #if($tantoJigyoCd.contains('00155'))	
+##     <th colspan="2">特別研究促進費(若手研究(A)相当)</th>
+##	 #end
+##	 #if($tantoJigyoCd.contains('00156'))	
+##     <th colspan="2">特別研究促進費(若手研究(B)相当)</th>
+##	 #end
+##苗　追加ここまで
+    </tr>
+    <tr>
+     <th rowspan="1">未入力</th>
+	 <th rowspan="1">すべて</th>
+	 #if($tantoJigyoCd.contains('00031'))
+	 <th rowspan="1">未入力</th>
+	 <th rowspan="1">すべて</th>
+	 #end
+ 	 #if($tantoJigyoCd.contains('00041'))	
+	 <th rowspan="1">未入力</th>
+	 <th rowspan="1">すべて</th>
+	 #end
+	 #if($tantoJigyoCd.contains('00043'))	
+	 <th rowspan="1">未入力</th>
+	 <th rowspan="1">すべて</th>
+	 #end
+	 #if($tantoJigyoCd.contains('00051'))
+	 <th rowspan="1">未入力</th>
+	 <th rowspan="1">すべて</th>
+	 #end
+	 #if($tantoJigyoCd.contains('00053'))	
+	 <th rowspan="1">未入力</th>
+	 <th rowspan="1">すべて</th>
+	 #end
+	 #if($tantoJigyoCd.contains('00061'))	
+	 <th rowspan="1">未入力</th>
+     <th rowspan="1">すべて</th>
+	 #end
+	 #if($tantoJigyoCd.contains('00062'))	
+	 <th rowspan="1">未入力</th>
+     <th rowspan="1">すべて</th>
+	 #end
+	 #if($tantoJigyoCd.contains('00111'))	
+	 <th rowspan="1">未入力</th>
+	 <th rowspan="1">すべて</th>
+	 #end
+##2007/02/25 苗　追加ここから
+	 #if($tantoJigyoCd.contains('00120'))	
+	 <th rowspan="1">未入力</th>
+	 <th rowspan="1">すべて</th>
+	 #end
+##2007/02/25 苗　追加ここまで
+	 #if($tantoJigyoCd.contains('00121'))	
+	 <th rowspan="1">未入力</th>
+	 <th rowspan="1">すべて</th>
+	 #end
+	 #if($tantoJigyoCd.contains('00131'))	
+	 <th rowspan="1">未入力</th>
+     <th rowspan="1">すべて</th>
+	 #end
+	 #if($tantoJigyoCd.contains('00141'))	
+	 <th rowspan="1">未入力</th>
+     <th rowspan="1">すべて</th>
+	 #end
+##2006/05/23 追加ここから
+## #if($tantoJigyoCd.contains('00152'))
+##	 <th rowspan="1">未入力</th>
+##	 <th rowspan="1">すべて</th>
+##	 #end
+##	 #if($tantoJigyoCd.contains('00153'))
+##	 <th rowspan="1">未入力</th>
+##     <th rowspan="1">すべて</th>
+##	 #end
+	 #if($tantoJigyoCd.contains('00154'))  
+	 <th rowspan="1">未入力</th>
+	 <th rowspan="1">すべて</th>
+	 #end
+##	 #if($tantoJigyoCd.contains('00155'))
+##	 <th rowspan="1">未入力</th>
+##     <th rowspan="1">すべて</th>
+##	 #end
+##	 #if($tantoJigyoCd.contains('00156'))
+##	 <th rowspan="1">未入力</th>
+##	 <th rowspan="1">すべて</th>
+##	 #end
+##苗追加ここまで
+    </tr>
+    #foreach($user in $list)
+    <tr>
+##2006/11/02　苗　修正ここから		
+##     <td>$!escape.getText($!user.SHINSAIN_NO) $!escape.getText($!user.SHINSAIN_NAME_KANJI_SEI) $!escape.getText($!user.SHINSAIN_NAME_KANJI_MEI)</td>
+     <td>$!escape.getText($!user.SHINSAIN_NO) $!escape.getText($!user.NAME_KANJI_SEI) $!escape.getText($!user.NAME_KANJI_MEI)</td>
+##2006/11/02　苗　修正ここまで
+     <td><a href="javascript:onShinsainInfoClick('$!user.SHINSAIN_NO', '$!user.JIGYO_KUBUN');"><img src="$path/images/bt_refer.gif" width=64 height=24 alt="参照" border="0"></a></td>
+     <td>$!dateFormat.format($!escape.getText($!user.LOGIN_DATE))</td>
+     <td>#if($!user.NOT_INPUT_COUNT)$!escape.getText($!user.NOT_INPUT_COUNT)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT)$!escape.getText($!user.ALL_COUNT)件 #else 0件 #end</td>
+	 #if($tantoJigyoCd.contains('00031'))	  	
+     <td>#if($!user.NOT_INPUT_COUNT_00031)$!escape.getText($!user.NOT_INPUT_COUNT_00031)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00031)$!escape.getText($!user.ALL_COUNT_00031)件 #else 0件 #end</td>
+	 #end
+	 #if($tantoJigyoCd.contains('00041'))	  
+     <td>#if($!user.NOT_INPUT_COUNT_00041)$!escape.getText($!user.NOT_INPUT_COUNT_00041)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00041)$!escape.getText($!user.ALL_COUNT_00041)件 #else 0件 #end</td>
+	 #end
+	 #if($tantoJigyoCd.contains('00043'))	  
+     <td>#if($!user.NOT_INPUT_COUNT_00043)$!escape.getText($!user.NOT_INPUT_COUNT_00043)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00043)$!escape.getText($!user.ALL_COUNT_00043)件 #else 0件 #end</td>
+	 #end
+	 #if($tantoJigyoCd.contains('00051'))	  
+     <td>#if($!user.NOT_INPUT_COUNT_00051)$!escape.getText($!user.NOT_INPUT_COUNT_00051)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00051)$!escape.getText($!user.ALL_COUNT_00051)件 #else 0件 #end</td>
+	 #end
+	 #if($tantoJigyoCd.contains('00053'))	  
+     <td>#if($!user.NOT_INPUT_COUNT_00053)$!escape.getText($!user.NOT_INPUT_COUNT_00053)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00053)$!escape.getText($!user.ALL_COUNT_00053)件 #else 0件 #end</td>
+	 #end
+	 #if($tantoJigyoCd.contains('00061'))	  
+     <td>#if($!user.NOT_INPUT_COUNT_00061)$!escape.getText($!user.NOT_INPUT_COUNT_00061)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00061)$!escape.getText($!user.ALL_COUNT_00061)件 #else 0件 #end</td>
+	 #end
+	 #if($tantoJigyoCd.contains('00062'))	  
+     <td>#if($!user.NOT_INPUT_COUNT_00062)$!escape.getText($!user.NOT_INPUT_COUNT_00062)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00062)$!escape.getText($!user.ALL_COUNT_00062)件 #else 0件 #end</td>
+	 #end
+	 #if($tantoJigyoCd.contains('00111'))	  
+	 <td>#if($!user.NOT_INPUT_COUNT_00111)$!escape.getText($!user.NOT_INPUT_COUNT_00111)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00111)$!escape.getText($!user.ALL_COUNT_00111)件 #else 0件 #end</td>
+	 #end
+##2007/02/25 苗　追加ここから
+	 #if($tantoJigyoCd.contains('00120'))	
+	 <td>#if($!user.NOT_INPUT_COUNT_00120)$!escape.getText($!user.NOT_INPUT_COUNT_00120)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00120)$!escape.getText($!user.ALL_COUNT_00120)件 #else 0件 #end</td>
+	 #end
+##2007/02/25 苗　追加ここまで
+	 #if($tantoJigyoCd.contains('00121'))	  
+     <td>#if($!user.NOT_INPUT_COUNT_00121)$!escape.getText($!user.NOT_INPUT_COUNT_00121)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00121)$!escape.getText($!user.ALL_COUNT_00121)件 #else 0件 #end</td>
+	 #end
+	 #if($tantoJigyoCd.contains('00131'))	  
+     <td>#if($!user.NOT_INPUT_COUNT_00131)$!escape.getText($!user.NOT_INPUT_COUNT_00131)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00131)$!escape.getText($!user.ALL_COUNT_00131)件 #else 0件 #end</td>
+	 #end		 
+	##add  start ly
+     #if($tantoJigyoCd.contains('00141'))	  
+	 <td>#if($!user.NOT_INPUT_COUNT_00141)$!escape.getText($!user.NOT_INPUT_COUNT_00141)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00141)$!escape.getText($!user.ALL_COUNT_00141)件 #else 0件 #end</td>	
+	 #end
+	##add end ly
+##2006/05/23　追加ここから
+##     #if($tantoJigyoCd.contains('00152'))	  
+##     <td>#if($!user.NOT_INPUT_COUNT_00152)$!escape.getText($!user.NOT_INPUT_COUNT_00152)件 #else 0件 #end</td>
+##     <td>#if($!user.ALL_COUNT_00152)$!escape.getText($!user.ALL_COUNT_00152)件 #else 0件 #end</td>
+##	 #end
+##	 #if($tantoJigyoCd.contains('00153'))
+##     <td>#if($!user.NOT_INPUT_COUNT_00153)$!escape.getText($!user.NOT_INPUT_COUNT_00153)件 #else 0件 #end</td>
+##     <td>#if($!user.ALL_COUNT_00153)$!escape.getText($!user.ALL_COUNT_00153)件 #else 0件 #end</td>
+##	 #end
+	 #if($tantoJigyoCd.contains('00154'))
+     <td>#if($!user.NOT_INPUT_COUNT_00154)$!escape.getText($!user.NOT_INPUT_COUNT_00154)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00154)$!escape.getText($!user.ALL_COUNT_00154)件 #else 0件 #end</td>
+     #end
+##     #if($tantoJigyoCd.contains('00155'))
+##	 <td>#if($!user.NOT_INPUT_COUNT_00155)$!escape.getText($!user.NOT_INPUT_COUNT_00155)件 #else 0件 #end</td>
+##     <td>#if($!user.ALL_COUNT_00155)$!escape.getText($!user.ALL_COUNT_00155)件 #else 0件 #end</td>
+##     #end
+##     #if($tantoJigyoCd.contains('00156'))
+##	 <td>#if($!user.NOT_INPUT_COUNT_00156)$!escape.getText($!user.NOT_INPUT_COUNT_00156)件 #else 0件 #end</td>
+##     <td>#if($!user.ALL_COUNT_00156)$!escape.getText($!user.ALL_COUNT_00156)件 #else 0件 #end</td>	
+##	 #end
+## 2006/11/1 于広偉　 #if()と #end 追加 ここまで
+##苗　追加ここまで
+    </tr>
+    #end
+   </table>
+  </td>
+ </tr>
+</table>
+## 2006/10/25 于広偉　追加ここから
+#else
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+     <tr>
+     <th rowspan="2">審査員</th>
+     <th rowspan="2">審査員<br>連絡先</th>
+     <th rowspan="2">最終ログイン日</th>
+     <th colspan="2">合計</th>
+	 #if($shinsaJokyoSearchForm.Values.contains('00031'))
+     <th colspan="2">基盤研究(S)</th>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00041'))
+     <th colspan="2">基盤研究(A)一般</th>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00043'))
+     <th colspan="2">基盤研究(A)海外学術調査</th>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00051'))
+     <th colspan="2">基盤研究(B)一般</th>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00053'))
+     <th colspan="2">基盤研究(B)海外学術調査</th>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00061'))
+	 <th colspan="2">基盤研究(C)一般</th>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00062'))
+     <th colspan="2">基盤研究(C)企画調査</th>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00111'))
+	 <th colspan="2">萌芽研究</th>
+	 #end
+##2007/02/25 苗　追加ここから	 
+	 #if($shinsaJokyoSearchForm.Values.contains('00120'))
+	 <th colspan="2">若手研究(S)</th>
+	 #end
+##2007/02/25 苗　追加ここまで
+	 #if($shinsaJokyoSearchForm.Values.contains('00121'))
+     <th colspan="2">若手研究(A)</th>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00131'))
+     <th colspan="2">若手研究(B)</th>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00141'))
+	 <th colspan="2">若手研究(スタートアップ)</th>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00152'))
+     <th colspan="2">特別研究促進費(基盤研究(A)相当)</th>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00153'))
+     <th colspan="2">特別研究促進費(基盤研究(B)相当)</th>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00154'))
+     ##<th colspan="2">特別研究促進費(基盤研究(C)相当)</th>
+	 <th colspan="2">特別研究促進費（年複数回応募の試行）</th>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00155'))
+     <th colspan="2">特別研究促進費(若手研究(A)相当)</th>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00156'))
+     <th colspan="2">特別研究促進費(若手研究(B)相当)</th>
+	 #end 	 
+    </tr>
+    <tr>		
+      <th rowspan="1">未入力</th>
+      <th rowspan="1">すべて</th>
+	  #if($shinsaJokyoSearchForm.Values.contains('00031'))	  
+      <th rowspan="1">未入力</th>
+      <th rowspan="1">すべて</th>
+      #end
+	  #if($shinsaJokyoSearchForm.Values.contains('00041'))
+	  <th rowspan="1">未入力</th>
+      <th rowspan="1">すべて</th>
+      #end
+	  #if($shinsaJokyoSearchForm.Values.contains('00043'))
+	  <th rowspan="1">未入力</th>
+      <th rowspan="1">すべて</th>
+      #end
+	  #if($shinsaJokyoSearchForm.Values.contains('00051'))
+	  <th rowspan="1">未入力</th>
+      <th rowspan="1">すべて</th>
+      #end
+	  #if($shinsaJokyoSearchForm.Values.contains('00053'))
+	  <th rowspan="1">未入力</th>
+      <th rowspan="1">すべて</th>
+      #end
+	  #if($shinsaJokyoSearchForm.Values.contains('00061'))
+	  <th rowspan="1">未入力</th>
+      <th rowspan="1">すべて</th>
+	  #end
+	  #if($shinsaJokyoSearchForm.Values.contains('00062'))
+	  <th rowspan="1">未入力</th>
+      <th rowspan="1">すべて</th>
+	  #end
+	  #if($shinsaJokyoSearchForm.Values.contains('00111'))
+	  <th rowspan="1">未入力</th>
+      <th rowspan="1">すべて</th>
+	  #end
+##2007/02/25　苗　追加ここから	 　
+	  #if($shinsaJokyoSearchForm.Values.contains('00120'))
+	  <th rowspan="1">未入力</th>
+      <th rowspan="1">すべて</th>
+	  #end
+##2007/02/25　苗　追加ここまで	  
+	  #if($shinsaJokyoSearchForm.Values.contains('00121'))
+	  <th rowspan="1">未入力</th>
+      <th rowspan="1">すべて</th>
+	  #end
+	  #if($shinsaJokyoSearchForm.Values.contains('00131'))
+	  <th rowspan="1">未入力</th>
+      <th rowspan="1">すべて</th>
+	  #end
+	  #if($shinsaJokyoSearchForm.Values.contains('00141'))
+	  <th rowspan="1">未入力</th>
+      <th rowspan="1">すべて</th>
+      #end
+	  #if($shinsaJokyoSearchForm.Values.contains('00152'))
+      <th rowspan="1">未入力</th>
+      <th rowspan="1">すべて</th>
+      #end
+	  #if($shinsaJokyoSearchForm.Values.contains('00153'))
+	  <th rowspan="1">未入力</th>
+      <th rowspan="1">すべて</th>
+	  #end
+	  #if($shinsaJokyoSearchForm.Values.contains('00154'))  
+	  <th rowspan="1">未入力</th>
+      <th rowspan="1">すべて</th>
+	  #end
+	  #if($shinsaJokyoSearchForm.Values.contains('00155'))
+	  <th rowspan="1">未入力</th>
+      <th rowspan="1">すべて</th>
+	  #end
+	  #if($shinsaJokyoSearchForm.Values.contains('00156'))
+	  <th rowspan="1">未入力</th>
+      <th rowspan="1">すべて</th>
+      #end
+    </tr> 
+    #foreach($user in $list)
+    <tr>
+##2006/11/02　苗　修正ここから		
+##     <td>$!escape.getText($!user.SHINSAIN_NO) $!escape.getText($!user.SHINSAIN_NAME_KANJI_SEI) $!escape.getText($!user.SHINSAIN_NAME_KANJI_MEI)</td>
+     <td>$!escape.getText($!user.SHINSAIN_NO) $!escape.getText($!user.NAME_KANJI_SEI) $!escape.getText($!user.NAME_KANJI_MEI)</td>
+##2006/11/02　苗　修正ここまで		
+     <td><a href="javascript:onShinsainInfoClick('$!user.SHINSAIN_NO', '$!user.JIGYO_KUBUN');"><img src="$path/images/bt_refer.gif" width=64 height=24 alt="参照" border="0"></a></td>
+     <td>$!dateFormat.format($!escape.getText($!user.LOGIN_DATE))</td>
+	 <td>#if($!user.NOT_INPUT_COUNT)$!escape.getText($!user.NOT_INPUT_COUNT)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT)$!escape.getText($!user.ALL_COUNT)件 #else 0件 #end</td>
+	 #if($shinsaJokyoSearchForm.Values.contains('00031'))	  	
+     <td>#if($!user.NOT_INPUT_COUNT_00031)$!escape.getText($!user.NOT_INPUT_COUNT_00031)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00031)$!escape.getText($!user.ALL_COUNT_00031)件 #else 0件 #end</td>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00041'))	  
+	 <td>#if($!user.NOT_INPUT_COUNT_00041)$!escape.getText($!user.NOT_INPUT_COUNT_00041)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00041)$!escape.getText($!user.ALL_COUNT_00041)件 #else 0件 #end</td>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00043'))	  
+	 <td>#if($!user.NOT_INPUT_COUNT_00043)$!escape.getText($!user.NOT_INPUT_COUNT_00043)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00043)$!escape.getText($!user.ALL_COUNT_00043)件 #else 0件 #end</td>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00051'))	  
+	 <td>#if($!user.NOT_INPUT_COUNT_00051)$!escape.getText($!user.NOT_INPUT_COUNT_00051)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00051)$!escape.getText($!user.ALL_COUNT_00051)件 #else 0件 #end</td>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00053'))	  
+	 <td>#if($!user.NOT_INPUT_COUNT_00053)$!escape.getText($!user.NOT_INPUT_COUNT_00053)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00053)$!escape.getText($!user.ALL_COUNT_00053)件 #else 0件 #end</td>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00061'))	  
+	 <td>#if($!user.NOT_INPUT_COUNT_00061)$!escape.getText($!user.NOT_INPUT_COUNT_00061)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00061)$!escape.getText($!user.ALL_COUNT_00061)件 #else 0件 #end</td>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00062'))	  
+	 <td>#if($!user.NOT_INPUT_COUNT_00062)$!escape.getText($!user.NOT_INPUT_COUNT_00062)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00062)$!escape.getText($!user.ALL_COUNT_00062)件 #else 0件 #end</td>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00111'))	  
+	 <td>#if($!user.NOT_INPUT_COUNT_00111)$!escape.getText($!user.NOT_INPUT_COUNT_00111)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00111)$!escape.getText($!user.ALL_COUNT_00111)件 #else 0件 #end</td>
+	 #end
+##2007/02/25　苗　追加ここから	 　
+	  #if($shinsaJokyoSearchForm.Values.contains('00120'))
+	 <td>#if($!user.NOT_INPUT_COUNT_00120)$!escape.getText($!user.NOT_INPUT_COUNT_00120)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00120)$!escape.getText($!user.ALL_COUNT_00120)件 #else 0件 #end</td>
+	  #end
+##2007/02/25　苗　追加ここまで
+	 #if($shinsaJokyoSearchForm.Values.contains('00121'))	  
+	 <td>#if($!user.NOT_INPUT_COUNT_00121)$!escape.getText($!user.NOT_INPUT_COUNT_00121)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00121)$!escape.getText($!user.ALL_COUNT_00121)件 #else 0件 #end</td>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00131'))	  
+	 <td>#if($!user.NOT_INPUT_COUNT_00131)$!escape.getText($!user.NOT_INPUT_COUNT_00131)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00131)$!escape.getText($!user.ALL_COUNT_00131)件 #else 0件 #end</td>	 
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00141'))	  
+	 <td>#if($!user.NOT_INPUT_COUNT_00141)$!escape.getText($!user.NOT_INPUT_COUNT_00141)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00141)$!escape.getText($!user.ALL_COUNT_00141)件 #else 0件 #end</td>	
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00152'))	  
+     <td>#if($!user.NOT_INPUT_COUNT_00152)$!escape.getText($!user.NOT_INPUT_COUNT_00152)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00152)$!escape.getText($!user.ALL_COUNT_00152)件 #else 0件 #end</td>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00153'))
+	 <td>#if($!user.NOT_INPUT_COUNT_00153)$!escape.getText($!user.NOT_INPUT_COUNT_00153)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00153)$!escape.getText($!user.ALL_COUNT_00153)件 #else 0件 #end</td>
+	 #end
+	 #if($shinsaJokyoSearchForm.Values.contains('00154'))
+	 <td>#if($!user.NOT_INPUT_COUNT_00154)$!escape.getText($!user.NOT_INPUT_COUNT_00154)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00154)$!escape.getText($!user.ALL_COUNT_00154)件 #else 0件 #end</td>
+     #end
+     #if($shinsaJokyoSearchForm.Values.contains('00155'))
+	 <td>#if($!user.NOT_INPUT_COUNT_00155)$!escape.getText($!user.NOT_INPUT_COUNT_00155)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00155)$!escape.getText($!user.ALL_COUNT_00155)件 #else 0件 #end</td>
+     #end
+     #if($shinsaJokyoSearchForm.Values.contains('00156'))
+	 <td>#if($!user.NOT_INPUT_COUNT_00156)$!escape.getText($!user.NOT_INPUT_COUNT_00156)件 #else 0件 #end</td>
+     <td>#if($!user.ALL_COUNT_00156)$!escape.getText($!user.ALL_COUNT_00156)件 #else 0件 #end</td>	
+     #end
+    </tr>
+    #end
+   </table>
+  </td>
+ </tr>
+</table>	
+#end
+## 2006/10/25 于広偉　追加ここまで
+<!-- 一覧用テーブルここまで-->
+<br>
+ <font color="blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#foreach($page in $result.pageIndexs)
+   #if($velocityCount == $result.currentPages)
+     #if($velocityCount == $result.totalPages)
+			<b> $!escape.getText($velocityCount)</b>
+      #else
+         	<b> $!escape.getText($velocityCount)</b><font color="black">/</font>
+      #end
+   #else
+      #if($velocityCount == $result.totalPages)
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a> 
+      #else
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a><font color="black">/</font>
+      #end
+   #end
+ #end
+ </font>
+ <font color="black">ページに移動します。</font> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ #if($result.hasPreviousPage())
+   <A href="javascript:onPageClick('$!result.getStartOfPreviousPage()')"><img src="$path/images/bt_last.gif" width=64 height=24 alt="前ページ" border="0"></a>
+ #end
+
+ #if($result.hasNextPage())
+   <A href="javascript:onPageClick('$!result.getStartOfNextPage()');"><img src="$path/images/bt_next.gif" width=64 height=24 alt="次ページ" border="0"></a>
+ #end
+<br>
+          <p align="left"><a href="javascript:onCsvOutClick();"><img src="$path/images/bt_csv.gif" alt="CSV出力" width=114 height=28 alt="CSV出力" border="0"></a></p>
+<!-- 本文ここまで -->
+
+##隠しフォーム情報----------
+<form name="info_form" action="" method="post">
+	<input type="hidden" name="systemNo" >
+	<input type="hidden" name="shinsainNo4View" >
+	<input type="hidden" name="jigyoKubun" >
+</form>
+<form name="saishinsa_form" action="" method="post">
+	<input type="hidden" name="jigyoId" >
+	<input type="hidden" name="shinsainNo" >
+	<input type="hidden" name="jigyoKubun" >
+</form>
+<FORM name="page_form" action="" method="post">
+	<INPUT type="hidden" name="startPosition" >
+</FORM>
+<form name="csvout_form" action="" method="post">
+</form>
+
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+     <form method="POST" action="$link.setAction('/gyomu/shinsaJokyo/searchList')?startPosition=0">
+      <tr>
+       <td><input type="image" name="$form.cancelName" src="$path/images/bt_bk_examsearch.gif" width=228 height=28 border="0" alt="審査状況検索に戻る"></td>
+      </tr>
+     </form>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img1.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/gyomu/logoff')"><IMG SRC="$path/images/footer_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=26 border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img3.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+</body>
+</html>

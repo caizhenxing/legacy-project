@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/yuyin.do" location="0,0" dimension="358,84" />
+  <StrutsActivity path="/yuyin/yuyin.jsp" location="111,184" dimension="136,48" />
+  <StrutsActivity path="/yuyin/yuyinTreeSelect.jsp" location="650,50" dimension="196,48" />
+  <StrutsTransition id="/yuyin.do,toyuyinTreeSelected,/yuyin/yuyinTreeSelect.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="358,65" />
+      <AbsolutePoint location="650,65" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/yuyin.do,toyuyinTreeLoad,/yuyin/yuyin.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="179,84" />
+      <AbsolutePoint location="179,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

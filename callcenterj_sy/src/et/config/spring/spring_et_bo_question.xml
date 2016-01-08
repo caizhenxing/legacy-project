@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+	
+	<bean name="/question/question" class="et.bo.question.action.QuestionAction" scope="singleton">
+		<property name="questionService">
+			<ref bean="QuestionService"/>
+		</property>
+		<property name="callbackService">
+			<ref bean="CallbackService"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+		<property name="outputService">
+			<ref bean="OutputService"/>
+		</property>
+	</bean>
+	<bean id="QuestionService" class="et.bo.question.service.impl.QuestionServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	
+</beans>

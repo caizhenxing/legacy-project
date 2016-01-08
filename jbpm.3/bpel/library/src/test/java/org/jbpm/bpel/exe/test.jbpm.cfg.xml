@@ -1,0 +1,21 @@
+<jbpm-configuration>
+
+  <jbpm-context>
+    <service name="persistence" factory="org.jbpm.bpel.exe.MockPersistenceService$Factory" />
+    <service name="integration" factory="org.jbpm.bpel.exe.MockIntegrationService$Factory" />
+  </jbpm-context>
+
+  <!-- configuration resources in jbpm-{version}.jar -->
+  <string name="resource.converter" value="org/jbpm/db/hibernate/jbpm.converter.properties" />
+  
+  <!-- configuration resources in jbpm-bpel-{version}.jar -->
+  <string name="resource.default.modules" value="org/jbpm/bpel/def/modules.properties" />
+  <string name="resource.parsers" value="org/jbpm/bpel/par/parsers.xml" />
+  <string name="resource.activity.readers" value="org/jbpm/bpel/xml/activity.readers.xml"/>
+  <string name="resource.catalog.readers" value="org/jbpm/bpel/xml/catalog.readers.xml" />
+  <string name="resource.endpoint.factories" value="org/jbpm/bpel/service/ocm/endpoint.factories.xml" />
+
+  <!-- configuration resources in test suite -->  
+  <string name="resource.varmapping" value="org/jbpm/bpel/exe/varmapping.xml" />
+
+</jbpm-configuration>

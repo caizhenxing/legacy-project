@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/workplan.do" location="650,450" dimension="358,84" />
+  <StrutsActivity path="/workmission.do" location="50,550" dimension="358,84" />
+  <StrutsActivity path="/plan/planlist.jsp" location="650,850" dimension="148,48" />
+  <StrutsActivity path="/plan/query.jsp" location="1250,550" dimension="130,48" />
+  <StrutsActivity path="/plan/addPlan.jsp" location="50,150" dimension="142,48" />
+  <StrutsActivity path="/plan/planday.jsp" location="350,950" dimension="142,48" />
+  <StrutsActivity path="/plan/plancheckquery.jsp" location="1250,650" dimension="184,48" />
+  <StrutsActivity path="/sys/content.jsp" location="50,950" dimension="136,48" />
+  <StrutsActivity path="/plan/plan.jsp" location="950,850" dimension="124,48" />
+  <StrutsActivity path="/plan/myplanlist.jsp" location="950,750" dimension="160,48" />
+  <StrutsActivity path="/plan/plancheckinfo.jsp" location="1250,250" dimension="178,48" />
+  <StrutsActivity path="/plan/planInfo.jsp" location="950,650" dimension="148,48" />
+  <StrutsActivity path="/plan/addMissionOnly.jsp" location="50,850" dimension="184,48" />
+  <StrutsActivity path="/plan/planframe.jsp" location="50,750" dimension="154,48" />
+  <StrutsActivity path="/plan/newplanInfo.jsp" location="1250,850" dimension="166,48" />
+  <StrutsActivity path="/plan/addMission.jsp" location="350,150" dimension="160,48" />
+  <StrutsActivity path="/plan/planchecklist.jsp" location="1250,750" dimension="178,48" />
+  <StrutsActivity path="/plan/missionlist.jsp" location="350,850" dimension="166,48" />
+  <StrutsActivity path="/plan/queryday.jsp" location="1250,450" dimension="148,48" />
+  <StrutsActivity path="/plan/planinfo.jsp" location="650,650" dimension="148,48" />
+  <StrutsActivity path="/plan/mymissionlist.jsp" location="650,750" dimension="178,48" />
+  <StrutsActivity path="/plan/updateMission.jsp" location="350,750" dimension="178,48" />
+  <StrutsActivity path="/oa/commoninfo/leaveWord/leaveWordMain.jsp" location="50,250" dimension="292,48" />
+  <StrutsActivity path="/oa/commoninfo/leaveWord/leaveWordList.jsp" location="650,50" dimension="292,48" />
+  <StrutsActivity path="/oa/commoninfo/leaveWord/seeLeaveWordList.jsp" location="650,150" dimension="310,48" />
+  <StrutsActivity path="/oa/commoninfo/leaveWord/leaveWordLoad.jsp" location="650,250" dimension="292,48" />
+  <StrutsActivity path="/oa/commoninfo/leaveWord/leaveWordQuery.jsp" location="50,350" dimension="298,48" />
+  <StrutsActivity path="/oa/commoninfo/leaveWord/test1.jsp" location="650,350" dimension="244,48" />
+  <StrutsActivity path="/oa/commoninfo/leaveWord/seeLeaveWordMain.jsp" location="950,350" dimension="310,48" />
+  <StrutsActivity path="/oa/commoninfo/leaveWord/seeLeaveWordLoad.jsp" location="50,450" dimension="310,48" />
+  <StrutsTransition id="/workplan.do,mission,/plan/missionlist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,483" />
+      <AbsolutePoint location="603,483" />
+      <AbsolutePoint location="603,874" />
+      <AbsolutePoint location="516,874" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workplan.do,content,/sys/content.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,492" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workplan.do,plancheckinfo,/plan/plancheckinfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,492" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workplan.do,plancheck,/plan/planchecklist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,450" />
+      <AbsolutePoint location="829,413" />
+      <AbsolutePoint location="1125,413" />
+      <AbsolutePoint location="1125,774" />
+      <AbsolutePoint location="1250,774" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workplan.do,myplanlist,/plan/myplanlist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="933,534" />
+      <AbsolutePoint location="933,774" />
+      <AbsolutePoint location="950,774" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workplan.do,addMission,/plan/addMission.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,453" />
+      <AbsolutePoint location="430,453" />
+      <AbsolutePoint location="430,198" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workplan.do,queryday,/plan/planday.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1008,492" />
+      <AbsolutePoint location="1185,492" />
+      <AbsolutePoint location="1185,974" />
+      <AbsolutePoint location="492,974" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workplan.do,queryphase,/plan/plan.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="903,534" />
+      <AbsolutePoint location="903,874" />
+      <AbsolutePoint location="950,874" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workplan.do,addMissionOnly,/plan/addMissionOnly.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,513" />
+      <AbsolutePoint location="-45,513" />
+      <AbsolutePoint location="-45,874" />
+      <AbsolutePoint location="50,874" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workmission.do,planinfo,/plan/planInfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,592" />
+      <AbsolutePoint location="1024,674" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workmission.do,main,/plan/planinfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,592" />
+      <AbsolutePoint location="724,592" />
+      <AbsolutePoint location="724,650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workplan.do,add,/plan/addPlan.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,492" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workplan.do,checkquery,/plan/plancheckquery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="694,534" />
+      <AbsolutePoint location="694,622" />
+      <AbsolutePoint location="1342,622" />
+      <AbsolutePoint location="1342,650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workmission.do,updateMission,/plan/updateMission.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,592" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workmission.do,mymissionlist,/plan/mymissionlist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,562" />
+      <AbsolutePoint location="813,562" />
+      <AbsolutePoint location="813,750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workplan.do,plan,/plan/planlist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="873,534" />
+      <AbsolutePoint location="873,874" />
+      <AbsolutePoint location="798,874" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workplan.do,planframe,/plan/planframe.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="843,534" />
+      <AbsolutePoint location="843,713" />
+      <AbsolutePoint location="127,713" />
+      <AbsolutePoint location="127,750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workplan.do,pday,/plan/queryday.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1008,462" />
+      <AbsolutePoint location="1250,462" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workplan.do,planinfo,/plan/planInfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="965,534" />
+      <AbsolutePoint location="965,650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workplan.do,newplaninfo,/plan/newplanInfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,492" />
+      <AbsolutePoint location="1333,874" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/workplan.do,pphase,/plan/query.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="995,534" />
+      <AbsolutePoint location="995,562" />
+      <AbsolutePoint location="1250,562" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean name="/forum/replace"
+		class="et.bo.forum.replaceManager.action.ReplaceManagerAction" singleton="false">			
+		<property name="replaceManagerService">
+			<ref bean="ReplaceManagerService" />
+		</property>			
+	</bean>
+	
+	<!--  service begin -->	
+	<bean id="ReplaceManagerService"
+		class="et.bo.forum.replaceManager.service.impl.ReplaceManagerServiceImpl" singleton="true">
+<!--		<property name="ks">-->
+<!--			<ref bean="KeyService" />-->
+<!--		</property>-->
+<!--		<property name="dao">-->
+<!--			<ref bean="ForumDao" />-->
+<!--		</property>-->
+	</bean>	
+</beans>

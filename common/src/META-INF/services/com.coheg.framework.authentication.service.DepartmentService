@@ -1,0 +1,77 @@
+import com.coheg.framework.authentication.service.DepartmentService;
+import com.coheg.framework.authentication.entity.Department;
+import com.coheg.framework.codename.DepartmentCodeName;
+
+import org.springframework.jdbc.core.RowMapper;
+
+import com.coheg.exception.UnexpectedException;
+
+import com.coheg.security.SecurityServiceProvider;
+import com.coheg.security.app.organization.manager.OrganizationManager;
+
+import org.hibernate.ObjectNotFoundException;
+
+import java.sql.SQLException;
+import java.sql.ResultSet;
+
+departmentService = new DepartmentService() {
+	organizationManager = SecurityServiceProvider.getOrganizationManager();
+	listDepartmentsByHierarchies = "select id, org_name, parent_id, (select org_name from security_organization where id = s.parent_id), (select decode(count(*), 0, '0', '1') from security_organization where parent_id = s.id) hc parent_name from security_organization s start with id = ? connect by parent_id = prior id order siblings by id";
+	listDeparmtentsByParentId = "select id, org_name, parent_id, (select org_name from security_organization where id = s.parent_id), (select decode(count(*), 0, '0', '1') from security_organization where parent_id = s.id) hc from security_organization s where parent_id = ? order by id";
+	
+	departmentRowMapper = new RowMapper() {
+        public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
+        	return loadDepartment(rs.getString(1));
+        }
+	};
+	
+	departmentCodeNameRowMapper = new RowMapper() {
+        public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
+            d = new Department();
+            p = new Department();
+            d.setId(rs.getString(1));
+            d.setName(rs.getString(2));
+            p.setId(rs.getString(3));
+            p.setName(rs.getString(4));
+            d.setParent(p);
+            d.setHasChildren("1".equals(rs.getString(5)));
+            cn = new DepartmentCodeName();
+            cn.copyFrom(d);
+            return cn;
+        }
+	};
+
+	loadDepartment(departmentId) {
+        Department department = null;
+        try {
+            o = organizationManager.load(departmentId);
+            department = new Department();
+            department.id = o.id;
+            department.name = o.name;
+        } catch (Exception e) {
+            if (e.getClass() == ObjectNotFoundException.class) {
+                throw new IllegalArgumentException("没有id=[" + departmentId + "]的部门");
+            }
+            throw new UnexpectedException("检索部门错误,id=" + departmentId, e);
+        }
+        return department;
+	}
+	/* 参数 topDepartment 是组织机构的顶级部门编码, 是从执行环境中获得的, 参见getBeanShellRequiredVariables() */
+	top() {
+		return loadDepartment(topDepartment);
+	}
+	
+	listChildren(String id) {
+		return this.jdbcTemplate.query(listDeparmtentsByParentId, new String[] {id}, departmentCodeNameRowMapper);
+	}
+	
+	listDepartments(String code) {
+        return this.jdbcTemplate.query(listDepartmentsByHierarchies, new String[] {code}, departmentRowMapper);
+	}
+	
+	listDepartmentCodeNames(String code) {
+        return this.jdbcTemplate.query(listDepartmentsByHierarchies, new String[] {code}, departmentCodeNameRowMapper);
+	}
+};
+
+return (DepartmentService) departmentService;

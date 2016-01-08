@@ -1,0 +1,222 @@
+<style type="text/css">
+<!--
+.style2 {color: #808080}
+-->
+</style>
+<body bgcolor='#6699cc' onLoad="fUpdateCal(new Date().getFullYear(), new Date().getMonth()+1, 'start')">
+<script language="JScript">
+<!-- Begin  //place these scripts within BODY tag if you are using IE 4.0 or below.
+//bgcolor为背景颜色
+//gcGray 不是本月份颜色
+//yellow 今天日期颜色
+//gcToggle 鼠标悬浮日期内颜色
+//gcBG  整个表格日期内颜色
+//97行   星期颜色
+//138 行  周日 周六  和  其他天数日期  //194 日历外部背景   209行   表格线条颜色  //214  mouseon
+var gdCtrl = new Object();
+var gcGray = "#DCDCDC";
+var yellow = "blue";
+var gcToggle = "#FF6347";
+var gcBG = "#FFFACD";
+var gdCurDate = new Date();
+var giYear = gdCurDate.getFullYear();
+var giMonth = gdCurDate.getMonth()+1;
+var giDay = gdCurDate.getDate();
+var VicPopCal = new Object();
+
+function fSetDate(iYear, iMonth, iDay){
+  var iMonth1 = parseInt(iMonth);
+  var iDay1 = parseInt(iDay);
+  if(iMonth1<10){
+  	iMonth = "0"+iMonth1;
+  }
+  if(iDay1<10){
+  	iDay = "0"+iDay1;
+  }
+  gdCtrl.value = iYear+"-"+iMonth+"-"+iDay; //Here, you could modify the locale as you need !!!!
+  //alert("fffff   "+gdCtrl.value);
+  //gdCtrl.value = formatDate(gdCtrl.value);//0409
+  //VicPopCal.style.visibility = "hidden";
+  window.returnValue=gdCtrl.value;
+  window.close();
+}
+function fSetSelected(aCell){
+  var iOffset = 0;
+  var iYear = parseInt(document.myform.tbSelYear.value);
+  var iMonth = parseInt(document.myform.tbSelMonth.value);
+
+  aCell.bgColor = gcBG;
+  with (aCell.children["cellText"]){
+   var iDay = parseInt(innerText);
+   if (color==gcGray)
+      iOffset = (Victor<10)?-1:1;
+   iMonth += iOffset;
+   if (iMonth<1) {
+      iYear--;
+      iMonth = 12;
+   }else if (iMonth>12){
+      iYear++;
+      iMonth = 1;
+   }
+  }
+  fSetDate(iYear, iMonth, iDay);
+}
+
+function Point(iX, iY){
+   this.x = iX;
+   this.y = iY;
+}
+
+function fBuildCal(iYear, iMonth) {
+  var aMonth=new Array();
+  for(i=1;i<7;i++)
+   aMonth[i]=new Array(i);
+
+  var dCalDate=new Date(iYear, iMonth-1, 1);
+  var iDayOfFirst=dCalDate.getDay();
+  var iDaysInMonth=new Date(iYear, iMonth, 0).getDate();
+  var iOffsetLast=new Date(iYear, iMonth-1, 0).getDate()-iDayOfFirst+1;
+  var iDate = 1;
+  var iNext = 1;
+
+  for (d = 0; d < 7; d++)
+   aMonth[1][d] = (d<iDayOfFirst)?-(iOffsetLast+d):iDate++;
+  for (w = 2; w < 7; w++)
+   for (d = 0; d < 7; d++)
+      aMonth[w][d] = (iDate<=iDaysInMonth)?iDate++:-(iNext++);
+  return aMonth;
+}
+
+function fDrawCal(iYear, iMonth, iCellWidth, iDateTextSize) {
+  var WeekDay = new Array("Su","Mo","Tu","We","Th","Fr","Sa");
+  var styleTD = " bgcolor='"+gcBG+"' width='"+iCellWidth+"' bordercolor='"+gcBG+"' valign='middle' align='center'  style='font:bold "+iDateTextSize+" Courier;";            //Coded by Liming Weng(Victor Won)  email:victorwon@netease.com
+
+  with (document) {
+   write("<tr>");
+   for(i=0; i<7; i++)
+      write("<td "+styleTD+"color:#990099' >" + WeekDay[i] + "</td>");
+   write("</tr>");
+
+   for (w = 1; w < 7; w++) {
+      write("<tr>");
+      for (d = 0; d < 7; d++) {
+         write("<td id=calCell "+styleTD+"cursor:hand;' onMouseOver='this.bgColor=gcToggle' onMouseOut='this.bgColor=gcBG' onclick='fSetSelected(this)'>");
+         write("<font id=cellText Victor='Liming Weng'> </font>");
+         write("</td>")
+      }
+      write("</tr>");
+   }
+  }
+}
+
+function fUpdateCal(iYear, iMonth, flag) {
+  if (flag=='start')
+  {
+    document.myform.tbSelYear.value=iYear;
+    document.myform.tbSelMonth.value=iMonth;
+  }
+  myMonth = fBuildCal(iYear, iMonth);
+  var i = 0;
+  for (w = 0; w < 6; w++)
+   for (d = 0; d < 7; d++)
+      with (cellText[(7*w)+d]) {
+         Victor = i++;
+         if (giDay&&myMonth[w+1][d]<0)
+          {
+             color = gcGray;
+             innerText = -myMonth[w+1][d];
+          }
+          else
+          {
+              if (myMonth[w+1][d]==giDay&&iYear==giYear)
+              {
+                  color = yellow;
+               innerText = myMonth[w+1][d];
+            }
+            else
+            {
+               color = ((d==0)||(d==6))?"red":"black";
+               innerText = myMonth[w+1][d];
+            }
+          }
+      }
+}
+
+function fSetYearMon(iYear, iMon){
+  document.myform.tbSelMonth.options[iMon-1].selected = true;
+  for (i = 0; i < document.myform.tbSelYear.length; i++)
+   if (document.myform.tbSelYear.options[i].value == iYear)
+      document.myform.tbSelYear.options[i].selected = true;
+  fUpdateCal(iYear, iMon);
+}
+
+function fPrevMonth(){
+  var iMon = document.myform.tbSelMonth.value;
+  var iYear = document.myform.tbSelYear.value;
+
+  if (--iMon<1) {
+     iMon = 12;
+     iYear--;
+  }
+
+  fSetYearMon(iYear, iMon);
+}
+
+function fNextMonth(){
+  var iMon = document.myform.tbSelMonth.value;
+  var iYear = document.myform.tbSelYear.value;
+
+
+  if (++iMon>12) {
+     iMon = 1;
+     iYear++;
+  }
+
+  fSetYearMon(iYear, iMon);
+}
+
+function fGetXY(aTag){
+  var oTmp = aTag;
+  var pt = new Point(0,0);
+  do {
+   pt.x += oTmp.offsetLeft;
+   pt.y += oTmp.offsetTop;
+   oTmp = oTmp.offsetParent;
+  } while(oTmp.tagName!="BODY");
+  return pt;
+}
+
+var gMonths = new Array("一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月");
+
+with (document) {
+write("<title>请选择日期</title>");
+write("<form name=myform>");
+write("<table align='center' id='popTable' border='0' bgcolor='#996600'>");
+write("<TR>");
+write("<td valign='middle' align='center'><input type='button' name='PrevMonth' value='<' style='height:20;width:20;FONT:16 Fixedsys' onClick='fPrevMonth()'>");
+write("&nbsp;<select name='tbSelMonth' onChange='fUpdateCal(tbSelYear.value, tbSelMonth.value)' Victor='Won'>");
+for (i=0; i<12; i++)
+   write("<option value='"+(i+1)+"'>"+gMonths[i]+"</option>");
+write("</SELECT>");
+write("&nbsp;<SELECT name='tbSelYear' onChange='fUpdateCal(tbSelYear.value, tbSelMonth.value)' Victor='Won'>");
+for(i=giYear-70;i<giYear+5;i++)
+   write("<OPTION value='"+i+"'>"+i+"</OPTION>");
+write("</SELECT>");
+write("&nbsp;<input type='button' name='PrevMonth' value='>' style='height:20;width:20;FONT:16 Fixedsys' onclick='fNextMonth()'>");
+write("</td>");
+write("</TR><TR>");
+write("<td align='center'>");
+write("<DIV style='background-color:white;'><table width='100%' border='0' cellpadding='2'>");
+fDrawCal(giYear, giMonth, 19, 12);
+write("</table></DIV>");
+write("</td>");
+write("</TR><TR><TD>");
+write("<font style='cursor:hand;font:12 Fixedsys' onclick='fSetDate(giYear,giMonth,giDay)' onMouseOver='this.style.color=0' onMouseOut='this.style.color=0'>&nbsp;Today:&nbsp;"+gMonths[giMonth-1]+"&nbsp;"+giDay+",&nbsp;"+giYear+"</font>");
+write("</TD></TR>");write("</TD></TR>");
+write("</TABLE>");
+write("</form>");
+}
+// End -- Coded by Liming Weng,modified by wanghd -->
+</script>
+<span class="style2"></span>
+</body>

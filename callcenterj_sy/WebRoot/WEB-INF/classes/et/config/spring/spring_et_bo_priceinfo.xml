@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+	
+	<bean name="/operpriceinfo" class="et.bo.priceinfo.action.PriceinfoAction" scope="singleton">
+		<property name="opis">
+			<ref bean="PriceinfoService"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	<bean id="PriceinfoService" class="et.bo.priceinfo.service.impl.PriceinfoServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+		<property name="flowService">
+			<ref bean="FlowService"/>
+		</property>
+	</bean>
+	
+</beans>

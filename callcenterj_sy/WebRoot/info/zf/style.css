@@ -1,0 +1,99 @@
+body {
+	margin-left: 1px;
+	margin-top: 1px;
+	margin-right: 1px;
+	margin-bottom: 1px;
+
+
+}
+.jz{
+	text-align: center;
+	vertical-align: middle;
+	height: 768px;
+	width: 800px;
+}
+.mt1{
+	background-image: url(images/kehuduan/khd1.jpg);
+	text-align: center;
+	height: 78px;
+	width: 214px;
+}
+.mt2{
+	background-image: url(images/kehuduan/khd2.jpg);
+	text-align: center;
+	height: 50px;
+	width: 382px;
+}
+.mt3{
+	line-height: 28px;
+	background-image: url(images/kehuduan/khd3.jpg);
+	text-align: center;
+	height: 28px;
+	width: 382px;
+}
+.mt4{
+	background-image: url(images/kehuduan/khd4.jpg);
+	text-align: center;
+	height: 28px;
+	width: 205px;
+}
+.mt5{
+	background-image: url(images/kehuduan/khd5.jpg);
+	text-align: center;
+	height: 50px;
+	width: 205px;
+	line-height: 50px;
+}
+.anniu{
+	background-image: url(images/kehuduan/anniu.jpg);
+	height: 10px;
+	width: 9px;
+	text-align: center;
+}
+/*白色文字，标语*/
+.wenzi1{ 
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 21px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+}
+/*快报背景*/
+.beijing{  
+	background-color: #D6E4EE;
+	text-align: center;
+	height: 21px;
+}
+.wenzi2{
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 12px;
+	font-weight: normal;
+	color: #333333;
+	text-align: left;
+	text-indent: 8px;
+}
+/*文字白色，靠左，标语*/
+.wenzi3{
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	color: #8ABAE2;
+	text-align: center;
+	text-indent: 5px;
+}
+/*文字棕色，靠左，标语*/
+.wenzi4{
+	font-family: "宋体";
+	font-size: 13px;
+	line-height: 15px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	text-indent: 6px;
+/*快报背景*/
+	background-color: #8ABAE2;

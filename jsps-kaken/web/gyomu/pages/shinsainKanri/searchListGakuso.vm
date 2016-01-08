@@ -1,0 +1,226 @@
+## 審査員検索フォーム情報→shinsainSearchForm
+## 検索結果ページ情報→result
+#parse( $commonSetting )
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+##スクリプト
+<SCRIPT LANGUAGE=javascript>
+<!--
+function onEditClick(shinsainNo, jigyoKubun){
+	document.update_form.action="$link.setAction('/gyomu/shinsainKanri/editGakuso')";
+	document.update_form.shinsainNo.value = shinsainNo;
+	document.update_form.jigyoKubun.value = jigyoKubun;
+	document.update_form.submit();
+}
+function onDeleteClick(shinsainNo, jigyoKubun){
+	document.update_form.action="$link.setAction('/gyomu/shinsainKanri/deleteGakuso')";
+	document.update_form.shinsainNo.value = shinsainNo;
+	document.update_form.jigyoKubun.value = jigyoKubun;
+	document.update_form.submit();
+}
+function onReconfigureClick(shinsainNo, jigyoKubun){
+	document.update_form.action="$link.setAction('/gyomu/shinsainKanri/reconfigureGakuso')";
+	document.update_form.shinsainNo.value = shinsainNo;
+	document.update_form.jigyoKubun.value = jigyoKubun;
+	document.update_form.submit();
+}
+function onPageClick(startPosition){
+	document.page_form.action="$link.setAction('/gyomu/shinsainKanri/searchListGakuso')";
+	document.page_form.startPosition.value = startPosition;
+	document.page_form.submit();
+}
+function onCsvOutClick(){
+	document.csvout_form.action="$link.setAction('/gyomu/shinsainKanri/csvOut')";
+    document.csvout_form.submit();
+}
+//-->
+</SCRIPT>
+
+## 変数の置き換え
+#set ($list= $result.list)
+
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="javascript:fncWindowOpen('$path/docs/manual3.pdf','help');"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/gyomu/logoff')"><IMG SRC="$path/images/header_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=20 border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#999966" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/gyomu/showMainMenu')">業務担当者向けメニュー</a>＞<a href="$link.setAction('/gyomu/shinsainKanri/menuGakuso')">審査員管理</a>（事業選択＞審査員管理メニュー＞審査員情報検索＞<b>審査員情報一覧</b>）</font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><IMG SRC="$path/images/subtitle_img1.gif" WIDTH=61 HEIGHT=49 ALT=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+       審査員情報一覧</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <IMG SRC="$path/images/subtitle_img3.gif" WIDTH=213 HEIGHT=49 ALT=""></td>
+     </tr>
+    </table>
+	<!-- サブ画面タイトル用テーブルここまで -->
+<!-- 本文ここから -->
+#errorMarkup()
+<p align="left"><a href="javascript:onCsvOutClick();"><img src="$path/images/bt_csv.gif" alt="CSV出力" width=114 height=28 alt="CSV出力" border="0"></a></p>
+ <font color="black">$!escape.getText($!result.totalSize) 件該当しました。</font><br>
+ <font color="blue"><b>$!escape.getText($!result.currentPages)</b></font>
+ <font color="black"> ページ目を表示しています。</font><br>　　　
+ <font color="blue">
+ #foreach($page in $result.pageIndexs)
+   #if($velocityCount == $result.currentPages)
+     #if($velocityCount == $result.totalPages)
+			<b> $!escape.getText($velocityCount)</b>
+      #else
+         	<b> $!escape.getText($velocityCount)</b><font color="black">/</font>
+      #end
+   #else
+      #if($velocityCount == $result.totalPages)
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a> 
+      #else
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a><font color="black">/</font>
+      #end
+   #end
+ #end
+ </font>
+ <font color="black">ページに移動します。</font> <br> 　　　
+ #if($result.hasPreviousPage())
+   <A href="javascript:onPageClick('$!result.getStartOfPreviousPage()')"><img src="$path/images/bt_last.gif" width=64 height=24 alt="前ページ" border="0"></a>
+ #end
+
+ #if($result.hasNextPage())
+   <A href="javascript:onPageClick('$!result.getStartOfNextPage()');"><img src="$path/images/bt_next.gif" width=64 height=24 alt="次ページ" border="0"></a>
+ #end
+<br><br>
+ 
+<!-- 一覧用テーブルここから -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th>審査員割振番号</th>
+     <th>審査員名</th>
+     <th>所属研究機関名</th>
+     <th>Email</th>
+     <th>審査員内容</th>
+    </tr>
+    #foreach($user in $list)	
+    <tr>
+     <td>$!escape.getText($!user.SHINSAIN_NO)</td>
+     <td>$!escape.getText($!user.NAME_KANJI_SEI) $!escape.getText($!user.NAME_KANJI_MEI)</td>
+     <td>$!escape.getText($!user.SHOZOKU_NAME)</td>
+     <td>$!escape.getText($!user.SOFU_ZIPEMAIL)</td>
+     #set ($shinsainNo =$!escape.getText($!user.SHINSAIN_NO))
+     #set ($jigyoKubun =$!escape.getText($!user.JIGYO_KUBUN))
+     <td>
+      <a href="javascript:onEditClick('$shinsainNo', '$jigyoKubun');"><img src="$path/images/bt_rep.gif" alt="修正" width="36" height="22" border="0"></a>　
+      <a href="javascript:onDeleteClick('$shinsainNo', '$jigyoKubun');"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>　
+      <a href="javascript:onReconfigureClick('$shinsainNo', '$jigyoKubun');"><img src="$path/images/bt_password.gif" alt="パスワード再設定" width="108" height="22" border="0"></a>
+     </td>
+    </tr>
+    #end
+   </table>
+  </td>
+ </tr>
+</table>
+<!-- 一覧用テーブルここまで-->
+<br>
+ <font color="blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#foreach($page in $result.pageIndexs)
+   #if($velocityCount == $result.currentPages)
+     #if($velocityCount == $result.totalPages)
+			<b> $!escape.getText($velocityCount)</b>
+      #else
+         	<b> $!escape.getText($velocityCount)</b><font color="black">/</font>
+      #end
+   #else
+      #if($velocityCount == $result.totalPages)
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a> 
+      #else
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a><font color="black">/</font>
+      #end
+   #end
+ #end
+ </font>
+ <font color="black">ページに移動します。</font> <br> 　　　
+ #if($result.hasPreviousPage())
+   <A href="javascript:onPageClick('$!result.getStartOfPreviousPage()')"><img src="$path/images/bt_last.gif" width=64 height=24 alt="前ページ" border="0"></a>
+ #end
+
+ #if($result.hasNextPage())
+   <A href="javascript:onPageClick('$!result.getStartOfNextPage()');"><img src="$path/images/bt_next.gif" width=64 height=24 alt="次ページ" border="0"></a>
+ #end
+<br>
+          <p align="left"><a href="javascript:onCsvOutClick();"><img src="$path/images/bt_csv.gif" alt="CSV出力" width=114 height=28 alt="CSV出力" border="0"></a></p>
+<!-- 本文ここまで -->
+
+##隠しフォーム情報----------
+<FORM name="update_form" action="" method="post">
+	<INPUT type="hidden" name="shinsainNo" >
+	<INPUT type="hidden" name="jigyoKubun" >
+</FORM>
+<FORM name="page_form" action="" method="post">
+	<INPUT type="hidden" name="startPosition" >
+</FORM>
+<form name="csvout_form" action="" method="post">
+</form>
+
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="$link.setAction('/gyomu/shinsainKanri/searchGakuso')"><img src="$path/images/bt_bk_4search.gif" width=228 height=28 alt="審査員情報検索に戻る" border="0"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img1.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/gyomu/logoff')"><IMG SRC="$path/images/footer_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=26 border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img3.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+</body>
+</html>

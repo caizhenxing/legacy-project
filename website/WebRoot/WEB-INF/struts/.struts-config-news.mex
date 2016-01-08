@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/news/opernews.do" location="1294,148" dimension="358,84" />
+  <StrutsActivity path="/editor/uploadFile.do" location="38,148" dimension="358,84" />
+  <StrutsActivity path="/news/article/articleList.jsp" location="580,382" dimension="214,48" />
+  <StrutsActivity path="/news/article/articleMain.jsp" location="894,382" dimension="214,48" />
+  <StrutsActivity path="/news/article/articleLoad.jsp" location="1208,382" dimension="214,48" />
+  <StrutsActivity path="/news/article/articleQuery.jsp" location="1522,382" dimension="220,48" />
+  <StrutsActivity path="/news/article/recycleList.jsp" location="1842,382" dimension="214,48" />
+  <StrutsActivity path="/news/editor/upload.jsp" location="302,382" dimension="178,48" />
+  <StrutsActivity path="/oa/main/newsInfo.jsp" location="2156,382" dimension="166,48" />
+  <StrutsActivity path="/news/article/error.jsp" location="2422,382" dimension="178,48" />
+  <StrutsActivity path="/news/editor/uploadFail.jsp" location="0,382" dimension="202,48" />
+  <StrutsActivity path="/editor/uploadFile.jsp" location="131,0" dimension="172,48" />
+  <StrutsTransition id="/news/opernews.do,list,/news/article/articleList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1361,232" />
+      <AbsolutePoint location="1361,292" />
+      <AbsolutePoint location="687,292" />
+      <AbsolutePoint location="687,382" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/news/opernews.do,load,/news/article/articleLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1451,232" />
+      <AbsolutePoint location="1451,352" />
+      <AbsolutePoint location="1315,352" />
+      <AbsolutePoint location="1315,382" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/news/opernews.do,newsInfo,/oa/main/newsInfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1585,232" />
+      <AbsolutePoint location="1585,292" />
+      <AbsolutePoint location="2239,292" />
+      <AbsolutePoint location="2239,382" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/editor/uploadFile.do,uploadfail,/news/editor/uploadFail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="127,232" />
+      <AbsolutePoint location="127,262" />
+      <AbsolutePoint location="101,262" />
+      <AbsolutePoint location="101,382" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/news/opernews.do,error,/news/article/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1630,232" />
+      <AbsolutePoint location="1630,262" />
+      <AbsolutePoint location="2511,262" />
+      <AbsolutePoint location="2511,382" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/news/opernews.do,query,/news/article/articleQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1495,232" />
+      <AbsolutePoint location="1495,352" />
+      <AbsolutePoint location="1632,352" />
+      <AbsolutePoint location="1632,382" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/editor/uploadFile.jsp,null,/editor/uploadFile.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="217,48" />
+      <AbsolutePoint location="217,148" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/news/opernews.do,recyclelist,/news/article/recycleList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1540,232" />
+      <AbsolutePoint location="1540,322" />
+      <AbsolutePoint location="1949,322" />
+      <AbsolutePoint location="1949,382" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/news/opernews.do,upload,/news/editor/upload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1316,232" />
+      <AbsolutePoint location="1316,262" />
+      <AbsolutePoint location="435,262" />
+      <AbsolutePoint location="435,382" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/editor/uploadFile.do,success,/news/editor/upload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="306,232" />
+      <AbsolutePoint location="306,262" />
+      <AbsolutePoint location="346,262" />
+      <AbsolutePoint location="346,382" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/news/opernews.do,main,/news/article/articleMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1406,232" />
+      <AbsolutePoint location="1406,322" />
+      <AbsolutePoint location="1001,322" />
+      <AbsolutePoint location="1001,382" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

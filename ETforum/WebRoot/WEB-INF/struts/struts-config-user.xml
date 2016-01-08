@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="userBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="name" type="java.lang.String" />
+      	  <form-property name="sex" type="java.lang.String" />
+      	  <form-property name="password" type="java.lang.String" />
+      	  <form-property name="birthday" type="java.lang.String" />
+	   </form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+     <action
+      attribute="userBean"
+      name="userBean"
+      path="/user"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="main"  path="/user/userMain.jsp"/>
+           <forward name="query" path="/user/userQuery.jsp"/>
+           <forward name="load"  path="/user/userLoad.jsp"/>
+           <forward name="list"  path="/user/userList.jsp"/>
+           <forward name="detail"  path="/user/userDetail.jsp"/>            
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

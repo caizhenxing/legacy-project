@@ -1,0 +1,364 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+
+## ************************************************
+#parse( $commonSetting )
+#set ($info= $userContainer.shinsaKekkaInputInfo) 
+##評価ファイル（1:指定ありの場合）
+#set ($HYOKA_FILE_FLG= '1')
+## ダウンロード用ファイルフラグ
+#set ($DOWNLOAD_FLG_HYOKA= "2")
+## ***********************************************
+##スクリプト
+<script language="javascript">
+<!--
+  // 「評価入力用ファイルフォーマットダウンロード」をクリック
+  function onDownloadFile(jigyoId, downloadFileFlg){
+      document.download_form.action="$link.setAction('/shinsa/shinsaJigyo/formatHyokaFileDownload')";
+      document.download_form.downloadFileFlg.value = downloadFileFlg;
+      document.download_form.jigyoId.value = jigyoId;
+      document.download_form.submit();
+  }
+
+  // 「登録済みファイルダウンロード」をクリック
+  function onRegDownloadFile(systemNo, shinsainNo, jigyoKubun){
+      document.regdownload_form.action="$link.setAction('/shinsa/shinsaJigyo/regHyokaFileDownload')";
+      document.regdownload_form.systemNo.value = systemNo;
+      document.regdownload_form.shinsainNo.value = shinsainNo;
+      document.regdownload_form.jigyoKubun.value = jigyoKubun;
+      document.regdownload_form.submit();
+  }
+
+  // 「保存」をクリック
+  function onAddClick(jigyoCd){
+      /* 総合評点で選択されているラジオボタンの値を取得 */
+      kekkaTenValue = '';
+      for(i = 0; i < document.add_form.kekkaTen.length; i ++){ 
+          if(document.add_form.kekkaTen[i].checked){ 
+              kekkaTenValue = document.add_form.kekkaTen[i].value;
+          }
+      }
+
+      /* 総合評点が「5」または「1」でコメントが未入力の場合 */
+//2006/10/30 楊　修正ここから
+      //if((document.add_form.rigai.checked == false) && (kekkaTenValue == '5' || kekkaTenValue == '1')  && (document.add_form.comments.value == null || document.add_form.comments.value == '')){
+	  if((kekkaTenValue == '5' || kekkaTenValue == '1')  && (document.add_form.comments.value == null || document.add_form.comments.value == '')){
+//2006/10/30　楊　修正ここまで   
+          if(confirm("総合評点が「５」又は、「１」で、審査意見が入力されていませんがよろしいですか？")){
+              document.add_form.action="$link.setAction('/shinsa/shinsaJigyo/shinsaKekkaInputSave')";
+              document.add_form.submit();
+          }
+      /* それ以外 */
+      }else{
+          document.add_form.action="$link.setAction('/shinsa/shinsaJigyo/shinsaKekkaInputSave')";
+          document.add_form.submit();
+      } 
+  }
+//-->
+</script>
+## ***********************************************
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="http://www-shinsei.jsps.go.jp/kakenhi/" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/shinsa/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width="72" height="20" border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#669966" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/shinsa/shinsaJigyo/shinsaJigyoList')">審査対象事業一覧</a>＞<a href="$link.setAction('/shinsa/shinsaJigyo/tantoShinseiList')?kekkaTen=-1">審査担当分応募課題一覧</a>＞<b>審査結果入力</b><font size="1">＞<!--審査結果入力確認＞-->審査結果入力完了</font></font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width="61" height="49" alt=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont">
+       <br>審査結果入力</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width="213" height="49" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+    <!-- 本文ここから -->
+    <p align="left">以下の応募課題の結果を入力し、[保存]ボタンをクリックしてください。</p>
+    <!-- 注意事項ここから -->
+    <p class="comment">＜注意事項＞</p>
+    <ul>
+     <li class="comment">入力中に、一定時間、ボタン操作をせずにおくと、セッションタイムアウトにより、入力した情報が保存されない場合があります。随時[保存]ボタンをクリックして「審査結果入力完了」画面へ進み、[ＯＫ]ボタンをクリックして情報を保存して下さい。 </li>
+    </ul>
+    <!-- 注意事項ここまで -->
+
+    <!-- 一覧用テーブルここから -->
+    #errorMarkup()
+    <form  name="add_form" method="post" action="" enctype="multipart/form-data"> 
+    ## A hidden form field with the transaction token
+    <input type="hidden" name="$form.tokenName" value="$form.token">
+    ##添付ファイルフラグをフォームにセット
+    <input type="hidden" name="tenpuFlg" value="$!info.tenpuFlg">
+    ##2005/11/14 審査意見チェックの為
+    <input type="hidden" name="jigyoKubun" value="$!userContainer.userInfo.shinsainInfo.jigyoKubun">
+
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+     <tr>
+      <td>
+       <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+        <tr>
+         <th width="20%" align="left">研究種目名</th>
+         <td colspan="2">
+          #if($info.kaisu.equals("0") || $info.kaisu.equals("1"))
+			平成$!escape.getText($!info.nendo)年度 $!escape.getText($!info.jigyoName)
+          #else
+			平成$!escape.getText($!info.nendo)年度 第$!escape.getText($!info.kaisu)回 $!escape.getText($!info.jigyoName)
+          #end
+         </td>
+        </tr> 
+        <tr>
+         <th align="left">分野番号・分野名</th>
+         <td>（番号）$!escape.getText($!info.shinsaryoikiCd) </td>
+         <td>$!escape.getText($!info.shinsaryoikiName)</td>
+        </tr>
+        <tr>
+         <th align="left">関連細目番号・関連細目名</th>
+         <td>（番号）$!escape.getText($!info.bunkaSaimokuCd) </td>
+         <td>$!escape.getText($!info.saimokuName)</td>
+        </tr>
+        <tr>
+         <th align="left">所属研究機関名</th>
+         <td colspan="2">$!escape.getText($!info.shozokuName)</td>
+        </tr>
+        <tr>
+         <th align="left">部局名・職名</th>
+         <td colspan="2">$!escape.getText($!info.bukyokuName) $!escape.getText($!info.shokushuName)</td>
+        </tr>
+        <tr>
+         <th align="left">応募者名</th>
+         <td colspan="2">$!escape.getText($!info.nameKanjiSei) $!escape.getText($!info.nameKanjiMei)</td> 
+        </tr> 
+        <tr>
+         <th align="left">機関-整理番号</th>
+         <td colspan="2">$!escape.getText($!info.uketukeNo)</td>
+        </tr> 
+        <tr>
+         <th align="left">研究課題名</th>
+         <td colspan="2">$!escape.getText($!info.kadaiNameKanji)</td>
+        </tr> 
+       </table>
+      </td>
+     </tr>
+    </table>
+<!--2006/10/26 楊艶飛  仕様変更より、基盤時、削除しました。
+    <br>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+     <tr>
+      <td>
+       <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+        <tr>
+         <th width="20%" align="left" colspan="3">利害関係</th>
+         <td>
+          #set ($name= "rigai")
+          #set ($value= "1")
+          #if($value == $!shinsaKekkaForm.rigai)
+           <input type="checkbox" value="$value" name="$name" checked>
+          #else
+           <input type="checkbox" value="$value" name="$name">
+          #end
+       ##一時的？なチェックボックス未選択時の回避
+          #set ($shinsaKekkaForm.rigai= "0")
+		    利益相反の関係にあるので判定できない。
+          <br>
+          <font color="#FF0000">※「審査意見」欄に、その理由を記入し、評点は付さないでください。</font>
+         </td>
+        </tr>
+       </table>
+      </td>
+     </tr>
+    </table>
+-->	
+    <br>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+     <tr>
+      <td>
+       <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+        <tr>
+         <th align="left" rowspan="5">評定要素</th>
+         <th align="left" colspan="2">（１）研究課題の学術的重要性・妥当性</th>
+         <td>
+          #set ($name= "juyosei")
+          #showRadios($name $shinsaKekkaForm.juyoseiList $shinsaKekkaForm.juyosei) 
+         </td>
+        </tr>
+        <tr>
+         <th align="left" colspan="2">（２）研究計画・方法の妥当性</th>
+         <td>
+          #set ($name= "kenkyuKeikaku")
+          #showRadios($name $shinsaKekkaForm.kenkyuKeikakuList $shinsaKekkaForm.kenkyuKeikaku)
+         </td>   
+        </tr>
+        <tr>
+         <th align="left" colspan="2">（３）研究課題の独創性及び革新性</th>
+         <td>
+          #set ($name= "dokusosei")
+          #showRadios($name $shinsaKekkaForm.dokusoseiList $shinsaKekkaForm.dokusosei)
+         </td>   
+        </tr>
+        <tr>
+         <th align="left" colspan="2">（４）研究課題の波及効果及び普遍性</th>
+         <td>
+          #set ($name= "hakyukoka")
+          #showRadios($name $shinsaKekkaForm.hakyukokaList $shinsaKekkaForm.hakyukoka)
+         </td>   
+        </tr>
+        <tr>
+         <th align="left" colspan="2">（５）研究遂行能力及び研究環境の適切性</th>
+         <td>
+          #set ($name= "suikonoryoku")
+          #showRadios($name $shinsaKekkaForm.suikonoryokuList $shinsaKekkaForm.suikonoryoku)
+         </td>   
+        </tr>
+        <tr>
+         <th width="20%" align="left" colspan="3">総合評点</th>
+         <td>
+          #set ($name= "kekkaTen")
+          #showRadios2($name $shinsaKekkaForm.kekkaTenList $shinsaKekkaForm.kekkaTen) 
+         </td>
+        </tr>
+        <tr>
+         <th align="left" colspan="3">審査意見</th>
+         <td>
+          <textarea rows="4" name="comments" cols="60">$!escape.getText($!shinsaKekkaForm.comments)</textarea>
+          <br>
+          <font color="#FF0000">※150字以内で入力してください。</font>
+         </td>
+        </tr>
+        <tr>
+         <th align="left" rowspan="3">その他の評価項目</th>
+         ##<th align="left" rowspan="2">（１）適切性</th>
+         <th align="left" colspan="2">（１）人権の保護及び法令等の遵守を必要とする研究課題の適切性</th>
+         <td>
+          #set ($name= "jinken")
+          #showRadiosDefault($name $shinsaKekkaForm.jinkenList $shinsaKekkaForm.jinken '0')
+          <br>
+          <font color="#FF0000">※「×」を選択した場合は、「コメント」欄にその判断に至った根拠を記入してください。</font>
+         </td>
+        </tr>
+        #*
+        <tr>
+         <th align="left">（２）分担金配分の適切性</th>
+         <td>
+          #set ($name= "buntankin")
+          #showRadiosDefault($name $shinsaKekkaForm.buntankinList $shinsaKekkaForm.buntankin '0')
+          <br>
+          <font color="#FF0000">※「×」を選択した場合は、「コメント」欄にその判断に至った根拠を記入してください。</font>
+         </td>
+        </tr>
+        *#
+        <tr>
+         <th align="left" colspan="2">（２）研究経費の妥当性</th>
+         <td>
+          #set ($name= "dato")
+          #showRadiosDefault($name $shinsaKekkaForm.datoList $shinsaKekkaForm.dato '0')
+          <br>
+          <font color="#FF0000">※「×」を選択した場合は、「コメント」欄にその判断に至った根拠を記入してください。</font>
+         </td>
+        </tr>
+        <tr>
+         <th align="left" colspan="2">コメント</th>
+         <td>
+          <textarea rows="2" name="otherComment" cols="60">$!escape.getText($!shinsaKekkaForm.otherComment)</textarea>
+          <br>
+          <font color="#FF0000">※50字以内で入力してください。</font>
+         </td>
+        </tr>
+        #if($info.hyokaFileFlg.equals($HYOKA_FILE_FLG))
+         <tr>
+          <th align="left" colspan="3">添付ファイル</th>
+          <td><input type="file" size="45" name="tenpuUploadFile">
+           &nbsp;&nbsp;<a href="javascript:onDownloadFile('$shinsaKekkaForm.jigyoId' ,'$DOWNLOAD_FLG_HYOKA');"><img src="$path/images/bt_formdownload.gif" width="227" height="24" alt="評価入力用ファイルフォーマットダウンロード" border="0"></a>
+           #if($info.tenpuFlg == 'TRUE')
+            <a href="javascript:onRegDownloadFile('$shinsaKekkaForm.systemNo', '$shinsaKekkaForm.shinsainNo', '$shinsaKekkaForm.jigyoKubun');"><img src="$path/images/bt_regdownload.gif" width="150" height="24" alt="登録済みファイルダウンロード" border="0"></a>
+           #end
+           <br>（評価入力用ファイルフォーマットをダウンロードし、入力が済んでからボタンをクリックしてファイルを選択し、添付してください。）
+          </td>
+         </tr>
+        #end    
+       </table>
+      </td>
+     </tr>
+    </table>
+    <!-- 一覧用テーブルここまで-->
+    <br>
+    <!-- 本文ここまで -->
+
+    <!-- ボタン用テーブルここから -->                         
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="javascript:onAddClick('$info.jigyoCd')"><img src="$path/images/bt_save.gif" width="114" height="28" alt="保存" border="0"></a></td>
+       <td><a href="$link.setAction('/shinsa/shinsaJigyo/tantoShinseiList')"><img src="$path/images/bt_cancel.gif" width="114" height="28" alt="キャンセル" border="0"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width="8" height="26" alt=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shinsa/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width="72" height="26" border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width="8" height="26" alt=""></td>
+     </tr>
+    </form>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+
+##隠しフォーム情報----------
+<form name="download_form" action="" method="post">
+    <input type="hidden" name="downloadFileFlg">
+    <input type="hidden" name="jigyoId">
+</form>
+<form name="regdownload_form" action="" method="post">
+    <input type="hidden" name="systemNo">
+    <input type="hidden" name="shinsainNo">
+    <input type="hidden" name="jigyoKubun">
+</form>
+##----------
+</body>
+</html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/sms/modermSend.do" location="254,0" dimension="358,84" />
+  <StrutsActivity path="/sms/modermSend/success.jsp" location="0,184" dimension="202,48" />
+  <StrutsActivity path="/sms/modermSend/modermSendMessage.jsp" location="302,184" dimension="262,48" />
+  <StrutsActivity path="/sms/modermSend/custinfoAll.jsp" location="664,184" dimension="226,48" />
+  <StrutsActivity path="/callcenter/callOutSet/userQuery.jsp" location="950,150" dimension="256,48" />
+  <StrutsActivity path="/callcenter/callOutSet/select.jsp" location="950,250" dimension="238,48" />
+  <StrutsActivity path="/callcenter/callOutSet/selectUser.jsp" location="50,350" dimension="262,48" />
+  <StrutsActivity path="/sms/modermSend/userQuery.jsp" />
+  <StrutsActivity path="/sms/modermSend/select.jsp" />
+  <StrutsActivity path="/sms/modermSend/selectUser.jsp" />
+  <StrutsTransition id="/sms/modermSend.do,succee,/sms/modermSend/success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="313,84" />
+      <AbsolutePoint location="313,134" />
+      <AbsolutePoint location="101,134" />
+      <AbsolutePoint location="101,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/modermSend.do,select,/sms/modermSend/selectUser.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="433,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/modermSend.do,select,/callcenter/callOutSet/selectUser.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="254,42" />
+      <AbsolutePoint location="217,42" />
+      <AbsolutePoint location="217,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/modermSend.do,query,/callcenter/callOutSet/userQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="433,84" />
+      <AbsolutePoint location="433,169" />
+      <AbsolutePoint location="950,169" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/modermSend.do,alllist,/sms/modermSend/custinfoAll.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="552,84" />
+      <AbsolutePoint location="552,134" />
+      <AbsolutePoint location="777,134" />
+      <AbsolutePoint location="777,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/modermSend.do,modermSendMessage,/sms/modermSend/modermSendMessage.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="403,84" />
+      <AbsolutePoint location="403,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/modermSend.do,selectFrame,/sms/modermSend/select.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="433,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/modermSend.do,query,/sms/modermSend/userQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="433,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/modermSend.do,selectFrame,/callcenter/callOutSet/select.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="283,84" />
+      <AbsolutePoint location="283,274" />
+      <AbsolutePoint location="950,274" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

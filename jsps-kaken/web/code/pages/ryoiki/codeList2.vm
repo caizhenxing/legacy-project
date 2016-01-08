@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--saved from url=(0040)-->
+<html><head><title>研究領域一覧</title>
+
+#parse( $commonSetting )
+
+<meta http-equiv=content-type content="text/html; charset=Shift_JIS">
+<style type=text/css>BODY {
+	MARGIN-TOP: 20px; FONT-SIZE: 10pt; MARGIN-LEFT: 20px; LINE-HEIGHT: 14pt; MARGIN-RIGHT: 20px
+}
+H1 {
+	FONT-SIZE: 16pt; LINE-HEIGHT: 20pt
+}
+.text_01 {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; LINE-HEIGHT: 16pt
+}
+.table_01 {
+	FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: #000000; LINE-HEIGHT: 110%; BORDER-COLLAPSE: collapse
+}
+A:link {
+	COLOR: #3359cc; TEXT-DECORATION: underline
+}
+A:visited {
+	COLOR: #3359cc; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: #ff6666; TEXT-DECORATION: none
+}
+</style>
+
+<meta content="MSHTML 6.00.2800.1400" name=generator></head>
+<body bgcolor=#ffffff><a name=top></a>
+<center>
+<h1>研究領域一覧</h1>
+
+</center><br>
+<hr noshade size=1>
+<br>
+<center>
+
+<!--一覧表示ここから-->
+#foreach($user in $search)
+   <!--テーブルここから-->
+   <a name=1></a>
+	<table class="table_01" bordercolor=#666666 cellspacing="0" cellpadding="3" width="600" border="1">
+	 <tbody>
+	  <tr>
+	    <td class="text_01" bgcolor=#eeffbb colspan="3">
+			研究領域最終年度前年度の応募の対象領域
+	    </td>
+	  </tr>
+	  <tr bgcolor=#888888>
+	    <td align="middle" width="200"><font color=#ffffff>領域番号</font></td>
+	    <td align="middle" width="200"><font color=#ffffff>領域略称名</font></td>
+		<td align="middle" width="200"><font color=#ffffff>設定期間</font></td>
+	  </tr>
+	 ##領域番号ごとの繰り返し ---ここから
+	 #set ($ryoikiList = $user.get("RYOIKI_LIST"))
+	 #foreach($userList in $ryoikiList)
+	  <tr>
+        <td valign="center" align="middle">$!escape.getText($userList.get("RYOIKI_NO"))</td>
+		<td valign="center" align="left">$!escape.getText($userList.get("RYOIKI_RYAKU"))</td>
+		<td valign="center" align="left">$!escape.getText($userList.get("SETTEI_KIKAN"))</td>
+	  </tr>
+	 #end
+     </tbody>
+	</table>
+		<!--テーブルここまで-->	
+	<div align=left><a 
+	href="#top">このページのトップへ</a></div><br>
+#end	
+<!--一覧表示ここまで-->
+
+</center>
+    <!--ボタン用テーブルここから--> 
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="javascript:window.close()"><img src="$path/images/bt_close.gif" width="114" height="28" border="0" alt="閉じる"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!--ボタン用テーブルここまで-->
+</body>
+</html>

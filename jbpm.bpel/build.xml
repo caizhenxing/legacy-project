@@ -1,0 +1,348 @@
+<project name="jbpm.bpel" basedir="." default="build">
+
+  <description>jbpm.bpel main build</description>
+
+  <!-- ================== -->
+  <!-- === PROPERTIES === -->
+  <!-- ================== -->
+
+  <property file="ant.properties" />
+
+  <property name="src.root" location="src" />
+  <property name="src.bpel" location="${src.root}/bpel" />
+  <property name="src.config" location="${src.root}/config" />
+  <property name="src.resources" location="${src.root}/resources" />
+
+  <property name="lib.root" location="lib" />
+
+  <property name="test.root" location="test" />
+  <property name="test.bpel" location="${test.root}/bpel" />
+
+  <property name="output.name" value="output" />
+  <property name="output.root" location="${output.name}" />
+  <property name="output.classes" location="${output.root}/classes" />
+  <property name="output.test.classes" location="${output.root}/test/classes" />
+  <property name="output.test.reports" location="${output.root}/test/reports" />
+  <property name="output.test.coverage"
+            location="${output.root}/test/coverage" />
+  <property name="output.doc" location="${output.root}/javadoc" />
+
+  <!-- ================= -->
+  <!-- === CLASSPATH === -->
+  <!-- ================= -->
+
+  <path id="compile.classpath">
+    <fileset dir="${lib.root}" includes="**/*.jar" />
+  </path>
+
+  <path id="bpel.classpath">
+    <path refid="compile.classpath" />
+    <pathelement location="${src.config}" />
+    <pathelement location="${output.root}/jbpm-bpel-${jbpm.bpel.version}.jar" />
+  </path>
+
+  <path id="test.classpath">
+    <path refid="bpel.classpath" />
+    <pathelement location="${output.test.classes}" />
+    <fileset dir="${jboss.home}/client" includes="*.jar" />
+  </path>
+
+  <!-- ============= -->
+  <!-- === CLEAN === -->
+  <!-- ============= -->
+
+  <target name="clean" description="remove all generated files">
+    <delete dir="${output.root}" failonerror="no" />
+  </target>
+
+  <!-- =============== -->
+  <!-- === COMPILE === -->
+  <!-- =============== -->
+
+  <target name="compile" description="compile sources">
+    <mkdir dir="${output.classes}" />
+    <javac srcdir="${src.bpel}" destdir="${output.classes}" debug="on">
+      <classpath refid="compile.classpath" />
+    </javac>
+    <copy todir="${output.classes}">
+      <fileset dir="${src.bpel}" excludes="**/*.java" />
+    </copy>
+  </target>
+
+  <!-- ============= -->
+  <!-- === BUILD === -->
+  <!-- ============= -->
+
+  <target name="build" depends="compile" description="build libraries">
+    <mkdir dir="${output.root}" />
+    <jar destfile="${output.root}/jbpm-bpel-${jbpm.bpel.version}.jar">
+      <fileset dir="${output.classes}" excludes="org/jbpm/bpel/web/**" />
+    </jar>
+    <war destfile="${output.root}/jbpm-bpel.war"
+         webxml="${src.resources}/jbpm-bpel.war/WEB-INF/web.xml">
+      <classes dir="${output.classes}" includes="org/jbpm/bpel/web/**" />
+    </war>
+  </target>
+
+  <target name="build.service.402"
+          description="build service archive for JBoss 4.0.2">
+    <mkdir dir="${output.root}" />
+    <jar destfile="${output.root}/jbpm-bpel.sar">
+      <!--libraries-->
+      <fileset file="${output.root}/jbpm-bpel-${jbpm.bpel.version}.jar" />
+      <fileset dir="${lib.root}/jbpm">
+        <include name="jbpm-${jbpm.version}.jar" />
+        <include name="jbpm-identity-${jbpm.version}.jar" />
+      </fileset>
+      <fileset file="${lib.root}/hibernate/ehcache-1.1.jar" />
+      <fileset dir="${lib.root}/commons">
+        <include name="commons-lang-2.1.jar" />
+        <include name="commons-collections-2.1.1.jar" />
+      </fileset>
+      <!--configuration-->
+      <fileset dir="${src.config}">
+        <!--hibernate-->
+        <include name="hibernate.cfg.xml" />
+        <!--jbpm-->
+        <include name="jbpm.cfg.xml" />
+      </fileset>
+      <!--service files-->
+      <fileset dir="${src.resources}/jbpm-bpel.sar" />
+      <!-- web module -->
+      <fileset file="${output.root}/jbpm-bpel.war" />
+    </jar>
+  </target>
+
+  <target name="build.service.403"
+          description="build service archive for JBoss 4.0.3">
+    <mkdir dir="${output.root}" />
+    <jar destfile="${output.root}/jbpm-bpel.sar">
+      <!--libraries-->
+      <fileset file="${output.root}/jbpm-bpel-${jbpm.bpel.version}.jar" />
+      <fileset dir="${lib.root}/jbpm">
+        <include name="jbpm-${jbpm.version}.jar" />
+        <include name="jbpm-identity-${jbpm.version}.jar" />
+      </fileset>
+      <fileset file="${lib.root}/hibernate/ehcache-1.1.jar" />
+      <fileset file="${lib.root}/commons/commons-lang-2.1.jar" />
+      <fileset file="${lib.root}/jaxen/jaxen-1.1-beta-7.jar" />
+      <!--configuration-->
+      <fileset dir="${src.config}">
+        <!--hibernate-->
+        <include name="hibernate.cfg.xml" />
+        <!--jbpm-->
+        <include name="jbpm.cfg.xml" />
+      </fileset>
+      <!--service files-->
+      <fileset dir="${src.resources}/jbpm-bpel.sar" />
+      <!-- web module -->
+      <fileset file="${output.root}/jbpm-bpel.war" />
+    </jar>
+  </target>
+
+  <target name="build.service.404"
+          description="build service archive for JBoss 4.0.4">
+    <mkdir dir="${output.root}" />
+    <jar destfile="${output.root}/jbpm-bpel.sar">
+      <!--libraries-->
+      <fileset file="${output.root}/jbpm-bpel-${jbpm.bpel.version}.jar" />
+      <fileset dir="${lib.root}/jbpm">
+        <include name="jbpm-${jbpm.version}.jar" />
+        <include name="jbpm-identity-${jbpm.version}.jar" />
+      </fileset>
+      <fileset file="${lib.root}/hibernate/ehcache-1.2.jar" />
+      <fileset file="${lib.root}/commons/commons-lang-2.1.jar" />
+      <fileset file="${lib.root}/jaxen/jaxen-1.1-beta-7.jar" />
+      <!--configuration-->
+      <fileset dir="${src.config}">
+        <!--hibernate-->
+        <include name="hibernate.cfg.xml" />
+        <!--jbpm-->
+        <include name="jbpm.cfg.xml" />
+      </fileset>
+      <!--service files-->
+      <fileset dir="${src.resources}/jbpm-bpel.sar" />
+      <!-- web module -->
+      <fileset file="${output.root}/jbpm-bpel.war" />
+    </jar>
+  </target>
+
+  <!-- ============== -->
+  <!-- === DEPLOY === -->
+  <!-- ============== -->
+
+  <target name="deploy.service" description="deploy service archive to JBoss">
+    <unjar dest="${jboss.home}/server/${jboss.server}/deploy/jbpm-bpel.sar"
+           src="${output.root}/jbpm-bpel.sar" />
+  </target>
+
+  <!-- ============ -->
+  <!-- === TEST === -->
+  <!-- ============ -->
+
+  <target name="test"
+          depends="compile.test"
+          description="run all unit tests and generate a report">
+    <antcall target="test.bpel" />
+    <antcall target="test.db" />
+    <antcall target="test.server" />
+    <antcall target="test.report" />
+  </target>
+
+  <target name="compile.test" depends="build">
+    <mkdir dir="${output.test.classes}" />
+    <javac srcdir="${test.bpel}" destdir="${output.test.classes}" debug="on">
+      <classpath refid="bpel.classpath" />
+    </javac>
+    <copy todir="${output.test.classes}">
+      <fileset dir="${test.bpel}" excludes="**/*.java" />
+    </copy>
+  </target>
+
+  <target name="test.bpel" depends="compile.test">
+    <mkdir dir="${output.test.reports}" />
+    <junit printsummary="on" fork="on" forkmode="once">
+      <classpath refid="test.classpath" />
+      <formatter type="xml" />
+      <batchtest todir="${output.test.reports}">
+        <fileset dir="${output.test.classes}">
+          <include name="**/*Test.class" />
+          <!-- db tests -->
+          <exclude name="**/*DbTest.class" />
+          <!-- server tests -->
+          <exclude name="org/jbpm/bpel/integration/def/InvokerTest.class" />
+          <exclude name="org/jbpm/bpel/integration/def/ReplierTest.class" />
+          <exclude name="org/jbpm/bpel/integration/jms/RequestListenerTest.class" />
+          <exclude name="org/jbpm/bpel/integration/jms/StartListenerTest.class" />
+          <exclude name="org/jbpm/bpel/integration/server/SoapHandlerTest.class" />
+          <exclude name="org/jbpm/bpel/integration/client/SoapClientTest.class" />
+        </fileset>
+      </batchtest>
+    </junit>
+  </target>
+
+  <target name="test.db" depends="compile.test">
+    <mkdir dir="${output.test.reports}" />
+    <junit printsummary="on" fork="on" forkmode="once">
+      <classpath refid="test.classpath" />
+      <formatter type="xml" />
+      <batchtest todir="${output.test.reports}">
+        <fileset dir="${output.test.classes}" includes="**/*DbTest.class" />
+      </batchtest>
+    </junit>
+  </target>
+
+  <available property="jboss.available" file="${jboss.home}" type="dir" />
+
+  <target name="test.server" if="jboss.available" depends="compile.test">
+    <mkdir dir="${output.test.reports}" />
+    <junit printsummary="on" fork="on" forkmode="once">
+      <classpath refid="test.classpath" />
+      <formatter type="xml" />
+      <batchtest todir="${output.test.reports}">
+        <fileset dir="${output.test.classes}">
+          <include name="org/jbpm/bpel/integration/def/InvokerTest.class" />
+          <include name="org/jbpm/bpel/integration/def/ReplierTest.class" />
+          <include name="org/jbpm/bpel/integration/jms/RequestListenerTest.class" />
+          <include name="org/jbpm/bpel/integration/jms/StartListenerTest.class" />
+          <include name="org/jbpm/bpel/integration/server/SoapHandlerTest.class" />
+          <include name="org/jbpm/bpel/integration/client/SoapClientTest.class" />
+        </fileset>
+      </batchtest>
+    </junit>
+  </target>
+
+  <target name="test.report">
+    <junitreport>
+      <fileset dir="${output.test.reports}" includes="TEST-*.xml" />
+      <report format="frames" todir="${output.test.reports}/html" />
+    </junitreport>
+  </target>
+
+  <!-- ================ -->
+  <!-- === COVERAGE === -->
+  <!-- ================ -->
+
+  <target name="init.clover">
+    <mkdir dir="${output.test.coverage}/db" />
+    <mkdir dir="${output.test.coverage}/tmp" />
+    <taskdef resource="clovertasks" />
+    <clover-setup initstring="${output.test.coverage}/db/coverage.db"
+                  tmpdir="${output.test.coverage}/tmp">
+      <fileset dir="${src.bpel}" />
+    </clover-setup>
+  </target>
+
+  <target name="test.coverage"
+          depends="clean,init.clover"
+          description="execute the tests and measure the coverage">
+    <antcall target="test" />
+    <echo message="coverage tests executed, use target 'report.coverage' to generate the results" />
+  </target>
+
+  <!-- this target does not work properly if executed in the same run as the coverage-test-executions -->
+  <target name="report.coverage"
+          depends="init.clover"
+          description="generate coverage report">
+    <clover-report>
+      <current outfile="${output.test.coverage}">
+        <format type="html" />
+      </current>
+    </clover-report>
+  </target>
+
+  <!-- =============== -->
+  <!-- === JAVADOC === -->
+  <!-- =============== -->
+
+  <target name="javadoc" description="generate jbpm bpel api documentation">
+    <mkdir dir="${output.doc}" />
+    <javadoc sourcepath="${src.bpel}"
+             destdir="${output.doc}"
+             author="yes"
+             version="yes"
+             private="no"
+             overview="${src.bpel}/overview.html"
+             windowtitle="JBoss jBPM BPEL ${jbpm.bpel.version}"
+             bottom="Version: ${jbpm.bpel.version}">
+      <packageset dir="${src.bpel}" />
+      <classpath refid="compile.classpath" />
+    </javadoc>
+    <copy todir="${output.doc}">
+      <fileset dir="${src.bpel}" includes="**/*.gif,**/*.jpg" />
+    </copy>
+  </target>
+
+  <target name="doc.userguide">
+    <echo message="this target only works if you have the docbook-support module
+      (from the jboss cvs) besides your jbpm bpel home directory" />
+    <echo message="you can find a prebuilt userguide in downloads and in cvs" />
+    <ant antfile="src/userguide/build.xml"
+         target="all.doc"
+         inheritall="false" />
+  </target>
+
+  <!-- ============ -->
+  <!-- === DIST === -->
+  <!-- ============ -->
+
+  <target name="dist"
+          depends="clean, build, javadoc"
+          description="build bpel distribution">
+    <zip destfile="${output.root}/jbpm-bpel-${jbpm.bpel.version}.zip"
+         compress="yes"
+         filesonly="yes"
+         update="no">
+      <fileset dir="${basedir}">
+        <exclude name="${output.name}/**" />
+        <exclude name="ant.properties" />
+      </fileset>
+      <fileset dir="${basedir}">
+        <include name="${output.name}/jbpm-bpel-${jbpm.bpel.version}.jar" />
+        <include name="${output.name}/jbpm-bpel.war" />
+      </fileset>
+      <zipfileset dir="${output.doc}" prefix="doc/api" />
+    </zip>
+  </target>
+
+</project>

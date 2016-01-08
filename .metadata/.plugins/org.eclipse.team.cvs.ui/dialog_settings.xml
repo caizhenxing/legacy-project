@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="DateTagDialog">
+	</section>
+	<section name="TagConfigurationDialog">
+		<item value="479" key="AllowRefreshWidth"/>
+		<item value="536" key="AllowRefreshHeight"/>
+	</section>
+	<section name="SharingWizard">
+	</section>
+	<section name="CommitWizard">
+		<item value="517" key="height"/>
+		<item value="400" key="width"/>
+	</section>
+	<section name="CheckoutAsWizard">
+	</section>
+	<section name="NewLocationWizard">
+		<item value="false" key="ConfigurationWizardMainPage.STORE_DONT_VALIDATE_ID"/>
+		<list key="ConfigurationWizardMainPage.STORE_PATH_ID">
+			<item value="/website"/>
+			<item value="/pbx"/>
+			<item value="/callcenter"/>
+			<item value="/cvsroot/springframework"/>
+			<item value="/oa"/>
+		</list>
+		<list key="ConfigurationWizardMainPage.STORE_HOSTNAME_ID">
+			<item value="192.168.1.200"/>
+			<item value="cvs.sourceforge.net"/>
+		</list>
+		<list key="ConfigurationWizardMainPage.STORE_USERNAME_ID">
+			<item value="zhaoyifei"/>
+		</list>
+	</section>
+	<section name="org.eclipse.team.ccvs.ui.RepositoriesView">
+		<item value="" key="SelectedWorkingSet"/>
+	</section>
+</section>

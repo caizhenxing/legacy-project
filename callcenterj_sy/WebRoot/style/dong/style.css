@@ -1,0 +1,364 @@
+.rq {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #6699cc;
+	text-align: center;
+}
+/*查询页面body样式*/
+.conditionBody {
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color:#E4EEF7;
+}
+/*登陆页背景颜色样式*/
+.bodyLogin {
+	margin-left: 1px;
+	margin-top: 1px;
+	margin-right: 1px;
+	margin-bottom: 1px;
+	background-color: #CCCCCC;
+}
+.wenzi7 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-align: center;
+}
+/*导航条外围table*/
+.navigateTable {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 20px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #FFFFFF;
+	background-color: #5BA2E4;
+	text-align: right;
+	text-indent: 8px;
+}
+
+/*导航条样式*/
+.navigateStyle {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 25px;
+	font-weight: normal;
+	color: #ffffff;
+	text-align: left;
+	font-family: "宋体";
+	font-variant: normal;
+	background-color: #B4D9F1;
+	text-indent: 7px;
+}
+
+/*查询条件外围table*/
+.conditionTable {
+	background: #ffffff;
+}
+
+/*文字标签样式*/
+.labelStyle {
+	color: #5BA2E4;
+	text-indent: 20px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 25px;
+	font-weight: normal;
+	font-variant: normal;
+	background-color: #CCE6F7;
+}
+/*查询标签样式*/
+.queryLabelStyle {
+	color: #5BA2E4;
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 25px;
+	font-weight: normal;
+	font-variant: normal;
+	background-color: #CCE6F7;
+}
+/*选择下拉框样式*/
+.selectStyle {
+	color: #5BA2E4;
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 25px;
+	font-weight: normal;
+	background-color: #FFFFFF;
+}
+
+/*可输入文本框样式*/
+.writeTextStyle {
+	color: #5BA2E4;
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	text-align: left;
+	background-color: #FFFFFF;
+}
+/*可输入文本框样式2*/
+.writeTextStyle2 {
+	color: #006600;
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	text-align: left;
+	background-color: #FFFFFF;
+	width: 70px;
+}
+
+/*只读文本框样式*/
+.readTextStyle {
+	background: #999999;
+}
+
+/*按钮区域样式*/
+.buttonAreaStyle {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 25px;
+	font-weight: normal;
+	color: #666666;
+	background-color: #B4D9F1;
+	text-align: right;
+}
+
+/*普通按钮样式*/
+.buttonStyle {
+	background: #FFFFFF;
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+	color: #666666;
+	text-align: center;
+}
+
+/**/
+.listBody {
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #E4EEF7;
+}
+
+/*列表显示页面的列表标题样式*/
+.listTitleStylebiaoti {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 23px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-align: center;
+	background-image: url(images/tiaoti.jpg);
+}
+
+/*列表偶数行样式*/
+.oddStylesecond {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 25px;
+	font-weight: normal;
+	color: #666666;
+	text-align: center;
+	font-family: "宋体";
+	font-variant: normal;
+	background-color: #ffffff;
+}
+
+/*列表奇数行样式*/
+.evenStyledanhang {
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 17px;
+	font-weight: normal;
+	color: #666666;
+	text-align: center;
+	font-family: "宋体";
+	font-variant: normal;
+	background-color: #DFEDF8;
+}
+/*加载页面body样式*/
+.loadBody{
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	overflow: auto;
+}
+/*分页部分的样式*/
+.pageTable{
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	color: #666666;
+	text-align: center;
+	background-color: #B4D9F1;
+	line-height: 25px;
+	text-indent: 8px;
+}
+.valueStyle{
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 25px;
+	font-weight: normal;
+	color: #FF6600;
+	background-color: #DFEDF8;
+}
+/*导航树样式*/
+.text-selected{
+	background-color: #2482BF;
+	color: #FFFFFF;
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+}
+.text-unselected{
+	color: #333333;
+	font-size: 12px;
+	font-family: "宋体";
+	font-style: normal;
+	line-height: 15px;
+	font-weight: normal;
+}
+
+.anys{
+	font-family: "宋体";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 17px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #FFFFFF;
+	background-color: #A6CFEE;
+	text-align: center;
+	margin: 1px;
+	padding: 1px;
+	height: 15px;
+	width: 140px;
+	border: 1px outset #FFFFFF;
+}
+/*页面边距*/
+.lundong{
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 15px;
+	font-weight: normal;
+	color: #87B4DB;
+	height: 340px;
+	width: 275px;
+	border: 1px solid #87B4DB;
+}
+/*链接样式*/
+/* 网站链接总的css定义:可定义内容为链接字体颜色、样式等 */
+a{text-decoration: none;} /* 链接无下划线,有为underline */ 
+a:link {color: #666666;;} /* 未访问的链接 */
+a:visited {color: #666666;} /* 已访问的链接 */
+a:hover{color: #006699;} /* 鼠标在链接上 */ 
+a:active {color: #666666;} /* 点击激活链接 */
+
+/* CSS Document */
+body {
+	background-color: #CCCCCC;
+	margin-left: 1px;
+	margin-top: 1px;
+	margin-right: 1px;
+	margin-bottom: 1px;
+}
+/*时间*/
+.shijian{
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 15px;
+	font-weight: normal;
+	color: #6792B5;
+	text-align: center;
+}
+/*登录文字*/
+.jimian{
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 15px;
+	font-weight: normal;
+	color: #659DD0;
+	text-align: center;
+}
+.xiala{
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #666666;
+	text-align: center;
+	border: 1px solid #83B0D1;
+	height: 17px;
+	width: 166px;
+}
+.wenben{
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 15px;
+	font-weight: normal;
+	color: #92AEC6;
+	text-align: left;
+	height: 17px;
+	width: 167px;
+}
+.yanzhengma{
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 15px;
+	font-weight: normal;
+	color: #8EA867;
+	text-align: left;
+	text-indent: 2px;
+	width: 54px;
+}
+
+/*查询页面body样式*/
+.imageBody {
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-image: url(images/background.jpg);
+}
+.backcolor {
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #A6CFEE;
+}
+
+/*列表中的信息*/
+.listTable tr.over td{
+	background-color: #CBE0F0;	
+}

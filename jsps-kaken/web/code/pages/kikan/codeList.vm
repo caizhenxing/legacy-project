@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--saved from url=(0041)-->
+<HTML><HEAD><TITLE>機関番号一覧</TITLE>
+
+#parse( $commonSetting )
+
+<META http-equiv=Content-Type content="text/html; charset=Shift_JIS">
+<STYLE type=text/css>BODY {
+	MARGIN-TOP: 20px; FONT-SIZE: 10pt; MARGIN-LEFT: 20px; LINE-HEIGHT: 14pt; MARGIN-RIGHT: 20px
+}
+H1 {
+	FONT-SIZE: 16pt; LINE-HEIGHT: 20pt
+}
+DIV {
+	FONT-SIZE: 10pt; LINE-HEIGHT: 14pt
+}
+.text_01 {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; LINE-HEIGHT: 16pt
+}
+.table_01 {
+	FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: #000000; LINE-HEIGHT: 110%; BORDER-COLLAPSE: collapse
+}
+A:link {
+	COLOR: #3359cc; TEXT-DECORATION: underline
+}
+A:visited {
+	COLOR: #3359cc; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: #ff6666; TEXT-DECORATION: none
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1400" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff><A name=top></A>
+<CENTER>
+<H1>機関番号一覧</H1>
+<DIV>
+
+<!--索引ここから-->
+##大分類番号
+#set ($daibunrui = '')
+##中分類番号
+#set ($chubunrui = '')
+##小分類番号
+#set ($shobunrui = '')
+
+  <TABLE class=table_01 cellSpacing=3 width=600 border=0>
+    <TBODY>
+    ##繰り返しここから--------
+	#foreach($user in $index)
+		##大分類番号が異なったら
+		##新規に大分類名を表示
+		#if($daibunrui != $user.get("DAIBUNRUI_CD"))
+	    <TR>		
+		<TD bgColor=#eeffbb colspan="3">
+			<A href="#$!escape.getText($user.get('DAIBUNRUI_CD'))">$!escape.getText($!user.get("DAIBUNRUI_NAME"))</A>
+		</TD>  
+	    </TR>
+	    #end
+		##中分類番号が異なったら
+		##新規に中分類名を表示
+		#if($chubunrui != $user.get("CHUBUNRUI_CD"))
+			<TR>
+			<TD width="1%">&nbsp;&nbsp;</TD>
+			<TD bgColor=#ccff99 colspan="2">
+				<A href="#$!escape.getText($user.get('CHUBUNRUI_CD'))">$!escape.getText($!user.get("CHUBUNRUI_NAME"))</A>
+			</TD>
+			</TR>
+		#end
+		##小分類番号が異なったら
+		##新規に小分類名を表示
+##2005/08/01小分類が不要となる為、コメントする
+##		#if($shobunrui != $user.get("SHOBUNRUI_CD"))
+##			<TR>
+##			<TD>&nbsp;</TD>
+##			<TD>&nbsp;</TD>
+##			<TD bgColor=#e6ff99>
+##				&nbsp;<A href="#$!escape.getText($user.get('SHOBUNRUI_CD'))">$!escape.getText($!user.get("SHOBUNRUI_NAME"))
+##			</TD>
+##			</TR>
+##		#end		
+		##変数にセット
+		#set ($daibunrui = $user.get("DAIBUNRUI_CD"))			
+		#set ($chubunrui = $user.get("CHUBUNRUI_CD"))	
+##		#set ($shobunrui = $user.get("SHOBUNRUI_CD"))		    
+    #end
+    ##繰り返しここまで--------
+    </TBODY>
+   </TABLE>
+<!--索引ここまで-->
+
+</CENTER>
+<BR>
+<HR noShade SIZE=1>
+<BR>
+<CENTER>
+
+<!--一覧ここから-->
+##大分類番号
+#set ($daibunrui = '')
+##中分類番号
+#set ($chubunrui = '')
+##小分類番号
+#set ($shobunrui = '')
+##繰り返し件数
+#set ($count = 0)
+
+##繰り返しここから--------
+#foreach($user in $search)
+	
+	##大分類番号が異なったら
+	##新規に大分類名を表示
+	#if($daibunrui != $user.get("DAIBUNRUI_CD"))	
+		
+		##０回目以外はテーブルタグ閉じる
+		#if($count != 0)	
+	  	</TBODY>
+		</TABLE>
+		<!--テーブルここまで-->
+		<DIV align=left><A 
+		href="#top">このページのトップへ</A></DIV>
+		<BR>
+		#end		
+		##索引からのリンク
+		<A name=$!escape.getText($user.get("DAIBUNRUI_CD"))></A>
+		<!--テーブルここから-->
+		<TABLE class=table_01 borderColor=#666666 cellSpacing=0 cellPadding=2 width=600 
+		border=1>
+		  <TBODY>
+			<TR>
+			<TD class=text_01 bgColor=#eeffbb colSpan=2>
+				$!escape.getText($!user.get("DAIBUNRUI_NAME"))
+			</TD>
+			</TR>
+			<TR bgColor=#888888>
+			<TD align=middle width="78%"><FONT color=#ffffff>機　　関　　名</FONT></TD>
+			<TD align=middle width="22%"><FONT color=#ffffff>番号</FONT></TD>
+			</TR>
+	#end
+				
+	##中分類番号が異なったら
+	##新規に中分類名を表示		
+	#if($chubunrui != $user.get("CHUBUNRUI_CD"))
+		<TR>
+		<TD class=text_01 bgColor=#ccff99 colSpan=2>
+		##索引からのリンク
+		<A name=$!escape.getText($user.get("CHUBUNRUI_CD"))></A>
+		$!escape.getText($!user.get("CHUBUNRUI_NAME"))
+		</TD>
+		</TR>
+	#end
+
+	##小分類番号が異なったら
+	##新規に小分類名を表示
+##	#if($shobunrui != $user.get("SHOBUNRUI_CD"))
+##		<TR>
+##		<TD class=text_01 bgColor=#e6ff99 colSpan=2>
+##			##索引からのリンク
+##			<A name=$!escape.getText($user.get("SHOBUNRUI_CD"))></A>
+##			$!escape.getText($!user.get("SHOBUNRUI_NAME"))
+##		</TD>
+##		</TR>
+##	#end
+	<TR>
+	<TD>$!escape.getText($user.get("SHOZOKU_NAME_KANJI"))</TD>
+	<TD align=middle>$!escape.getText($user.get("SHOZOKU_CD"))</TD>		
+	</TR>	
+	##変数にセット
+	#set ($daibunrui = $user.get("DAIBUNRUI_CD"))			
+	#set ($chubunrui = $user.get("CHUBUNRUI_CD"))	
+##	#set ($shobunrui = $user.get("SHOBUNRUI_CD"))	
+	#set ($count = $count+1)	
+#end
+##繰り返しここまで--------
+</TBODY>
+</TABLE>
+<!--テーブルここまで-->
+<DIV align=left><A 
+href="#top">このページのトップへ</A></DIV>
+<BR>
+<!--一覧ここまで-->
+
+    <!--ボタン用テーブルここから--> 
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="javascript:window.close()"><img src="$path/images/bt_close.gif" width=114 height=28 border="0" alt="閉じる"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!--ボタン用テーブルここまで-->
+</BODY></HTML>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="urn:samples:ticket" 
+  xsi:schemaLocation="http://schemas.xmlsoap.org/wsdl/ http://schemas.xmlsoap.org/wsdl/"
+  xmlns:tns="urn:samples:ticket" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+  <message name="ticketRequest" />
+
+  <message name="ticketMessage">
+    <part name="ticketNo" type="xsd:int" />
+  </message>
+
+  <portType name="TicketIssuer">
+
+    <operation name="createTicket">
+      <input message="tns:ticketRequest" />
+      <output message="tns:ticketMessage" />
+    </operation>
+
+  </portType>
+
+</definitions>

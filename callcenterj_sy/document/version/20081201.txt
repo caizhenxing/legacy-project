@@ -1,0 +1,56 @@
+问题1：oper_custinfo表中的数据记录存在，但是页面上查不到
+原因：当oper_custinfo中dict_cust_type	varchar(50)		客户类型
+为空，或如下值时页面中才能查到：
+SYS_TREE_0000002102  座席员
+SYS_TREE_0000002103  专家
+SYS_TREE_0000002104  企业
+SYS_TREE_0000002105  媒体
+SYS_TREE_0000002106  政府
+SYS_TREE_0000002108  联络员
+SYS_TREE_0000002109  普通用户
+注意：区别于dict_cust_voc	varchar (50)		客户行业
+该值取值范围为：
+1 普通农民 对应字段   普通农户
+2 种植大户            种植大户
+3 养殖大户            养殖大户
+4 加工大户            加工大户
+5 农村经纪人          农村经纪人
+6 其它                其它
+                      农资经销商
+解决情况1：导表形成的数据，只要在数据库中处理dict_cust_type字段就行了
+sql语句:
+update oper_custinfo set dict_cust_type='SYS_TREE_0000002109' where dict_cust_voc='普通农户' and dict_cust_type<>'SYS_TREE_0000002109'
+go
+update oper_custinfo set dict_cust_type='SYS_TREE_0000002109' where dict_cust_voc='种植大户' and dict_cust_type<>'SYS_TREE_0000002109'
+go
+update oper_custinfo set dict_cust_type='SYS_TREE_0000002109' where dict_cust_voc='养殖大户' and dict_cust_type<>'SYS_TREE_0000002109'
+go
+update oper_custinfo set dict_cust_type='SYS_TREE_0000002109' where dict_cust_voc='加工大户' and dict_cust_type<>'SYS_TREE_0000002109'
+go
+update oper_custinfo set dict_cust_type='SYS_TREE_0000002109' where dict_cust_voc='农村经纪人' and dict_cust_type<>'SYS_TREE_0000002109'
+go
+update oper_custinfo set dict_cust_type='SYS_TREE_0000002109' where dict_cust_voc='其它' and dict_cust_type<>'SYS_TREE_0000002109'
+
+解决情况2：页面弹屏添加用户查不到，是因为页面表单里的form属性名与struts配置文件里的bean属性名不一致
+openwin.jsp里的<select name="dict_cust_type" class=Next_pulls style="width: 131px;">改成
+<select name="cust_type" class=Next_pulls style="width: 131px;">就解决问题了。
+
+问题2：来电弹屏openwin.jsp页中，选”价格报送“之后数据存不进去。
+原因：PriceinfoServiceImpl.java类中createOperPriceinfo方法里flowService.addOrUpdateFlow方法传参有问题。
+解决方法：（1）PriceinfoServiceImpl.java类中createOperPriceinfo方法里将
+flowService.addOrUpdateFlow("农产品价格库", id, state, dto.get("subid").toString(),null);改为
+flowService.addOrUpdateFlow("农产品价格库", id, state, dto.get("subid").toString(),"");
+（2）PriceinfoServiceImpl.java里createOperPriceinfo方法里
+源代码：if(!dto.get("deployTime").equals(""))
+		{
+			opi.setDeployTime(TimeUtil.getTimeByStr(dto.get("deployTime").toString(),"yyyy-MM-dd"));
+		}
+改为：
+	if(!dto.get("deployTime").equals(""))
+		{
+			opi.setDeployTime(TimeUtil.getTimeByStr(dto.get("deployTime").toString(),"yyyy-MM-dd"));
+		}else{
+			opi.setDeployTime(TimeUtil.getNowTime());//修改代码
+		}
+（3）PriceinfoServiceImpl.java里createOperPriceinfo方法里添加代码：
+	opi.setAddtime(TimeUtil.getNowTime());//修改代码

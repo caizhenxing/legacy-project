@@ -1,0 +1,234 @@
+## ***********************************************
+## 応募情報検索画面
+##
+## フォーム情報 → shinseiSearchForm
+## ***********************************************
+
+## 2005/03/11 新規作成
+
+#parse( $commonSetting )
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/bukyoku/logoff')"><IMG SRC="$path/images/header_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=20 border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#CC6666" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/bukyoku/showMainMenu')">部局担当者向けメニュー</a>＞応募情報管理（<b>応募情報検索</b><font size="1">＞応募情報一覧</font>）</font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><IMG SRC="$path/images/subtitle_img1.gif" WIDTH=61 HEIGHT=49 ALT=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+       応募情報検索</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <IMG SRC="$path/images/subtitle_img3.gif" WIDTH=213 HEIGHT=49 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+<!-- 本文ここから -->
+<p align="left">応募情報の検索を行います。</p>
+<p align="left">検索条件を入力して[検索実行]ボタンをクリックしてください。</p>
+<p class="comment"> ＜注意事項＞</p>
+  <ul>
+    <li class="comment">
+     自身が担当している部局に所属する応募の検索を行います。
+    </li>
+     <li class="comment">
+     担当している部局は[登録済み部局担当者情報確認]メニューから確認してください。
+    </li>
+  </ul>
+         #errorMarkup()
+        <form method="POST" action="$link.setAction('/bukyoku/shinseiJohoKanri/searchList')">
+          <input type="hidden" name="startPosition" value="0">
+
+<!-- 一覧用テーブルここから -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th width="25%" align="left">研究種目名</th>
+     <td width="75%">
+      <select name= "jigyoCd">
+       <option value="">　</option>
+       #showOptions($shinseiSearchForm.jigyoList $shinseiSearchForm.jigyoCd)
+      </select>[完全一致]
+     </td>
+    </tr>
+    <tr>
+     <th align="left">年度・回数</th>
+     <td>平成<select size="1" name="nendo">
+       <option value=""> </option>
+       #nendoOptions($shinseiSearchForm.nendo)
+     </select>年度　<select size="1" name="kaisu">
+       <option value=""> </option>
+       #kaisuOptions($shinseiSearchForm.kaisu)
+     </select>回   
+      [完全一致]</td>
+    </tr>
+    
+## 2005/03/16 削除 ここから-------------------------------
+## 理由 ローマ字氏名項目削除のため
+##    <tr>
+##     <th align="left" rowspan="3">応募者名</th>
+##     <td>（漢字等）（姓）<input size="20" name="nameKanjiSei" value="$!escape.getText($!shinseiSearchForm.nameKanjiSei)">　（名）<input size="20" name="nameKanjiMei" value="$!escape.getText($!shinseiSearchForm.nameKanjiMei)"> 
+##      [部分一致]</td>  
+##    </tr>
+##    <tr>
+##     <td>（フリガナ）（姓）<input size="20" name="nameKanaSei" value="$!escape.getText($!shinseiSearchForm.nameKanaSei)">　（名）<input size="20" name="nameKanaMei" value="$!escape.getText($!shinseiSearchForm.nameKanaMei)"> 
+##      [部分一致]</td>  
+##    </tr>
+##    <tr>
+##     <td>（ローマ字）（姓）<input size="20" name="nameRoSei" value="$!escape.getText($!shinseiSearchForm.nameRoSei)">　（名）<input size="20" name="nameRoMei" value="$!escape.getText($!shinseiSearchForm.nameRoMei)"> 
+##      [部分一致]</td>  
+##    </tr>
+## 削除 ここまで-------------------------------------------
+
+## 2005/03/16 追加 ここから---------------------------------
+## 理由 ローマ字氏名項目削除のため
+    <tr>
+     <th align="left" rowspan="2">応募者名</th>
+     <td>（漢字等）（姓）<input size="20" name="nameKanjiSei" value="$!escape.getText($!shinseiSearchForm.nameKanjiSei)">　（名）<input size="20" name="nameKanjiMei" value="$!escape.getText($!shinseiSearchForm.nameKanjiMei)"> 
+      [部分一致]</td>  
+    </tr>
+    <tr>
+     <td>（フリガナ）（姓）<input size="20" name="nameKanaSei" value="$!escape.getText($!shinseiSearchForm.nameKanaSei)">　（名）<input size="20" name="nameKanaMei" value="$!escape.getText($!shinseiSearchForm.nameKanaMei)"> 
+      [部分一致]</td>  
+    </tr>
+## 追加 ここまで---------------------------------------------
+
+    <tr>
+     <th align="left">研究者番号</th>
+     <td><input size="20" name="kenkyuNo" value="$!escape.getText($!shinseiSearchForm.kenkyuNo)">[完全一致]</td>
+    </tr>
+    <tr>
+     <th align="left">部局番号</th>
+     <td><input size="4" name="bukyokuCd" value="$!escape.getText($!shinseiSearchForm.bukyokuCd)">　<a href="$link.setAction('/bukyokuList')" target="_blank"><img src="$path/images/bt_list.gif" width=41 height=22 alt="一覧" border="0"></a>　[完全一致]</td>
+    </tr>
+    <tr>
+     <th align="left">応募状況</th>
+     <td><select size="1" name="jokyoId">
+       #showOptions($shinseiSearchForm.jokyoList $shinseiSearchForm.jokyoId)
+     </select> [完全一致]</td> 
+    </tr>
+    <tr>
+     <th align="left">作成日</th>
+     <td><input size="5" name="sakuseiDateFromYear" value="$!escape.getText($!shinseiSearchForm.sakuseiDateFromYear)">年
+      <select size="1" name="sakuseiDateFromMonth">
+        <option value="">　</option>
+        #monthOptions($!shinseiSearchForm.sakuseiDateFromMonth)</select>月
+      <select size="1" name="sakuseiDateFromDay">
+        <option value="">　</option>
+        #dayOptions($!shinseiSearchForm.sakuseiDateFromDay)</select>日から
+      <input size="5" name="sakuseiDateToYear" value="$!escape.getText($!shinseiSearchForm.sakuseiDateToYear)">年
+      <select size="1" name="sakuseiDateToMonth">
+        <option value="">　</option>
+        #monthOptions($!shinseiSearchForm.sakuseiDateToMonth)</select>月
+      <select size="1" name="sakuseiDateToDay">
+        <option value="">　</option>
+        #dayOptions($!shinseiSearchForm.sakuseiDateToDay)</select>日まで
+     </td>
+    </tr>
+    <tr>
+     <th align="left">所属研究機関承認日</th>
+     <td><input size="5" name="shoninDateFromYear" value="$!escape.getText($!shinseiSearchForm.shoninDateFromYear)">年
+      <select size="1" name="shoninDateFromMonth">
+        <option value="">　</option>
+        #monthOptions($!shinseiSearchForm.shoninDateFromMonth)</select>月
+      <select size="1" name="shoninDateFromDay">
+        <option value="">　</option>
+        #dayOptions($!shinseiSearchForm.shoninDateFromDay)</select>日から
+      <input size="5" name="shoninDateToYear" value="$!escape.getText($!shinseiSearchForm.shoninDateToYear)">年
+      <select size="1" name="shoninDateToMonth">
+        <option value="">　</option>
+        #monthOptions($!shinseiSearchForm.shoninDateToMonth)</select>月
+      <select size="1" name="shoninDateToDay">
+        <option value="">　</option>
+        #dayOptions($!shinseiSearchForm.shoninDateToDay)</select>日まで
+     </td>
+     </tr>
+    <tr>
+     <th align="left">表示方式</th>
+     <td>
+      #set ($name = "hyojiHoshiki")
+      #set ($value = $shinseiSearchForm.hyojiHoshiki)
+      #if($value == "")
+        #set ($value = "1")
+      #end
+      #showRadios($name $shinseiSearchForm.hyojiHoshikiList $value)
+     </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+<!-- 一覧用テーブルここまで-->
+    <br>
+<!-- 本文ここまで -->
+
+    <!-- ボタン用テーブルここから --> 
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><input type="image" src="$path/images/bt_search.gif" name="submit" width=114 height=28 border="0" alt="検索実行"></td>
+       <td><a href="$link.setAction('/bukyoku/showMainMenu')"><img src="$path/images/bt_bk_menu.gif" width=114 height=28 border="0" alt="メニューに戻る"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img1.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/bukyoku/logoff')"><IMG SRC="$path/images/footer_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=26 border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img3.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+        </form>
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+</body>
+</html>

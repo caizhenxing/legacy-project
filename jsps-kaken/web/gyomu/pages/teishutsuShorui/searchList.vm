@@ -1,0 +1,264 @@
+## ***********************************************
+## 提出書類一覧（事業リスト）画面
+##
+## リスト情報 → result
+## ***********************************************
+
+## 2006/06/15 lwj 新規作成
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	
+## ************************************************
+#parse( $commonSetting )
+## 変数の置き換え
+#set ($list= $result)
+## ***********************************************
+
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+##スクリプト
+<script language="javascript">
+<!--
+  ##受理解除
+  function onJuriCancelClick(systemNo,count){
+      document.next_form.action="$link.setAction('/gyomu/teishutsuShorui/juriCancel')";
+      document.next_form.systemNo.value = systemNo;
+	  document.next_form.count.value = count;
+      document.next_form.submit();
+  }
+  ##受理登録
+  function onJuriClick(systemNo,count){
+      document.next_form.action="$link.setAction('/gyomu/teishutsuShorui/juriAdd')";
+      document.next_form.systemNo.value = systemNo;
+	  document.next_form.count.value = count;
+      document.next_form.submit();
+  }
+  ##承認解除
+  function onKakuteiCancelClick(systemNo){
+      document.next_form.action="$link.setAction('/gyomu/teishutsuShorui/syoninCancel')";
+      document.next_form.systemNo.value = systemNo;
+      document.next_form.submit();
+  }
+  ##領域計画書ダウンロード
+  function onRyoikiDownloadFile(ryoikiSystemNo){
+      document.next_form.action="$link.setAction('/gyomu/gaiyoDownload')";
+      document.next_form.ryoikiSystemNo.value=ryoikiSystemNo;
+      document.next_form.submit();
+  }
+  ##表示
+  function onHyoshiClick(kariryoikiNo){
+      document.next_form.action="$link.setAction('/gyomu/teishutsuShorui/kenkyoKeikakuList')";
+      document.next_form.kariryoikiNo.value = kariryoikiNo;
+      document.next_form.submit();
+  }
+
+//-->
+</script>
+## ***********************************************
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="javascript:fncWindowOpen('$path/docs/manual3.pdf','help');"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/gyomu/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width="72" height="20" border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#999966" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/gyomu/showMainMenu')">業務担当者向けメニュー</a>＞提出書類管理（提出書類検索＞<b>提出書類一覧</b>）</font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width="61" height="49" alt=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+              提出書類一覧</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width="213" height="49" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+<!-- 本文ここから -->
+#errorMarkup()
+<p align="left">全ての提出書類を受理する場合は[一括受理]ボタンをクリックしてください。</p>
+<p align="left">各提出書類ごとに受理する場合は［受理登録］ボタンをクリックしてください。</p>
+<a href="$link.setAction('/gyomu/teishutsuShorui/ikkatsuJuri')"><img src="$path/images/bt_all_accept.gif" width="114" height="28" alt="一括受理" border="0"></a>
+<br>
+<!-- 一覧用テーブルここから -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th>研究種目名</th>
+     <th>所属研究機関番号</th>
+     <th>所属研究機関名</th>
+     <th>仮領域番号</th>
+	 <th>整理番号</th>
+     <th>領域名</th>
+     <th>部局名・職名</th>
+     <th>応募者名</th>
+     <th>応募件数</th>
+     <th>版数</th>
+     <th>領域計画書確認</th>
+     <th>研究計画調書一覧</th>
+     <th>応募状況</th>
+     <th>受理日</th>
+    </tr>
+    #if($list.size() == 0)
+    ##該当件数が０件だった場合
+    <tr>
+       <td>&nbsp;<br>&nbsp;</td>
+       <td>&nbsp;<br>&nbsp;</td>
+       <td>&nbsp;<br>&nbsp;</td>
+       <td>&nbsp;<br>&nbsp;</td>
+       <td>&nbsp;<br>&nbsp;</td>
+       <td>&nbsp;<br>&nbsp;</td>
+       <td>&nbsp;<br>&nbsp;</td>
+       <td>&nbsp;<br>&nbsp;</td>
+       <td>&nbsp;<br>&nbsp;</td>
+       <td>&nbsp;<br>&nbsp;</td>
+       <td>&nbsp;<br>&nbsp;</td>
+       <td>&nbsp;<br>&nbsp;</td>
+	   <td>&nbsp;<br>&nbsp;</td>
+       <td>&nbsp;<br>&nbsp;</td>
+    </tr>
+	#else
+        #foreach($user in $list)
+    <tr>
+     <td>
+         #if($user.KAISU.toString() == '1' || $user.KAISU.toString() == '0')
+	            平成$!escape.getText($!user.NENDO)年度 $!escape.getText($!user.JIGYO_NAME)
+         #else
+	            平成$!escape.getText($!user.NENDO)年度 第$!escape.getText($!user.KAISU)回 $!escape.getText($!user.JIGYO_NAME)
+         #end
+     </td>
+     <td>$!escape.getText($!user.SHOZOKU_CD)</td>
+     <td>$!escape.getText($!user.SHOZOKU_NAME)</td>
+     <td>$!escape.getText($!user.KARIRYOIKI_NO)</td>
+	 <td>$!escape.getText($!user.UKETUKE_NO)</td>
+     <td>
+		#if(!($user.CANCEL_FLG.toString() == '1'))
+            $!escape.getText($!user.RYOIKI_NAME_RYAKU)
+		#end
+	 </td>
+     <td>$!escape.getText($!user.BUKYOKU_NAME_RYAKU) $!escape.getText($!user.SHOKUSHU_NAME_RYAKU)</td>
+     <td>$!escape.getText($!user.NAME_KANJI_SEI) $!escape.getText($!user.NAME_KANJI_MEI)</td>
+     <td>
+		#if(!($user.CANCEL_FLG.toString() == '1'))
+            $!escape.getText($!user.COUNT)件
+		#end
+	 </td>
+     <td>
+		#if(!($user.CANCEL_FLG.toString() == '1'))
+            $!escape.getText($!user.EDITION)版 
+		#end
+	 </td>
+     <td>
+		#if(!($user.CANCEL_FLG.toString() == '1'))    
+          <a href="javascript:onRyoikiDownloadFile('$!user.RYOIKI_SYSTEM_NO');"><img src="$path/images/bt_download.gif" alt="ダウンロード" border="0"></a><br>
+		#end
+	 </td>
+     <td>
+		#if(!($user.CANCEL_FLG.toString() == '1'))    
+          <a href="javascript:onHyoshiClick('$!user.KARIRYOIKI_NO');"><img src="$path/images/bt_indicate.gif" alt="表示" width="64" height="24" border="0"></a><br>
+		#end
+	 </td>
+     <td> 
+		$!escape.getText($user.RYOIKI_JOKYO_NAME)<br>
+		#if($user.RYOIKI_JOKYO_ID == '06')
+			<a href="javascript:onJuriCancelClick('$!user.RYOIKI_SYSTEM_NO', '$!user.COUNT');"><img src="$path/images/bt_acc_cancel.gif" width="64" height="22" border="0" alt="受理解除"></a>
+		#elseif($user.RYOIKI_JOKYO_ID == '04')
+			#if($user.UKETUKE_END_FLAG == "TRUE")
+				<a href="javascript:onJuriClick('$!user.RYOIKI_SYSTEM_NO', '$!user.COUNT');"><img src="$path/images/bt_accept.gif" width="64" height="22" border="0" alt="受理登録"></a>
+				<a href="javascript:onKakuteiCancelClick('$!user.RYOIKI_SYSTEM_NO');"><img src="$path/images/bt_app_cancel.gif" alt="承認解除" border="0" height="22" width="64"></a>
+			#else
+				<a href="javascript:onJuriClick('$!user.RYOIKI_SYSTEM_NO', '$!user.COUNT');"><img src="$path/images/bt_accept.gif" width="64" height="22" border="0" alt="受理登録"></a>
+			#end
+		##elseif($user.RYOIKI_JOKYO_ID == '03' && $user.CANCEL_FLG.toString() == '1' && $user.JOKYO_ID == '24' && !$user.SHONIN_DATE)
+     	##	承認解除
+		#elseif($user.RYOIKI_JOKYO_ID == '07')
+			<a href="javascript:onJuriClick('$!user.RYOIKI_SYSTEM_NO', '$!user.COUNT');"><img src="$path/images/bt_accept.gif" width="64" height="22" border="0" alt="受理登録"></a>
+		#end
+	 </td>
+     <td>$!dateFormat.format($!escape.getText($!user.JYURI_DATE))</td>
+    </tr>
+	   #end
+	#end
+   </table>
+  </td>
+ </tr>
+</table>
+<!-- 一覧用テーブルここまで-->
+<br>
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+	   <form method="POST" action="$link.setAction('/gyomu/teishutsuShorui/searchList')?startPosition=0">
+       <td>
+         <a href="$link.setAction('/gyomu/teishutsuShorui/tobilistSinki')"><img src="$path/images/bt_tobilist.gif" width="219" height="28" border="0" alt="飛び番号リストを表示"></a>　
+		 <input type="image" name="$form.cancelName" src="$path/images/bt_bk_docsearch.gif" width="219" height="28" border="0" alt="提出書類検索に戻る">
+       </td>
+	   </form>
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width="8" height="26" ALT=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/gyomu/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width="72" height="26" border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width="8" height="26" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+
+##隠しフォーム情報----------
+<form name="next_form" action="" method="post">
+    <input type="hidden" name="systemNo" >
+	<input type="hidden" name="ryoikiSystemNo" >
+	<input type="hidden" name="jigyoId" >
+	<input type="hidden" name="count" >
+	<input type="hidden" name="kariryoikiNo" >
+</form>
+##----------
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+
+<%--@ page language="java" contentType="text/html; charset=GBK" pageEncoding="GBK"--%>
+
+<%@ include file = "/decorators/common.jspf" %>
+
+<%-- 编辑页面用的JS，注意这里已经引入common.jspf --%>
+<script type="text/javascript" src = "<c:out value = "${initParam['publicResourceServer']}/public/scripts/formUtils.js" />"></script>
+<script type="text/javascript" src = "<c:out value = "${initParam['publicResourceServer']}/public/scripts/validator.js" />"></script>
+
+<script type="text/javascript" src = "<c:out value = "${initParam['publicResourceServer']}/public/scripts/extendCombo.js" />"></script>
+<script type="text/javascript" src = "<c:out value = "${initParam['publicResourceServer']}/public/scripts/dateComponent.js" />"></script>
+<script type="text/javascript" src = "<c:out value = "${initParam['publicResourceServer']}/public/scripts/dateUtils.js" />"></script>
+<script type="text/javascript" src = "<c:out value = "${initParam['publicResourceServer']}/public/scripts/styleControl.js" />"></script>
+<script type="text/javascript" src = "<c:out value = "${initParam['publicResourceServer']}/public/scripts/definedWin.js" />"></script>
+<script type="text/javascript" src = "<c:out value = "${initParam['publicResourceServer']}/public/scripts/editPage.js" />"></script>
+
+<!-- TODO 暂时使用, 以后再重构 -->
+<%@ include file = "/decorators/messages.jsp" %>

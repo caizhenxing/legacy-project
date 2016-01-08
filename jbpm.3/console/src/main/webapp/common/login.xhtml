@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+
+<ui:composition template="/common/template.xhtml">
+
+  <ui:define name="javascript">
+    function onload() {
+      document.all['j_username'].select();
+    }
+  </ui:define>
+
+  <ui:define name="title">
+    Log In
+  </ui:define>
+
+  <ui:define name="menu">
+    <span class="menu">
+    <span style="font-weight:normal;">
+      You are not logged in.
+    </span>
+    <br /><br />
+    
+    <form name="loginform" method="post" action="j_security_check">
+    Username:<br />
+    <input type="text" name="j_username" length="9" tabindex="1"/>
+    Password:<br />
+    <input type="password" name="j_password" length="9" tabindex="2"/>
+    <br /><br />
+    <input name="login" type="submit" value="Log In" tabindex="3"/>
+    </form>
+    </span>
+  </ui:define>
+
+  <ui:define name="body">
+    <table class="layout" width="370px">
+      <tr>
+        <td class="layout">
+          <img height="100px" src="../images/lock.gif" />
+        </td>
+        <td class="layout">
+         Use any of the following username and password combinations.
+        </td>
+      </tr>
+      <tr>
+        <td class="layout" colspan="2">
+    <table width="100%">
+      <tr>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Roles</th>
+      </tr>
+      <tr>
+        <td>ernie</td>
+        <td>ernie</td>
+        <td>participant, manager, administrator</td>
+      </tr>
+      <tr>
+        <td>bert</td>
+        <td>bert</td>
+        <td>participant</td>
+      </tr>
+      <tr>
+        <td>cookie monster</td>
+        <td>cookie monster</td>
+        <td>participant</td>
+      </tr>
+      <tr>
+        <td>grover</td>
+        <td>grover</td>
+        <td>participant</td>
+      </tr>
+    </table>
+        </td>
+      </tr>
+    </table>
+  </ui:define>
+
+</ui:composition>
+
+</body>
+</html>

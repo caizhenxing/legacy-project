@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib
+  PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+         "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+
+<taglib>
+
+  <tlib-version>1.0</tlib-version>
+  <jsp-version>1.2</jsp-version>
+  <short-name>page</short-name>
+  <description>
+    JSP tag library containing custom GUI controls used in the
+    hualiframework ,this is by yifei zhao and xiaofeng gu
+  </description>
+
+ 
+
+  <tag>
+
+    <name>order</name>
+    <tag-class>excellence.common.page.taglib.OrderTaglib</tag-class>
+    <body-content>empty</body-content>
+    <description>
+     排序根据字段
+    </description>
+
+    <attribute>
+      <name>name</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        排序属性名
+      </description>
+    </attribute>
+	<attribute>
+      <name>page</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        pageTurning 名
+      </description>
+    </attribute>
+    
+
+	<attribute>
+      <name>path</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        图片路径
+      </description>
+    </attribute>
+    
+
+  </tag>
+   <!-- ========== Page Control Tag ======================================== -->
+  <tag>
+
+    <name>page</name>
+    <tag-class>excellence.common.page.taglib.PageTaglib</tag-class>
+    <body-content>empty</body-content>
+    <description>
+      show page info from PageInfo in session, for example"首页 上一页 下一页 尾页"
+    </description>
+
+    <attribute>
+      <name>name</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        pageTurning's name must!! 
+      </description>
+    </attribute>
+
+    
+
+    <attribute>
+      <name>style</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        style of display first(共 页 首页 上一页 下一页 尾页 ) second(共 页  首页 1234 尾页 跳到   页)
+      </description>
+    </attribute>
+
+    
+
+  </tag>
+
+</taglib>

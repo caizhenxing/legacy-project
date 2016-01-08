@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+		<!-- 表单bean信息 -->
+		<form-bean name="messages" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="message_id"      	type="java.lang.String" />
+			<form-property name="type"      		type="java.lang.String" />
+			<form-property name="send_id"     		type="java.lang.String" />
+			<form-property name="send_name"      	type="java.lang.String" />
+			<form-property name="receive_name"      	type="java.lang.String" />
+			<form-property name="receive_id"   		type="java.lang.String" />
+			<form-property name="message_content"	type="java.lang.String" />
+			<form-property name="message_content_back"	type="java.lang.String" />
+			<form-property name="send_time"    		type="java.lang.String" />
+			<form-property name="dict_read_flag" 	type="java.lang.String" />
+			<form-property name="sendOrReciveId" 	type="java.lang.String" />
+		</form-bean>
+		
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<!-- action -->
+		<action attribute="messages" 
+				name="messages" 
+				scope="request" 
+				path="/messages/messages" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main"  path="/messages/messagesMain.jsp"/>
+			<forward name="list"  path="/messages/messagesList.jsp"/>
+			<forward name="load"  path="/messages/messagesLoad.jsp"/>
+			<forward name="query" path="/messages/messagesQuery.jsp"/>
+			<forward name="open" path="/messages/messagesOpen.jsp"/>
+			<!-- 短消息发送显示短消息的内容 -->
+			<forward name="show"  path="/messages/messagesShow.jsp"/>
+			<!-- 短消息发送显示选择接收人 -->
+			<forward name="selectFrame"  path="/messages/select.jsp"/>
+            <forward name="select"  path="/messages/selectUser.jsp"/>
+		</action>
+
+	</action-mappings>
+	
+</struts-config>
+

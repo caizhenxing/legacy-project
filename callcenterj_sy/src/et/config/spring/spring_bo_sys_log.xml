@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">-->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+	<bean id="logService"
+		class="et.bo.sys.log.service.impl.LogServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	<!-- log -->
+	<bean name="/sys/log"
+		class="et.bo.sys.log.action.LogAction" scope="singleton">
+		
+		<property name="logService">
+			<ref bean="logService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+	
+</beans>

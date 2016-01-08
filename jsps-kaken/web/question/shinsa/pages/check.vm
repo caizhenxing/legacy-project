@@ -1,0 +1,453 @@
+#parse( $commonSetting )
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+		
+
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="90%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#669966" class="rootFont"><font color="#FFFFFF"><b>【審査員向け】日本学術振興会電子申請システムを利用した審査に関するアンケート</b></font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><IMG SRC="$path/images/subtitle_img1.gif" WIDTH=61 HEIGHT=49 ALT=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+       アンケート入力確認</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <IMG SRC="$path/images/subtitle_img3.gif" WIDTH=213 HEIGHT=49 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+   #set ($info= $userContainer.questionInfo)
+
+#errorMarkupForNonProperty("WARNING")
+<!-- 本文ここから -->
+   <p align="left">　以下の内容で登録します。</p>
+#errorMarkupForProperty("WARNING")
+   <p align="left">　よろしければ、[OK]ボタンをクリックしてください。</p>
+<!-- 本文ここまで -->
+<br>
+<form method="POST" action="$link.setAction('/question/shinsa/save')">
+        ## A hidden form field with the transaction token
+        <input type="hidden" name="$form.tokenName" value="$form.token">
+		##
+<!-- テーブル(1)ここから -->
+ <div align="left">
+  <table border="0" cellpadding="0" cellspacing="0" width="40%" class="tableBackg">
+   <tr>
+    <td>
+     <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table4">
+      <tr>
+       <th width="30%" bgcolor="#004BC8">お名前</th>
+       <td>$!escape.getText($!info.SHINSAIN_NAME_SEI)　$!escape.getText($!info.SHINSAIN_NAME_MEI)</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ </div>
+<!-- テーブル(1)ここまで -->
+<br><br>
+<!-- テーブル①ここから -->
+ <!-- 1 -->
+ <div align="left">
+  <table border="1" cellpadding="0" cellspacing="0" bgcolor="#ffa500">
+    <tr>
+     <td>
+     <p align="center"><b><font size="4" color="#ffffff">電子的審査全般について</font></b></p>
+     </td>
+    </tr>
+  </table>
+ </div>
+ <br>
+ <!-- 2,3,4,5,6,7 -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableBackg">
+   <tr>
+    <td>
+     <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table4">
+      <tr>
+       <th width="40%" align="left" bgcolor="#004BC8">　Ｑ１．電子的方法による審査はいかがでしたか？</th>
+       <td>$!escape.getLabel($!info.benri1Label)</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ <div align="right">
+  <table border="0" cellpadding="0" cellspacing="0" width="98%" class="tableBackg">
+   <tr>
+    <td>
+     <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table4">
+      <tr>
+       <th width="39%" align="left" bgcolor="#0060FF">どのような点が便利になったか又は、どのような点が不便だったかご記入ください。</th>
+       <td>$!escape.getText($!info.a1)</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ </div>
+<br>
+ <!-- 8.9 -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableBackg">
+   <tr>
+    <td>
+     <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table4">
+      <tr>
+       <th width="40%" align="left" bgcolor="#004BC8">　Ｑ２．入力等の操作の流れはいかがでしたか？</th>
+       <td>$!escape.getLabel($!info.rikai1Label)</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ <!-- 10,11 -->
+ <div align="right">
+  <table border="0" cellpadding="0" cellspacing="0" width="98%" class="tableBackg">
+   <tr>
+    <td>
+     <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table4">
+      <tr>
+       <th width="39%" align="left" bgcolor="#0060FF">b.又はc.を選択した場合、わかりにくかったと思われる理由をご記入ください。</th>
+       <td>$!escape.getText($!info.a3)</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ </div>
+<!-- テーブル①ここまで -->
+<br><br>
+<!-- テーブル②ここから -->
+ <!-- 1 -->
+ <div align="left">
+  <table border="1" cellpadding="0" cellspacing="0" bgcolor="#ffa500">
+    <tr>
+     <td>
+     <p align="center"><b><font size="4" color="#ffffff">ご利用環境について</font></b></p>
+     </td>
+    </tr>
+  </table>
+ </div>
+ <br>
+ <!-- 2,3 -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableBackg">
+   <tr>
+    <td>
+     <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table4">
+      <tr>
+       <th rowspan="2" width="50%" align="left" bgcolor="#004BC8">　Ｑ．電子申請システムを利用したパソコンのＯＳとＷebブラウザの種類とバージョンを選択してください。</th>
+       <th width="10%" bgcolor="#0060FF">ＯＳ</th>
+       <td>$!escape.getLabel($!info.osLabel)</td>
+      </tr>
+      <tr>
+       <th width="10%" bgcolor="#0060FF">Ｗebブラウザ</th>
+       <td>$!escape.getLabel($!info.webLabel)</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+<!-- テーブル②ここまで -->
+<br><br>
+<!-- テーブル③ここから -->
+ <!-- 1 -->
+ <div align="left">
+  <table border="1" cellpadding="0" cellspacing="0" bgcolor="#ffa500">
+    <tr>
+     <td>
+     <p align="center"><b><font size="4" color="#ffffff">審査員専用ページ（http://www-shinsei.jsps.go.jp/kakenhi）について</font></b></p>
+     </td>
+    </tr>
+  </table>
+ </div>
+ <br>
+ <!-- 2,3 -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableBackg">
+   <tr>
+    <td>
+     <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table4">
+      <tr>
+       <th width="40%" align="left" bgcolor="#004BC8">　Ｑ．審査員専用ページはわかりやすかったですか？</th>
+       <td>$!escape.getLabel($!info.rikai14Label)</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ <!-- 4,5 -->
+ <div align="right">
+  <table border="0" cellpadding="0" cellspacing="0" width="98%" class="tableBackg">
+   <tr>
+    <td>
+     <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table4">
+      <tr>
+       <th width="39%" align="left" bgcolor="#0060FF">b.又はc.を選択した場合、わかりにくかったと思われる理由をご記入ください。</th>
+       <td>$!escape.getText($!info.a15)</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ </div>
+<!-- テーブル③ここまで -->
+<br><br>
+<!-- テーブル④ここから -->
+ <!-- 1 -->
+ <div align="left">
+  <table border="1" cellpadding="0" cellspacing="0" bgcolor="#ffa500">
+    <tr>
+     <td>
+     <p align="center"><b><font size="4" color="#ffffff">操作手引について</font></b></p>
+     </td>
+    </tr>
+  </table>
+ </div>
+ <br>
+ <!-- 2,3 -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableBackg">
+   <tr>
+    <td>
+     <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table4">
+      <tr>
+       <th width="40%" align="left" bgcolor="#004BC8">　Ｑ１．操作手引（簡易版）は読みましたか？</th>
+       <td>$!escape.getLabel($!info.yonda1Label)</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+<br>
+ <!-- 4,5 -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableBackg">
+   <tr>
+    <td>
+     <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table4">
+      <tr>
+       <th width="40%" align="left" bgcolor="#004BC8">　Ｑ２．操作手引（簡易版）の内容はわかりやすかったですか？</th>
+       <td>$!escape.getLabel($!info.rikai12Label)</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ <!-- 6,7 -->
+ <div align="right">
+  <table border="0" cellpadding="0" cellspacing="0" width="98%" class="tableBackg">
+   <tr>
+    <td>
+     <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table4">
+      <tr>
+       <th width="39%" align="left" bgcolor="#0060FF">b.又はc.を選択した場合、わかりにくかったと思われる理由をご記入ください。
+                                                      また、d.を選択した場合、読まなかった理由をご記入ください。</th>
+       <td>$!escape.getText($!info.a5)</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ </div>
+<br>
+ <!-- 8,9 -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableBackg">
+   <tr>
+    <td>
+     <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table4">
+      <tr>
+       <th width="40%" align="left" bgcolor="#004BC8">　Ｑ３．操作手引（詳細版）は読みましたか？</th>
+       <td>$!escape.getLabel($!info.yonda2Label)</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+<br>
+ <!-- 10,11 -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableBackg">
+   <tr>
+    <td>
+     <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table4">
+      <tr>
+       <th width="40%" align="left" bgcolor="#004BC8">　Ｑ４．操作手引（詳細版）の内容はわかりやすかったですか？</th>
+       <td>$!escape.getLabel($!info.rikai13Label)</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ <!-- 12,13 -->
+ <div align="right">
+  <table border="0" cellpadding="0" cellspacing="0" width="98%" class="tableBackg">
+   <tr>
+    <td>
+     <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table4">
+      <tr>
+       <th width="39%" align="left" bgcolor="#0060FF">b.又はc.を選択した場合、わかりにくかったと思われる理由をご記入ください。
+                                                      また、d.を選択した場合、読まなかった理由をご記入ください。</th>
+       <td>$!escape.getText($!info.a6)</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ </div>
+<br>
+ <!-- 14,15 -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableBackg">
+   <tr>
+    <td>
+     <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table4">
+      <tr>
+       <th width="40%" align="left" bgcolor="#004BC8">　Ｑ５．操作手引（簡易版・詳細版）について、ご意見やご要望などございましたら自由に記入してください。</th>
+       <td>$!escape.getText($!info.a7)</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+<!-- テーブル④ここまで -->
+<br><br>
+<!-- テーブル⑤ここから -->
+ <!-- 1 -->
+ <div align="left">
+  <table border="1" cellpadding="0" cellspacing="0" bgcolor="#ffa500">
+    <tr>
+     <td>
+     <p align="center"><b><font size="4" color="#ffffff">電子申請システムについて</font></b></p>
+     </td>
+    </tr>
+  </table>
+ </div>
+ <br>
+ <!-- 2,3 -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableBackg">
+   <tr>
+    <td>
+     <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table4">
+      <tr>
+       <th width="40%" align="left" bgcolor="#004BC8">　Ｑ１．繁忙期には１日あたり、おおよそ何分位、電子申請システムを利用しましたか？</th>
+       <td>$!escape.getLabel($!info.riyoutimeLabel)</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+<br>
+ <!-- 4,5 -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableBackg">
+   <tr>
+    <td>
+     <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table4">
+      <tr>
+       <th width="40%" align="left" bgcolor="#004BC8">　Ｑ２．電子申請システムの使い勝手（メニューや画面の構成）はいかがでしたか？</th>
+       <td>$!escape.getLabel($!info.benri2Label)</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ <!-- 6,7 -->
+ <div align="right">
+  <table border="0" cellpadding="0" cellspacing="0" width="98%" class="tableBackg">
+   <tr>
+    <td>
+     <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table4">
+      <tr>
+       <th width="39%" align="left" bgcolor="#0060FF">b.又はc.を選択した場合、使いにくかったと思われる理由をご記入ください。</th>
+       <td>$!escape.getText($!info.a8)</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ </div>
+<br>
+ <!-- 8,9 -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="tableBackg">
+   <tr>
+    <td>
+     <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table4">
+      <tr>
+       <th width="40%" align="left" bgcolor="#004BC8">　Ｑ３．電子申請システムについて、ご意見やご要望などございましたら自由に記入してください。</th>
+       <td>$!escape.getText($!info.a10)</td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+<!-- テーブル⑤ここまで -->
+<br><br>
+<!-- テーブルここまで -->
+
+<!-- 本文ここから -->
+   <p class="comment">＜注意事項＞</p>
+  <ul>
+   <li class="comment">[OK]ボタンをクリックした後、ご記入内容を確認、変更することはできません。</li>
+   <li class="comment">ご記入内容を修正したい場合は、[キャンセル]ボタンをクリックして前画面に戻って修正してください。</li>
+  </ul>
+<br>
+<!-- 本文ここまで -->
+
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><input type="image" src="$path/images/bt_ok.gif" width=114 height=28 border="0" alt="OK"></td>
+       <td><input type="image" name="$form.cancelName" src="$path/images/bt_cancel.gif" width=114 height=28 border="0" alt="キャンセル"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img1.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><IMG SRC="$path/images/footer_img2.gif" WIDTH=72 HEIGHT=26 ALT=""></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img3.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで --> 
+</div>
+</form>
+</body>
+</html>

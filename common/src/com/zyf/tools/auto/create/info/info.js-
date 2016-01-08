@@ -1,0 +1,24 @@
+if (CurrentPage == null) '{
+	var CurrentPage = '{};
+}
+CurrentPage.reset = function () '{
+	document.f.reset();
+}
+CurrentPage.submit = function () '{
+	if (!CurrentPage.validation()) '{
+		return;
+	}	
+	FormUtils.post(document.forms[0], "<c:url value=''{0}''/>");
+}
+CurrentPage.validation = function () '{
+	return Validator.Validate(document.forms[0], 4);
+}
+CurrentPage.initValideInput = function () '{
+{2}
+
+}	
+CurrentPage.initValideInput();
+CurrentPage.create = function() '{
+	$("oid").value = "";
+	FormUtils.post(document.forms[0], "<c:url value=''{1}''/>");
+}

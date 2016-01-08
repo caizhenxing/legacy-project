@@ -1,0 +1,350 @@
+## ***********************************************
+## 処理状況一覧
+## ***********************************************
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+#parse($commonSetting)
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+
+## スクリプト*************************************
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+
+<script language="javascript">
+<!--
+
+	/* ボタン連打制御フラグ */
+	var lockButton = 0;
+	var sleepButton = 5000;
+
+	/* PDFダウンロード */
+	function onDownload(systemNo){
+		if(lockButton == 0) {
+			document.shinsei_form.action="$link.setAction("/shinsei/downloadPdf")";
+			document.shinsei_form.systemNo.value=systemNo;
+			document.shinsei_form.submit();
+			lockButton = 1;
+			setTimeout("lockButton = 0", sleepButton);
+		}
+	}
+
+	/* 応募書修正 */
+	function onUpdate(systemNo){
+		document.shinsei_form.action="$link.setAction("/shinsei/updateApplication")";
+		document.shinsei_form["shinseiDataInfo.systemNo"].value=systemNo;
+		document.shinsei_form.submit();
+	}
+
+	/* 応募書確認画面 */
+	function onConfirmForward(systemNo){
+		document.shinsei_form.action="$link.setAction("/shinsei/forwardConfirmView")";
+		document.shinsei_form.systemNo.value=systemNo;
+		document.shinsei_form.submit();
+	}
+
+	/* 応募書削除確認 */
+	function onDeleteConfirm(systemNo){
+		document.shinsei_form.action="$link.setAction("/shinsei/deleteConfirm")";
+		document.shinsei_form.systemNo.value=systemNo;
+		document.shinsei_form.submit();
+	}
+
+## 20050706 応募状況詳細の追加
+	/* 応募状況詳細 */
+	function onCommentConfirm(systemNo){
+		window.open("","nw","toolbar=0,status=0,menubar=0,resizable=yes,scrollbars=yes");
+		document.shinsei_form2.action="$link.setAction("/shinsei/commentConfirm")";
+		document.shinsei_form2.systemNo.value=systemNo;
+		document.shinsei_form2.target="nw";
+		document.shinsei_form2.submit();
+	}
+## Horikoshi
+//-->
+</script>
+## ***********************************************
+</head>
+
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/shinsei/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width="72" height="20" border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#6699CC" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/shinsei/showMainMenu')">応募者向けメニュー</a>＞<b>処理状況一覧</b></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width="61" height="49" alt=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont">
+       <br>処理状況一覧</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width="213" height="49" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+    #errorMarkup()
+    <!-- 一覧用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+     <tr>
+      <td><table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+       <tr>
+        <th width="20%">研究種目名</th>
+        <th>研究課題名</th>
+## 2006/07/19 liu jia 削除　ここから
+        ##<th width="15%">学振受付期限</th>
+## 2006/07/19 liu jia 削除　ここまで
+        <th width="15%">作成日</th>
+## 20050628 文言変更のためレイアウトを変更
+##      <th width="15%">所属研究機関承認日</th>
+##	<th width="15%">所属研究機関<br>承認日</th>
+        <th width="15%">所属研究機関承認日</th> ##2007.03.15 苗
+## Horikoshi
+##        <th>応募情報<br>確認</th>
+## 20060711 文言変更のためレイアウトを変更
+	    <th>応募情報又は研究計画調書確認</th>
+        <th>応募状況</th>
+       </tr>
+   
+       #if($result.list.size() == 0)
+		##該当件数が０件だった場合
+         <tr>
+          <td>　</td>
+          <td>　</td>
+          <td>　</td>
+          <td>　</td>
+          <td>　<br>　</td>
+          <td>　</td>
+         </tr>
+       #else
+         #foreach($info in $result.list)
+           <tr>
+            <td>
+			  平成$!escape.getText($!info.NENDO)年度
+             #if($info.KAISU.toString() != "1")
+		            第$!escape.getText($!info.KAISU)回 
+             #end
+             $!escape.getText($!info.JIGYO_NAME)
+            </td> 
+            <td>$!escape.getText($!info.KADAI_NAME_KANJI)</td>
+## 2006/07/19 liu jia 削除　ここから
+			##set ($jigyoId =$!info.JIGYO_ID)
+			##set($jigyoCd = $jigyoId.substring(2,7))
+			##if($jigyoCd == '00022')
+				##<td>領域代表者確定締切日は$!escape.getText($!dateFormat.format($!info.RYOIKI_KAKUTEIKIKAN_END))です。</td>
+			##else
+				##<td>$!escape.getText($!dateFormat.format($!info.UKETUKEKIKAN_END))</td>
+			##end
+## 2006/07/19 liu jia 削除　ここまで
+            <td>$!escape.getText($!dateFormat.format($!info.SAKUSEI_DATE))</td>
+            <td>$!escape.getText($!dateFormat.format($!info.SHONIN_DATE))</td>
+            <td>
+             #if($info.JOKYO_ID != "01")
+               <a href="javascript:onDownload('$!info.SYSTEM_NO')"><img src="$path/images/bt_download.gif" alt="ダウンロード" width="64" height="24" border="0"></a>
+             #end
+            </td>
+            <td>
+## 20050707
+	        ## 2006/06/21 劉佳　変更ここから
+			 ##受理備考が入力されているか
+             #if($info.JURI_BIKO && ($info.JOKYO_ID == "02" || $info.JOKYO_ID == "03" || $info.JOKYO_ID == "05" || $info.JOKYO_ID == "07" || ($info.JOKYO_ID == "04" && $info.SAISHINSEI_FLG == "1")))
+               ##if($info.JIGYO_KUBUN.toString() == "1" || $info.JIGYO_KUBUN.toString() == "2" || $info.JIGYO_KUBUN.toString() == "3" || $info.JIGYO_KUBUN.toString() == "4" || $info.JIGYO_KUBUN.toString() == "5")	
+                 ##備考確認画面リンクを表示
+                 <a href="javascript:onCommentConfirm('$!info.SYSTEM_NO')">
+                 ##表示フラグを設定
+                 #set($biko_flg = true)
+               ##end
+             #end
+		             $!escape.getText($info.JOKYO_NAME)
+             #if($biko_flg)
+               </a>
+             #end
+			 ## 2006/06/21 劉佳　変更ここまで
+## Horikoshi
+             <br>
+             ## 再応募フラグが1の場合（ステータスに関係なく） → 学振受付期間を過ぎても修正可能
+             ## 2006/06/05 劉佳　変更ここから
+             #if($info.SAISHINSEI_FLG == "1")
+               ##応募書未確認のときは「修正」「削除」「確認」ボタンも表示
+               #if($info.JOKYO_ID == "02")
+                 <a href="javascript:onConfirmForward('$!info.SYSTEM_NO')"><img src="$path/images/bt_check.gif" alt="確認" width="36" height="22" border="0"></a>
+                 <a href="javascript:onUpdate('$!info.SYSTEM_NO')"><img src="$path/images/bt_rep.gif" alt="修正" width="36" height="22" border="0"></a>
+                 <a href="javascript:onDeleteConfirm('$!info.SYSTEM_NO')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a> 
+## 2006/06/05 劉佳　修正ここから
+			               ##[所属研究機関受付中」のときは「修正」「削除」「確認」ボタンが表示しない
+               #elseif($info.JOKYO_ID == "03")
+			## 2006/06/05 劉佳　修正ここまで
+               ##[応募状況フラグ:上記以外」のときは「修正」「削除」ボタンも表示
+               #else
+                 <a href="javascript:onUpdate('$!info.SYSTEM_NO')"><img src="$path/images/bt_rep.gif" alt="修正" width="36" height="22" border="0"></a>
+                 <a href="javascript:onDeleteConfirm('$!info.SYSTEM_NO')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+               #end
+             ## 2006/06/05 劉佳　変更ここまで
+             ##　再応募フラグ:上記以外の場合
+			 ## 2006/06/05 劉佳　変更ここから
+             #else
+               ## 応募状況:01[作成中]　
+               #if($info.JOKYO_ID == "01")
+                 #if($info.EDITABLE == "FALSE")                   
+					                   所属研究機関受付締切<br>
+                   <a href="javascript:onDeleteConfirm('$!info.SYSTEM_NO')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+                 #elseif($info.RYOIKI_KAKUTEI_FLG == "FALSE")
+					                   領域代表者受付締切<br>
+                   <a href="javascript:onDeleteConfirm('$!info.SYSTEM_NO')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+			                 #elseif($info.RYOIKI_KAKUTEIKIKAN_FLAG =='FALSE')
+                   					領域代表者受付締切<br>
+                   <a href="javascript:onDeleteConfirm('$!info.SYSTEM_NO')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+                 #else				   
+                   <a href="javascript:onUpdate('$!info.SYSTEM_NO')"><img src="$path/images/bt_reentry.gif" alt="再開" width="36" height="22" border="0"></a>
+                   <a href="javascript:onDeleteConfirm('$!info.SYSTEM_NO')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>	
+                 #end
+               ## 応募状況:02 「応募書未確認」
+               #elseif($info.JOKYO_ID == "02")
+                 #if($info.EDITABLE == "FALSE")                   
+                  					所属研究機関受付締切<br>
+                  <a href="javascript:onDeleteConfirm('$!info.SYSTEM_NO')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+                 #elseif($info.RYOIKI_KAKUTEI_FLG == "FALSE")
+                  					領域代表者受付締切<br>
+                  <a href="javascript:onDeleteConfirm('$!info.SYSTEM_NO')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+                 #elseif($info.RYOIKI_KAKUTEIKIKAN_FLAG =='FALSE')
+                  					領域代表者受付締切<br>
+                  <a href="javascript:onDeleteConfirm('$!info.SYSTEM_NO')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+                 #else	
+                   <a href="javascript:onConfirmForward('$!info.SYSTEM_NO')"><img src="$path/images/bt_check.gif" alt="確認" width="36" height="22" border="0"></a>
+                   <a href="javascript:onUpdate('$!info.SYSTEM_NO')"><img src="$path/images/bt_rep.gif" alt="修正" width="36" height="22" border="0"></a>                   
+                   <a href="javascript:onDeleteConfirm('$!info.SYSTEM_NO')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>				   
+                 #end
+               ##　応募状況:03　「所属研究機関受付中」
+               ##　応募状況:05　「所属研究機関却下」
+               #elseif($info.JOKYO_ID == "05")			
+                #if($info.EDITABLE == "FALSE")                   
+                 					所属研究機関受付締切<br>
+               	  <a href="javascript:onDeleteConfirm('$!info.SYSTEM_NO')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+                #elseif($info.RYOIKI_KAKUTEI_FLG == "FALSE")
+                 					領域代表者受付締切<br>
+                 <a href="javascript:onDeleteConfirm('$!info.SYSTEM_NO')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+                				#elseif($info.RYOIKI_KAKUTEIKIKAN_FLAG =='FALSE')
+                 					領域代表者受付締切<br>
+                 <a href="javascript:onDeleteConfirm('$!info.SYSTEM_NO')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+                				#else
+                 <a href="javascript:onUpdate('$!info.SYSTEM_NO')"><img src="$path/images/bt_rep.gif" alt="修正" width="36" height="22" border="0"></a>                   
+                 <a href="javascript:onDeleteConfirm('$!info.SYSTEM_NO')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+                #end
+			   ## 2006/06/14 劉佳　追加ここから
+			   ## 応募状況:32 [仮領域番号発行却下]
+#*
+			   #elseif($info.JOKYO_ID == "32")
+				　#if($info.EDITABLE == "TRUE")
+                   #if($info.UKETUKE_END_FLAG == "TRUE")
+                     <a href="javascript:onDeleteConfirm('$!info.SYSTEM_NO')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+                   #end
+                 #else
+					所属研究機関受付締切
+                   <a href="javascript:onDeleteConfirm('$!info.SYSTEM_NO')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+				#end
+*#
+               ##応募状況:22,再応募フラグ=3[領域代表者却下]
+	               #elseif($info.JOKYO_ID == "22" && $info.SAISHINSEI_FLG == "3")		
+                 #if($info.RYOIKI_KAKUTEI_FLG == "FALSE")
+                   					領域代表者受付締切<br>
+                   <a href="javascript:onDeleteConfirm('$!info.SYSTEM_NO')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+                 #elseif($info.RYOIKI_KAKUTEIKIKAN_FLAG =='FALSE')
+					                   領域代表者受付締切<br>
+                   <a href="javascript:onDeleteConfirm('$!info.SYSTEM_NO')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+                 #else
+                   <a href="javascript:onUpdate('$!info.SYSTEM_NO')"><img src="$path/images/bt_rep.gif" alt="修正" width="36" height="22" border="0"></a>
+                   <a href="javascript:onDeleteConfirm('$!info.SYSTEM_NO')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+                 #end
+               #end
+			 ## 2006/06/14 劉佳　追加ここまで
+             #end
+		           </td> 
+       	   </tr>
+          #end
+        #end
+       </table>
+      </td>
+     </tr>
+    </table>    
+    <!-- 一覧用テーブルここまで-->
+    <p class="comment">＜注意事項＞</p>
+    <ul>
+     <li class="comment">応募情報又は研究計画調書の確認が終了しないと受付されません。</li>
+	 <li class="comment">PDFファイルの内容を確認するには、Adobe Acrobat Readerが必要です。まだインストールしていない方は下のボタンをクリックしてインストールしてください。
+	  <br><a target="_blank" href="http://www.adobe.co.jp/products/acrobat/readstep2.html"><img src="$path/images/getreader.gif" border="0" height="31" width="88" alt="Get Adobe Reader"></a></li>
+	 ## 2006/06/16 劉佳　変更　ここから
+     <li class="comment">応募状況の意味は<a href="$path/code/status5.html" target="_blank">こちら</a>を参照してください。</li>
+	 ## 2006/06/16 劉佳　変更　ここまで
+## 20050711
+     <li class="comment">応募状況の文字がリンクになっている場合、日本学術振興会からコメントがありますのでクリックして確認してください。</li>
+## Horikoshi
+    </ul>
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="$link.setAction('/shinsei/showMainMenu')"><img src="$path/images/bt_bk_menu.gif" width="114" height="28" border="0" alt="メニューに戻る"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"><img src="$path/images/footer_img1.gif" width="8" height="26" alt=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shinsei/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width="72" height="26" border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"><img src="$path/images/footer_img3.gif" width="8" height="26" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+  <!-- 左右の縦線用テーブルここまで -->
+</div>
+
+<form name="shinsei_form" method="post" action="">
+  <input type="hidden" name="systemNo" value="">
+  <input type="hidden" name="shinseiDataInfo.systemNo" value="">
+</form>
+
+## 20050706 応募状況詳細の追加
+<form name="shinsei_form2" method="post" action="">
+  <input type="hidden" name="systemNo" value="">
+</form>
+## Horikoshi
+
+</body>
+</html>

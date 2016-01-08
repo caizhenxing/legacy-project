@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<configuration xmlns="http://java.sun.com/xml/ns/jax-rpc/ri/config">
+
+  <wsdl location="wsdl/service.wsdl" packageName="org.jbpm.bpel.tutorial.atm">
+    <!-- map namespaces (other than the target namespace) to package names -->
+    <namespaceMappingRegistry>
+      <namespaceMapping namespace="urn:samples:atm:types" packageName="org.jbpm.bpel.tutorial.atm.types" />
+    </namespaceMappingRegistry>
+  </wsdl>
+  
+</configuration>

@@ -1,0 +1,147 @@
+
+
+1（重点测试）
+班长座席的稳定性。
+
+2参数名称：产品类型管理
+别名：chanpinleibieguanli
+动作：./productTypeManage/productTypeDwrMain.jsp;
+节点图标：expanded=folderOpen.gif;closed=folderClose.gif;leaf=leaf.gif;
+
+3 价格类型不准 信息入口点来电弹屏 价格信息
+4 页面异常 可能是脚本错误 页面见图片 来电用户信息.jpg
+##对初军说的
+tlaListen
+1-坐席状态不能监听（非空闲）
+-4005错误是状态错误，调用者的状态不对。发起座席没有登录。
+==================================================================
+
+1) 数据库中添加表 oper_hotline
+为大屏幕金农热线维护使用
+
+id					varchar(50)		主键
+hotline_content		varchar(2000)   热线内容
+
+客户端内容维护系统 下 增加一个名为  金农热线  节点
+动作为 /callcenterj_sy/screen/hotline.do?method=toMarAnalysisMain4 页面异常 可能是脚本错误 页面见图片 来电用户信息.jpg
+
+
+2)数据库中添加表 const_keyValue 建表语句
+CREATE TABLE [dbo].[const_keyValue](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[type] [varchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+	[constKey] [varchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+	[constValue] [varchar](4000) COLLATE Chinese_PRC_CI_AS NULL,
+	[addtime] [datetime] NULL CONSTRAINT [DF_const_keyValue_addtime]  DEFAULT (getdate()),
+	[deleteMark] [varchar](8) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DF_const_keyValue_deleteMark]  DEFAULT ((0)),
+	[remark] [varchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+ CONSTRAINT [PK_const_keyValue] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'类别' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'const_keyValue', @level2type=N'COLUMN', @level2name=N'type'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'类别下面key' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'const_keyValue', @level2type=N'COLUMN', @level2name=N'constKey'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'类别下项value' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'const_keyValue', @level2type=N'COLUMN', @level2name=N'constValue'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'增加时间' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'const_keyValue', @level2type=N'COLUMN', @level2name=N'addtime'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'逻辑删除标志 1删除 其它未删除' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'const_keyValue', @level2type=N'COLUMN', @level2name=N'deleteMark'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'备注' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'const_keyValue', @level2type=N'COLUMN', @level2name=N'remark'
+##########数据库增加函数########
+3)  --得到话务总量 当日总量 生产质询 市场质询 政策质询 等大屏幕相关信息
+CREATE function [dbo].[screen_getHuawu](
+	@dateStr varchar(10)
+	)
+	returns varchar(2000)
+as 
+begin
+declare @sumNum varchar(50)
+declare @daySum varchar(50)
+declare @produceInquiry varchar(50) --生产质询
+declare @marketInquiry varchar(50) --市场质询
+declare @policyInquiry varchar(50) --政策质询
+declare @medicalInquiry varchar(50) --医疗质询
+declare @otherInquiry varchar(50) --其它质询
+select @sumNum=(count(*)+300000) from cc_main
+select @daySum=count(*) from cc_main oq   where   Convert(varchar(10),oq.ring_begintime,120) = @dateStr
+--生产质询('养殖咨询','种植咨询')
+select @produceInquiry = count(*) from oper_question where 1=1 and dict_question_type1 in ('养殖咨询','种植咨询') and Convert(varchar(10),addtime,120) = @dateStr
+--市场质询('供求查询','供求发布','价格报送','价格行情')
+select @marketInquiry = count(*) from oper_question where 1=1 and dict_question_type1 in ('供求查询','供求发布','价格报送','价格行情') and Convert(varchar(10),addtime,120) = @dateStr
+--政策质询('政策咨询')
+select @policyInquiry = count(*) from oper_question where 1=1 and dict_question_type1 in ('政策咨询') and Convert(varchar(10),addtime,120) = @dateStr
+--医疗质询('医疗服务')
+select @medicalInquiry = count(*) from oper_question where 1=1 and dict_question_type1 in ('医疗服务') and Convert(varchar(10),addtime,120) = @dateStr
+--其它质询 not in ('养殖咨询','种植咨询','供求查询','供求发布','价格报送','价格行情','政策咨询','医疗服务')
+select @otherInquiry = count(*) from oper_question where 1=1 and dict_question_type1 not in ('养殖咨询','种植咨询','供求查询','供求发布','价格报送','价格行情','政策咨询','医疗服务') and Convert(varchar(10),addtime,120) = @dateStr
+return @sumNum +'@'+ @daySum + '@' + @produceInquiry+ '@' + @marketInquiry+ '@' + @policyInquiry+ '@' + @medicalInquiry+ '@' + @otherInquiry
+end
+
+
+########## 数据库增加表   李春生 ########
+
+USE [callcenterj_sy]
+GO
+/****** 对象:  Table [dbo].[focusTracking]    脚本日期: 03/13/2009 10:58:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[focusTracking](
+	[ft_id] [varchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[ft_period] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ft_title] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ft_summary] [varchar](500) COLLATE Chinese_PRC_CI_AS NULL,
+	[ft_createTime] [datetime] NULL,
+	[ft_createUser] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ft_isDel] [int] NULL CONSTRAINT [DF_focusTracking_ft_isDel]  DEFAULT ((0)),
+ CONSTRAINT [PK_focusTracking] PRIMARY KEY CLUSTERED 
+(
+	[ft_id] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'主键id' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'focusTracking', @level2type=N'COLUMN', @level2name=N'ft_id'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'期数' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'focusTracking', @level2type=N'COLUMN', @level2name=N'ft_period'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'标题' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'focusTracking', @level2type=N'COLUMN', @level2name=N'ft_title'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'摘要' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'focusTracking', @level2type=N'COLUMN', @level2name=N'ft_summary'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'最近一次改动时间' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'focusTracking', @level2type=N'COLUMN', @level2name=N'ft_createTime'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'最近一次改动人' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'focusTracking', @level2type=N'COLUMN', @level2name=N'ft_createUser'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'删除标记	0未删除；1已删除' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'focusTracking', @level2type=N'COLUMN', @level2name=N'ft_isDel'
+
+
+******
+对应模块动作：/callcenterj_sy/focusTracking.do?method=toFocusTrackingMain
+
+
+http://192.168.1.16:8080/callcenterj_sy/screen/constSet/List.html

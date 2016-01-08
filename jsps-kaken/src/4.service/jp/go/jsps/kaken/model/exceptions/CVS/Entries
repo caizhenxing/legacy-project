@@ -1,0 +1,13 @@
+/ApplicationException.java/1.1/Thu Jun 28 02:07:41 2007//
+/ConnectException.java/1.1/Thu Jun 28 02:07:41 2007//
+/ConvertException.java/1.1/Thu Jun 28 02:07:41 2007//
+/FileIOException.java/1.1/Thu Jun 28 02:07:41 2007//
+/InvalidLogonException.java/1.1/Thu Jun 28 02:07:42 2007//
+/NoDataFoundException.java/1.1/Thu Jun 28 02:07:41 2007//
+/RecordCountOutOfBoundsException.java/1.1/Thu Jun 28 02:07:42 2007//
+/SystemBusyException.java/1.1/Thu Jun 28 02:07:41 2007//
+/SystemException.java/1.1/Thu Jun 28 02:07:41 2007//
+/TransactionException.java/1.1/Thu Jun 28 02:07:41 2007//
+/UnderProcessingException.java/1.1/Thu Jun 28 02:07:41 2007//
+/UserAuthorityException.java/1.1/Thu Jun 28 02:07:42 2007//
+/ValidationException.java/1.1/Thu Jun 28 02:07:41 2007//

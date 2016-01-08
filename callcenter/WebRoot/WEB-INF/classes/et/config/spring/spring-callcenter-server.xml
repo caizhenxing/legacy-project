@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!--
+	<bean id="" class="">
+		<property name="">
+				<ref bean="" />
+		</property>
+	</bean>
+	-->
+	
+	<bean id="ServerSocketService" class="et.bo.callcenter.server.impl.ServerSocketImpl">
+		<!--<property name="chs">
+				<ref bean="ConnectionHandlerService" />
+		</property>
+		<property name="ssh">
+				<ref bean="ServerSocketHelperService" />
+		</property>-->
+	</bean>
+	
+	<bean id="ServerService" class="et.bo.callcenter.server.impl.ServerImpl">
+		<property name="cts">
+				<ref bean="ClassTreeService" />
+		</property>
+		<property name="sss">
+				<ref bean="ServerSocketService" />
+		</property>
+	</bean>
+	
+	<bean id="ServerSocketHelperService" class="et.bo.callcenter.server.socket.ServerSocketHelper">
+	</bean>
+	<bean id="ConnectionHandlerService" class="et.bo.callcenter.server.socket.ConnectionHandler">
+		<property name="ee">
+				<ref bean="EventExcuteService" />
+		</property>
+	</bean>
+</beans>

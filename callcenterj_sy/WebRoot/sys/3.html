@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>座席Web</title>
+</head>
+
+
+<body  >
+<object id= "xx" classid="clsid:CF850467-2EFA-490D-8702-59905FBA32CB" codebase="./EasyAGC.cab#version=2,0,0,1"  name="ss" width="8" height="8" >
+</object>
+<script language="javascript" src="./../js/agentOper.js"></script>
+
+<script language="javascript">
+
+var  obj1 = document.getElementById("xx");
+function connect(ip)
+{
+  
+  if (obj1 == null) alert("fail")
+  else{
+	  var i = obj1.tlaOpen(ip);
+	  if (i != 0 ){
+	   alert("连接失败!");
+	  }else 
+	 {
+	   alert("连接成功!");
+	  }
+  }
+} 
+function login(workid,lineid,groupid)  
+{   
+  var i = obj1.tlaLogin(lineid,workid,groupid);  
+  if (i != 0 ){
+   alert("登入失败!");
+  }else 
+ {
+   alert("登入成功!");
+   
+ }
+}  
+
+
+</script>
+<script for="xx" EVENT="TLAECallin">
+ var caller =  tlaGetcallerid();
+ alert('有电话呼入!'+caller);
+ getObj('outlineNum').value=caller;
+ openWinIncoming(caller);
+</script> 
+<script for="xx" EVENT="TLAECalloutresult">
+  if (obj1.tlaGetcalloutresult() == 0)
+    alert("呼叫成功"); 
+  else 	
+    alert("呼叫失败!"); 
+</script>
+<script for="xx" EVENT="TLAETransferresult">
+  if (obj1.tlaGettansferresult() == 0)
+    alert("转移成功"); 
+  else 	
+    alert("转移失败!"); 
+</script>
+<script for="xx" EVENT="TLAEACW">
+  alert("强行离席！"); 
+</script>
+<script for="xx" EVENT="TLAELogoff">
+  alert("强制注销！"); 
+</script>
+<script for="xx" EVENT="TLAEClosed">
+  alert("网络中断！"); 
+</script>
+<script for="xx" EVENT="TLAECallreleased">
+  alert("通话结束！"); 
+</script>
+<script for="xx" EVENT="TLAEAnswer">
+  alert("应答成功!"); 
+</script>
+<center>
+<form  name="form1" method="post" action="">
+<td width="71%" class="big">IP：</td>
+  <input name="textip" type="text" value="">
+  <input onClick="connect(form1.textip.value);form1.submit;" class="border" type="button" value="连接" name="btcon">
+  <input onClick="disconnect();form1.submit;" class="border" type="button" value="断开" name="btdiscon">
+</form>
+<form name="form2" method="post" action="">
+  <td width="71%" class="big">工号：</td>
+  <input type="text" name="textworkid" size="15">
+  <td width="71%" class="big">线号：</td>
+  <input type="text" name="textlineid" size="15">
+  <td width="71%" class="big">组号：</td>
+  <input type="text" name="textgroupid" size="15">
+  <p>
+  <input onClick="login(form2.textworkid.value,form2.textlineid.value,form2.textgroupid.value);form2.submit;" class="border" type="button" value="登入" name="bulog">  
+  </p>
+</form>
+</center>
+</body>
+</html>

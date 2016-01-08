@@ -1,0 +1,455 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+## ************************************************
+#parse( $commonSetting )
+
+#set( $shinsaKekka1stInfo = $userContainer.shinsaKekkaReferenceInfo)
+#set( $list = $shinsaKekka1stInfo.shinsaKekkaInfoList)
+#set( $shisaKekka2ndInfo = $userContainer.shinsaKekka2ndInfo)
+## ***********************************************
+
+## ***********************************************
+##スクリプト
+<SCRIPT LANGUAGE=javascript>
+<!--
+function onAddClick(){
+	if(confirm("2次審査結果を登録します。よろしければ、[OK]ボタンをクリックしてください。")){
+		document.add_form.action="$link.setAction('/gyomu/shinseiKanri/shinsaKekka2ndAddSave')";		
+		document.add_form.submit();	
+	}
+}
+function regDownloadFile(systemNo, shinsainNo, jigyoKubun){
+	document.regdownload_form.action="$link.setAction('/gyomu/shinseiKanri/regTenpuFileDownload')";
+	document.regdownload_form.systemNo.value = systemNo;
+	document.regdownload_form.shinsainNo.value = shinsainNo;
+	document.regdownload_form.jigyoKubun.value = jigyoKubun;
+	document.regdownload_form.submit();
+}
+function referShinsaKekka(systemNo, shinsainNo, jigyoKubun){
+	window.open("","nw","toolbar=0,status=0,menubar=0,resizable=yes,scrollbars=yes");
+
+	document.shinsakekka_form.action="$link.setAction('/gyomu/shinseiKanri/shinsaKekkaRefer')";
+	document.shinsakekka_form.systemNo.value = systemNo;
+	document.shinsakekka_form.shinsainNo.value = shinsainNo;
+	document.shinsakekka_form.jigyoKubun.value = jigyoKubun;
+	document.shinsakekka_form.target="nw";
+	document.shinsakekka_form.submit();
+}
+//-->
+</SCRIPT>
+## ***********************************************
+
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="javascript:fncWindowOpen('$path/docs/manual3.pdf','help');"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/gyomu/logoff')"><IMG SRC="$path/images/header_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=20 border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#999966" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/gyomu/showMainMenu')">業務担当者向けメニュー</a>＞<a href="$link.setAction('/gyomu/shinseiKanri/search')">応募情報検索</a>＞応募情報一覧＞<b>2次審査結果登録</b></font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><IMG SRC="$path/images/subtitle_img1.gif" WIDTH=61 HEIGHT=49 ALT=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+       2次審査結果登録</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <IMG SRC="$path/images/subtitle_img3.gif" WIDTH=213 HEIGHT=49 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+
+<!-- 本文ここから -->
+#errorMarkup()
+<form name="add_form" method="post">
+   ## A hidden form field with the transaction token
+   <input type="hidden" name="$form.tokenName" value="$form.token">
+   ##
+<!-- 一覧用テーブルここから -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th colspan="2" align="left">研究種目名</th>
+     <td>
+     	#if($shinsaKekka1stInfo.kaisu.toString() == '0' || $shinsaKekka1stInfo.kaisu.toString() == '1')
+     		平成$!escape.getText($!shinsaKekka1stInfo.nendo)年度 $!escape.getText($!shinsaKekka1stInfo.jigyoName)
+     	#else
+     		平成$!escape.getText($!shinsaKekka1stInfo.nendo)年度 第$!escape.getText($!shinsaKekka1stInfo.kaisu)回 $!escape.getText($!shinsaKekka1stInfo.jigyoName)
+		#end
+     </td>
+    </tr>
+    <tr>
+     <th colspan="2" align="left">応募番号</th>
+     <td>$!escape.getText($!shinsaKekka1stInfo.uketukeNo)</td>
+    </tr>
+    <tr>
+     <th align="left" colspan="2">研究課題名</th>
+     <td>$!escape.getText($!shinsaKekka1stInfo.kadaiNameKanji)</td>
+    </tr>    
+    <tr>
+     <th rowspan="3" align="left">応募者</th>
+     <th align="left">氏名</th>
+     <td>$!escape.getText($!shinsaKekka1stInfo.nameKanjiSei) $!escape.getText($!shinsaKekka1stInfo.nameKanjiMei)</td>
+    </tr>
+    <tr>
+     <th align="left">所属研究機関名</th>
+     <td>$!escape.getText($!shinsaKekka1stInfo.shozokuName)</td>
+    </tr>
+    <tr>
+     <th align="left">部局名・職名</th>
+     <td>
+ 		#if($shinsaKekka1stInfo.bukyokuName)
+ 			$!escape.getText($!shinsaKekka1stInfo.bukyokuName) 
+ 		#end
+ 		#if($shinsaKekka1stInfo.shokushuNameKanji)
+ 			$!escape.getText($!shinsaKekka1stInfo.shokushuNameKanji)
+ 		#end     
+     </td>
+    </tr>
+    <tr>
+     <th colspan="2" align="left">研究者番号</th>
+     <td>$!escape.getText($!shinsaKekka1stInfo.kenkyuNo)</td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th width="13%" align="left">審査状況</th>
+     <td width="29%">
+		#if($list.size() >= 1 && $list.get(0).shinsainNameKanjiSei)
+     		#getShinsaJokyo($!escape.getText($list.get(0).shinsaJokyo))
+     	#end
+     </td>
+     <td width="29%">
+		#if($list.size() >= 2 && $list.get(1).shinsainNameKanjiSei)
+			#getShinsaJokyo($!escape.getText($list.get(1).shinsaJokyo))		
+     	#end
+     </td>
+     <td width="29%">
+     	#if($list.size() >= 3 && $list.get(2).shinsainNameKanjiSei)
+			#getShinsaJokyo($!escape.getText($list.get(2).shinsaJokyo))
+     	#end
+     </td>
+    </tr>
+    <tr>
+     <th width="13%" align="left">審査員名</th>
+     <td width="29%">
+		#if($list.size() >= 1)
+     		$!escape.getText($list.get(0).shinsainNameKanjiSei) $!escape.getText($list.get(0).shinsainNameKanjiMei)
+     	#end
+     </td>
+     <td width="29%">
+		#if($list.size() >= 2)
+     		$!escape.getText($list.get(1).shinsainNameKanjiSei) $!escape.getText($list.get(1).shinsainNameKanjiMei)
+     	#end
+     </td>
+     <td width="29%">
+     	#if($list.size() >= 3)
+     		$!escape.getText($list.get(2).shinsainNameKanjiSei) $!escape.getText($list.get(2).shinsainNameKanjiMei)
+     	#end
+     </td>
+    </tr>
+    <tr>
+     <th align="left">審査結果</th>
+     <td>
+		#if($list.size() >= 1)
+ 			#if($list.get(0).kekkaAbc)
+ 				$!escape.getText($list.get(0).kekkaAbcLabel)
+ 			#else
+ 			 	$!escape.getText($list.get(0).kekkaTenLabel)
+ 			#end
+ 		#end
+     </td>
+     <td>
+		#if($list.size() >= 2)
+			#if($list.get(1).kekkaAbc)
+	 			$!escape.getText($list.get(1).kekkaAbcLabel)
+ 			#else
+ 			 	$!escape.getText($list.get(1).kekkaTenLabel)
+ 			#end
+ 		#end
+     </td>
+     <td>
+		#if($list.size() >= 3)
+			#if($list.get(2).kekkaAbc)
+	 			$!escape.getText($list.get(2).kekkaAbcLabel)
+ 			#else
+ 			 	$!escape.getText($list.get(2).kekkaTenLabel)
+ 			#end
+ 		#end
+     </td>
+    </tr>
+    <tr>
+     <th align="left">添付ファイル</th>
+     <td>
+		#if($list.size() >= 1)
+   			<a href="javascript:regDownloadFile('$list.get(0).systemNo', '$list.get(0).shinsainNo', '$list.get(0).jigyoKubun');">$!escape.getText($list.get(0).tenpuName)</a>
+     	#end
+     </td>
+     <td>
+		#if($list.size() >= 2)
+   			<a href="javascript:regDownloadFile('$list.get(1).systemNo', '$list.get(1).shinsainNo', '$list.get(1).jigyoKubun');">$!escape.getText($list.get(1).tenpuName)</a>
+     	#end
+     </td>
+     <td>
+		#if($list.size() >= 3)
+   			<a href="javascript:regDownloadFile('$list.get(2).systemNo', '$list.get(2).shinsainNo', '$list.get(2).jigyoKubun');">$!escape.getText($list.get(2).tenpuName)</a>
+     	#end
+     </td>
+    </tr>
+    <tr>
+     <th align="left">コメント</th>
+     <td>
+		#if($list.size() >= 1 && $list.get(0).shinsainNameKanjiSei)
+   			<a href="javascript:referShinsaKekka('$list.get(0).systemNo', '$list.get(0).shinsainNo', '$list.get(0).jigyoKubun');"><img src="$path/images/bt_refer.gif" width=64 height=24 alt="参照" border="0"></a>
+     	#end
+     </td>
+     <td>
+		#if($list.size() >= 2 && $list.get(1).shinsainNameKanjiSei)
+   			<a href="javascript:referShinsaKekka('$list.get(1).systemNo', '$list.get(1).shinsainNo', '$list.get(1).jigyoKubun');"><img src="$path/images/bt_refer.gif" width=64 height=24 alt="参照" border="0"></a>
+     	#end
+     </td>
+     <td>
+		#if($list.size() >= 3 && $list.get(2).shinsainNameKanjiSei)
+   			<a href="javascript:referShinsaKekka('$list.get(2).systemNo', '$list.get(2).shinsainNo', '$list.get(2).jigyoKubun');"><img src="$path/images/bt_refer.gif" width=64 height=24 alt="参照" border="0"></a>
+     	#end
+     </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th width="13%" align="left">審査状況</th>
+     <td width="29%">
+		#if($list.size() >= 4 && $list.get(3).shinsainNameKanjiSei)
+ 	    	#getShinsaJokyo($!escape.getText($list.get(3).shinsaJokyo))
+     	#end
+     </td>
+     <td width="29%">
+		#if($list.size() >= 5 && $list.get(4).shinsainNameKanjiSei)
+	    	#getShinsaJokyo($!escape.getText($list.get(4).shinsaJokyo))
+     	#end
+     </td>
+     <td width="29%">
+     	#if($list.size() >= 6 && $list.get(5).shinsainNameKanjiSei)
+     		#getShinsaJokyo($!escape.getText($list.get(5).shinsaJokyo))
+     	#end
+     </td>
+    </tr>
+    <tr>
+     <th width="13%" align="left">審査員名</th>
+     <td width="29%">
+		#if($list.size() >= 4)
+     		$!escape.getText($list.get(3).shinsainNameKanjiSei) $!escape.getText($list.get(3).shinsainNameKanjiMei)
+     	#end
+     </td>
+     <td width="29%">
+		#if($list.size() >= 5)
+     		$!escape.getText($list.get(4).shinsainNameKanjiSei) $!escape.getText($list.get(4).shinsainNameKanjiMei)
+     	#end
+     </td>
+     <td width="29%">
+     	#if($list.size() >= 6)
+     		$!escape.getText($list.get(5).shinsainNameKanjiSei) $!escape.getText($list.get(5).shinsainNameKanjiMei)
+     	#end
+     </td>
+    </tr>
+    <tr>
+     <th align="left">審査結果</th>
+     <td>
+		#if($list.size() >= 4)
+			#if($list.get(3).kekkaAbc)
+	 			$!escape.getText($list.get(3).kekkaAbcLabel)
+ 			#else
+ 			 	$!escape.getText($list.get(3).kekkaTenLabel)
+ 			#end
+ 		#end
+     </td>
+     <td>
+		#if($list.size() >= 5)
+ 			#if($list.get(4).kekkaAbc)
+	 			$!escape.getText($list.get(4).kekkaAbcLabel)
+ 			#else
+ 			 	$!escape.getText($list.get(4).kekkaTenLabel)
+ 			#end
+ 		#end
+     </td>
+     <td>
+		#if($list.size() >= 6)
+			#if($list.get(5).kekkaAbc)
+	 			$!escape.getText($list.get(5).kekkaAbcLabel)
+ 			#else
+ 			 	$!escape.getText($list.get(5).kekkaTenLabel)
+ 			#end
+ 		#end
+     </td>
+    </tr>
+    <tr>
+     <th align="left">添付ファイル</th>
+     <td>
+		#if($list.size() >= 4)
+   			<a href="javascript:regDownloadFile('$list.get(3).systemNo', '$list.get(3).shinsainNo', '$list.get(3).jigyoKubun');">$!escape.getText($list.get(3).tenpuName)</a>
+     	#end
+     </td>
+     <td>
+		#if($list.size() >= 5)
+   			<a href="javascript:regDownloadFile('$list.get(4).systemNo', '$list.get(4).shinsainNo', '$list.get(4).jigyoKubun');">$!escape.getText($list.get(4).tenpuName)</a>
+     	#end
+     </td>
+     <td>
+		#if($list.size() >= 6)
+   			<a href="javascript:regDownloadFile('$list.get(5).systemNo', '$list.get(5).shinsainNo', '$list.get(5).jigyoKubun');">$!escape.getText($list.get(5).tenpuName)</a>
+     	#end
+     </td>
+    </tr>
+    <tr>
+     <th align="left">コメント</th>
+     <td>
+		#if($list.size() >= 4 && $list.get(3).shinsainNameKanjiSei)
+   			<a href="javascript:referShinsaKekka('$list.get(3).systemNo', '$list.get(3).shinsainNo', '$list.get(3).jigyoKubun');"><img src="$path/images/bt_refer.gif" width=64 height=24 alt="参照" border="0"></a>
+     	#end
+     </td>
+     <td>
+		#if($list.size() >= 5 && $list.get(4).shinsainNameKanjiSei)
+   			<a href="javascript:referShinsaKekka('$list.get(4).systemNo', '$list.get(4).shinsainNo', '$list.get(4).jigyoKubun');"><img src="$path/images/bt_refer.gif" width=64 height=24 alt="参照" border="0"></a>
+     	#end
+     </td>
+     <td>
+		#if($list.size() >= 6 && $list.get(5).shinsainNameKanjiSei)
+   			<a href="javascript:referShinsaKekka('$list.get(5).systemNo', '$list.get(5).shinsainNo', '$list.get(5).jigyoKubun');"><img src="$path/images/bt_refer.gif" width=64 height=24 alt="参照" border="0"></a>
+     	#end
+     </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+<!-- 一覧用テーブルここまで-->
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th align="left" width="20%">業務担当者備考</th>
+     <td>$!escape.getText($shinsaKekka1stInfo.shinsa1Biko)</td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+<br>
+<p align="left">この研究計画調書の審査結果を入力し、[OK]ボタンをクリックしてください。</p>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th align="left">2次審査結果</th>
+     <td><select size="1" name="kekka2">
+		#showOptions($shinsaKekka2ndForm.kekka2List $shinsaKekka2ndForm.kekka2)
+      </select>
+     </td>
+    </tr>
+    <tr>
+     <th align="left">業務担当者用記入欄</th>
+     <td><textarea rows="2" cols="60" name="shinsa2Biko">$!escape.getText($!shinsaKekka2ndForm.shinsa2Biko)</textarea></td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+<!-- 一覧用テーブルここまで-->
+<br>
+<!-- 本文ここまで -->
+
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="javascript:onAddClick();"><img src="$path/images/bt_ok.gif" alt="OK" width="114" height="28" border="0"></a></td>
+       <td><a href="$link.setAction('/gyomu/shinseiKanri/searchList')"><img src="$path/images/bt_cancel.gif" width=114 height=28 border="0" alt="キャンセル"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img1.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/gyomu/logoff')"><IMG SRC="$path/images/footer_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=26 border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img3.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+</form>
+##隠しフォーム情報----------
+<form name="regdownload_form" action="" method="post">
+	<input type="hidden" name="systemNo">
+	<input type="hidden" name="shinsainNo">
+	<input type="hidden" name="jigyoKubun">
+</form>
+<form name="shinsakekka_form" action="" method="post" target="">
+	<input type="hidden" name="systemNo">
+	<input type="hidden" name="shinsainNo">
+	<input type="hidden" name="jigyoKubun">
+</form>
+##----------
+</body>
+</html>

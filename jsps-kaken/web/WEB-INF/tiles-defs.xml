@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="WINDOWS-31J"?>
+
+<tiles-definitions>
+  <definition name=".mainLayout" path="/pages/layouts/Layout.jsp">
+    <put name="title" type="string" value="メニュー"/>
+  </definition>
+  <definition extends=".mainLayout" name="change">
+    <put name="title" value="更新"/>
+    <put name="main" value="/pages/change.jsp"/>
+  </definition>
+  <definition extends=".mainLayout" name="changeCheck">
+    <put name="title" value="更新確認"/>
+    <put name="main" value="/pages/changeCheck.jsp"/>
+  </definition>
+  <definition extends=".mainLayout" name="changeSuccess">
+    <put name="title" value="修正完了"/>
+    <put name="main" value="/pages/changeSuccess.jsp"/>
+  </definition>
+  <definition extends=".mainLayout" name="deleteCheck">
+    <put name="title" value="削除確認"/>
+    <put name="main" value="/pages/deleteCheck.jsp"/>
+  </definition>
+  <definition extends=".mainLayout" name="deleteSuccess">
+    <put name="title" value="削除完了"/>
+    <put name="main" value="/pages/deleteSuccess.jsp"/>
+  </definition>
+  <definition extends=".mainLayout" name="find">
+    <put name="title" value="検索画面"/>
+    <put name="main" value="/pages/find.jsp"/>
+  </definition>
+  <definition extends=".mainLayout" name="list">
+    <put name="title" value="一覧画面"/>
+    <put name="main" value="/pages/list.jsp"/>
+  </definition>
+  <definition extends=".mainLayout" name="menu">
+    <put name="title" type="string" value="メニュー"/>
+    <put name="main" type="page" value="/pages/menu.jsp"/>
+  </definition>
+  <definition extends=".mainLayout" name="reg">
+    <put name="title" type="string" value="新規登録"/>
+    <put name="main" type="page" value="/pages/reg.jsp"/>
+  </definition>
+  <definition extends=".mainLayout" name="regCheck">
+    <put name="title" value="入力確認"/>
+    <put name="main" value="/pages/regCheck.jsp"/>
+  </definition>
+  <definition extends=".mainLayout" name="regSuccess">
+    <put name="title" value="登録完了"/>
+    <put name="main" value="/pages/regSuccess.jsp"/>
+  </definition>
+</tiles-definitions>

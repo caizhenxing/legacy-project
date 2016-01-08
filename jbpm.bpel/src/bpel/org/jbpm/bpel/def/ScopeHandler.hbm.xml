@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+  
+  <subclass name="org.jbpm.bpel.def.ScopeHandler" extends="org.jbpm.bpel.def.CompositeActivity"
+    discriminator-value="B">
+
+    <!-- BPEL-192 removed unique constraint for compatibility with Sybase -->
+    <many-to-one name="scope" column="SCOPE_" foreign-key="FK_HANDLER_SCOPE" />
+    <many-to-one name="activity" column="ACTIVITY_" cascade="all" foreign-key="FK_HANDLER_ACTIVITY" />
+
+    <subclass name="org.jbpm.bpel.def.Catch" discriminator-value="V">
+      
+      <many-to-one name="faultVariable" column="FAULTVARIABLE_" foreign-key="FK_CATCH_VARIABLE" cascade="all" />
+      
+      <property name="faultName" type="qname">
+        <column name="FAULTLOCALNAME_" />
+        <column name="FAULTNAMESPACE_" />
+      </property>
+      
+    </subclass>
+
+    <subclass name="org.jbpm.bpel.def.OnEvent" discriminator-value="X">
+      
+      <many-to-one name="receiver" column="RECEIVER_" foreign-key="FK_ONEVENT_RECEIVER" cascade="all" />
+      <many-to-one name="variable" column="VARIABLE_" foreign-key="FK_ONEVENT_VARIABLE" cascade="all" />
+
+    </subclass>
+
+    <subclass name="org.jbpm.bpel.def.OnAlarm" discriminator-value="W">
+
+      <many-to-one name="alarm" column="ALARM_" foreign-key="FK_HANDLER_ALARM" cascade="all" />
+
+    </subclass>
+    
+  </subclass>
+  
+</hibernate-mapping>

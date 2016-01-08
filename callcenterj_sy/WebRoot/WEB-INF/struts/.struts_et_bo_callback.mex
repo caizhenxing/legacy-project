@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/callback/callback.do" location="364,0" dimension="358,84" />
+  <StrutsActivity path="/callback/callbackList.jsp" location="0,184" dimension="196,48" />
+  <StrutsActivity path="/callback/callbackMain.jsp" location="296,184" dimension="196,48" />
+  <StrutsActivity path="/callback/callbackQuery.jsp" location="592,184" dimension="202,48" />
+  <StrutsActivity path="/callback/callbackLoad.jsp" location="894,184" dimension="196,48" />
+  <StrutsTransition id="/callback/callback.do,list,/callback/callbackList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="409,84" />
+      <AbsolutePoint location="409,119" />
+      <AbsolutePoint location="98,119" />
+      <AbsolutePoint location="98,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callback/callback.do,main,/callback/callbackMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="498,84" />
+      <AbsolutePoint location="498,149" />
+      <AbsolutePoint location="394,149" />
+      <AbsolutePoint location="394,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callback/callback.do,query,/callback/callbackQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="588,84" />
+      <AbsolutePoint location="588,149" />
+      <AbsolutePoint location="693,149" />
+      <AbsolutePoint location="693,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callback/callback.do,load,/callback/callbackLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="677,84" />
+      <AbsolutePoint location="677,119" />
+      <AbsolutePoint location="992,119" />
+      <AbsolutePoint location="992,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

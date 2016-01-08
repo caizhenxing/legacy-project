@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+<!--  key -->
+	
+	<bean id="KeyService" class="excellence.common.key.impl.KeyServiceImpl">
+		<property name="sequenceService">
+			<ref bean="SequenceService" />
+		</property>
+	</bean>
+	
+	<bean id="SequenceService" class="et.bo.common.impl.SequenceServiceImpl">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+<!--  key -->	
+
+</beans>

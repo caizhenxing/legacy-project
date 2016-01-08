@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+<beans>
+
+	<!--  service begin -->
+	<bean id="CheckWorkService" class="et.bo.oa.checkwork.service.impl.ChekWorkServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="keyService">
+			<ref bean="KeyService" />
+		</property>
+	</bean>
+	<bean id="AbsenceService" class="et.bo.oa.checkwork.service.impl.AbsenceServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="keyService">
+			<ref bean="KeyService" />
+		</property>
+		<property name="departTree">
+			<ref bean="DepTreeService"/>
+		</property>
+	</bean>
+	<!--  service end -->
+
+	<!-- Action begin -->
+	<bean name="/oa/checkWork" class="et.bo.oa.checkwork.action.CheckWorkAction" singleton="false">
+		<property name="keyService">
+			<ref bean="KeyService" />
+		</property>
+		<property name="checkWorkService">
+			<ref bean="CheckWorkService" />
+		</property>
+		<property name="ctree">
+			<ref bean="ClassTreeService"/>
+		</property>
+		<property name="departTree">
+			<ref bean="DepTreeService"/>
+		</property>
+	</bean>
+
+	<bean name="/oa/absenceWork" class="et.bo.oa.checkwork.action.AbsenceAction" singleton="false">
+		<property name="absenceService">
+			<ref bean="AbsenceService" />
+		</property>
+		<property name="checkWorkService">
+		    <ref bean="CheckWorkService"/>
+		</property>
+		<property name="ctree">
+			<ref bean="ClassTreeService"/>
+		</property>
+		<property name="departTree">
+			<ref bean="DepTreeService"/>
+		</property>
+	</bean>
+	<!-- Action end -->
+
+</beans>

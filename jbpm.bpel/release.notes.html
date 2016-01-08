@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Release Notes - JBoss jBPM BPEL</title>
+</head>
+<body>
+<h1>Release Notes - JBoss jBPM BPEL - Version 1.1 beta 2</h1>
+
+<p>The enhancements and related JIRA issues appear next.</p>
+    
+<h2>Bug</h2>
+<ul>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-92'>BPEL-92</a>] - While activity implementation not to use runtime stack for activity trace</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-191'>BPEL-191</a>] - automatic node creation does not preserve source prefix</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-192'>BPEL-192</a>] - hibernate mapping for sybase.</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-194'>BPEL-194</a>] - Invoking two different web services in a row causes nullpointer exception.</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-195'>BPEL-195</a>] - namespace propagation does not produce desired results</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-196'>BPEL-196</a>] - jbpm and bpel services do not play together well</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-197'>BPEL-197</a>] - integers are represented with a decimal point when used as source content</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-199'>BPEL-199</a>] - BPEL reader does not contain logic to parse 1.1 fault handlers.</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-206'>BPEL-206</a>] - activity readers file is reparsed every time a bpelReader is instantiated</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-207'>BPEL-207</a>] - module definitions file is reparsed every time a bpelDefinition is instantiated</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-210'>BPEL-210</a>] - compatibility broken with the axis-based stack in jboss 4.0.3 and below</li>
+</ul>
+        
+<h2>Feature Request</h2>
+<ul>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-181'>BPEL-181</a>] - detect absence of required partner link role</li>
+</ul>
+                    
+<h2>Task</h2>
+<ul>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-85'>BPEL-85</a>] - Docu on the purpose of BPEL</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-183'>BPEL-183</a>] - write release guide</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-187'>BPEL-187</a>] - wait activity</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-188'>BPEL-188</a>] - pick alarm</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-189'>BPEL-189</a>] - alarm event</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-193'>BPEL-193</a>] - template for new projects</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-198'>BPEL-198</a>] - prevent stale object state exceptions</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-202'>BPEL-202</a>] - rename correlation initiate mode 'rendezvous' to 'join'</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-203'>BPEL-203</a>] - replace implicit tokens with implicit termination disablement in the scope lifecycle</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-205'>BPEL-205</a>] - employ inheritance instead of enumeration to distinguish sublanguage uses</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-209'>BPEL-209</a>] - Introduce a default destination/connection factory to ease deployment of new processes</li>
+<li>[<a href='http://jira.jboss.com/jira/browse/BPEL-211'>BPEL-211</a>] - update user guide to include new features</li>
+</ul>
+
+<h2>Known Limitations</h2>
+<ul>
+<li>Fault, termination and compensation handling is missing: &lt;compensate&gt;,
+  &lt;throw&gt; and &lt;rethrow&gt; not supported.</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+<beans>
+<bean id="timerFactory"
+		class="org.springframework.scheduling.timer.TimerFactoryBean">
+		<property name="scheduledTimerTasks">
+			<list>
+				<ref local="VoiceMailTask" />
+			</list>
+		</property>
+	</bean>
+	<bean id="VoiceMailTask"
+		class="org.springframework.scheduling.timer.ScheduledTimerTask">
+		<property name="delay">
+			<value>120000</value>
+		</property>
+		<property name="period">
+			<value>600000</value>
+		</property>
+		<property name="timerTask">
+			<ref local="VoiceMail" />
+		</property>
+	</bean>
+	<bean id="VoiceMail"
+		class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+		<property name="targetObject">
+			<ref bean="TelephoneSwitch" />
+		</property>
+		<property name="targetMethod">
+			<value>voiceMail</value>
+		</property>
+	</bean>
+	
+</beans>

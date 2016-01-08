@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<beans>
+
+<!--  单位基本信息   -->	
+    <bean name="/sys/staff/workUnitInfo"
+		class="et.bo.sys.staff.workUnitInfo.action.workUnitInfoAction" scope="singleton">			
+		<property name="wuis">
+			<ref bean="workUnitInfoService" />
+		</property>	
+	</bean>
+
+
+	<bean id="workUnitInfoService"
+		class="et.bo.sys.staff.workUnitInfo.service.impl.workUnitInfoServiceImpl" scope="singleton">
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+	
+	<!--  职工基本信息   -->	
+    <bean name="/sys/staff/staffBasic"
+		class="et.bo.sys.staff.staffBasic.action.staffBasicAction" scope="singleton">			
+		<property name="sbs">
+			<ref bean="staffBasicService" />
+		</property>		
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>		
+	</bean>
+
+
+	<bean id="staffBasicService"
+		class="et.bo.sys.staff.staffBasic.service.impl.staffBasicServiceImpl" scope="singleton">
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+	
+	
+	
+<!--		  员工经历信息   	-->
+    <bean name="/sys/staff/staffExperience"
+		class="et.bo.sys.staff.staffExperience.action.staffExperienceAction" scope="singleton">			
+		<property name="ses">
+			<ref bean="staffExperienceService" />
+		</property>			
+	</bean>
+
+
+	<bean id="staffExperienceService"
+ 		class="et.bo.sys.staff.staffExperience.service.impl.staffExperienceServiceImpl" scope="singleton">
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+	
+
+	<!--  职工奖惩信息   -->	
+    <bean name="/sys/staff/staffHortation"
+		class="et.bo.sys.staff.staffHortation.action.staffHortationAction" scope="singleton">			
+		<property name="shs">
+			<ref bean="staffHortationService" />
+		</property>			
+	</bean>
+
+
+	<bean id="staffHortationService"
+		class="et.bo.sys.staff.staffHortation.service.impl.staffHortationServiceImpl" scope="singleton">
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+	
+	
+	
+	<!--  员工语言   -->	
+    <bean name="/sys/staff/staffLanguage"
+		class="et.bo.sys.staff.staffLanguage.action.staffLanguageAction" scope="singleton">			
+		<property name="sls">
+			<ref bean="staffLanguageService" />
+		</property>			
+	</bean>
+
+
+	<bean id="staffLanguageService"
+		class="et.bo.sys.staff.staffLanguage.service.impl.staffLanguageServiceImpl" scope="singleton">
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+	
+
+	
+	
+	
+	<!--  员工亲属  -->	
+    <bean name="/sys/staff/staffParent"
+		class="et.bo.sys.staff.staffParentInfo.action.staffParentInfoAction" scope="singleton">			
+		<property name="spis">
+			<ref bean="staffParentInfoService" />
+		</property>			
+	</bean>
+
+
+	<bean id="staffParentInfoService"
+		class="et.bo.sys.staff.staffParentInfo.service.impl.staffParentInfoImpl" scope="singleton">
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>	
+	
+</beans>

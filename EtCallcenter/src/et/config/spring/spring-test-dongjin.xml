@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "spring-beans.dtd" >
+<beans>
+	<bean id="IAcceptMessage" class="et.bo.callcenter.plant.dongjin_c161a.test.impl.AcceptMessage">
+		<property name="idi">
+			<ref bean="IDongjinInit" />
+		</property>
+		<property name="idih">
+			<ref bean="IDongjinInHook" />
+		</property>
+		<property name="idoh">
+			<ref bean="IDongjinOutHook" />
+		</property>
+		<property name="idf">
+			<ref bean="IDongjinFsk" />
+		</property>
+		<property name="idd">
+			<ref bean="IDongjinDtmf" />
+		</property>
+		<property name="idp">
+			<ref bean="IDongjinPlay" />
+		</property>
+		<property name="idv">
+			<ref bean="IDongjinVoice" />
+		</property>
+		<property name="voicePath" value="C:\\TC08A32\\voc"></property>
+	</bean>
+	<bean id="IInitDongjin" class="et.bo.callcenter.plant.dongjin_c161a.test.impl.InitDongjin">
+		<property name="idi" ref="IDongjinInit"></property>
+		<property name="idv" ref="IDongjinVoice"></property>
+		<property name="idih">
+			<ref bean="IDongjinInHook" />
+		</property>
+		<property name="idl">
+			<ref bean="IDongjinLink" />
+		</property>
+		<property name="idoh">
+			<ref bean="IDongjinOutHook" />
+		</property>
+		<property name="idf">
+			<ref bean="IDongjinFsk" />
+		</property>
+		<property name="idd">
+			<ref bean="IDongjinDtmf" />
+		</property>
+		<property name="idp">
+			<ref bean="IDongjinPlay" />
+		</property>
+		<property name="idr">
+			<ref bean="IDongjinRecord" />
+		</property>
+		<property name="idrc">
+			<ref bean="IDongjinRecordChange" />
+		</property>
+		<property name="idc">
+			<ref bean="IDongjinConf" />
+		</property>
+	</bean>
+</beans>

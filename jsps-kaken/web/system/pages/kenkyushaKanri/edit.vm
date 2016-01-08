@@ -1,0 +1,179 @@
+## ***********************************************
+## 研究者情報修正画面
+##
+## フォーム情報 → kenkyushaForm
+## ***********************************************
+
+## 2005/03/11 新規作成
+
+#parse( $commonSetting )
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="javascript:fncWindowOpen('$path/docs/manual5.pdf','help');"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/system/logoff')"><IMG SRC="$path/images/header_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=20 border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#339999" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/system/showMainMenu')">システム管理者向けメニュー</a>＞<a href="$link.setAction('/system/kenkyushaKanri/showMenu')">研究者管理</a>（研究者管理メニュー＞研究者情報検索＞研究者情報一覧＞<b>研究者情報修正</b><font size="1">＞研究者情報修正確認＞研究者情報修正完了</font>）</font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><IMG SRC="$path/images/subtitle_img1.gif" WIDTH=61 HEIGHT=49 ALT=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+       研究者情報修正</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <IMG SRC="$path/images/subtitle_img3.gif" WIDTH=213 HEIGHT=49 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+    
+<!-- 本文ここから -->
+        #errorMarkup()
+<p class="comment"><font color="#FF0000" size="2">*</font>のついた項目は必須項目です。</p>
+        
+        <form method="POST" action="$link.setAction('/system/kenkyushaKanri/editCheck')">
+
+<!-- 一覧用テーブルここから -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th align="left">研究者番号</th>
+     <td colspan="2"><font color="#FF0000"></font>$!escape.getText($!kenkyushaForm.kenkyuNo)</td>
+     <inpu type="hidden" name="kenkyuNo" value="$!escape.getText($!kenkyushaForm.kenkyuNo)">
+    </tr>
+
+    <tr>
+     <th rowspan="2" align="left" width="20%">氏名</th>
+     <td colspan="2" width="80%">（漢字等）<font color="#FF0000">*</font>（姓）<INPUT size="20" name="nameKanjiSei" value="$!escape.getText($!kenkyushaForm.nameKanjiSei)">　（名）<INPUT size="20" name="nameKanjiMei" value="$!escape.getText($!kenkyushaForm.nameKanjiMei)"><br>
+      　　　（JIS第1水準・第2水準にない文字の場合、全角カタカナで入力してください。）
+     </td>
+    </tr>
+    <tr>
+     <td colspan="2">（フリガナ）<font color="#FF0000">*</font>（姓）<INPUT size="20" name="nameKanaSei" value="$!escape.getText($!kenkyushaForm.nameKanaSei)">　（名）<INPUT size="20" name="nameKanaMei" value="$!escape.getText($!kenkyushaForm.nameKanaMei)"><br>
+      　　　（全角カタカナで入力してください。）
+     </td>
+    </tr>
+    <tr>
+     <th align="left">生年月日</th>
+     <td colspan="2">
+## 20050809 必須項目とするため
+	<font color="#FF0000">*</font>
+## Horikoshi
+       <INPUT size="5" name="birthYear" value="$!escape.getText($!kenkyushaForm.birthYear)">年
+       <select size="1" name="birthMonth">#monthOptions($!kenkyushaForm.birthMonth)</select>月
+       <select size="1" name="birthDay">#dayOptions($!kenkyushaForm.birthDay)</select>日
+     </td>
+    </tr>
+    <tr>
+     <th align="left">所属研究機関名</th>
+     <td>（番号）<font color="#FF0000"></font>$!escape.getText($!kenkyushaForm.shozokuCd)　<a href="$link.setAction('/kikanList')" target="_blank"><img src="$path/images/bt_list.gif" width=41 height=22 alt="一覧" border="0"></a>&nbsp;</td>
+     <td width="60%">
+       （和文）$!escape.getText($!kenkyushaForm.shozokuNameKanji)<br>
+       （英文）$!escape.getText($!kenkyushaForm.shozokuNameEigo)<br>
+     </td>
+    </tr>
+     <INPUT type="hidden" name="shozokuCd" value="$!escape.getText($!kenkyushaForm.shozokuCd)">
+    </tr>
+    <tr>
+     <th align="left">部局名</th>
+     <td>（番号）<font color="#FF0000">*</font><INPUT size="4" name="bukyokuCd" value="$!escape.getText($!kenkyushaForm.bukyokuCd)">　<a href="$link.setAction('/bukyokuList')" target="_blank"><img src="$path/images/bt_list.gif" width=41 height=22 alt="一覧" border="0"></a>&nbsp;</td>
+     <td>（和文）$!escape.getText($!kenkyushaForm.bukyokuName)</td>
+    </tr>
+    <tr>
+     <th align="left">職名</th>
+     <td colspan="2"><font color="#FF0000">*</font>
+      <select name="shokushuCd" size="1">#showOptionsWithEmpty($!kenkyushaForm.shokushuCdList $!kenkyushaForm.shokushuCd)</select></td>
+    </tr>
+## 2005/04/06 追加 ここから----------------------------
+## 理由 「学位」項目追加
+    <tr>
+     <th align="left">学位</th>
+     <td colspan="2">
+       <select name="gakui" size="1">#showOptionsWithEmpty($!kenkyushaForm.gakuiList $!kenkyushaForm.gakui)</select></td>
+    </tr>
+## 追加 ここまで----------------------------------------
+ <tr>
+  <th align="left">性別</th>
+  <td colspan="2"><font color="#FF0000"></font>
+	<select name="seibetsu" size="1">#showOptionsWithEmpty($!kenkyushaForm.seibetsuList $!kenkyushaForm.seibetsu)</select>
+  </td>
+ </tr>
+ <tr>
+  <th align="left">備考</th>
+  <td colspan="2"><font color="#FF0000"></font>
+    <textarea rows="2" cols="60" name="biko">$!escape.getText($!kenkyushaForm.biko)</textarea>
+  </td>
+  </tr> 
+   </table>
+  </td>
+ </tr>
+</table>
+<!-- 一覧用テーブルここまで-->
+
+
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><input type="image" src="$path/images/bt_ok.gif" width=114 height=28 border="0" alt="OK"></td>
+       <td><a href="$link.setAction('/system/kenkyushaKanri/searchList')"><img src="$path/images/bt_cancel.gif" width=114 height=28 border="0" alt="キャンセル"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img1.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/system/logoff')"><IMG SRC="$path/images/footer_logout.gif" ALT="ログアウト" width=72 height=26 border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img3.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+     </tr>
+        </form>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+</body>
+</html>

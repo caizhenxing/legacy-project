@@ -1,0 +1,149 @@
+## 業務担当者登録フォーム情報→gyomutantoForm
+## 業務担当者登録情報→$userContainer.gyomutantoInfo
+#parse( $commonSetting )
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="javascript:fncWindowOpen('$path/docs/manual5.pdf','help');"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/system/logoff')"><IMG SRC="$path/images/header_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=20 border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#339999" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/system/showMainMenu')">システム管理者向けメニュー</a>＞<a href="$link.setAction('/system/gyomutantoKanri/showMenu')">業務担当者管理</a>（業務担当者管理メニュー＞業務担当者情報一覧＞<b>業務担当者情報削除確認</b><font size="1">＞業務担当者情報削除完了</font>）</font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><IMG SRC="$path/images/subtitle_img1.gif" WIDTH=61 HEIGHT=49 ALT=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+       業務担当者情報削除確認</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <IMG SRC="$path/images/subtitle_img3.gif" WIDTH=213 HEIGHT=49 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+<!-- 本文ここから -->
+      #set ($info= $userContainer.gyomutantoInfo)
+<p align="left">以下の内容を削除します。</p>
+<p align="left">よろしければ、[OK]ボタンをクリックしてください。</p>
+      #errorMarkup()
+
+   <form method="POST" action="$link.setAction('/system/gyomutantoKanri/deleteSave')" id=form1 name=form1>
+<!-- 一覧用テーブルここから -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th align="left">ID</th>
+     <td>$!escape.getText($!info.gyomutantoId)</td>
+    </tr>
+    <tr>
+     <th align="left">パスワード</th>
+     <td>$!escape.getText($!info.password)</td>
+    </tr>
+    <tr>
+     <th align="left">担当事業</th>
+     <td>
+      #foreach($list in $info.jigyoNameList)
+        #if($shinseiFormat.checkInList($info.jigyoValues, $!list.value))
+          $!escape.getText($!list.label)<br>
+        #end
+      #end
+     </td>
+    </tr>
+    <tr>
+     <th rowspan="2" align="left">氏名</th>
+     <td>（漢字等）（姓）$!escape.getText($!info.nameKanjiSei)　（名）$!escape.getText($!info.nameKanjiMei)</td>
+    </tr>
+    <tr>
+     <td>（フリガナ）（姓）$!escape.getText($!info.nameKanaSei)　（名）$!escape.getText($!info.nameKanaMei)</td>
+    </tr>
+    <tr>
+     <th align="left">部課名</th>
+     <td>$!escape.getText($!info.bukaName)</td>
+    </tr>
+    <tr>
+     <th align="left">備考</th>
+     <td>$!escape.getText($!info.biko)</td>
+    </tr>
+    <tr>
+     <th align="left">有効期限</th>
+     <td>$!escape.getText($!dateFormat.format($!info.yukoDate))</td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+<!-- 一覧用テーブルここまで-->
+
+<br>
+<!-- 本文ここまで -->
+
+        ## A hidden form field with the transaction token
+        <input type="hidden" name="$form.tokenName" value="$form.token">
+		##
+
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><input type="image" src="$path/images/bt_ok.gif" width=114 height=28 border="0" alt="OK"></td>
+       <td><a href="$link.setAction('/system/gyomutantoKanri/searchList')"><img src="$path/images/bt_cancel.gif" width=114 height=28 border="0" alt="キャンセル"></a></td>
+      </tr>
+     </table>
+    </div> 
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img1.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/system/logoff')"><IMG SRC="$path/images/footer_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=26 border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img3.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+     </tr>
+  </form>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+</body>
+</html>

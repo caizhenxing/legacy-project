@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="ResourceListSelectionDialog.showDerived" value="false"/>
+	<section name="SaveAsDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="15"/>
+		<item key="DIALOG_HEIGHT" value="555"/>
+		<item key="DIALOG_FONT_NAME" value="1|宋体|9|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|宋体"/>
+		<item key="DIALOG_Y_ORIGIN" value="-48"/>
+		<item key="DIALOG_WIDTH" value="525"/>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
+	</section>
+	<section name="org.eclipse.ui.views.task">
+	</section>
+	<section name="NewWizardAction">
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.jdt.ui.wizards.JavaProjectWizard"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.jdt.ui.java"/>
+			<item value="com.genuitec.eclipse.myeclipse/com.genuitec.eclipse.myeclipse.j2ee"/>
+		</list>
+	</section>
+	<section name="ExternalProjectImportWizard">
+		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID" value="true"/>
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="250"/>
+		<item key="DIALOG_HEIGHT" value="225"/>
+		<item key="DIALOG_FONT_NAME" value="1|宋体|9|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|宋体"/>
+		<item key="DIALOG_Y_ORIGIN" value="219"/>
+		<item key="DIALOG_WIDTH" value="525"/>
+	</section>
+	<section name="ResourceListSelectionDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="311"/>
+		<item key="DIALOG_HEIGHT" value="456"/>
+		<item key="DIALOG_FONT_NAME" value="1|宋体|9|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|宋体"/>
+		<item key="DIALOG_Y_ORIGIN" value="65"/>
+		<item key="DIALOG_WIDTH" value="402"/>
+	</section>
+	<section name="org.eclipse.ui.views.problem">
+	</section>
+</section>

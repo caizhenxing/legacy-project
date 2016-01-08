@@ -1,0 +1,47 @@
+<project name="jbpm.jboss.configuration" basedir="." default="install">
+
+  <!-- project specific properties -->
+  <property name="artifact.name" value="jbpm-jboss-configuration.zip" />
+  <property name="module.name" value="jboss" />
+  <property name="jbpm.root" value="../.." />
+  <property file="../version.properties" />
+
+  <!-- properties files -->
+  <property file="${user.home}/jbpm/build.properties" />
+  <property file="build.properties" />
+  <property file="${jbpm.root}/build/build.properties" />
+
+  <!-- import base project build file -->
+  <import file="${jbpm.root}/build/base.project.build.xml" />
+
+  <target name="package">
+    <ant antfile="${jboss.version}/build.xml" target="package" inheritall="false" />
+    <mkdir dir="target" />
+    <move file="${jboss.version}/target/jbpm-jboss-configuration.zip" todir="target" />
+  </target>
+  
+  <target name="install.jboss.and.configure.jbpm" description="installs jboss and configures jbpm in that jboss installation"
+          depends="install.jboss, create.jbpm.configuration" />
+
+  <target name="install.jboss" depends="clean.jboss.install" description="installs jboss from the repository into ${software.installation.dir}">
+    <unzip src="${local.repository}/jbossas/${lib.jboss.version}/lib/jboss.zip"  dest="${jboss.home}/.." />
+  </target>
+
+  <target name="clean.jboss.install" description="deletes the current jboss installation at ${jboss.home}">
+    <delete dir="${jboss.home}" />
+  </target>
+
+  <target name="create.jbpm.configuration" depends="package, clean.jboss.install" description="creates a jbpm configuration in the jboss installation in ${software.installation.dir}">
+    <delete dir="${jboss.home}/server/jbpm" />
+    <copy todir="${jboss.home}/server/jbpm">
+      <fileset dir="${jboss.home}/server/default">
+        <exclude name="data/**" />
+        <exclude name="log/**" />
+        <exclude name="tmp/**" />
+        <exclude name="work/**" />
+      </fileset>
+    </copy>
+    <unzip src="target/${artifact.name}" dest="${jboss.home}/server/jbpm" />
+  </target>
+
+</project>

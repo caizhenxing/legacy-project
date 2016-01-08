@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JPDL Core Plug-in
+Bundle-SymbolicName: org.jbpm.gd.jpdl.core;singleton:=true
+Bundle-Version: 3.1.0
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.wst.xml.core,
+ org.eclipse.wst.sse.core
+Bundle-Vendor: JBoss, Inc

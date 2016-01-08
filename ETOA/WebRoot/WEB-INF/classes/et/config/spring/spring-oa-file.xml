@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+
+<beans>
+<!-- 岗位信息管理 -->
+	<bean id="FileManagerService"
+		class="et.bo.oa.file.service.impl.FileManagerServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="cts">
+			<ref bean="FileManagerTreeService"/>
+		</property>
+	</bean>
+	
+	<bean name="/oa/file/fileManager"
+		class="et.bo.oa.file.action.FileManagerAction" singleton="true">
+		<property name="fms">
+			<ref bean="FileManagerService" />
+		</property>	
+		
+	</bean>
+	<bean id="FileManagerTreeService" class="excellence.common.classtree.impl.ClassTreeServiceImpl" singleton="true">
+		<property name="ctls">
+			<ref bean="FileManagerLoadService" />
+		</property>
+	</bean>
+	<bean id="FileManagerLoadService" class="et.bo.oa.file.service.impl.ClassTreeLoadServiceFileImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+</beans>

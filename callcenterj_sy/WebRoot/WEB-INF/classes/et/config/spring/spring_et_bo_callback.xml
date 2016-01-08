@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<beans>
+	
+	<bean name="/callback/callback" class="et.bo.callback.action.CallbackAction" scope="singleton">
+		<property name="callbackService">
+			<ref bean="CallbackService"/>
+		</property>
+		<property name="questionService">
+			<ref bean="QuestionService"/>
+		</property>
+	</bean>
+	<bean id="CallbackService" class="et.bo.callback.service.impl.CallbackServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+</beans>

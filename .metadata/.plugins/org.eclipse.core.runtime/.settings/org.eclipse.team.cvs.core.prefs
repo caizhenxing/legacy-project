@@ -1,0 +1,12 @@
+#Tue Aug 18 09:51:58 CST 2009
+repositories/%pserver%anonymous@anoncvs.forge.jboss.com%%cvsroot%jbpm/location=\:pserver\:anonymous@anoncvs.forge.jboss.com\:/cvsroot/jbpm
+repositories/%pserver%zhaoyifei@192.168.1.200%%cc/location=\:pserver\:zhaoyifei@192.168.1.200\:/cc
+repositories/%pserver%zhaoyifei@192.168.1.200%%oa/location=\:pserver\:zhaoyifei@192.168.1.200\:/oa
+repositories/%pserver%zhaoyifei@192.168.1.200%%excellence/location=\:pserver\:zhaoyifei@192.168.1.200\:/excellence
+repositories/%pserver%zhaoyifei@192.168.1.200%%callcenter/location=\:pserver\:zhaoyifei@192.168.1.200\:/callcenter
+repositories/%pserver%zhaoyifei@192.168.1.200%%java/location=\:pserver\:zhaoyifei@192.168.1.200\:/java
+repositories/%pserver%anonymous@examples.myeclipseide.com%%home%cvs%public%myeclipse%examples/location=\:pserver\:anonymous@examples.myeclipseide.com\:/home/cvs/public/myeclipse/examples
+repositories/%pserver%zhaoyifei@192.168.1.200%%forum/location=\:pserver\:zhaoyifei@192.168.1.200\:/forum
+eclipse.preferences.version=1
+repositories/%pserver%zhaoyifei@192.168.1.200%%website/location=\:pserver\:zhaoyifei@192.168.1.200\:/website
+repositories/%pserver%anonymous@cvs.sourceforge.net%%cvsroot%springframework/location=\:pserver\:anonymous@cvs.sourceforge.net\:/cvsroot/springframework

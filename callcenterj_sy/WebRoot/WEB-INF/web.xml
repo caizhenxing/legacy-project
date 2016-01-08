@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee   http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+  <servlet>
+    <servlet-name>action</servlet-name>
+    <servlet-class>excellence.framework.base.action.GBKActionServlet</servlet-class>
+    <init-param>
+      <param-name>config</param-name>
+      <param-value>/WEB-INF/struts-config.xml,
+				/WEB-INF/struts/struts_et_bo_staff.xml,
+				/WEB-INF/struts/struts_et_bo_sys_group.xml,
+				/WEB-INF/struts/struts_et_bo_sys_role.xml,
+				/WEB-INF/struts/struts_et_bo_sys_user.xml,
+				/WEB-INF/struts/struts_et_bo_sys_department.xml,
+				/WEB-INF/struts/struts_et_bo_sys_login.xml,
+				/WEB-INF/struts/struts_et_bo_sys_parameter.xml,
+				/WEB-INF/struts/struts_et_bo_sys_role.xml,
+				/WEB-INF/struts/struts-config-sys.xml,
+				/WEB-INF/struts/struts_et_bo_sys_leaf_leafRight.xml,
+				/WEB-INF/struts/struts_et_bo_sys_layerOrder.xml,
+				/WEB-INF/struts/struts_et_bo_sys_ivr.xml,
+				/WEB-INF/struts/struts_et_bo_ccIvrTreeVoiceDetail.xml,
+				/WEB-INF/struts/struts_et_bo_callcenter_bo_ivrdeploy.xml,
+				/WEB-INF/struts/struts_et_bo_callcenter_callinfirewall.xml,
+				/WEB-INF/struts/struts_et_bo_question.xml,
+				/WEB-INF/struts/struts_et_bo_sad.xml,
+				/WEB-INF/struts/struts_et_bo_priceinfo.xml,
+				/WEB-INF/struts/struts_et_bo_corpinfo.xml,
+				/WEB-INF/struts/struts_et_bo_caseinfo.xml,
+				/WEB-INF/struts/struts_et_bo_medical.xml,
+				/WEB-INF/struts/struts_et_bo_callback.xml,
+				/WEB-INF/struts/struts_et_bo_flow.xml,
+				/WEB-INF/struts/struts_et_bo_inquiry.xml,
+				/WEB-INF/struts/struts_et_bo_custinfo.xml,
+				/WEB-INF/struts/struts_et_bo_focusPursue.xml,
+				/WEB-INF/struts/struts_et_bo_markanainfo.xml,
+				/WEB-INF/struts/struts_et_bo_stat.xml,
+				/WEB-INF/struts/struts_et_bo_callcenter_portCompare.xml,
+				/WEB-INF/struts/struts_et_bo_yuyin.xml,
+				/WEB-INF/struts/struts_et_bo_callcenter_pbx2ivr.xml,
+				/WEB-INF/struts/struts_et_bo_sms_modermSend.xml,
+				/WEB-INF/struts/struts_et_bo_sms_sendAndReceive.xml,
+				/WEB-INF/struts/struts_et_bo_output.xml,
+				/WEB-INF/struts/struts_et_bo_callcenter_conf.xml,
+				/WEB-INF/struts/struts_et_bo_sys_voiceLeave.xml,
+				/WEB-INF/struts/struts_et_bo_callcenter_cclog.xml,
+				/WEB-INF/struts/struts_et_bo_callcenter_appraise.xml,
+				/WEB-INF/struts/struts_et_bo_callcenter_userInfo.xml,
+				/WEB-INF/struts/struts_et_bo_sys_playVoice.xml,
+				/WEB-INF/struts/struts_et_bo_messages.xml,
+				/WEB-INF/struts/struts_et_bo_fixedContact.xml,
+				/WEB-INF/struts/struts_et_bo_callcenter_orderMenu.xml,
+				/WEB-INF/struts/struts_et_bo_sms_columnInfo.xml,
+				/WEB-INF/struts/struts_et_bo_screen.xml,
+				/WEB-INF/struts/struts_et_bo_incommingInfo.xml,
+				/WEB-INF/struts/struts_et_bo_callcenter_callOutSet.xml,
+				/WEB-INF/struts/struts_et_bo_linkman.xml,
+				/WEB-INF/struts/struts_et_bo_screen_quickmessage.xml,
+				/WEB-INF/struts/struts_et_bo_event.xml,
+				/WEB-INF/struts/struts_et_bo_eventResult.xml,
+				/WEB-INF/struts/struts_et_bo_export.xml,
+				/WEB-INF/struts/struts_et_bo_yznztj.xml,
+				/WEB-INF/struts/struts_et_bo_quoteCircs.xml,
+				/WEB-INF/struts/struts_et_bo_callcenter_calloutlog.xml,
+				/WEB-INF/struts/struts_et_bo_linkmanPriceinfo.xml,
+				/WEB-INF/struts/struts_et_bo_expertgrouphotline.xml
+				</param-value>
+    </init-param>
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>3</param-value>
+    </init-param>
+    <init-param>
+      <param-name>detail</param-name>
+      <param-value>3</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <session-config>
+    <session-timeout>300</session-timeout>
+  </session-config>
+  <servlet>
+    <servlet-name>parameter</servlet-name>
+    <servlet-class>excellence.framework.base.action.ParameterServlet</servlet-class>
+    <init-param>
+      <param-name>path</param-name>
+      <param-value>/WEB-INF/classes/et/config/parameter/</param-value>
+    </init-param>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>DisplayChart</servlet-name>
+    <servlet-class>org.jfree.chart.servlet.DisplayChart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DisplayChart</servlet-name>
+    <url-pattern>/servlet/DisplayChart</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>staticServlet</servlet-name>
+    <servlet-class>et.bo.servlet.StaticServlet</servlet-class>
+    <load-on-startup>5</load-on-startup>
+  </servlet>
+  <servlet>
+    <description>load tree and ivr tree and other constanded var</description>
+    <servlet-name>ClassTreeLoadServlet</servlet-name>
+    <servlet-class>et.bo.servlet.ClassTreeLoadServlet</servlet-class>
+    <load-on-startup>6</load-on-startup>
+  </servlet>
+  <servlet>
+    <description>check the short message</description>
+    <servlet-name>SearchMessage</servlet-name>
+    <servlet-class>et.bo.servlet.SearchMessage</servlet-class>
+    <load-on-startup>7</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchMessage</servlet-name>
+    <url-pattern>/SearchMessage</url-pattern>
+  </servlet-mapping>
+  <!-- 专家信息 -->
+  <servlet>
+    <description>check the short message</description>
+    <servlet-name>GetExpertInfo</servlet-name>
+    <servlet-class>et.bo.servlet.GetExpertInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetExpertInfo</servlet-name>
+    <url-pattern>/GetExpertInfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>this is use for agent panel dynamic response</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>SearchOneFiledServlet</servlet-name>
+    <servlet-class>et.bo.servlet.SearchOneFiledServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ClassTreeLoadServlet</servlet-name>
+    <url-pattern>/servlet/classTreeLoad</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchOneFiledServlet</servlet-name>
+    <url-pattern>/searchOneFiledServlet</url-pattern>
+  </servlet-mapping>
+  <!-- 用于fck的，不可删除 -->
+  <servlet>
+    <servlet-name>Connector</servlet-name>
+    <servlet-class>net.fckeditor.connector.ConnectorServlet</servlet-class>
+    <load-on-startup>10</load-on-startup>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>CommonExcelServlet</servlet-name>
+    <servlet-class>et.bo.servlet.CommonExcelServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Connector</servlet-name>
+    <url-pattern>/fckeditor/editor/filemanager/connectors/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CommonExcelServlet</servlet-name>
+    <url-pattern>/commonExcelServlet</url-pattern>
+  </servlet-mapping>
+  <!-- 加载log4j文件配置 -->
+  <context-param>
+    <param-name>webAppRootKey</param-name>
+    <param-value>callcenterj_sy</param-value>
+  </context-param>
+  <context-param>
+    <param-name>log4jConfigLocation</param-name>
+    <param-value>/WEB-INF/classes/et/config/log4j/log4j.properties</param-value>
+  </context-param>
+  <context-param>
+    <param-name>log4jRefreshInterval</param-name>
+    <param-value>6000</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+  </listener>
+  <!-- end log4j 配置 -->
+  <!-- dwr配置 -->
+  <servlet>
+    <servlet-name>dwr-invoker</servlet-name>
+    <servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>FileUploadServlet</servlet-name>
+    <servlet-class>et.bo.fileUpload.FileUploadServlet</servlet-class>
+  </servlet>
+
+
+
+  <servlet-mapping>
+    <servlet-name>dwr-invoker</servlet-name>
+    <url-pattern>/dwr/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FileUploadServlet</servlet-name>
+    <url-pattern>/fileUploadServlet</url-pattern>
+  </servlet-mapping>
+
+  <!-- end dwr 配置 -->
+  <!--	<error-page>-->
+  <!--		<error-code>404</error-code>-->
+  <!--		<location>/sys/error.jsp</location>-->
+  <!--	</error-page>-->
+  <!--	<error-page>-->
+  <!--		<error-code>500</error-code>-->
+  <!--		<location>/sys/error.jsp</location>-->
+  <!--	</error-page>-->
+</web-app>
+

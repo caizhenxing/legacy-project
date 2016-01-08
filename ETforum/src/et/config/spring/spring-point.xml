@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!--  service begin -->	
+	<bean id="PointService"
+		class="et.bo.forum.point.service.impl.PointServiceImpl" singleton="true">
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>	
+		<property name="dao">
+			<ref bean="ForumDao" />
+		</property>
+	</bean>
+</beans>

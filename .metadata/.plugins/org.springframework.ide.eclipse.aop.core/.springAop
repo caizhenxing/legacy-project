@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="TestService"/>
+<aop-project name="callcenterj_sy"/>
+<aop-project name="webserviceTest"/>
+<aop-project name="testwebsphere"/>
+<aop-project name="chat"/>
+<aop-project name="SwingDemo"/>
+<aop-project name="jsps-kaken"/>
+<aop-project name="struts2"/>
+<aop-project name="TestEjb"/>
+<aop-project name="PCCApplet"/>
+<aop-project name="ETOA"/>
+<aop-project name="callcenter"/>
+<aop-project name="exp"/>
+<aop-project name="EtCallcenter"/>
+<aop-project name="ETforum"/>
+<aop-project name="ocelot"/>
+<aop-project name="website"/>
+<aop-project name="smsapi"/>
+<aop-project name="pcc"/>
+<aop-project name="jsonpluginzyf"/>
+<aop-project name="ETWorkFlow"/>
+<aop-project name="TestEjb3"/>
+</aop-reference-model>

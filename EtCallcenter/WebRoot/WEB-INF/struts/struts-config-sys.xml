@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+	<!-- 权限信息 -->
+		<form-bean name="RightInfo" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+								
+		</form-bean>
+		<!-- 部门信息-->
+	 <form-bean name="DepInfo" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      <form-property name="id" type="java.lang.String" />
+      <form-property name="name" type="java.lang.String" />
+      <form-property name="remark" type="java.lang.String" />
+      <form-property name="method" type="java.lang.String" />
+     
+      <form-property name="markId" type="java.lang.String" />
+     <form-property name="admin" type="java.lang.String" />
+     
+      <form-property name="tagShow" type="java.lang.String" />
+      <form-property name="parentId" type="java.lang.String" />
+      <form-property name="parentIdName" type="java.lang.String" />
+      
+    </form-bean>
+    <!--  参数信息-->
+	 <form-bean name="TreeInfo" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      <form-property name="id" type="java.lang.String" />
+      <form-property name="name" type="java.lang.String" />
+      <form-property name="remark" type="java.lang.String" />
+      <form-property name="method" type="java.lang.String" />
+     
+      <form-property name="markId" type="java.lang.String" />
+     <form-property name="procAlias" type="java.lang.String" />
+     <form-property name="tagSys" type="java.lang.String" />
+      <form-property name="domian" type="java.lang.String" />
+      <form-property name="tagShow" type="java.lang.String" />
+      <form-property name="parentId" type="java.lang.String" />
+      <form-property name="parentIdName" type="java.lang.String" />
+    </form-bean>
+	<!-- 模块信息-->
+	 <form-bean name="ModInfo" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      <form-property name="id" type="java.lang.String" />
+      <form-property name="name" type="java.lang.String" />
+      <form-property name="remark" type="java.lang.String" />
+      <form-property name="method" type="java.lang.String" />
+     
+      <form-property name="markId" type="java.lang.String" />
+      <form-property name="action" type="java.lang.String" />
+      <form-property name="icon" type="java.lang.String" />
+     
+      <form-property name="tagShow" type="java.lang.String" />
+      <form-property name="parentId" type="java.lang.String" />
+      <form-property name="parentIdName" type="java.lang.String" />
+    </form-bean>
+	<!-- 角色信息 -->
+		<form-bean name="roleform" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="name" type="java.lang.String" />
+			<form-property name="delMark" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />						
+		</form-bean>	
+	<!-- 组信息 -->
+		<form-bean name="groupform" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="name" type="java.lang.String" />
+			<form-property name="delMark" type="java.lang.String" />
+			<form-property name="freezeMark" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />						
+		</form-bean>	
+	<!-- 用户信息 -->	
+		<form-bean name="userform" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="userId" type="java.lang.String" />
+			<form-property name="sysRole" type="java.lang.String" />
+			<form-property name="sysGroup" type="java.lang.String" />
+			<form-property name="password" type="java.lang.String" />
+			<form-property name="repassword" type="java.lang.String" />	
+			<form-property name="repasswordAffirm" type="java.lang.String" />
+			<form-property name="userName" type="java.lang.String" />	
+			<form-property name="departmentId" type="java.lang.String" />				
+			<form-property name="deleteMark" type="java.lang.String" />			
+			<form-property name="freezeMark" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />	
+			<!-- user info -->
+			<form-property name="realName" type="java.lang.String" />	
+			<form-property name="sexId" type="java.lang.String" />	
+			<form-property name="identityKind" type="java.lang.String" />	
+			<form-property name="identityCard" type="java.lang.String" />	
+			<form-property name="birthday" type="java.lang.String" />	
+			<form-property name="countryId" type="java.lang.String" />	
+			<form-property name="provinceId" type="java.lang.String" />	
+			<form-property name="qq" type="java.lang.String" />	
+			<form-property name="bloodType" type="java.lang.String" />	
+			<form-property name="address" type="java.lang.String" />	
+			<form-property name="postalcode" type="java.lang.String" />	
+			<form-property name="mobile" type="java.lang.String" />	
+			<form-property name="finishSchool" type="java.lang.String" />	
+			<form-property name="speciality" type="java.lang.String" />	
+			<form-property name="workId" type="java.lang.String" />	
+			<form-property name="homepage" type="java.lang.String" />			
+		</form-bean>
+		<!-- 日至信息 -->
+		<form-bean name="logform" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="sysUser" type="java.lang.String" />
+			<form-property name="sysModule" type="java.lang.String" />
+			<form-property name="fdt" type="java.lang.String" />
+			<form-property name="ldt" type="java.lang.String" />
+			<form-property name="dt" type="java.lang.String" />
+			<form-property name="actorType" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />						
+			<form-property name="ip" type="java.lang.String" />
+		</form-bean>	
+		
+		<!-- 岗位信息 -->
+		<form-bean name="stationform" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="departmentid" type="java.lang.String" />
+			<form-property name="deppersonname" type="java.lang.String" />
+			<form-property name="deplevel" type="java.lang.String" />
+			<form-property name="depdescribe" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />						
+		</form-bean>	
+	</form-beans>
+	<global-exceptions />
+	<global-forwards>
+		<forward name="tologin" path="/message/tologin.jsp"/>
+		<forward name="operfail" path="/fail.jsp" />
+		<forward name="nologin" path="/cueLogin.jsp" />
+		<forward name="operSuccess" path="/collection/collectionSuccess.jsp" />
+		<forward name="success" path="/group/message/success.jsp" />
+		<forward name="error" path="/group/message/error.jsp" />
+	</global-forwards>
+	<action-mappings>
+		<!-- 权限操作-->
+		<action attribute="RightInfo" 
+				name="RightInfo" 
+				scope="request" 
+				path="/sys/right" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="group" path="/sys/right/grantGroup.jsp"/>
+			<forward name="user" path="/sys/right/grantUser.jsp"/>
+			
+			<forward name="error" path="/sys/error.jsp"/>
+			<forward name="success" path="/sys/success.jsp"/>
+		</action>
+	
+	
+	
+		<!-- 部门操作-->
+			
+		<action attribute="DepInfo" 
+				name="DepInfo" 
+				scope="request" 
+				path="/sys/dep" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main" path="/sys/dep/dep.jsp"/>
+			<forward name="info" path="/sys/dep/depInfo.jsp"/>
+			<forward name="update" path="/sys/dep/depInfo.jsp"/>
+			<forward name="insert" path="/sys/dep/depInsert.jsp"/>
+			<forward name="delete" path="/sys/dep.do?method=loadTree"/>
+			<forward name="error" path="/sys/error.jsp"/>
+			<forward name="success" path="/sys/success.jsp"/>
+			<forward name="todelete" path="/sys/dep/depdel.jsp"/>
+			<forward name="insertsuccess" path="/sys/dep.do?method=loadTree"/>
+			<forward name="select" path="/sys/dep/select.jsp"/>
+			<forward name="selectDep" path="/sys/dep/selectDep.jsp"/>
+			<forward name="selecttree" path="/sys/selecttree.jsp"/>
+		</action>
+		<!-- 参数操作-->
+			
+		<action attribute="TreeInfo" 
+				name="TreeInfo" 
+				scope="request" 
+				path="/sys/tree" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main" path="/sys/tree/tr.jsp"/>
+			<forward name="info" path="/sys/tree/trInfo.jsp"/>
+			<forward name="update" path="/sys/tree/trInfo.jsp"/>
+			<forward name="insert" path="/sys/tree/trInsert.jsp"/>
+			<forward name="delete" path="/sys/tree.do?method=loadTree"/>
+			<forward name="error" path="/sys/error.jsp"/>
+			<forward name="success" path="/sys/success.jsp"/>
+			<forward name="todelete" path="/sys/tree/treedel.jsp"/>
+			<forward name="insertsuccess" path="/sys/tree.do?method=loadTree"/>
+		</action>
+	
+		<!-- 模块操作-->
+			
+		<action attribute="ModInfo" 
+				name="ModInfo" 
+				scope="request" 
+				path="/sys/module" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main" path="/sys/module/module.jsp"/>
+			<forward name="info" path="/sys/module/moduleInfo.jsp"/>
+			<forward name="update" path="/sys/module/moduleInfo.jsp"/>
+			<forward name="insert" path="/sys/module/moduleInsert.jsp"/>
+			<forward name="delete" path="/sys/module.do?method=loadTree"/>
+			<forward name="todelete" path="/sys/module/moddel.jsp"/>
+			<forward name="error" path="/sys/error.jsp"/>
+			<forward name="success" path="/sys/success.jsp"/>
+			<forward name="insertsuccess" path="/sys/module.do?method=loadTree"/>
+		</action>
+	
+	
+		<!-- 组操作 -->
+		<action attribute="groupform" 
+				name="groupform" 
+				scope="request" 
+				path="/sys/group/GroupOper" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main" path="/sys/group/main.jsp"/>
+			<forward name="info" path="/sys/group/info.jsp"/>
+			<forward name="tosearch" path="/sys/group/toSearch.jsp"/>
+			<forward name="searchresult" path="/sys/group/searchResult.jsp"/>
+			<forward name="success" path="/sys/success.jsp" />
+			<forward name="error" path="/sys/error.jsp" />
+		</action>
+        <!-- 角色操作 -->
+		<action attribute="roleform"
+               name="roleform"
+               path="/sys/role/Role"
+               parameter="method"
+               scope="request"
+               type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="main"  path="/sys/role/roleManagerMain.jsp"/>
+           <forward name="query" path="/sys/role/roleManagerQuery.jsp"/>
+           <forward name="load"  path="/sys/role/roleManagerLoad.jsp"/>
+           <forward name="list"  path="/sys/role/roleManagerList.jsp"/>
+        </action>
+		<!-- 用户操作 -->
+		<action attribute="userform" 
+				name="userform" 
+				scope="request" 
+				path="/sys/user/UserOper" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main" path="/sys/user/main.jsp"/>
+			<forward name="info" path="/sys/user/info.jsp"/>
+			<forward name="toModifyPwd" path="/sys/user/modifyPwd/modifyPwd.jsp"/>
+			<forward name="toManagerModifyPwd" path="/sys/user/managerModifyPwd.jsp"/>
+			<forward name="modifyPwdSuccess" path="/sys/user/UserOper.do?method=toModifyPwd"/>
+			<forward name="tosearch" path="/sys/user/toSearch.jsp"/>
+			<forward name="searchresult" path="/sys/user/searchResult.jsp"/>
+			<forward name="success" path="/sys/success.jsp" />
+			<forward name="error" path="/sys/error.jsp" />
+		</action>
+		<!--  日至操作 -->
+		<action attribute="logform" 
+				name="logform" 
+				scope="request" 
+				path="/sys/log/LogOper" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main" path="/sys/log/main.jsp"/>	
+			<forward name="tosearch" path="/sys/log/toSearch.jsp"/>
+			<forward name="searchresult" path="/sys/log/searchResult.jsp"/>		
+			<forward name="success" path="/sys/success.jsp" />
+			<forward name="error" path="/sys/error.jsp" />
+		</action>
+		
+		<!--  岗位信息操作 -->
+		<action attribute="stationform" 
+				name="stationform" 
+				scope="request" 
+				path="/sys/station/station" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main" path="/sys/station/stationMain.jsp"/>	
+			<forward name="query" path="/sys/station/stationQuery.jsp"/>
+			<forward name="load" path="/sys/station/stationLoad.jsp"/>	
+			<forward name="list" path="/sys/station/stationList.jsp"/>	
+			<forward name="error" path="/sys/error.jsp" />
+			<forward name="station" path="/sys/station/station.jsp" />
+			<forward name="morestation" path="/sys/station/seeStation.jsp"/>
+		</action>		
+	</action-mappings>
+	
+
+	
+</struts-config>

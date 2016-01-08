@@ -1,0 +1,16 @@
+1、staticparameter.property 中增加三个参数
+
+###################### AwardHelp 数据库url ###############################
+AWARDHELPURL=jdbc:jtds:sqlserver://192.168.3.229:1433/callcenterj_sy;tds=8.0;lastupdatecount=true
+####AWARDHELPURL=jdbc:jtds:sqlserver://192.168.1.103:1433/ccj_sy;tds=8.0;lastupdatecount=true
+###################### AwardHelp 数据库username ###############################
+AWARDHELPUSERNAME=callcenterj_sy
+####AWARDHELPUSERNAME=sa
+###################### AwardHelp 数据库password ###############################
+AWARDHELPPASSWORD=callcenterj_sy
+####AWARDHELPPASSWORD=123
+
+为 日志管理-->幸运用户 模块下查询用连接数据库所用
+
+2、日志查询 下增加一个模块 群呼日志查询
+   动作为 /callcenterj_sy/callcenter/cclog/calloutLog.do?method=toCallOutMain

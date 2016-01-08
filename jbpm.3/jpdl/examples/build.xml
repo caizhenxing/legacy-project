@@ -1,0 +1,11 @@
+<project name="jbpm.jpdl.examples" basedir="." default="build">
+
+  <target name="clean">
+    <ant antfile="websale/build.xml" target="clean" inheritall="false" />
+  </target>
+
+  <target name="build">
+    <ant antfile="websale/build.xml" inheritall="false" />
+  </target>
+
+</project>

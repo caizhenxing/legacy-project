@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+
+<beans>
+
+<!-- conference -->
+
+	<bean id="conferenceService"
+		class="et.bo.oa.assissant.conference.service.impl.ConferenceServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="listValueService">
+			<ref bean="listValueService" />
+		</property>	
+		<property name="oawfs">
+			<ref bean="OaWorkFlowService" />
+		</property>
+	</bean>
+
+	<bean name="/oa/assissant/conference/conferOper"
+		class="et.bo.oa.assissant.conference.action.ConferenceAction" singleton="false">
+		<property name="conferenceService">
+			<ref bean="conferenceService" />
+		</property>	
+		<property name="absenceService">
+			<ref bean="AbsenceService" />
+		</property>		
+		<property name="meetingServiceImpl">
+			<ref bean="MeetingServiceImpl" />
+		</property>
+		<property name="oawfs">
+			<ref bean="OaWorkFlowService" />
+		</property>
+	</bean>
+<!-- /conference -->
+<!--  -->
+	
+	<bean id="assetService"
+		class="et.bo.oa.assissant.asset.service.impl.AssetServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="listValueService">
+			<ref bean="listValueService" />
+		</property>	
+		<property name="assetOperService">
+			<ref bean="assetOperService" />
+		</property>	
+	</bean>
+
+	<bean id="assetOperService"
+		class="et.bo.oa.assissant.asset.service.impl.AssetOperServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="listValueService">
+			<ref bean="listValueService" />
+		</property>	
+	</bean>
+
+	<bean name="/oa/assissant/asset/assetsOperAction"
+		class="et.bo.oa.assissant.asset.action.AssetOperAction" singleton="false">
+		<property name="assetService">
+			<ref bean="assetService" />
+		</property>	
+		
+		<property name="assetOperService">
+			<ref bean="assetOperService" />
+		</property>	
+		
+		<property name="listValueService">
+			<ref bean="listValueService" />
+		</property>		
+		
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+<!-- -->
+<bean id="listValueService"
+		class="et.bo.common.impl.ListValueServiceImpl" singleton="true">		
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		
+	</bean>
+
+</beans>

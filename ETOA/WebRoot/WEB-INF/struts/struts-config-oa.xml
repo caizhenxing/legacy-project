@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	<form-beans>
+	
+		<!-- 首页信息 -->
+		<form-bean name="mainForm" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+		    <form-property name="classid" type="java.lang.String" />
+			<form-property name="title" type="java.lang.String" />
+		    <form-property name="author" type="java.lang.String" />
+			<form-property name="updatetime" type="java.lang.String" />
+			<form-property name="content" type="java.lang.String" />
+			<form-property name="sendUser" type="java.lang.String" />
+            <!--   外出状态			-->
+            <form-property name="repairUser" type="java.lang.String" />
+            <form-property name="startDate" type="java.lang.String" />
+			<form-property name="endDate" type="java.lang.String" />
+			<form-property name="sTime" type="java.lang.String" />
+			<form-property name="eTime" type="java.lang.String" />
+			<form-property name="absenceType" type="java.lang.String" />
+			<form-property name="reason" type="java.lang.String" />
+            <!--			-->
+		</form-bean>
+		
+		<!-- 会议信息-->
+		<form-bean name="confereceForm" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="userid" type="java.lang.String" />
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="synodDate" type="java.lang.String" />
+			<form-property name="synodHour" type="java.lang.String" />
+			<form-property name="synodAddr" type="java.lang.String" />
+			<form-property name="synodOwner" type="java.lang.String" />
+			<form-property name="synodPeople" type="java.lang.String" />
+			<form-property name="synodTopic" type="java.lang.String" />
+			<form-property name="synodOutline" type="java.lang.String" />
+			<form-property name="applyTime" type="java.lang.String" />
+			<form-property name="flowId" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+			<form-property name="examId" type="java.lang.String" />
+			<form-property name="examResult" type="java.lang.String" />
+			<form-property name="endFlag" type="java.lang.String" />
+			<form-property name="endDoc" type="java.lang.String" />
+			<form-property name="synodFile" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 资产/业务信息-->
+		<form-bean name="assetsForm" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="assetsId" type="java.lang.String" />
+			<form-property name="assetsOper" type="java.lang.String" />
+			<form-property name="assetsName" type="java.lang.String" />
+			<form-property name="assetsNum" type="java.lang.String" />
+			<form-property name="assetsWithfor" type="java.lang.String" />
+			<form-property name="assetsType" type="java.lang.String" />
+			<form-property name="info_remark" type="java.lang.String" />
+			<!-- 操作 -->
+			<form-property name="operId" type="java.lang.String" />
+			<form-property name="operCode" type="java.lang.String" />
+			<form-property name="operName" type="java.lang.String" />
+			<form-property name="operType" type="java.lang.String" />
+			<form-property name="operTime" type="java.lang.String" />
+			<form-property name="assetsPrice" type="java.lang.String" />
+			<form-property name="operassetsNum" type="java.lang.String" />
+			<form-property name="inCompany" type="java.lang.String" />
+			<form-property name="inPeople" type="java.lang.String" />
+			<form-property name="outCompany" type="java.lang.String" />
+			<form-property name="outPeople" type="java.lang.String" />
+			<form-property name="sign" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+
+		</form-bean>
+		<!-- 通讯录Bean -->
+		<form-bean name="addrListForm" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="departId" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 缺勤 Bean -->
+		<form-bean name="AbsenceBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="userId" type="java.lang.String" />
+			<form-property name="repairUser" type="java.lang.String" />
+			<form-property name="repairDate" type="java.lang.String" />
+			<form-property name="repairTime" type="java.lang.String" />
+			<form-property name="repairReason" type="java.lang.String" />
+			<form-property name="absenceState" type="java.lang.String" />
+			<form-property name="department" type="java.lang.String" />
+			<form-property name="absenceUser" type="java.lang.String" />
+			<form-property name="absenceType" type="java.lang.String" />
+			<form-property name="startDate" type="java.lang.String" />
+			<form-property name="endDate" type="java.lang.String" />
+			<form-property name="sTime" type="java.lang.String" />
+			<form-property name="eTime" type="java.lang.String" />
+			<form-property name="reason" type="java.lang.String" />
+			<!-- 人员选择 -->
+			<form-property name="departList" type="java.lang.String" />
+			<form-property name="userFirst" type="java.lang.String" />
+			<form-property name="userTwo" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 考勤查询 Bean -->
+		<form-bean name="workCheckBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="employeeId" type="java.lang.String" />
+			<form-property name="repairUser" type="java.lang.String" />
+			<form-property name="absenceType" type="java.lang.String" />
+			<form-property name="startT" type="java.lang.String" />
+			<form-property name="endT" type="java.lang.String" />
+			<form-property name="checkDate" type="java.lang.String" />
+            <!--	星期		-->
+            <form-property name="week" type="java.lang.String" />
+            <!--   	迟到		-->
+			<form-property name="cz" type="java.lang.String" />
+			<!--   	早退		-->
+			<form-property name="zt" type="java.lang.String" />
+			<!--   	请假		-->
+			<form-property name="qj" type="java.lang.String" />
+			<!--   	外出		-->
+			<form-property name="wc" type="java.lang.String" />
+			<!--   	出差		-->
+			<form-property name="cc" type="java.lang.String" />
+			<!--    未签到		-->
+			<form-property name="weiqiandao" type="java.lang.String" />
+			<!--   	迟到标志		-->
+			<form-property name="later" type="java.lang.String" />
+			<!--   	早退标志		-->
+			<form-property name="early" type="java.lang.String" />
+			<!--    未签到标志		-->
+			<form-property name="nosign" type="java.lang.String" />
+			<form-property name="department" type="java.lang.String" />
+			<form-property name="repairReason" type="java.lang.String" />
+			<form-property name="repairTime" type="java.lang.String" />
+			<form-property name="startDate" type="java.lang.String" />
+			<form-property name="endDate" type="java.lang.String" />
+			<form-property name="sTime" type="java.lang.String" />
+			<form-property name="eTime" type="java.lang.String" />
+			<form-property name="reason" type="java.lang.String" />
+		</form-bean>
+		
+	</form-beans>
+	<global-exceptions />
+	<global-forwards>
+		<forward name="tologin" path="/message/tologin.jsp" />
+	</global-forwards>
+	<action-mappings>
+	
+		<!-- 首页操作-->
+		<action attribute="mainForm" name="mainForm" scope="request" path="/oa/mainOper" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method">
+			<forward name="mainPage" path="/oa/main/OperMain.jsp" />
+			<forward name="messagePage" path="/oa/main/nowMessage.jsp" />
+			<forward name="newsList" path="/oa/main/newsMore.jsp" />
+			<forward name="aficheList" path="/oa/main/aficheMore.jsp" />
+			<forward name="newsInfo" path="/oa/main/newsInfo.jsp" />
+			<forward name="emailList" path="/oa/main/emailMore.jsp" />
+			<forward name="planMore" path="/plan/list.jsp" />
+			<forward name="toGetOutStateList" path="/oa/main/outStateInfo.jsp" />
+			<forward name="toGetAllOutStateList" path="/oa/main/outStateMore.jsp" />
+			<forward name="emailInfo" path="/oa/main/emailInfo.jsp"/>
+		</action>
+		
+		<!-- 权限操作-->
+		<action attribute="confereceForm" name="confereceForm" scope="request" path="/oa/assissant/conference/conferOper" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method">
+			<forward name="group" path="/sys/right/grantGroup.jsp" />
+			<forward name="user" path="/sys/right/grantUser.jsp" />
+			<forward name="error" path="/sys/error.jsp" />
+			<forward name="success" path="/sys/success.jsp" />
+		</action>
+		<!-- 资产操作 -->
+		<action attribute="assetsForm" name="assetsForm" scope="request" path="/oa/assissant/asset/assetsOperAction" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method">
+			<forward name="group" path="/sys/right/grantGroup.jsp" />
+			<forward name="user" path="/sys/right/grantUser.jsp" />
+			<forward name="error" path="/sys/error.jsp" />
+			<forward name="success" path="/sys/success.jsp" />
+		</action>
+
+		<!-- 通讯录操作 -->
+		<action attribute="addrListForm" name="addrListForm" scope="request" path="/oa/addrList" type="org.springframework.web.struts.DelegatingActionProxy" parameter="method">
+			<forward name="main" path="/oa/message/addressList/addrMain.jsp" />
+			<forward name="query" path="/oa/message/addressList/addressQuery.jsp" />
+			<forward name="list" path="/oa/message/addressList/addressList.jsp" />
+			<forward name="addrListInfo" path="/oa/message/addressList/messageInfo.jsp" />
+			<forward name="error" path="/sys/error.jsp" />
+			<forward name="success" path="/sys/success.jsp" />
+		</action>
+		
+<!-- # 考勤管理 # -->
+		<!-- 考勤 Action -->
+		<action path="/oa/checkWork" attribute="workCheckBean" type="org.springframework.web.struts.DelegatingActionProxy" name="workCheckBean" parameter="method" scope="request">
+			<forward name="mainPage" path="/oa/checkwork/workCheckMain.jsp" />
+			<forward name="error" path="/oa/checkwork/checkworkError.jsp" />
+			<forward name="checkWrokQuery" path="/oa/checkwork/workCheckSelect.jsp" />
+			<forward name="checkWorkList" path="/oa/checkwork/workCheckList.jsp" />
+			<forward name="checkLaterOrEarlyList" path="/oa/checkwork/workCheckLaterOrEarlyList.jsp" />
+		</action>
+		<!-- 缺勤 Action -->
+		<action path="/oa/absenceWork" attribute="AbsenceBean" type="org.springframework.web.struts.DelegatingActionProxy" name="AbsenceBean" parameter="method" scope="request">
+			<forward name="mainPage" path="/oa/checkwork/absenceMain.jsp" />
+			<forward name="qingjiaMain" path="/oa/checkwork/qingjiaMain.jsp" />
+			<forward name="waichuMain" path="/oa/checkwork/waichuMain.jsp" />
+			<forward name="chuchaiMain" path="/oa/checkwork/chuchaiMain.jsp" />
+			<forward name="addAbsence" path="/oa/checkwork/add-absence.jsp" />
+			<forward name="addResign" path="/oa/checkwork/re-sign.jsp" />
+			<forward name="selectEmployee" path="/oa/checkwork/selectEmployee.jsp" />
+			<forward name="absenceQuery" path="/oa/checkwork/absenceSelect.jsp" />
+			<forward name="absenceList" path="/oa/checkwork/absenceList.jsp" />
+		</action>
+	</action-mappings>
+
+	
+
+</struts-config>

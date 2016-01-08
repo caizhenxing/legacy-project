@@ -1,0 +1,73 @@
+if (CurrentPage == null) '{
+    	var CurrentPage = '{};
+		}     
+	CurrentPage.query = function() '{
+		if (document.getElementsByName("paginater.page") != null) '{
+	    	document.getElementsByName("paginater.page").value = 0;
+			}
+		FormUtils.post(document.forms[0], {5}<c:url value="{0}"/>{5});
+		}
+
+	
+		CurrentPage.remove = function(oid) '{
+			if (!confirm("是否要删除选择的记录?")) '{
+				return false;
+			} 
+			FormUtils.post(document.forms[0], {5}<c:url value = "{1}"/>{5}+ oid );
+		}
+		CurrentPage.selectAll=function() '{
+			if(f.chkall.checked==true)'{
+				for (var i = 0; i < f.length; i++) '{
+					if (f[i].id == "rid") '{
+						f[i].checked = b;
+						}
+					}
+			}else'{
+				for (var i = 0; i < f.length; i++) '{
+					if (f[i].id == "rid") '{
+						f[i].checked = false;
+					}
+				}
+			}
+		}
+			function countSelected() '{
+			    var c = 0;
+			    for (var i = 0; i < f.length; i++) '{
+			        if (f[i].id == "rid") '{
+			           if (f[i].checked) '{
+			           	c++;
+			            }
+			        }
+				}
+			    return c;
+			}
+		CurrentPage.deleteall = function() '{			
+		 var str="";
+		 var dd=document.getElementsByName({5}detailIds{5});
+		
+			for(var i=0;i<dd.length;i++)'{
+				if(dd[i].checked==true)'{
+				
+				var oid1=dd[i].value;
+			
+				str+=oid1+"$";
+				}
+			}
+			if (str==""||str==null)'{
+				alert("请选择删除项");
+			}else'{
+				if (!confirm("你确定要全部删除？ ")) '{
+			    	return false;
+		    	}
+			
+				$({5}step{5}).value = "deleteAll";
+				FormUtils.post(document.forms[0], {5}<c:url value="{2}"/>{5}+str);
+			}
+				
+		}
+		
+		CurrentPage.create = function () '{
+		$("oid").value = "";
+		TableSort.setNoSelect();
+		TableSort.dblClick();
+	}	

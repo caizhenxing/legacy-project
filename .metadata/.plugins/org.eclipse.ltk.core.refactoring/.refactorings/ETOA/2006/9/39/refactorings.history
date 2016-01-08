@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource '/ETOA/WebRoot/images/bgpt.GIF' to 'bgpt.gif'&#13;&#10;- Original element: 'bgpt.GIF'" description="Rename resource 'bgpt.GIF'" flags="7" id="org.eclipse.jdt.ui.rename.resource" input="WebRoot/images/bgpt.GIF" name="bgpt.gif" stamp="1159146527875" version="1.0"/>
+</session>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<package name="com.cc.sys" extends="base" namespace="/sys">
+
+<action name="module/*" class="ModuleTree" method="{1}">
+<result  name="module">/main/tree.jsp</result>
+<result  name="entryS">/sys/module/moduleEntry.jsp</result>
+<result  name="loadS">/sys/module/moduleInfo.jsp</result>
+<result  name="grantInfo">/sys/group/grantInfo.jsp</result>
+</action>
+
+<action name="user/*" class="CommonAction" method="{1}">
+<result  name="entryS">/sys/user/userEntry.jsp</result>
+<result  name="listS">/sys/user/userList.jsp</result>
+<result  name="loadS">/sys/user/userInfo.jsp</result>
+</action>
+<action name="dep/*" class="TreeAction" method="{1}">
+<result  name="entryS">/sys/dep/depEntry.jsp</result>
+<result  name="loadS">/sys/dep/depInfo.jsp</result>
+</action>
+<action name="tree/*" class="TreeAction" method="{1}">
+<result  name="entryS">/sys/tree/treeEntry.jsp</result>
+<result  name="loadS">/sys/tree/treeInfo.jsp</result>
+</action>
+<action name="log/*" class="CommonAction" method="{1}">
+<result  name="entryS">/sys/log/logEntry.jsp</result>
+<result  name="listS">/sys/log/logList.jsp</result>
+</action>
+<action name="group/*" class="CommonAction" method="{1}">
+<result  name="entryS">/sys/group/groupEntry.jsp</result>
+<result  name="listS">/sys/group/groupList.jsp</result>
+</action>
+</package>
+</struts>

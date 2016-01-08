@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="GB18030"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+	>
+	<bean id="CommonAction" class="base.zyf.web.crud.action.CommonAction">
+	<property name="cs"><ref bean="common.CommonCURD"/></property>
+	</bean>
+	<bean id="TreeAction" class="com.cc.sys.tree.action.TreeAction">
+	<property name="cs"><ref bean="common.CommonCURD"/></property>
+	</bean>
+</beans>

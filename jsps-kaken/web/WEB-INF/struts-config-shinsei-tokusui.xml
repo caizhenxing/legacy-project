@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="WINDOWS-31J"?>
+
+<!DOCTYPE struts-config PUBLIC 
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+  <form-beans>
+    <!-- ログイン --> 
+    <form-bean name="logonForm" type="jp.go.jsps.kaken.web.logon.LogonForm"/>
+    <!-- Password変更 -->
+    <form-bean name="passwordChangeForm" type="jp.go.jsps.kaken.web.shinsei.passwordChange.PasswordChangeForm"/>
+    <form-bean name="shinseiForm" type="jp.go.jsps.kaken.web.shinsei.ShinseiForm"/>
+    <form-bean name="simpleShinseiForm" type="jp.go.jsps.kaken.web.shinsei.SimpleShinseiForm"/>
+    
+    <!-- [共通]メニュー→一覧表示用 -->    
+    <form-bean name="baseSearchForm" type="jp.go.jsps.kaken.web.struts.BaseSearchForm"/>
+    <!-- 事業管理 -->    
+    <form-bean name="jigyoKanriForm" type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.JigyoKanriForm"/>
+ 
+  </form-beans>
+  
+  <global-exceptions>
+    <exception handler="jp.go.jsps.kaken.web.struts.ApplicationExceptionHandler"
+               key="errors.application" path="/pages/common/appError.vm"
+               scope="request"
+               type="jp.go.jsps.kaken.model.exceptions.ApplicationException"/>
+    <exception handler="jp.go.jsps.kaken.web.struts.SystemExceptionHandler"
+               key="errors.system" path="/pages/common/sysError.vm"
+               type="jp.go.jsps.kaken.model.exceptions.SystemException"/>
+    <exception handler="jp.go.jsps.kaken.web.struts.ApplicationExceptionHandler" 
+               key="errors.fileio" path="/pages/common/downloadError.vm"
+               scope="request"
+               type="jp.go.jsps.kaken.model.exceptions.FileIOException"/>
+  </global-exceptions>
+  
+  <global-forwards>
+    <forward name="session" path="/pages/common/timeoutError.vm" redirect="false"/>
+    <forward name="token" path="/tokenError.do" redirect="false"/>
+    <forward name="welcome" path="/logon.do" redirect="false"/>
+  </global-forwards>
+  
+  <action-mappings type="jp.go.jsps.kaken.web.struts.ActionMapping">
+    <!-- ### ログアウト ### --> 
+    <action path="/logoff" scope="request"
+            type="jp.go.jsps.kaken.web.logon.LogoffAction" unknown="false"
+            validate="false">
+      <set-property property="logonCheck" value="false"/>
+      <set-property property="description" value="ログアウト"/>
+      <forward name="success" path="/logon.do" redirect="false"/>
+    </action>
+    <!-- ### ログイン ### --> 
+    <action path="/logon" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="true"
+            validate="false">
+      <set-property property="logonCheck" value="false"/>
+      <set-property property="description" value="ログイン"/>
+      <forward name="success" path="/pages/logon/logon.vm" redirect="false"/>
+    </action>
+    <action path="/logonCheck" scope="request" name="logonForm"
+            parameter="shinseisha.logon.service"
+            type="jp.go.jsps.kaken.web.logon.LogonCheckAction"
+            unknown="false" validate="true" input="/pages/logon/logon.vm">
+      <set-property property="logonCheck" value="false"/>
+      <set-property property="memoryCheck" value="true"/>
+      <set-property property="description" value="ログイン完了"/>
+      <forward contextRelative="false" name="success" path="/showMainMenu.do"
+               redirect="false"/>
+    </action>
+    <action path="/showMainMenu" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="申請者向けメニュー"/>
+      <forward name="success" path="/pages/menu/mainMenu.vm" redirect="false"/>
+    </action>
+
+   <!-- ### 共通 ### --> 
+    <action path="/tokenError" scope="request"
+            type="jp.go.jsps.kaken.web.struts.TokenErrorAction" unknown="false"
+            validate="false">
+    </action>
+
+    <!-- ### Password変更 ### -->
+    <action path="/passwordChange" scope="session" name="passwordChangeForm"
+            type="jp.go.jsps.kaken.web.shinsei.passwordChange.ChangeAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="Password変更"/>
+      <forward name="success" path="/pages/passwordChange/change.vm" redirect="false"/>
+    </action>
+    <action path="/passwordChangeSave" scope="session" name="passwordChangeForm"
+            type="jp.go.jsps.kaken.web.shinsei.passwordChange.ChangeSaveAction"
+            unknown="false" validate="true" input="/pages/passwordChange/change.vm">
+      <set-property property="description" value="Password変更完了"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/passwordChange/changeSave.vm" redirect="false"/>
+    </action>    
+    
+    <action path="/appendFiles" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/pages/edit/appendFiles.vm" redirect="false"/>
+    </action>
+    <action path="/checkTemporary" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/pages/edit/checkTemporary.vm"
+               redirect="false"/>
+    </action>
+
+<!-- ======================================================================= -->    
+    <!-- 受付中基盤事業以外の事業一覧 -->   
+    <action path="/searchList" scope="request" name="baseSearchForm"
+            type="jp.go.jsps.kaken.web.shinsei.SearchListAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/pages/new/searchList.vm"
+               redirect="false"/>
+      <set-property property="description" value="受付中公募事業一覧"/>
+    </action>
+    
+    <!-- 受付中基盤事業一覧 -->   
+    <action path="/searchListKiban" scope="request" name="baseSearchForm"
+            type="jp.go.jsps.kaken.web.shinsei.SearchListKibanAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/pages/new/searchListKiban.vm"
+               redirect="false"/>
+      <set-property property="description" value="受付中基盤事業一覧"/>
+    </action>
+    
+    <!-- 受付中公募事業一覧・申請内容ファイルフォーマットダウンロード -->   
+    <action path="/downloadFile" scope="session" name="jigyoKanriForm"
+            type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.RegDownloadFileAction"
+            unknown="false" validate="false" >
+      <set-property property="description"
+                    value="受付中公募事業一覧・応募内容ファイルフォーマットダウンロード"/>
+    </action>
+    
+    <!-- 申請書入力画面振り分けアクション -->
+    <action path="/dispatchApplication" scope="session" name="shinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.DispatchApplicationAction" unknown="false"
+            validate="false">
+      <!-- 特推 -->
+      <forward name="00011" path="/pages/edit/inputApplication01.vm" redirect="false"/>
+      <!-- 学創（非公募） -->
+      <forward name="00521" path="/pages/edit/inputApplication52.vm" redirect="false"/>
+      <!-- 学創（公募） -->
+      <forward name="00522" path="/pages/edit/inputApplication52.vm" redirect="false"/>
+      <!-- 基盤研究(S) -->
+      <forward name="00031" path="/pages/edit/inputApplication03.vm" redirect="false"/>
+      <!-- 基盤研究(A)(一般) -->
+      <forward name="00041" path="/pages/edit/inputApplication04_1.vm" redirect="false"/>
+      <!-- 基盤研究(A)(海外学術調査) -->
+      <forward name="00043" path="/pages/edit/inputApplication04_3.vm" redirect="false"/>
+      <!-- 基盤研究(B)(一般) -->
+      <forward name="00051" path="/pages/edit/inputApplication05_1.vm" redirect="false"/>
+      <!-- 基盤研究(B)(海外学術調査) -->
+      <forward name="00053" path="/pages/edit/inputApplication05_3.vm" redirect="false"/>
+      <!-- 基盤研究(C)(一般) -->
+      <forward name="00061" path="/pages/edit/inputApplication06_1.vm" redirect="false"/>
+      <!-- 基盤研究(C)(企画調査) -->
+      <forward name="00062" path="/pages/edit/inputApplication06_2.vm" redirect="false"/>
+      <!-- 萌芽研究 -->
+      <forward name="00111" path="/pages/edit/inputApplication11.vm" redirect="false"/>
+      <!-- 若手研究(A) -->
+      <forward name="00121" path="/pages/edit/inputApplication12.vm" redirect="false"/>
+      <!-- 若手研究(B) -->
+      <forward name="00131" path="/pages/edit/inputApplication13.vm" redirect="false"/>
+      <set-property property="description" value="申請書入力画面振り分けアクション"/>
+    </action>
+     
+    <!-- インフォメーションからの申請書入力画面振り分けアクション -->
+    <action path="/dispatchApplicationKiban" scope="session" name="shinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.DispatchApplicationAction" unknown="false"
+            validate="false">
+      <!-- 基盤研究(S) -->
+      <forward name="00031" path="/pages/information/applicationInformation03.vm" redirect="false"/>
+      <!-- 基盤研究(A)(一般) -->
+      <forward name="00041" path="/pages/information/applicationInformation04_1.vm" redirect="false"/>
+      <!-- 基盤研究(A)(海外学術調査) -->
+      <forward name="00043" path="/pages/information/applicationInformation04_3.vm" redirect="false"/>
+      <!-- 基盤研究(B)(一般) -->
+      <forward name="00051" path="/pages/information/applicationInformation05_1.vm" redirect="false"/>
+      <!-- 基盤研究(B)(海外学術調査) -->
+      <forward name="00053" path="/pages/information/applicationInformation05_3.vm" redirect="false"/>
+      <!-- 基盤研究(C)(一般) -->
+      <forward name="00061" path="/pages/information/applicationInformation06_1.vm" redirect="false"/>
+      <!-- 基盤研究(C)(企画調査) -->
+      <forward name="00062" path="/pages/information/applicationInformation06_2.vm" redirect="false"/>
+      <!-- 萌芽研究 -->
+      <forward name="00111" path="/pages/information/applicationInformation11.vm" redirect="false"/>
+      <!-- 若手研究(A) -->
+      <forward name="00121" path="/pages/information/applicationInformation12.vm" redirect="false"/>
+      <!-- 若手研究(B) -->
+      <forward name="00131" path="/pages/information/applicationInformation13.vm" redirect="false"/>
+      <set-property property="description" value="基盤申請書入力画面振り分けアクション"/>
+    </action>
+    
+    <!-- 基盤申請書新規入力画面生成アクション -->
+    <action path="/inputApplicationKiban" scope="session" name="shinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.InputApplicationAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/dispatchApplicationKiban.do"
+               redirect="false"/>
+      <set-property property="description" value="基盤申請書新規入力画面生成アクション"/>
+    </action>
+    <!-- 申請書新規入力画面生成アクション -->
+    <action path="/inputApplication" scope="session" name="shinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.InputApplicationAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/dispatchApplication.do"
+               redirect="false"/>
+      <set-property property="description" value="申請書新規入力画面生成アクション"/>
+    </action>
+    
+    <!-- 申請書修正入力画面生成アクション -->
+    <action path="/updateApplication" scope="session" name="shinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.UpdateApplicationAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/dispatchApplication.do"
+               redirect="false"/>
+      <set-property property="description" value="申請書修正入力画面生成アクション"/>
+    </action>
+    
+    <!-- 研究組織表入力画面リダイレクトアクション -->
+    <action path="/kenkyuSoshikiListView" scope="session" name="shinseiForm"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/pages/edit/kenkyuSoshikiList.vm"
+               redirect="false"/>
+      <set-property property="description" value="研究組織表入力画面リダイレクトアクション"/>
+    </action>  
+
+    <!-- 研究組織表追加アクション -->
+    <action path="/addKenkyuSoshiki" scope="session" name="shinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.kenkyusoshiki.AddKenkyuSoshikiAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/pages/edit/kenkyuSoshikiList.vm"
+               redirect="false"/>
+      <forward name="failure" path="/pages/edit/kenkyuSoshikiList.vm"
+               redirect="false"/>
+      <set-property property="description" value="研究組織表追加アクション"/>
+    </action>  
+
+    <!-- 研究組織表削除アクション -->
+    <action path="/delKenkyuSoshiki" scope="session" name="shinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.kenkyusoshiki.DelKenkyuSoshikiAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/pages/edit/kenkyuSoshikiList.vm"
+               redirect="false"/>
+      <set-property property="description" value="研究組織表削除アクション"/>
+    </action>  
+
+    <!-- 研究組織表登録アクション -->
+    <action path="/regKenkyuSoshiki" scope="session" name="shinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.kenkyusoshiki.RegKenkyuSoshikiAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/onLoadClose.html"
+               redirect="false"/>
+      <set-property property="description" value="研究組織表登録アクション"/>
+    </action>  
+
+    <!-- アップロードファイルアクション -->
+    <action path="/uploadFile" scope="session" name="shinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.UploadFileAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/tmp.html"
+               redirect="false"/>
+      <set-property property="description" value="アップロードファイルアクション"/>
+    </action>
+    
+    <!-- 申請一時保存アクション -->
+    <action path="/transientSaveApplication" scope="session" name="shinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.TransientSaveApplicationAction" unknown="false"
+            validate="true" input="/dispatchApplication.do" parameter="synchronized">
+      <forward name="success" path="/pages/edit/transientSaveOk.vm"
+               redirect="false"/>
+      <forward name="failure" path="/dispatchApplication.do"
+               redirect="false"/>
+      <set-property property="description" value="申請一時保存アクション"/>
+    </action>
+    
+    <!-- 申請本登録処理振り分けアクション -->
+    <action path="/dispatchRegistProcess" scope="session" name="shinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.DispatchApplicationAction" unknown="false"
+            validate="true" input="/dispatchApplication.do" parameter="synchronized">
+      <!-- 特推 -->
+      <forward name="00011" path="/registApplication.do" redirect="false"/>
+      <forward name="00031" path="/registApplication.do" redirect="false"/>
+      <!-- 学創（非公募） -->
+      <forward name="00521" path="/pages/edit/confirmKanrenbunya.vm" redirect="false"/>
+      <!-- 学創（公募） -->
+      <forward name="00522" path="/registApplication.do" redirect="false"/>
+      <!-- 基盤研究(S) -->
+      <!-- <forward name="00031" path="/registApplication.do" redirect="false"/> -->
+      <!-- 基盤研究(A)(一般) -->
+      <forward name="00041" path="/registApplication.do" redirect="false"/>
+      <!-- 基盤研究(A)(海外学術調査) -->
+      <forward name="00043" path="/registApplication.do" redirect="false"/>
+      <!-- 基盤研究(B)(一般) -->
+      <forward name="00051" path="/registApplication.do" redirect="false"/>
+      <!-- 基盤研究(B)(海外学術調査) -->
+      <forward name="00053" path="/registApplication.do" redirect="false"/>
+      <!-- 基盤研究(C)(一般) -->
+      <forward name="00061" path="/registApplication.do" redirect="false"/>
+      <!-- 基盤研究(C)(企画調査) -->
+      <forward name="00062" path="/registApplication.do" redirect="false"/>
+      <!-- 萌芽研究 -->
+      <forward name="00111" path="/registApplication.do" redirect="false"/>
+      <!-- 若手研究(A) -->
+      <forward name="00121" path="/registApplication.do" redirect="false"/>
+      <!-- 若手研究(B) -->
+      <forward name="00131" path="/registApplication.do" redirect="false"/>
+      <set-property property="description" value="申請本登録処理振り分けアクション"/>
+    </action>
+
+    <!-- 申請本登録アクション -->
+    <action path="/registApplication" scope="session" name="shinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.RegistApplicationAction" unknown="false"
+            validate="true" input="/dispatchApplication.do" parameter="synchronized">
+      <forward name="success" path="/pages/edit/convertApplication.vm"
+               redirect="false"/>
+      <forward name="failure" path="/dispatchApplication.do"
+               redirect="false"/>
+      <set-property property="description" value="申請本登録アクション"/>
+    </action>
+
+    <!-- 申請書ファイル変換アクション -->
+    <action path="/convertApplication" scope="session" name="shinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.ConvertApplicationAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/forwardConfirmView.do" 
+               redirect="false"/>
+      <forward name="failure" path="/dispatchApplication.do"
+               redirect="false"/>
+      <set-property property="description" value="申請書ファイル変換アクション"/>
+    </action>
+
+    <!-- 申請書確認画面リダイレクトアクション -->
+    <action path="/forwardConfirmView" scope="request" name="simpleShinseiForm"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/pages/edit/confirmApplication.vm"
+               redirect="false"/>
+      <set-property property="description" value="申請書確認画面リダイレクトアクション"/>
+    </action>   
+
+    <!-- 申請書削除確認アクション -->
+    <action path="/deleteConfirm" scope="request" name="simpleShinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.DeleteConfirmAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/pages/edit/deleteConfirm.vm"
+               redirect="false"/>
+      <set-property property="description" value="申請書削除確認アクション"/>
+    </action>
+
+    <!-- 申請書削除アクション -->
+    <action path="/deleteSave" scope="request" name="simpleShinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.DeleteSaveAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/processStatusList.do"
+               redirect="false"/>
+      <set-property property="description" value="申請書削除アクション"/>
+    </action>
+
+    <!-- 申請書PDFファイルダウンロードアクション -->
+    <action path="/downloadPdf" scope="request" name="simpleShinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.DownloadPdfAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="申請書PDFファイルダウンロードアクション"/>
+    </action>
+
+    <!-- 申請書確認処理アクション -->
+    <action path="/confirmApplication" scope="request" name="simpleShinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.ConfirmApplicationAction"
+            unknown="false" validate="false">
+      <forward name="success" path="/pages/edit/confirmApplicationOk.vm"
+               redirect="false"/>
+      <set-property property="description" value="申請書確認処理アクション"/>
+    </action>
+
+    <!-- 申請書処理状況アクション -->
+    <action path="/processStatusList" scope="request"
+            type="jp.go.jsps.kaken.web.shinsei.ProcessStatusListAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/pages/list/processStatusList.vm"
+               redirect="false"/>
+      <set-property property="description" value="申請書処理状況アクション"/>
+    </action>    
+<!-- ======================================================================= -->    
+
+  </action-mappings>
+
+  <controller processorClass="jp.go.jsps.kaken.web.struts.RequestProcessor"/>
+  <message-resources null="false"
+                     parameter="jp.go.jsps.kaken.web.resources.Application"/>
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property property="pathnames"
+                  value="/WEB-INF/validator-rules.xml
+                        ,/WEB-INF/validation-default.xml
+                        ,/WEB-INF/validation-shinsei-tokusui.xml"/>
+  </plug-in>
+</struts-config>

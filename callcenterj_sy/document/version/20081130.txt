@@ -1,0 +1,17 @@
+1，安装TTS成功。
+2，修改配置文件 staticparameter.property
+#####################服务器ip地址############################
+serverip=192.168.3.221
+#####################ivr多语音播报音频文件根路径##########################
+ivrmorevoicepath=Z:\\TTS
+######################TTS_ip###############################
+tts_ip=192.168.3.221
+
+将serverip改成cti服务器的ip
+将tts_ip改成tts服务器的ip
+cti和tts服务器是同一台机器
+
+3，修改et.bo.sys.ccIvrTreeVoiceDetail.service.impl.CcIvrTreeVDtlServiceImpl
+类中的createTTsFile方法中的
+String serverip = Constants.getProperty("serverip");
+将serverip改成tts_ip，TTS修改已经成功，可以通过页面上的文本方式添加语音到指定的结点。

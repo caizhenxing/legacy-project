@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+	<!-- 客户端面板ajax相关内容 -->
+	<bean id="DayQuestionVolumeService" class="et.bo.agentDb.DayQuestionVolume" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+	</bean>
+	
+	<bean id="IncommingNoteService" class="et.bo.agentDb.IncommingNote" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+	</bean>
+	
+	<bean id="WorkSumTimeService" class="et.bo.agentDb.WorkSumTime" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+	</bean>
+	
+	<bean id="AgentTellInfoService" class="et.bo.agentDb.AgentTellInfo" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+	</bean>
+	
+	<bean id="OperEasyStateInfoService" class="et.bo.agentDb.OperEasyStateInfo" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+	</bean>
+		<bean id="ShowClassExpertorsService" class="et.bo.agentDb.ShowClassExpertors" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+	</bean>
+	<bean id="HoldThreeExpertService" class="et.bo.agentDb.HoldThreeExpert" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+	</bean>
+
+</beans>

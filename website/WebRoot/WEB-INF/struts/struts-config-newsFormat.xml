@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="newsFormatBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="styleDescribe" type="java.lang.String" />
+      	  <form-property name="newsNum" type="java.lang.String" />
+      	  <form-property name="showStyle" type="java.lang.String" />
+      	  <form-property name="titleCharNum" type="java.lang.String" />
+      	  <form-property name="titleCharColor" type="java.lang.String" />
+      	  <form-property name="titleCharFont" type="java.lang.String" />
+      	  <form-property name="titleCharSize" type="java.lang.String" />
+      	  <form-property name="contentCharNum" type="java.lang.String" />
+<!--      	  -->
+          <form-property name="articleProperty" type="java.lang.String" />
+          <form-property name="author" type="java.lang.String" />
+          <form-property name="clickTimes" type="java.lang.String" />
+          <form-property name="updatetime" type="java.lang.String" />
+          <form-property name="showMore" type="java.lang.String" />
+          <form-property name="isHot" type="java.lang.String" />
+          <form-property name="hotArticle" type="java.lang.String" />
+          <form-property name="tuijianArticle" type="java.lang.String" />
+          <form-property name="dateRange" type="java.lang.String" />
+          <form-property name="paixuField" type="java.lang.String" />
+          <form-property name="paixuMethod" type="java.lang.String" />       
+	   </form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+     <action
+      attribute="newsFormatBean"
+      name="newsFormatBean"
+      path="/news/format"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="main"            path="/news/format/formatMain.jsp"/>
+           <forward name="load"            path="/news/format/formatLoad.jsp"/>
+           <forward name="query"           path="/news/format/formatQuery.jsp"/>
+           <forward name="list"            path="/news/format/formatList.jsp"/>
+<!--           <forward name="mySavePostList"      path="/forum/postQuery/mySavePostList.jsp"/>-->
+<!--           <forward name="answerTopTenList"    path="/forum/postQuery/answerTopTenList.jsp"/>-->
+<!--           <forward name="bestNewPostList"     path="/forum/postQuery/bestNewPostList.jsp"/>-->
+<!--           <forward name="forumHostGroomList"  path="/forum/postQuery/forumHostGroomList.jsp"/>-->
+<!--           <forward name="netfriendGroomList"  path="/forum/postQuery/netfriendGroomList.jsp"/>-->
+<!--           <forward name="sendPostRankList"    path="/forum/postQuery/sendPostRankList.jsp"/>-->
+<!--           <forward name="pointRankList"       path="/forum/postQuery/pointRankList.jsp"/>           -->
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

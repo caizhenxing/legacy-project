@@ -1,0 +1,263 @@
+<html>
+<body>
+<h1>Contents</h1>
+<ol>
+  <li><a href="#gettingstarted">Getting started</a></li>
+  <li><a href="#jbpmprojectstructure">jBPM project structure</a></li>
+  <li><a href="#eclipse">Eclipse</a></li>
+  <li><a href="#versioning">Versioning</a></li>
+  <li><a href="#buildfiles">Build files</a></li>
+  <li><a href="#repository">Repository</a></li>
+  <li><a href="#docbook">Docbook</a></li>
+  <li><a href="#release">Release</a></li>
+</ol>
+
+<h1 id="gettingstarted">Getting Started</h1>
+<h3>Create user properties</h3>
+<p>
+In your ${user.home} (e.g. C:\Documents and Settings\tom) create a directory
+called <code>jbpm</code> with a file called <code>build.properties</code>.  Use 
+this file to overwrite and customize the jBPM properties for your specific 
+situation.
+</p>
+
+<p>You should walk through the <code>build.properties</code> in this directory
+to see which properties you should customize.  The first part of this file contains 
+the properties that are typically customized and those are marked.
+</p>
+
+<h3>Get the jBPM dependencies</h3>
+<p>
+In this directory, execute <code>ant get.dependencies</code>.  That will 
+fetch the jbpm required libraries from the jboss repository and puts it in your local 
+repository.
+</p>
+
+<h3>Get the ant dependencies</h3>
+<p>
+In this directory, execute <code>ant install.ant.libs</code>.  That will 
+copy the clover.jar and junit.jar from the local repository to the <code>${ant.home}/lib</code>
+directory.  Before using this target, make sure that you update the ant.home property 
+in the build.properties in this dir or preferably in your <code>${user.home}/jbpm/build.properties</code>
+</p>
+
+<h3>Get docbook support</h3>
+<p>
+In this directory, execute <code>ant get.docbook.support</code>.  For most builds 
+this is not required.
+</p>
+
+<h1 id="jbpmprojectstructure">jBPM project structure</h1>
+<p>
+There are two types of projects: 
+<ul>
+  <li>Artifact projects that produce exactly 1 artifact (e.g. identity, jpdl/jar, jpdl/db, ...)</li>
+  <li>Module projects that group a number of child projects (e.g. jpdl, jboss, enterprise)</li>
+</ul>
+</p>
+
+<p>The structure of the artifact projects is inspired by maven.  Yet still 
+we think it is easier and more convenient for the jbpm developer community
+to keep ant as the central build system.
+</p>
+
+<table>
+  <tr>
+    <td>src/main/java</td>
+    <td>Application/Library sources</td>
+  </tr>
+  <tr>
+    <td>src/main/resources</td>
+    <td>Application/Library resources</td>
+  </tr>
+  <tr>
+    <td>src/main/config</td>
+    <td>Configuration files</td>
+  </tr>
+  <tr>
+    <td>src/main/webapp</td>
+    <td>Web application sources</td>
+  </tr>
+  <tr>
+    <td>src/test/java</td>
+    <td>Test sources</td>
+  </tr>
+  <tr>
+    <td>src/test/resources</td>
+    <td>Test resources</td>
+  </tr>
+  <tr>
+    <td>readme.html</td>
+    <td>Project's readme</td>
+  </tr>
+</table>  
+
+<p>
+The motivation for having the top level build in a separate build 
+directory is to enable that jbpm modules are being loaded into an 
+IDE in separate projects.
+</p>
+
+<h1 id="versioning">Versioning</h1>
+<p>
+Each top level module (e.g. console, enterprise, identity, jpdl, ...) has 
+a version.
+</p>
+<p>Dependencies between different jbpm projects are always passed via the 
+local repository.  IMPORTANT NOTE: the version number given to produce a jbpm 
+artifact is defined separate from the inter-jbpm dependency versions.  
+</p>
+<p>
+The version of the artifacts that are being produced is defined in the 
+<code>version.properties</code> file located in the module directory.
+E.g. <code>jpdl/version.properties</code>
+</p>
+<p>
+The version of the jbpm artifacts that is being used to build other jbpm 
+artifacts is defined in the <code>build/build.properties</code>.  Section 
+<code>"USED jBPM ARTIFACT VERSIONS"</code>
+</p>
+
+
+<h1 id="eclipse">Eclipse</h1>
+<p>
+To get the build path right in your eclipse environment, you 
+need to set the <code>JBPM_REPO</code> class path variable to 
+your local repository.
+To set your classpath variable, navigate:  
+'Window'-->'Preferences'-->'Java'-->'Build Path'-->'Classpath Variables'
+</p>
+<p>
+You can import the jbpm.3 module as an eclipse project.
+</p>
+<p>
+As an alternative, you can also import a subset of the directories 
+in the jbpm.3 module as eclipse projects.
+</p>
+
+<h1 id="buildfiles">Build files</h1>
+<p>The <code>build.xml</code> in this directory contains all global jbpm targets.
+E.g. a <code>'clean'</code> target that calls the clean target on all the module projects. 
+A <code>'build'</code> target that calls the default target on all the module projects.
+A <code>'get.dependencies'</code> that will downloads the dependencies from the remote repository
+and stores them into the local repository.
+</p>
+
+<p>
+For the module build files, the <code>base.project.build.xml</code> build file 
+in this directory is the 'mother' of all project build files.  This contains 
+the basic ant targets. Each project has it's <code>build.xml</code> file that 
+imports the <code>base.project.build.xml</code>.
+</p>
+
+<p>
+The project's build file will read properties from the files 
+<code>${user.home}/jbpm/build.properties</code> and <code>build/build.properties</code>.
+So the sequence of properties being read is 
+<ol>
+  <li>Properties defined the project's <code>build.xml</code> file</li>
+  <li>Properties read from the <code>${user.home}/jbpm/build.properties</code></li>
+  <li>Properties read from the <code>build/build.properties</code></li>
+</ol>
+As you know, in ant, the first definition of a property wins.
+</p>
+
+<p>
+Apart from overriding and customizing properties, also targets of the imported 
+<code>base.project.build.xml</code> file can be overwritten in the project build file.
+</p>
+
+<h1 id="repository">Repository</h1>
+<p>
+All dependencies are resolved from a local repository.  By default the 
+location is <code>${user.home}/jbpm/repository</code>
+</p>
+
+<p>
+The local repository is a subset of the remote repository.  The remote 
+repository is <a href="http://repository.jboss.com">http://repository.jboss.com</a>
+and can be accessed via http and an ordinary web browser.  
+</p>
+
+<h3>Getting the dependencies into your local repository</h3>
+<p>
+The <code>get.dependencies</code>
+target in <code>./build.xml</code> will fetch the dependencies via the ant get 
+task.  It will fetch the library dependencies into your local repository via http.
+</p>
+<p>
+The configuration properties for customizing the repository are specified in 
+<a href="./build.properties">./build.properties</a> and can be overwritten in 
+your <code>${user.home}/jbpm/build.properties</code>.  By default, the 
+local repository will be <code>${user.home}/jbpm/repository</code>.
+The property <code>'local.repository'</code> specifies the absolute path of 
+your local repository and the <code>'lib.xxx.version'</code> property 
+specifies the version for library xxx.
+</p>
+
+<h3>Adding a dependency to the repository</h3>
+If you need to add a library dependency to jBPM, please proceed as follows
+
+<ol>
+  <li>
+    Find the library in <a href="http://repository.jboss.com">http://repository.jboss.com</a>
+  </li>
+  <li>
+    Find 'EXTERNAL DEPENDENCIES (1/4): VERSIONS' in <a href="./build.properties">./build.properties</a> 
+    and add the version dependency for your library.
+  </li>
+  <li>
+    Find 'EXTERNAL DEPENDENCIES (2/4): REPOSITORY LOCATION PROPERTIES' in that same <a href="./build.properties">./build.properties</a> 
+    and add the local and remote repository locations similarly as is done for the other libraries.
+  </li>
+  <li>
+    Find 'EXTERNAL DEPENDENCIES (3/4): BUILD CLASSPATH' in <a href="./base.project.build.xml">./base.project.build.xml</a> 
+    and add the library to the default build classpath.
+  </li>
+  <li>
+    Find 'EXTERNAL DEPENDENCIES (4/4): UPDATE LOCAL REPOSITORY' in <a href="./build.xml">./build.xml</a> 
+    and add the library to the <code>'get.dependencies'</code> target.
+  </li>
+
+</ol>
+
+<h3>Publishing a jBPM artifact to the repository</h3>
+<p>
+Publishing a jBPM artifact should not be done without consideration.  Especially the 
+jBPM artifacts that are not SNAPSHOTS should only be published during a release.
+</p>
+
+<p>
+To publish a jBPM artifact to the remote repository, use the target <code>'publish'</code>.
+</p>
+
+<p>
+The publish target will only work if you have executed the '<code>checkout.jbpm.repository</code>'
+once so that there is CVS information available in the jbpm part of the local 
+repository.  Before the <code>publish</code> target is executed, the presence of the   
+CVS information is verified and you get an appropriate error message.
+</p>
+
+<p>
+Another requirement is that you have developer access to the jboss CVS repository and that you 
+have configured your command line cvs client with the proper authentication information.
+</p>
+
+<h1 id="docbook">Docbook</h1>
+<p>To generate the documentation, you need the jboss docbook module. The simplest 
+way to get it is with the <code>get.docbook.support</code> target in 
+<a href="./build.xml">./build.xml</a>
+</p>
+<p>The directory in which docbook-support should be placed and used can be configured in 
+<a href="./build.properties">./build.properties</a>, key <code>docbook.support.dir</code>
+</p>
+<p>To make the docbook-support location configurable, we had to include the dtd
+in the userguide module so that it could be referenced locally.  The dtd and 
+all the dependent files are located in <code>../jpdl/userguide/dtd</code>
+</p>
+
+<h1 id="release">Release</h1>
+<p>TODO</p>
+
+</body>
+</html>

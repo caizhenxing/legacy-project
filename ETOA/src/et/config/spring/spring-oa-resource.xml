@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+
+<beans>
+	<!--  service begin -->
+	<!-- 资源管理Service -->
+	<bean id="ResourceServiceImpl" class="et.bo.oa.resource.service.impl.ResourceServiceImpl">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="keyService">
+			<ref bean="KeyService" />
+		</property>
+	</bean>
+
+	<!-- 会议管理Service -->
+	<bean id="MeetingServiceImpl" class="et.bo.oa.resource.service.impl.MeetingServiceImpl">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="keyService">
+			<ref bean="KeyService" />
+		</property>
+	</bean>
+
+	<!-- 车辆管理Service -->
+	<bean id="CarServiceImpl" class="et.bo.oa.resource.service.impl.CarServiceImpl">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="keyService">
+			<ref bean="KeyService" />
+		</property>
+	</bean>
+	<!--  service end -->
+
+	<!-- Action begin -->
+	<bean name="/oa/resourceManager" class="et.bo.oa.resource.action.ResourceAction" singleton="false">
+		<property name="resourceServiceImpl">
+			<ref bean="ResourceServiceImpl" />
+		</property>
+		<property name="ctree">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+
+	<!-- 会议室管理 Action -->
+	<bean name="/oa/meetingManager" class="et.bo.oa.resource.action.MeetingAction" singleton="false">
+		<property name="meetingServiceImpl">
+			<ref bean="MeetingServiceImpl" />
+		</property>
+		<property name="departTree">
+			<ref bean="DepTreeService" />
+		</property>
+		<property name="oawfs">
+			<ref bean="OaWorkFlowService" />
+		</property>
+		<property name="carServiceImpl">
+			<ref bean="CarServiceImpl" />
+		</property>
+	</bean>
+
+	<!-- 车辆管理 Action -->
+	<bean name="/oa/carManager" class="et.bo.oa.resource.action.CarAction" singleton="false">
+		<property name="meetingServiceImpl">
+			<ref bean="MeetingServiceImpl" />
+		</property>
+		<property name="carServiceImpl">
+			<ref bean="CarServiceImpl" />
+		</property>
+		<property name="departTree">
+			<ref bean="DepTreeService" />
+		</property>
+	</bean>
+	<bean name="/oa/carApprove" class="et.bo.oa.resource.action.ApproveCarAction" singleton="false">
+		<property name="carServiceImpl">
+			<ref bean="CarServiceImpl" />
+		</property>
+	</bean>
+	<!-- Action end -->
+</beans>

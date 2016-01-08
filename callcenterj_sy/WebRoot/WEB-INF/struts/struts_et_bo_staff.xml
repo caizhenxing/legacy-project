@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+   <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="workUnitInfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			
+<!--		公司信息　　　	-->
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="companyName" type="java.lang.String"/>
+      	  <form-property name="companyTel" type="java.lang.String"/>
+      	  <form-property name="fax" type="java.lang.String"/>
+      	  <form-property name="companyAddress" type="java.lang.String"/>
+      	  <form-property name="post" type="java.lang.String"/>
+      	  <form-property name="dictCompanyType" type="java.lang.String"/>
+      	  <form-property name="helpsign" type="java.lang.String"/>
+      	  <form-property name="homepage" type="java.lang.String"/>
+      	  <form-property name="remark" type="java.lang.String"/>
+      	 
+  </form-bean>
+  
+  
+  
+<!--   职员信息  -->
+ 
+   <form-bean name="staffBasicBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			
+      	  <form-property name="staffId" type="java.lang.String" />
+      	  <form-property name="workUnitInfoId" type="java.lang.String"/>
+      	  <form-property name="BStaffNum" type="java.lang.String"/>
+      	  <form-property name="BPhotoPath" type="java.lang.String"/>
+      	  
+      	  <form-property name="BStaffName" type="java.lang.String"/>
+      	  <form-property name="BStaffNickname" type="java.lang.String"/>
+      	  
+      	  <form-property name="BStaffSex" type="java.lang.String"/>
+      	  <form-property name="BDictCountry" type="java.lang.String"/>
+      	  <form-property name="BDictProvince" type="java.lang.String"/>
+      	  
+      	  
+      	  <form-property name="BDictCity" type="java.lang.String"/>
+      	  <form-property name="BDictDistrict" type="java.lang.String"/>
+      	  <form-property name="BCtSchoolAge" type="java.lang.String"/>
+      	  <form-property name="BBirthday" type="java.lang.String"/>
+      	  <form-property name="BNation" type="java.lang.String"/>
+      	  <form-property name="BAge" type="java.lang.String"/>
+      	  <form-property name="BNationAt" type="java.lang.String"/>
+      	  <form-property name="BDictPolity" type="java.lang.String"/>
+		  <form-property name="BDictPaperType" type="java.lang.String"/>
+		  <form-property name="BPaperNum" type="java.lang.String"/>
+		  <form-property name="BDictIsMarry" type="java.lang.String"/>
+		  <form-property name="BMarriage" type="java.lang.String"/>
+		  <form-property name="BInterest" type="java.lang.String"/>
+		  <form-property name="BHealthState" type="java.lang.String"/>
+		  <form-property name="BDictDepartment" type="java.lang.String"/>
+		  <form-property name="BDictDuty" type="java.lang.String"/>
+		  
+		  <form-property name="BGrade" type="java.lang.String"/>
+		  
+		  <form-property name="linkMobileNum" type="java.lang.String"/>
+		  <form-property name="linkHomeNum" type="java.lang.String"/>
+		  <form-property name="linkExtNum" type="java.lang.String"/>
+		  <form-property name="linkQq" type="java.lang.String"/>
+		  <form-property name="linkMsn" type="java.lang.String"/>
+		  <form-property name="linkHomepage" type="java.lang.String"/>
+		  <form-property name="CAddress" type="java.lang.String"/>
+		  <form-property name="CPostalcode" type="java.lang.String"/>
+		  <form-property name="CFaxNum" type="java.lang.String"/>
+		  <form-property name="dictIsBeginwork" type="java.lang.String"/>
+		  <form-property name="remark" type="java.lang.String"/>
+		  
+		  
+		  
+		 <form-property name="AStudyTitle" type="java.lang.String"/>
+		 <form-property name="ADictTechniclName" type="java.lang.String"/>
+		 <form-property name="AApproveOrgan" type="java.lang.String"/>
+		 <form-property name="AOutTime" type="java.lang.String"/>
+		 <form-property name="AOutWhy" type="java.lang.String"/>
+		 <form-property name="AEnterTime" type="java.lang.String"/>
+		 <form-property name="ADictUseWorkState" type="java.lang.String"/>
+		 <form-property name="companyName" type="java.lang.String"/>
+      	 
+  </form-bean>
+  
+  
+  
+  
+  
+  <!--		员工经历　　　	-->
+   <form-bean name="staffExperienceBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			
+
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="staffBasicId" type="java.lang.String"/>
+      	  <form-property name="dictExperienceType" type="java.lang.String"/>
+      	  <form-property name="beginTime" type="java.lang.String"/>
+      	  <form-property name="endTime" type="java.lang.String"/>
+      	  <form-property name="company" type="java.lang.String"/>
+      	  <form-property name="duty" type="java.lang.String"/>
+      	  <form-property name="address" type="java.lang.String"/>
+      	  <form-property name="message" type="java.lang.String"/>
+      	  <form-property name="proveMan" type="java.lang.String"/>
+      	 <form-property name="remark" type="java.lang.String"/>
+  </form-bean>
+  
+
+
+  <!--		员工奖罚　　　	-->
+   <form-bean name="staffHortationBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+
+      	 <form-property name="id" type="java.lang.String" />
+      	 <form-property name="staffBasicId" type="java.lang.String"/>
+		 <form-property name="hortationInfo" type="java.lang.String"/>
+		 <form-property name="hortationTime" type="java.lang.String"/>
+		 <form-property name="hortationType" type="java.lang.String"/>
+		 <form-property name="remark" type="java.lang.String"/>
+
+  </form-bean>
+
+
+  <!--		语言　　　	-->
+   <form-bean name="staffLanguageBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	 <form-property name="id" type="java.lang.String" />
+      	 <form-property name="staffBasicId" type="java.lang.String"/>
+		 <form-property name="dictLanguageType" type="java.lang.String"/>
+		 <form-property name="dictLanguageDegree" type="java.lang.String"/>
+		 <form-property name="remark" type="java.lang.String"/>
+
+  </form-bean>
+ 
+
+ 
+   <!--		员工其他　　　	-->
+   <form-bean name="staffOtherInfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	 <form-property name="staffId" type="java.lang.String" />
+      	 <form-property name="AStudyTitle" type="java.lang.String"/>
+		 <form-property name="ADictTechniclName" type="java.lang.String"/>
+		 <form-property name="AApproveOrgan" type="java.lang.String"/>
+		 <form-property name="AOutTime" type="java.lang.String"/>
+		 <form-property name="AOutWhy" type="java.lang.String"/>
+		 <form-property name="AEnterTime" type="java.lang.String"/>
+		 <form-property name="ADictUseWorkState" type="java.lang.String"/>
+		 <form-property name="remark" type="java.lang.String"/>
+
+
+  </form-bean>
+
+
+   <!--		员工亲属　　	-->
+   <form-bean name="staffParentBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	 <form-property name="id" type="java.lang.String" />
+      	 <form-property name="staffBasicId" type="java.lang.String"/>
+		 <form-property name="parentConnection" type="java.lang.String"/>
+		 <form-property name="parentName" type="java.lang.String"/>
+		 <form-property name="work" type="java.lang.String"/>
+		 <form-property name="linkTel" type="java.lang.String"/>
+		 <form-property name="dictParentPolity" type="java.lang.String"/>
+		 <form-property name="remark" type="java.lang.String"/>
+  </form-bean>
+
+
+
+
+
+
+
+
+
+  
+</form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+  
+  
+<!-- 公司基本信息的action -->
+     <action
+      attribute="workUnitInfoBean"
+      name="workUnitInfoBean"
+      path="/sys/staff/workUnitInfo"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="main"  path="/sys/staff/workUnitInfo/Main.jsp"/>
+           <forward name="popquery" path="/sys/staff/workUnitInfo/popWorkUnitInfo.jsp"/>
+		   <forward name="toWorkUnitInfoList" path="/sys/staff/workUnitInfo/workUnitInfoList.jsp"/>
+           <forward name="toWorkUnitInfoLoad"  path="/sys/staff/workUnitInfo/workUnitInfoLoad.jsp"/>
+           <forward name="workUnitInfoMain"  path="/sys/staff/workUnitInfo/workUnitInfoMain.jsp"/>
+           <forward name="topQuery" path="/sys/staff/workUnitInfo/topQuery.jsp"/>
+ 
+    </action>
+    
+    
+    
+    <!-- 员工基本信息的action -->
+         <action
+      attribute="staffBasicBean"
+      name="staffBasicBean"
+      path="/sys/staff/staffBasic"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+          
+           
+           <forward name="toStaffBasicQuery" path="/sys/staff/staffBasic/staffBasicQuery.jsp"/>
+		   <forward name="toStaffBasicList" path="/sys/staff/staffBasic/staffBasicList.jsp"/>
+           <forward name="toStaffBasicLoad"  path="/sys/staff/staffBasic/staffBasicLoad.jsp"/>
+           <forward name="tostaffBasicMain"  path="/sys/staff/staffBasic/staffBasicMain.jsp"/>
+
+           
+    </action>
+    
+    
+    <!-- 员工经历信息的action -->
+         <action
+      attribute="staffExperienceBean"
+      name="staffExperienceBean"
+      path="/sys/staff/staffExperience"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+        
+           <forward name="toStaffExperienceList"  path="/sys/staff/staffExperience/staffExperienceList.jsp"/>
+           <forward name="toStaffExperienceLoad" path="/sys/staff/staffExperience/staffExperienceLoad.jsp"/>
+    
+    </action>
+    
+    
+      <!--		员工奖罚　　　	-->
+         <action
+      attribute="staffHortationBean"
+      name="staffHortationBean"
+      path="/sys/staff/staffHortation"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="toStaffHortationList"  path="/sys/staff/staffHortation/staffHortationList.jsp"/>
+           <forward name="toStaffHortationLoad" path="/sys/staff/staffHortation/staffHortationLoad.jsp"/>
+    </action>
+    
+    
+    
+    <!--		语言　　　	-->
+         <action
+      attribute="staffLanguageBean"
+      name="staffLanguageBean"
+      path="/sys/staff/staffLanguage"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="toStaffLanguageLoad"  path="/sys/staff/staffLanguage/staffLanguageLoad.jsp"/>
+           <forward name="toStaffLanguageList" path="/sys/staff/staffLanguage/staffLanguageList.jsp"/>
+        
+    </action>
+    
+    
+    
+    <!--		员工其他　　　	-->
+         <action
+      attribute="staffOtherInfoBean"
+      name="staffOtherInfoBean"
+      path="/sys/staff/staffOtherInfo"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="main"  path="/sys/staff/staffOtherInfo/staffOtherInfoList.jsp"/>
+           <forward name="query" path="/sys/staff/staffOtherInfo/staffOtherInfoLoad.jsp"/>      
+    </action>
+    
+    
+    
+    
+    <!--		员工亲属　　	-->
+         <action
+      attribute="staffParentBean"
+      name="staffParentBean"
+      path="/sys/staff/staffParent"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="toStaffParentInfoLoad"  path="/sys/staff/staffParentInfo/staffParentInfoLoad.jsp"/>
+           <forward name="toStaffParentInfoList" path="/sys/staff/staffParentInfo/staffParentInfoList.jsp"/>
+
+ 
+    </action>
+    
+ 
+  </action-mappings>
+  
+</struts-config>
+

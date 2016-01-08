@@ -1,0 +1,280 @@
+## ***********************************************
+## 研究組織経費確認画面  → RyoikiGaiyoForm
+## ***********************************************
+
+## 2006/06/16 新規作成　劉佳
+
+#parse($commonSetting)
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpenClose.js"></script>
+## スクリプト*************************************
+<script language=javascript>
+<!--
+    function onReg(){
+		document.shinsei_form.action="$link.setAction("/shinsei/regKenkyusosikiKeihi")";
+		document.shinsei_form.submit();
+	}		
+//-->
+</script>
+## ***********************************************
+</head>
+<body class="bodyStyle" onUnload="javascript:fncKeepedWindowClose();">
+<div align="center"><!-- ヘッダー 用テーブルここから-->
+<table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+      <td align="right" background="$path/images/header_bg2.gif">
+	  <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+      <table border="0" cellpadding="0" cellspacing="1">
+        <tbody>
+          <tr>
+            <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+          </tr>
+          <tr>
+            <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+            <td><br>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+<!-- ヘルプ、ログアウトボタン用テーブルここまで --> </td>
+      <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+    </tr>
+  </tbody>
+</table>
+<!--  ヘッダー 用テーブルここまで--><!-- 左右の縦線用テーブルここから -->
+<table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td width="1" bgcolor="#cccccc"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+      <td><!-- コンテンツエリアここから --><!-- サブ画面タイトル用テーブルここから -->
+      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+          <tr valign="bottom">
+            <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width="61" height="49" alt=""></td>
+            <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+				研究経費表</td>
+            <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width="213" height="49" alt=""></td>
+          </tr>
+        </tbody>
+      </table>
+<!-- サブ画面タイトル用テーブルここまで -->
+<!-- 本文ここから -->
+
+<form name="shinsei_form" method="post" action="">
+<!--webbot bot="SaveResults"
+  U-File="fpweb:///_private/form_results.txt" S-Format="TEXT/CSV"
+  S-Label-Fields="TRUE" -->
+        <p align="left">研究経費を確認・入力してください。</p>
+        <font color="#003366"><b>研究経費【単位：千円】</b></font><br>
+<!-- 一覧用テーブルここから -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+  <tbody>
+    <tr>
+      <td>
+      <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+        <tbody>
+          <tr>
+			<th></th>
+			#set($soukeiInfo = $ryoikiGaiyoForm.shinseiDataInfo.kenkyuKeihiSoukeiInfo)
+			#foreach($keihiInfo in $soukeiInfo.kenkyuKeihi6)
+			#set($count = $velocityCount - 1)
+			#set($nendo = $!escape.getIntValue($ryoikiGaiyoForm.ryoikikeikakushoInfo.nendo)+$count)
+             <th>平成$!escape.getText($nendo)年度</th>
+			#end
+            <th>合計</th>
+          </tr>
+		  <tr>
+            <td colspan="8">計画研究</td>
+          </tr>	
+		 #if($ryoikiGaiyoForm.keihi.size() == 0)
+    		##該当件数が０件だった場合
+    	    <tr>
+    	    	<td>&nbsp;</td>
+    	    	<td>&nbsp;</td>
+    	    	<td>&nbsp;</td>
+    	    	<td>&nbsp;</td>
+    	    	<td>&nbsp;</td>
+				<td>&nbsp;</td>
+    	    	<td>&nbsp;</td>
+    	    	<td>&nbsp;</td>
+    	    </tr>
+		 #else
+    		 #foreach($info in $ryoikiGaiyoForm.keihi)				
+    		  <tr>
+    			#if($!escape.getText($!info.KOMOKU_NO) == 'X00')
+        			<td>&nbsp;&nbsp;総括班</td>
+        		#elseif($!escape.getText($!info.KOMOKU_NO) == 'Y00')
+        			<td>&nbsp;&nbsp;支援班</td>
+    			#else
+    				<td>&nbsp;&nbsp;研究項目$!escape.getText($!info.KOMOKU_NO)</td>
+    			#end
+    			<!-- UPDATE　START 2007/07/18 BIS 張楠 -->
+                <td align="right">$!escape.getText($!info.KEIHI1)</td>
+                <td align="right">$!escape.getText($!info.KEIHI2)</td>
+                <td align="right">$!escape.getText($!info.KEIHI3)</td>
+                <td align="right">$!escape.getText($!info.KEIHI4)</td>
+                <td align="right">$!escape.getText($!info.KEIHI5)</td>
+                <td align="right">$!escape.getText($!info.KEIHI6)</td>
+                <td align="right">$!escape.getText($!info.KEIHI_TOTAL)</td>
+                <!-- UPDATE　END 2007/07/18 BIS 張楠 -->
+              </tr> 
+    		 #end
+          <tr style="font-weight:bolder">
+            <td>小計</td>
+			#set($soukeiInfo = $ryoikiGaiyoForm.shinseiDataInfo.kenkyuKeihiSoukeiInfo)
+			#foreach($keihiInfo in $soukeiInfo.kenkyuKeihi6)
+			#set($count = $velocityCount - 1)
+			<!-- UPDATE　START 2007/07/18 BIS 張楠 -->
+            <td align="right">$!escape.getText($ryoikiGaiyoForm.keihiTotal.get($count))</td>
+            <!-- UPDATE　END 2007/07/18 BIS 張楠 -->
+			#end
+			<!-- UPDATE　START 2007/07/18 BIS 張楠 -->
+			<td align="right">$!escape.getText($ryoikiGaiyoForm.keihiTotal.get(6))</td>
+			<!-- UPDATE　END 2007/07/18 BIS 張楠 -->
+          </tr>	
+          <tr>
+            <td>公募研究</td>
+            <td>小計：-<br>内訳：-</td>
+            <td>
+            	小計：<font color="#ff0000">*</font>
+				<input type="text" style="text-align:right" size="8" name="ryoikikeikakushoInfo.kenkyuSyokei2" value="$!escape.getText($ryoikiGaiyoForm.ryoikikeikakushoInfo.kenkyuSyokei2)"
+##ADD START 2007-07-25 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+				#BackColor($ryoikiGaiyoForm.ryoikikeikakushoInfo.errorsMap "ryoikikeikakushoInfo.kenkyuSyokei2")
+##ADD END 2007-07-25 BIS 劉多良               
+				><br>
+            	内訳：
+				<input type="text" style="text-align:right" size="15" name="ryoikikeikakushoInfo.kenkyuUtiwake2" value="$!escape.getText($ryoikiGaiyoForm.ryoikikeikakushoInfo.kenkyuUtiwake2)"
+##ADD START 2007-07-25 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+				#BackColor($ryoikiGaiyoForm.ryoikikeikakushoInfo.errorsMap "ryoikikeikakushoInfo.kenkyuUtiwake2")
+##ADD END 2007-07-25 BIS 劉多良               
+				>
+            </td>
+            <td>
+            	小計：<font color="#ff0000">*</font>
+				<input type="text" style="text-align:right" size="8" name="ryoikikeikakushoInfo.kenkyuSyokei3" value="$!escape.getText($ryoikiGaiyoForm.ryoikikeikakushoInfo.kenkyuSyokei3)"
+##ADD START 2007-07-25 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+				#BackColor($ryoikiGaiyoForm.ryoikikeikakushoInfo.errorsMap "ryoikikeikakushoInfo.kenkyuSyokei3")
+##ADD END 2007-07-25 BIS 劉多良               
+				><br>
+            	内訳：
+				<input type="text" style="text-align:right" size="15" name="ryoikikeikakushoInfo.kenkyuUtiwake3" value="$!escape.getText($ryoikiGaiyoForm.ryoikikeikakushoInfo.kenkyuUtiwake3)"
+##ADD START 2007-07-25 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+				#BackColor($ryoikiGaiyoForm.ryoikikeikakushoInfo.errorsMap "ryoikikeikakushoInfo.kenkyuUtiwake3")
+##ADD END 2007-07-25 BIS 劉多良               
+				>
+            </td>
+            <td>
+            	小計：<font color="#ff0000">*</font>
+				<input type="text" style="text-align:right" size="8" name="ryoikikeikakushoInfo.kenkyuSyokei4" value="$!escape.getText($ryoikiGaiyoForm.ryoikikeikakushoInfo.kenkyuSyokei4)"
+##ADD START 2007-07-25 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+				#BackColor($ryoikiGaiyoForm.ryoikikeikakushoInfo.errorsMap "ryoikikeikakushoInfo.kenkyuSyokei4")
+##ADD END 2007-07-25 BIS 劉多良               
+				><br>
+            	内訳：
+				<input type="text" style="text-align:right" size="15" name="ryoikikeikakushoInfo.kenkyuUtiwake4" value="$!escape.getText($ryoikiGaiyoForm.ryoikikeikakushoInfo.kenkyuUtiwake4)"
+##ADD START 2007-07-25 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+				#BackColor($ryoikiGaiyoForm.ryoikikeikakushoInfo.errorsMap "ryoikikeikakushoInfo.kenkyuUtiwake4")
+##ADD END 2007-07-25 BIS 劉多良               
+				>
+            </td>
+            <td>
+            	小計：<font color="#ff0000">*</font>
+				<input type="text" style="text-align:right" size="8" name="ryoikikeikakushoInfo.kenkyuSyokei5" value="$!escape.getText($ryoikiGaiyoForm.ryoikikeikakushoInfo.kenkyuSyokei5)"
+##ADD START 2007-07-25 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+				#BackColor($ryoikiGaiyoForm.ryoikikeikakushoInfo.errorsMap "ryoikikeikakushoInfo.kenkyuSyokei5")
+##ADD END 2007-07-25 BIS 劉多良               
+				><br>
+            	内訳：
+				<input type="text" style="text-align:right" size="15" name="ryoikikeikakushoInfo.kenkyuUtiwake5" value="$!escape.getText($ryoikiGaiyoForm.ryoikikeikakushoInfo.kenkyuUtiwake5)"
+##ADD START 2007-07-25 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+				#BackColor($ryoikiGaiyoForm.ryoikikeikakushoInfo.errorsMap "ryoikikeikakushoInfo.kenkyuUtiwake5")
+##ADD END 2007-07-25 BIS 劉多良               
+				>
+            </td>
+            <td>
+            	小計：<font color="#ff0000">*</font>
+				<input type="text" style="text-align:right" size="8" name="ryoikikeikakushoInfo.kenkyuSyokei6" value="$!escape.getText($ryoikiGaiyoForm.ryoikikeikakushoInfo.kenkyuSyokei6)"
+##ADD START 2007-07-25 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+				#BackColor($ryoikiGaiyoForm.ryoikikeikakushoInfo.errorsMap "ryoikikeikakushoInfo.kenkyuSyokei6")
+##ADD END 2007-07-25 BIS 劉多良               
+				><br>
+            	内訳：
+				<input type="text" style="text-align:right" size="15" name="ryoikikeikakushoInfo.kenkyuUtiwake6" value="$!escape.getText($ryoikiGaiyoForm.ryoikikeikakushoInfo.kenkyuUtiwake6)"
+##ADD START 2007-07-25 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+				#BackColor($ryoikiGaiyoForm.ryoikikeikakushoInfo.errorsMap "ryoikikeikakushoInfo.kenkyuUtiwake6")
+##ADD END 2007-07-25 BIS 劉多良               
+				>
+            </td>
+            <!-- UPDATE　START 2007/07/18 BIS 張楠 -->
+            <td align="right">$!escape.getText($ryoikiGaiyoForm.ryoikikeikakushoInfo.kenkyuTotal)</td>
+            <!-- UPDATE　END 2007/07/18 BIS 張楠 -->
+          </tr>
+          <tr style="font-weight:bolder">
+            <td>合計</td>
+			#set($soukeiInfo = $ryoikiGaiyoForm.shinseiDataInfo.kenkyuKeihiSoukeiInfo)
+			#foreach($keihiInfo in $soukeiInfo.kenkyuKeihi6)
+			#set($count = $velocityCount - 1)
+			<!-- UPDATE　START 2007/07/18 BIS 張楠 -->
+            <td align="right">$!escape.getText($ryoikiGaiyoForm.kenkyuSyokeiTotal.get($count))</td>
+            <!-- UPDATE　END 2007/07/18 BIS 張楠 -->
+			#end
+			<!-- UPDATE　START 2007/07/18 BIS 張楠 -->
+            <td align="right">$!escape.getText($ryoikiGaiyoForm.kenkyuSyokeiTotal.get(6))</td>
+            <!-- UPDATE　END 2007/07/18 BIS 張楠 -->
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>		
+	#end  
+          </tbody>
+        </table>
+              <div align="center">
+      <br>
+              </div>
+        <br>
+      </form>
+<!-- 本文ここまで --><!-- ボタン用テーブルここから -->
+      <div align="center">
+      <table border="0" cellpadding="0" cellspacing="4">
+          <tr>
+            <td><a href="javascript:onReg()"><img src="$path/images/bt_ok.gif" width="114" height="28" border="0" alt="OK"></a></td>
+          </tr>
+      </table>
+      </div>
+<!-- ボタン用テーブルここまで --><!-- フッター用テーブルここから -->
+      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+          <tr bgcolor="#336699">
+            <td width="4" background="$path/images/footer_login2.gif"> <img src="$path/images/footer_login1.gif" width="4" height="11" alt=""></td>
+            <td background="$path/images/footer_login2.gif"><img src="$path/images/footer_login2.gif" width="4" height="11" alt=""></td>
+            <td width="4" align="right" background="$path/images/footer_login2.gif"> <img src="$path/images/footer_login3.gif" width="4" height="11" alt=""></td>
+          </tr>
+        </tbody>
+      </table>
+<!-- フッター用テーブルここまで --><!-- コンテンツエリアここまで --> </td>
+      <td width="1" bgcolor="#cccccc"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+    </tr>
+  </tbody>
+</table>
+<!-- 左右の縦線用テーブルここまで --></div>
+</body>
+</html>

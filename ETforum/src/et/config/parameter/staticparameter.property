@@ -1,0 +1,13 @@
+################内部邮件上传到的路径###############################
+email_upload_in_subpath=/news/upload
+
+email_upload_in_uploadfinish_path=upload
+################内网上传后附件下载地址#############################
+email_tomcat_real_path=http://192.168.1.9:8089/ETOA/news/
+################外网邮件上传到服务器的路径##########################
+outemail_upload_out_localpath=C:/
+################存入数据库的路径##################################
+outemail_save_in_data=http://192.168.1.9:8089/ETOA/
+################外网邮件存入本地路径###############################
+outemail_save_in_local_path=D:/
+

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+	<form-beans>
+		<form-bean name="FileManagerBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      <form-property name="id" type="java.lang.String" />
+      <form-property name="name" type="java.lang.String" />
+      <form-property name="parentId" type="java.lang.String" />
+      <form-property name="remark" type="java.lang.String" />
+      <form-property name="method" type="java.lang.String" />
+     
+      <form-property name="fileCode" type="java.lang.String" />
+      <form-property name="createTime" type="java.lang.String" />
+      <form-property name="updateTime" type="java.lang.String" />
+     
+      <form-property name="fileEdition" type="java.lang.String" />
+      
+      <form-property name="fileName" type="java.lang.String" />
+      
+      <form-property name="fileType" type="java.lang.String" />
+      <form-property name="fileSize" type="java.lang.String" />
+      <form-property name="fileUploadMan" type="java.lang.String" />
+      <form-property name="fileCheckMan" type="java.lang.String" />
+      <form-property name="isFile" type="java.lang.String" />
+      <form-property name="isavailable" type="java.lang.String" />
+      <form-property name="fileKeyWord" type="java.lang.String" />
+      <form-property name="fileDetail" type="java.lang.String" />
+
+    </form-bean>
+	</form-beans>
+
+	<global-forwards/>
+		
+	
+
+	<action-mappings>
+		<action path="/oa/file/fileManager"
+				attribute="FileManagerBean"
+				type="org.springframework.web.struts.DelegatingActionProxy"
+				name="FileManagerBean"
+				parameter="method"
+				scope="request"
+				validate="false">
+			<forward name="main" path="/oa/file/file.jsp" />
+			<forward name="info" path="/oa/file/fileinfo.jsp" />
+			<forward name="error" path="/sys/error.jsp" />
+			<forward name="success" path="/sys/success.jsp" />
+			<forward name="noright" path="/oa/file/noright.jsp" />
+		</action>
+
+		
+	</action-mappings>
+
+	
+</struts-config>

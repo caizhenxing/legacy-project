@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+	<bean name="/incomming/incommingInfo" class="et.bo.incommingInfo.action.IncommingInfoAction" scope="singleton">
+		<property name="infoService">           
+			<ref bean="InfoService"/>
+		</property>	
+		<property name="custinfoService">
+			<ref bean="CustinfoService"/>
+		</property>	
+	</bean>
+	<bean id="InfoService" class="et.bo.incommingInfo.service.impl.IncommingInfoServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+</beans>

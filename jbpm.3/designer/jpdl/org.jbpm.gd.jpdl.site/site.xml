@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.jbpm.gd.jpdl.feature_3.0.12.jar" id="org.jbpm.gd.jpdl.feature" version="3.0.12">
+      <category name="org.jbpm"/>
+   </feature>
+   <category-def name="org.jbpm" label="JBoss jBPM Updates"/>
+</site>

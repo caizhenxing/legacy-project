@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="userManagerBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="name" type="java.lang.String" />
+      	  <form-property name="password" type="java.lang.String" />
+      	  <form-property name="question" type="java.lang.String" />
+      	  <form-property name="answer" type="java.lang.String" />
+      	  <form-property name="groom_user" type="java.lang.String" />
+      	  <form-property name="email" type="java.lang.String" />
+      	  <form-property name="qq" type="java.lang.String" />
+      	  <form-property name="msn" type="java.lang.String" />
+      	  <form-property name="icq" type="java.lang.String" />
+      	  <form-property name="homepage" type="java.lang.String" />
+      	  <form-property name="introself" type="java.lang.String" />
+      	  <form-property name="country" type="java.lang.String" />
+      	  <form-property name="birthday" type="java.lang.String" />
+      	  <form-property name="style" type="java.lang.String" />
+      	  <form-property name="language" type="java.lang.String" />
+      	  <form-property name="areaId" type="java.lang.String" />
+      	  <form-property name="forumPublishId" type="java.lang.String" />
+      	  <form-property name="point" type="java.lang.String" />
+      	  <form-property name="forumRole" type="java.lang.String" />
+      	  <form-property name="experience" type="java.lang.String" />
+      	  <form-property name="registerDate" type="java.lang.String" />
+      	  <form-property name="sex" type="java.lang.String" />
+      	  <form-property name="lastLogin" type="java.lang.String" />
+      	  <form-property name="headImage" type="java.lang.String" />
+      	  <form-property name="underWrite" type="java.lang.String" />
+      	  <form-property name="remark" type="java.lang.String" />     
+      	  <form-property name="beginTime" type="java.lang.String" /> 
+      	  <form-property name="endTime" type="java.lang.String" />   
+      	  <form-property name="beginPoint" type="java.lang.String" />
+      	  <form-property name="endPoint" type="java.lang.String" />
+      	  <form-property name="beginSendPost" type="java.lang.String" />
+      	  <form-property name="endSendPost" type="java.lang.String" />
+      	  <form-property name="noLoginDate" type="java.lang.String" />   
+      	  <form-property name="newlyIp" type="java.lang.String" /> 
+      	  <form-property name="registerIp" type="java.lang.String" />
+      	  <form-property name="chkId" type="java.lang.String[]" /> 
+      	  <form-property name="chkall" type="java.lang.String" />
+	   </form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+     <action
+      attribute="userManagerBean"
+      name="userManagerBean"
+      path="/forum/userManager"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="main"      path="/forum/userManager/userManagerMain.jsp"/>
+           <forward name="toMain"    path="/forum/userManager.do?method=toUserMain"/>
+           <forward name="toDetail"  path="/forum/userManager/userDetail.jsp"/>        
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

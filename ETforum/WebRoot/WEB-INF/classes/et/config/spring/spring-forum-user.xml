@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean name="/forum/userOper/register"
+		class="et.bo.forum.useroper.register.action.RegisterAction" singleton="false">			
+		<property name="register">
+			<ref bean="RegisterService" />
+		</property>			
+	</bean>
+	
+	<!--  service begin -->	
+	<bean id="RegisterService"
+		class="et.bo.forum.useroper.register.service.impl.RegisterServiceImpl" singleton="true">
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="ForumDao" />
+		</property>
+	</bean>	
+</beans>

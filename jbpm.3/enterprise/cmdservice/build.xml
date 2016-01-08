@@ -1,0 +1,34 @@
+<project name="jbpm.cmdservice" basedir="." default="install">
+
+  <!-- project specific properties -->
+  <property name="artifact.name" value="jbpm-cmdservice.jar" />
+  <property name="module.name" value="enterprise" />
+  <property name="jbpm.root" value="../.." />
+  <property file="../version.properties" />
+
+  <!-- properties files -->
+  <property file="${user.home}/jbpm/build.properties" />
+  <property file="build.properties" />
+  <property file="${jbpm.root}/build/build.properties" />
+
+  <!-- import base project build file -->
+  <import file="${jbpm.root}/build/base.project.build.xml"/>
+
+  <!-- project specific targets -->
+  <target name="compile.dependencies">
+    <ant antfile="${jbpm.root}/jpdl/jar/build.xml" inheritall="false" />
+  </target>
+
+  <target name="create.manifest">
+    <mkdir dir="target/manifest" />
+    <manifest file="target/manifest/MANIFEST.MF">
+      <attribute name="Implementation-Title" value="${artifact.name}"/>
+      <attribute name="Implementation-Version" value="${module.version} (date:${now})"/>
+      <attribute name="Implementation-URL" value="http://www.jboss.org/"/>
+      <attribute name="Implementation-Vendor" value="JBoss Inc."/>
+      <attribute name="Implementation-Vendor-Id" value="http://www.jboss.org/"/>
+      <attribute name="Class-Path" value="jbpm-jpdl.jar jbpm-identity.jar jbpm-configs.jar ehcache.jar"/>
+    </manifest>
+  </target>
+
+</project>

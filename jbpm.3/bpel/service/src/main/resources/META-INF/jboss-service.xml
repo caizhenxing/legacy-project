@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<server>
+  <mbean code="org.jbpm.db.jmx.JbpmService" 
+         name="jboss.jbpm:name=JbpmBpel,service=JbpmService"
+         description="jBPM BPEL Service">
+    <attribute name="JndiName">java:/jbpm/jbpmBpelConfiguration</attribute>
+    <depends>jboss.jca:service=DataSourceBinding,name=jbpmBpelDS</depends>
+  </mbean>
+</server>

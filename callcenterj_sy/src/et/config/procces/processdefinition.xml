@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition xmlns="http://jbpm.org/3/jpdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jbpm.org/3/jpdl http://jbpm.org/xsd/jpdl-3.0.xsd" name="leave process1">
+
+	<swimlane name="examOper">
+		<assignment class="et.bo.exam.oa.ExamOperHandler" />
+	</swimlane>
+	<swimlane name="secPerson">
+		<assignment class="et.bo.exam.oa.SecOperHandler" />
+	</swimlane>
+
+	<start-state name="start">
+		<transition to="applyExam" />
+	</start-state>
+	<state name="applyExam">
+		<transition to="approve" />
+	</state>
+	<decision name="approve">
+		<handler class="et.bo.exam.oa.IsApproveHandler" />
+		<transition name="noAllow" to="end" />
+		<transition name="allow" to="printCard" />
+	</decision>
+	<task-node name="printCard">
+		<task name="set" swimlane="secPerson" />
+		<transition to="setNews" />
+	</task-node>
+	<state name="setNews">
+		<transition to="end" />
+	</state>
+
+	<end-state name="end" />
+
+</process-definition>
+

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/callcenter/userInfo.do" location="950,350" dimension="358,84" />
+  <StrutsActivity path="/callcenter/userInfo/custinfoList.jsp" location="50,350" dimension="262,48" />
+  <StrutsActivity path="/callcenter/userInfo/custinfoMain.jsp" location="950,550" dimension="262,48" />
+  <StrutsActivity path="/callcenter/userInfo/custinfoQuery.jsp" location="50,650" dimension="268,48" />
+  <StrutsActivity path="/callcenter/userInfo/custinfoLoad.jsp" location="650,650" dimension="262,48" />
+  <StrutsActivity path="/callcenter/userInfo/custinfoAll.jsp" location="50,750" dimension="256,48" />
+  <StrutsActivity path="/custinfo/custinfoList.jsp" location="0,184" dimension="196,48" />
+  <StrutsActivity path="/custinfo/custinfoMain.jsp" location="296,184" dimension="196,48" />
+  <StrutsActivity path="/custinfo/custinfoQuery.jsp" location="592,184" dimension="202,48" />
+  <StrutsActivity path="/custinfo/custinfoLoad.jsp" location="894,184" dimension="196,48" />
+  <StrutsActivity path="/custinfo/custinfoAll.jsp" location="1190,184" dimension="190,48" />
+  <StrutsActivity path="/custinfo/search.jsp" location="0,461" dimension="160,48" />
+  <StrutsActivity path="/custinfo/openwin.jsp" location="260,461" dimension="166,48" />
+  <StrutsActivity path="/custinfo/history.jsp" location="526,461" dimension="166,48" />
+  <StrutsTransition id="/callcenter/userInfo.do,main,/callcenter/userInfo/custinfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1129,434" />
+      <AbsolutePoint location="1129,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/userInfo.do,load,/callcenter/userInfo/custinfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,383" />
+      <AbsolutePoint location="779,383" />
+      <AbsolutePoint location="779,650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/userInfo.do,query,/callcenter/userInfo/custinfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,413" />
+      <AbsolutePoint location="184,413" />
+      <AbsolutePoint location="184,650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/userInfo.do,list,/callcenter/userInfo/custinfoList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,353" />
+      <AbsolutePoint location="312,353" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/userInfo.do,alllist,/callcenter/userInfo/custinfoAll.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1227,434" />
+      <AbsolutePoint location="1227,774" />
+      <AbsolutePoint location="306,774" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

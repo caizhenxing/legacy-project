@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="GBK"?>
+<chart palette="2" caption="12316呼叫中心年月话务量统计" xAxisName="日期" yAxisName="话务量" showValues="0" decimals="0" formatNumberScale="0" useRoundEdges="1">
+<set label="02-19" value="265"/>
+<set label="02-20" value="253"/>
+<set label="02-21" value="221"/>
+<set label="02-22" value="291"/>
+<set label="02-23" value="310"/>
+<set label="02-24" value="268"/>
+<set label="02-25" value="278"/>
+<set label="02-26" value="499"/>
+<set label="02-27" value="319"/>
+<set label="02-28" value="234"/>
+<set label="03-01" value="233"/>
+<set label="03-02" value="346"/>
+<set label="03-03" value="194"/>
+<set label="03-04" value="440"/>
+<set label="03-05" value="327"/>
+<set label="03-06" value="461"/>
+<set label="03-07" value="305"/>
+<set label="03-08" value="302"/>
+<set label="03-09" value="417"/>
+<set label="03-10" value="347"/>
+<set label="03-11" value="447"/>
+<set label="03-12" value="339"/>
+<set label="03-13" value="411"/>
+<set label="03-14" value="398"/>
+<set label="03-15" value="505"/>
+<set label="03-16" value="473"/>
+<set label="03-17" value="661"/>
+<set label="03-18" value="563"/>
+<set label="03-19" value="696"/>
+<set label="03-20" value="291"/>
+</chart>

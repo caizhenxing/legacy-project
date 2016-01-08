@@ -1,0 +1,81 @@
+package et.bo.pcc.cclog.service.impl;
+
+import java.util.Date;
+
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
+
+import et.po.CcLog;
+import excellence.common.page.PageInfo;
+import excellence.common.util.time.TimeUtil;
+import excellence.framework.base.dto.IBaseDTO;
+import excellence.framework.base.query.MyQuery;
+import excellence.framework.base.query.impl.MyQueryImpl;
+
+public class CclogHelp extends MyQueryImpl {
+	public MyQuery cclogQuery(IBaseDTO dto, PageInfo pi) {
+		MyQuery mq = new MyQueryImpl();
+		DetachedCriteria dc = DetachedCriteria.forClass(CcLog.class);
+		if (!dto.get("phoneNum").toString().equals("")) {
+			dc.add(Restrictions.like("phoneNum", "%"
+					+ dto.get("phoneNum").toString() + "%"));
+		}
+		if (!((dto.get("beginTime") == null) || "".equals(dto.get("beginTime")
+				.toString()))
+				&& !((dto.get("endTime") == null) || "".equals(dto.get(
+						"endTime").toString()))) {
+
+			dc
+					.add(Restrictions.between("beginTime", TimeUtil
+							.getTimeByStr(dto.get("beginTime").toString(),
+									"yyyy-MM-dd"), TimeUtil.getTimeByStr(dto
+							.get("endTime").toString(), "yyyy-MM-dd")));
+		}
+		dc.addOrder(Order.desc("beginTime"));
+		mq.setDetachedCriteria(dc);
+		mq.setFirst(pi.getBegin());
+		mq.setFetch(pi.getPageSize());
+		return mq;
+	}
+
+	/**
+	 * 得到今天数据信息
+	 * 
+	 * @param
+	 * @version Oct 30, 2006
+	 * @return
+	 */
+	public MyQuery queryToday(IBaseDTO dto, PageInfo pi,String begintime,String opernum) {
+		MyQuery mq = new MyQueryImpl();
+		DetachedCriteria dc = DetachedCriteria.forClass(CcLog.class);
+		//Calendar c = Calendar.getInstance(); 
+		//c.setTime(new Date());
+		//c.set(Calendar.HOUR, 0);
+		//c.set(Calendar.MINUTE, 0);
+		//c.set(Calendar.SECOND, 0);
+		//Date beginTime = c.getTime();
+		//c.add(Calendar.DATE, 1);
+		//Date endTime=c.getTime();
+		/*dc.add(Expression.between("beginTime", beginTime, endTime));
+		dc.addOrder(Order.desc("beginTime"));
+		mq.setDetachedCriteria(dc);*/
+ 		Date d = new Date();
+		java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String endtime = sdf.format(d);
+		StringBuilder hql=new StringBuilder();
+		hql.append("from CcLog c,PoliceCallin p where c.id=p.id and ");
+		hql.append("c.beginTime>=? and ");
+		//hql.append("c.beginTime<=? and ");
+		hql.append("p.operator=? ");
+		hql.append("order by c.beginTime desc");
+		mq.setHql(hql.toString());
+		mq.setParameter(0,begintime);
+		mq.setParameter(1,endtime);
+		mq.setParameter(2,opernum);
+		//mq.setHql(hql);
+		mq.setFirst(pi.getBegin());
+		mq.setFetch(pi.getPageSize());
+		return mq;
+	}
+}

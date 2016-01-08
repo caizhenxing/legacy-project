@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+
+<beans>
+	<!-- 座席查询 -->
+	<bean name="/pcc/assay/question" class="et.bo.pcc.assay.question.action.QuestionAction" singleton="false">
+		<property name="question">
+			<ref local="QuestionService"/>
+		</property>
+		<property name="ctree">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	<!-- 电话查询 -->
+	<bean name="/pcc/assay/phone" class="et.bo.pcc.assay.phone.action.PhoneAction" singleton="false">
+		<property name="phone">
+			<ref local="PhoneService"/>
+		</property>
+		<property name="ctree">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	
+	<bean name="/pcc/phonesearch/search" class="et.bo.pcc.phonesearch.action.SearchAction" singleton="false">
+		<property name="search">
+			<ref local="SearchService"/>
+		</property>
+	</bean>
+	
+	<!-- 座席查询 -->
+	<bean id="QuestionService"
+		class="et.bo.pcc.assay.question.service.impl.QuestionServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="ctree">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	<!-- 电话查询 -->
+	<bean id="PhoneService"
+		class="et.bo.pcc.assay.phone.service.impl.PhoneServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	<!-- 电话信息录入 -->
+	<bean id="SearchService"
+		class="et.bo.pcc.phonesearch.service.impl.SearchServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+</beans>

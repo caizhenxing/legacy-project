@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<!--系统登陆-->
+<beans>
+	<bean name="/sys/login" class="et.bo.sys.login.action.loginAction"
+		scope="singleton">
+		<property name="ls">
+			<ref bean="LoginService" />
+		</property>
+		<property name="classTreeService">
+			<ref bean="ClassTreeService" />
+		</property>
+		<property name="roleClassTreeService">
+			<ref bean="RoleClassTreeService" />
+		</property>
+		<!-- 登陆验证 -->
+		<property name="lms">
+			<ref bean="LoginMapService" />
+		</property>
+		<property name="pcs">
+			<ref bean="PortCompareService"/>
+		</property>
+	</bean>
+	<bean id="LoginService"
+		class="et.bo.sys.login.service.impl.loginServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="rs">
+			<ref bean="RightService" />
+		</property>
+	</bean>
+</beans>

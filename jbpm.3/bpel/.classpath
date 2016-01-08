@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry output="console/target/classes" kind="src" path="console/src/main/java"/>
+	<classpathentry kind="src" path="library/src/main/java"/>
+	<classpathentry output="library/target/test.classes" kind="src" path="library/src/test/java"/>
+	<classpathentry kind="lib" path="library/src/main/config"/>
+	<classpathentry kind="lib" path="library/src/test/config"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="JBPM_REPO/sun-jaf/1.0.2/lib/activation.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/apache-ant/1.6.5/lib/ant.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/antlr/2.7.6.ga/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/asm/1.5.3/lib/asm.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/beanshell/1.3.0/lib/bsh.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/cglib/2.1.3/lib/cglib.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/apache-collections/3.1/lib/commons-collections.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/apache-lang/2.1/lib/commons-lang-2.1.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/apache-logging/1.0.4/lib/commons-logging.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/oswego-concurrent/1.3.4/lib/concurrent.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/dom4j/1.6/lib/dom4j.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/ehcache/1.2.2/lib/ehcache.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/hibernate/3.2.0.CR2/lib/hibernate3.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/hsqldb/1.8.0.2/lib/hsqldb.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/jaxen/1.1beta9/lib/jaxen.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/jboss/backport-concurrent/2.1.0.GA/lib/jboss-backport-concurrent.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/jbossas/core-libs/4.0.4.GA/lib/jboss-common.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/jbossas/core-libs/4.0.4.GA/lib/jboss-j2ee.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/jbossas/core-libs/4.0.4.GA/lib/jboss-jaxrpc.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/jboss/jbossmq/4.0.4.GA/lib/jbossmq-client.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/jboss/remoting/1.4.3.GA/lib/jboss-remoting.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/jboss/jbossretro-rt/1.0.0.GA/lib/jbossretro-rt.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/jbossas/core-libs/4.0.4.GA/lib/jboss-saaj.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/jboss/jbossws14/1.0.0.GA/lib/jbossws14-client.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/jboss/jbossxb/1.0.0.CR5_JBoss-4.0.4.GA/lib/jboss-xml-binding.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/jbossas/core-libs/4.0.4.GA/lib/jnp-client.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/junit/3.8.1/lib/junit.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/apache-log4j/1.2.8/lib/log4j.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/sun-javamail/1.3.1/lib/mail.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/sun-servlet/2.4/lib/servlet-api.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/ibm-wsdl4j/1.5.2/lib/wsdl4j.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/apache-xalan/j_2.7.0/lib/xalan.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/apache-xerces/2.7.1/lib/xercesImpl.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/apache-xerces/2.7.1/lib/xml-apis.jar"/>
+	<classpathentry kind="var" path="JBPM_REPO/jbpm/jpdl/3.2.Alpha1-SNAPSHOT/lib/jbpm-jpdl.jar"/>
+	<classpathentry kind="output" path="library/target/classes"/>
+</classpath>

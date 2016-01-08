@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+		<!-- 客户模块表单bean信息 -->
+		<form-bean name="userInfoBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="cust_id"       type="java.lang.String" />
+			<form-property name="cust_name"     type="java.lang.String" />
+			<form-property name="dict_sex"      type="java.lang.String" />
+			<form-property name="cust_email"    type="java.lang.String" />
+			<form-property name="cust_addr"     type="java.lang.String" />
+			<form-property name="cust_pcode"    type="java.lang.String" />
+			<form-property name="cust_tel_home" type="java.lang.String" />
+			<form-property name="cust_tel_work" type="java.lang.String" />
+			<form-property name="cust_tel_mob"  type="java.lang.String" />
+			<form-property name="cust_fax"      type="java.lang.String" />
+			<form-property name="cust_voc"      type="java.lang.String" />
+			<form-property name="cust_scale"    type="java.lang.String" />
+			<form-property name="cust_type"     type="java.lang.String" />
+			<form-property name="remark"        type="java.lang.String" />
+			<form-property name="tel_type"        type="java.lang.String" />
+			<form-property name="outputID" type="java.lang.String" />
+		</form-bean>
+		
+		
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<!-- 客户action -->
+		<action attribute="userInfoBean" 
+				name="userInfoBean" 
+				scope="request" 
+				path="/callcenter/userInfo" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main"  path="/callcenter/userInfo/custinfoMain.jsp"/>
+			<forward name="list"  path="/callcenter/userInfo/custinfoList.jsp"/>
+			<forward name="load"  path="/callcenter/userInfo/custinfoLoad.jsp"/>
+			<forward name="query" path="/callcenter/userInfo/custinfoQuery.jsp"/>
+			<forward name="alllist"  path="/callcenter/userInfo/custinfoAll.jsp"/>
+		</action>
+
+
+	</action-mappings>
+	
+</struts-config>
+

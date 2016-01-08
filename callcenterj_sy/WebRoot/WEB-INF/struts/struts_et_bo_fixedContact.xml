@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	<form-beans>
+		<!-- 固定联络员表单bean信息 -->
+		<form-bean name="fixedContact"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="cust_id" type="java.lang.String" />
+			<form-property name="cust_name" type="java.lang.String" />
+			<form-property name="dict_sex" type="java.lang.String" />
+			<form-property name="cust_email" type="java.lang.String" />
+			<form-property name="cust_addr" type="java.lang.String" />
+			<form-property name="cust_pcode" type="java.lang.String" />
+			<form-property name="cust_tel_home" type="java.lang.String" />
+			<form-property name="cust_tel_work" type="java.lang.String" />
+			<form-property name="cust_tel_mob" type="java.lang.String" />
+			<form-property name="cust_fax" type="java.lang.String" />
+			<form-property name="cust_voc" type="java.lang.String" />
+			<form-property name="cust_scale" type="java.lang.String" />
+			<form-property name="cust_type" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+			<!-- 以下属性是与固定联络员相关 -->
+			<form-property name="cust_identity_card"
+				type="java.lang.String" />
+			<form-property name="cust_develop_time"
+				type="java.lang.String" />
+			<form-property name="cust_pic_path" type="java.lang.String" />
+			<form-property name="cust_pic_name" type="java.lang.String" />
+			<form-property name="cust_rid" type="java.lang.String" />
+		</form-bean>
+
+		<!--上传图片-->
+		<form-bean name="fixedContactUploadFileForm"
+			type="et.bo.schema.fixedContact.form.FixedContactUploadForm">
+			<form-property name="cust_pic_path" type="java.lang.String" />
+			<form-property name="cust_pic_name" type="java.lang.String" />
+		</form-bean>
+
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+
+	<action-mappings>
+		<!--  固定联络员action -->
+		<action attribute="fixedContact" name="fixedContact"
+			scope="request" path="/schema/fixedContact"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main"
+				path="/schema/fixedContact/fixedContactMain.jsp" />
+			<forward name="list"
+				path="/schema/fixedContact/fixedContactList.jsp" />
+			<forward name="load"
+				path="/schema/fixedContact/fixedContactLoad.jsp" />
+			<forward name="query"
+				path="/schema/fixedContact/fixedContactQuery.jsp" />
+			<forward name="alllist"
+				path="/schema/fixedContact/fixedContactAll.jsp" />
+			<forward name="upload"
+				path="/schema/fixedContact/fixedContactUpload.jsp" />
+			<forward name="error"
+				path="/schema/fixedContact/error.jsp" />	
+		</action>
+
+		<!-- 上传图片文件 -->
+		<action attribute="fixedContactUploadFileForm"
+			name="fixedContactUploadFileForm" path="/schema/fixedContactUpload"
+			scope="request" parameter="method"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="error"
+				path="/schema/fixedContact/error.jsp" />
+			<forward name="upload"
+				path="/schema/fixedContact/fixedContactUpload.jsp" />
+		</action>
+	</action-mappings>
+
+</struts-config>

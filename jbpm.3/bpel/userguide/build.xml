@@ -1,0 +1,23 @@
+<project name="jbpm.bpel.doc" default="all.doc" basedir=".">
+
+  <property name="build.dir" value="${basedir}/../../doc/userguide"/>
+  <property name="pdf.name"  value="jbpm-bpel.pdf" />
+  <property environment="env" />
+  
+  <import file="../../../docbook-support/support.xml" />
+
+  <target name="all.doc">
+    <mkdir dir="en/images" /> 
+    <antcall target="lang.all"><param name="lang" value="en"/></antcall>
+  </target>
+        
+  <target name="html.doc" description="creates the html docs only and opens a browser">
+    <mkdir dir="en/images" /> 
+    <antcall target="lang.dochtml"><param name="lang" value="en"/></antcall>
+    <exec executable="${env.ProgramFiles}\Internet Explorer\IEXPLORE.EXE" spawn="yes"
+      os="Windows XP,Windows 2000">
+      <arg value="file://${basedir}/../../doc/userguide/en/html/index.html" />
+    </exec>
+  </target>
+        
+</project>

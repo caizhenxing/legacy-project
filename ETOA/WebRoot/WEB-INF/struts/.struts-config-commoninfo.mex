@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/oa/commoninfo/book.do" location="50,850" dimension="358,84" />
+  <StrutsActivity path="/oa/commoninfo/bookborrow.do" location="50,1750" dimension="358,84" />
+  <StrutsActivity path="/oa/commoninfo/leaveWord.do" location="1850,50" dimension="358,84" />
+  <StrutsActivity path="/oa/commoninfo/book/bookList.jsp" location="650,50" dimension="232,48" />
+  <StrutsActivity path="/oa/commoninfo/book/bookborrowLoad.jsp" location="1250,1750" dimension="268,48" />
+  <StrutsActivity path="/oa/commoninfo/book/bookMain.jsp" location="950,50" dimension="232,48" />
+  <StrutsActivity path="/oa/commoninfo/book/seeBook.jsp" location="1250,50" dimension="226,48" />
+  <StrutsActivity path="/oa/commoninfo/book/bookLoad.jsp" location="1550,50" dimension="232,48" />
+  <StrutsActivity path="/oa/commoninfo/book/bookQuery.jsp" location="50,150" dimension="238,48" />
+  <StrutsActivity path="/oa/commoninfo/bookborrow/bookborrowList.jsp" location="650,1450" dimension="304,48" />
+  <StrutsActivity path="/oa/commoninfo/bookborrow/bookborrowMain.jsp" location="1250,1450" dimension="304,48" />
+  <StrutsActivity path="/oa/commoninfo/bookborrow/bookborrowLoad.jsp" location="1850,1450" dimension="304,48" />
+  <StrutsActivity path="/oa/commoninfo/bookborrow/bookborrowQuery.jsp" location="650,1750" dimension="310,48" />
+  <StrutsActivity path="/oa/commoninfo/leaveWord/leaveWordList.jsp" location="650,250" dimension="292,48" />
+  <StrutsActivity path="/oa/commoninfo/leaveWord/seeLeaveWordList.jsp" location="1250,250" dimension="310,48" />
+  <StrutsActivity path="/oa/commoninfo/leaveWord/leaveWordMain.jsp" location="1850,250" dimension="292,48" />
+  <StrutsActivity path="/oa/commoninfo/leaveWord/leaveWordLoad.jsp" location="650,350" dimension="292,48" />
+  <StrutsActivity path="/oa/commoninfo/leaveWord/leaveWordQuery.jsp" location="1250,350" dimension="298,48" />
+  <StrutsActivity path="/oa/commoninfo/leaveWord/test1.jsp" location="1850,350" dimension="244,48" />
+  <StrutsActivity path="/oa/commoninfo/leaveWord/seeLeaveWordMain.jsp" location="2150,350" dimension="310,48" />
+  <StrutsActivity path="/oa/commoninfo/leaveWord/seeLeaveWordLoad.jsp" location="50,450" dimension="310,48" />
+  <StrutsActivity path="/oa/communicate/im/top.jsp" location="0,986" dimension="196,48" />
+  <StrutsActivity path="/oa/communicate/im/detail.jsp" location="296,986" dimension="214,48" />
+  <StrutsActivity path="/oa/communicate/im/selectEmployee.jsp" location="610,986" dimension="262,48" />
+  <StrutsActivity path="/oa/communicate/im/newIm.jsp" location="972,986" dimension="208,48" />
+  <StrutsActivity path="/sys/error.jsp" location="1280,986" dimension="124,48" />
+  <StrutsActivity path="/sys/success.jsp" location="1504,986" dimension="136,48" />
+  <StrutsActivity path="/oa/afiche/aficheList.jsp" location="0,1283" dimension="190,48" />
+  <StrutsActivity path="/oa/afiche/aficheMain.jsp" location="290,1283" dimension="190,48" />
+  <StrutsActivity path="/oa/afiche/aficheLoad.jsp" location="580,1283" dimension="190,48" />
+  <StrutsActivity path="/oa/afiche/aficheQuery.jsp" location="870,1283" dimension="196,48" />
+  <StrutsActivity path="/oa/main/aficheInfo.jsp" location="1166,1283" dimension="178,48" />
+  <StrutsActivity path="/oa/afiche/error.jsp" location="1444,1283" dimension="160,48" />
+  <StrutsActivity path="/oa/communicate/email/emailList.jsp" location="0,689" dimension="250,48" />
+  <StrutsActivity path="/oa/communicate/email/emailMain.jsp" location="350,689" dimension="250,48" />
+  <StrutsActivity path="/oa/communicate/email/seeEmail.jsp" location="700,689" dimension="244,48" />
+  <StrutsActivity path="/oa/communicate/email/emailLoad.jsp" location="1044,689" dimension="250,48" />
+  <StrutsActivity path="/oa/communicate/email/emailQuery.jsp" location="1394,689" dimension="256,48" />
+  <StrutsActivity path="/oa/communicate/email/answerEmail.jsp" location="1750,689" dimension="262,48" />
+  <StrutsActivity path="/oa/communicate/email/upload.jsp" location="2112,689" dimension="232,48" />
+  <StrutsActivity path="/oa/communicate/email/selectUser.jsp" location="2444,689" dimension="256,48" />
+  <StrutsActivity path="/oa/communicate/email/selectList.jsp" location="2800,689" dimension="256,48" />
+  <StrutsActivity path="/oa/communicate/email/error.jsp" location="3156,689" dimension="226,48" />
+  <StrutsActivity path="/oa/communicate/emailbox/emailBoxList.jsp" location="0,1560" dimension="286,48" />
+  <StrutsActivity path="/oa/communicate/emailbox/emailBoxMain.jsp" location="386,1560" dimension="286,48" />
+  <StrutsActivity path="/oa/communicate/emailbox/seeEmailbox.jsp" location="772,1560" dimension="280,48" />
+  <StrutsActivity path="/oa/communicate/emailbox/emailBoxLoad.jsp" location="1152,1560" dimension="286,48" />
+  <StrutsActivity path="/oa/communicate/emailbox/emailBoxQuery.jsp" location="1538,1560" dimension="292,48" />
+  <StrutsActivity path="/news/editor/uploadFail.jsp" location="0,332" dimension="202,48" />
+  <StrutsActivity path="/oa/email/upload.jsp" location="302,332" dimension="160,48" />
+  <StrutsActivity path="/editor/uploadFile.jsp" location="155,0" dimension="172,48" />
+  <StrutsActivity path="/oa/commoninfo/emailbox/emailBoxList.jsp" location="350,550" dimension="280,48" />
+  <StrutsActivity path="/oa/commoninfo/emailbox/emailBoxMain.jsp" location="950,550" dimension="280,48" />
+  <StrutsActivity path="/oa/commoninfo/emailbox/seeEmailbox.jsp" location="1550,550" dimension="274,48" />
+  <StrutsActivity path="/oa/commoninfo/emailbox/emailBoxLoad.jsp" location="650,850" dimension="280,48" />
+  <StrutsActivity path="/oa/commoninfo/emailbox/emailBoxQuery.jsp" location="1250,850" dimension="286,48" />
+  <StrutsActivity path="/oa/commoninfo/book/emailBoxList.jsp" location="50,1150" dimension="256,48" />
+  <StrutsActivity path="/oa/commoninfo/book/emailBoxMain.jsp" location="650,1150" dimension="256,48" />
+  <StrutsActivity path="/oa/commoninfo/book/seeEmailbox.jsp" location="1250,1150" dimension="250,48" />
+  <StrutsActivity path="/oa/commoninfo/book/emailBoxLoad.jsp" location="1550,1150" dimension="256,48" />
+  <StrutsActivity path="/oa/commoninfo/book/emailBoxQuery.jsp" location="50,1450" dimension="262,48" />
+  <StrutsActivity path="/oa/commoninfo/bookborrow/bookList.jsp" location="1850,850" dimension="268,48" />
+  <StrutsActivity path="/oa/commoninfo/bookborrow/bookMain.jsp" location="1850,950" dimension="268,48" />
+  <StrutsActivity path="/oa/commoninfo/bookborrow/seeBook.jsp" location="1850,1050" dimension="262,48" />
+  <StrutsActivity path="/oa/commoninfo/bookborrow/bookLoad.jsp" location="1850,1250" dimension="268,48" />
+  <StrutsActivity path="/oa/commoninfo/bookborrow/bookQuery.jsp" location="1850,1350" dimension="274,48" />
+  <StrutsTransition id="/oa/commoninfo/book.do,main,/oa/commoninfo/book/bookMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="265,850" />
+      <AbsolutePoint location="265,513" />
+      <AbsolutePoint location="1066,513" />
+      <AbsolutePoint location="1066,98" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/commoninfo/leaveWord.do,seeList,/oa/commoninfo/leaveWord/seeLeaveWordList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2029,134" />
+      <AbsolutePoint location="2029,213" />
+      <AbsolutePoint location="1405,213" />
+      <AbsolutePoint location="1405,250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/commoninfo/book.do,see,/oa/commoninfo/book/seeBook.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="50,862" />
+      <AbsolutePoint location="-45,862" />
+      <AbsolutePoint location="-45,-45" />
+      <AbsolutePoint location="1363,-45" />
+      <AbsolutePoint location="1363,50" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/commoninfo/book.do,list,/oa/commoninfo/book/bookList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="50,892" />
+      <AbsolutePoint location="-75,892" />
+      <AbsolutePoint location="-75,74" />
+      <AbsolutePoint location="650,74" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/commoninfo/leaveWord.do,seeLoad,/oa/commoninfo/leaveWord/seeLeaveWordLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2208,92" />
+      <AbsolutePoint location="2565,92" />
+      <AbsolutePoint location="2565,474" />
+      <AbsolutePoint location="360,474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/commoninfo/bookborrow.do,load,/oa/commoninfo/bookborrow/bookborrowLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,1813" />
+      <AbsolutePoint location="2002,1813" />
+      <AbsolutePoint location="2002,1498" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/commoninfo/leaveWord.do,list,/oa/commoninfo/leaveWord/leaveWordList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,113" />
+      <AbsolutePoint location="796,113" />
+      <AbsolutePoint location="796,250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/commoninfo/bookborrow.do,list,/oa/commoninfo/bookborrow/bookborrowList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="327,1750" />
+      <AbsolutePoint location="327,1474" />
+      <AbsolutePoint location="650,1474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/commoninfo/leaveWord.do,ok,/oa/commoninfo/leaveWord/test1.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2029,50" />
+      <AbsolutePoint location="2029,-75" />
+      <AbsolutePoint location="1839,-75" />
+      <AbsolutePoint location="1839,374" />
+      <AbsolutePoint location="1850,374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/commoninfo/book.do,borrow,/oa/commoninfo/book/bookborrowLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,913" />
+      <AbsolutePoint location="2579,913" />
+      <AbsolutePoint location="2579,1774" />
+      <AbsolutePoint location="1518,1774" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/commoninfo/leaveWord.do,seeMain,/oa/commoninfo/leaveWord/seeLeaveWordMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2195,134" />
+      <AbsolutePoint location="2195,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/commoninfo/bookborrow.do,query,/oa/commoninfo/bookborrow/bookborrowQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,1783" />
+      <AbsolutePoint location="650,1783" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/commoninfo/leaveWord.do,main,/oa/commoninfo/leaveWord/leaveWordMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2059,134" />
+      <AbsolutePoint location="2059,250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/commoninfo/leaveWord.do,load,/oa/commoninfo/leaveWord/leaveWordLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2165,134" />
+      <AbsolutePoint location="2165,313" />
+      <AbsolutePoint location="796,313" />
+      <AbsolutePoint location="796,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/commoninfo/leaveWord.do,query,/oa/commoninfo/leaveWord/leaveWordQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,83" />
+      <AbsolutePoint location="1797,83" />
+      <AbsolutePoint location="1797,374" />
+      <AbsolutePoint location="1548,374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/commoninfo/bookborrow.do,main,/oa/commoninfo/bookborrow/bookborrowMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,1750" />
+      <AbsolutePoint location="229,1683" />
+      <AbsolutePoint location="1453,1683" />
+      <AbsolutePoint location="1453,1498" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/commoninfo/book.do,load,/oa/commoninfo/book/bookLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="50,922" />
+      <AbsolutePoint location="-135,922" />
+      <AbsolutePoint location="-135,413" />
+      <AbsolutePoint location="1666,413" />
+      <AbsolutePoint location="1666,98" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/commoninfo/book.do,query,/oa/commoninfo/book/bookQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,850" />
+      <AbsolutePoint location="229,782" />
+      <AbsolutePoint location="-15,782" />
+      <AbsolutePoint location="-15,174" />
+      <AbsolutePoint location="50,174" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

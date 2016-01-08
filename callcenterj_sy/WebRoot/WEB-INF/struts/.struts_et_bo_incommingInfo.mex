@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/incomming/incommingInfo.do" location="487,0" dimension="358,84" />
+  <StrutsActivity path="/incommingInfo/incommingInfoMain.jsp" location="0,184" dimension="256,48" />
+  <StrutsActivity path="/incommingInfo/incommingInfoQuery.jsp" location="356,184" dimension="262,48" />
+  <StrutsActivity path="/incommingInfo/incommingInfoList.jsp" location="718,184" dimension="256,48" />
+  <StrutsActivity path="/incommingInfo/incommingInfoLoad.jsp" location="1074,184" dimension="256,48" />
+  <StrutsTransition id="/incomming/incommingInfo.do,toIncommingInfoQuery,/incommingInfo/incommingInfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="621,84" />
+      <AbsolutePoint location="621,149" />
+      <AbsolutePoint location="487,149" />
+      <AbsolutePoint location="487,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/incomming/incommingInfo.do,toIncommingInfoMain,/incommingInfo/incommingInfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="532,84" />
+      <AbsolutePoint location="532,119" />
+      <AbsolutePoint location="128,119" />
+      <AbsolutePoint location="128,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/incomming/incommingInfo.do,toIncommingInfoList,/incommingInfo/incommingInfoList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="711,84" />
+      <AbsolutePoint location="711,149" />
+      <AbsolutePoint location="846,149" />
+      <AbsolutePoint location="846,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/incomming/incommingInfo.do,toIncommingInfoLoad,/incommingInfo/incommingInfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="800,84" />
+      <AbsolutePoint location="800,119" />
+      <AbsolutePoint location="1202,119" />
+      <AbsolutePoint location="1202,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

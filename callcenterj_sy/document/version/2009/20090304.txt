@@ -1,0 +1,50 @@
+修改人：王文权
+修改日期：2009-03-04
+
+需求：专家统计修改
+CREATE PROCEDURE [dbo].[proc_expertNew] (@begintime varchar(20),@endtime varchar(20),@qtype varchar(50))
+AS
+BEGIN
+	--查询用户表并且把专家插到X表里
+	select a.* into #expert_X from 
+(select cust_name as X from oper_custinfo 
+where dict_cust_type = 'SYS_TREE_0000002103' and is_delete = 0)a
+	--创建Y表并插值
+	create table #expert_Y (Y varchar(50))
+	insert into #expert_Y values (@qtype)
+	--创建总表
+	create table #expert_sum (Sum1 varchar(50),X varchar(50),Y varchar(50))
+	--向总表插值
+	declare expert_X cursor for select * from #expert_X
+	declare @expert varchar(50)
+	open expert_X
+	Fetch Next From expert_X Into @expert
+	While ( @@Fetch_Status=0 )
+	begin
+		--根据参数判断取次数还是取时长,目前只有次数统计
+		declare @sum1 varchar(50)
+		if @qtype = '统计次数'
+		begin
+			--根据三个电话号码取总数
+			select @sum1=count(*)
+			from oper_question 
+			where Convert(varchar(10), addtime, 120) between @begintime and @endtime 
+			and expert_name = @expert
+
+		end
+		
+		if(@sum1 is not null)
+		begin
+			insert into #expert_sum (Sum1,X,Y) values (@sum1,@expert,@qtype)
+		end
+		
+		Fetch Next From expert_X Into @expert
+	end
+	close expert_X
+	Deallocate expert_X
+
+	select distinct X from #expert_X order by X
+	select distinct Y from #expert_Y order by Y
+	select Sum1,X,Y from #expert_sum order by X,Y
+
+END

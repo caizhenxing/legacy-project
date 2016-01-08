@@ -1,0 +1,6 @@
+1、农产品价格库-》价格类型dict_price_type字段数据变更
+begin
+update oper_priceinfo set dict_price_type='零售价' where dict_price_type='SYS_TREE_0000000629'
+update oper_priceinfo set dict_price_type='批发价' where dict_price_type='SYS_TREE_0000000628'
+update oper_priceinfo set dict_price_type='收购价' where dict_price_type='SYS_TREE_0000000627'
+end

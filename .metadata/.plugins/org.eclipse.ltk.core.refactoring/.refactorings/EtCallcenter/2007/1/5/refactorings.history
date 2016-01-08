@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<session version="1.0">
+<refactoring comment="Rename type 'et.bo.callcenter.connection.exchange.TelephoneSwitch' to 'AbsTelephoneSwitch'&#13;&#10;- Original element: 'et.bo.callcenter.connection.exchange.TelephoneSwitch'&#13;&#10;- Renamed element: 'et.bo.callcenter.connection.exchange.AbsTelephoneSwitch'&#13;&#10;- Update references to refactored element&#13;&#10;- Update fully qualified names in *.xml files&#13;&#10;- Update textual occurrences in comments and strings" description="Rename type 'TelephoneSwitch'" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;et.bo.callcenter.connection.exchange{TelephoneSwitch.java[TelephoneSwitch" matchStrategy="1" name="AbsTelephoneSwitch" patterns="*.xml" qualified="true" references="true" similarDeclarations="false" stamp="1170055705812" textual="true" version="1.0"/>
+</session>

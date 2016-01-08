@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--saved from url=(0040)-->
+<HTML><HEAD><TITLE>細目番号一覧</TITLE>
+
+#parse( $commonSetting )
+
+<META http-equiv=Content-Type content="text/html; charset=Shift_JIS">
+<STYLE type=text/css>BODY {
+	MARGIN-TOP: 20px; FONT-SIZE: 10pt; MARGIN-LEFT: 20px; LINE-HEIGHT: 14pt; MARGIN-RIGHT: 20px
+}
+H1 {
+	FONT-SIZE: 16pt; LINE-HEIGHT: 20pt
+}
+.text_01 {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; LINE-HEIGHT: 16pt
+}
+.table_01 {
+	FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: #000000; LINE-HEIGHT: 125%; BORDER-COLLAPSE: collapse
+}
+A:link {
+	COLOR: #3359cc; TEXT-DECORATION: underline
+}
+A:visited {
+	COLOR: #3359cc; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: #ff6666; TEXT-DECORATION: none
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1400" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff><A name=top></A>
+<CENTER>
+<H1>細目番号一覧</H1></CENTER><BR>
+<CENTER>
+
+  <!--索引ここから-->
+  <TABLE class=table_01 cellSpacing=3 width=600 border=0>
+    <TBODY>
+    <TR>	
+	#foreach($user in $index)
+     <TD align=middle bgColor=#eeffbb><A 
+        href="#$!escape.getText($user.get("BUNYA_CD"))">$!escape.getText($user.get("BUNYA_NAME"))</A></TD>
+	#end
+    </TR>
+    </TBODY>
+   </TABLE>
+  <!--索引ここまで-->
+
+</CENTER><BR>
+<HR noShade SIZE=1>
+<BR>
+<CENTER>
+
+<!--一覧ここから-->
+#foreach($user in $search)
+<!--テーブルここから-->
+##索引からのリンク
+<A name=$escape.getText($user.get("BUNYA_CD"))></A>
+
+##分野ごとの繰り返し ---ここから
+<TABLE class=table_01 borderColor=#666666 cellSpacing=0 cellPadding=3 
+  border=1 width=600>
+ <TBODY>
+	<TR>
+		<TD class=text_01 bgColor=#eeffbb colSpan="4">$!escape.getText($user.get("BUNYA_NAME"))</TD>
+	</TR>
+	<TR bgColor=#888888>
+		<TD align=middle width="20%"><FONT color=#ffffff>分科</FONT></TD>
+		<TD align=middle width="50%"><FONT color=#ffffff>細目</FONT></TD>
+		<TD align=middle width="20%"><FONT color=#ffffff>細目番号</FONT></TD>		
+## 2005/04/15 追加 ここから-----------------------------
+## 理由 「分割番号」項目追加
+		<TD align=middle width="10%"><FONT color=#ffffff>分割番号</FONT></TD>		
+## 追加 ここまで----------------------------------------
+
+	</TR>
+	##分野ごとの分科リストを取得
+	#set ($bunkaList = $user.get("BUNKA_LIST"))
+	
+## 2005/04/26 修正 ここから-----------------------------
+## 理由 「分割番号」がセットされている場合に、分科名と細目名、細目番号を表示しないように対応
+##	##分科ごとの繰り返し ---ここから
+##	#foreach($user2 in $bunkaList)	
+##		#set ($saimokuList= $user2.get("SAIMOKU_LIST"))
+##		##細目リストのサイズを取得
+##		#set ($count= $!saimokuList.size()) 
+##		##細目の表示
+##		<TR>
+##			<TD vAlign=top bgColor=#dddddd rowSpan=$count>$!escape.getText($user2.get("BUNKA_NAME"))</TD>
+##			##細目の1行目は固定で表示
+##			<TD>$!escape.getText($saimokuList.get(0).get("SAIMOKU_NAME"))</TD>
+##			<TD align=middle>$!escape.getText($saimokuList.get(0).get("BUNKASAIMOKU_CD"))</TD>
+#### 2005/04/15 追加 ここから-----------------------------
+#### 理由 「分割番号」項目追加
+##			<TD align=middle>
+##			#if(!$escape.getText($saimokuList.get(0).get("BUNKATSU_NO")).equals("-"))
+##				$!escape.getText($saimokuList.get(0).get("BUNKATSU_NO"))
+##			#end
+##			</TD>	
+#### 追加 ここまで----------------------------------------
+##		</TR>
+##		##細目ごとの繰り返し（２行目から）---ここから
+##		#if($count != 1)
+##	  		#set ($count= ${count} - 1)
+##		    #foreach( $forcount in $[1..$count] )
+##			<TR>
+##	          <TD>$!escape.getText($saimokuList.get($forcount).get("SAIMOKU_NAME"))</TD>
+####	          <TD align=middle>$!escape.getText($saimokuList.get($forcount).get("BUNKASAIMOKU_CD"))</TD>
+#### 2005/04/15 追加 ここから-----------------------------
+#### 理由 「分割番号」項目追加
+##			<TD align=middle>
+##			#if(!$escape.getText($saimokuList.get($forcount).get("BUNKATSU_NO")).equals("-"))
+##				$!escape.getText($saimokuList.get($forcount).get("BUNKATSU_NO"))</TD></TR>	
+##			#end
+#### 追加 ここまで----------------------------------------
+##	        </TR>
+##		    #end
+##	    #end
+##	    ##細目ごとの繰り返し ---ここまで
+##	#end
+##	##分科ごとの繰り返し ---ここから
+
+	##分科ごとの繰り返し ---ここから
+	#foreach($user2 in $bunkaList)	
+		#set ($saimokuList= $user2.get("SAIMOKU_LIST"))
+		##細目リストのサイズを取得
+		#set ($rowSpan= $!saimokuList.size())
+
+		##細目ごとの繰り返し ---ここから
+	  	#set ($connect = false)
+	    #foreach( $saimoku in $saimokuList )
+		##細目の表示
+			<TR>
+			##分科名は一行目のみ
+			#if($velocityCount == 1)
+				<TD vAlign=top bgColor=#dddddd rowSpan=$rowSpan>$!escape.getText($user2.get("BUNKA_NAME"))</TD>
+			#end
+			
+			#set($nextBunkasaimokuCD = '-')
+			#if($velocityCount < $rowSpan)
+				#set($nextBunkasaimokuCD = $saimokuList.get($velocityCount).get("BUNKASAIMOKU_CD"))
+			#end
+			
+	    	#if($saimoku.get("BUNKASAIMOKU_CD") == $nextBunkasaimokuCD )
+        		<TD rowspan="2">$!escape.getText($saimoku.get("SAIMOKU_NAME"))</TD>
+        		<TD rowspan="2" align=middle>$!escape.getText($saimoku.get("BUNKASAIMOKU_CD"))</TD>
+		  		#set ($connect = true)
+	    	#else
+	    		#if($connect == false)
+        			<TD>$!escape.getText($saimoku.get("SAIMOKU_NAME"))</TD>
+        			<TD align=middle>$!escape.getText($saimoku.get("BUNKASAIMOKU_CD"))</TD>
+		    	#end
+		  		#set ($connect = false)
+	    	#end
+				<TD align=middle>
+			#if(!$escape.getText($saimoku.get("BUNKATSU_NO")).equals("-"))
+					$!escape.getText($saimoku.get("BUNKATSU_NO"))
+			#else
+					&nbsp;
+			#end
+		  		</TD>
+			</TR>
+	    #end
+	    ##細目ごとの繰り返し ---ここまで
+	#end
+	##分科ごとの繰り返し ---ここから
+
+
+## 修正 ここまで----------------------------------------
+ </TBODY>
+</TABLE>
+##分野ごとの繰り返し ---ここまで
+<!--テーブルここまで-->
+<DIV align=left><A 
+href="#top">このページのトップへ</A></DIV>
+<BR>
+#end
+<!--一覧ここまで-->
+
+    <!--ボタン用テーブルここから--> 
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="javascript:window.close()"><img src="$path/images/bt_close.gif" width=114 height=28 border="0" alt="閉じる"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!--ボタン用テーブルここまで-->
+
+</BODY></HTML>

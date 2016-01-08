@@ -1,0 +1,306 @@
+## ***********************************************
+## 提出確認（特定領域研究(新規領域)）画面
+## ページ情報 → result
+## ***********************************************
+## 2006/06/13 宮秀彬 新規作成
+
+#parse( $commonSetting )
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+<script language="javascript">
+<!--	
+	/* 「承認」ボタンを押下時*/
+	function onShonin(ryoikiSystemNo){
+		document.shinsei_form.action="$link.setAction("/shozoku/teishutsuShorui/checkOuboSyonin")";
+		document.shinsei_form.ryoikiSystemNo.value=ryoikiSystemNo;
+		document.shinsei_form.submit();
+	}
+	
+	/* 「却下」ボタンを押下時 03*/
+	function onKyakka(ryoikiSystemNo){
+		document.shinsei_form.action="$link.setAction("/shozoku/teishutsuShorui/checkOuboKyakka")";
+		document.shinsei_form.ryoikiSystemNo.value=ryoikiSystemNo;
+		document.shinsei_form.submit();
+	}
+	
+	/* 「却下」ボタンを押下時 31*/
+	function onKariBangoKyakka(ryoikiSystemNo){
+		document.shinsei_form.action="$link.setAction("/shozoku/teishutsuShorui/checkKariBangoKyakka")";
+		document.shinsei_form.ryoikiSystemNo.value=ryoikiSystemNo;
+		document.shinsei_form.submit();
+	}
+	
+	/* 「確認」ボタンを押下時 */
+	function onBangoKyakka(ryoikiSystemNo){
+		document.shinsei_form.action="$link.setAction("/shozoku/teishutsuShorui/checkKariBangoHakko")";
+		document.shinsei_form.ryoikiSystemNo.value=ryoikiSystemNo;
+		document.shinsei_form.submit();
+	}
+	
+	/* 「表示」ボタンを押下時 */
+	function onTyosyoList(inKariryoikiNo){
+		document.shinsei_form.action="$link.setAction("/shozoku/teishutsuShorui/keikakuTyosyoList")";
+		document.shinsei_form.kariryoikiNo.value=inKariryoikiNo;
+		document.shinsei_form.submit();
+	}
+	
+	/* 「応募書類の提出書出力」を押下時 */
+	function onDownload(){
+	    document.shinsei_form.action="$link.setAction("/shozoku/teishutsuShorui/ouboDownload")";
+	    document.shinsei_form.submit();
+    }
+    
+    /* 「ダウンロード」ボタンを押下時 */
+	function onShinseiDownloadFile(ryoikiSystemNo){
+	    document.download_form.action="$link.setAction('/shozoku/gaiyoDownload')";
+	    document.download_form.ryoikiSystemNo.value=ryoikiSystemNo;
+	    document.download_form.submit();
+	}
+	
+	/* 応募者情報 */
+    function onShinseishaData(shinseishaId){
+        window.open("","nw","toolbar=0,status=0,menubar=0,resizable=yes,scrollbars=yes");
+
+        document.shinseisha_form.action="$link.setAction("/shozoku/shinseiJohoKanri/shinseishaJoho")";
+        document.shinseisha_form.shinseishaId.value=shinseishaId;
+        document.shinseisha_form.target="nw";
+        document.shinseisha_form.submit();
+    }
+//-->
+</script>
+</head>
+
+<body class="bodyStyle">
+## 変数の置き換え
+#set ($list= $result)
+#set ($isOk="false")
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/shozoku/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width="72" height="20" border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="../images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#CC6666" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/shozoku/showMainMenu')">所属研究機関担当者向けメニュー</a>＞<b>提出確認（特定領域研究（新規領域））</b></font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width="61" height="49" alt=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont">
+       <br>提出確認（特定領域研究（新規領域））</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width="213" height="49" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+    <!-- 本文ここから -->
+    <p class="comment"> ＜注意事項＞</p>
+    <ul>
+     <li class="comment">[確認]ボタンから仮領域番号発行を確認すると仮領域番号が発行されます。</li>
+     <li class="comment">仮領域番号確認待ちの[却下]ボタンから仮領域番号を却下すると仮領域番号は発行されません。</li>
+     <li class="comment">[承認]ボタンから応募書類を承認すると日本学術振興会へ応募書類が送信されます。</li>
+     <li class="comment">所属研究機関受付中の[却下]ボタンから応募書類を却下すると応募書類は日本学術振興会に送信されません。</li>
+	 ## 2006/06/22 劉佳　変更ここから
+     <li class="comment"> 応募状況の意味は<a href="$path/code/status3.html" target="_blank">こちら</a>を参照してください。</li>
+      ## 2006/06/22 劉佳　変更ここまで
+	 <li class="comment">PDFファイルの内容を確認するには、Adobe Acrobat Readerが必要です。まだインストールしていない方は下のボタンをクリックしてインストールしてください。
+      <br><a target="_blank" href="http://www.adobe.co.jp/products/acrobat/readstep2.html"><img src="$path/images/getreader.gif" BORDER="0" height="31" width="88" alt="Get Adobe Reader"></a>
+     </li>
+    </ul>
+    <!-- 一覧用テーブルここから -->
+    #errorMarkup()
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+     <tr>
+      <td>
+       <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+        <tr>
+         <th>研究種目名</th>
+         <th>学振提出期限</th>
+         <th>仮領域番号</th>
+         <th>領域名</th>
+         <th>部局名・職名</th>
+         <th>応募者名</th>
+         <th>応募件数</th>
+         <th>版数</th>
+         <th>領域計画書確認</th>
+         <th>研究計画調書一覧</th>
+         <th>作成日</th>
+         <th>所属研究機関承認日</th>
+         <th>応募状況</th>
+        </tr>
+        #if($list.size()==0)
+          <tr>
+           <td></td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+          </tr>    
+        #else
+			
+          #foreach($info in $list)
+            #set($ryoikiJokyoId=$info.RYOIKI_JOKYO_ID)
+            <tr>
+             <td>
+              #if($info.KAISU.toString()=="1"||$info.KAISU.toString()=="0")
+				平成$!escape.getText($!info.NENDO)年度 $!escape.getText($!info.JIGYO_NAME)
+              #else
+				平成$!escape.getText($!info.NENDO)年度 第$!escape.getText($!info.KAISU)回 $!escape.getText($!info.JIGYO_NAME)
+              #end
+             </td>
+##             <td>$!escape.getText($!dateFormat.format($!info.UKETUKEKIKAN_END))</td>
+##2006/07/19 ADD START 原因：仕様変更
+             <td>
+			  #if($ryoikiJokyoId=='31'||$ryoikiJokyoId=='32')
+				$!escape.getText($!dateFormat.format($!info.KARIRYOIKINO_UKETUKEKIKAN_END))
+			  #else
+				$!escape.getText($!dateFormat.format($!info.UKETUKEKIKAN_END))
+			  #end
+			 </td>
+##2006/07/19 ADD END
+             <td>$!escape.getText($!info.KARIRYOIKI_NO)</td>
+
+             <td>
+              #set($validJokyoIds = ['02','03','04','05','06','07'])
+              #if($validJokyoIds.contains($ryoikiJokyoId))
+                $!escape.getText($!info.RYOIKI_NAME_RYAKU)
+              #end
+             </td>
+             <td>$!escape.getText($!info.BUKYOKU_NAME_RYAKU) $!escape.getText($!info.SHOKUSHU_NAME_RYAKU)</td>
+             <td><a href="javascript:onShinseishaData('$!info.SHINSEISHA_ID')">$!escape.getText($!info.NAME_KANJI_SEI) $!escape.getText($!info.NAME_KANJI_MEI)</a></td>
+   	 
+             <td>
+              #if($ryoikiJokyoId=='03'||$ryoikiJokyoId=='04'||$ryoikiJokyoId=='06'||$ryoikiJokyoId=='07')
+                $!escape.getText($!info.COUNT)件
+              #end
+             </td>
+   	 
+             <td>
+              #if($ryoikiJokyoId=='03'||$ryoikiJokyoId=='04'||$ryoikiJokyoId=='05'||$ryoikiJokyoId=='06'||$ryoikiJokyoId=='07')
+                $!escape.getText($!info.EDITION)版
+              #end
+             </td>
+     
+             <td>
+              #if($ryoikiJokyoId == '03' || $ryoikiJokyoId == '04' || $ryoikiJokyoId == '05' || $ryoikiJokyoId == '06' || $ryoikiJokyoId == '07')
+                <a href="javascript:onShinseiDownloadFile('$info.RYOIKI_SYSTEM_NO')"><img src="$path/images/bt_download.gif" border="0" alt="ダウンロード"></a>
+              #end
+             </td>
+     
+             <td>
+              #if($ryoikiJokyoId=='03'||$ryoikiJokyoId=='04'||$ryoikiJokyoId=='06'||$ryoikiJokyoId=='07')
+                <a href="javascript:onTyosyoList('$!info.KARIRYOIKI_NO')"><img src="$path/images/bt_indicate.gif" width="64" height="24" alt="表示" border="0"></a>
+              #end
+             </td>
+
+             <td>$!escape.getText($!dateFormat.format($!info.SAKUSEI_DATE))</td>
+             <td>$!escape.getText($!dateFormat.format($!info.SHONIN_DATE))</td>
+             <td>$!escape.getText($!info.RYOIKI_JOKYO_NAME)
+              <br>
+              #if($ryoikiJokyoId=='31')
+                <a href="javascript:onBangoKyakka('$!info.RYOIKI_SYSTEM_NO')"><img src="$path/images/bt_check.gif" alt="確認" width="36" height="22" border="0"></a>
+                <a href="javascript:onKariBangoKyakka('$!info.RYOIKI_SYSTEM_NO')"><img src="$path/images/bt_reject.gif" width="36" height="22" border="0" alt="却下"></a>
+              #end
+              #if($ryoikiJokyoId=='03')
+                <a href="javascript:onShonin('$!info.RYOIKI_SYSTEM_NO')"><img src="$path/images/bt_approve.gif" width="36" height="22" border="0" alt="承認"></a>
+                <a href="javascript:onKyakka('$!info.RYOIKI_SYSTEM_NO')"><img src="$path/images/bt_reject.gif" width="36" height="22" border="0" alt="却下"></a>
+              #end
+             </td>
+            </tr>
+            #if($ryoikiJokyoId=='04'||$ryoikiJokyoId=='06'||$ryoikiJokyoId=='07')
+              #set ($isOk = "true")
+            #end
+          #end
+        #end
+       </table>
+      </td>
+     </tr>
+    </table>
+    <!-- 一覧用テーブルここまで-->
+    <br>
+    <!-- 本文ここまで -->
+
+    <!-- ボタン用テーブルここから -->  
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+      #if($isOk=="true")
+       <td>        
+          <a href="javascript:onDownload();"><img src="$path/images/bt_oubo.gif" width="219" height="28" border="0" alt="応募書類の提出書出力"></a>
+          <a href="$link.setAction('/shozoku/showMainMenu')"><img src="$path/images/bt_bk_menu.gif" width="114" height="28" border="0" alt="メニューに戻る"></a>
+       </td>
+      #else
+          <td><a href="$link.setAction('/shozoku/showMainMenu')"><img src="$path/images/bt_bk_menu.gif" width="114" height="28" border="0" alt="メニューに戻る"></a></td>
+      #end
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width="8" height="26" alt=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shozoku/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width="72" height="26" border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width="8" height="26" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <form name="shinsei_form" method="post" action="">
+   <input type="hidden" name="ryoikiSystemNo" value="">
+   <input type="hidden" name="kariryoikiNo" value="">
+ </form>
+ <form name="download_form" action="" method="post">
+	<input type="hidden" name="ryoikiSystemNo" >
+ </form>
+ <form name="shinseisha_form" method="post" action="">
+  <input type="hidden" name="shinseishaId" value="">
+</form>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+</body>
+</html>

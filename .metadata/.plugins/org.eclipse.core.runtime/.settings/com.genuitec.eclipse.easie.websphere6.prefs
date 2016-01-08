@@ -1,0 +1,9 @@
+#Tue Nov 14 10:12:27 CST 2006
+DEBUG=false
+OUTPUT_ENCODING=
+LIBRARY_PATH="C\:\\Java\\bin;D\:\\Program Files\\IBM\\WebSphere\\AppServer\\bin"
+eclipse.preferences.version=1
+BOOT_CLASSPATH="D\:\\Program Files\\IBM\\WebSphere\\AppServer\\java\\jre\\lib\\ext\\ibmorb.jar;D\:\\Program Files\\IBM\\WebSphere\\AppServer\\java\\jre\\lib\\ext\\ibmext.jar"
+SERVERNAME=
+JDK_INSTALLATION_NAME=ibm
+EXTERNAL_DIRS="C\:\\Java\\lib;D\:\\Program Files\\IBM\\WebSphere\\AppServer\\profiles\\classes;D\:\\Program Files\\IBM\\WebSphere\\AppServer\\bin;D\:\\Program Files\\IBM\\WebSphere\\AppServer\\classes;D\:\\Program Files\\IBM\\WebSphere\\AppServer\\lib;D\:\\Program Files\\IBM\\WebSphere\\AppServer\\installedChannels;D\:\\Program Files\\IBM\\WebSphere\\AppServer\\lib\\ext;D\:\\Program Files\\IBM\\WebSphere\\AppServer\\web\\help;D\:\\Program Files\\IBM\\WebSphere\\AppServer\\deploytool\\itp\\plugins\\com.ibm.etools.ejbdeploy\\runtime"

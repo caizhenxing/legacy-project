@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jboss PUBLIC "-//JBoss//DTD JBOSS 2.4//EN" "http://www.jboss.org/j2ee/dtd/jboss_2_4.dtd">
+
+<jboss>
+  <enterprise-beans>
+    <session>
+      <ejb-name>CommandServiceBean</ejb-name>
+      <jndi-name>ejb/CommandServiceBean</jndi-name>
+      <local-jndi-name>CommandServiceBean</local-jndi-name>
+    </session>
+  </enterprise-beans>
+</jboss>

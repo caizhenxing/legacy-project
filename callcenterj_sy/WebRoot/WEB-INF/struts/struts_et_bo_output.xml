@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+
+	<form-beans>
+		<!-- 文件导出form -->
+		<form-bean name="outputForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			
+			<form-property name="filetype" type="java.lang.String" />
+			<form-property name="outputID" type="java.lang.String" />
+			<form-property name="dbType" type="java.lang.String" />
+		</form-bean>
+
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<!-- 文件导出action -->
+		<action
+      attribute="outputForm"
+      name="outputForm"
+      parameter="method"
+      path="/output"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy">
+      <forward name="xlsCaseFormat2" path="/output/xlsCase2.jsp" />
+      <forward name="txtFormat" path="/output/txtCase.jsp" />
+      <forward name="xlsCaseFormat3" path="/output/xlsCase3.jsp" />
+      <forward name="xlsCaseFormat1" path="/output/xlsCase1.jsp" />
+      <forward name="docFormat" path="/output/docCase.jsp" />
+      <forward name="xlsTraceFormat" path="/output/xlsTrace.jsp" />
+      <forward name="xlsSadFormat" path="/output/xlsSad.jsp" />
+      <forward name="xlsPriceFormat" path="/output/xlsPrice.jsp" />
+      <forward name="xlsMarkanainfoFormat" path="/output/xlsMarkanainfo.jsp" />
+      <forward name="xlsInquiryResultFormat" path="/output/xlsInquiryResult.jsp" />
+      <forward name="xlsInquiryCardFormat" path="/output/xlsInquiryCard.jsp" />
+    </action>
+
+	</action-mappings>
+
+</struts-config>
+

@@ -1,0 +1,87 @@
+修改人：王文权
+修改日期：2009-03-02
+
+需求：栏目统计栏目不准
+1 栏目统计栏目不准
+ --栏目资讯统计修改
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+go
+
+--栏目资讯统计修改
+ALTER PROCEDURE [dbo].[proc_use] (@begintime varchar(20),@endtime varchar(20),@address varchar(500))
+AS
+BEGIN
+	--创建X表并插值
+	create table #use_X (X varchar(50))
+/*
+	insert into #use_X values ('热线调查')
+	insert into #use_X values ('政策咨询')
+    insert into #use_X values ('种植咨询')
+    insert into #use_X values ('养殖咨询')
+    insert into #use_X values ('项目咨询')
+    insert into #use_X values ('环保咨询')
+    insert into #use_X values ('重大事件上报')
+    insert into #use_X values ('信息定制')
+	insert into #use_X values ('金农通')
+    insert into #use_X values ('企业服务')
+    insert into #use_X values ('医疗服务')
+    insert into #use_X values ('价格行情')
+    insert into #use_X values ('价格报送')
+	insert into #use_X values ('供求发布')
+    insert into #use_X values ('热线调查')
+*/
+	insert into #use_X
+	select distinct dict_question_type1 from oper_question where dict_question_type1 not in('','0000') and  dict_question_type1 is not null
+	
+	--创建Y表并插值
+	create table #use_Y (Y varchar(50))
+	insert into #use_Y values ('使用情况')
+	--创建总表并且插值
+	create table #use_sum (Sum1 varchar(50),X varchar(50),Y varchar(50))
+	declare @sum1 varchar(50)
+	declare use_X cursor for select * from #use_X
+	declare @lm varchar(50)
+	if len(@begintime)>10
+	begin
+		open use_X
+		Fetch Next From use_X Into @lm
+		While ( @@Fetch_Status=0 )
+		begin
+			--declare @sum1 varchar(50)
+			select @sum1=count(*) FROM oper_question INNER JOIN
+			oper_custinfo ON oper_question.cust_id = oper_custinfo.cust_id
+			where oper_question.dict_question_type1 = @lm
+			and convert(varchar(19),oper_question.addtime,120) between @begintime and  @endtime 
+			and oper_custinfo.cust_addr like '%'+ @address +'%'
+			insert into #use_sum (Sum1,X,Y) values (@sum1,@lm,'使用情况')
+			
+			Fetch Next From use_X Into @lm
+		end
+		close use_X
+		Deallocate use_X
+	end
+	else
+	begin
+		open use_X
+		Fetch Next From use_X Into @lm
+		While ( @@Fetch_Status=0 )
+		begin
+			--declare @sum1 varchar(50)
+			select @sum1=count(*) FROM oper_question INNER JOIN
+			oper_custinfo ON oper_question.cust_id = oper_custinfo.cust_id
+			where oper_question.dict_question_type1 = @lm
+			and convert(varchar(10),oper_question.addtime,120) between @begintime and  @endtime 
+			and oper_custinfo.cust_addr like '%'+ @address +'%'
+			insert into #use_sum (Sum1,X,Y) values (@sum1,@lm,'使用情况')
+			
+			Fetch Next From use_X Into @lm
+		end
+		close use_X
+		Deallocate use_X
+	end
+	select distinct X from #use_X order by X
+	select distinct Y from #use_Y order by Y
+	select Sum1,X,Y from #use_sum order by X,Y
+
+END

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+
+<!--<beans>-->
+<!---->
+<!---->
+<!--	<bean id="SessionFactory"-->
+<!--		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">-->
+<!--		<property name="configLocation">-->
+<!--			<value>-->
+<!--				file:src/et/config/hibernate/hibernate.cfg.xml-->
+<!--			</value>-->
+<!--		</property>-->
+<!--	</bean>-->
+<!--</beans>-->
+
+<beans>
+
+	<bean id="datasource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>
+		<property name="url">
+		
+			<value>jdbc:oracle:thin:@192.168.1.202:1521:orcl202</value>
+
+		</property>
+		<property name="username">
+			<value>callcenter</value>
+		</property>
+		<property name="password">
+			<value>callcenter</value>
+		</property>
+	</bean>
+
+ 	<!-- 
+	<bean id="datasource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>
+		<property name="url">
+		
+			<value>jdbc:oracle:thin:@10.79.1.6:1521:sa</value>
+
+		</property>
+		<property name="username">
+			<value>callcenter</value>
+		</property>
+		<property name="password">
+			<value>callcenter</value>
+		</property>
+	</bean>
+		-->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+		destroy-method="destroy">
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.Oracle9Dialect
+				</prop>
+				<prop key="connection.characterEncoding">
+					UTF-8
+				</prop>
+			</props>
+		</property>
+		
+		<property name="configLocation">
+       		<value>classpath:/et/config/hibernate/hibernate.cfg.xml</value>
+   		</property>
+		<property name="dataSource">
+			<ref bean="datasource" />
+		</property>
+	</bean>
+
+	<!-- 声明性事物开始 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- 声明性事物结束 -->
+
+
+	<!-- 自动代理生成开始-->
+	<bean id="DAOBeanNameAutoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<value>*Impl,*Service</value>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>DAOInterceptor</value>
+				<value>hibernateInterceptor</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 自动代理生成结束-->
+	
+	<!-- aop拦截取代template-->
+
+	<bean id="hibernateInterceptor" class="org.springframework.orm.hibernate3.HibernateInterceptor">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<!-- aop拦截取代template结束-->
+	
+	<bean id="DAOInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="BaseDao" class="excellence.framework.base.dao.impl.BaseDAOImpl" singleton="false">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+</beans>

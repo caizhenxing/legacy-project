@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<head>
+  <title>JBoss jBPM Console</title>
+  <link rel="stylesheet" type="text/css" href="../css/jbpm.css" />
+</head>
+
+<body style="width:100% height:100%; border:0px; margin:0px;" onload="onload();">
+
+<script type="text/javascript">
+<ui:insert name="javascript">
+function onload() {
+}
+</ui:insert>
+</script>
+
+<div style="position: absolute; top: 102px; left: 176px;"><img src="../images/claw.jpg" width="17" height="14" alt=""/></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="layout" rowspan="2"><img src="../images/logo.jpg" alt="logo"/></td>
+    <td class="layout" width="100%" height="22" background="../images/green.jpg">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="layout" height="80" width="100%" bgcolor="white">
+      <!-- TITLE -->
+      <h1 id="title"><ui:insert name="title" /></h1>
+    </td>
+  </tr>
+  <tr>
+    <td style="height:100%; width:100%;" class="layout" colspan="2">
+      <table style="height:100%; width:100%;" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="layout" valign="top">
+
+            <ui:insert name="menu">
+              <c:if test="#{identityBean.participant}"><a class="menu" href="../participant/home.jsf">
+                Process Tasks
+              </a></c:if><c:if test="#{identityBean.manager}"><a class="menu" href="../manager/home.jsf">
+                Process Monitoring
+              </a></c:if><c:if test="#{identityBean.administrator}"><a class="menu" href="../administrator/home.jsf">
+                jBPM Administration
+              </a></c:if><c:if test="#{identityBean.loggedIn}"><h:form><h:commandLink styleClass="menu" action="#{identityBean.logout}" id="logoutlink">
+                <span style="font-weight:normal; margin-bottom:5px;">You are logged in as</span>
+                <span style="font-weight:normal; margin-bottom:15px;">#{identityBean.userName}</span>
+                Log Out
+            </h:commandLink></h:form></c:if></ui:insert><img src="../images/bottom.jpg" alt=""/>
+              
+            <ui:insert name="submenu" />
+
+          </td>
+          <td style="height:100%; width:100%;" class="contentlayout" valign="top">
+
+            <!-- BODY -->
+            <ui:insert name="body" />
+
+          <!-- FOOTER -->
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="layout" colspan="2">
+      <img src="../images/swoosh.gif" />
+    </td>
+  </tr>
+</table>
+</body>
+</html>

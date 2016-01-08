@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="GB18030"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+	>
+	<bean id="ModuleTree" class="com.cc.sys.module.action.ModuleAction">
+	<property name="cs"><ref bean="common.CommonCURD"/></property>
+	<property name="sms"><ref bean="sys.tree.ModuleLoadService"/></property>
+	</bean>
+</beans>

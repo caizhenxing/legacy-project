@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+   <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="treeBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			
+		  <!--类型树信息-->
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="selectName" type="java.lang.String"/>
+      	  <form-property name="nickName" type="java.lang.String"/>
+      	  <form-property name="label" type="java.lang.String"/>
+      	  <form-property name="parentId" type="java.lang.String"/>
+      	  <form-property name="parentName" type="java.lang.String"/>
+      	  <form-property name="action" type="java.lang.String"/>
+      	  <form-property name="icon" type="java.lang.String"/>
+      	  <form-property name="type" type="java.lang.String"/>
+      	  <form-property name="isShow" type="java.lang.String"/>
+      	  <form-property name="remark" type="java.lang.String"/>
+      	  <form-property name="operType" type="java.lang.String"/>
+      	  <form-property name="target" type="java.lang.String"/>
+      	  <form-property name="deleteMark" type="java.lang.String"/>
+      	  <form-property name="createTime" type="java.lang.String"/>
+      	  <form-property name="modifyTime" type="java.lang.String"/>
+      	  <form-property name="layerOrder" type="java.lang.String"/>
+  </form-bean>
+  
+</form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+  
+  
+<!-- 公司基本信息的action -->
+     <action
+      attribute="treeBean"
+      name="treeBean"
+      parameter="method"
+      path="/sys/layerOrder/layerOrder"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy">
+      <forward name="toLayerOrderTree" path="/sys/layerOrder/layerOrderTree.jsp" />
+<!--      <forward name="toOrderTreeSuccess" path="/sys/layerOrder/layerOrder.do?method=loadParamTree&amp;nickName=moduleRoot" />-->
+      <forward name="toOrderTreeSuccess" path="/sys/layerOrder/execLayerOrder.jsp?oper=orderSuccess" />
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+	
+	<bean name="/messages/messages" class="et.bo.messages.action.MessagesAction" scope="singleton">
+		<property name="messagesService">
+			<ref bean="MessagesService"/>
+		</property>
+	</bean>
+	<bean id="MessagesService" class="et.bo.messages.service.impl.MessagesServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+</beans>

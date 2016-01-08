@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+		<!-- 客户模块表单bean信息 -->
+		<form-bean name="custinfo" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="cust_id"       type="java.lang.String" />
+			<form-property name="cust_name"     type="java.lang.String" />
+			<form-property name="cust_rid"      type="java.lang.String" />
+			<form-property name="dict_sex"      type="java.lang.String" />
+			<form-property name="cust_email"    type="java.lang.String" />
+			<form-property name="cust_addr"     type="java.lang.String" />
+			<form-property name="cust_pcode"    type="java.lang.String" />
+			<form-property name="cust_tel_home" type="java.lang.String" />
+			<form-property name="cust_tel_work" type="java.lang.String" />
+			<form-property name="cust_tel_mob"  type="java.lang.String" />
+			<form-property name="cust_fax"      type="java.lang.String" />
+			<form-property name="cust_voc"      type="java.lang.String" />
+			<form-property name="cust_scale"    type="java.lang.String" />
+			<form-property name="cust_type"     type="java.lang.String" />
+			<form-property name="expert_type"   type="java.lang.String" />
+			<form-property name="remark"        type="java.lang.String" />
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+		</form-bean>
+		
+		<!-- 通讯录 -->
+		<form-bean name="phoneinfo"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="dict_cust_type" type="java.lang.String" />
+			<form-property name="cust_id" type="java.lang.String" />
+			<form-property name="cust_rid" type="java.lang.String" />
+			<form-property name="user_id" type="java.lang.String" />
+			<form-property name="user_name" type="java.lang.String" />
+			<form-property name="cust_server_name" type="java.lang.String" />
+			<form-property name="role_id" type="java.lang.String" />
+			<form-property name="group_id" type="java.lang.String" />
+			<form-property name="cust_duty" type="java.lang.String" />
+			<form-property name="cust_nature" type="java.lang.String" />
+			<form-property name="cust_pic_name" type="java.lang.String" />
+			<form-property name="cust_pic_path" type="java.lang.String" />
+			<form-property name="expert_type" type="java.lang.String"/>
+			<form-property name="cust_name" type="java.lang.String" />
+			<form-property name="cust_name1" type="java.lang.String" />
+			<form-property name="cust_age" type="java.lang.String" />
+			<form-property name="cust_degree" type="java.lang.String" />
+			<form-property name="cust_intru" type="java.lang.String"/>
+			<form-property name="dict_cust_voc" type="java.lang.String" />
+			<form-property name="cust_unit" type="java.lang.String" />
+			<form-property name="cust_tel_home" type="java.lang.String" />
+			<form-property name="cust_tel_mob" type="java.lang.String" />
+			<form-property name="cust_tel_work" type="java.lang.String" />
+			<form-property name="cust_fax" type="java.lang.String" />
+			<form-property name="cust_addr" type="java.lang.String" />
+			<form-property name="cust_pcode" type="java.lang.String" />
+			<form-property name="cust_email" type="java.lang.String" />
+			<form-property name="cust_homepage" type="java.lang.String" />
+			<form-property name="dict_cust_scale" type="java.lang.String" />
+			<form-property name="work_item" type="java.lang.String" />
+			<form-property name="enterprise_intru" type="java.lang.String" />
+			<form-property name="cust_banner" type="java.lang.String" />
+			<form-property name="enterprise_net" type="java.lang.String" />
+			<form-property name="cust_way_by" type="java.lang.String" />
+			<form-property name="cust_way_bys" type="java.lang.String[]" />
+			
+			<form-property name="cust_develop_time" type="java.lang.String" />
+			<form-property name="cust_job" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+			<form-property name="opertype" type="java.lang.String" />
+			
+			<form-property name="excelPath" type="java.lang.String" />
+			
+			<form-property name="uploadfile" type="java.lang.String" />
+			<form-property name="cust_positive_time" type="java.lang.String" />
+			<form-property name="custLinkmanName" type="java.lang.String" />
+			<form-property name="dict_sex"      type="java.lang.String" />
+			
+			<form-property name="cust_idcard"      type="java.lang.String" />
+			<form-property name="is_eliminate"      type="java.lang.String" />
+			<form-property name="eliminate_reason"      type="java.lang.String" />
+			<form-property name="cust_work_way"      type="java.lang.String" />
+			<form-property name="cust_work_ways"      type="java.lang.String[]" />
+			
+			<form-property name="cust_number"      type="java.lang.String" />
+			
+			<form-property name="dict_product_type1" 	type="java.lang.String[]" />
+			<form-property name="dict_product_type2" 	type="java.lang.String[]" />
+			<form-property name="product_name" 	type="java.lang.String[]" />
+			<form-property name="productName" type="java.lang.String" />
+			<form-property name="dictProductType1" type="java.lang.String" />
+			<form-property name="dictProductType2" type="java.lang.String" />
+		</form-bean>
+		
+		<!-- 来电弹出窗口 -->
+		<form-bean name="openwin" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<!-- 第一部分，用户信息部分 -->
+			<form-property name="flag" type="java.lang.String"/>
+			<form-property name="cust_id"       type="java.lang.String" />
+			<form-property name="cust_rid"      type="java.lang.String" />
+			<form-property name="cust_name"     type="java.lang.String" />
+			<form-property name="dict_sex"      type="java.lang.String" />
+			<form-property name="cust_email"    type="java.lang.String" />
+			<form-property name="cust_addr"     type="java.lang.String" />
+			<form-property name="cust_pcode"    type="java.lang.String" />
+			<form-property name="cust_tel_home" type="java.lang.String" />
+			<form-property name="cust_tel_work" type="java.lang.String" />
+			<form-property name="cust_tel_mob"  type="java.lang.String" />
+			<form-property name="cust_fax"      type="java.lang.String" />
+			<form-property name="cust_voc"      type="java.lang.String" />
+			<form-property name="cust_scale"    type="java.lang.String" />
+			<form-property name="cust_type"     type="java.lang.String" />
+			<form-property name="remark"        type="java.lang.String" />
+			<!-- 第三部分，通用部分 -->
+			<form-property name="dict_is_answer_succeed" type="java.lang.String" />
+			<form-property name="answer_man" 			type="java.lang.String" />
+			<form-property name="dict_is_callback" 		type="java.lang.String" />
+			<form-property name="callback_time" 		type="java.lang.String" />
+			<form-property name="savedata" 				type="java.lang.String" />
+			<!-- 第三部分，普通格式部分 -->
+			<form-property name="question_content" 		type="java.lang.String" />
+			<form-property name="answer_content" 		type="java.lang.String" />
+			<form-property name="dict_question_type1" 	type="java.lang.String" />
+			<form-property name="dict_question_type2" 	type="java.lang.String" />
+			<form-property name="dict_question_type3" 	type="java.lang.String" />
+			<form-property name="dict_question_type4" 	type="java.lang.String" />
+			<form-property name="bill_num" 				type="java.lang.String" />
+			<form-property name="expert_name" 			type="java.lang.String" />
+			<!-- 第三部分，供求格式部分 -->
+			<form-property name="sadId" type="java.lang.String" />
+			<form-property name="dictSadType" type="java.lang.String" />
+			<form-property name="sadRid" type="java.lang.String" />
+			<form-property name="caseExpert" type="java.lang.String" />
+			<form-property name="sadTime" type="java.lang.String" />
+			<form-property name="custName" type="java.lang.String" />
+			<form-property name="custAddr" type="java.lang.String" />
+			<form-property name="custTel" type="java.lang.String" />
+			<form-property name="dictSadState" type="java.lang.String" />
+			<form-property name="productName" type="java.lang.String" />
+			<form-property name="productScale" type="java.lang.String" />
+			<form-property name="productCount" type="java.lang.String" />
+			<form-property name="countUnit" type="java.lang.String" />
+			<form-property name="productPrice" type="java.lang.String" />
+			<form-property name="priceUnit" type="java.lang.String" />
+			<form-property name="deployBegin" type="java.lang.String" />
+			<form-property name="deployEnd" type="java.lang.String" />
+			<form-property name="productPic" type="java.lang.String" />
+			<form-property name="remark2" type="java.lang.String" /> 
+			<form-property name="post" type="java.lang.String" />
+			<!-- 第三部分，价格格式部分 -->
+			<form-property name="dict_product_type1" 	type="java.lang.String[]" />
+			<form-property name="dict_product_type2" 	type="java.lang.String[]" />
+			<form-property name="product_name" 			type="java.lang.String[]" />
+			<form-property name="dict_price_type" 		type="java.lang.String[]" />
+			<form-property name="product_price" 		type="java.lang.String[]" />
+			<form-property name="remarkj" 				type="java.lang.String[]" />
+			
+			<form-property name="v" type="java.lang.String" />
+			<form-property name="priceId" type="java.lang.String" />
+			<form-property name="priceRid" type="java.lang.String" />
+			<form-property name="priceExpert" type="java.lang.String" />
+			<form-property name="operTime" type="java.lang.String" />
+			<form-property name="dictPriceState" type="java.lang.String" />
+			<form-property name="dictProductType1" type="java.lang.String" />
+			<form-property name="dictProductType2" type="java.lang.String" />
+			<form-property name="dictPriceType" type="java.lang.String" />
+			<form-property name="deployTime" type="java.lang.String" />
+			<form-property name="question_id" type="java.lang.String" />
+			
+			<form-property name="state" type="java.lang.String" />
+			<form-property name="subid" type="java.lang.String" />
+			<form-property name="uploadfile" type="java.lang.String" />
+		</form-bean>
+		
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<!-- 客户action -->
+		<action attribute="custinfo" 
+				name="custinfo" 
+				scope="request" 
+				path="/custinfo/custinfo" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main"  path="/custinfo/custinfoMain.jsp"/>
+			<forward name="list"  path="/custinfo/custinfoList.jsp"/>
+			<forward name="load"  path="/custinfo/custinfoLoad.jsp"/>
+			<forward name="query" path="/custinfo/custinfoQuery.jsp"/>
+			<forward name="alllist"  path="/custinfo/custinfoAll.jsp"/>
+			<forward name="allExpertList"  path="/custinfo/custinfoExpertAll.jsp"/>
+			<forward name="phonemain"  path="/custinfo/phone/custPhoneMain.jsp"/>
+			<forward name="phonelist"  path="/custinfo/phone/custPhoneList.jsp"/>
+			<forward name="phoneload"  path="/custinfo/phone/custPhoneLoad.jsp"/>
+			<forward name="phonequery" path="/custinfo/phone/custPhoneQuery.jsp"/>
+		</action>
+		
+		
+		<!-- 通讯录action -->
+		<action attribute="phoneinfo" 
+				name="phoneinfo" 
+				scope="request" 
+				path="/custinfo/phoneinfo" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main"  path="/custinfo/phoneinfo/custPhoneMain.jsp"/>
+			<forward name="query" path="/custinfo/phoneinfo/custPhoneQuery.jsp"/>
+			<forward name="list"  path="/custinfo/phoneinfo/custPhoneList.jsp"/>
+			
+			<forward name="custload"  path="/custinfo/phoneinfo/custPhoneLoad.jsp"/>
+			<forward name="agentload"  path="/custinfo/phoneinfo/agentLoad.jsp"/>
+			<forward name="expertload"  path="/custinfo/phoneinfo/expertLoad.jsp"/>
+			<forward name="projectload"  path="/custinfo/phoneinfo/projectLoad.jsp"/>
+			<forward name="mediaload"  path="/custinfo/phoneinfo/mediaLoad.jsp"/>
+			<forward name="govload"  path="/custinfo/phoneinfo/govLoad.jsp"/>
+			<forward name="connectload"  path="/custinfo/phoneinfo/connectLoad.jsp"/>
+			<forward name="commonload"  path="/custinfo/phoneinfo/commonLoad.jsp"/>
+			<forward name="countinsert"  path="/custinfo/phoneinfo/custPhoneAdd.jsp"/>
+			<forward name="error"  path="/custinfo/phoneinfo/error.jsp"/>
+			
+			<forward name="linkmain"  path="/custinfo/phoneinfo/custLinkManMain.jsp"/>
+			<forward name="linkquery" path="/custinfo/phoneinfo/custLinkManQuery.jsp"/>
+			<forward name="linklist"  path="/custinfo/phoneinfo/custLinkManList.jsp"/>
+			<forward name="linkmanload"  path="/custinfo/phoneinfo/linkmanLoad.jsp"/>
+		</action>
+		
+		<!-- 来电弹出窗口action -->
+		<action attribute="openwin" 
+				name="openwin" 
+				scope="request" 
+				path="/custinfo/openwin" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+
+			<forward name="load"  path="/custinfo/openwin.jsp"/>
+			<forward name="questionList" path="/custinfo/history.jsp"/>
+			<forward name="search" path="/custinfo/search.jsp"/>
+		</action>
+
+
+	</action-mappings>
+	
+</struts-config>
+

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/oa/resourceManager.do" location="556,664" dimension="358,84" />
+  <StrutsActivity path="/oa/meetingManager.do" location="1382,30" dimension="358,84" />
+  <StrutsActivity path="/oa/carManager.do" location="427,387" dimension="358,84" />
+  <StrutsActivity path="/oa/carApprove.do" location="1091,387" dimension="358,84" />
+  <StrutsActivity path="/oa/resource/addResource.jsp" location="0,848" dimension="208,48" />
+  <StrutsActivity path="/oa/resource/resourceSearch.jsp" location="308,848" dimension="226,48" />
+  <StrutsActivity path="/oa/resource/searchMain.jsp" location="634,848" dimension="202,48" />
+  <StrutsActivity path="/oa/resource/resourceList.jsp" location="936,848" dimension="214,48" />
+  <StrutsActivity path="/sys/success.jsp" location="950,150" dimension="136,48" />
+  <StrutsActivity path="/oa/resource/meeting/RoomInfo.jsp" location="0,264" dimension="238,48" />
+  <StrutsActivity path="/oa/resource/meeting/meetingSreach.jsp" location="338,264" dimension="268,48" />
+  <StrutsActivity path="/oa/resource/meeting/delmeetRoom.jsp" location="50,450" dimension="256,48" />
+  <StrutsActivity path="/oa/resource/meeting/selectEmployee.jsp" location="706,264" dimension="274,48" />
+  <StrutsActivity path="/oa/resource/meeting/RoomUseList.jsp" location="1080,264" dimension="256,48" />
+  <StrutsActivity path="/oa/resource/meeting/selectMain.jsp" location="1436,264" dimension="250,48" />
+  <StrutsActivity path="/oa/resource/meeting/ApplyRoom.jsp" location="1786,264" dimension="244,48" />
+  <StrutsActivity path="/oa/resource/meeting/meetingOperList.jsp" location="2130,264" dimension="280,48" />
+  <StrutsActivity path="/oa/resource/meeting/addmeetRoom.jsp" location="2510,264" dimension="256,48" />
+  <StrutsActivity path="/oa/resource/meeting/selectPeople.jsp" location="2866,264" dimension="262,48" />
+  <StrutsActivity path="/oa/resource/car/delCar.jsp" location="50,750" dimension="202,48" />
+  <StrutsActivity path="/oa/resource/car/selectEmployee.jsp" location="0,571" dimension="250,48" />
+  <StrutsActivity path="/oa/resource/car/carList.jsp" location="350,571" dimension="208,48" />
+  <StrutsActivity path="/oa/resource/car/carApply.jsp" location="960,571" dimension="214,48" />
+  <StrutsActivity path="/oa/resource/car/carAdd.jsp" location="658,571" dimension="202,48" />
+  <StrutsActivity path="/oa/resource/car/carApprove.jsp" location="1287,571" dimension="226,48" />
+  <StrutsActivity path="/oa/resource/success.html" location="1250,848" dimension="190,48" />
+  <StrutsTransition id="/oa/resourceManager.do,resourceList,/oa/resource/resourceList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="914,706" />
+      <AbsolutePoint location="1043,706" />
+      <AbsolutePoint location="1043,848" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/meetingManager.do,selectPeople,/oa/resource/meeting/selectPeople.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1591,114" />
+      <AbsolutePoint location="1591,165" />
+      <AbsolutePoint location="2997,165" />
+      <AbsolutePoint location="2997,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/meetingManager.do,listPage,/oa/resource/meeting/RoomUseList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1421,114" />
+      <AbsolutePoint location="1421,288" />
+      <AbsolutePoint location="1336,288" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/meetingManager.do,addPage,/oa/resource/meeting/addmeetRoom.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1561,114" />
+      <AbsolutePoint location="1561,243" />
+      <AbsolutePoint location="2638,243" />
+      <AbsolutePoint location="2638,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/meetingManager.do,queryPage,/oa/resource/meeting/meetingSreach.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1382,102" />
+      <AbsolutePoint location="472,102" />
+      <AbsolutePoint location="472,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/carApprove.do,approveOver,/oa/carApprove.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1300,387" />
+      <AbsolutePoint location="1300,357" />
+      <AbsolutePoint location="1921,357" />
+      <AbsolutePoint location="1921,429" />
+      <AbsolutePoint location="1449,429" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/carManager.do,addPage,/oa/resource/car/carAdd.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="673,471" />
+      <AbsolutePoint location="673,571" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/resourceManager.do,resourceQuery,/oa/resource/resourceSearch.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="619,748" />
+      <AbsolutePoint location="619,872" />
+      <AbsolutePoint location="534,872" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/carApprove.do,approvceList,/oa/resource/car/carApprove.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1302,471" />
+      <AbsolutePoint location="1302,571" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/resourceManager.do,addResource,/oa/resource/addResource.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="556,706" />
+      <AbsolutePoint location="35,706" />
+      <AbsolutePoint location="35,848" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/meetingManager.do,mainPage,/oa/resource/meeting/selectMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1531,114" />
+      <AbsolutePoint location="1531,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/meetingManager.do,delPage,/oa/resource/meeting/delmeetRoom.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1382,72" />
+      <AbsolutePoint location="253,72" />
+      <AbsolutePoint location="253,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/carManager.do,selectEmployee,/oa/resource/car/selectEmployee.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="427,429" />
+      <AbsolutePoint location="35,429" />
+      <AbsolutePoint location="35,571" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/meetingManager.do,meetInfoList,/oa/resource/meeting/meetingOperList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1740,72" />
+      <AbsolutePoint location="2270,72" />
+      <AbsolutePoint location="2270,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/carManager.do,applyPage,/oa/resource/car/carApply.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="785,459" />
+      <AbsolutePoint location="1025,459" />
+      <AbsolutePoint location="1025,571" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/carManager.do,carList,/oa/resource/car/carList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="543,471" />
+      <AbsolutePoint location="543,571" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/carApprove.do,toApproveList,/oa/carApprove.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1270,387" />
+      <AbsolutePoint location="1270,327" />
+      <AbsolutePoint location="2265,327" />
+      <AbsolutePoint location="2265,459" />
+      <AbsolutePoint location="1449,459" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/carManager.do,delPage,/oa/resource/car/delCar.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="427,399" />
+      <AbsolutePoint location="-75,399" />
+      <AbsolutePoint location="-75,774" />
+      <AbsolutePoint location="50,774" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/carManager.do,deleteOver,/oa/carManager.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="591,387" />
+      <AbsolutePoint location="591,357" />
+      <AbsolutePoint location="1025,357" />
+      <AbsolutePoint location="1025,429" />
+      <AbsolutePoint location="785,429" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/resourceManager.do,mainPage,/oa/resource/searchMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="735,748" />
+      <AbsolutePoint location="735,848" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/resourceManager.do,success,/sys/success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="875,664" />
+      <AbsolutePoint location="875,327" />
+      <AbsolutePoint location="1025,327" />
+      <AbsolutePoint location="1025,198" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/meetingManager.do,selectEmployee,/oa/resource/meeting/selectEmployee.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1561,30" />
+      <AbsolutePoint location="1561,-45" />
+      <AbsolutePoint location="843,-45" />
+      <AbsolutePoint location="843,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/meetingManager.do,deleteOver,/oa/meetingManager.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1591,30" />
+      <AbsolutePoint location="1591,-15" />
+      <AbsolutePoint location="1921,-15" />
+      <AbsolutePoint location="1921,42" />
+      <AbsolutePoint location="1740,42" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/meetingManager.do,applyPage,/oa/resource/meeting/ApplyRoom.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1740,102" />
+      <AbsolutePoint location="1921,102" />
+      <AbsolutePoint location="1921,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/carApprove.do,applyPage,/oa/resource/car/carApply.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1159,471" />
+      <AbsolutePoint location="1159,571" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/meetingManager.do,roomLstPage,/oa/resource/meeting/RoomInfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1382,42" />
+      <AbsolutePoint location="119,42" />
+      <AbsolutePoint location="119,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

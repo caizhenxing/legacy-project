@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+		<bean id="RuleInfoService" class="et.bo.callcenter.message.impl.RuleInfoImpl">
+			<property name="dao">
+					<ref bean="BaseDao" />
+			</property>
+		</bean>
+	
+	<bean id="EventStrValidService" class="et.bo.callcenter.message.impl.EventStrValidImpl">
+	</bean>
+	
+	<bean id="EventHelperService" class="et.bo.callcenter.message.impl.EventHelperImpl">
+		<property name="commandStr">
+				<ref bean="CommandStrService" />
+		</property>
+		<property name="server">
+				<ref bean="ServerService" />
+		</property>
+		<property name="bo">
+				<ref bean="BusinessObjectService" />
+		</property>
+		<property name="oss">
+				<ref bean="OperatorStatisticService" />
+		</property>
+	</bean>
+	
+	<bean id="EventExcuteService" class="et.bo.callcenter.message.impl.EventExcuteImpl">
+	<!--  
+		<property name="esv">
+				<ref bean="EventStrValidService" />
+		</property>
+		-->
+	</bean>
+	
+	<bean id="CommandStrService" class="et.bo.callcenter.message.impl.CommandStrImpl">
+		<property name="ruleInfo">
+				<ref bean="RuleInfoService" />
+		</property>
+		 
+	</bean>
+	<!-- 
+		<bean id="PtringService" class="et.bo.callcenter.message.event.Ptring">
+		<property name="ks">
+				<ref bean="KeyService" />
+		</property>
+	</bean>
+	-->
+<!--  
+	<bean id="EventIService" class="et.bo.callcenter.message.BaseEvent">
+	<property name="commandStr">
+				<ref bean="CommandStrService" />
+		</property>
+		<property name="server">
+				<ref bean="ServerService" />
+		</property>
+		<property name="bo">
+				<ref bean="BusinessObjectService" />
+		</property>
+		<property name="eventHelper">
+				<ref bean="EventHelperService" />
+		</property>
+	</bean>
+	-->
+	<!--
+	<bean id="" class="">
+		<property name="">
+				<ref bean="" />
+		</property>
+	</bean>
+	-->
+</beans>

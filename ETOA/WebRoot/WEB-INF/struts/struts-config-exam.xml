@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+	<data-sources />
+	<form-beans>
+		<form-bean name="selectBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="driver-card" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 考试申请Bean -->
+		<form-bean name="applyExamBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="driverId" type="java.lang.String" />
+			<form-property name="driver_name" type="java.lang.String" />
+			<form-property name="driver_sex" type="java.lang.String" />
+			<form-property name="driver_date" type="java.lang.String" />
+			<form-property name="driver_qq" type="java.lang.String" />
+			<form-property name="driver_email" type="java.lang.String" />
+			<form-property name="driver_card" type="java.lang.String" />
+			<form-property name="driver_address"
+				type="java.lang.String" />
+			<form-property name="driver_phone" type="java.lang.String" />
+			<form-property name="driver_mobile" type="java.lang.String" />
+			<form-property name="driver_company"
+				type="java.lang.String" />
+			<form-property name="driver_type" type="java.lang.String" />
+			<form-property name="driver_sign" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+			<form-property name="carryState" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 课程操作Bean -->
+		<form-bean name="classInfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="class_name" type="java.lang.String" />
+			<form-property name="class_time" type="java.lang.String" />
+			<form-property name="class_opentime"
+				type="java.lang.String" />
+			<form-property name="class_address" type="java.lang.String" />
+			<form-property name="exam_address" type="java.lang.String" />
+			<form-property name="class_remark" type="java.lang.String" />
+			<form-property name="exam_time" type="java.lang.String" />
+		</form-bean>
+	</form-beans>
+	
+	<action-mappings>
+		<!-- 考试申请Action -->
+		<action attribute="applyExamBean" name="applyExamBean"
+			scope="request" path="/oa/examOper"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="selectApply" path="/driver/exam/applyMain.jsp" />
+			<forward name="applyExam" path="/driver/exam/ExamApply.jsp" />
+			<forward name="taskList" path="/driver/exam/TaskList.jsp" />
+			<forward name="applyDriverList" path="/driver/exam/driverInfoList.jsp" />
+			<forward name="applyDriverInfo" path="/driver/exam/driverInfo.jsp" />
+			<forward name="seccuss" path="/driver/exam/seccuss.jsp" />
+			<forward name="applyOperList" path="/driver/exam/applyOperList.jsp" />
+			<forward name="toOperList" path="/oa/examOper.do?method=toApplyInfoOper" />
+			<forward name="toUpdatePage" path="/driver/exam/updatInfoPage.jsp" />
+			<forward name="toDeletPage" path="/driver/exam/deleteInfoPage.jsp" />
+		</action>
+
+		<!-- 考试课程Action -->
+		<action attribute="classInfoBean" name="classInfoBean"
+			scope="request" path="/oa/classOper"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+
+			<forward name="classSet" path="/driver/exam/classSet.jsp" />
+		</action>
+	</action-mappings>
+</struts-config>

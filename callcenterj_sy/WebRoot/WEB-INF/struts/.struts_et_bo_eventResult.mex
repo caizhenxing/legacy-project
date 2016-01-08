@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/event/event.do" location="292,0" dimension="358,84" />
+  <StrutsActivity path="/eventResult/eventResult.do" location="50,350" dimension="358,84" />
+  <StrutsActivity path="/event/eventList.jsp" location="0,184" dimension="160,48" />
+  <StrutsActivity path="/event/eventMain.jsp" location="260,184" dimension="160,48" />
+  <StrutsActivity path="/event/eventQuery.jsp" location="520,184" dimension="166,48" />
+  <StrutsActivity path="/event/eventLoad.jsp" location="786,184" dimension="160,48" />
+  <StrutsActivity path="/eventResult/eventResultList.jsp" location="650,350" dimension="232,48" />
+  <StrutsActivity path="/eventResult/eventResultMain.jsp" location="950,350" dimension="232,48" />
+  <StrutsActivity path="/eventResult/eventResultQuery.jsp" location="650,450" dimension="238,48" />
+  <StrutsActivity path="/eventResult/eventResultLoad.jsp" location="950,450" dimension="232,48" />
+  <StrutsActivity path="/messages/select.jsp" location="50,550" dimension="160,48" />
+  <StrutsActivity path="/messages/selectUser.jsp" location="350,550" dimension="184,48" />
+  <StrutsActivity path="/eventResult/select.jsp" />
+  <StrutsActivity path="/eventResult/selectUser.jsp" />
+  <StrutsTransition id="/event/event.do,query,/event/eventQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="516,84" />
+      <AbsolutePoint location="516,149" />
+      <AbsolutePoint location="603,149" />
+      <AbsolutePoint location="603,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/event/event.do,load,/event/eventLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="605,84" />
+      <AbsolutePoint location="605,119" />
+      <AbsolutePoint location="866,119" />
+      <AbsolutePoint location="866,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/eventResult/eventResult.do,main,/eventResult/eventResultMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,413" />
+      <AbsolutePoint location="1066,413" />
+      <AbsolutePoint location="1066,398" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/eventResult/eventResult.do,select,/messages/selectUser.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="365,434" />
+      <AbsolutePoint location="365,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/eventResult/eventResult.do,query,/eventResult/eventResultQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="259,434" />
+      <AbsolutePoint location="259,474" />
+      <AbsolutePoint location="650,474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/eventResult/eventResult.do,select,/eventResult/selectUser.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/event/event.do,list,/event/eventList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="337,84" />
+      <AbsolutePoint location="337,119" />
+      <AbsolutePoint location="80,119" />
+      <AbsolutePoint location="80,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/eventResult/eventResult.do,selectFrame,/eventResult/select.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/event/event.do,main,/event/eventMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="426,84" />
+      <AbsolutePoint location="426,149" />
+      <AbsolutePoint location="340,149" />
+      <AbsolutePoint location="340,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/eventResult/eventResult.do,selectFrame,/messages/select.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="195,434" />
+      <AbsolutePoint location="195,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/eventResult/eventResult.do,load,/eventResult/eventResultLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,434" />
+      <AbsolutePoint location="229,673" />
+      <AbsolutePoint location="1066,673" />
+      <AbsolutePoint location="1066,498" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/eventResult/eventResult.do,list,/eventResult/eventResultList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,383" />
+      <AbsolutePoint location="650,383" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

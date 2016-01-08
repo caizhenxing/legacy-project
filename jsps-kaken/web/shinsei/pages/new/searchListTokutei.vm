@@ -1,0 +1,330 @@
+## ***********************************************
+## 受付中研究種目一覧(特定領域(新規、継続))
+## ***********************************************
+#parse( $commonSetting )
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+## ************************************************
+#parse( $commonSetting )
+#set ($list= $result.list)
+## 変数の置き換え
+##set ($list= $result.list)
+#set ($FILE_FLG_TENPU_WIN= "0")
+#set ($FILE_FLG_TENPU_MAC= "1")
+## ***********************************************
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+##スクリプト
+<script language="javascript">
+<!--
+  // 「ダウンロード」ボタンをクッリク時
+  function onDownloadFile(jigyoId, downloadFileFlg){
+      document.download_form.action="$link.setAction('/shinsei/downloadFile')";
+      document.download_form.jigyoId.value = jigyoId;
+      document.download_form.downloadFileFlg.value = downloadFileFlg;
+      document.download_form.submit();
+  }
+
+  // 「応募情報入力」ボタンをクッリク時
+  function onInputApplication(jigyoId){
+  ##    document.input_form.action="$link.setAction('/shinsei/inputApplicationTokutei')";
+  ##    document.input_form.action="$link.setAction('/shinsei/dispatchApplicationKiban')";
+      document.input_form.action="$link.setAction('/shinsei/inputApplicationKiban')";
+      document.input_form["shinseiDataInfo.jigyoId"].value = jigyoId;
+      document.input_form.submit();
+  }
+
+  // 「仮領域番号発行」ボタンをクッリク時
+  function onKariBangoHakkoApplication(jigyoId){
+      document.input_form.action="$link.setAction('/shinsei/infoKariBangoHakko')";
+      document.input_form["shinseiDataInfo.jigyoId"].value = jigyoId;
+      document.input_form.submit();
+  }
+//-->
+</script>
+## ***********************************************
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/shinsei/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width="72" height="20" border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#6699CC" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/shinsei/showMainMenu')">応募者向けメニュー</a>＞研究計画調書作成（<b>受付中研究種目一覧</b><font size="1">＞応募情報入力＞研究計画調書確認＞研究計画調書確認完了</font>）</td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width="61" height="49" alt=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont">
+       <br>受付中研究種目一覧</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width="213" height="49" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+    <p class="comment"><font color="#FF0000"><b>＜重要＞※研究計画調書を作成する前に必ずお読みください。</b></font></p>
+    <ul>
+     <li class="comment">研究計画調書は以下の２つから構成されます。<br>
+      <b>　・<font color="#FF0000">応募情報</font></b>　　：応募情報入力画面から入力する<br>
+      <b>　・<font color="#FF0000">応募内容ファイル</font></b>　　：各研究種目所定の応募内容ファイル様式<!--(Word)-->に記入する
+     </li>
+     <li class="comment"><b>応募内容ファイル</b>は必ず各研究種目所定の応募内容ファイル様式をダウンロードして記入してください。</li>
+
+## 20050523 Start 削除
+##    <li class="comment">特別推進研究については、ZIP形式の圧縮ファイルがダウンロードされます。解凍後、該当する応募内容ファイル様式に記入してください。解凍できない場合は、<a href="http://www.mext.go.jp/a_menu/shinkou/hojyo/koubotop/download.htm" target="_blank">こちら</a>から該当する応募内容ファイル様式をダウンロードしてください。</li>
+## Horikoshi End
+
+## 2005/03/24 削除 ここから----------------------------
+## 理由 文言修正のため
+##    <li class="comment">特別推進研究の応募内容ファイルの記入要領については、<a href="http://www.mext.go.jp/a_menu/shinkou/hojyo/koubotop/download.htm" target="_blank">こちら</a>をご覧下さい。</li>
+## 削除 ここまで----------------------------------------
+     <li class="comment">応募内容ファイルの記入が終わりましたら、[応募情報入力]ボタンをクリックして進んでください。</li>
+    </ul>
+    <ul>
+     <li class="comment"><img src="$path/images/bt_word2k.gif" width="24" height="24" border="0">はWindows版MS-Word 2000形式、<img src="$path/images/bt_wordmac.gif" width="24" height="24" border="0">はMacintosh版MS-Word 2001形式で作成しています。
+      <br>※MS-WordはMicrosoftの製品です。
+     </li>
+     <li class="comment">各研究種目毎の受付期限については、所属研究機関担当者に確認してください。</li>
+     ##UPDATE START 2007/07/10 BIS　趙一非
+     
+     ##<li class="comment">所属研究機関が研究計画調書を承認（チェックリストの確定）しないと日本学術振興会には受付されません。
+     <li class="comment">所属研究機関が研究計画調書を承認しないと日本学術振興会には受付されません。
+     ##UPDATE END 2007/07/10 BIS　趙一非
+      <br>なお、特定領域研究（新規領域）については、所属研究機関担当者が確認することで領域代表者に提出されます。
+     </li>
+## 2005/03/24 削除 ここから----------------------------
+## 理由 文言修正のため
+##     <li class="comment">特別推進研究の応募内容ファイルの記入要領については、<a href="http://www.mext.go.jp/a_menu/shinkou/hojyo/koubotop/download.htm" target="_blank">こちら</a>をご覧下さい。</li>
+## 削除 ここまで----------------------------------------
+    
+    </ul>
+    <!-- 一覧用テーブルここから -->
+    #errorMarkup()
+    <form method="post" action="--WEBBOT-SELF--"><!--webbot bot="SaveResults"
+    U-File="fpweb:///_private/form_results.txt" S-Format="TEXT/CSV"
+    S-Label-Fields="TRUE" -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+     <tr>
+      <td>
+       <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+        <tr>
+         <th>研究種目名</th>
+## 2006/7/19 liu jia 削除　ここから
+          ##<th width="15%">学振受付期限</th>
+## 2006/7/19 liu jia 削除　ここまで
+         <th>応募内容ファイル<br>様式のダウンロード</th>
+         <th>URL</th>
+         <th width="15%">応募情報入力</th>
+        </tr>
+
+        #if($list.size() == 0)
+          ##該当件数が０件だった場合
+          <tr>
+           <td>　</td>
+           <td>　<br>　</td>
+           <td>　</td>
+           <td>　</td>
+          </tr>
+        #else
+          #foreach($user in $list)
+            #set ($jigyoId =$!user.JIGYO_ID)
+            ## 2006/06/15 劉佳　追加 ここから-------------------------------------
+            ## 事業コード
+            #set($jigyoCd = $jigyoId.substring(2,7))
+
+		## 仮領域番号のとき（特定領域（新規領域）のみ）場合
+##2006/06/21 苗　修正ここから	
+##      #if($jigyoCd == '00022')
+#*
+    	#if($jigyoCd == '00022' && $kariryokiFlg == '1')
+##2006/06/21 苗　修正ここまで			
+    		<tr>
+			## 画面で「研究種目名」を表示する
+    		<td>
+    	        平成$!escape.getText($!user.NENDO)年度 
+    	      	#if($user.KAISU.equals("1"))
+    	     		$!escape.getText($!user.JIGYO_NAME)-仮領域番号発行
+    	     	#else
+    	     		第$!escape.getText($!user.KAISU)回 $!escape.getText($!user.JIGYO_NAME)-仮領域番号発行
+				#end
+    		  </td> 
+			  ## 画面で「学振受付期限」を表示する
+    	      <td>$!dateFormat.format($!escape.getText($!user.KARIRYOIKINO_UKETUKEKIKAN_END))</td>
+			  ## 画面で「応募内容ファイル様式のダウンロード」を表示する
+    	      <td> </td>
+			  ## 画面で「URL」を表示する
+    	      <td>
+    	      	<a href=$!escape.getText($!user.URL_ADDRESS) target="_blank">$!escape.getText($!user.URL_TITLE)</a>
+    	      </td>
+			  ## 画面で「応募情報入力」を表示する
+    	      <td>
+    	      ##set($jigyoKariUkEnd = $!dateFormat.format($!user.KARIRYOIKINO_UKETUKEKIKAN_END))
+    		  ##set($nowDate = $!dateFormat.format($dateUtil.getDateYYYYMMDD()))
+    	      ##if($jigyoKariUkEnd.toString().compareTo($nowDate.toString()) == 1 )
+			  #if($!user.RYOIKINO_FLAG =='FALSE')
+				<a href="javascript:onKariBangoHakkoApplication('$jigyoId');">
+    	      	<img src="$path/images/xxxxx.gif" width="120" height="24" border="0" alt="仮領域番号発行"></a>
+    	      #else
+    	      	仮領域番号発行受付締切
+			  #end
+    	      </td>
+    	</tr>
+##2006/06/21 苗　追加ここから			
+		#else
+##2006/06/21 苗　追加ここまで			
+		## 2006/06/15 劉佳　追加 ここまで-------------------------------------
+*#
+            <tr>
+             <td>平成$!escape.getText($!user.NENDO)年度 
+              #if($user.KAISU.equals("1"))
+                 $!escape.getText($!user.JIGYO_NAME)
+              #else
+				第$!escape.getText($!user.KAISU)回 $!escape.getText($!user.JIGYO_NAME)
+              #end
+             </td>
+## 2006/7/19 liu jia 削除　ここから
+           ##if($jigyoCd == '00021')            
+           ##（継続）の場合
+            ##<td>$!dateFormat.format($!escape.getText($!user.UKETUKEKIKAN_END))</td>
+           ##elseif($jigyoCd == '00022')
+           ##（新規）の場合
+            ##<td>領域代表者確定締切日は$!dateFormat.format($!escape.getText($!user.RYOIKI_KAKUTEIKIKAN_END))です。</td>
+           ##end
+## 2006/7/19 liu jia 削除　ここまで
+             <td>
+              ##添付ファイルがWin、Macどちらかが存在するとき
+              #if($!user.TENPU_WIN || $!user.TENPU_MAC)
+				Windows用：
+                ##添付ファイル（Win）がnullまたは""ではない場合
+                #if($!user.TENPU_WIN)
+                  <a href="javascript:onDownloadFile('$jigyoId','$FILE_FLG_TENPU_WIN');"><img src="$path/images/bt_word2k.gif" alt="ダウンロード" width="30" height="30" border="0"></a>
+                #end
+                  ##添付ファイル（Mac）がnullまたは""ではない場合
+                #if($!user.TENPU_MAC)
+					Mac用：
+                  <a href="javascript:onDownloadFile('$jigyoId','$FILE_FLG_TENPU_MAC');"><img src="$path/images/bt_wordmac.gif" alt="ダウンロード" width="30" height="30" border="0"></a>
+                #end
+              #else
+            
+## 2005/03/08 追加 ここから-------------------------------------
+## 理由 追加項目のため
+                ##添付ファイル（Win or Mac）がnullまたは"" かつ URLがnullまたは""ではない場合
+                #if($!user.DL_URL)
+                  <a href=$!escape.getText($!user.DL_URL) target="_blank">こちらから取得してください</a>
+                #end
+## 追加 ここまで------------------------------------------------
+
+              #end
+             </td>
+## 2005/03/08 追加 ここから-------------------------------------
+## 理由 追加項目のため
+             <td>
+              <a href=$!escape.getText($!user.URL_ADDRESS) target="_blank">$!escape.getText($!user.URL_TITLE)</a>
+             </td>
+## 追加 ここまで------------------------------------------------
+
+## 20050701
+    ## 2006/06/15 劉佳　変更 ここから-------------------------------------
+             <td>
+              #if($jigyoCd == '00021')                
+                ##（継続）の場合、
+                #set($jokyo = $user.JOKYO_ID.toString())
+                #if(!$jokyo || $jokyo == '01' || $jokyo == '02' || $jokyo == '03')
+                  <a href="javascript:onInputApplication('$jigyoId');"><img src="$path/images/bt_app_entry.gif" width="120" height="24" border="0" alt="応募情報入力"></a>
+                #else
+					所属研究機関受付締切
+                #end                
+              #elseif($jigyoCd == '00022')
+                ##（新規）の場合
+                #if($!user.RYOIKINO_FLAG =='TRUE')
+                  <a href="javascript:onInputApplication('$jigyoId');"><img src="$path/images/bt_app_entry.gif" width="120" height="24" border="0" alt="応募情報入力"></a>
+                #else
+					領域代表者受付締切
+                #end
+              #end
+             </td>
+    ## 2006/06/15 劉佳　変更 ここまで-------------------------------------
+            </tr>
+## Horikoshi
+          #end
+##2006/06/21 苗　追加ここから    
+        #end
+##2006/06/21 苗　追加ここまで        
+       </table>
+	  </td>
+     </tr>
+    </table>
+    <!-- 一覧用テーブルここまで-->
+    <br>
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="$link.setAction('/shinsei/showMainMenu')"><img src="$path/images/bt_bk_menu.gif" width="114" height="28" border="0" alt="メニューに戻る"></a></td>
+      </tr>
+     </table>
+    </div>
+
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width="8" height="26" alt=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shinsei/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width="72" height="26" border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width="8" height="26" alt=""></td>
+     </tr>
+    </form>
+   </table>
+   <!-- サブ画面フッター用テーブルここまで -->
+   <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+  <!-- 左右の縦線用テーブルここまで -->
+</div>
+##隠しフォーム情報----------
+<form name="download_form" action="" method="post">
+    <input type="hidden" name="downloadFileFlg">
+    <input type="hidden" name="jigyoId">
+</form>
+<form name="input_form" action="" method="post">
+    <input type="hidden" name="shinseiDataInfo.jigyoId" >
+</form>
+##----------
+</body>
+</html>

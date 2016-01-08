@@ -1,0 +1,158 @@
+参数ID(*):SYS_TREE_0000000001
+参数名(*):系&nbsp;&nbsp;&nbsp;&nbsp;统&nbsp;&nbsp;&nbsp;&nbsp;管&nbsp;&nbsp;&nbsp;&nbsp;理
+动作:
+==========================================================
+
+下面是“系&nbsp;&nbsp;&nbsp;&nbsp;统&nbsp;&nbsp;&nbsp;&nbsp;管&nbsp;&nbsp;&nbsp;&nbsp;理”的子节点
+==========================================================
+参数ID(*):SYS_TREE_0000000004
+参数名(*):组管理
+动作:./sys/group/Group.do?method=toGroupMain
+==========================================================
+参数ID(*):SYS_TREE_0000000005
+参数名(*):座席管理
+动作:./sys/user/UserOper.do?method=toMain
+==========================================================
+参数ID(*):SYS_TREE_0000000002
+参数名(*):类      型      管      理
+动作:./sys/parameter/paramTree.do?method=toParamMain
+==========================================================
+参数ID(*):SYS_TREE_0000000561
+参数名(*):端口管理
+动作:./callcenter/portCompare.do?method=toPortCompareMain
+==========================================================
+参数ID(*):SYS_TREE_0000000521
+参数名(*):来电屏蔽
+动作:./callcenter/callinFirewall.do?method=toCallinFireWallMain
+==========================================================
+参数ID(*):SYS_TREE_0000002558
+参数名(*):模块结点排序
+动作:./sys/layerOrder/layerOrder.do?method=loadParamTree&nickName=moduleRoot
+==========================================================
+参数ID(*):SYS_TREE_0000000006
+参数名(*):角色管理
+动作:./sys/role/Role.do?method=toRoleMain
+==========================================================
+参数ID(*):SYS_TREE_0000002401
+参数名(*):大屏幕
+动作:
+==========================================================
+
+
+下面是“大屏幕”的子节点
+==========================================================
+参数ID(*):SYS_TREE_0000002421
+参数名(*):12316快讯
+动作:./screen/screen.do?method=toQuickMessageAdd
+==========================================================
+参数ID(*):SYS_TREE_0000002422
+参数名(*):每日价格
+动作:./screen/screen.do?method=toScreenPriceInfoList
+==========================================================
+参数ID(*):SYS_TREE_0000002423
+参数名(*):金农市场分析
+动作:info/nm/jnscfx/edit.jsp
+==========================================================
+参数ID(*):SYS_TREE_0000002424
+参数名(*):每日供求
+动作:
+==========================================================
+参数ID(*):SYS_TREE_0000002425
+参数名(*):经典案例
+动作:./screen/screen.do?method=toCaseInfoList
+==========================================================
+参数ID(*):SYS_TREE_0000002426
+参数名(*):优质农资推介
+动作:info/nm/yznztj/edit.jsp
+==========================================================
+参数ID(*):SYS_TREE_0000002427
+参数名(*):专家推介
+动作:info/nm/zztj/edit.jsp
+==========================================================
+参数ID(*):SYS_TREE_0000002428
+参数名(*):焦点观注
+动作:./screen/screen.do?method=toJiaoDianAnliList
+==========================================================
+参数ID(*):SYS_TREE_0000002429
+参数名(*):话务实况
+动作:./screen/screen.do?method=toHuaWuList
+==========================================================
+参数ID(*):SYS_TREE_0000002430
+参数名(*):时段咨询量当月每日统计
+动作:/callcenterj_sy/stat/callCountStat.do?method=toDisplay&chartType=bar&dateType=day
+==========================================================
+参数ID(*):SYS_TREE_0000002431
+参数名(*):栏目咨询量统计
+动作:
+==========================================================
+参数ID(*):SYS_TREE_0000002432
+参数名(*):调查报告
+动作:
+==========================================================
+参数ID(*):SYS_TREE_0000002441
+参数名(*):时段咨询量当年每月统计
+动作:/callcenterj_sy/stat/callCountStat.do?method=toDisplay&chartType=bar&dateType=month
+==========================================================
+参数ID(*):SYS_TREE_0000002442
+参数名(*):时段咨询量年度统计
+动作:/callcenterj_sy/stat/callCountStat.do?method=toDisplay&chartType=bar&dateType=year
+==========================================================
+参数ID(*):SYS_TREE_0000002443
+参数名(*):栏目咨询量当天统计
+动作:/callcenterj_sy/stat/callCountStat.do?method=toDisplay&chartType=bar&dateType=colday
+==========================================================
+参数ID(*):SYS_TREE_0000002444
+参数名(*):栏目咨询量当月统计
+动作:/callcenterj_sy/stat/callCountStat.do?method=toDisplay&chartType=bar&dateType=colmonth
+==========================================================
+参数ID(*):SYS_TREE_0000002445
+参数名(*):栏目咨询量当年统计
+动作:/callcenterj_sy/stat/callCountStat.do?method=toDisplay&chartType=bar&dateType=colyear
+==========================================================
+参数ID(*):SYS_TREE_0000002461
+参数名(*):12316快讯信息录入
+动作:./screen/quickMessage.do?method=toQMMain
+==========================================================
+1 数据库备份带回
+2 系统管理恢复
+3 座席长面板看错误返回值
+1、点击特殊咨询栏目无法返回到其他栏目。              
+原来涉及到咨询栏目切换记录内容处不随之更新现在部分实现，只是从特殊栏目到常规栏目的切换没办法 切换回来。 
+2、典型案例查询条件中添加【案例点评】查询条件。
+4、供求库查询条件中添加电话查询条件，并在列表中添加工号项。供求信息修改时时间段限制项去掉限制。
+6、电话会议，会议参与者收听过程中按1号键想发言，在管理坐席的操作面板上没有申请提示。
+7、价格数据库导出错误，导出页面中添加价格类型、备注两项列表。
+11、来电时，只要单击接听，来电提示页关闭，弹出来电记录页。
+
+（下边的列表里边没有地方了，怎么处理？）
+17、医疗案例库添加受理工号查询及受理工号列表，原有的是否参加新农合去掉。预约医疗服务信息库添加受理工号查询及受理工号列表。
+
+（重点测试）
+班长座席的稳定性。
+
+李丹
+参数ID：SYS_TREE_0000002961
+参数名称：产品类型管理
+别名：chanpinleibieguanli
+动作：./productTypeManage/productTypeDwrMain.jsp;
+节点图标：expanded=folderOpen.gif;closed=folderClose.gif;leaf=leaf.gif;
+
+================================================================
+
+数据库中增加如下表，用于大屏幕金农市场分析维护使用
+
+oper_market_analysis_screen（金农市场分析大屏幕表）
+
+字段名	类型	长度	字段说明	备注
+id	                varchar	50	 流水号	 主键id
+analysiser	        varchar	50	 分析师	
+analysiser_info	    varchar	300	 分析师简介	
+analysiser_photo	varchar	200	 分析师照片路径	
+title	            varchar	100	 分析标题	
+analysis_content	varchar	1000 分析正文	
+analysis_type	    varchar	50	 类别(政府or农民)	
+remark	            varchar	200	 备注	
+add_time	        datetime	 记录加入时间	
+
+修改 客户端内容维护系统 下 金农市场分析 节点的动作为 
+/callcenterj_sy/screen/marAnalysis.do?method=toMarAnalysisMain2

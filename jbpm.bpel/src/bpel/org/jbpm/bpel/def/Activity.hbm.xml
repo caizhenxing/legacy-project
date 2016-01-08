@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+
+  <subclass name="org.jbpm.bpel.def.Activity" extends="org.jbpm.graph.def.Node" discriminator-value="null"
+    >
+
+    <!-- ACTIVITY discriminators -->
+
+    <!-- O : root scope -->
+    <!-- B : scope handler -->
+    <!-- V : fault handler -->
+    <!-- X : message handler -->
+    <!-- W : alarm handler -->
+    <!-- L : loop node -->
+    <!-- Y : structure start -->
+    <!-- Z : structure end -->
+
+    <!-- a : receive -->
+    <!-- b : reply -->
+    <!-- c : invoke -->
+    <!-- d : assign -->
+    <!-- e : throw -->
+    <!-- f : exit -->
+    <!-- g : wait -->
+    <!-- h : empty -->
+    <!-- i : sequence -->
+    <!-- j : switch -->
+    <!-- k : while -->
+    <!-- l : pick -->
+    <!-- m : flow -->
+    <!-- n : scope -->
+    <!-- o : compensate -->
+    <!-- p : rethrow -->
+    <!-- q : validate -->
+
+    <!-- Activity Standard Attributes -->
+    <property name="suppressJoinFailure" column="SUPPRESSJOINFAILURE_" />
+    <many-to-one name="compositeActivity" column="COMPOSITEACTIVITY_" foreign-key="FK_ACTIVITY_COMPOSITE" />
+    <many-to-one name="joinCondition" column="JOINCONDITION_" foreign-key="FK_ACTIVITY_JOINCONDITION" cascade="all" />
+    <set name="sources" cascade="all">
+      <key column="SOURCE_" />
+      <one-to-many class="org.jbpm.bpel.def.LinkDefinition" />
+    </set>
+    <set name="targets">
+      <key column="TARGET_" />
+      <one-to-many class="org.jbpm.bpel.def.LinkDefinition" />
+    </set>
+
+    <!--Composite Activity-->
+    <subclass name="org.jbpm.bpel.def.CompositeActivity"  discriminator-value="null" />
+
+    <!--Receive-->
+    <subclass name="org.jbpm.bpel.def.Receive" discriminator-value="a">
+      <many-to-one name="receiver" column="RECEIVER_" foreign-key="FK_RECEIVE_RECEIVER" cascade="all" />
+      <property name="createInstance" column="CREATEINSTANCE_" />
+    </subclass>
+
+    <!--Reply-->
+    <subclass name="org.jbpm.bpel.def.Reply" discriminator-value="b">
+      <many-to-one name="replier" column="REPLIER_" foreign-key="FK_REPLY_REPLIER" cascade="all" />
+    </subclass>
+
+    <!--Invoke-->
+    <subclass name="org.jbpm.bpel.def.Invoke" discriminator-value="c">
+      <many-to-one name="invoker" column="INVOKER_" foreign-key="FK_INVOKE_INVOKER" cascade="all" />
+    </subclass>
+
+    <!--Throw-->
+    <subclass name="org.jbpm.bpel.def.Throw" discriminator-value="e">
+      <property name="faultName" type="qname">
+        <column name="FAULTLOCALNAME_" />
+        <column name="FAULTNAMESPACE_" />
+      </property>
+      <many-to-one name="faultVariable" column="FAULTVARIABLE_" foreign-key="FK_THROW_VARIABLE" cascade="all" />
+    </subclass>
+
+    <!--Exit-->
+    <subclass name="org.jbpm.bpel.def.Exit" discriminator-value="f" />
+
+    <!--Wait-->
+    <subclass name="org.jbpm.bpel.def.Wait" discriminator-value="g">
+      <many-to-one name="alarm" column="ALARM_" foreign-key="FK_WAIT_ALARM" cascade="all" />
+    </subclass>
+
+    <!--Empty-->
+    <subclass name="org.jbpm.bpel.def.Empty" discriminator-value="h" />
+
+    <!--Compensate-->
+    <subclass name="org.jbpm.bpel.def.Compensate" discriminator-value="o">
+      <many-to-one name="scope" column="SCOPE_" foreign-key="FK_SCOPE_COMPENSATE" />
+    </subclass>
+
+    <!--Rethrow-->
+    <subclass name="org.jbpm.bpel.def.Rethrow" discriminator-value="p" />
+
+    <!--Validate-->
+    <subclass name="org.jbpm.bpel.def.Validate" discriminator-value="q" />
+
+    <!--Assign-->
+    <subclass name="org.jbpm.bpel.def.Assign" extends="org.jbpm.bpel.def.Activity" discriminator-value="d">
+      <list name="copies" cascade="all">
+        <key column="ASSIGN_" foreign-key="FK_COPY_ASSIGN" />
+        <list-index column="ASSIGNINDEX_" />
+        <one-to-many class="org.jbpm.bpel.def.Assign$Copy" />
+      </list>
+    </subclass>
+
+  </subclass>
+
+</hibernate-mapping>

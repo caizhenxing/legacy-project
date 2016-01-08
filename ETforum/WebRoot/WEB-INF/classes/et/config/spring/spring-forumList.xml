@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean name="/forum/forumList"
+		class="et.bo.forum.forumList.action.ForumListAction" singleton="false">			
+		<property name="forumListService">
+			<ref bean="ForumListService" />
+		</property>			
+	</bean>
+<!--  service begin -->	
+<bean id="ForumListService"
+		class="et.bo.forum.forumList.service.impl.ForumListServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="ForumDao" />
+		</property>
+	</bean>	
+</beans>

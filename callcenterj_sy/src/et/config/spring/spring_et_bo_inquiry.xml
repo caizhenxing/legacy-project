@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+	<bean name="/inquiry" class="et.bo.inquiry.action.InquiryAction"
+		scope="singleton">
+		<property name="inquiryService">
+			<ref bean="inquiryService" />
+		</property>
+		<property name="classTree">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+
+
+	<bean id="inquiryService"
+		class="et.bo.inquiry.service.impl.InquiryServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="classTree">
+			<ref bean="ClassTreeService" />
+		</property>
+		<property name="bds">
+			<ref bean="datasource"/>
+		</property>
+		<property name="flowService">
+			<ref bean="FlowService"/>
+		</property>
+	</bean>
+	<bean name="/inquiryCard"
+		class="et.bo.inquiry.action.InquiryCardAction" scope="singleton">
+		<property name="inquiryCardService">
+			<ref bean="inquiryCardService" />
+		</property>
+		<property name="classTree">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+	<bean id="inquiryCardService"
+		class="et.bo.inquiry.service.impl.InquiryCardServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+	</bean>
+	<bean name="/inquiryResult"
+		class="et.bo.inquiry.action.InquiryResultAction" scope="singleton">
+		<property name="inquiryService">
+			<ref bean="inquiryService" />
+		</property>
+		<property name="inquiryResultService">
+			<ref bean="inquiryResultService" />
+		</property>
+		<property name="classTree">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+	<bean id="inquiryResultService"
+		class="et.bo.inquiry.service.impl.InquiryResultServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+	</bean>
+	<!-- 后加的详情 -->
+	<bean name="/detailForm" class="et.bo.inquiry.detail.action.DetailAction" scope="singleton">
+		<property name="service">
+			<ref bean="detailService" />
+		</property>
+	</bean>
+	<bean id="detailService" class="et.bo.inquiry.detail.service.impl.DetailServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+	</bean>
+</beans>

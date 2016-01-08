@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="WINDOWS-31J"?>
+
+<form-validation>
+    <global>
+        <constant>
+            <constant-name>zip.mask</constant-name>
+            <constant-value>\d{3}-\d{4}</constant-value>
+        </constant>
+    </global>
+
+  <formset>
+    <form name="logonForm">
+      <field depends="required" property="userid">
+        <arg0 key="ID" resource="false"/>
+      </field>
+      <field depends="required" property="password">
+        <arg0 key="パスワード" resource="false"/>
+      </field>
+    </form>
+  </formset>
+</form-validation>

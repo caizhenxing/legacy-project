@@ -1,0 +1,16 @@
+#Mon Oct 30 17:27:08 CST 2006
+BOOT_CLASSPATH="C\:\\Java\\jre\\lib\\ext\\ibmorb.jar;C\:\\Java\\jre\\lib\\ext\\ibmext.jar"
+PYTHON_CACHE_DIR_KEY=\\temp\\cachedir
+DERBY_HOME=D\:\\Program Files\\IBM\\WebSphere\\derby
+ITP_LOCATION_KEY=D\:\\Program Files\\IBM\\WebSphere\\bin
+EXTERNAL_DIRS="C\:\\Java\\lib;\\classes;D\:\\Program Files\\IBM\\WebSphere\\classes;D\:\\Program Files\\IBM\\WebSphere\\lib;D\:\\Program Files\\IBM\\WebSphere\\installedChannels;D\:\\Program Files\\IBM\\WebSphere\\lib\\ext;D\:\\Program Files\\IBM\\WebSphere\\web\\help;D\:\\Program Files\\IBM\\WebSphere\\deploytool\\itp\\plugins\\com.ibm.etools.ejbdeploy\\runtime"
+NODENAME=zhaoyifeiNode01
+WEBSPHERE_HOME=D\:\\Program Files\\IBM\\WebSphere
+LIBRARY_PATH="C\:\\Java\\bin;D\:\\Program Files\\IBM\\WebSphere\\bin"
+OSGI_CONFIG_AREA_KEY=\\configuration
+eclipse.preferences.version=1
+SECURITY_CONFIG_KEY=\\properties\\wsjaas.conf
+SECURITY_POLICY_KEY=\\properties\\server.policy
+JDK_INSTALLATION_NAME=jdk
+CELLNAME=zhaoyifeiNode01Cell
+JDK_HOME=C\:\\Java

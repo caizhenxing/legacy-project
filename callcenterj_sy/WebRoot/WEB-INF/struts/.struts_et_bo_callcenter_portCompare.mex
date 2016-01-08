@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/callcenter/portCompare/portCompareList.jsp" location="50,350" dimension="298,48" />
+  <StrutsActivity path="/callcenter/portCompare/portCompareMain.jsp" location="650,350" dimension="298,48" />
+  <StrutsActivity path="/callcenter/portCompare/portCompareLoad.jsp" location="50,450" dimension="298,48" />
+  <StrutsActivity path="/callcenter/portCompare/portCompareQuery.jsp" location="650,450" dimension="304,48" />
+  <StrutsActivity path="/callcenter/portCompare/portCompareDetail.jsp" location="50,550" dimension="310,48" />
+  <StrutsActivity path="/pcc/portCompare/portCompareList.jsp" location="0,184" dimension="256,48" />
+  <StrutsActivity path="/pcc/portCompare/portCompareMain.jsp" location="356,184" dimension="256,48" />
+  <StrutsActivity path="/pcc/portCompare/portCompareLoad.jsp" location="712,184" dimension="256,48" />
+  <StrutsActivity path="/pcc/portCompare/portCompareQuery.jsp" location="1068,184" dimension="262,48" />
+  <StrutsActivity path="/pcc/portCompare/portCompareDetail.jsp" location="1430,184" dimension="268,48" />
+  <StrutsActivity path="/callcenter/portCompare.do" location="650,550" dimension="358,84" />
+  <StrutsActivity path="/callcenter/portCompare/err.jsp" />
+  <StrutsTransition id="/callcenter/portCompare.do,detail,/callcenter/portCompare/portCompareDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,583" />
+      <AbsolutePoint location="360,583" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/portCompare.do,list,/callcenter/portCompare/portCompareList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="840,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/portCompare.do,query,/callcenter/portCompare/portCompareQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="840,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/portCompare.do,main,/callcenter/portCompare/portCompareMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="840,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/portCompare.do,list,/callcenter/portCompare/portCompareList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,553" />
+      <AbsolutePoint location="495,553" />
+      <AbsolutePoint location="495,374" />
+      <AbsolutePoint location="348,374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/portCompare.do,error,/callcenter/portCompare/err.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,592" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/portCompare.do,error,/callcenter/portCompare/portCompareList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,613" />
+      <AbsolutePoint location="-75,613" />
+      <AbsolutePoint location="-75,374" />
+      <AbsolutePoint location="50,374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/portCompare.do,detail,/callcenter/portCompare/portCompareDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="840,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/portCompare.do,load,/callcenter/portCompare/portCompareLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,550" />
+      <AbsolutePoint location="829,513" />
+      <AbsolutePoint location="199,513" />
+      <AbsolutePoint location="199,498" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/portCompare.do,load,/callcenter/portCompare/portCompareLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="840,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/portCompare.do,query,/callcenter/portCompare/portCompareQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="859,550" />
+      <AbsolutePoint location="859,498" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/portCompare.do,main,/callcenter/portCompare/portCompareMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="983,550" />
+      <AbsolutePoint location="983,374" />
+      <AbsolutePoint location="948,374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

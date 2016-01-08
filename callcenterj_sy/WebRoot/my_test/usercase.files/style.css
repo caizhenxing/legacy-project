@@ -1,0 +1,120 @@
+.rq {
+	FONT: 12px/15px "宋体"; COLOR: #ffffff; TEXT-ALIGN: center
+}
+.conditionBody {
+	MARGIN: 0px; BACKGROUND-COLOR: #eaffd0
+}
+.bodyLogin {
+	MARGIN: 1px; BACKGROUND-COLOR: #cccccc
+}
+.wenzi7 {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #ffffff; LINE-HEIGHT: 15px; FONT-STYLE: normal; FONT-FAMILY: "宋体"; TEXT-ALIGN: center
+}
+.navigateTable {
+	FONT: 12px/20px "宋体"; COLOR: #ffffff; TEXT-INDENT: 8px; BACKGROUND-COLOR: #4ea0cf; TEXT-ALIGN: right
+}
+.navigateStyle {
+	FONT: 12px/25px "宋体"; COLOR: #ffffff; TEXT-INDENT: 7px; BACKGROUND-COLOR: #69a826; TEXT-ALIGN: left
+}
+.conditionTable {
+	BACKGROUND: #ffffff
+}
+.labelStyle {
+	FONT: 12px/25px "宋体"; COLOR: #006600; TEXT-INDENT: 20px; BACKGROUND-COLOR: #abdf7b
+}
+.queryLabelStyle {
+	FONT: 12px/25px "宋体"; COLOR: #006600; BACKGROUND-COLOR: #abdf7b
+}
+.selectStyle {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #006600; LINE-HEIGHT: 25px; FONT-STYLE: normal; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #ffffff
+}
+.writeTextStyle {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #006600; LINE-HEIGHT: 15px; FONT-STYLE: normal; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: left
+}
+.writeTextStyle2 {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; WIDTH: 70px; COLOR: #006600; LINE-HEIGHT: 15px; FONT-STYLE: normal; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: left
+}
+.readTextStyle {
+	BACKGROUND: #999999
+}
+.buttonAreaStyle {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #666666; LINE-HEIGHT: 25px; FONT-STYLE: normal; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #69a826; TEXT-ALIGN: right
+}
+.buttonStyle {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; BACKGROUND: #ffffff; COLOR: #666666; LINE-HEIGHT: 15px; FONT-STYLE: normal; FONT-FAMILY: "宋体"; TEXT-ALIGN: center
+}
+.listBody {
+	MARGIN: 0px; BACKGROUND-COLOR: #eaffd0
+}
+.listTitleStyle {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(images/tiaoti.jpg); COLOR: #ffffff; LINE-HEIGHT: 23px; FONT-STYLE: normal; FONT-FAMILY: "宋体"; TEXT-ALIGN: center
+}
+.oddStyle {
+	FONT: 12px/25px "宋体"; COLOR: #666666; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: center
+}
+.evenStyle {
+	FONT: 12px/17px "宋体"; COLOR: #666666; BACKGROUND-COLOR: #abdf7b; TEXT-ALIGN: center
+}
+.loadBody {
+	MARGIN: 0px; OVERFLOW: auto
+}
+.pageTable {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #666666; TEXT-INDENT: 8px; LINE-HEIGHT: 25px; FONT-STYLE: normal; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #abdf7b; TEXT-ALIGN: center
+}
+.valueStyle {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #0066cc; LINE-HEIGHT: 25px; FONT-STYLE: normal; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #dfffb9
+}
+.emptyBodyStyle {
+	BACKGROUND-COLOR: #e5f3f6
+}
+.text-selected {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #ffffff; LINE-HEIGHT: 15px; FONT-STYLE: normal; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #2482bf
+}
+.text-unselected {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #333333; LINE-HEIGHT: 15px; FONT-STYLE: normal; FONT-FAMILY: "宋体"
+}
+.anys {
+	BORDER-RIGHT: #ffffff 1px outset; PADDING-RIGHT: 1px; BORDER-TOP: #ffffff 1px outset; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; MARGIN: 1px; FONT: 12px/17px "宋体"; BORDER-LEFT: #ffffff 1px outset; WIDTH: 140px; COLOR: #ffffff; PADDING-TOP: 1px; BORDER-BOTTOM: #ffffff 1px outset; HEIGHT: 15px; BACKGROUND-COLOR: #63a908; TEXT-ALIGN: center
+}
+.lundong {
+	BORDER-RIGHT: #2d8201 1px solid; BORDER-TOP: #2d8201 1px solid; FONT-WEIGHT: normal; FONT-SIZE: 12px; BORDER-LEFT: #2d8201 1px solid; WIDTH: 275px; COLOR: #308301; LINE-HEIGHT: 15px; BORDER-BOTTOM: #2d8201 1px solid; FONT-FAMILY: "宋体"; HEIGHT: 340px
+}
+A {
+	TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #666666
+}
+A:visited {
+	COLOR: #666666
+}
+A:hover {
+	COLOR: #006699
+}
+A:active {
+	COLOR: #666666
+}
+BODY {
+	MARGIN: 1px; BACKGROUND-COLOR: #cccccc
+}
+.shijian {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #ffffff; LINE-HEIGHT: 15px; FONT-FAMILY: "宋体"; TEXT-ALIGN: center
+}
+.jimian {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #8ca667; LINE-HEIGHT: 15px; FONT-FAMILY: "宋体"; TEXT-ALIGN: center
+}
+.xiala {
+	BORDER-RIGHT: #8da768 1px solid; BORDER-TOP: #8da768 1px solid; FONT-WEIGHT: normal; FONT-SIZE: 12px; BORDER-LEFT: #8da768 1px solid; WIDTH: 166px; COLOR: #666666; BORDER-BOTTOM: #8da768 1px solid; FONT-FAMILY: "宋体"; HEIGHT: 17px; TEXT-ALIGN: center
+}
+.wenben {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; WIDTH: 167px; COLOR: #8ba568; LINE-HEIGHT: 15px; FONT-FAMILY: "宋体"; HEIGHT: 17px; TEXT-ALIGN: left
+}
+.yanzhengma {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; WIDTH: 54px; COLOR: #8ea867; TEXT-INDENT: 2px; LINE-HEIGHT: 15px; FONT-FAMILY: "宋体"; TEXT-ALIGN: left
+}
+.imageBody {
+	BACKGROUND-IMAGE: url(images/background.jpg); MARGIN: 0px
+}
+.backcolor {
+	MARGIN: 0px; BACKGROUND-COLOR: #63a908
+}

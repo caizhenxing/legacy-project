@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;max&apos; in &apos;base.zyf.tools.Tools&apos; to &apos;MAX&apos;&#x0D;&#x0A;- Original project: &apos;struts2&apos;&#x0D;&#x0A;- Original element: &apos;base.zyf.tools.Tools.max&apos;&#x0D;&#x0A;- Renamed element: &apos;base.zyf.tools.Tools.MAX&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;max&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;base.zyf.tools{Tools.java[Tools^max" name="MAX" references="true" setter="false" stamp="1297259622406" textual="false" version="1.0"/>
+</session>

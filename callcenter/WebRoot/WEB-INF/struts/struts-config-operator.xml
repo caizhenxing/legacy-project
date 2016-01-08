@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+
+	 <!-- 座席监控信息表 -->
+	 <form-bean name="OperatorListenBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+	 	<form-property name="id" type="java.lang.String" />
+	 	<form-property name="clientip" type="java.lang.String" />
+	 	<form-property name="inport" type="java.lang.String" />
+	 	<form-property name="operatorport" type="java.lang.String" />
+	 	<form-property name="phonenum" type="java.lang.String" />
+	 	<form-property name="begintime" type="java.lang.String" />
+	 	<form-property name="operatetime" type="java.lang.String" />
+	 	<form-property name="endtime" type="java.lang.String" />
+	 	<form-property name="recfile" type="java.lang.String" />
+	 	<form-property name="cmd" type="java.lang.String" />
+	 	<form-property name="fuzzno" type="java.lang.String" />
+	 	<form-property name="isvalidin" type="java.lang.String" />
+	 	<form-property name="operator" type="java.lang.String" />
+	 	<form-property name="remark" type="java.lang.String" />
+	 </form-bean>
+	 
+	 <!-- 警务人员管理 -->
+	 <form-bean name="PoliceFuzzBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+	 	<form-property name="id" type="java.lang.String" />
+	 	<form-property name="fuzzNo" type="java.lang.String" />
+	 	<form-property name="name" type="java.lang.String" />
+	 	<form-property name="sex" type="java.lang.String" />
+	 	<form-property name="birthday" type="java.lang.String" />
+	 	<form-property name="idcard" type="java.lang.String" />
+	 	<form-property name="password" type="java.lang.String" />
+	 	<form-property name="repassword" type="java.lang.String" />
+	 	<form-property name="mobileTel" type="java.lang.String" />
+	 	<form-property name="tagPoliceKind" type="java.lang.String" />
+	 	<form-property name="tagUnit" type="java.lang.String" />
+	 	<form-property name="tagArea" type="java.lang.String" />
+	 	<form-property name="duty" type="java.lang.String" />
+	 	<form-property name="workontime" type="java.lang.String"/>
+	 	<form-property name="personstate" type="java.lang.String"/>
+	 	<form-property name="tagFreeze" type="java.lang.String" />
+	 	<form-property name="tagDel" type="java.lang.String" />
+	 </form-bean>
+	 
+	 <!-- 警务信息查询录入 -->
+	 <form-bean name="PoliceInfoBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+	 	<form-property name="id" type="java.lang.String" />
+	 	<form-property name="fuzzNo" type="java.lang.String" />
+	 	<form-property name="passvalidnum" type="java.lang.String" />
+	 	<form-property name="isvalidin" type="java.lang.String" />
+	 	<form-property name="operator" type="java.lang.String" />
+	 	<form-property name="name" type="java.lang.String" />
+	 	<form-property name="password" type="java.lang.String" />
+	 	<form-property name="checknum" type="java.lang.String"/>
+	 	<form-property name="mobileTel" type="java.lang.String" />
+	 	<form-property name="phonenum" type="java.lang.String"/>
+	 	<form-property name="pid" type="java.lang.String" />
+	 	<form-property name="policeInfoId" type="java.lang.String"/>
+	 	<form-property name="taginfo" type="java.lang.String" />
+	 	<form-property name="quinfo" type="java.lang.String" />
+	 	<form-property name="content" type="java.lang.String" />
+	 	<form-property name="remark" type="java.lang.String" />
+      	<form-property name="clientIp" type="java.lang.String" />
+      	<form-property name="inPort" type="java.lang.String" />
+      	<form-property name="operatorPort" type="java.lang.String" />
+    	<form-property name="phoneNum" type="java.lang.String" />
+        <form-property name="beginTime" type="java.lang.String" />
+	    <form-property name="operateTime" type="java.lang.String" />
+	    <form-property name="endTime" type="java.lang.String"/>
+	    <form-property name="recFile" type="java.lang.String"/>
+	    <form-property name="cmd" type="java.lang.String"/>
+	 </form-bean>
+	 
+	 <!-- 警备人员修改密码 -->
+	 <form-bean name="PoliceValidBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+	 	<form-property name="id" type="java.lang.String" />
+	 	<form-property name="fuzzNo" type="java.lang.String" />
+	 	<form-property name="name" type="java.lang.String" />
+	 	<form-property name="beforePwd" type="java.lang.String" />
+	 	<form-property name="password" type="java.lang.String" />
+	 	<form-property name="idcard" type="java.lang.String" />
+	 	<form-property name="unit" type="java.lang.String" />
+	 	<form-property name="department" type="java.lang.String"/>
+	 	<form-property name="repassword" type="java.lang.String" />
+	 	<form-property name="ip" type="java.lang.String" />
+	 	<form-property name="workontime" type="java.lang.String"/>
+	 	<form-property name="personstate" type="java.lang.String"/>
+	 	<form-property name="remark" type="java.lang.String" />
+	 </form-bean>
+
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+    
+    <!-- 座席监控信息 -->
+    <action
+      attribute="OperatorListenBean"
+      name="OperatorListenBean"
+      path="/pcc/operatorlisten/operatorlisten"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="main" path="/pcc/operatorlisten/operatorlistenMain.jsp"/>
+      <forward name="query" path="/pcc/operatorlisten/operatorlistenQuery.jsp"/>
+      <forward name="list" path="/pcc/operatorlisten/operatorlistenList.jsp"/>
+    </action>
+    
+    <!-- 警务人员管理 -->
+    <action
+      attribute="PoliceFuzzBean"
+      name="PoliceFuzzBean"
+      path="/pcc/policefuzz/fuzz"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="main" path="/pcc/policefuzz/fuzzMain.jsp"/>
+      <forward name="query" path="/pcc/policefuzz/fuzzQuery.jsp"/>
+      <forward name="list" path="/pcc/policefuzz/fuzzList.jsp"/>
+      <forward name="load" path="/pcc/policefuzz/fuzzLoad.jsp"/>
+      <forward name="topolicenum" path="/pcc/policefuzz/checkPoliceNum.jsp"/>
+      <forward name="checksuccess" path="/pcc/policefuzz/updatePassword.jsp"/>
+      <forward name="fail" path="/pcc/policefuzz/checkFail.jsp"/>
+      <forward name="updatesuccess" path="/pcc/policefuzz/success.jsp"/>
+      <forward name="see" path="/pcc/policefuzz/seeFuzz.jsp"/>
+      <forward name="countmain" path="/pcc/policefuzz/countMain.jsp"/>
+      <forward name="countquery" path="/pcc/policefuzz/countQuery.jsp"/>
+      <forward name="countlist" path="/pcc/policefuzz/countList.jsp"/>
+      <forward name="download" path="/pcc/policefuzz/download.jsp"/>
+    </action>
+    
+    <!-- 警务信息查询录入 -->
+    <action
+      attribute="PoliceInfoBean"
+      name="PoliceInfoBean"
+      path="/pcc/policeinfo/info"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="main" path="/pcc/policeinfo/policeInfoMain.jsp"/>
+	  <forward name="query" path="/pcc/policeinfo/policeInfoQuery.jsp"/>
+	  <forward name="list" path="/pcc/policeinfo/policeInfoList.jsp"/>
+	  <forward name="see" path="/pcc/policeinfo/seePolice.jsp"/>
+    </action>
+    
+    <!-- 手机呼入警员信息录入 -->
+    <action
+      attribute="PoliceInfoBean"
+      name="PoliceInfoBean"
+      path="/pcc/phoneinfo/phone"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="main" path="/pcc/phoneinfo/phoneMain.jsp"/>
+	  <forward name="query" path="/pcc/phoneinfo/phoneQuery.jsp"/>
+	  <forward name="list" path="/pcc/phoneinfo/phoneList.jsp"/>
+	  <forward name="see" path="/pcc/phoneinfo/seePhone.jsp"/>
+	  <forward name="check" path="/pcc/phoneinfo/checkPolice.jsp"/>
+    </action>
+    
+    
+    <!-- 警备人员修改密码 -->
+    <action
+      attribute="PoliceValidBean"
+      name="PoliceValidBean"
+      path="/pcc/policeValid/valid"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="valid" path="/pcc/policeValid/validPolice.jsp"/>
+      <forward name="passvalid" path="/pcc/policeValid/uppass.jsp"/>
+	  <forward name="success" path="/pcc/policeValid/success.jsp"/>
+	  <forward name="fail" path="/pcc/policeValid/fail.jsp"/>
+	  <forward name="main" path="/pcc/policeValid/validMain.jsp"/>
+	  <forward name="query" path="/pcc/policeValid/validQuery.jsp"/>
+	  <forward name="list" path="/pcc/policeValid/validList.jsp"/>
+    </action>
+    
+    <action
+      attribute="PoliceValidBean"
+      name="PoliceValidBean"
+      path="/pcc/policeValid/post"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="valid" path="/pcc/policeValid/postpolice.jsp"/>
+      <forward name="passvalid" path="/pcc/policeValid/upnew.jsp"/>
+	  <forward name="success" path="/pcc/policeValid/success.jsp"/>
+	  <forward name="fail" path="/pcc/policeValid/fail.jsp"/>
+    </action>
+
+  </action-mappings>
+
+</struts-config>
+

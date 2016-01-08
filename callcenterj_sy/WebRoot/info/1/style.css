@@ -1,0 +1,450 @@
+/*------------页面样式设置------------*/
+/* 页面设置 */
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	leftmargin:"0px";
+    topmargin:"0px";
+	marginheight:"0px";
+	marginwidth:"0px";
+}
+/*------------页面大的table设置------------*/
+/* 1366*768 table */
+.table{
+	background-color: #D4D4D4;
+	height: 570px;
+}
+
+/*------------页面内容div样式------------*/
+/* 1366*768 table */
+.div{
+	background-color: #F2F6F9;
+}
+/*------------页面里面内容div外围样式------------*/
+/* 1366*768 table */
+.div2{
+	background-color: #FFFFFF;
+	height: 486px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+}
+/*------------页面iframe内容div样式------------*/
+.cb{
+	background-image: url(images/cb.jpg);
+	width: 1297px;
+}
+/*------------页面文字div样式------------*/
+.div3{
+	margin-top: 9px;
+	margin-right: 20px;
+	margin-bottom: 7px;
+	margin-left: 20px;
+	font-family: "宋体";
+	font-size: 20px;
+	font-weight: bolder;
+	color: #000000;
+	line-height: 20px;
+	text-align: left;
+}
+/*------------专家推荐照片div样式------------*/
+.div4{
+	margin-top: 9px;
+	margin-right: 20px;
+	margin-bottom: 7px;
+	margin-left: 20px;
+	font-family: "宋体";
+	font-size: 14px;
+	font-weight: bolder;
+	color: #000000;
+	line-height: 16px;
+	vertical-align: top;
+	text-align: center;
+}
+
+
+/*------------眉头处的样式标题导航部分“专家”------------*/
+/* 专家页面“ 眉头 */
+.Brow{
+	background-image: url(images/Brow.jpg);
+	height: 88px;
+	width: 1280px;
+}
+.Brow2{
+	background-image: url(images/Brow1.jpg);
+	height: 88px;
+	width: 146px;
+	text-align: center;
+}
+/* “专家页面”标题导航 */
+.Navigation{
+	height: 57px;
+	width: 100%;
+	text-align: center;
+	background-color: #93B6DE;
+}
+
+/*------------眉头处的样式及标题导航部分“农民”------------*/
+/* ”农民页面“ 眉头 */
+.Farmer{
+    background-image: url(images/Farmer.jpg);
+}
+/* ”农民页面“眉头”div样式（时间） */
+.Time{
+	font-size: 15px;
+	font-weight: bold;
+	margin-right: 20px;
+	margin-left: 1100px;
+	margin-top: 10px;
+	text-align: center;
+}
+/* 农民页面“眉头”div样式（图标） */
+.Icon{
+	background-image: url(images/Picture.jpg);
+	float: left;
+	height: 17px;
+	width: 21px;
+	margin-top: 15px;
+	margin-left: 180px;
+}
+/* 农民页面“眉头”div样式（文本） */
+.Text4{
+	float: left;
+	height: 23px;
+	margin-top: 13px;
+	font-size: 20px;
+	line-height: 23px;
+	font-weight: bold;
+	color: #FFFFFF;
+	margin-left: 8px;
+	width: 770px;
+	background-color: #85AAD6;
+	text-align: left;
+	font-family: "创艺简中圆";
+}
+/* ”农民页面“眉头”div样式（金农快讯） */
+.Quick_news{
+	float: left;
+	height: 19px;
+	margin-top: 15px;
+	font-size: 20px;
+	line-height: 20px;
+	font-weight: bold;
+	color: #000000;
+	margin-left: 8px;
+	font-family: "创艺简中圆";
+}
+/* 12316快讯旁边的小图片 */
+.Quick-news{
+	background-image: url(images/Picture.jpg);
+	height: 18px;
+	width: 21px;
+}
+/* 12316快讯文本样式 */
+.Text3{
+    font-family: "宋体";
+	background-color: #85AAD6;
+	height: 23px;
+	width: 830px;
+	border: 1px solid #CDDEF2;
+	font-size: 14px;
+	line-height: 22px;
+	font-weight: bold;
+	color: #FFFF99;
+	text-indent: 5px;
+	text-align: left;
+}
+/* 企业logo */
+.logo{
+	background-image: url(images/logo.jpg);
+	height: 70px;
+	width: 145px;
+}
+/*------------页面眉头处的数据显示样式“专家”------------*/
+/* 数据显示 */
+.Data{
+	height: 30px;
+	width: 1100px;
+	background-color: #ECECEC;
+	border: 2px outset #93B6DE;
+}
+/* 座席人物图标 */
+.Human{
+	height: 22px;
+	width: 22px;
+	background-image: url(images/Human.jpg);
+}
+/* 座席电脑图标 */
+.Computer{
+	height: 20px;
+	width: 22px;
+	background-image: url(images/Computer.jpg);
+}
+/* 文本，短的 */
+.Text{
+	font-family: "宋体";
+	background-color: #85AAD6;
+	height: 18px;
+	width: 230px;
+	border: 1px solid #CDDEF2;
+	font-size: 13px;
+	line-height: 19px;
+	font-weight: bold;
+	color: #FFFF99;
+	text-indent: 5px;
+	text-align: left;
+}
+/* 文本，长的 */
+.Text2{
+	font-family: "宋体";
+	background-color: #85AAD6;
+	height: 18px;
+	width: 1100px;
+	border: 1px solid #CDDEF2;
+	font-size: 12px;
+	line-height: 19px;
+	font-weight: bold;
+	color: #FFFF99;
+	text-indent: 2px;
+	text-align: left;
+}
+/*------------内容背景-------------*/
+/* 内容背景处的样式 */
+/* 显示的内容背景（短的） */
+.Background3{
+	background-color: #F1F6F9;
+	text-align: center;
+	width: 1230px;
+}
+.Background4{
+	background-image: url(images/Background4.jpg);
+	width: 44px;
+}
+/* 栏目咨询量统计内容的背景 */
+.Consultation{
+	text-align: center;
+	background-color: #FFFFFF;
+}
+
+/*------------内容-------------*/
+/* 页面内容的现实部分 */
+/* 小标题，内容标题 */
+.Subtitle{
+	height: 27px;
+	background-color: #6AA5CF;
+	text-align: center;
+	width: 1280px;
+}
+/* 内容标题背景“专家推荐”，左侧的背景图片“专家照片” */
+.Subtitle2{
+	height: 27px;
+	background-color: #6AA5CF;
+	text-align: left;
+	font-size: 23px;
+	line-height: 24px;
+	font-weight: bolder;
+	color: #FFFFFF;
+	text-indent: 20px;
+	font-family: "宋体";
+}
+/* 内容标题背景“专家推荐”，右侧的背景图片“专家简介” */
+.Subtitle3{
+	height: 27px;
+	background-color: #6AA5CF;
+	text-align: left;
+	font-size: 19px;
+	line-height: 24px;
+	font-weight: bolder;
+	color: #EAFCE6;
+	width: 930px;
+	text-indent: 20px;
+}
+/* 内容标题背景“专家推荐”，中间白色的背景图片“专家简介” */
+.Subtitle4{
+	text-align: center;
+	width: 16px;
+	background-image: url(images/Decoration_Expert.jpg);
+}
+/* “经典案例”，左侧背景图，白色 */
+.Left_Case{
+	background-color: #FFFFFF;
+	border: 2px outset #9DC4DF;
+}
+/* “经典案例”，右侧背景图，蓝色 */
+.Odd_Case{
+	background-color: #E1E8EE;
+	border: 2px outset #6AA5CF;
+}
+
+/* 奇数行背景样式 */
+.Oddnumber2{
+	background-image: url(images/Odd%20number2.jpg);
+	height: 86px;
+	text-align: center;
+}
+/* 奇数行，农资优质推介（农民） */
+.odd_Recommendation{
+	height: 132px;
+	background-image: url(images/odd%20Recommendation.jpg);
+}
+
+/* 偶数行背景样式 */
+.Even2{
+	background-image: url(images/Even%20number2.jpg);
+	height: 86px;
+}
+/* 奇数行，农资优质推介（农民） */
+.Even_Recommendation{
+	background-image: url(images/Even%20Recommendation.jpg);
+	height: 130px;
+}
+/* 奇数行，“专家推荐”左侧奇数行背景样式（农民） */
+.odd_Expert{
+	height: 211px;
+	background-color: #FEFEFE;
+	border: 2px outset #6AA5CF;
+}
+/* 偶数行，“专家推荐”左侧奇数行背景样式（农民） */
+.Even_Expert{
+	height: 203px;
+	text-align: center;
+	width: 930px;
+	background-color: #E1E8EE;
+	border: 2px outset #6AA5CF;
+}
+/* 左侧“金农市场分析”第一行，蓝色背景，“分析员简介”。（农民） */
+.Analysis2_Left{
+	height: 430px;
+	vertical-align: top;
+	background-color: #FFFFFF;
+	border: 2px outset #94BDDC;
+}
+/* 栏目咨询量统计流程图*/
+.Chart{
+	background-image: url(images/cs2.jpg);
+	height: 443px;
+	width: 824px;
+	vertical-align: top;
+}
+/* 时段咨询量统计流程图*/
+.tis{
+    background-image: url(images/tis.jpg);
+	height: 443px;
+	width: 774px;
+	vertical-align: top;
+}
+
+/*------------文字-------------*/
+/* 页面文字部分样式 */
+/* 深蓝色文字，粗体，宋体 */
+.Blue{
+	font-family: "楷体_GB2312";
+	font-size: 15px;
+	line-height: 20px;
+	font-weight: bolder;
+	color: #003300;
+	height: 20px;
+	width: 74px;
+	font-style: normal;
+	text-align: center;
+}
+/* 蓝色文字，宋体，标题 */
+.Darkblue
+{
+	font-size: 20px;
+	font-weight: bolder;
+	color: #003366;
+	font-family: "楷体_GB2312";
+	text-align: center;
+}
+/* 蓝色文字，宋体，信息 */
+.Darkblue2
+{
+	font-size: 20px;
+	font-weight: bold;
+	color: #044AB3;
+	font-family: "楷体_GB2312";
+	width: 40px;
+	text-align: center;
+}
+/* 显示日期的文字，蓝色文字，宋体 */
+.Date{
+	font-family: "宋体";
+	font-size: 14px;
+	line-height: 18px;
+	font-weight: bolder;
+	color: #333333;
+	text-align: right;
+}
+/* 显示大标题的文字，白色，宋体 */
+.White{
+	font-family: "新宋体";
+	font-size: 15px;
+	line-height: 19px;
+	font-weight: bold;
+	color: #F0FFE8;
+	text-align: center;
+}
+/* 显示内容文字，蓝色，宋体 */
+.Darkblue3{
+	font-size: 20px;
+	font-weight: bold;
+	color: #003570;
+	text-align: center;
+	line-height: 30px;
+}
+/* 显示内容标题处的文字，蓝色（大）*/
+.Title{
+
+	font-size: 25px;
+	font-weight: bolder;
+	color: #003366;
+	line-height: 40px;
+	text-align: left;
+	text-indent: 8px;
+	width: auto;
+}
+/* 显示内容标语处的文字，蓝色*/
+.Slogan{
+
+	font-size: 23px;
+	line-height: 22px;
+	font-weight: bolder;
+	color: #CE3900;
+	text-align: right;
+	text-indent: 8px;
+}
+/* 受理实况页面内容的标题，谈白色，宋体（小）*/
+.Title2{
+	font-size: 20px;
+	font-weight: bolder;
+	color: #FFFFFF;
+	text-align: center;
+	font-family: Arial;
+}
+/* “专家推荐”中内容文字，蓝色，宋体，斜向*/
+.Synopsis{
+	font-family: "宋体";
+	font-size: 18px;
+	font-style: italic;
+	line-height: 20px;
+	font-weight: bolder;
+	font-variant: normal;
+	color: #6C85AB;
+	text-align: left;
+	text-indent: 5px;
+}
+/* “经典案例”中内容文字，黑色，宋体*/
+.Black{
+	font-family: "宋体";
+	font-size: 14px;
+	font-style: normal;
+	line-height: 20px;
+	font-weight: bolder;
+	color: #333333;
+	text-align: left;
+	text-indent: 8px;
+	vertical-align: top;
+}

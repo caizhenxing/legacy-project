@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+		<!-- 普通医疗模块表单bean信息 -->
+		<form-bean name="medicinfoBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="medicRid" type="java.lang.String" />
+			<form-property name="expert" type="java.lang.String" />
+			<form-property name="createTime" type="java.lang.String" />
+			<form-property name="custName" type="java.lang.String" />
+			<form-property name="custTel" type="java.lang.String" />
+			<form-property name="dictSex" type="java.lang.String" />
+			<form-property name="custAddr" type="java.lang.String" />
+			<form-property name="dictState" type="java.lang.String" />
+			<form-property name="isParter" type="java.lang.String" />
+			<form-property name="contents" type="java.lang.String" />	
+			<form-property name="reply" type="java.lang.String" />
+			<form-property name="traceService" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+			<form-property name="subid" type="java.lang.String" /><!-- 用于审核的提交人ID -->
+			<form-property name="accid" type="java.lang.String" /><!-- 用于审核的受理人ID --> 
+			
+			<form-property name="statisticType" type="java.lang.String" />
+			<form-property name="bill_num" type="java.lang.String" />
+			
+			
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="state" type="java.lang.String" />
+			
+			<form-property name="billNum" type="java.lang.String" /><!-- 受理专家大类 -->
+			<form-property name="expertName" type="java.lang.String" /><!-- 受理专家小类 -->
+		</form-bean>
+		
+		
+		
+		<form-bean name="BookMedicinfoBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			
+			<form-property name="bookRid" type="java.lang.String" />
+			<form-property name="expert" type="java.lang.String" />
+			<form-property name="createTime" type="java.lang.String" />
+			<form-property name="custName" type="java.lang.String" />
+			<form-property name="custTel" type="java.lang.String" />
+			<form-property name="dictSex" type="java.lang.String" />
+			<form-property name="custAddr" type="java.lang.String" />
+			<form-property name="dictState" type="java.lang.String" />
+			<form-property name="isParter" type="java.lang.String" />
+			<form-property name="contents" type="java.lang.String" />	
+			<form-property name="reply" type="java.lang.String" />
+			<form-property name="traceService" type="java.lang.String" />
+			
+			
+			<form-property name="dictServiceType" type="java.lang.String" />
+			<form-property name="isVisit" type="java.lang.String" />
+			<form-property name="bookVisitTime" type="java.lang.String" />
+			<form-property name="visitTime" type="java.lang.String" />
+			<form-property name="hospitalAdvice" type="java.lang.String" />
+			<form-property name="navigator" type="java.lang.String" />
+			<form-property name="bed" type="java.lang.String" />
+			<form-property name="items" type="java.lang.String" />
+			<form-property name="charge" type="java.lang.String" />
+			<form-property name="favours" type="java.lang.String"/>
+			<form-property name="visitResult" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+			
+			<form-property name="subid" type="java.lang.String" /><!-- 用于审核的提交人ID -->
+			<form-property name="accid" type="java.lang.String" /><!-- 用于审核的受理人ID --> 	
+			
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />			
+			<form-property name="bill_num" type="java.lang.String" />
+			
+			<form-property name="state" type="java.lang.String" />
+			
+			<form-property name="billNum" type="java.lang.String" /><!-- 受理专家大类 -->
+			<form-property name="expertName" type="java.lang.String" /><!-- 受理专家小类 -->
+			
+		</form-bean>
+
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<!-- 普通医疗action -->
+		<action attribute="medicinfoBean" 
+				name="medicinfoBean" 
+				scope="request" 
+				path="/medical/medicinfo" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="toMedicinfoMain" path="/medical/medicinfo/medicinfoMain.jsp"/>
+			<forward name="toMedicinfoList" path="/medical/medicinfo/medicinfolist.jsp"/>
+			<forward name="toMedicinfoLoad" path="/medical/medicinfo/medicinfoLoad.jsp"/>
+			<forward name="toMedicinfoQuery" path="/medical/medicinfo/medicinfoQuery.jsp"/>
+			<forward name="tomedicinfoStatisticQuery" path="/medical/medicinfo/medicinfoStatisticQuery.jsp"/>
+		</action>
+	
+		<action attribute="BookMedicinfoBean" 
+				name="BookMedicinfoBean" 
+				scope="request" 
+				path="/medical/bookMedicinfo" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="toBookMedicinfoMain" path="/medical/bookMedicinfo/bookMedicinfoMain.jsp"/>
+			<forward name="toBookMedicinfoList" path="/medical/bookMedicinfo/bookMedicinfolist.jsp"/>
+			<forward name="toBookMedicinfoLoad" path="/medical/bookMedicinfo/bookMedicinfoLoad.jsp"/>
+			<forward name="toBookMedicinfoQuery" path="/medical/bookMedicinfo/bookMedicinfoQuery.jsp"/>
+      <forward name="toBookMedicinfoStatisticQuery" path="/medical/bookMedicinfo/medicinfoStatisticQuery.jsp" />
+		</action>
+		
+		
+
+	</action-mappings>
+	
+</struts-config>
+

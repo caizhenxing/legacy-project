@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="callOutSetBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="orderType" type="java.lang.String" />
+      	  <form-property name="telNum" type="java.lang.String" />
+    	  <form-property name="beginTime" type="java.lang.String" />
+    	  <form-property name="beginDate" type="java.lang.String" />
+          <form-property name="operTime" type="java.lang.String" />
+          <form-property name="ivrInfo" type="java.lang.String" />
+	      <form-property name="isAvailable" type="java.lang.String" />
+	      <form-property name="remark" type="java.lang.String"/>
+	      <form-property name="selectB" type="java.lang.String"/>
+	      <form-property name="userName" type="java.lang.String"/>
+	      <form-property name="userType" type="java.lang.String"/>
+	      
+	      <form-property name="textContent" type="java.lang.String"/>
+	      <form-property name="subid" type="java.lang.String"/>
+	   </form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+     <action
+      attribute="callOutSetBean"
+      name="callOutSetBean"
+      path="/callcenter/callOutSet"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           
+           <forward name="load"  path="/callcenter/callOutSet/callOutSetLoad.jsp"/>
+           <forward name="list"  path="/callcenter/callOutSet/callOutSetList.jsp"/>
+           <forward name="selectFrame"  path="/callcenter/callOutSet/select.jsp"/>
+           <forward name="select"  path="/callcenter/callOutSet/selectUser.jsp"/> 
+           <forward name="query"  path="/callcenter/callOutSet/userQuery.jsp"/>
+           <forward name="text"  path="/callcenter/callOutSet/callOutSetFromText.jsp"/>            
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

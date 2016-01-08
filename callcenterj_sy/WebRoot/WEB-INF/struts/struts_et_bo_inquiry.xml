@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+
+	<form-beans>
+		<!-- 热线调查模块表单bean信息 -->
+		<form-bean name="inquiryForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="inquiryType" type="java.lang.String" />
+			<form-property name="topic" type="java.lang.String" />
+			<form-property name="organiztion" type="java.lang.String" />
+			<form-property name="aim" type="java.lang.String" />
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="organizers" type="java.lang.String" />
+			<form-property name="actors" type="java.lang.String" />
+			<form-property name="detail" type="java.lang.String" />
+			<form-property name="resultReport" type="java.lang.String" />
+			<form-property name="questions" type="java.lang.String" />
+			<form-property name="cards" type="java.util.List" />
+			
+			<form-property name="dict_question_type" type="java.lang.String[]" />
+			<form-property name="question" type="java.lang.String[]" />
+			<form-property name="alternatives" type="java.lang.String[]" />
+			
+			<form-property name="reportTopic" 	type="java.lang.String" />
+			<form-property name="reportTopic2" 	type="java.lang.String" />
+			<form-property name="reportCopywriter" 	type="java.lang.String" />
+			<form-property name="reportKeyword" 	type="java.lang.String" />
+			<form-property name="reportAbstract" 	type="java.lang.String" />
+			<form-property name="reportSwatch" 	type="java.lang.String" />
+			<form-property name="reportEfficiency" 	type="java.lang.String" />
+			<form-property name="reportContent" 	type="java.lang.String" />
+			<form-property name="reportReview" 	type="java.lang.String" />
+			<form-property name="reportRemark" 	type="java.lang.String" />
+			
+			<form-property name="statisticType" type="java.lang.String" />
+			
+			<form-property name="state" type="java.lang.String" />
+			<form-property name="reportState" type="java.lang.String" />
+			<form-property name="subid" type="java.lang.String" />
+			<form-property name="caserid" type="java.lang.String" />
+		</form-bean>
+		<form-bean name="inquiryCardForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="question" type="java.lang.String" />
+			<form-property name="questionType" type="java.lang.String" />
+			<form-property name="createTime" type="java.lang.String" />
+			<form-property name="alternatives" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+			<form-property name="dictQuestionType" type="java.lang.String" />
+		</form-bean>
+		<form-bean name="inquiryResutlForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="inquiryType" type="java.lang.String" />
+			<form-property name="topic" type="java.lang.String" />
+			<form-property name="organiztion" type="java.lang.String" />
+			<form-property name="aim" type="java.lang.String" />
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="organizers" type="java.lang.String" />
+			<form-property name="actors" type="java.lang.String" />
+			<form-property name="detail" type="java.lang.String" />
+			<form-property name="resultReport" type="java.lang.String" />
+			<form-property name="questions" type="java.lang.String" />
+			<form-property name="cards" type="java.util.List" />
+			
+			<form-property name="statisticType" type="java.lang.String" />
+			
+			<form-property name="state" type="java.lang.String" />
+			<form-property name="reportState" type="java.lang.String" />
+			<form-property name="subid" type="java.lang.String" />
+			
+		</form-bean>
+		<form-bean name="detailForm" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="topicId" type="java.lang.String" />
+			<form-property name="actor" type="java.lang.String" />
+			<form-property name="rid" type="java.lang.String" />
+			<form-property name="createTime" type="java.lang.String" />
+			<form-property name="cardId" type="java.lang.String" />
+			<form-property name="questionType" type="java.lang.String" />
+			<form-property name="question" type="java.lang.String" />
+			<form-property name="answer" type="java.lang.String" />
+			<form-property name="qid" type="java.lang.String" /><!-- 关联的问题id -->
+		</form-bean>
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<action attribute="inquiryForm" name="inquiryForm"
+			scope="request" path="/inquiry"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/inquiry/inquiryMain.jsp" />
+			<forward name="query" path="/inquiry/inquiryQuery.jsp" />
+			<forward name="list" path="/inquiry/inquiryList.jsp" />
+			<forward name="load" path="/inquiry/inquiryLoad.jsp" />
+			<forward name="filter" path="/inquiry/inquiryFilter.jsp" />
+			<forward name="displayCard" path="/inquiry/inquiryDisplayCard.jsp" />
+			<forward name="detail" path="/inquiry/inquiryDetail.jsp" />
+			<forward name="report" path="/inquiry/inquiryReport.jsp" />
+			<forward name="stat" path="/inquiry/inquiryStat.jsp" />
+			<forward name="reportLast" path="/info/zf/dcbg/report.jsp" />
+			<forward name="toinquiryinfoStatisticQuery" path="/inquiry/inquiryinfoStatisticQuery.jsp" />
+		</action>
+		
+		<action attribute="inquiryCardForm" name="inquiryCardForm"
+			scope="request" path="/inquiryCard"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="load" path="/inquiry/inquiryCardLoad.jsp" />
+		</action>
+		
+		<action attribute="inquiryResutlForm" name="inquiryResutlForm"
+			scope="request" path="/inquiryResult"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="main" path="/inquiry/inquiryResultMain.jsp" />
+			<forward name="query" path="/inquiry/inquiryResultQuery.jsp" />
+			<forward name="list" path="/inquiry/inquiryResultList.jsp" />
+			<forward name="resultDetail" path="/inquiry/inquiryResultDetail.jsp" />
+			<forward name="success" path="/inquiry/inquiryResult.jsp" />
+			<forward name="toinquiryinfoAnalysisStatisticQuery" path="/inquiry/inquiryinfoAnalysisStatisticQuery.jsp" />
+		</action>
+		
+		<action attribute="detailForm" name="detailForm"
+			scope="request" path="/detailForm"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			
+			<forward name="query" path="/inquiry/detail/detailQuery.jsp" />
+			<forward name="list" path="/inquiry/detail/detailList.jsp" />
+		</action>
+	</action-mappings>
+
+</struts-config>
+

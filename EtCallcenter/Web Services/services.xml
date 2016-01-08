@@ -1,0 +1,19 @@
+<beans xmlns="http://xfire.codehaus.org/config/1.0">
+
+	<service>
+
+
+
+
+
+
+		<name>TestService</name>
+		<serviceClass>et.webservice.test.ITestService</serviceClass>
+		<implementationClass>
+			et.webservice.test.TestServiceImpl
+		</implementationClass>
+		<style>wrapped</style>
+		<use>literal</use>
+		<scope>application</scope>
+	</service>
+</beans>

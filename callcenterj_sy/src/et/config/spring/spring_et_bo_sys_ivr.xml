@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<beans>
+
+<!--  单位基本信息   -->	
+    <bean name="/sys/ivr/paramTree"
+		class="et.bo.sys.ivr.action.IvrTreeAction" scope="singleton">			
+		<property name="ivrTreeService">
+			<ref bean="IvrTreeService" />
+		</property>	
+		<property name="classTreeService">
+			<ref bean="IvrClassTreeService" />
+		</property>	
+		<property name="pcs">
+			<ref bean="PortCompareService" />
+		</property>
+	</bean>
+
+
+	<bean id="IvrTreeService"
+		class="et.bo.sys.ivr.service.impl.IvrTreeServiceImpl" scope="singleton">
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="classTreeService">
+			<ref bean="IvrClassTreeService" />
+		</property>
+	</bean>
+    
+    <bean id="IvrClassTreeService"
+		class="et.bo.sys.ivr.ivrClassTree.IvrClassTreeServiceImpl" scope="singleton">
+		<property name="classTreeLoadService">
+		     <ref bean="IvrClassTreeLoadService" />
+		</property>
+	</bean>
+	
+	<bean id="IvrClassTreeLoadService"
+		class="et.bo.sys.ivr.ivrClassTree.IvrClassTreeLoadServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	<!-- classBaseTreeService提供两个接口方法getIVRBeanById(),getListById() -->
+	<bean id="ClassBaseTreeService"
+		class="et.bo.sys.ivr.service.impl.ClassBaseTreeServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="classTreeService">
+			<ref bean="IvrClassTreeService"/>
+		</property>
+	</bean>
+	<!-- BusinessObjectService提供方法blacklist isPolice 还没实现呢 -->
+	
+</beans>

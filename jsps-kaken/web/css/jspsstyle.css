@@ -1,0 +1,180 @@
+/*ルート部分リンクカラー*/
+.rootFont a:link {color:#FFFFFF; text-decoration: underline;}
+.rootFont a:visited {color:#FFFFFF; text-decoration: underline;}
+.rootFont a:hover {color:#FFCCFF; text-decoration: underline;}
+.rootFont a:active {color:#FFFFCC; text-decoration: underline;}
+
+/*メニュー部分リンクカラー*/
+.menu a:link {color:#336699; text-decoration: underline;}
+.menu a:visited {color:#336699; text-decoration: underline;}
+.menu a:hover {color:#FF0000; text-decoration: underline;}
+.menu a:active {color:#FF6600; text-decoration: underline;}
+
+/*背景設定*/
+.bodyStyle {
+	background-color: #FFFFEB;
+	background-image: url(../images/header_bg1.gif);
+	background-repeat: repeat-x;
+	margin: 0px;
+	padding: 0px;
+}
+
+/*メニュー左側縦の破線*/
+.menuLine {
+	background-color: #FFFFEB;
+/*	
+	background-image: url(../images/title_img4.gif);
+*/
+	background-repeat: repeat-y;
+}
+
+/*ルート部分文字設定*/
+.rootFont {
+	font-size: 10pt;
+	color: #FFFFFF;
+}
+
+/*業務画面タイトル文字設定*/
+.subTitlefont {
+	font-size: 14pt;
+	color: #003366;
+	font-weight: bold;
+}
+
+/*業務画面　表の設定------------*/
+/*業務画面　表のセルのライン設定*/
+.tableLine1 {
+/*	border-collapse: collapse;
+*/	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #999999;
+	border-right-color: #999999;
+	border-bottom-color: #999999;
+	border-left-color: #999999;
+}
+
+
+/*業務画面　表の設定　処理状況一覧で使用*/
+
+.tableBackg {
+	background-color: #999999;
+	}
+	
+.table1 {
+/*	border-collapse: collapse;
+*/}
+.table1 th {
+	background-color: #006699;
+	color: #FFFFFF;
+	font-size: 10pt;
+}
+.table1 td {
+	background-color: #FFFFFF;
+	font-size: 10pt;
+}
+/*業務画面　表の設定　申請者登録で使用*/
+.table2 {
+/*	border-collapse: collapse;
+*/	border: 0px;
+
+}
+.table2 th {
+	background-color: #006699;
+	color: #FFFFFF;
+	font-size: 11pt;
+	text-align: left;
+}
+.table2 td {
+	background-color: #FFFFFF;
+	font-size: 12pt;
+}
+/*アンケート画面　表の設定　アンケート入力画面で使用*/
+.table3 {
+/*	border-collapse: collapse;
+*/}
+.table3 th {
+	background-color: #4169e1;
+	color: #FFFFFF;
+	font-size: 12pt;
+}
+.table3 td {
+	background-color: #FFFFFF;
+	font-size: 12pt;
+}
+/*アンケート画面　表の設定　アンケート入力確認画面で使用*/
+.table4 {
+/*	border-collapse: collapse;
+*/}
+.table4 th {
+	color: #FFFFFF;
+	font-size: 10pt;
+}
+.table4 td {
+	background-color: #FFFFFF;
+	font-size: 10pt;
+}
+/*メニュー画面タイトル用*/
+.menuTitle {
+	font-size: 16pt;
+	font-weight: bold;
+	color: #003366;
+}
+
+/*表の下、各種コメント用*/
+.comment {
+	font-size: 10pt;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+/*破線を含む表用　12月19日追加----------------*/
+
+/*テーブル全体の、上-実線、左-実線を表示*/
+.tableLine {
+	border-top: 1px solid #999999;
+	border-left: 1px solid #999999;
+}
+/*ヘッダーセルの、背景色-青、文字色-白、右-実線、下-実線を表示*/
+.tableLine th {
+	border-right: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	background-color: #006699;
+	color: #FFFFFF;
+	font-size: 11pt;
+	text-align: left;
+}
+/*セルの、背景色-白、右-実線、下-実線を表示*/
+.tableCellLine {
+	border-right: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	background-color: #FFFFFF;
+}
+/*セルの、背景色-白、右-実線、下-破線を表示*/
+.tableCellLineDs1 {
+	border-right: 1px solid #999999;
+	border-bottom: 1px dashed #999999;
+	background-color: #FFFFFF;
+}
+/*セルの、背景色-白、右-破線、下-破線を表示*/
+.tableCellLineDs2 {
+	border-right: 1px dashed #999999;
+	border-bottom: 1px dashed #999999;
+	background-color: #FFFFFF;
+}
+/*セルの、背景色-白、右-破線、下-実線を表示*/
+.tableCellLineDs3 {
+	border-right: 1px dashed #999999;
+	border-bottom: 1px solid #999999;
+	background-color: #FFFFFF;
+}
+/*Mac&IE用にフォント指定　2004年10月15日追加----------------*/
+textarea {
+font-family: "ヒラギノ明朝 Pro W6", "Osaka", "ＭＳ Ｐゴシック", "trebuchet MS", "trebuchet", "verdana", "arial", "sans-serif";
+}
+

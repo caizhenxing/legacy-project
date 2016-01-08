@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/callcenter/bo/callinFirewall/callinFirewallList.jsp" location="0,184" dimension="352,48" />
+  <StrutsActivity path="/callcenter/bo/callinFirewall/callinFirewallMain.jsp" location="452,184" dimension="352,48" />
+  <StrutsActivity path="/callcenter/bo/callinFirewall/callinFirewallLoad.jsp" location="904,184" dimension="352,48" />
+  <StrutsActivity path="/callcenter/bo/callinFirewall/callinFirewallQuery.jsp" location="1356,184" dimension="358,48" />
+  <StrutsActivity path="/callcenter/bo/callinFirewall/callinFirewallDetail.jsp" location="1814,184" dimension="364,48" />
+  <StrutsActivity path="/callcenter/callinFirewall/callinFirewallList.jsp" location="50,350" dimension="334,48" />
+  <StrutsActivity path="/callcenter/callinFirewall/callinFirewallMain.jsp" location="650,350" dimension="334,48" />
+  <StrutsActivity path="/callcenter/callinFirewall/callinFirewallLoad.jsp" location="50,450" dimension="334,48" />
+  <StrutsActivity path="/callcenter/callinFirewall/callinFirewallQuery.jsp" location="650,450" dimension="340,48" />
+  <StrutsActivity path="/callcenter/callinFirewall/callinFirewallDetail.jsp" location="50,550" dimension="346,48" />
+  <StrutsActivity path="/callcenter/callinFirewall.do" location="650,550" dimension="358,84" />
+  <StrutsActivity path="/callcenter/callinfirewall/callinFirewallList.jsp" />
+  <StrutsActivity path="/callcenter/callinfirewall/callinFirewallMain.jsp" />
+  <StrutsActivity path="/callcenter/callinfirewall/callinFirewallLoad.jsp" />
+  <StrutsActivity path="/callcenter/callinfirewall/callinFirewallQuery.jsp" />
+  <StrutsActivity path="/callcenter/callinfirewall/callinFirewallDetail.jsp" />
+  <StrutsTransition id="/callcenter/bo/callinFirewall.do,main,/callcenter/callinFirewall/callinFirewallMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="901,72" />
+      <AbsolutePoint location="819,72" />
+      <AbsolutePoint location="819,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/callinFirewall.do,query,/callcenter/callinfirewall/callinFirewallQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,592" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/callinFirewall.do,query,/callcenter/callinFirewall/callinFirewallQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="859,550" />
+      <AbsolutePoint location="859,498" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/callinFirewall.do,list,/callcenter/callinfirewall/callinFirewallList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,592" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/callinFirewall.do,load,/callcenter/callinFirewall/callinFirewallLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,550" />
+      <AbsolutePoint location="829,513" />
+      <AbsolutePoint location="217,513" />
+      <AbsolutePoint location="217,498" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/bo/callinFirewall.do,list,/callcenter/bo/callinFirewall/callinFirewallList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="936,84" />
+      <AbsolutePoint location="936,119" />
+      <AbsolutePoint location="176,119" />
+      <AbsolutePoint location="176,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/callinFirewall.do,list,/callcenter/callinFirewall/callinFirewallList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,553" />
+      <AbsolutePoint location="557,553" />
+      <AbsolutePoint location="557,374" />
+      <AbsolutePoint location="384,374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/callinFirewall.do,detail,/callcenter/callinfirewall/callinFirewallDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,592" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/bo/callinFirewall.do,detail,/callcenter/callinFirewall/callinFirewallDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1259,72" />
+      <AbsolutePoint location="1274,72" />
+      <AbsolutePoint location="1274,574" />
+      <AbsolutePoint location="396,574" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/bo/callinFirewall.do,query,/callcenter/bo/callinFirewall/callinFirewallQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1151,84" />
+      <AbsolutePoint location="1151,149" />
+      <AbsolutePoint location="1535,149" />
+      <AbsolutePoint location="1535,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/bo/callinFirewall.do,load,/callcenter/callinFirewall/callinFirewallLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="901,12" />
+      <AbsolutePoint location="-75,12" />
+      <AbsolutePoint location="-75,474" />
+      <AbsolutePoint location="50,474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/bo/callinFirewall.do,query,/callcenter/callinFirewall/callinFirewallQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1259,42" />
+      <AbsolutePoint location="1304,42" />
+      <AbsolutePoint location="1304,474" />
+      <AbsolutePoint location="990,474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/callinFirewall.do,main,/callcenter/callinfirewall/callinFirewallMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,592" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/bo/callinFirewall.do,load,/callcenter/bo/callinFirewall/callinFirewallLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1080,84" />
+      <AbsolutePoint location="1080,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/callinFirewall.do,detail,/callcenter/callinFirewall/callinFirewallDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,583" />
+      <AbsolutePoint location="396,583" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/callinFirewall.do,load,/callcenter/callinfirewall/callinFirewallLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,592" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/bo/callinFirewall.do,list,/callcenter/callinFirewall/callinFirewallList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="901,42" />
+      <AbsolutePoint location="367,42" />
+      <AbsolutePoint location="367,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/bo/callinFirewall.do,detail,/callcenter/bo/callinFirewall/callinFirewallDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1223,84" />
+      <AbsolutePoint location="1223,119" />
+      <AbsolutePoint location="1996,119" />
+      <AbsolutePoint location="1996,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/bo/callinFirewall.do,main,/callcenter/bo/callinFirewall/callinFirewallMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1008,84" />
+      <AbsolutePoint location="1008,149" />
+      <AbsolutePoint location="628,149" />
+      <AbsolutePoint location="628,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/callinFirewall.do,main,/callcenter/callinFirewall/callinFirewallMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1005,550" />
+      <AbsolutePoint location="1005,374" />
+      <AbsolutePoint location="984,374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

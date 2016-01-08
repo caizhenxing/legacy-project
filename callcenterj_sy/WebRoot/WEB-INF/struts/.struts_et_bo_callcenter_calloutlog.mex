@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/callcenter/cclog/cclogList.jsp" location="0,354" dimension="226,48" />
+  <StrutsActivity path="/callcenter/cclog/recordMain.jsp" location="326,354" dimension="232,48" />
+  <StrutsActivity path="/callcenter/cclog/recordList.jsp" location="657,354" dimension="232,48" />
+  <StrutsActivity path="/callcenter/cclog/cclogDetail.jsp" location="989,354" dimension="238,48" />
+  <StrutsActivity path="/callcenter/cclog/cclogLoad.jsp" location="1327,354" dimension="226,48" />
+  <StrutsActivity path="/callcenter/cclog/questionLoad.jsp" location="1653,354" dimension="244,48" />
+  <StrutsActivity path="/callcenter/cclog/cclogMain.jsp" location="1997,354" dimension="226,48" />
+  <StrutsActivity path="/callcenter/cclog/addInfoLoad.jsp" location="2324,354" dimension="238,48" />
+  <StrutsActivity path="/callcenter/cclog/cclogQuery.jsp" location="2662,354" dimension="232,48" />
+  <StrutsActivity path="/callcenter/cclog/cclogLoadFrame.jsp" location="2994,354" dimension="256,48" />
+  <StrutsActivity path="/callcenter/cclog/IVRInfoList.jsp" location="3350,354" dimension="238,48" />
+  <StrutsActivity path="/callcenter/cclog/departmentMain.jsp" location="3688,354" dimension="256,48" />
+  <StrutsActivity path="/callcenter/cclog/operList.jsp" location="4044,354" dimension="220,48" />
+  <StrutsActivity path="/callcenter/cclog/recordQuery.jsp" location="4364,354" dimension="238,48" />
+  <StrutsActivity path="/callcenter/cclog/QuesInfoList.jsp" location="4702,354" dimension="244,48" />
+  <StrutsActivity path="/callcenter/cclog/answerManLoad.jsp" location="5046,354" dimension="250,48" />
+  <StrutsActivity path="/callcenter/cclog/telList.jsp" location="0,908" dimension="214,48" />
+  <StrutsActivity path="/callcenter/cclog/telMain.jsp" location="314,908" dimension="214,48" />
+  <StrutsActivity path="/callcenter/cclog/telQuery.jsp" location="628,908" dimension="220,48" />
+  <StrutsActivity path="/callcenter/cclog/awardList.jsp" location="0,631" dimension="226,48" />
+  <StrutsActivity path="/callcenter/cclog/awardMain.jsp" location="326,631" dimension="226,48" />
+  <StrutsActivity path="/callcenter/cclog/awardQuery.jsp" location="652,631" dimension="232,48" />
+  <StrutsActivity path="/callcenter/cclog/calloutLog.do" location="950,550" dimension="358,84" />
+  <StrutsActivity path="/callcenter/calloutlog/calloutList.jsp" location="50,750" dimension="268,48" />
+  <StrutsActivity path="/callcenter/calloutlog/calloutMain.jsp" location="650,750" dimension="268,48" />
+  <StrutsActivity path="/callcenter/calloutlog/calloutQuery.jsp" location="1250,750" dimension="274,48" />
+  <StrutsActivity path="/callcenter/calloutlog/calloutLoad.jsp" />
+  <StrutsTransition id="/callcenter/cclog.do,quesInfo,/callcenter/cclog/QuesInfoList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2755,84" />
+      <AbsolutePoint location="2755,144" />
+      <AbsolutePoint location="4824,144" />
+      <AbsolutePoint location="4824,354" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/award.do,query,/callcenter/cclog/awardQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="558,531" />
+      <AbsolutePoint location="558,581" />
+      <AbsolutePoint location="768,581" />
+      <AbsolutePoint location="768,631" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog.do,recordquery,/callcenter/cclog/recordQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2733,84" />
+      <AbsolutePoint location="2733,174" />
+      <AbsolutePoint location="4483,174" />
+      <AbsolutePoint location="4483,354" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog/calloutLog.do,main,/callcenter/calloutlog/calloutMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1129,634" />
+      <AbsolutePoint location="1129,774" />
+      <AbsolutePoint location="918,774" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog.do,main,/callcenter/cclog/cclogMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2576,84" />
+      <AbsolutePoint location="2576,294" />
+      <AbsolutePoint location="2111,294" />
+      <AbsolutePoint location="2111,354" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog/telQuery.do,main,/callcenter/cclog/telMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="421,808" />
+      <AbsolutePoint location="421,908" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog.do,detail,/callcenter/cclog/cclogDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2509,84" />
+      <AbsolutePoint location="2509,204" />
+      <AbsolutePoint location="1108,204" />
+      <AbsolutePoint location="1108,354" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog/calloutLog.do,load,/callcenter/calloutlog/calloutLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1129,592" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog/calloutLog.do,query,/callcenter/calloutlog/calloutQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1265,634" />
+      <AbsolutePoint location="1265,750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog.do,recordmain,/callcenter/cclog/recordMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2465,84" />
+      <AbsolutePoint location="2465,144" />
+      <AbsolutePoint location="442,144" />
+      <AbsolutePoint location="442,354" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog.do,quesLoad,/callcenter/cclog/questionLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2554,84" />
+      <AbsolutePoint location="2554,264" />
+      <AbsolutePoint location="1775,264" />
+      <AbsolutePoint location="1775,354" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog.do,load,/callcenter/cclog/cclogLoadFrame.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2644,84" />
+      <AbsolutePoint location="2644,294" />
+      <AbsolutePoint location="3122,294" />
+      <AbsolutePoint location="3122,354" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog.do,Load,/callcenter/cclog/cclogLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2532,84" />
+      <AbsolutePoint location="2532,234" />
+      <AbsolutePoint location="1440,234" />
+      <AbsolutePoint location="1440,354" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/award.do,main,/callcenter/cclog/awardMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="439,531" />
+      <AbsolutePoint location="439,631" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog/calloutLog.do,list,/callcenter/calloutlog/calloutList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,592" />
+      <AbsolutePoint location="241,592" />
+      <AbsolutePoint location="241,750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog/telQuery.do,list,/callcenter/cclog/telList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="301,808" />
+      <AbsolutePoint location="301,858" />
+      <AbsolutePoint location="107,858" />
+      <AbsolutePoint location="107,908" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/award.do,list,/callcenter/cclog/awardList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="319,531" />
+      <AbsolutePoint location="319,581" />
+      <AbsolutePoint location="113,581" />
+      <AbsolutePoint location="113,631" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog.do,slist,/callcenter/cclog/operList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2711,84" />
+      <AbsolutePoint location="2711,204" />
+      <AbsolutePoint location="4154,204" />
+      <AbsolutePoint location="4154,354" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog.do,addload,/callcenter/cclog/addInfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2599,84" />
+      <AbsolutePoint location="2599,324" />
+      <AbsolutePoint location="2443,324" />
+      <AbsolutePoint location="2443,354" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog.do,list,/callcenter/cclog/cclogList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2442,84" />
+      <AbsolutePoint location="2442,114" />
+      <AbsolutePoint location="113,114" />
+      <AbsolutePoint location="113,354" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog.do,ivrInfo,/callcenter/cclog/IVRInfoList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2666,84" />
+      <AbsolutePoint location="2666,264" />
+      <AbsolutePoint location="3469,264" />
+      <AbsolutePoint location="3469,354" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog.do,query,/callcenter/cclog/cclogQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2621,84" />
+      <AbsolutePoint location="2621,324" />
+      <AbsolutePoint location="2778,324" />
+      <AbsolutePoint location="2778,354" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog.do,recordList,/callcenter/cclog/recordList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2487,84" />
+      <AbsolutePoint location="2487,174" />
+      <AbsolutePoint location="773,174" />
+      <AbsolutePoint location="773,354" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog.do,manload,/callcenter/cclog/answerManLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2778,84" />
+      <AbsolutePoint location="2778,114" />
+      <AbsolutePoint location="5171,114" />
+      <AbsolutePoint location="5171,354" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog/telQuery.do,query,/callcenter/cclog/telQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="540,808" />
+      <AbsolutePoint location="540,858" />
+      <AbsolutePoint location="738,858" />
+      <AbsolutePoint location="738,908" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/cclog.do,depmain,/callcenter/cclog/departmentMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2688,84" />
+      <AbsolutePoint location="2688,234" />
+      <AbsolutePoint location="3816,234" />
+      <AbsolutePoint location="3816,354" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

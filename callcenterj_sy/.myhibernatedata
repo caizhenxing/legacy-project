@@ -1,0 +1,22 @@
+#
+#Sat Mar 28 10:08:33 CST 2009
+genBasicCompId=true
+sessionFactoryName=
+profile=
+daoSFId=
+version=3.1
+jndiPath=
+detectM2M=true
+reStrategyClass=
+springDaoFile=
+useJavaTypes=true
+keyGenerator=identity
+libInstallFolder=WebRoot/WEB-INF/lib
+addLibs2Project=false
+genVersionTag=true
+sessionFactoryId=
+basePersistenceClass=
+reSettingsFile=/callcenterj_sy/hibernate.reveng.xml
+configFile=/callcenterj_sy/src/hibernate.cfg.xml
+createConfigFile=true
+addLibs2Classpath=false

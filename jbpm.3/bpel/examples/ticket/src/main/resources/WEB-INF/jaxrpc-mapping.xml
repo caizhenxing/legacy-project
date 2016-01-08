@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java-wsdl-mapping xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee    http://www.ibm.com/webservices/xsd/j2ee_jaxrpc_mapping_1_1.xsd">
+<package-mapping>
+<package-type>org.jbpm.bpel.tutorial.ticket</package-type>
+<namespaceURI>urn:samples:ticket</namespaceURI>
+</package-mapping>
+<service-interface-mapping>
+<service-interface>org.jbpm.bpel.tutorial.ticket.TicketService</service-interface>
+<wsdl-service-name xmlns:serviceNS="urn:samples:ticket">serviceNS:ticketService</wsdl-service-name>
+<port-mapping>
+<port-name>ticketPort</port-name>
+<java-port-name>ticketPort</java-port-name>
+</port-mapping>
+</service-interface-mapping>
+<service-endpoint-interface-mapping>
+<service-endpoint-interface>org.jbpm.bpel.tutorial.ticket.TicketIssuer</service-endpoint-interface>
+<wsdl-port-type xmlns:portTypeNS="urn:samples:ticket">portTypeNS:ticketIssuer</wsdl-port-type>
+<wsdl-binding xmlns:bindingNS="urn:samples:ticket">bindingNS:ticketBinding</wsdl-binding>
+<service-endpoint-method-mapping>
+<java-method-name>createTicket</java-method-name>
+<wsdl-operation>createTicket</wsdl-operation>
+<wsdl-return-value-mapping>
+<method-return-value>int</method-return-value>
+<wsdl-message xmlns:wsdlMsgNS="urn:samples:ticket">wsdlMsgNS:ticketMessage</wsdl-message>
+<wsdl-message-part-name>ticketNo</wsdl-message-part-name>
+</wsdl-return-value-mapping>
+</service-endpoint-method-mapping>
+</service-endpoint-interface-mapping>
+</java-wsdl-mapping>

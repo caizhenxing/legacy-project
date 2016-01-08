@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="framework" basedir="." default="dist">
+    <property name="src.dir" value="src"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="build.dir" value="bin"/>
+	<property name="dist.dir" value="dist"/>
+	<property name="jar.file" value="framework-1.0.jar"/>
+
+    <property environment="env"/>
+    <property name="tomcat.home" value="${env.CATALINA_HOME}"/>
+
+    <path id="classpath">
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${tomcat.home}/common/lib">
+            <include name="servlet*.jar"/>
+        </fileset>
+        <pathelement path="${build.dir}"/>
+    </path>
+        	
+    <target name="compile" description="编译java文件并拷贝资源文件到生成路径">
+        <mkdir dir="${build.dir}"/>
+        <javac destdir="${build.dir}" target="1.4" debug="true"
+            deprecation="false" optimize="false" failonerror="true">
+            <src path="${src.dir}"/>
+            <classpath refid="classpath"/>
+        </javac>
+        <!-- Copy resource files to ${build.dir}/classes -->
+        <copy todir="${build.dir}">
+            <fileset dir="${src.dir}" includes="**/*.xml,**/*.properties"/>
+        </copy>	
+       	<mkdir dir="${build.dir}/META-INF"/>
+        <copy todir="${build.dir}/META-INF">
+            <fileset dir="${src.dir}/META-INF" />
+        </copy>	
+    	
+    </target>
+    <target name="copysrc" description="拷贝源文件">
+        <!-- Copy resource files to ${build.dir}/classes -->
+        <copy todir="temp" flatten="no">
+            <fileset dir="${src.dir}/META-INF" includes="**/*.java"/>
+        </copy>	
+    </target>
+    <target name="jar" depends="compile" description="生成框架jar包">
+    	<delete file="${jar.file}"/>
+        <mkdir dir="${dist.dir}"/>
+        <jar jarfile="${dist.dir}/${jar.file}" basedir="${build.dir}" >
+	    </jar>		
+    </target>
+    <target name="dist" depends="jar" description="发布框架jar包到publicresource目录">
+    	<delete file="../publicresource/lib/${jar.file}"/>
+        <copy file="${dist.dir}/${jar.file}" tofile="../publicresource/lib/${jar.file}">
+        </copy>	
+    </target>
+	
+    <target name="clean" description="Clean output directories">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+</project>

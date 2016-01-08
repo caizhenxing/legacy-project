@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+  <class name="org.jbpm.bpel.exe.ScopeInstance" table="BPEL_SCOPEINSTANCE" discriminator-value="S">
+    <cache usage="nonstrict-read-write" />
+    <id name="id" column="ID_">
+      <generator class="native" />
+    </id>
+    <discriminator type="char" column="CLASS_" />
+
+    <property name="state" column="STATE_" type="org.jbpm.bpel.db.type.ScopeStateType" />
+
+    <many-to-one name="definition" column="DEFINITION_" foreign-key="FK_SCOPEINST_SCOPEDEF" />
+    <many-to-one name="token" column="TOKEN_" foreign-key="FK_SCOPEINST_TOKEN" />
+    <many-to-one name="faultInstance" column="FAULT_" foreign-key="FK_SCOPEINST_FAULT" cascade="all" />
+
+    <any name="compensationListener" id-type="long" meta-type="char">
+      <meta-value value="S" class="org.jbpm.bpel.exe.ScopeInstance" />
+      <meta-value value="C" class="org.jbpm.bpel.def.Compensate" />
+      <column name="COMPENSATIONLISTENERCLASS_" />
+      <column name="COMPENSATIONLISTENER_" />
+    </any>
+
+    <subclass name="org.jbpm.bpel.exe.EventInstance" discriminator-value="E" />
+  </class>
+</hibernate-mapping>

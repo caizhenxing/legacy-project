@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+<beans>
+
+	<bean name="/oa/commoninfo/book" class="et.bo.oa.commoninfo.book.action.BookAction" singleton="false">
+		<property name="bookService">
+			<ref local="BookService"/>
+		</property>
+		<property name="ctree">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	
+	<bean name="/oa/commoninfo/bookborrow" class="et.bo.oa.commoninfo.book.action.BookBorrowAction" singleton="false">
+		<property name="bookBorrowService">
+			<ref local="BookBorrowService"/>
+		</property>
+	</bean>
+	
+	<bean name="/oa/commoninfo/leaveWord" class="et.bo.oa.commoninfo.leaveWord.action.LeaveWordAction" singleton="false">
+		<property name="leaveWordService">
+			<ref local="LeaveWordService"/>
+		</property>
+	</bean>
+	
+	<bean id="BookService"
+		class="et.bo.oa.commoninfo.book.service.impl.BookServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+	<bean id="BookBorrowService"
+		class="et.bo.oa.commoninfo.book.service.impl.BookBorrowServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+	<bean id="LeaveWordService"
+		class="et.bo.oa.commoninfo.leaveWord.service.impl.LeaveWordServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+</beans>

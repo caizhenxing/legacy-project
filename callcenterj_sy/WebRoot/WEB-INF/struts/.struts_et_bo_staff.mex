@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/sys/staff/workUnitInfo.do" location="737,0" dimension="308,88" />
+  <StrutsActivity path="/sys/staff/staffBasic.do" location="431,302" dimension="308,88" />
+  <StrutsActivity path="/sys/staff/staffExperience.do" location="167,584" dimension="308,88" />
+  <StrutsActivity path="/sys/staff/staffHortation.do" location="155,1712" dimension="308,88" />
+  <StrutsActivity path="/sys/staff/staffLanguage.do" location="159,1430" dimension="308,88" />
+  <StrutsActivity path="/sys/staff/staffOtherInfo.do" location="157,1148" dimension="308,88" />
+  <StrutsActivity path="/sys/staff/staffParent.do" location="165,866" dimension="308,88" />
+  <StrutsActivity path="/sys/staff/workUnitInfo/Main.jsp" location="0,208" dimension="186,49" />
+  <StrutsActivity path="/sys/staff/workUnitInfo/topQuery.jsp" location="286,208" dimension="210,49" />
+  <StrutsActivity path="/sys/staff/workUnitInfo/popWorkUnitInfo.jsp" location="596,208" dimension="246,49" />
+  <StrutsActivity path="/sys/staff/workUnitInfo/workUnitInfoList.jsp" location="942,208" dimension="242,49" />
+  <StrutsActivity path="/sys/staff/workUnitInfo/workUnitInfoMain.jsp" location="1284,208" dimension="248,49" />
+  <StrutsActivity path="/sys/staff/workUnitInfo/workUnitInfoLoad.jsp" location="1632,208" dimension="249,49" />
+  <StrutsActivity path="/sys/staff/staffBasic/staffBasicMain.jsp" location="0,490" dimension="218,49" />
+  <StrutsActivity path="/sys/staff/staffBasic/staffBasicLoad.jsp" location="318,490" dimension="219,49" />
+  <StrutsActivity path="/sys/staff/staffBasic/staffBasicList.jsp" location="637,490" dimension="212,49" />
+  <StrutsActivity path="/sys/staff/staffBasic/staffBasicQuery.jsp" location="949,490" dimension="226,49" />
+  <StrutsActivity path="/sys/staff/staffExperience/staffExperienceList.jsp" location="0,772" dimension="270,49" />
+  <StrutsActivity path="/sys/staff/staffExperience/staffExperienceLoad.jsp" location="370,772" dimension="277,49" />
+  <StrutsActivity path="/sys/staff/staffHortation/staffHortationLoad.jsp" location="0,1900" dimension="261,49" />
+  <StrutsActivity path="/sys/staff/staffHortation/staffHortationList.jsp" location="361,1900" dimension="254,49" />
+  <StrutsActivity path="/sys/staff/staffLanguage/staffLanguageLoad.jsp" location="0,1618" dimension="265,49" />
+  <StrutsActivity path="/sys/staff/staffLanguage/staffLanguageList.jsp" location="365,1618" dimension="258,49" />
+  <StrutsActivity path="/sys/staff/staffOtherInfo/staffOtherInfoList.jsp" location="0,1336" dimension="260,49" />
+  <StrutsActivity path="/sys/staff/staffOtherInfo/staffOtherInfoLoad.jsp" location="360,1336" dimension="267,49" />
+  <StrutsActivity path="/sys/staff/staffParentInfo/staffParentInfoList.jsp" location="0,1054" dimension="268,49" />
+  <StrutsActivity path="/sys/staff/staffParentInfo/staffParentInfoLoad.jsp" location="368,1054" dimension="275,49" />
+  <StrutsTransition id="/sys/staff/staffLanguage.do,toStaffLanguageLoad,/sys/staff/staffLanguage/staffLanguageLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="236,1518" />
+      <AbsolutePoint location="236,1568" />
+      <AbsolutePoint location="132,1568" />
+      <AbsolutePoint location="132,1618" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/staff/workUnitInfo.do,workUnitInfoMain,/sys/staff/workUnitInfo/workUnitInfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="968,88" />
+      <AbsolutePoint location="968,148" />
+      <AbsolutePoint location="1408,148" />
+      <AbsolutePoint location="1408,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/staff/staffBasic.do,tostaffBasicMain,/sys/staff/staffBasic/staffBasicMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="469,390" />
+      <AbsolutePoint location="469,425" />
+      <AbsolutePoint location="109,425" />
+      <AbsolutePoint location="109,490" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/staff/staffBasic.do,toStaffBasicQuery,/sys/staff/staffBasic/staffBasicQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="700,390" />
+      <AbsolutePoint location="700,425" />
+      <AbsolutePoint location="1062,425" />
+      <AbsolutePoint location="1062,490" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/staff/staffLanguage.do,toStaffLanguageList,/sys/staff/staffLanguage/staffLanguageList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="390,1518" />
+      <AbsolutePoint location="390,1568" />
+      <AbsolutePoint location="494,1568" />
+      <AbsolutePoint location="494,1618" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/staff/staffOtherInfo.do,main,/sys/staff/staffOtherInfo/staffOtherInfoList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="234,1236" />
+      <AbsolutePoint location="234,1286" />
+      <AbsolutePoint location="130,1286" />
+      <AbsolutePoint location="130,1336" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/staff/workUnitInfo.do,main,/sys/staff/workUnitInfo/Main.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="762,88" />
+      <AbsolutePoint location="762,118" />
+      <AbsolutePoint location="93,118" />
+      <AbsolutePoint location="93,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/staff/staffOtherInfo.do,query,/sys/staff/staffOtherInfo/staffOtherInfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="388,1236" />
+      <AbsolutePoint location="388,1286" />
+      <AbsolutePoint location="493,1286" />
+      <AbsolutePoint location="493,1336" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/staff/workUnitInfo.do,toWorkUnitInfoList,/sys/staff/workUnitInfo/workUnitInfoList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="916,88" />
+      <AbsolutePoint location="916,178" />
+      <AbsolutePoint location="1063,178" />
+      <AbsolutePoint location="1063,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/staff/staffBasic.do,toStaffBasicList,/sys/staff/staffBasic/staffBasicList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="623,390" />
+      <AbsolutePoint location="623,455" />
+      <AbsolutePoint location="743,455" />
+      <AbsolutePoint location="743,490" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/staff/workUnitInfo.do,popquery,/sys/staff/workUnitInfo/popWorkUnitInfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="865,88" />
+      <AbsolutePoint location="865,178" />
+      <AbsolutePoint location="719,178" />
+      <AbsolutePoint location="719,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/staff/workUnitInfo.do,toWorkUnitInfoLoad,/sys/staff/workUnitInfo/workUnitInfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1019,88" />
+      <AbsolutePoint location="1019,118" />
+      <AbsolutePoint location="1756,118" />
+      <AbsolutePoint location="1756,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/staff/staffExperience.do,toStaffExperienceList,/sys/staff/staffExperience/staffExperienceList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="244,672" />
+      <AbsolutePoint location="244,722" />
+      <AbsolutePoint location="135,722" />
+      <AbsolutePoint location="135,772" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/staff/staffHortation.do,toStaffHortationLoad,/sys/staff/staffHortation/staffHortationLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="232,1800" />
+      <AbsolutePoint location="232,1850" />
+      <AbsolutePoint location="130,1850" />
+      <AbsolutePoint location="130,1900" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/staff/workUnitInfo.do,topQuery,/sys/staff/workUnitInfo/topQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="814,88" />
+      <AbsolutePoint location="814,148" />
+      <AbsolutePoint location="391,148" />
+      <AbsolutePoint location="391,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/staff/staffExperience.do,toStaffExperienceLoad,/sys/staff/staffExperience/staffExperienceLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="398,672" />
+      <AbsolutePoint location="398,722" />
+      <AbsolutePoint location="508,722" />
+      <AbsolutePoint location="508,772" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/staff/staffParent.do,toStaffParentInfoLoad,/sys/staff/staffParentInfo/staffParentInfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="396,954" />
+      <AbsolutePoint location="396,1004" />
+      <AbsolutePoint location="505,1004" />
+      <AbsolutePoint location="505,1054" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/staff/staffHortation.do,toStaffHortationList,/sys/staff/staffHortation/staffHortationList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="386,1800" />
+      <AbsolutePoint location="386,1850" />
+      <AbsolutePoint location="488,1850" />
+      <AbsolutePoint location="488,1900" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/staff/staffBasic.do,toStaffBasicLoad,/sys/staff/staffBasic/staffBasicLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="546,390" />
+      <AbsolutePoint location="546,455" />
+      <AbsolutePoint location="427,455" />
+      <AbsolutePoint location="427,490" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/staff/staffParent.do,toStaffParentInfoList,/sys/staff/staffParentInfo/staffParentInfoList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="242,954" />
+      <AbsolutePoint location="242,1004" />
+      <AbsolutePoint location="134,1004" />
+      <AbsolutePoint location="134,1054" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

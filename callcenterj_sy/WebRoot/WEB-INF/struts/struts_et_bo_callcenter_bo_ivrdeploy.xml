@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="ivrdeployBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="functype" type="java.lang.String" />
+      	   <form-property name="nickname" type="java.lang.String" />
+      	  <form-property name="content" type="java.lang.String" />
+      	  <form-property name="voicefilepath" type="java.lang.String" />
+      	  <form-property name="voicetype" type="java.lang.String" />
+      	  <form-property name="key" type="java.lang.String" />
+      	  <form-property name="type" type="java.lang.String" />
+      	  <form-property name="num" type="java.lang.String" />
+      	  
+      	 
+      	  
+	   </form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+     <action
+      attribute="ivrdeployBean"
+      name="ivrdeployBean"
+      path="/callcenter/ivrdeploy"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="list"      path="/callcenter/ivrdeploy/ivrdeployList.jsp"/>
+           <forward name="update"      path="/callcenter/ivrdeploy/ivrdeployUpdate.jsp"/>
+           <forward name="toupdate"     path="/callcenter/ivrdeploy/ivrdeployUpdate.jsp"/>
+            <forward name="recording"     path="/callcenter/ivrdeploy/Recording.jsp"/>         
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+    <form-bean name="YznztjForm" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      <form-property name="id" type="java.lang.String" />
+      <form-property name="photo" type="java.lang.String" />
+      <form-property name="sort" type="java.lang.String" />
+      <form-property name="productName" type="java.lang.String" />
+      <form-property name="trait" type="java.lang.String" />
+      <form-property name="scope" type="java.lang.String" />
+      <form-property name="method" type="java.lang.String" />
+      <form-property name="addTime" type="java.lang.String" />
+      <form-property name="addMan" type="java.lang.String" />
+    </form-bean>
+
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+    <action
+      attribute="YznztjForm"
+      name="YznztjForm"
+      parameter="getMethod"
+      path="/yznztj/yznztj"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy">
+      <forward name="list" path="/yznztj/yznztjList.jsp" />
+      <forward name="list2" path="/yznztj/yznztj5.jsp" />
+      <forward name="main" path="/yznztj/yznztjMain.jsp" />
+      <forward name="query" path="/yznztj/yznztjQuery.jsp" />
+      <forward name="load" path="/yznztj/yznztjLoad.jsp" />
+    </action>
+    
+
+	</action-mappings>
+	
+</struts-config>
+

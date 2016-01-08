@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/oa/file/fileManager.do" location="50,50" dimension="358,84" />
+  <StrutsActivity path="/oa/file/fileinfo.jsp" location="950,50" dimension="166,48" />
+  <StrutsActivity path="/oa/file/file.jsp" location="650,50" dimension="142,48" />
+  <StrutsActivity path="/sys/success.jsp" location="950,150" dimension="136,48" />
+  <StrutsActivity path="/sys/error.jsp" location="650,250" dimension="124,48" />
+  <StrutsActivity path="/oa/file/noright.jsp" location="950,250" dimension="160,48" />
+  <StrutsActivity path="/sys/error.html" location="242,184" dimension="130,48" />
+  <StrutsActivity path="/oa/file/main.jsp" location="0,184" dimension="142,48" />
+  <StrutsActivity path="/sys/success.html" location="650,150" dimension="142,48" />
+  <StrutsTransition id="/oa/file/fileManager.do,success,/sys/success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,113" />
+      <AbsolutePoint location="1018,113" />
+      <AbsolutePoint location="1018,150" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/file/fileManager.do,info,/oa/file/fileinfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,92" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/file/fileManager.do,main,/oa/file/file.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="0,0" />
+      <AbsolutePoint location="721,74" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/file/fileManager.do,noright,/oa/file/noright.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,92" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/file/fileManager.do,error,/sys/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="227,134" />
+      <AbsolutePoint location="227,274" />
+      <AbsolutePoint location="650,274" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

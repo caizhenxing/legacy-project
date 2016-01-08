@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         point="org.eclipse.wst.xml.core.catalogContributions">
+      <catalogContribution id="org.jbpm.core">
+         <public
+               id="org.jbpm.core.xsd.jpdl_3_0"
+               publicId="http://jbpm.org/3/jpdl"
+               uri="schema/jpdl-3.0.xsd"
+               webURL="http://jbpm.org/xsd/jpdl-3.0.xsd"/>
+         <public
+               id="org.jbpm.core.xsd.jpdl_3_1"
+               publicId="urn:jbpm.org:jpdl-3.1"
+               uri="schema/jpdl-3.1.xsd"
+               webURL="http://jbpm.org/jpdl-3.1.xsd"/>
+         <public
+               id="org.jbpm.core.xsd.jpdl_3_2"
+               publicId="urn:jbpm.org:jpdl-3.2"
+               uri="schema/jpdl-3.2.xsd"
+               webURL="http://jbpm.org/jpdl-3.2.xsd"/> 
+      </catalogContribution>
+   </extension>
+</plugin>

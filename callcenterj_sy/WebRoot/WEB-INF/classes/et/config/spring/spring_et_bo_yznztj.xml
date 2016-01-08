@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<beans>
+	<bean name="/yznztj/yznztj" class="et.bo.yznztj.action.YznztjAction" scope="singleton">
+		<property name="yznztjService">
+			<ref bean="YznztjService"/>
+		</property>
+	</bean>
+	<bean id="YznztjService" class="et.bo.yznztj.service.impl.YznztjServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<contents>
+##ファイルパスの設定
+#set($path = "D:/shinsei/settings/webdoc/02.特定領域（概要）")
+#set($endPage=0)
+  <!-- ********** ページ１ ここから ********** -->
+	<page templateFilePath="$path/Page1.iod">
+
+    <!-- ******* タイトル ******* -->
+		<field name="NENDO1"										value="平成$!escape.getText($!shinseiDataInfo.nendo)年度"/>
+		<field name="NENDO_SEIREKI"					    value="(20$!escape.getText($!shinseiDataInfo.jigyoId).substring(0,2)年度)"/>
+		<field name="ADD_TITLE"				     value="$!escape.getText($!shinseiDataInfo.addTitele)"/>
+		$!dateUtil.setCal($!escape.getText($!shinseiDataInfo.sakuseiDate.toString().substring(0,4)),"4","1")
+	  #set($nendo = $!dateUtil.getNendo())
+		<field name="SAKUSEI_DATE_Y"						value="$!escape.getText($nendo)"/>
+		<field name="SAKUSEI_DATE_M"						value="$!escape.getText($dateFormat.getMonth($!shinseiDataInfo.sakuseiDate))"/>
+		<field name="SAKUSEI_DATE_D"						value="$!escape.getText($dateFormat.getDay($!shinseiDataInfo.sakuseiDate))"/>
+		#set($edition = $!escape.getIntValue("$!shinseiDataInfo.edition"))
+		<field name="EDITION"										value="$edition"/>
+
+    <!-- ******* 審査希望部門（系等） ******* -->
+		<field name="KIBOUBUMON_CD"				     value="$!escape.getText($!shinseiDataInfo.kiboubumonName)"/>
+
+    <!-- ******* 整理番号 ******* -->
+		<field name="UKETUKE_NO"				        value="$!escape.getText($!shinseiDataInfo.uketukeNo)"/>
+
+    <!-- ******* 仮領域番号 ******* -->
+		<field name="RYOIKI_NO"									value="$!escape.getText($!shinseiDataInfo.kariryoikiNo)"/>
+		
+    <!-- ******* 領域略称名 ******* -->
+		<field name="RYOIKI_NAME_RYAKUSHO"			value="$!escape.getText($!shinseiDataInfo.ryoikiNameRyaku)"/>
+		
+    <!-- ******* 応募領域名 ******* -->		
+		<field name="RYOIKI_NAME"								value="$!escape.getText($!shinseiDataInfo.ryoikiName)"/>
+		
+    <!-- ******* 英訳名 ******* -->		
+		<field name="RYOIKI_NAME_EIGO"					value="$!escape.getText($!shinseiDataInfo.ryoikiNameEigo)"/>
+		
+    <!-- ******* 研究代表者氏名 ******* -->		
+		<field name="NAME_KANA"						    	value="$!escape.getText($!shinseiDataInfo.nameKanaSei) $!escape.getText($!shinseiDataInfo.nameKanaMei)"/>
+		<field name="NAME_KANJI"								value="$!escape.getText($!shinseiDataInfo.nameKanjiSei) $!escape.getText($!shinseiDataInfo.nameKanjiMei)"/>
+		
+    <!-- ******* 所属研究機関 ******* -->		
+		<field name="SHOZOKU_NAME"							value="$!escape.getText($!shinseiDataInfo.shozokuName)"/>
+		
+    <!-- ******* 部局 ******* -->		
+		<field name="BUKYOKU_NAME"					    value="$!escape.getText($!shinseiDataInfo.bukyokuName)"/>
+		
+    <!-- ******* 職 ******* -->		
+		<field name="SHOKU_NAME_KANJI"					value="$!escape.getText($!shinseiDataInfo.shokushuNameKanji)"/>
+		
+    <!-- ******* 応募領域の研究概要 ******* -->	
+		<field name="KENKYU_GAIYOU"					    value="$!escape.getText($!shinseiDataInfo.kenkyuGaiyou)"/>
+
+    <!-- ******* 準備研究・事前調査の状況 ******* -->
+    #set($jizenchousaFlg = ["", "基盤研究（企画調査）","学会活動","その他"])
+    <field name="JIZENCHOUSA_FLG"						value="$!escape.getText($shinseiFormat.getTextFromList($!$shinseiDataInfo.jizenchousaFlg, $jizenchousaFlg))"/>
+    #if($shinseiDataInfo.jizenchousaFlg == '3')
+    		<field name="JIZENCHOUSA_FLG"				value="$!escape.getText($!shinseiDataInfo.jizenchousaSonota)"/>
+		#end
+    <!-- ******* 過去の特定領域の応募状況 ******* -->
+		<field name="KAKO_OUBOJYOUKYOU"					value="$!escape.getText($!shinseiDataInfo.kakoOubojyoukyou)"/>
+
+    <!-- ******* 研究領域最終年度前年度の応募 ******* -->
+    #set($zennendoOuboFlg = ["", "該当する","該当しない"])
+    <field name="SHINSEI_FLG_NO"						value="$!escape.getText($shinseiFormat.getTextFromList($!$shinseiDataInfo.zennendoOuboFlg, $zennendoOuboFlg))"/>
+    
+		<field name="ZENNENDO_OUBO_NO"					value="$!escape.getText($!shinseiDataInfo.zennendoOuboNo)"/>
+		<field name="ZENNENDO_OUBO_KIKAN"				value="$!escape.getText($!shinseiDataInfo.zennendoOuboRyoikiRyaku)"/>
+				
+    <!-- ******* 関連研究分野(細目) ******* -->		
+		<field name="BUNKASAIMOKU_CD"						value="$!escape.getText($!shinseiDataInfo.bunkasaimokuCd1)"/>		
+		<field name="BUNYA_NAME"								value="$!escape.getText($!shinseiDataInfo.bunyaName1)"/>		
+		<field name="BUNKA_NAME"								value="$!escape.getText($!shinseiDataInfo.bunkaName1)"/>		
+		<field name="SAIMOKU_NAME"							value="$!escape.getText($!shinseiDataInfo.saimokuName1)"/>		
+    <!-- ******* 関連研究分野(細目) ******* -->		
+		<field name="BUNKASAIMOKU_CD2"					value="$!escape.getText($!shinseiDataInfo.bunkasaimokuCd2)"/>		
+		<field name="BUNYA_NAME2"								value="$!escape.getText($!shinseiDataInfo.bunyaName2)"/>		
+		<field name="BUNKA_NAME2"								value="$!escape.getText($!shinseiDataInfo.bunkaName2)"/>		
+		<field name="SAIMOKU_NAME2"							value="$!escape.getText($!shinseiDataInfo.saimokuName2)"/>
+		<!-- ******* 15分類 ******* -->
+    <field name="KANRENBUNYA_BUNRUI_NO"							value="$!escape.getText($!shinseiDataInfo.kanrenbunyaBunruiNo)"/>
+    <field name="KANRENBUNYA_BUNRUI_GAKUKEI"				value="$!escape.getText($!shinseiDataInfo.kanrenbunyaBunruiName)"/>
+    <!-- ******* 研究の必要性 ******* -->
+    #set($kenkyuHitsuyouseiA=$!escape.getText($shinseiDataInfo.kenkyuHitsuyousei1))
+    #set($kenkyuHitsuyouseiB=$!escape.getText($shinseiDataInfo.kenkyuHitsuyousei2))
+    #set($kenkyuHitsuyouseiC=$!escape.getText($shinseiDataInfo.kenkyuHitsuyousei3))
+    #set($kenkyuHitsuyouseiD=$!escape.getText($shinseiDataInfo.kenkyuHitsuyousei4))
+    #set($kenkyuHitsuyouseiE=$!escape.getText($shinseiDataInfo.kenkyuHitsuyousei5))
+
+		#if($kenkyuHitsuyouseiA == '1')
+				<field name="KENKYU_HITSUYOUSEI1"					value="(1).■その領域全体の学術的水準が高く、研究の格段の発展が期待できる研究領域"/>			
+		#else
+				<field name="KENKYU_HITSUYOUSEI1"					value="(1).□その領域全体の学術的水準が高く、研究の格段の発展が期待できる研究領域"/>				
+		#end
+		#if($kenkyuHitsuyouseiB == '1')
+				<field name="KENKYU_HITSUYOUSEI2"					value="(2).■研究の発展段階の観点からみて成長期にあり、研究の一層の発展が期待される研究領域"/>
+		#else
+				<field name="KENKYU_HITSUYOUSEI2"					value="(2).□研究の発展段階の観点からみて成長期にあり、研究の一層の発展が期待される研究領域"/>	
+		#end
+		#if($kenkyuHitsuyouseiC == '1')
+				<field name="KENKYU_HITSUYOUSEI3"					value="(3).■学術の整合性ある発展の観点からみて重要であるが立ち遅れており、その進展に特別の配慮を必要とする研究領域"/>
+		#else
+				<field name="KENKYU_HITSUYOUSEI3"					value="(3).□学術の整合性ある発展の観点からみて重要であるが立ち遅れており、その進展に特別の配慮を必要とする研究領域"/>
+		#end
+		#if($kenkyuHitsuyouseiD == '1')
+				<field name="KENKYU_HITSUYOUSEI4"					value="(4).■その領域の研究の発展が他の研究領域の研究の発展に大きな波及効果をもたらす等、学術研究における先導的又は基盤的意義を有する研究領域"/>
+		#else
+				<field name="KENKYU_HITSUYOUSEI4"					value="(4).□その領域の研究の発展が他の研究領域の研究の発展に大きな波及効果をもたらす等、学術研究における先導的又は基盤的意義を有する研究領域"/>
+		#end
+		#if($kenkyuHitsuyouseiE == '1')
+				<field name="KENKYU_HITSUYOUSEI5"					value="(5).■社会的諸課題の解決に密接な関連を有しており、これらの解決を図るため、その研究成果に対する社会的要請の高い研究領域"/>
+		#else
+				<field name="KENKYU_HITSUYOUSEI5"					value="(5).□社会的諸課題の解決に密接な関連を有しており、これらの解決を図るため、その研究成果に対する社会的要請の高い研究領域"/>
+		#end
+	</page>
+  <!-- ********** ページ１ ここまで ********** -->
+  
+  <!-- ********** ページ２ ここから ********** -->
+	  ##最終ページ番号の取得
+		#set($count = $shinseiDataInfo.kenkyuSosikiList.size())
+		#set($endPage1 = $count / 10)
+		#if($count % 10 > 0)
+			#set($endPage1 = $endPage1 + 1)
+		#end
+
+		#set($pageCount = 0)
+		#set($index     = 0)
+		#foreach($info in $shinseiDataInfo.kenkyuSosikiList)
+      #set($index = $index + 1)
+      
+			##ページの先頭の場合
+			#if( $index % 10 == 1)
+ 				##二ページ以降の場合はページを一旦閉じる
+				#if($pageCount != 0)
+				</page>
+				#end
+			  #set($pageCount = $pageCount + 1 )
+			  #set($pageNum   = $pageCount + 1 )
+	 <page templateFilePath="$path/Page2.iod">
+    <!-- ********** 研究組織表 ********** -->
+			#end	  
+			  #set($row = $index - ( $pageCount - 1 ) * 10 )
+			  <!-- ******* 研究組織表リスト部分 ******* -->
+			  <field name="PAGENUM"								value="- ${pageNum} -"/>
+			  #if($!escape.getText($!info.KOMOKU_NO) == 'X00')
+          <field name="KENKYU_KUBUN#${row}"			value="総括班"/>
+			  #elseif($!escape.getText($!info.KOMOKU_NO) == 'Y00')
+				  <field name="KENKYU_KUBUN#${row}"			value="支援班"/>
+			  #else
+					   #if($!escape.getText($!info.CHOSEIHAN) == '1')
+					      <field name="KENKYU_KUBUN#${row}"			value="研究項目$!escape.getText($!info.KOMOKU_NO)  （調整班）"/>
+					   #elseif($!escape.getText($!info.CHOSEIHAN) == '0')
+					      <field name="KENKYU_KUBUN#${row}"			value="研究項目$!escape.getText($!info.KOMOKU_NO) 計画研究"/>
+					   #end
+			  #end
+	
+				
+	    #set($niandu1 = $!escape.getIntValue($!info.NENDO)+1)
+			#set($niandu2 = $!escape.getIntValue($!info.NENDO)+2)
+			#set($niandu3 = $!escape.getIntValue($!info.NENDO)+3)
+			#set($niandu4 = $!escape.getIntValue($!info.NENDO)+4)
+			#set($niandu5 = $!escape.getIntValue($!info.NENDO)+5)
+			
+			#set($keihi2 = $!escape.getIntValue("$!info.KEIHI2"))
+			#set($keihi3 = $!escape.getIntValue("$!info.KEIHI3"))
+			#set($keihi4 = $!escape.getIntValue("$!info.KEIHI4"))
+			#set($keihi5 = $!escape.getIntValue("$!info.KEIHI5"))
+			#set($keihi6 = $!escape.getIntValue("$!info.KEIHI6"))
+			
+			#if ($keihi2== 0)
+        <field name="KIKAN#${row}"		   		  value="平成$!escape.getText($!info.NENDO)年度"/>
+			#elseif($keihi3 == 0)
+				<field name="KIKAN#${row}"		   		  value="平成$!escape.getText($!info.NENDO)年度～平成$niandu1年度"/>	
+			#elseif($keihi4 == 0)
+				<field name="KIKAN#${row}"		   			value="平成$!escape.getText($!info.NENDO)年度～平成$niandu2年度"/>	
+			#elseif($keihi5 == 0)
+				<field name="KIKAN#${row}"		    		value="平成$!escape.getText($!info.NENDO)年度～平成$niandu3年度"/>
+			#elseif($keihi6 == 0)
+				<field name="KIKAN#${row}"		    		value="平成$!escape.getText($!info.NENDO)年度～平成$niandu4年度"/>
+			#else
+				<field name="KIKAN#${row}"		    		value="平成$!escape.getText($!info.NENDO)年度～平成$niandu5年度"/>	
+			#end
+			  <field name="KADAI_NAME#${row}"				value="$!escape.getText($!info.KADAI_NAME_KANJI)"/>
+				<field name="KENKYU_NO#${row}"		    value="$!escape.getText($!info.KENKYU_NO)"/>
+				<field name="NAME_KANJI#${row}"				value="$!escape.getText($!info.NAME_KANJI_SEI) $!escape.getText($!info.NAME_KANJI_MEI)"/>
+				<field name="SHOZOKU_NAME#${row}"	    value="$!escape.getText($!info.SHOZOKU_NAME_RYAKU)"/>
+				<field name="BUKYOKU_NAME#${row}"	    value="$!escape.getText($!info.BUKYOKU_NAME)"/>
+				<field name="SHOKU_NAME#${row}"		    value="$!escape.getText($!info.SHOKUSHU_NAME_RYAKU)"/>
+				<field name="NINZU#${row}"			    	value="$!escape.getText($!info.COUNT)"/>
+		#end
+	 </page>
+	<!-- ********** ページ２ ここまで ********** -->
+
+	<!-- ********** ページ3以降 ここから ********** -->
+	
+		##最終ページ番号の取得
+		#set($pageSecond = $shinseiDataInfo.kenkyuKeihiList.size())
+		#set($endPage2 = $pageSecond / 23)
+		#if($pageSecond  % 23 > 0)
+			#set($endPage2 = $endPage2 + 1)
+		#end
+
+		#set($pageCount = 0)
+		#set($index     = 0)
+	  #set($syolei1=0)
+	  #set($syolei2=0)
+	  #set($syolei3=0)
+	  #set($syolei4=0)
+	  #set($syolei5=0)
+	  #set($syolei6=0)
+		#foreach($keihiInfo in $shinseiDataInfo.kenkyuKeihiList)
+			#set($index = $index + 1)
+			##ページの先頭の場合
+			#if( $index % 23 == 1)
+ 				##二ページ以降の場合はページを一旦閉じる
+				#if($pageCount != 0)
+				</page>
+				#end
+				#set($pageCount = $pageCount + 1 )
+				#set($pageNum   = $pageCount + $endPage1 + 1 )
+				#set($endPage=$pageNum+1)
+			<page templateFilePath="$path/Page3.iod">
+				<field name="PAGENUM"								value="- ${pageNum} -"/>
+			#end
+   #set($row = $index - ( $pageCount - 1 ) * 23 )
+    <!-- ******* 研究経費 ******* -->
+    #foreach($velocityCount in [1..6])
+      #set($count = $velocityCount - 1)
+	    #set($nendo = $!escape.getIntValue($!shinseiDataInfo.nendo) + $!escape.getIntValue("${count}"))
+			  <field name="NENDO${velocityCount}"			value="平成$!escape.getText($nendo)年度"/>
+		   #end		
+     
+		  #if($!escape.getText($!keihiInfo.KOMOKU_NO) == 'X00') 	
+			  <field name="KENKYU_KUBUN#${row}"		value="総括班"/>
+		  #elseif($!escape.getText($!keihiInfo.KOMOKU_NO) == 'Y00')
+			  <field name="KENKYU_KUBUN#${row}"		value="支援班"/>
+		  #else
+			  <field name="KENKYU_KUBUN#${row}"		value="研究項目$!escape.getText($!keihiInfo.KOMOKU_NO)"/>
+		  #end
+			
+			#set($keihiTest1 = $shinseiFormat.numericFormat("$!keihiInfo.KEIHI1"))
+			#set($keihiTest2 = $shinseiFormat.numericFormat("$!keihiInfo.KEIHI2"))
+			#set($keihiTest3 = $shinseiFormat.numericFormat("$!keihiInfo.KEIHI3"))
+			#set($keihiTest4 = $shinseiFormat.numericFormat("$!keihiInfo.KEIHI4"))
+			#set($keihiTest5 = $shinseiFormat.numericFormat("$!keihiInfo.KEIHI5"))
+			#set($keihiTest6 = $shinseiFormat.numericFormat("$!keihiInfo.KEIHI6"))
+			  <field name="KEIHI1#${row}"					value="$!escape.getText($keihiTest1)"/>
+			  <field name="KEIHI2#${row}"					value="$!escape.getText($keihiTest2)"/>
+			  <field name="KEIHI3#${row}"					value="$!escape.getText($keihiTest3)"/>
+			  <field name="KEIHI4#${row}"					value="$!escape.getText($keihiTest4)"/>
+			  <field name="KEIHI5#${row}"					value="$!escape.getText($keihiTest5)"/>
+			  <field name="KEIHI6#${row}"					value="$!escape.getText($keihiTest6)"/>
+			#set($syoleiSum = $!escape.getIntValue("${keihiInfo.KEIHI1}") + $!escape.getIntValue("$!keihiInfo.KEIHI2")+ $!escape.getIntValue("$!keihiInfo.KEIHI3")+ $!escape.getIntValue("$!keihiInfo.KEIHI4")+ $!escape.getIntValue("$!keihiInfo.KEIHI5")+ $!escape.getIntValue("$!keihiInfo.KEIHI6"))
+			#set($keihiTest = $shinseiFormat.numericFormat("$!syoleiSum"))	
+			  <field name="KEIHI_GOUKEI#${row}"		value="$!escape.getText($keihiTest)"/>
+			#set($syolei1=$syolei1+$!escape.getIntValue("${keihiInfo.KEIHI1}"))
+	    #set($syolei2=$syolei2+$!escape.getIntValue("${keihiInfo.KEIHI2}"))
+	    #set($syolei3=$syolei3+$!escape.getIntValue("${keihiInfo.KEIHI3}"))
+	    #set($syolei4=$syolei4+$!escape.getIntValue("${keihiInfo.KEIHI4}"))
+	    #set($syolei5=$syolei5+$!escape.getIntValue("${keihiInfo.KEIHI5}"))
+	    #set($syolei6=$syolei6+$!escape.getIntValue("${keihiInfo.KEIHI6}"))
+      
+   <!-- ******* 公募研究  小計 ******* -->
+	    #set($kenkyuTest1 = $shinseiFormat.numericFormat("$keihiInfo.KENKYU_SYOKEI_1"))
+	    #set($kenkyuTest2 = $shinseiFormat.numericFormat("$keihiInfo.KENKYU_SYOKEI_2"))
+	    #set($kenkyuTest3 = $shinseiFormat.numericFormat("$keihiInfo.KENKYU_SYOKEI_3"))
+	    #set($kenkyuTest4 = $shinseiFormat.numericFormat("$keihiInfo.KENKYU_SYOKEI_4"))
+	    #set($kenkyuTest5 = $shinseiFormat.numericFormat("$keihiInfo.KENKYU_SYOKEI_5"))
+	    #set($kenkyuTest6 = $shinseiFormat.numericFormat("$keihiInfo.KENKYU_SYOKEI_6"))
+	    #if($pageCount == $endPage2) 
+				 <field name="KENKYU_SYOKEI1"		value="$!escape.getText($kenkyuTest1)"/>
+				 <field name="KENKYU_SYOKEI2"		value="$!escape.getText($kenkyuTest2)"/>
+				 <field name="KENKYU_SYOKEI3"		value="$!escape.getText($kenkyuTest3)"/>
+				 <field name="KENKYU_SYOKEI4"		value="$!escape.getText($kenkyuTest4)"/>
+				 <field name="KENKYU_SYOKEI5"		value="$!escape.getText($kenkyuTest5)"/>
+				 <field name="KENKYU_SYOKEI6"		value="$!escape.getText($kenkyuTest6)"/>
+  	  #else
+			   <field name="KENKYU_SYOKEI1"  	value="-"/>
+			   <field name="KENKYU_SYOKEI2"  	value="-"/>
+			   <field name="KENKYU_SYOKEI3"  	value="-"/>
+			   <field name="KENKYU_SYOKEI4"  	value="-"/>
+			   <field name="KENKYU_SYOKEI5"  	value="-"/>
+			   <field name="KENKYU_SYOKEI6" 	value="-"/>
+      #end  
+			
+    <!-- ******* 公募研究  内訳 ******* -->
+      #if($pageCount == $endPage2)
+				<field name="KENKYU_UTIWAKE1"			value="$!escape.getText($!keihiInfo.KENKYU_UTIWAKE_1)"/>
+				<field name="KENKYU_UTIWAKE2"			value="$!escape.getText($!keihiInfo.KENKYU_UTIWAKE_2)"/>
+				<field name="KENKYU_UTIWAKE3"			value="$!escape.getText($!keihiInfo.KENKYU_UTIWAKE_3)"/>
+				<field name="KENKYU_UTIWAKE4"			value="$!escape.getText($!keihiInfo.KENKYU_UTIWAKE_4)"/>
+				<field name="KENKYU_UTIWAKE5"			value="$!escape.getText($!keihiInfo.KENKYU_UTIWAKE_5)"/>
+				<field name="KENKYU_UTIWAKE6"			value="$!escape.getText($!keihiInfo.KENKYU_UTIWAKE_6)"/>
+		  #else
+				<field name="KENKYU_UTIWAKE1"			value="-"/>
+				<field name="KENKYU_UTIWAKE2"			value="-"/>
+				<field name="KENKYU_UTIWAKE3"			value="-"/>
+				<field name="KENKYU_UTIWAKE4"			value="-"/>
+				<field name="KENKYU_UTIWAKE5"			value="-"/>
+				<field name="KENKYU_UTIWAKE6"			value="-"/>
+		  #end		
+				
+			#set($utiwakeTotal = $!escape.getIntValue("${keihiInfo.KENKYU_SYOKEI_1}") + $!escape.getIntValue("$!keihiInfo.KENKYU_SYOKEI_2")+ $!escape.getIntValue("$!keihiInfo.KENKYU_SYOKEI_3")+ $!escape.getIntValue("$!keihiInfo.KENKYU_SYOKEI_4")+ $!escape.getIntValue("$!keihiInfo.KENKYU_SYOKEI_5")+ $!escape.getIntValue("$!keihiInfo.KENKYU_SYOKEI_6"))
+				
+			#set($temp1 = $!escape.getIntValue("${keihiInfo.KENKYU_SYOKEI_1}"))
+			#set($temp2 = $!escape.getIntValue("${keihiInfo.KENKYU_SYOKEI_2}"))
+			#set($temp3 = $!escape.getIntValue("${keihiInfo.KENKYU_SYOKEI_3}"))
+			#set($temp4 = $!escape.getIntValue("${keihiInfo.KENKYU_SYOKEI_4}"))
+			#set($temp5 = $!escape.getIntValue("${keihiInfo.KENKYU_SYOKEI_5}"))
+			#set($temp6 = $!escape.getIntValue("${keihiInfo.KENKYU_SYOKEI_6}"))
+			#set($syokeiTest = $shinseiFormat.numericFormat("$utiwakeTotal"))
+				
+			#if($pageCount == $endPage2)
+				<field name="KOUBO_GOUKEI"				value="$!escape.getText($!syokeiTest)"/>
+			#else
+				<field name="KOUBO_GOUKEI"				value="-"/>
+			#end
+    
+    <!-- ******* 小　計 ******* -->
+	    #set($syoleiTotal=$syolei1+$syolei2+$syolei3+$syolei4+$syolei5+$syolei6)
+	    
+	    #set($syokeiTest1 = $shinseiFormat.numericFormat("$syolei1"))
+		  #set($syokeiTest2 = $shinseiFormat.numericFormat("$syolei2"))
+			#set($syokeiTest3 = $shinseiFormat.numericFormat("$syolei3"))
+			#set($syokeiTest4 = $shinseiFormat.numericFormat("$syolei4"))
+			#set($syokeiTest5 = $shinseiFormat.numericFormat("$syolei5"))
+			#set($syokeiTest6 = $shinseiFormat.numericFormat("$syolei6"))
+			#set($syokeiGoukeiTest = $shinseiFormat.numericFormat("$syoleiTotal"))
+	    #if($pageCount == $endPage2) 
+		     <field name="SYOKEI1"     		value="$syokeiTest1"/>
+		     <field name="SYOKEI2"     		value="$syokeiTest2"/>
+		     <field name="SYOKEI3"     		value="$syokeiTest3"/>
+		     <field name="SYOKEI4"    		value="$syokeiTest4"/>
+		     <field name="SYOKEI5"    		value="$syokeiTest5"/>
+		     <field name="SYOKEI6"     		value="$syokeiTest6"/>
+		     <field name="SYOKEI_GOUKEI"  value="$syokeiGoukeiTest"/>
+      #else
+		     <field name="SYOKEI1"     		value="-"/>
+		     <field name="SYOKEI2"     		value="-"/>
+		     <field name="SYOKEI3"     		value="-"/>
+		     <field name="SYOKEI4"     		value="-"/>
+		     <field name="SYOKEI5"     		value="-"/>
+		     <field name="SYOKEI6"     		value="-"/>
+		     <field name="SYOKEI_GOUKEI"  value="-"/>
+    #end 
+    
+    #set($total1=  $syolei1+$temp1)
+    #set($total2=  $syolei2+$temp2)
+    #set($total3=  $syolei3+$temp3)
+    #set($total4=  $syolei4+$temp4)
+    #set($total5=  $syolei5+$temp5)
+    #set($total6=  $syolei6+$temp6)
+    #set($total=$total1+$total2+$total3+$total4+$total5+$total6)
+    
+    #set($goukeiTest1 = $shinseiFormat.numericFormat("$!total1"))
+    #set($goukeiTest2 = $shinseiFormat.numericFormat("$!total2"))
+    #set($goukeiTest3 = $shinseiFormat.numericFormat("$!total3"))
+    #set($goukeiTest4 = $shinseiFormat.numericFormat("$!total4"))
+    #set($goukeiTest5 = $shinseiFormat.numericFormat("$!total5"))
+    #set($goukeiTest6 = $shinseiFormat.numericFormat("$!total6"))
+    #set($goukeiTest = $shinseiFormat.numericFormat("$!total"))
+    
+    <!-- ******* 合　計 ******* -->
+    #if($pageCount == $endPage2)
+      <field name="GOUKEI1"   value="$goukeiTest1"/>
+      <field name="GOUKEI2"   value="$goukeiTest2"/>
+      <field name="GOUKEI3"   value="$goukeiTest3"/>
+      <field name="GOUKEI4"   value="$goukeiTest4"/>
+      <field name="GOUKEI5"   value="$goukeiTest5"/>
+      <field name="GOUKEI6"   value="$goukeiTest6"/>
+      <field name="GOUKEI"    value="$goukeiTest"/>
+    #else
+      <field name="GOUKEI1"   value="－"/>
+      <field name="GOUKEI2"   value="－"/>
+      <field name="GOUKEI3"   value="－"/>
+      <field name="GOUKEI4"   value="－"/>
+      <field name="GOUKEI5"   value="－"/>
+      <field name="GOUKEI6"   value="－"/>
+      <field name="GOUKEI"    value="－"/>
+    #end
+    #end 
+  </page>
+	<!-- ********** ページ3以降 ここまで ********** -->
+
+	<!-- ********** ページ4以降 ここから ********** -->
+	<page templateFilePath="$path/Page4.iod">
+	##最終ページ番号の取得
+				<field name="PAGENUM"								value="- ${endPage} -"/>
+    <!-- ******* 領域代表者連絡先等 ******* -->
+		<field name="DAIHYOU_ZIP"									value="$!escape.getText($!shinseiDataInfo.daihyouZip)"/>	
+		<field name="DAIHYOU_ADDRESS"							value="$!escape.getText($!shinseiDataInfo.daihyouAddress)"/>	
+		<field name="DAIHYOU_TEL"									value="$!escape.getText($!shinseiDataInfo.daihyouTel)"/>	
+		<field name="DAIHYOU_FAX"									value="$!escape.getText($!shinseiDataInfo.daihyouFax)"/>	
+		<field name="DAIHYOU_EMAIL"								value="$!escape.getText($!shinseiDataInfo.daihyouEmail)"/>	
+		<field name="JIMU_TANTO_NAME_KANA"				value="$!escape.getText($!shinseiDataInfo.jimutantoNameKanaSei) $!escape.getText($!shinseiDataInfo.jimutantoNameKanaMei)"/>	
+		<field name="JIMU_TANTO_NAME_KANJI"				value="$!escape.getText($!shinseiDataInfo.jimutantoNameKanjiSei) $!escape.getText($!shinseiDataInfo.jimutantoNameKanjiMei)"/>	
+		<field name="JIMU_TANTO_SHOZOKU_NAME"			value="$!escape.getText($!shinseiDataInfo.jimutantoShozokuName)"/>	
+		<field name="JIMU_TANTO_BUKYOKU_NAME"			value="$!escape.getText($!shinseiDataInfo.jimutantoBukyokuName)"/>
+		<field name="JIMU_TANTO_SHOKUSHU"					value="$!escape.getText($!shinseiDataInfo.jimutantoShokushuNameKanji)"/>
+		<field name="JIMU_TANTO_ZIP"							value="$!escape.getText($!shinseiDataInfo.jimutantoZip)"/>	
+		<field name="JIMU_TANTO_ADDRESS"					value="$!escape.getText($!shinseiDataInfo.jimutantoAddress)"/>	
+		<field name="JIMU_TANTO_TEL"							value="$!escape.getText($!shinseiDataInfo.jimutantoTel)"/>	
+		<field name="JIMU_TANTO_FAX"							value="$!escape.getText($!shinseiDataInfo.jimutantoFax)"/>	
+		<field name="JIMU_TANTO_EMAIL"						value="$!escape.getText($!shinseiDataInfo.jimutantoEmail)"/>	
+		
+		<field name="KANREN_SHIMEI1"							value="$!escape.getText($!shinseiDataInfo.kanrenShimei1)"/>	
+		<field name="KANREN_KIKAN1"								value="$!escape.getText($!shinseiDataInfo.kanrenKikan1)"/>	
+		<field name="KANREN_BUKYOKU1"							value="$!escape.getText($!shinseiDataInfo.kanrenBukyoku1)"/>	
+		<field name="KANREN_SHOKUSHU1"						value="$!escape.getText($!shinseiDataInfo.kanrenShoku1)"/>	
+		<field name="KANREN_SENMON1"							value="$!escape.getText($!shinseiDataInfo.kanrenSenmon1)"/>	
+		<field name="KANREN_TEL1"									value="$!escape.getText($!shinseiDataInfo.kanrenTel1)"/>	
+		<field name="KANREN_JITAKUTEL1"						value="$!escape.getText($!shinseiDataInfo.kanrenJitakutel1)"/>	
+		
+		<field name="KANREN_SHIMEI2"							value="$!escape.getText($!shinseiDataInfo.kanrenShimei2)"/>	
+		<field name="KANREN_KIKAN2"								value="$!escape.getText($!shinseiDataInfo.kanrenKikan2)"/>	
+		<field name="KANREN_BUKYOKU2"							value="$!escape.getText($!shinseiDataInfo.kanrenBukyoku2)"/>	
+		<field name="KANREN_SHOKUSHU2"						value="$!escape.getText($!shinseiDataInfo.kanrenShoku2)"/>	
+		<field name="KANREN_SENMON2"							value="$!escape.getText($!shinseiDataInfo.kanrenSenmon2)"/>	
+		<field name="KANREN_TEL2"									value="$!escape.getText($!shinseiDataInfo.kanrenTel2)"/>	
+		<field name="KANREN_JITAKUTEL2"						value="$!escape.getText($!shinseiDataInfo.kanrenJitakutel2)"/>	
+		
+		
+		<field name="KANREN_SHIMEI3"							value="$!escape.getText($!shinseiDataInfo.kanrenShimei3)"/>	
+		<field name="KANREN_KIKAN3"								value="$!escape.getText($!shinseiDataInfo.kanrenKikan3)"/>	
+		<field name="KANREN_BUKYOKU3"							value="$!escape.getText($!shinseiDataInfo.kanrenBukyoku3)"/>	
+		<field name="KANREN_SHOKUSHU3"						value="$!escape.getText($!shinseiDataInfo.kanrenShoku3)"/>	
+		<field name="KANREN_SENMON3"							value="$!escape.getText($!shinseiDataInfo.kanrenSenmon3)"/>	
+		<field name="KANREN_TEL3"									value="$!escape.getText($!shinseiDataInfo.kanrenTel3)"/>	
+		<field name="KANREN_JITAKUTEL3"						value="$!escape.getText($!shinseiDataInfo.kanrenJitakutel3)"/>	
+		
+	</page>
+<!-- ********** ページ4以降 ここまで ********** -->
+
+</contents> 

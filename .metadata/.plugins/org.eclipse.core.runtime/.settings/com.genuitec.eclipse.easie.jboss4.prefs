@@ -1,0 +1,9 @@
+#Wed Dec 06 11:50:14 CST 2006
+SERVER_ENABLEMENT=true
+LIBRARY_PATH="C\:\\Java\\bin"
+eclipse.preferences.version=1
+JDK_HOME=C\:\\Java
+ENDORSED_DIRS="D\:\\jboss4\\lib\\endorsed"
+JDK_INSTALLATION_NAME=jdk
+SERVER_STARTUP_ARG=-c default
+JBOSS_HOME=D\:\\jboss4

@@ -1,0 +1,31 @@
+/JbpmConfiguration.java/1.5/Fri Sep  1 14:48:31 2006/-kk/
+/JbpmContext.java/1.4/Fri Sep  1 14:48:31 2006/-kk/
+/JbpmException.java/1.1/Fri Apr 28 15:09:23 2006/-kk/
+D/ant////
+D/bytes////
+D/calendar////
+D/command////
+D/configuration////
+D/context////
+D/db////
+/default.jbpm.cfg.xml/1.3/Fri Sep 15 15:18:06 2006/-kk/
+D/file////
+D/graph////
+D/instantiation////
+D/jcr////
+D/job////
+D/jpdl////
+D/logging////
+D/mail////
+D/module////
+D/msg////
+/package.html/1.1/Fri Apr 28 15:09:23 2006/-kk/
+D/pageflow////
+D/persistence////
+D/scheduler////
+D/security////
+D/svc////
+D/taskmgmt////
+D/tx////
+D/util////
+D/web////

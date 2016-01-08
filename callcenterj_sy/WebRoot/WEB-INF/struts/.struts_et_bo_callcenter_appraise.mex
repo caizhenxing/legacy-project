@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/callcenter/appraise.do" location="50,350" dimension="358,84" />
+  <StrutsActivity path="/callcenter/appraise/appraiseList.jsp" location="650,350" dimension="262,48" />
+  <StrutsActivity path="/callcenter/appraise/appraiseMain.jsp" location="650,450" dimension="262,48" />
+  <StrutsActivity path="/callcenter/callinfirewall/callinFirewallLoad.jsp" location="868,184" dimension="334,48" />
+  <StrutsActivity path="/callcenter/appraise/appraiseQuery.jsp" location="50,550" dimension="268,48" />
+  <StrutsActivity path="/callcenter/callinfirewall/callinFirewallDetail.jsp" location="1742,184" dimension="346,48" />
+  <StrutsActivity path="/callcenter/callinfirewall/callinFirewallList.jsp" location="0,184" dimension="334,48" />
+  <StrutsActivity path="/callcenter/callinfirewall/callinFirewallMain.jsp" location="434,184" dimension="334,48" />
+  <StrutsActivity path="/callcenter/callinfirewall/callinFirewallQuery.jsp" location="1302,184" dimension="340,48" />
+  <StrutsTransition id="/callcenter/appraise.do,detail,/callcenter/callinfirewall/callinFirewallDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="259,350" />
+      <AbsolutePoint location="259,307" />
+      <AbsolutePoint location="1915,307" />
+      <AbsolutePoint location="1915,232" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/appraise.do,query,/callcenter/appraise/appraiseQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,434" />
+      <AbsolutePoint location="229,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/appraise.do,load,/callcenter/callinfirewall/callinFirewallLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,350" />
+      <AbsolutePoint location="229,277" />
+      <AbsolutePoint location="1035,277" />
+      <AbsolutePoint location="1035,232" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/appraise.do,main,/callcenter/appraise/appraiseMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,413" />
+      <AbsolutePoint location="781,413" />
+      <AbsolutePoint location="781,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/appraise.do,list,/callcenter/appraise/appraiseList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,383" />
+      <AbsolutePoint location="650,383" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

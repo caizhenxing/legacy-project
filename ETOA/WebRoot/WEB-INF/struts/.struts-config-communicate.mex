@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/oa/communicate/im.do" location="729,505" dimension="358,84" />
+  <StrutsActivity path="/oa/operaffiche.do" location="3409,148" dimension="358,84" />
+  <StrutsActivity path="/oa/communicate/email.do" location="650,50" dimension="358,84" />
+  <StrutsActivity path="/oa/communicate/emailbox.do" location="650,250" dimension="358,84" />
+  <StrutsActivity path="/oa/communicate/outemail.do" location="50,1150" dimension="358,84" />
+  <StrutsActivity path="/oa/communicate/handsetnote.do" location="1550,50" dimension="358,84" />
+  <StrutsActivity path="/oa/communicate/inUploadFile.do" location="950,1350" dimension="358,84" />
+  <StrutsActivity path="/oa/communicate/outUploadFile.do" location="1550,1350" dimension="358,84" />
+  <StrutsActivity path="/oa/communicate/im/top.jsp" location="0,709" dimension="196,48" />
+  <StrutsActivity path="/oa/communicate/im/detail.jsp" location="296,709" dimension="214,48" />
+  <StrutsActivity path="/oa/communicate/im/selectEmployee.jsp" location="610,709" dimension="262,48" />
+  <StrutsActivity path="/oa/communicate/im/newIm.jsp" location="972,709" dimension="208,48" />
+  <StrutsActivity path="/sys/error.jsp" location="1280,709" dimension="124,48" />
+  <StrutsActivity path="/sys/success.jsp" location="1504,709" dimension="136,48" />
+  <StrutsActivity path="/oa/afiche/aficheList.jsp" location="3058,412" dimension="190,48" />
+  <StrutsActivity path="/oa/afiche/aficheMain.jsp" location="3348,412" dimension="190,48" />
+  <StrutsActivity path="/oa/afiche/aficheLoad.jsp" location="3638,412" dimension="190,48" />
+  <StrutsActivity path="/oa/afiche/aficheQuery.jsp" location="3928,412" dimension="196,48" />
+  <StrutsActivity path="/oa/main/aficheInfo.jsp" location="4224,412" dimension="178,48" />
+  <StrutsActivity path="/oa/afiche/error.jsp" location="2798,412" dimension="160,48" />
+  <StrutsActivity path="/oa/communicate/email/emailList.jsp" location="50,550" dimension="250,48" />
+  <StrutsActivity path="/oa/communicate/email/selectEmployeeTwo.jsp" location="1550,250" dimension="298,48" />
+  <StrutsActivity path="/oa/communicate/email/emailMain.jsp" location="350,550" dimension="250,48" />
+  <StrutsActivity path="/oa/communicate/email/seeEmail.jsp" location="1250,550" dimension="244,48" />
+  <StrutsActivity path="/oa/communicate/email/emailLoad.jsp" location="1550,550" dimension="250,48" />
+  <StrutsActivity path="/oa/communicate/email/emailQuery.jsp" location="50,850" dimension="256,48" />
+  <StrutsActivity path="/oa/communicate/email/selectEmployeeOne.jsp" location="1850,550" dimension="298,48" />
+  <StrutsActivity path="/oa/communicate/email/answerEmail.jsp" location="650,850" dimension="262,48" />
+  <StrutsActivity path="/oa/communicate/email/upload.jsp" location="1250,850" dimension="232,48" />
+  <StrutsActivity path="/oa/communicate/email/selectUser.jsp" location="1550,850" dimension="256,48" />
+  <StrutsActivity path="/oa/communicate/email/selectList.jsp" location="50,950" dimension="256,48" />
+  <StrutsActivity path="/oa/communicate/email/error.jsp" location="650,950" dimension="226,48" />
+  <StrutsActivity path="/oa/communicate/emailbox/emailBoxList.jsp" location="950,950" dimension="286,48" />
+  <StrutsActivity path="/oa/communicate/emailbox/emailBoxMain.jsp" location="1550,950" dimension="286,48" />
+  <StrutsActivity path="/oa/communicate/emailbox/seeEmailbox.jsp" location="50,1050" dimension="280,48" />
+  <StrutsActivity path="/oa/communicate/emailbox/emailBoxLoad.jsp" location="650,1050" dimension="286,48" />
+  <StrutsActivity path="/oa/communicate/emailbox/emailBoxQuery.jsp" location="1250,1050" dimension="292,48" />
+  <StrutsActivity path="/oa/communicate/outerEmail/outerEmailList.jsp" location="1850,750" dimension="310,48" />
+  <StrutsActivity path="/oa/communicate/outerEmail/outerEmailMain.jsp" location="650,1250" dimension="310,48" />
+  <StrutsActivity path="/oa/communicate/outerEmail/seeOuterEmail.jsp" location="1850,1250" dimension="304,48" />
+  <StrutsActivity path="/oa/communicate/outerEmail/outerEmailLoad.jsp" location="1850,1150" dimension="310,48" />
+  <StrutsActivity path="/oa/communicate/outerEmail/outerEmailQuery.jsp" location="1250,1250" dimension="316,48" />
+  <StrutsActivity path="/oa/communicate/outerEmail/answerOuterEmail.jsp" location="350,1350" dimension="322,48" />
+  <StrutsActivity path="/oa/communicate/outerEmail/upload.jsp" location="50,1450" dimension="262,48" />
+  <StrutsActivity path="/oa/communicate/handsetnote/handsetnoteList.jsp" location="2150,850" dimension="322,48" />
+  <StrutsActivity path="/oa/communicate/handsetnote/handsetnoteMain.jsp" location="2150,950" dimension="322,48" />
+  <StrutsActivity path="/oa/communicate/handsetnote/handsetnoteLoad.jsp" location="2150,1350" dimension="322,48" />
+  <StrutsActivity path="/oa/communicate/handsetnote/handsetnoteQuery.jsp" location="2150,1450" dimension="328,48" />
+  <StrutsActivity path="/news/editor/uploadFail.jsp" location="0,412" dimension="202,48" />
+  <StrutsActivity path="/editor/uploadFile.jsp" location="124,0" dimension="172,48" />
+  <StrutsActivity path="/oa/email/upload.jsp" location="302,412" dimension="160,48" />
+  <StrutsActivity path="/oa/email/emailList.jsp" location="562,412" dimension="178,48" />
+  <StrutsActivity path="/oa/email/emailMain.jsp" location="840,412" dimension="178,48" />
+  <StrutsActivity path="/oa/email/seeEmail.jsp" location="1118,412" dimension="172,48" />
+  <StrutsActivity path="/oa/email/emailLoad.jsp" location="1390,412" dimension="178,48" />
+  <StrutsActivity path="/oa/email/emailQuery.jsp" location="1668,412" dimension="184,48" />
+  <StrutsActivity path="/oa/email/answerEmail.jsp" location="1952,412" dimension="190,48" />
+  <StrutsActivity path="/oa/main/emailInfo.jsp" location="2242,412" dimension="172,48" />
+  <StrutsActivity path="/oa/email/selectUser.jsp" location="2514,412" dimension="184,48" />
+  <StrutsActivity path="/oa/communicate/outerEmail/emailBoxMain.jsp" location="650,1150" dimension="298,48" />
+  <StrutsActivity path="/oa/communicate/outerEmail/emailBoxQuery.jsp" location="1250,1150" dimension="304,48" />
+  <StrutsActivity path="/oa/communicate/outerEmail/emailBoxList.jsp" location="1850,650" dimension="298,48" />
+  <StrutsActivity path="/oa/communicate/emailbox/outerEmailLoad.jsp" location="1850,1050" dimension="298,48" />
+  <StrutsActivity path="" location="50,1350" dimension="40,48" />
+  <StrutsTransition id="/oa/communicate/im.do,new,/oa/communicate/im/newIm.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="987,589" />
+      <AbsolutePoint location="987,709" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/email.do,selectUserOne,/oa/communicate/email/selectEmployeeOne.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="859,50" />
+      <AbsolutePoint location="859,-75" />
+      <AbsolutePoint location="1937,-75" />
+      <AbsolutePoint location="1937,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/email.do,selectUserTwo,/oa/communicate/email/selectEmployeeTwo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="859,134" />
+      <AbsolutePoint location="859,193" />
+      <AbsolutePoint location="1699,193" />
+      <AbsolutePoint location="1699,250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/email.do,upload,/oa/communicate/email/upload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="889,134" />
+      <AbsolutePoint location="889,163" />
+      <AbsolutePoint location="2205,163" />
+      <AbsolutePoint location="2205,813" />
+      <AbsolutePoint location="1388,813" />
+      <AbsolutePoint location="1388,850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/outemail.do,upload,/oa/communicate/outerEmail/upload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="199,1234" />
+      <AbsolutePoint location="199,1450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/im.do,selectUser,/oa/communicate/im/selectEmployee.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="857,589" />
+      <AbsolutePoint location="857,709" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/email.do,see,/oa/communicate/email/seeEmail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1008,92" />
+      <AbsolutePoint location="1372,92" />
+      <AbsolutePoint location="1372,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/email.do,load,/oa/communicate/email/emailLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1008,122" />
+      <AbsolutePoint location="1335,122" />
+      <AbsolutePoint location="1335,475" />
+      <AbsolutePoint location="1683,475" />
+      <AbsolutePoint location="1683,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/email.do,answer,/oa/communicate/email/answerEmail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="799,134" />
+      <AbsolutePoint location="799,193" />
+      <AbsolutePoint location="-45,193" />
+      <AbsolutePoint location="-45,813" />
+      <AbsolutePoint location="781,813" />
+      <AbsolutePoint location="781,850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/outemail.do,answer,/oa/communicate/outerEmail/answerOuterEmail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="365,1234" />
+      <AbsolutePoint location="365,1350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/emailbox.do,query,/oa/communicate/emailbox/emailBoxQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="855,334" />
+      <AbsolutePoint location="855,349" />
+      <AbsolutePoint location="2493,349" />
+      <AbsolutePoint location="2493,1013" />
+      <AbsolutePoint location="1783,1013" />
+      <AbsolutePoint location="1783,1074" />
+      <AbsolutePoint location="1542,1074" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/handsetnote.do,query,/oa/communicate/handsetnote/handsetnoteQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1759,50" />
+      <AbsolutePoint location="1759,15" />
+      <AbsolutePoint location="2713,15" />
+      <AbsolutePoint location="2713,1474" />
+      <AbsolutePoint location="2478,1474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/email.do,main,/oa/communicate/email/emailMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,122" />
+      <AbsolutePoint location="477,122" />
+      <AbsolutePoint location="477,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/email/upload.jsp,null,/oa/communicate/inUploadFile.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1366,850" />
+      <AbsolutePoint location="1366,835" />
+      <AbsolutePoint location="-39,835" />
+      <AbsolutePoint location="-39,1405" />
+      <AbsolutePoint location="950,1405" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/handsetnote.do,load,/oa/communicate/handsetnote/handsetnoteLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1729,134" />
+      <AbsolutePoint location="1729,193" />
+      <AbsolutePoint location="2773,193" />
+      <AbsolutePoint location="2773,1374" />
+      <AbsolutePoint location="2472,1374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/emailbox.do,see,/oa/communicate/emailbox/seeEmailbox.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1008,313" />
+      <AbsolutePoint location="2743,313" />
+      <AbsolutePoint location="2743,1573" />
+      <AbsolutePoint location="15,1573" />
+      <AbsolutePoint location="15,1074" />
+      <AbsolutePoint location="50,1074" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/email.do,selectUser,/oa/communicate/email/selectUser.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,134" />
+      <AbsolutePoint location="829,223" />
+      <AbsolutePoint location="1102,223" />
+      <AbsolutePoint location="1102,613" />
+      <AbsolutePoint location="1678,613" />
+      <AbsolutePoint location="1678,850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/emailbox.do,main,/oa/communicate/emailbox/emailBoxMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,292" />
+      <AbsolutePoint location="-105,292" />
+      <AbsolutePoint location="-105,1013" />
+      <AbsolutePoint location="1693,1013" />
+      <AbsolutePoint location="1693,998" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/emailbox.do,load,/oa/communicate/emailbox/emailBoxLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="825,334" />
+      <AbsolutePoint location="825,379" />
+      <AbsolutePoint location="3003,379" />
+      <AbsolutePoint location="3003,913" />
+      <AbsolutePoint location="891,913" />
+      <AbsolutePoint location="891,1050" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/im.do,error,/sys/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1087,535" />
+      <AbsolutePoint location="1195,535" />
+      <AbsolutePoint location="1195,733" />
+      <AbsolutePoint location="1280,733" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/outemail.do,see,/oa/communicate/outerEmail/seeOuterEmail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,1213" />
+      <AbsolutePoint location="2002,1213" />
+      <AbsolutePoint location="2002,1250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/outemail.do,main,/oa/communicate/outerEmail/outerEmailMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="259,1234" />
+      <AbsolutePoint location="259,1274" />
+      <AbsolutePoint location="650,1274" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/email.do,list,/oa/communicate/email/emailList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,92" />
+      <AbsolutePoint location="217,92" />
+      <AbsolutePoint location="217,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/operaffiche.do,aficheInfo,/oa/main/aficheInfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3767,190" />
+      <AbsolutePoint location="4313,190" />
+      <AbsolutePoint location="4313,412" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/outemail.do,load,/oa/communicate/outerEmail/outerEmailLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,1150" />
+      <AbsolutePoint location="229,1113" />
+      <AbsolutePoint location="2005,1113" />
+      <AbsolutePoint location="2005,1150" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/operaffiche.do,query,/oa/afiche/aficheQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3767,220" />
+      <AbsolutePoint location="4026,220" />
+      <AbsolutePoint location="4026,412" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/handsetnote.do,error,/oa/communicate/email/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1729,50" />
+      <AbsolutePoint location="1729,-15" />
+      <AbsolutePoint location="537,-15" />
+      <AbsolutePoint location="537,475" />
+      <AbsolutePoint location="655,475" />
+      <AbsolutePoint location="655,613" />
+      <AbsolutePoint location="555,613" />
+      <AbsolutePoint location="555,974" />
+      <AbsolutePoint location="650,974" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/operaffiche.do,list,/oa/afiche/aficheList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3409,193" />
+      <AbsolutePoint location="3153,193" />
+      <AbsolutePoint location="3153,412" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/email.do,error,/oa/communicate/email/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,50" />
+      <AbsolutePoint location="829,-135" />
+      <AbsolutePoint location="-15,-135" />
+      <AbsolutePoint location="-15,913" />
+      <AbsolutePoint location="763,913" />
+      <AbsolutePoint location="763,950" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/inUploadFile.do,uploadfail,/news/editor/uploadFail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1129,1434" />
+      <AbsolutePoint location="1129,1603" />
+      <AbsolutePoint location="2619,1603" />
+      <AbsolutePoint location="2619,535" />
+      <AbsolutePoint location="1305,535" />
+      <AbsolutePoint location="1305,15" />
+      <AbsolutePoint location="377,15" />
+      <AbsolutePoint location="377,379" />
+      <AbsolutePoint location="101,379" />
+      <AbsolutePoint location="101,412" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/outerEmail/upload.jsp,null,/oa/communicate/outUploadFile.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="181,1498" />
+      <AbsolutePoint location="181,1513" />
+      <AbsolutePoint location="1759,1513" />
+      <AbsolutePoint location="1759,1434" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/operaffiche.do,load,/oa/afiche/aficheLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3653,232" />
+      <AbsolutePoint location="3653,412" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/handsetnote.do,list,/oa/communicate/handsetnote/handsetnoteList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1908,122" />
+      <AbsolutePoint location="2175,122" />
+      <AbsolutePoint location="2175,850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/outemail.do,list,/oa/communicate/outerEmail/outerEmailList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="345,1150" />
+      <AbsolutePoint location="345,774" />
+      <AbsolutePoint location="1850,774" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/outUploadFile.do,uploadfail,/news/editor/uploadFail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1908,1413" />
+      <AbsolutePoint location="3033,1413" />
+      <AbsolutePoint location="3033,-105" />
+      <AbsolutePoint location="71,-105" />
+      <AbsolutePoint location="71,412" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/im.do,success,/sys/success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="927,589" />
+      <AbsolutePoint location="927,665" />
+      <AbsolutePoint location="1572,665" />
+      <AbsolutePoint location="1572,709" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/operaffiche.do,error,/oa/afiche/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3409,163" />
+      <AbsolutePoint location="2878,163" />
+      <AbsolutePoint location="2878,412" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/outUploadFile.do,success,/oa/communicate/outerEmail/upload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1729,1434" />
+      <AbsolutePoint location="1729,1474" />
+      <AbsolutePoint location="312,1474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/emailbox.do,list,/oa/communicate/emailbox/emailBoxList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="795,334" />
+      <AbsolutePoint location="795,475" />
+      <AbsolutePoint location="1225,475" />
+      <AbsolutePoint location="1225,950" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/outemail.do,query,/oa/communicate/outerEmail/outerEmailQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,1234" />
+      <AbsolutePoint location="229,1313" />
+      <AbsolutePoint location="1408,1313" />
+      <AbsolutePoint location="1408,1298" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/email.do,selectList,/oa/communicate/email/selectList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="799,50" />
+      <AbsolutePoint location="799,-45" />
+      <AbsolutePoint location="-135,-45" />
+      <AbsolutePoint location="-135,974" />
+      <AbsolutePoint location="50,974" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/im.do,detail,/oa/communicate/im/detail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="897,589" />
+      <AbsolutePoint location="897,665" />
+      <AbsolutePoint location="403,665" />
+      <AbsolutePoint location="403,709" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/inUploadFile.do,success,/oa/communicate/email/upload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1129,1350" />
+      <AbsolutePoint location="1129,1035" />
+      <AbsolutePoint location="1366,1035" />
+      <AbsolutePoint location="1366,898" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/operaffiche.do,main,/oa/afiche/aficheMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3523,232" />
+      <AbsolutePoint location="3523,412" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/im.do,top,/oa/communicate/im/top.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="729,535" />
+      <AbsolutePoint location="35,535" />
+      <AbsolutePoint location="35,709" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/handsetnote.do,main,/oa/communicate/handsetnote/handsetnoteMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1908,92" />
+      <AbsolutePoint location="3293,92" />
+      <AbsolutePoint location="3293,974" />
+      <AbsolutePoint location="2472,974" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/communicate/email.do,query,/oa/communicate/email/emailQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="769,134" />
+      <AbsolutePoint location="769,163" />
+      <AbsolutePoint location="-75,163" />
+      <AbsolutePoint location="-75,874" />
+      <AbsolutePoint location="50,874" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

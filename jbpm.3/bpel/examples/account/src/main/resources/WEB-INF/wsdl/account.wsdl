@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="urn:samples:account" 
+  xsi:schemaLocation="http://schemas.xmlsoap.org/wsdl/ http://schemas.xmlsoap.org/wsdl/"
+  xmlns:tns="urn:samples:account" xmlns:typ="urn:samples:account:types"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+  <types>
+
+    <schema targetNamespace="urn:samples:account:types" xmlns="http://www.w3.org/2001/XMLSchema">
+
+      <complexType name="tAccountOperation">
+        <attribute name="customerName" type="xsd:string" use="required" />
+        <attribute name="amount" type="xsd:double" use="required" />
+      </complexType>
+
+    </schema>
+
+  </types>
+
+  <message name="customerMessage">
+    <part name="customerName" type="xsd:string" />
+  </message>
+
+  <message name="accessMessage">
+    <part name="granted" type="xsd:boolean" />
+  </message>
+
+  <message name="balanceMessage">
+    <part name="balance" type="xsd:double" />
+  </message>
+
+  <message name="accountOperation">
+    <part name="body" type="typ:tAccountOperation" />
+  </message>
+
+  <portType name="accountSystem">
+
+    <operation name="checkAccess">
+      <input message="tns:customerMessage" />
+      <output message="tns:accessMessage" />
+    </operation>
+
+    <operation name="queryBalance">
+      <input message="tns:customerMessage" />
+      <output message="tns:balanceMessage" />
+    </operation>
+
+    <operation name="updateBalance">
+      <input message="tns:accountOperation" />
+      <output message="tns:balanceMessage" />
+    </operation>
+
+  </portType>
+
+</definitions>

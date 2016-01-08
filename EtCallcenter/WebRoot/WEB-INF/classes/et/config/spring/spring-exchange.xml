@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "spring-beans.dtd" >
+<beans>
+	<bean id="TelephoneSwitch" class="et.bo.callcenter.connection.exchange.TelephoneSwitchImpl">
+		<property name="vfs" ref="VoiceFileChange"></property>
+		<property name="cs" ref="ConferenceService"></property>
+		<property name="ls" ref="LinkService"></property>
+		<property name="is" ref="InitService"></property>
+		<property name="welcomeFile" value="d:\\zhaoyifei\\Bank.001"></property>
+		<property name="recordFile" value="d:\\zhaoyifei\\20070207155706750.record"></property>
+		<property name="mvmi" ref="ManagerVoiceMail"></property>
+	</bean>
+</beans>

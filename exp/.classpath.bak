@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="source"/>
+	<classpathentry exported="true" kind="lib" path="com"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/jacob.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/ocrs12.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/classes12.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/xmlParserAPIs.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/xercesSamples.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/xml-apis.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/crimson.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/msbase.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/mssqlserver.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/msutil.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/db2java.zip"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/Common.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/db2fs.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/db2jcc.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/jsr173_api.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/xbean.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/Java"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/stmt.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/db-ojb-1.0.3.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/db-ojb-1.0.3-junit.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/db-ojb-1.0.3-src.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/db-ojb-1.0.3-tools.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/jcs.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/jdo.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/tjdo.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/hibernate2.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/log4j-1.3alpha-3.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/myworkplace/hlframe/WebRoot/WEB-INF/lib/log4j-chainsaw-1.3alpha-3.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

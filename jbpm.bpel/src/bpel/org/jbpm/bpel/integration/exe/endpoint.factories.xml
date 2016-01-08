@@ -1,0 +1,4 @@
+<endpointFactories>
+  <endpointFactory class="org.jbpm.bpel.integration.exe.wsa.WsaEndpointReferenceFactory" />
+  <endpointFactory class="org.jbpm.bpel.integration.exe.wsdl.WsdlEndpointReferenceFactory" />
+</endpointFactories>

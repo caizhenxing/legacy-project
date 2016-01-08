@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<!-- 角色信息管理 -->
+<struts-config>
+	<data-sources />	
+	<form-beans>
+		<form-bean name="roleform" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="name" type="java.lang.String" />
+			<form-property name="delMark" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />						
+		</form-bean>		
+    </form-beans>
+	<global-exceptions />
+	<global-forwards>
+		<forward name="tologin" path="/message/tologin.jsp"/>
+		<forward name="operfail" path="/fail.jsp" />
+		<forward name="nologin" path="/cueLogin.jsp" />
+		<forward name="operSuccess" path="/collection/collectionSuccess.jsp" />
+		<forward name="success" path="/group/message/success.jsp" />
+		<forward name="error" path="/group/message/error.jsp" />
+	</global-forwards>
+	<action-mappings>
+		<action attribute="roleform"
+               name="roleform"
+               path="/sys/role/Role"
+               parameter="method"
+               scope="request"
+               type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="main"  path="/sys/role/roleManagerMain.jsp"/>
+           <forward name="query" path="/sys/role/roleManagerQuery.jsp"/>
+           <forward name="load"  path="/sys/role/roleManagerLoad.jsp"/>
+           <forward name="list"  path="/sys/role/roleManagerList.jsp"/>
+           <forward name="pop"   path="/sys/role/popRole.jsp"/>
+        </action>		
+	</action-mappings>	
+</struts-config>

@@ -1,0 +1,25 @@
+<project name="jbpm.identity" basedir="." default="install">
+
+  <!-- project specific properties -->
+  <property name="module.name" value="identity" />
+  <property name="jbpm.root" value=".." />
+  <property file="version.properties" />
+
+  <!-- properties files -->
+  <property file="${user.home}/jbpm/build.properties" />
+  <property file="build.properties" />
+  <property file="${jbpm.root}/build/build.properties" />
+
+  <!-- import base project build file -->
+  <import file="${jbpm.root}/build/base.project.build.xml"/>
+
+  <!-- project specific targets -->
+  <target name="compile.dependencies">
+    <ant antfile="${jbpm.root}/jpdl/jar/build.xml" inheritall="false" />
+  </target>
+
+  <target name="compile.test.dependencies">
+    <ant antfile="${jbpm.root}/jpdl/jar/build.xml" target="compile.test" inheritall="false" />
+  </target>
+
+</project>

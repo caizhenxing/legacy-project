@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+## ************************************************
+#parse( $commonSetting )
+#set ($info= $userContainer.shozokuInfo)
+## ***********************************************
+##スクリプト
+<SCRIPT LANGUAGE=javascript>
+<!--
+function onCsvOutClick(){
+	document.csvout_form.action="$link.setAction('/system/shozokuKanri/shomeiCsvOut')";
+    document.csvout_form.submit();
+}
+//-->
+</SCRIPT>
+## ***********************************************
+
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="javascript:fncWindowOpen('$path/docs/manual5.pdf','help');"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/system/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width=72 height=20 border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#339999" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/system/showMainMenu')">システム管理者向けメニュー</a>＞<a href="$link.setAction('/system/shozokuKanri/showMenu')">所属研究機関管理</a>（所属研究機関管理メニュー＞所属研究機関登録＞所属研究機関登録確認＞所属研究機関登録通知書＞<b>発行用CSVファイル出力</b>）</font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width=61 height=49 alt=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+       証明書発行用CSVファイル出力</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width=213 height=49 alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+	<!-- 本文ここから -->
+	<p align="left">クライアント証明書を発行するために[証明書発行用CSVファイル出力]ボタンをクリックして、CSVファイルをダウンロードしてください。</p>
+	<p align="left">ダウンロードしたCSVファイルはフロッピーディスクに保存し、クライアント証明書発行担当者へ渡してください。</p>
+	<a href="javascript:onCsvOutClick();"><img src="$path/images/bt_2csv.gif" width=219 height=28 alt="証明書発行用CSVファイル出力" border="0"></a>
+	#errorMarkup()
+	<!-- 一覧用テーブルここから -->  
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+	 <tr>
+	  <td>
+	   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+	    <tr>
+	     <th align="left" width="20%">所属研究機関名</th>
+	     <td width="20%">（番号）$!escape.getText($!info.shozokuCd)</td>
+	     <td width="30%">（和文）$!escape.getText($!info.shozokuName)</td>
+	     <td width="30%">（英文）$!escape.getText($!info.shozokuNameEigo)</td>
+	    </tr>
+	    <tr>
+	     <th align="left">担当部課名</th>
+	     <td colspan="3">$!escape.getText($!info.bukyokuName)</td>
+	    </tr>
+	    <tr>
+	     <th align="left">責任者名</th>
+	     <td colspan="3">（姓）$!escape.getText($!info.sekininshaNameSei)　　（名）$!escape.getText($!info.sekininshaNameMei)</td>
+	    </tr>
+	    <tr>
+	     <th align="left">責任者役職</th>
+	     <td colspan="3">$!escape.getText($!info.sekininshaYaku)</td>
+	    </tr>
+	    <tr>
+	     <th align="left">担当者係名</th>
+	     <td colspan="3">$!escape.getText($!info.kakariName)</td>
+	    </tr>
+	    <tr>
+	     <th align="left">担当者名</th>
+	     <td colspan="3">（姓）$!escape.getText($!info.tantoNameSei)　　（名）$!escape.getText($!info.tantoNameMei)</td>
+	    </tr>
+	    <tr>
+	     <th align="left">担当者連絡先</th>
+	     <td colspan="3">〒$!escape.getText($!info.tantoZip)　(住所)$!escape.getText($!info.tantoAddress)<br><br>
+	      電話番号：$!escape.getText($!info.tantoTel)　　　FAX番号：$!escape.getText($!info.tantoFax)<br><br>
+	      Email：$!escape.getText($!info.tantoEmail)<br><br>
+	      Email2：$!escape.getText($!info.tantoEmail2)
+	     </td>
+	    </tr>
+	    <tr>
+	     <th align="left">有効期限</th>
+	     <td colspan="3">$!dateFormat.format($!escape.getText($!info.yukoDate))
+	     </td>
+	    </tr>
+	    
+## 2005/03/11 追加 ここから ----------------------------------------
+## 理由 項目「部局担当者人数」の追加	    
+	    <tr>
+	     <th align="left">部局担当者人数</th>
+	     <td colspan="3">$!escape.getText($!info.bukyokuNum)人</td>
+	    </tr>
+## 追加 ここまで  ----------------------------------------
+	    
+	    <tr>
+	     <th align="left">備考</th>
+	     <td colspan="3">$!escape.getText($!info.biko)</td>
+	    </tr>
+	    <tr>
+	     <th align="left">ID</th>
+	     <td colspan="3">$!escape.getText($!info.shozokuTantoId)</td>
+	    </tr>
+	   </table>
+	  </td>
+	 </tr>
+	</table>
+	<!-- 一覧用テーブルここまで-->
+	<br>
+	<!-- 本文ここまで -->
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="$link.setAction('/system/shozokuKanri/showMenu')"><img src="$path/images/bt_bk_2menu.gif" width=228 height=28 border="0" alt="所属研究機関管理メニューに戻る"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width=8 height=26 alt=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/system/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width=72 height=26 border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width=8 height=26 alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+##隠しフォーム情報----------
+<form name="csvout_form" action="" method="post">
+</form>
+##----------
+</body>
+</html>

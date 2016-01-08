@@ -1,0 +1,31 @@
+<definitions targetNamespace="urn:samples:atmProcess"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:tns="urn:samples:atmProcess"
+  xmlns:atm="urn:samples:atm"
+  xmlns:ses="urn:samples:session"
+  xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+  <!-- 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://schemas.xmlsoap.org/wsdl/ 
+                      http://schemas.xmlsoap.org/wsdl/
+                      http://schemas.xmlsoap.org/ws/2003/05/partner-link/
+                      http://schemas.xmlsoap.org/ws/2003/05/partner-link/" 
+  -->
+
+  <import namespace="urn:samples:atm" location="interface/myService.wsdl"/>
+  <import namespace="urn:samples:session" location="interface/partnerService.wsdl"/>
+
+  <plt:partnerLinkType name="atmFrontEnd">
+    <plt:role name="front">
+      <plt:portType name="atm:atm"/>
+    </plt:role>
+  </plt:partnerLinkType>
+  
+  <plt:partnerLinkType name="atmSessionFactory">
+    <plt:role name="factory">
+      <plt:portType name="ses:sessionFactory"/>
+    </plt:role>
+  </plt:partnerLinkType>
+  
+  
+</definitions>

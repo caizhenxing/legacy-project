@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<body>
+
+<ui:composition template="/common/template.xhtml">
+
+  <ui:define name="title">
+    Average Time Per Node for process
+  </ui:define>
+
+  <ui:define name="submenu">
+    <ui:include src="/common/processmonitorsubmenu.xhtml" />
+  </ui:define>
+
+  <ui:define name="body">
+    <h:dataTable value="#{monitorBean.averageNodeTime}" var="row">
+      <h:column>#{row.nodeId}</h:column>
+      <h:column>#{row.nodeName}</h:column>
+      <h:column>#{row.count}</h:column>
+      <h:column>#{row.averageDuration}</h:column>
+      <h:column>#{row.minDuration}</h:column>
+      <h:column>#{row.maxDuration}</h:column>
+    </h:dataTable>
+  </ui:define>
+
+</ui:composition>
+
+</body>
+</html>

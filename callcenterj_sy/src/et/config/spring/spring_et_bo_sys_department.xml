@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<beans>
+
+<!--  单位基本信息   -->	
+    <bean name="/sys/department/deptTree"
+		class="et.bo.sys.department.action.DepartmentTreeAction" scope="singleton">			
+		<property name="dts">
+			<ref bean="DepartmentTreeService" />
+		</property>	
+		<property name="classTreeService">
+			<ref bean="ClassTreeService" />
+		</property>		
+	</bean>
+
+
+	<bean id="DepartmentTreeService"
+		class="et.bo.sys.department.service.impl.DepartmentTreeServiceImpl" scope="singleton">
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+<!--		<property name="tis">-->
+<!--			<ref bean="treeInfoService" />-->
+<!--		</property>-->
+<!--		<property name="bts">-->
+<!--			<ref bean="buildTreeService" />-->
+<!--		</property>-->
+	</bean>
+	
+<!--	<bean id="treeInfoService"-->
+<!--		class="excellence.common.tree.base.impl.TreeInfoServiceImpl"scope="singleton">-->
+<!--	</bean>-->
+<!--	-->
+<!--	<bean id="buildTreeService"-->
+<!--		class="excellence.common.tree.base.build.impl.BuildTreeServiceImpl"scope="singleton">-->
+<!--		<property name="treeService">-->
+<!--			<ref bean="viewTree" />-->
+<!--		</property>-->
+<!--	</bean>-->
+<!--	<bean id="viewTree"-->
+<!--		class="excellence.common.tree.ext.view.impl.ViewTree"scope="singleton">-->
+<!--	</bean>-->
+</beans>

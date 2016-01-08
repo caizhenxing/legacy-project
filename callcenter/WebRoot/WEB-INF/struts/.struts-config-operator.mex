@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/pcc/operatorlisten/operatorlisten.do" location="1550,650" dimension="358,84" />
+  <StrutsActivity path="/pcc/policefuzz/fuzz.do" location="1850,850" dimension="358,84" />
+  <StrutsActivity path="/pcc/policeinfo/info.do" location="650,1350" dimension="358,84" />
+  <StrutsActivity path="/pcc/phoneinfo/phone.do" location="2150,1350" dimension="358,84" />
+  <StrutsActivity path="/pcc/policeValid/valid.do" location="1850,50" dimension="358,84" />
+  <StrutsActivity path="/pcc/policeValid/post.do" location="2150,1050" dimension="308,88" />
+  <StrutsActivity path="/pcc/operatorlisten/operatorlistenList.jsp" location="650,1050" dimension="292,48" />
+  <StrutsActivity path="/pcc/operatorlisten/operatorlistenMain.jsp" location="1250,1050" dimension="292,48" />
+  <StrutsActivity path="/pcc/operatorlisten/operatorlistenQuery.jsp" location="50,1350" dimension="298,48" />
+  <StrutsActivity path="/pcc/policefuzz/fuzzList.jsp" location="1250,750" dimension="208,48" />
+  <StrutsActivity path="/pcc/policefuzz/download.jsp" location="350,150" dimension="208,48" />
+  <StrutsActivity path="/pcc/policefuzz/checkPoliceNum.jsp" location="1250,1350" dimension="244,48" />
+  <StrutsActivity path="/pcc/policefuzz/seeFuzz.jsp" location="50,150" dimension="202,48" />
+  <StrutsActivity path="/pcc/policefuzz/success.jsp" location="1550,150" dimension="202,48" />
+  <StrutsActivity path="/pcc/policefuzz/countMain.jsp" location="2150,450" dimension="214,48" />
+  <StrutsActivity path="/pcc/policefuzz/fuzzMain.jsp" location="1850,1050" dimension="208,48" />
+  <StrutsActivity path="/pcc/policefuzz/countList.jsp" location="650,150" dimension="214,48" />
+  <StrutsActivity path="/pcc/policefuzz/fuzzQuery.jsp" location="1850,1150" dimension="214,48" />
+  <StrutsActivity path="/pcc/policefuzz/fuzzLoad.jsp" location="1850,1250" dimension="208,48" />
+  <StrutsActivity path="/pcc/policefuzz/countQuery.jsp" location="2450,150" dimension="220,48" />
+  <StrutsActivity path="/pcc/policefuzz/updatePassword.jsp" location="1250,1650" dimension="244,48" />
+  <StrutsActivity path="/pcc/policefuzz/checkFail.jsp" location="2150,750" dimension="214,48" />
+  <StrutsActivity path="/pcc/policeinfo/policeInfoList.jsp" location="650,1650" dimension="244,48" />
+  <StrutsActivity path="/pcc/policeinfo/policeInfoMain.jsp" location="1250,150" dimension="244,48" />
+  <StrutsActivity path="/pcc/policeinfo/seePolice.jsp" location="1850,450" dimension="214,48" />
+  <StrutsActivity path="/pcc/policeinfo/policeInfoQuery.jsp" location="350,1650" dimension="250,48" />
+  <StrutsActivity path="/pcc/phoneinfo/phoneList.jsp" location="2450,1550" dimension="208,48" />
+  <StrutsActivity path="/pcc/phoneinfo/phoneMain.jsp" location="1550,1650" dimension="208,48" />
+  <StrutsActivity path="/pcc/phoneinfo/seePhone.jsp" location="1850,1650" dimension="202,48" />
+  <StrutsActivity path="/pcc/phoneinfo/phoneQuery.jsp" location="2150,1650" dimension="214,48" />
+  <StrutsActivity path="/pcc/phoneinfo/checkPolice.jsp" location="2450,1650" dimension="220,48" />
+  <StrutsActivity path="/pcc/policeValid/uppass.jsp" location="950,450" dimension="158,49" />
+  <StrutsActivity path="/pcc/policeValid/validPolice.jsp" location="50,450" dimension="232,48" />
+  <StrutsActivity path="/pcc/policeValid/success.jsp" location="350,450" dimension="208,48" />
+  <StrutsActivity path="/pcc/policeValid/fail.jsp" location="650,450" dimension="190,48" />
+  <StrutsActivity path="/pcc/policeValid/upnew.jsp" location="1250,450" dimension="196,48" />
+  <StrutsActivity path="/pcc/policeValid/postpolice.jsp" location="2150,1250" dimension="172,49" />
+  <StrutsActivity path="/pcc/policefuzz/seePolice.jsp" location="1550,450" dimension="214,48" />
+  <StrutsActivity path="/oa/communicate/im/top.jsp" location="0,923" dimension="196,48" />
+  <StrutsActivity path="/oa/communicate/im/detail.jsp" location="296,923" dimension="214,48" />
+  <StrutsActivity path="/oa/communicate/im/selectEmployee.jsp" location="610,923" dimension="262,48" />
+  <StrutsActivity path="/oa/communicate/im/newIm.jsp" location="972,923" dimension="208,48" />
+  <StrutsActivity path="/sys/error.jsp" location="1280,923" dimension="124,48" />
+  <StrutsActivity path="/sys/success.jsp" location="1504,923" dimension="136,48" />
+  <StrutsActivity path="/oa/afiche/aficheList.jsp" location="0,1220" dimension="190,48" />
+  <StrutsActivity path="/oa/afiche/aficheMain.jsp" location="290,1220" dimension="190,48" />
+  <StrutsActivity path="/oa/afiche/aficheLoad.jsp" location="580,1220" dimension="190,48" />
+  <StrutsActivity path="/oa/afiche/aficheQuery.jsp" location="870,1220" dimension="196,48" />
+  <StrutsActivity path="/oa/main/aficheInfo.jsp" location="1166,1220" dimension="178,48" />
+  <StrutsActivity path="/oa/afiche/error.jsp" location="1444,1220" dimension="160,48" />
+  <StrutsActivity path="/oa/communicate/email/emailList.jsp" location="5252,294" dimension="250,48" />
+  <StrutsActivity path="/oa/communicate/email/selectEmployeeTwo.jsp" location="5602,294" dimension="298,48" />
+  <StrutsActivity path="/oa/communicate/email/emailMain.jsp" location="7406,294" dimension="250,48" />
+  <StrutsActivity path="/oa/communicate/email/seeEmail.jsp" location="7756,294" dimension="244,48" />
+  <StrutsActivity path="/oa/communicate/email/emailLoad.jsp" location="8100,294" dimension="250,48" />
+  <StrutsActivity path="/oa/communicate/email/emailQuery.jsp" location="8450,294" dimension="256,48" />
+  <StrutsActivity path="/oa/communicate/email/selectEmployeeOne.jsp" location="4854,294" dimension="298,48" />
+  <StrutsActivity path="/oa/communicate/email/answerEmail.jsp" location="6000,294" dimension="262,48" />
+  <StrutsActivity path="/oa/communicate/email/upload.jsp" location="7074,294" dimension="232,48" />
+  <StrutsActivity path="/oa/communicate/email/selectUser.jsp" location="6718,294" dimension="256,48" />
+  <StrutsActivity path="/oa/communicate/email/selectList.jsp" location="6362,294" dimension="256,48" />
+  <StrutsActivity path="/oa/communicate/email/error.jsp" location="4528,294" dimension="226,48" />
+  <StrutsActivity path="/oa/communicate/emailbox/emailBoxList.jsp" location="0,1497" dimension="286,48" />
+  <StrutsActivity path="/oa/communicate/emailbox/emailBoxMain.jsp" location="386,1497" dimension="286,48" />
+  <StrutsActivity path="/oa/communicate/emailbox/seeEmailbox.jsp" location="772,1497" dimension="280,48" />
+  <StrutsActivity path="/oa/communicate/emailbox/emailBoxLoad.jsp" location="1152,1497" dimension="286,48" />
+  <StrutsActivity path="/oa/communicate/emailbox/emailBoxQuery.jsp" location="1538,1497" dimension="292,48" />
+  <StrutsActivity path="/oa/communicate/outerEmail/outerEmailList.jsp" location="2014,294" dimension="310,48" />
+  <StrutsActivity path="/oa/communicate/outerEmail/outerEmailMain.jsp" location="826,294" dimension="310,48" />
+  <StrutsActivity path="/oa/communicate/outerEmail/seeOuterEmail.jsp" location="0,294" dimension="304,48" />
+  <StrutsActivity path="/oa/communicate/outerEmail/outerEmailLoad.jsp" location="2424,294" dimension="310,48" />
+  <StrutsActivity path="/oa/communicate/outerEmail/outerEmailQuery.jsp" location="1236,294" dimension="316,48" />
+  <StrutsActivity path="/oa/communicate/outerEmail/answerOuterEmail.jsp" location="404,294" dimension="322,48" />
+  <StrutsActivity path="/oa/communicate/outerEmail/upload.jsp" location="1652,294" dimension="262,48" />
+  <StrutsActivity path="/oa/communicate/handsetnote/handsetnoteList.jsp" location="3262,294" dimension="322,48" />
+  <StrutsActivity path="/oa/communicate/handsetnote/handsetnoteMain.jsp" location="4106,294" dimension="322,48" />
+  <StrutsActivity path="/oa/communicate/handsetnote/handsetnoteLoad.jsp" location="3684,294" dimension="322,48" />
+  <StrutsActivity path="/oa/communicate/handsetnote/handsetnoteQuery.jsp" location="2834,294" dimension="328,48" />
+  <StrutsActivity path="/news/editor/uploadFail.jsp" location="4385,626" dimension="202,48" />
+  <StrutsActivity path="/pcc/communicate/emailbox/emailBoxList.jsp" location="50,750" dimension="292,48" />
+  <StrutsActivity path="/pcc/communicate/emailbox/emailBoxMain.jsp" location="650,750" dimension="292,48" />
+  <StrutsActivity path="/pcc/communicate/emailbox/emailBoxQuery.jsp" location="50,1050" dimension="298,48" />
+  <StrutsActivity path="/pcc/policeinfo/checkPoliceNum.jsp" location="1550,1350" dimension="244,48" />
+  <StrutsActivity path="/pcc/policeinfo/fuzzMain.jsp" location="1850,1350" dimension="208,48" />
+  <StrutsActivity path="/pcc/policeinfo/checkMoreInfo.jsp" location="50,1650" dimension="238,48" />
+  <StrutsActivity path="" location="950,1650" dimension="40,48" />
+  <StrutsActivity path="/pcc/phoneinfo/policeInfoList.jsp" location="2450,850" dimension="238,48" />
+  <StrutsActivity path="/pcc/phoneinfo/policeInfoMain.jsp" location="2450,950" dimension="238,48" />
+  <StrutsActivity path="/pcc/phoneinfo/seePolice.jsp" location="2450,1250" dimension="208,48" />
+  <StrutsActivity path="/pcc/phoneinfo/policeInfoQuery.jsp" location="2150,1550" dimension="244,48" />
+  <StrutsActivity path="/pcc/policeValid/validMain.jsp" location="50,1750" dimension="220,48" />
+  <StrutsActivity path="/pcc/policeValid/validQuery.jsp" location="350,1750" dimension="226,48" />
+  <StrutsActivity path="/pcc/policeValid/validList.jsp" />
+  <StrutsTransition id="/pcc/policeValid/valid.do,query,/pcc/policeValid/validQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2208,92" />
+      <AbsolutePoint location="2779,92" />
+      <AbsolutePoint location="2779,1713" />
+      <AbsolutePoint location="463,1713" />
+      <AbsolutePoint location="463,1750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policeValid/post.do,fail,/pcc/policeValid/fail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2409,1050" />
+      <AbsolutePoint location="2409,514" />
+      <AbsolutePoint location="745,514" />
+      <AbsolutePoint location="745,498" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policeValid/valid.do,query,/pcc/policeValid/validMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2208,92" />
+      <AbsolutePoint location="2779,92" />
+      <AbsolutePoint location="2779,1713" />
+      <AbsolutePoint location="160,1713" />
+      <AbsolutePoint location="160,1750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/operatorlisten/operatorlisten.do,list,/pcc/operatorlisten/operatorlistenList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1699,734" />
+      <AbsolutePoint location="1699,1016" />
+      <AbsolutePoint location="796,1016" />
+      <AbsolutePoint location="796,1050" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policeValid/valid.do,main,/pcc/policeValid/validMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2029,134" />
+      <AbsolutePoint location="2029,243" />
+      <AbsolutePoint location="-150,243" />
+      <AbsolutePoint location="-150,1774" />
+      <AbsolutePoint location="50,1774" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policeValid/valid.do,main,,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2208,92" />
+      <AbsolutePoint location="2779,92" />
+      <AbsolutePoint location="2779,1613" />
+      <AbsolutePoint location="970,1613" />
+      <AbsolutePoint location="970,1650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policefuzz/fuzz.do,query,/pcc/policefuzz/fuzzQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2109,934" />
+      <AbsolutePoint location="2109,1174" />
+      <AbsolutePoint location="2064,1174" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policeValid/valid.do,main,/pcc/policeValid/fail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2029,134" />
+      <AbsolutePoint location="2029,243" />
+      <AbsolutePoint location="775,243" />
+      <AbsolutePoint location="775,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policeinfo/info.do,query,/pcc/policeinfo/policeInfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,1383" />
+      <AbsolutePoint location="371,1383" />
+      <AbsolutePoint location="371,1650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/phoneinfo/phone.do,see,/pcc/phoneinfo/seePhone.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2150,1413" />
+      <AbsolutePoint location="1951,1413" />
+      <AbsolutePoint location="1951,1650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policeValid/valid.do,valid,/pcc/policeValid/validPolice.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,62" />
+      <AbsolutePoint location="319,62" />
+      <AbsolutePoint location="319,474" />
+      <AbsolutePoint location="282,474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/operatorlisten/operatorlisten.do,query,/pcc/operatorlisten/operatorlistenQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1759,734" />
+      <AbsolutePoint location="1759,1165" />
+      <AbsolutePoint location="205,1165" />
+      <AbsolutePoint location="205,1350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policeValid/valid.do,fail,/pcc/policeValid/fail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,122" />
+      <AbsolutePoint location="745,122" />
+      <AbsolutePoint location="745,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policeinfo/info.do,main,/pcc/policeinfo/policeInfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,1350" />
+      <AbsolutePoint location="829,1113" />
+      <AbsolutePoint location="1195,1113" />
+      <AbsolutePoint location="1195,174" />
+      <AbsolutePoint location="1250,174" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policefuzz/fuzz.do,updatesuccess,/pcc/policefuzz/success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1999,850" />
+      <AbsolutePoint location="1999,174" />
+      <AbsolutePoint location="1752,174" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/phoneinfo/phone.do,list,/pcc/phoneinfo/phoneList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2465,1434" />
+      <AbsolutePoint location="2465,1550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policeValid/valid.do,list,/pcc/policeValid/validQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2208,62" />
+      <AbsolutePoint location="3207,62" />
+      <AbsolutePoint location="3207,1873" />
+      <AbsolutePoint location="463,1873" />
+      <AbsolutePoint location="463,1798" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policeValid/post.do,passvalid,/pcc/policeValid/upnew.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2304,1094" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policeinfo/info.do,list,/pcc/policeinfo/policeInfoList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="757,1434" />
+      <AbsolutePoint location="757,1650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policefuzz/fuzz.do,main,/pcc/policefuzz/fuzzMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2029,934" />
+      <AbsolutePoint location="2029,1050" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policefuzz/fuzz.do,see,/pcc/policefuzz/seeFuzz.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,892" />
+      <AbsolutePoint location="-75,892" />
+      <AbsolutePoint location="-75,174" />
+      <AbsolutePoint location="50,174" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/phoneinfo/phone.do,main,/pcc/phoneinfo/phoneMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2409,1434" />
+      <AbsolutePoint location="2409,1773" />
+      <AbsolutePoint location="1654,1773" />
+      <AbsolutePoint location="1654,1698" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policefuzz/fuzz.do,countlist,/pcc/policefuzz/countList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2029,892" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policefuzz/fuzz.do,list,/pcc/policefuzz/fuzzList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,862" />
+      <AbsolutePoint location="1354,862" />
+      <AbsolutePoint location="1354,798" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/phoneinfo/phone.do,query,/pcc/phoneinfo/phoneQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2150,1383" />
+      <AbsolutePoint location="2109,1383" />
+      <AbsolutePoint location="2109,1674" />
+      <AbsolutePoint location="2150,1674" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policeinfo/info.do,see,/pcc/policeinfo/seePolice.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,1392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policeValid/post.do,success,/pcc/policeValid/success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2439,1050" />
+      <AbsolutePoint location="2439,387" />
+      <AbsolutePoint location="454,387" />
+      <AbsolutePoint location="454,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policeValid/valid.do,success,/pcc/policeValid/success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1850,92" />
+      <AbsolutePoint location="389,92" />
+      <AbsolutePoint location="389,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policefuzz/fuzz.do,countquery,/pcc/policefuzz/countQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2029,892" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policeValid/valid.do,passvalid,/pcc/policeValid/uppass.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1969,134" />
+      <AbsolutePoint location="1969,474" />
+      <AbsolutePoint location="1108,474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policeValid/valid.do,list,/pcc/policeValid/validList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2029,92" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policefuzz/fuzz.do,checksuccess,/pcc/policefuzz/updatePassword.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1939,934" />
+      <AbsolutePoint location="1939,986" />
+      <AbsolutePoint location="1111,986" />
+      <AbsolutePoint location="1111,1674" />
+      <AbsolutePoint location="1250,1674" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policefuzz/fuzz.do,countmain,/pcc/policefuzz/countMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2029,892" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policefuzz/fuzz.do,download,/pcc/policefuzz/download.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2029,892" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/phoneinfo/phone.do,check,/pcc/phoneinfo/checkPolice.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2508,1392" />
+      <AbsolutePoint location="2999,1392" />
+      <AbsolutePoint location="2999,1674" />
+      <AbsolutePoint location="2670,1674" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policefuzz/fuzz.do,fail,/pcc/policefuzz/checkFail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2165,850" />
+      <AbsolutePoint location="2165,798" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/operatorlisten/operatorlisten.do,main,/pcc/operatorlisten/operatorlistenMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1729,734" />
+      <AbsolutePoint location="1729,1074" />
+      <AbsolutePoint location="1542,1074" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policefuzz/fuzz.do,topolicenum,/pcc/policefuzz/checkPoliceNum.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2079,934" />
+      <AbsolutePoint location="2079,1113" />
+      <AbsolutePoint location="1372,1113" />
+      <AbsolutePoint location="1372,1350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policeValid/post.do,valid,/pcc/policeValid/postpolice.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2304,1138" />
+      <AbsolutePoint location="2304,1250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/policefuzz/fuzz.do,load,/pcc/policefuzz/fuzzLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2139,934" />
+      <AbsolutePoint location="2139,1274" />
+      <AbsolutePoint location="2058,1274" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

@@ -1,0 +1,291 @@
+## 所属研究機関検索フォーム情報→shozokuSearchForm ## 検索結果ページ情報→result 
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+## ************************************************
+#parse( $commonSetting )
+## 変数の置き換え
+#set ($list= $result.list)
+## ***********************************************
+##スクリプト
+<SCRIPT LANGUAGE=javascript>
+<!--
+//所属研究機関担当者修正
+function onEditClick(shozokuTantoId){
+	document.update_form.action="$link.setAction('/system/shozokuKanri/edit')";
+	document.update_form.shozokuTantoId.value = shozokuTantoId;
+	document.update_form.submit();
+}
+//所属研究機関担当者削除
+function onDeleteClick(shozokuTantoId){
+	document.update_form.action="$link.setAction('/system/shozokuKanri/delete')";
+	document.update_form.shozokuTantoId.value = shozokuTantoId;
+	document.update_form.submit();
+}
+## 2005/03/11 追加 ここから ----------------------------------------
+## 理由 「パスワード再設定」の追加	    
+function onReconfigureClick(shozokuTantoId){
+	document.update_form.action="$link.setAction('/system/shozokuKanri/reconfigurePassword')";
+	document.update_form.shozokuTantoId.value = shozokuTantoId;
+	document.update_form.submit();
+}
+## 追加 ここまで  ----------------------------------------
+
+## 2005/04/20 追加 ここから ----------------------------------------
+## 理由 部局担当者の「修正」「削除」「パスワード再設定」ボタンの追加
+//部局担当者修正
+function onEditBukyokuClick(bukyokuTantoId){
+	document.update_form.action="$link.setAction('/system/shozokuKanri/editBukyoku')";
+	document.update_form.bukyokutantoId.value = bukyokuTantoId;
+	document.update_form.submit();
+}
+//部局担当者削除
+function onDeleteBukyokuClick(bukyokuTantoId){
+	document.update_form.action="$link.setAction('/system/shozokuKanri/deleteBukyoku')";
+	document.update_form.bukyokutantoId.value = bukyokuTantoId;
+	document.update_form.submit();
+}
+//部局担当者パスワード再設定
+function onReconfigureBukyokuClick(bukyokuTantoId){
+	document.update_form.action="$link.setAction('/system/shozokuKanri/reconfigurePasswordBukyoku')";
+	document.update_form.bukyokutantoId.value = bukyokuTantoId;
+	document.update_form.submit();
+}
+## 追加 ここまで  --------------------------------------------------
+
+function onPageClick(startPosition){
+	document.page_form.action="$link.setAction('/system/shozokuKanri/searchList')";
+	document.page_form.startPosition.value = startPosition;
+	document.page_form.submit();
+}
+function onCsvOutClick(){
+	document.csvout_form.action="$link.setAction('/system/shozokuKanri/csvOut')";
+    document.csvout_form.submit();
+}
+//-->
+</SCRIPT>
+## ***********************************************
+
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="javascript:fncWindowOpen('$path/docs/manual5.pdf','help');"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/system/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width=72 height=20 border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#339999" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/system/showMainMenu')">システム管理者向けメニュー</a>＞<a href="$link.setAction('/system/shozokuKanri/showMenu')">所属研究機関管理</a>（所属研究機関管理メニュー＞所属研究機関情報検索＞<b>所属研究機関情報一覧</b>）</td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width=61 height=49 alt=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+       所属研究機関情報一覧</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width=213 height=49 alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+    
+<!-- 本文ここから -->
+#errorMarkup()
+ <p align="left"><a href="javascript:onCsvOutClick();"><img src="$path/images/bt_csv.gif" width=114 height=28 alt="CSV出力" border="0"></a></p>
+ <font color="black">$!escape.getText($!result.totalSize) 件該当しました。</font><br>
+ <font color="blue"><b>$!escape.getText($!result.currentPages)</b></font>
+ <font color="black"> ページ目を表示しています。</font><br>　　　
+ <font color="blue">
+ #foreach($page in $result.pageIndexs)
+   #if($velocityCount == $result.currentPages)
+     #if($velocityCount == $result.totalPages)
+			<b> $!escape.getText($velocityCount)</b>
+      #else
+         	<b> $!escape.getText($velocityCount)</b><font color="black">/</font>
+      #end
+   #else
+      #if($velocityCount == $result.totalPages)
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a> 
+      #else
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a><font color="black">/</font>
+      #end
+   #end
+ #end
+ </font>
+ <font color="black">ページに移動します。</font> <br> 　　　
+ #if($result.hasPreviousPage())
+   <A href="javascript:onPageClick('$!result.getStartOfPreviousPage()')"><img src="$path/images/bt_last.gif" width=64 height=24 alt="前ページ" border="0"></a>
+ #end
+
+ #if($result.hasNextPage())
+   <A href="javascript:onPageClick('$!result.getStartOfNextPage()');"><img src="$path/images/bt_next.gif" width=64 height=24 alt="次ページ" border="0"></a>
+ #end
+ 
+<br><br>
+<!-- 一覧用テーブルここから -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th></th>
+	 <th>所属研究機関番号</th>
+     <th>所属研究機関名</th>
+     <th>担当者ID</th>
+     <th>担当者名</th>
+     <th>所属研究機関内容</th>
+    </tr>
+	   #if($list.size() == 0)
+			##該当件数が０件だった場合
+		    <tr>
+		    	<td>&nbsp;</td>
+		    	<td>&nbsp;</td>
+		    	<td>&nbsp;</td>
+		    	<td>&nbsp;</td>
+		    	<td>&nbsp;</td>
+		    </tr>
+	    #else		    
+		    #foreach($user in $list)	
+		    <tr>
+		     <td>#if($user.TANTO_FLG.toString() == '0')
+		    	 所属
+		     #else
+		    	 部局
+		     #end
+		     </td>
+		     <td>$!escape.getText($!user.SHOZOKU_CD)</td>
+		     <td>$!escape.getText($!user.SHOZOKU_RYAKUSHO)</td>
+		     <td>$!escape.getText($!user.TANTO_ID)</td>
+		     <td>$!escape.getText($!user.TANTO_NAME_SEI) $!escape.getText($!user.TANTO_NAME_MEI)</td>
+		     <td>
+		     ##所属研究機関担当者のとき、「修正」「削除」「パスワード再設定」ボタン表示（担当フラグが「0」のとき）
+		     #if($!user.TANTO_FLG.toString() == "0")
+		  	 	<a href="javascript:onEditClick('$user.TANTO_ID');"><img src="$path/images/bt_rep.gif" alt="修正" width="36" height="22" border="0"></a>　
+		    	<a href="javascript:onDeleteClick('$user.TANTO_ID');"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+		      
+## 2005/03/11 追加 ここから ----------------------------------------
+## 理由 「パスワード再設定」の追加
+		   	 	<a href="javascript:onReconfigureClick('$user.TANTO_ID');"><img src="$path/images/bt_password.gif" alt="パスワード再設定" width="108" height="22" border="0"></a>
+## 追加 ここまで ---------------------------------------------------
+			 
+			 ##部局担当者で削除フラグが「1」でないとき、「修正」「削除」「パスワード再設定」ボタン表示
+			 #elseif($!user.DEL_FLG.toString() != "1")
+		  	 	<a href="javascript:onEditBukyokuClick('$user.TANTO_ID');"><img src="$path/images/bt_rep.gif" alt="修正" width="36" height="22" border="0"></a>　
+		    	<a href="javascript:onDeleteBukyokuClick('$user.TANTO_ID');"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+		    	<a href="javascript:onReconfigureBukyokuClick('$user.TANTO_ID');"><img src="$path/images/bt_password.gif" alt="パスワード再設定" width="108" height="22" border="0"></a>
+			 ##削除フラグが「1」のデータは、「削除済み」と表示	
+			 #else
+				削除済み
+			 #end	      
+		     </td>
+		    </tr>
+		    #end
+		#end
+   </table>
+  </td>
+ </tr>
+</table>
+<!-- 一覧用テーブルここまで-->
+<br>
+ <font color="blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#foreach($page in $result.pageIndexs)
+   #if($velocityCount == $result.currentPages)
+     #if($velocityCount == $result.totalPages)
+			<b> $!escape.getText($velocityCount)</b>
+      #else
+         	<b> $!escape.getText($velocityCount)</b><font color="black">/</font>
+      #end
+   #else
+      #if($velocityCount == $result.totalPages)
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a> 
+      #else
+         <A href="javascript:onPageClick('$page')"> $!escape.getText($velocityCount)</a><font color="black">/</font>
+      #end
+   #end
+ #end
+ </font>
+ <font color="black">ページに移動します。</font> <br> 　　　
+ #if($result.hasPreviousPage())
+   <A href="javascript:onPageClick('$!result.getStartOfPreviousPage()')"><img src="$path/images/bt_last.gif" width=64 height=24 alt="前ページ" border="0"></a>
+ #end
+
+ #if($result.hasNextPage())
+   <A href="javascript:onPageClick('$!result.getStartOfNextPage()');"><img src="$path/images/bt_next.gif" width=64 height=24 alt="次ページ" border="0"></a>
+ #end
+ <br>
+ <p align="left"><a href="javascript:onCsvOutClick();"><img src="$path/images/bt_csv.gif" width=114 height=28 alt="CSV出力" border="0"></a></p>
+<!-- 本文ここまで -->
+
+	<!-- ボタン用テーブルここから -->
+	<div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+	 <form method="POST" action="$link.setAction('/system/shozokuKanri/searchList')">
+      <tr>
+       <td><input type="image" name="$form.cancelName" src="$path/images/bt_bk_2search.gif" width=200 height=28 border="0" alt="所属研究機関情報検索に戻る"></td>
+      </tr>
+      </form>
+     </table>
+    </div>
+  	<!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width=8 height=26 alt=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/system/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width=72 height=26 border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width=8 height=26 alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+
+##隠しフォーム情報----------
+<form name="update_form" action="" method="post">
+	<input type="hidden" name="shozokuTantoId" >
+	<input type="hidden" name="bukyokutantoId" >
+</form>
+
+<form name="page_form" action="" method="post">
+	<input type="hidden" name="startPosition" >
+</form>
+<form name="csvout_form" action="" method="post">
+</form>
+##----------
+</body>
+</html>

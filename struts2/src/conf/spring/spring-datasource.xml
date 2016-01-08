@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="GB18030"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+<bean id="datasource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:oracle:thin:@localhost:1521:orcl</value>
+		</property>
+		<property name="username">
+			<value>cc</value>
+		</property>
+		<property name="password">
+			<value>cc</value>
+		</property>
+	</bean>
+
+</beans>

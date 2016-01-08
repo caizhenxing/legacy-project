@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/screen/quickMessage.do" location="541,0" dimension="358,84" />
+  <StrutsActivity path="/screen/quickMessage/quickMessageAll.jsp" location="0,184" dimension="280,48" />
+  <StrutsActivity path="/screen/quickMessage/quickMessageQuery.jsp" location="380,184" dimension="292,48" />
+  <StrutsActivity path="/screen/quickMessage/quickMessageLoad.jsp" location="772,184" dimension="286,48" />
+  <StrutsActivity path="/screen/quickMessage/quickMessageMain.jsp" location="1158,184" dimension="286,48" />
+  <StrutsTransition id="/screen/quickMessage.do,main,/screen/quickMessage/quickMessageMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="854,84" />
+      <AbsolutePoint location="854,119" />
+      <AbsolutePoint location="1301,119" />
+      <AbsolutePoint location="1301,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/screen/quickMessage.do,alllist,/screen/quickMessage/quickMessageAll.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="586,84" />
+      <AbsolutePoint location="586,119" />
+      <AbsolutePoint location="140,119" />
+      <AbsolutePoint location="140,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/screen/quickMessage.do,load,/screen/quickMessage/quickMessageLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="765,84" />
+      <AbsolutePoint location="765,149" />
+      <AbsolutePoint location="915,149" />
+      <AbsolutePoint location="915,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/screen/quickMessage.do,query,/screen/quickMessage/quickMessageQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="675,84" />
+      <AbsolutePoint location="675,149" />
+      <AbsolutePoint location="526,149" />
+      <AbsolutePoint location="526,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

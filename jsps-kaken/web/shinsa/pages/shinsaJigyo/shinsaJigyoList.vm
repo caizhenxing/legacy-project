@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+## ************************************************
+#parse( $commonSetting )
+#set ($list= $result.list)
+#set ($shinsainInfo= $userContainer.userInfo.shinsainInfo)
+##$list
+## ***********************************************
+
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+## ***********************************************
+##スクリプト
+<script language="javascript">
+<!--
+  // 「詳細(学振担当者問い合わせ先)」をクリック
+  function onToiawaseDetail(jigyoId){
+      window.open("$link.setAction('/shinsa/shinsaJigyo/toiawaseDetail')?jigyoId=" + jigyoId, "","toolbar=no,location=no,status=no,resizable=yes,scrollbars=yes");
+  }
+
+  // 「表示(審査担当分応募課題一覧)」をクリック
+  function onTantoShinseiList(jigyoId,jigyoKubunshinsaJyokyo,shinsaJokyo){
+      document.list_form.action="$link.setAction('/shinsa/shinsaJigyo/tantoShinseiList')";
+      document.list_form.jigyoId.value = jigyoId;
+      document.list_form.jigyoKubun.value = jigyoKubunshinsaJyokyo;
+      document.list_form.shinsaJokyo.value = shinsaJokyo;
+      document.list_form.submit();
+  }
+
+  // 「表示(利害関係該当課題一覧)」をクリック
+  function onRigaiShinseiList(jigyoId,jigyoKubunshinsaJyokyo,shinsaJokyo){
+      document.list_form.action="$link.setAction('/shinsa/shinsaJigyo/riekiSohanList')";
+      document.list_form.jigyoId.value = jigyoId;
+      document.list_form.jigyoKubun.value = jigyoKubunshinsaJyokyo;
+      document.list_form.shinsaJokyo.value = shinsaJokyo;
+      document.list_form.submit();
+  }
+
+  // 「ダウンロード」をクリック
+  function onDownloadFile(systemNo){
+      document.download_form.action="$link.setAction('/shinsa/shinsaJigyo/shoruiFileDownload')";
+      document.download_form.systemNo.value = systemNo;
+      document.download_form.submit();
+  }
+//-->
+</script>
+## ***********************************************
+
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="http://www-shinsei.jsps.go.jp/kakenhi/" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/shinsa/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width="72" height="20" border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#669966" class="rootFont"><font color="#FFFFFF"><b>審査対象事業一覧</b><font size="1">＞審査担当分応募課題一覧＞審査結果入力</font></font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width="61" height="49" alt=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont">
+       <br>審査対象事業一覧
+      </td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width="213" height="49" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+#if ($shinsainInfo.jigyoKubun == "4" || $shinsainInfo.jigyoKubun == "6" || $shinsainInfo.jigyoKubun == "7")
+    <p class="comment">＜注意事項＞</p>
+    <ul>
+     <li class="comment">必ず最初に利害関係該当課題一覧の[表示]ボタンをクリックして、利害関係課題の入力を完了させてください。
+                    <br>（利害関係にあたる応募課題が無い場合も利害関係の[入力完了]処理が必要です。）</font--></li>
+     <li class="comment">利害関係の[入力完了]後、審査担当分応募課題一覧の[表示]ボタンが表示されますので、各応募課題の審査結果を入力してください。</li>
+    </ul>
+#end
+    <!-- 本文ここから -->
+    <!-- 一覧用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+     <tr>
+      <td>
+       <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+        <tr>
+         <th>研究種目名</th>
+         <th>審査要項等</th>
+         <th>審査件数</th>
+## 2006/10/24 易旭  追加ここから
+#if ($shinsainInfo.jigyoKubun == "4" || $shinsainInfo.jigyoKubun == "6" || $shinsainInfo.jigyoKubun == "7")
+         <th>利害関係該当課題一覧</th>
+         <th>利害関係入力期限</th>
+         <th>入力状況</th>
+#end
+## 2006/10/24 易旭  追加ここまで
+         <th>審査担当分応募課題一覧</th>
+         <th>審査結果入力期限</th>
+         <th>審査状況</th>
+         <th>学振担当者<br>問い合わせ先</th>
+        </tr>
+
+        #if($list.size() == 0)
+          ##該当件数が０件だった場合
+          <tr>
+           <td>&nbsp;<br>&nbsp;</td>
+           <td>&nbsp;<br>&nbsp;</td>
+           <td>&nbsp;<br>&nbsp;</td>
+           <td>&nbsp;<br>&nbsp;</td>
+#if ($shinsainInfo.jigyoKubun == "4" || $shinsainInfo.jigyoKubun == "6" || $shinsainInfo.jigyoKubun == "7")
+           <td>&nbsp;<br>&nbsp;</td>
+           <td>&nbsp;<br>&nbsp;</td>
+           <td>&nbsp;<br>&nbsp;</td>
+#end
+           <td>&nbsp;<br>&nbsp;</td>
+           <td>&nbsp;<br>&nbsp;</td>
+           <td>&nbsp;<br>&nbsp;</td>
+          </tr>
+        #else
+          #foreach($user in $list)
+            #if($user.COUNT == $user.SHINSA_JYOKYO_COUNT)
+              #set($shinsaJokyo = 1)
+            #else
+              #set($shinsaJokyo = 0)
+            #end
+            <tr>
+             <td>##研究種目名
+              #if($user.KAISU.toString() == "0" || $user.KAISU.toString() == "1")
+				平成$!escape.getText($!user.NENDO)年度 $!escape.getText($!user.JIGYO_NAME)
+              #else
+				平成$!escape.getText($!user.NENDO)年度 第$!escape.getText($!user.KAISU)回 $!escape.getText($!user.JIGYO_NAME)
+              #end
+             </td>
+             <td>##審査要項等
+              #foreach($shoruiNameList in $user.SHORUI_INFO)    
+                <a href="javascript:onDownloadFile('$shoruiNameList.SYSTEM_NO');">$!escape.getText($!shoruiNameList.SHORUI_NAME)</a> 
+              #end
+             </td>
+             ##審査件数
+             <td>$!escape.getText($!user.COUNT)件</td>
+
+## 2006/10/24 易旭  追加ここから
+#if ($shinsainInfo.jigyoKubun == "4" || $shinsainInfo.jigyoKubun == "6" || $shinsainInfo.jigyoKubun == "7")
+             <td>##利害関係該当一覧課題
+              #if($user.JIGYO_KUBUN.toString().equals("1") || $user.JIGYO_KUBUN.toString().equals("2") )
+                -
+              #else
+				#if($user.COUNT == $user.SHINSA_JYOKYO_COUNT)
+                #elseif($user.COUNT != $user.NYURYOKU_JOKYO_COUNT)
+                  <a href="javascript:onRigaiShinseiList('$!user.JIGYO_ID','$!user.JIGYO_KUBUN','$shinsaJokyo');"><img src="$path/images/bt_indicate.gif" width="64" height="24" alt="表示" border="0"></a>
+                #end
+              #end
+             </td>
+             <td>##利害関係入力期限
+			             #if($user.JIGYO_KUBUN.toString().equals("1") || $user.JIGYO_KUBUN.toString().equals("2"))
+                -
+			             #else	
+                $!dateFormat.format($!escape.getText($!user.RIGAI_KIKAN_END))
+			             #end
+             </td>
+             <td>##入力状況
+              #if($user.JIGYO_KUBUN.toString().equals("1") || $user.JIGYO_KUBUN.toString().equals("2"))
+                -
+              #else
+                #if($user.COUNT == $user.NYURYOKU_JOKYO_COUNT)
+					                  完了
+                #else
+					                  未完了
+                #end
+              #end
+             </td>
+             #end
+             <td>##審査担当分応募課題一覧
+              #if($user.JIGYO_KUBUN.toString().equals("1") || $user.JIGYO_KUBUN.toString().equals("2"))
+                <a href="javascript:onTantoShinseiList('$!user.JIGYO_ID','$!user.JIGYO_KUBUN','$shinsaJokyo');"><img src="$path/images/bt_indicate.gif" width="64" height="24" alt="表示" border="0"></a>
+              #else
+                #if($user.COUNT == $user.SHINSA_JYOKYO_COUNT || $user.COUNT == $user.NYURYOKU_JOKYO_COUNT)
+                  <a href="javascript:onTantoShinseiList('$!user.JIGYO_ID','$!user.JIGYO_KUBUN','$shinsaJokyo');"><img src="$path/images/bt_indicate.gif" width="64" height="24" alt="表示" border="0"></a>
+                #end
+              #end
+             </td>
+         <!--td><a href="javascript:onTantoShinseiList('$!user.JIGYO_ID','$!user.JIGYO_KUBUN','$shinsaJokyo');"><img src="$path/images/bt_indicate.gif" width=64 height=24 alt="表示" border="0"></a></td-->
+## 2006/10/24 易旭  追加ここまで
+
+			 ##審査結果入力期限
+             <td>$!dateFormat.format($!escape.getText($!user.SHINSAKIGEN))</td>
+             <td>##審査状況
+              #if($user.COUNT == $user.SHINSA_JYOKYO_COUNT)
+				                完了
+              #else
+				                未完了
+              #end
+             </td>
+             <td><a href="javascript:onToiawaseDetail('$!user.JIGYO_ID');"><img src="$path/images/bt_detail.gif" width="64" height="24" alt="詳細" border="0"></a></td>
+            </tr>
+          #end
+        #end
+       </table>
+      </td>
+     </tr>
+    </table>
+    <!-- 一覧用テーブルここまで-->
+    <br>
+    <!-- 本文ここまで -->
+
+## 2005/10/26 追加
+   <!-- メニュー用テーブルここから -->
+   <table border="0" cellspacing="6">
+    <tr>
+     <td>&nbsp;</td>
+     <td><img src="$path/images/mark_green.gif" alt="" width="16" height="16"></td>
+     <td class="menu"><a href="$link.setAction('/shinsa/shinsaJigyo/registMailAddr')">メールアドレスを登録・変更する場合はこちら</a></td>
+    </tr>
+   </table>
+   <!-- メニュー用テーブルここまで -->
+    <br>
+## 2005/10/26 追加完了
+
+## 2005/05/24 追加
+    <div align="right">
+     <p class="comment">電子申請に関するご意見、ご要望は<a href="$link.setAction('/shinsa/iken')">こちら</a></p>
+    </div>
+## 2005/05/24 追加完了
+
+    <!-- サブ画面フッター用テーブルここから -->   
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width="8" height="26" alt=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shinsa/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width="72" height="26" border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width="8" height="26" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+##隠しフォーム情報----------
+<form name="list_form" action="" method="post">
+    <input type="hidden" name="jigyoId" >
+    ##2006/04/18　苗　追加
+    <input type="hidden" name="jigyoKubun" >
+    ##2006/05/12 苗　追加
+    <input type="hidden" name="shinsaJokyo" >
+</form>
+<form name="download_form" action="" method="post">
+    <input type="hidden" name="systemNo" >
+</form>
+##----------
+</body>
+</html>

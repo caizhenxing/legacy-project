@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<beans>
+	<bean id="CycService" class="et.bo.sms.cyc.service.impl.CycServiceImpl" scope="singleton">
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="CycTimerTask"
+		class="et.bo.sms.cyc.service.task.CycTask">
+		<property name="cs">
+			<ref bean="CycService"/>
+		</property>
+	</bean>
+	<bean id="CycReceiveTask"
+		class="org.springframework.scheduling.timer.ScheduledTimerTask"
+		scope="singleton">
+		<property name="timerTask">
+			<ref bean="CycTimerTask" />
+		</property>
+		<property name="period">
+			<value>30000</value>
+		</property>
+		<property name="delay">
+			<value>240000</value>
+		</property>
+	</bean>
+	
+	<bean class="org.springframework.scheduling.timer.TimerFactoryBean">
+		<property name="scheduledTimerTasks">
+			<list>
+<!--				<ref bean="CycReceiveTask"/>-->
+<!--				<ref bean="scheduledResultTask"/>-->
+<!--				<ref bean="scheduledSendTask"/>-->
+			</list>
+		</property>
+	</bean>
+</beans>

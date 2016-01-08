@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/sys/ccIvrTreevoiceDetail.do" location="508,0" dimension="308,88" />
+  <StrutsActivity path="/sys/ccIvrTreevoiceDetail/ccIvrTreeVDtllist.jsp" location="0,188" dimension="251,49" />
+  <StrutsActivity path="/sys/ccIvrTreevoiceDetail/ccIvrTreeVDtlMain.jsp" location="350,188" dimension="260,49" />
+  <StrutsActivity path="/sys/ccIvrTreevoiceDetail/ccIvrTreeVDtlQuery.jsp" location="711,188" dimension="268,49" />
+  <StrutsActivity path="/sys/ccIvrTreevoiceDetail/ccIvrTreeVDtlLoadText.jsp" location="50,350" dimension="283,49" />
+  <StrutsActivity path="/sys/ccIvrTreevoiceDetail/ccIvrTreeVDtlLoad.jsp" location="1079,188" dimension="261,49" />
+  <StrutsTransition id="/sys/ccIvrTreevoiceDetail.do,toCcIvrTreeinfoLoadText,/sys/ccIvrTreevoiceDetail/ccIvrTreeVDtlLoadText.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="662,88" />
+      <AbsolutePoint location="662,374" />
+      <AbsolutePoint location="333,374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/ccIvrTreevoiceDetail.do,toCcIvrTreeinfoMain,/sys/ccIvrTreevoiceDetail/ccIvrTreeVDtlMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="624,88" />
+      <AbsolutePoint location="624,153" />
+      <AbsolutePoint location="480,153" />
+      <AbsolutePoint location="480,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/ccIvrTreevoiceDetail.do,toCcIvrTreeinfoList,/sys/ccIvrTreevoiceDetail/ccIvrTreeVDtllist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="547,88" />
+      <AbsolutePoint location="547,123" />
+      <AbsolutePoint location="125,123" />
+      <AbsolutePoint location="125,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/ccIvrTreevoiceDetail.do,toCcIvrTreeinfoQuery,/sys/ccIvrTreevoiceDetail/ccIvrTreeVDtlQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="701,88" />
+      <AbsolutePoint location="701,153" />
+      <AbsolutePoint location="845,153" />
+      <AbsolutePoint location="845,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/ccIvrTreevoiceDetail.do,toCcIvrTreeinfoLoad,/sys/ccIvrTreevoiceDetail/ccIvrTreeVDtlLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="778,88" />
+      <AbsolutePoint location="778,123" />
+      <AbsolutePoint location="1209,123" />
+      <AbsolutePoint location="1209,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

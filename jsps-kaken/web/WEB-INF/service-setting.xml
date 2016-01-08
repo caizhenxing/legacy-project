@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<service-settings>
+
+  <!-- 申請者管理 -->
+  <service
+    name="shinseisha.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.ShinseishaMaintenance"/>
+  <!-- 事業管理 -->
+  <service
+    name="jigyoKanri.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.JigyoKanriMaintenance"/>
+  <!-- 所属機関管理 -->
+  <service
+    name="shozoku.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.ShozokuMaintenance"/>
+  <!-- 部局担当者管理 -->
+  <service
+    name="bukyokutanto.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.BukyokutantoMaintenance"/>
+  <!-- 業務担当者管理 -->
+  <service
+    name="gyomutanto.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.GyomutantoMaintenance"/>
+  <!-- 研究者情報管理 -->
+  <service
+    name="kenkyusha.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.KenkyushaMaintenance"/>
+  <!-- 各ID・パスワードの発行ルール管理 -->
+  <service
+    name="rule.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.RuleMaintenance"/>
+  <!-- 申請者ログイン認証 -->	
+  <service
+    name="shinseisha.logon.service"
+    type="jp.go.jsps.kaken.model.impl.ShinseishaAuthentication"/>
+  <!-- 所属機関担当者ログイン認証 -->	
+  <service
+    name="shozokutanto.logon.service"
+    type="jp.go.jsps.kaken.model.impl.ShozokutantoAuthentication"/>
+  <!-- 部局担当者ログイン認証 -->	
+  <service
+    name="bukyokutanto.logon.service"
+    type="jp.go.jsps.kaken.model.impl.BukyokutantoAuthentication"/>
+  <!-- 業務担当者ログイン認証 -->	
+  <service
+    name="gyomutanto.logon.service"
+    type="jp.go.jsps.kaken.model.impl.GyomutantoAuthentication"/>
+  <!-- 審査員ログイン認証 -->	
+  <service
+    name="shinsain.logon.service"
+    type="jp.go.jsps.kaken.model.impl.ShinsainAuthentication"/>
+  <!-- システム管理者ログイン認証 -->	
+  <service
+    name="systemkanri.logon.service"
+    type="jp.go.jsps.kaken.model.impl.SystemkanriAuthentication"/>
+  <!-- 申請書管理 -->  
+  <service
+    name="shinsei.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.ShinseiMaintenance"/>
+  <!-- PDF変換等 -->	
+  <service
+    name="convert.service"
+    type="jp.go.jsps.kaken.model.impl.Converter"/>
+  <!-- 審査員管理 -->
+  <service
+    name="shinsain.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.ShinsainMaintenance"/>
+  <!-- 審査員割り振り -->
+  <service
+    name="shinsain.warifuri.service"
+    type="jp.go.jsps.kaken.model.impl.ShinsainWarifuri"/>
+  <!-- 審査結果 -->
+  <service
+    name="shinsakekka.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.ShinsaKekkaMaintenance"/>
+  <!-- 審査状況確認 -->
+  <service
+    name="shinsajokyo.kakunin.service"
+    type="jp.go.jsps.kaken.model.impl.ShinsaJokyoKakunin"/>
+  <!-- システム管理者 -->
+  <service
+    name="system.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.SystemMaintenance"/>
+  <!-- データ保管 -->
+  <service
+    name="data.hokan.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.DataHokanMaintenance"/>
+  <!-- ラベル管理 -->
+  <service
+    name="label.value.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.LabelValueMaintenance"/>
+  <!-- コード表 -->
+  <service
+    name="code.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.CodeMaintenance"/>
+  <!-- 関連分野研究者情報管理 -->
+  <service
+    name="kanrenbunya.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.KanrenBunyaMaintenance"/>
+  <!-- パンチデータ -->
+  <service
+    name="punchdata.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.PunchDataMaintenance"/>
+  <!-- チェックリスト -->
+  <service
+    name="checklist.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.CheckListMaintenance"/>
+
+  <!-- ご意見管理 -->
+  <service
+    name="iken.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.IkeninfoMaintenance"/>
+    
+<!-- 2005/10/27 追加 ここから -->
+  <!-- アンケート管理 -->
+  <service
+    name="question.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.QuestionMaintenance"/>
+<!-- ここまで -->
+
+<!-- 2006/06/14 by jzx add start -->
+  <!-- 領域計画書管理 -->
+  <service
+    name="teishutu.maintenance.service"
+    type="jp.go.jsps.kaken.model.impl.TeishutuShoruiMaintenance"/>
+<!-- 2006/06/14 by jzx add end-->
+</service-settings>

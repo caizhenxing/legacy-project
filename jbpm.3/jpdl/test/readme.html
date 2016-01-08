@@ -1,0 +1,22 @@
+<html>
+<body>
+<h1>Test Project Purpose</h1>
+
+<p>This subproject of jpdl contains a test suite that is to be ran inside of 
+the jboss container.  This is to test pieces of jPDL that cannot be tested in 
+plain unit tests like e.g. JMS messaging, ejbs, container transactions, ...
+</p>
+
+<p>The main artifact of this project is a web application.  That web application
+must be deployed to jboss.  After that is done, tests can be ran inside of a 
+client junit testrunner as you normally do in your IDE (e.g. eclipse).
+</p>
+
+<p>In the client test runner, cactus will be configured to talk to a servlet 
+in the web application.  That servlet will execute the tests inside of the 
+container and report back the results to the client.  For more information on 
+this setup, see the apache jakarta cactus documentation.
+</p>
+
+</body>
+</html>

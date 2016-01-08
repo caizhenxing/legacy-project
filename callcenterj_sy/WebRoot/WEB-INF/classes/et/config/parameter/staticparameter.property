@@ -1,0 +1,27 @@
+#####################服务器ip地址############################
+serverip=192.168.0.13
+#####################ivr多语音播报音频文件根路径##########################
+ivrmorevoicepath=Z:\\TTS
+######################TTS_ip###############################
+tts_ip=192.168.0.13
+###################### PollDB url 轮询数据库url ###############################
+PollDBURL=jdbc:jtds:sqlserver://192.168.0.11:1433/callcenterj_sy;tds=8.0;lastupdatecount=true
+###################### PollDB url 轮询数据库username ###############################
+PollDBUSERNAME=callcenterj_sy
+###################### PollDB url 轮询数据库password ###############################
+PollDBPASSWORD=callcenterj_sy
+###################### 录音文件服务器地址 ###############################
+RecordServerAddress=http://192.168.0.14:80
+###################### 语音留言文件的地址 ###############################
+voiceLeaveServerAddress=http://192.168.0.13:80
+#######################################################################
+
+###################### AwardHelp 数据库url ###############################
+AWARDHELPURL=jdbc:jtds:sqlserver://192.168.0.11:1433/callcenterj_sy;tds=8.0;lastupdatecount=true
+####AWARDHELPURL=jdbc:jtds:sqlserver://192.168.1.103:1433/ccj_sy;tds=8.0;lastupdatecount=true
+###################### AwardHelp 数据库username ###############################
+AWARDHELPUSERNAME=callcenterj_sy
+####AWARDHELPUSERNAME=sa
+###################### AwardHelp 数据库password ###############################
+AWARDHELPPASSWORD=callcenterj_sy
+####AWARDHELPPASSWORD=123

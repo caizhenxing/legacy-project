@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	<!-- 班级主表 -->
+     <form-bean name="DriverClassInfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="classid" type="java.lang.String" />
+    	<form-property name="classname" type="java.lang.String" />
+    	<form-property name="classtime" type="java.lang.String" />
+    	<form-property name="classopentime" type="java.lang.String" />
+    	<form-property name="classaddress" type="java.lang.String" />
+    	<form-property name="classexamtime" type="java.lang.String" />
+    	<form-property name="classsign" type="java.lang.String" />
+	 </form-bean>
+  	<!-- 班级成员表 -->
+     <form-bean name="DriverStudentInfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="id" type="java.lang.String" />
+    	<form-property name="classid" type="java.lang.String" />
+    	<form-property name="classstuid" type="java.lang.String" />
+    	<form-property name="classgrade" type="java.lang.String" />
+    	<form-property name="classopentime" type="java.lang.String" />
+	 </form-bean>
+	   	<!-- 成绩表 -->
+     <form-bean name="DriverGradeInfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="key" type="java.lang.String" />
+    	<form-property name="classid" type="java.lang.String" />
+    	<form-property name="classstuid" type="java.lang.String" />
+    	<form-property name="gradename" type="java.lang.String" />
+    	<form-property name="gradevalue" type="java.lang.String" />
+	 </form-bean>
+	 <!-- 农用机械驾驶员信息表 -->
+	 <form-bean name="AgroDriverInfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="driverid" type="java.lang.String" />
+    	<form-property name="drivername" type="java.lang.String" />
+    	<form-property name="driversex" type="java.lang.Integer" />
+    	<form-property name="driverdate" type="java.lang.Date" />
+    	<form-property name="driverqq" type="java.lang.String" />
+    	<form-property name="driveremail" type="java.lang.String" />
+    	<form-property name="driveraddress" type="java.lang.String" />
+    	<form-property name="driverphone" type="java.lang.String" />
+    	<form-property name="drivercompany" type="java.lang.String" />
+    	<form-property name="driverimage" type="java.lang.String" />
+    	<form-property name="driverlicence" type="java.lang.String" />
+    	<form-property name="drivercode" type="java.lang.String" />
+    	<form-property name="drivertype" type="java.lang.String" />
+    	<form-property name="drivertime" type="java.lang.Date" />
+    	<form-property name="delmark" type="java.lang.String" />
+	 </form-bean>
+	 <!-- 驾驶员 -->
+	 <form-bean name="GovDriverInfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="driverId" type="java.lang.String" />
+    	<form-property name="driverName" type="java.lang.String" />
+    	<form-property name="driverSex" type="java.lang.String" />
+    	<form-property name="driverDate" type="java.lang.String" />
+    	<form-property name="driverQq" type="java.lang.String" />
+    	<form-property name="driverEmail" type="java.lang.String" />
+    	<form-property name="driverAddress" type="java.lang.String" />
+    	<form-property name="driverPhone" type="java.lang.String" />
+    	<form-property name="driverCompany" type="java.lang.String" />
+    	<form-property name="driverImage" type="java.lang.String" />
+    	<form-property name="driverLicence" type="java.lang.String" />
+    	<form-property name="driverCode" type="java.lang.String" />
+    	<form-property name="driverType" type="java.lang.String" />
+    	<form-property name="driverTime" type="java.lang.String" />
+    	<form-property name="delMark" type="java.lang.String" />
+    	<form-property name="remark" type="java.lang.String" />
+    	<!-- 业务类型 -->
+    	<form-property name="oper_type" type="java.lang.String" />
+	 </form-bean>
+	 <!-- 业务 -->
+	 <form-bean name="GovDriverOperBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="idflag" type="java.lang.String"></form-property>
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="driverId" type="java.lang.String" />
+			<form-property name="motorId" type="java.lang.String" />
+			<form-property name="operType" type="java.lang.String" />
+			<form-property name="operOld" type="java.lang.String" />
+			<form-property name="operNew" type="java.lang.String" />
+			<form-property name="operTime" type="java.lang.String" />
+			<form-property name="fdt" type="java.lang.String" />
+			<form-property name="ldt" type="java.lang.String" />
+			<form-property name="operManager" type="java.lang.String" />
+			<form-property name="operUser" type="java.lang.String" />
+			<form-property name="operRemark" type="java.lang.String" />	
+		</form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+		<!-- 司机信息操作 -->
+		<action attribute="GovDriverInfoBean" 
+				name="GovDriverInfoBean" 
+				scope="request" 
+				path="/DriverOper" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="success" path="/operMyAlbum.jsp"/>				
+			<forward name="error" path="/operMyAlbum.jsp"/>
+			<forward name="govdrivermain" path="/govmanage/govDrivMain.jsp"/>
+		</action>
+		
+		<action attribute="GovDriverOperBean" 
+				name="GovDriverOperBean" 
+				scope="request" 
+				path="/govDrivOperManage/GovDriverOper" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main" path="/govDrivOperManage/message/main.jsp"/>	
+			<forward name="success" path="/govDrivOperManage/message/success.jsp"/>				
+			<forward name="error" path="/govDrivOperManage/message/error.jsp"/>
+			<forward name="govdrivermain" path="/govmanage/govDrivMain.jsp"/>
+		</action>		
+	</action-mappings>
+  
+</struts-config>
+

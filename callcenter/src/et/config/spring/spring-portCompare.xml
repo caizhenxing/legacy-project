@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean name="/pcc/portCompare"
+		class="et.bo.pcc.portCompare.action.PortCompareAction" singleton="false">			
+		<property name="portCompareService">
+			<ref bean="PortCompareService" />
+		</property>			
+	</bean>
+<!--  service begin -->	
+<bean id="PortCompareService"
+		class="et.bo.pcc.portCompare.service.impl.PortCompareServiceImpl" singleton="true">
+		<property name="cts">
+				<ref bean="ClassTreeService" />
+		</property>	
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>	
+<!--  service end   -->
+</beans>

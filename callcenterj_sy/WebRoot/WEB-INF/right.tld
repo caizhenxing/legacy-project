@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib
+  PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+         "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+
+<taglib>
+
+  <tlib-version>1.0</tlib-version>
+  <jsp-version>1.2</jsp-version>
+  <short-name>right</short-name>
+  <description>
+    JSP tag library containing custom GUI controls used in the
+    forecast Application,made by zhaoyifei.
+  </description>
+
+  <!-- ========== Right Tag ======================================== -->
+  
+  <tag>
+
+    <name>right</name>
+    <tag-class>et.bo.common.taglib.ForumRightTag</tag-class>
+    <body-content>empty</body-content>
+    <description>
+     * 权限:
+	 * guest:只能浏览帖子
+	 * forbidden：收藏、好友
+	 * normal：回复、发帖、收藏、好友
+	 * author：编辑
+	 * 
+	 * manager:精华、置顶、推荐、转帖、删除、封人
+    </description>
+
+    <attribute>
+      <name>action</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        
+      </description>
+    </attribute>
+
+   
+
+    
+
+    <attribute>
+      <name>css</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        The CSS style 
+      </description>
+    </attribute>
+
+  
+    <attribute>
+      <name>beanName</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        
+      </description>
+    </attribute>
+    
+    <attribute>
+      <name>propertyAuthor</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        
+      </description>
+    </attribute>
+    
+    <attribute>
+      <name>propertyId</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        
+      </description>
+    </attribute>
+	<attribute>
+      <name>path</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        图片路径
+      </description>
+    </attribute>
+  </tag>
+
+
+	<tag>
+
+    <name>totalright</name>
+    <tag-class>et.bo.common.taglib.ForumRightTagTop</tag-class>
+    <body-content>empty</body-content>
+    <description>
+     * 权限:(在列表页上面显示的部分)
+	 * guest:只能浏览帖子
+	 * forbidden：收藏、好友
+	 * normal：回复、发帖、收藏、好友
+	 * author：编辑
+	 * 
+	 * manager:精华、置顶、推荐、转帖、封人
+    </description>
+
+    <attribute>
+      <name>action</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        
+      </description>
+    </attribute>
+
+   
+
+    
+
+    <attribute>
+      <name>css</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        The CSS style 
+      </description>
+    </attribute>
+
+  
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        
+      </description>
+    </attribute>
+    <attribute>
+      <name>path</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        图片路径
+      </description>
+    </attribute>
+   
+
+  </tag>
+  <tag>
+
+    <name>stateOnline</name>
+    <tag-class>et.bo.common.taglib.StateOnlineTag</tag-class>
+    <body-content>empty</body-content>
+    <description>
+     *显示用户是否在线，然后现实相应的图标 
+     
+    </description>
+
+    <attribute>
+      <name>beanName</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        
+      </description>
+    </attribute>
+    
+    <attribute>
+      <name>propertyAuthor</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        
+      </description>
+    </attribute>
+
+   
+
+    
+
+    <attribute>
+      <name>online</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        在线图标
+      </description>
+    </attribute>
+
+  
+    <attribute>
+      <name>outline</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        下线图标
+      </description>
+    </attribute>
+    
+    <attribute>
+      <name>path</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        图片路径
+      </description>
+    </attribute>
+   
+
+  </tag>
+  
+  
+  
+  <tag>
+
+    <name>floorNum</name>
+    <tag-class>et.bo.common.taglib.FloorNumTag</tag-class>
+    <body-content>empty</body-content>
+    <description>
+     *显示当前帖子处在第几楼
+     
+    </description>
+
+     <attribute>
+      <name>page</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        分页类的名字
+      </description>
+    </attribute>   
+        
+    <attribute>
+      <name>num</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        当前页的楼号
+      </description>
+    </attribute>
+   
+
+  </tag>
+  
+  <tag>
+
+    <name>content</name>
+    <tag-class>et.bo.common.taglib.ContentTag</tag-class>
+    <body-content>empty</body-content>
+    <description>
+     *显示当前帖子内容
+     
+    </description>
+
+     <attribute>
+      <name>name</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        类的名字
+      </description>
+    </attribute>   
+        
+    <attribute>
+      <name>property</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        类属性
+      </description>
+    </attribute>
+   <attribute>
+      <name>pic</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        图片-图片名
+      </description>
+    </attribute>
+	 <attribute>
+      <name>mov</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        影视-图片名
+      </description>
+    </attribute>
+     <attribute>
+      <name>swf</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        flash-图片名
+      </description>
+    </attribute>
+     <attribute>
+      <name>other</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        其他-图片名
+      </description>
+    </attribute>
+      <attribute>
+      <name>style</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <description>
+        图片-区域
+      </description>
+    </attribute>
+  </tag>
+  
+</taglib>

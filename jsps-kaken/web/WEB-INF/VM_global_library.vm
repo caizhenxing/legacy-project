@@ -1,0 +1,714 @@
+## Display all queued Struts errors
+#macro (errorMarkup)
+    #if ($errors.exist() )
+    <font color="#FF3333"><b>以下のエラーがあります。<ul>
+        #foreach ($e in $errors.all )
+			<li>$e</li>
+        #end
+    </ul></b></font>
+    #end
+#end                    
+
+
+## Display error exists Message
+#macro (errorExistMsg)
+    #if ($errors.exist() )
+    <font color="#FF3333"><b>
+      エラーが発生しました。<br>
+      エラー内容は、各入力項目の上に表示されています。<br>
+      ファイルを選択していた場合は、再度選択し直してください。<br>
+    </b></font><br>
+    #end
+#end                    
+
+##2005/03/28 追加 -------------------------------------ココから
+##理由 基盤事業ではファイル選択はしないため、エラーメッセージから除去
+## Display error exists Message
+#macro (errorExistMsgKiban)
+    #if ($errors.exist() )
+    <font color="#FF3333"><b>
+      エラーが発生しました。<br>
+      エラー内容は、各入力項目の上に表示されています。<br>
+    </b></font><br>
+    #end
+#end                    
+##2005/03/28 追加 -------------------------------------ここまで
+
+## 20050525 Start
+#macro (errorExistMsgTokutei)
+    #if ($errors.exist() )
+    <font color="#FF3333"><b>
+      特定領域情報の入力でエラーが発生しました。<br>
+      エラー内容は、各入力項目の上に表示されています。<br>
+## ADD START 2007-07-11 BIS　王志安
+      ファイルを選択していた場合は、再度選択し直してください。<br>
+## ADD END 2007-07-11 BIS　王志安
+    </b></font><br>
+    #end
+#end                    
+## Horikoshi End
+
+## Display all queued Struts errors for a global error
+#macro (errorMarkupForGlobalError)
+	#set($property1 = "org.apache.struts.action.GLOBAL_ERROR")
+	#set($property2 = "GLOBAL_ERROR")
+    #if ( ($errors.exist($property1)) || ($errors.exist($property2)) )
+        <font color="#FF3333"><ul><b>
+        #foreach ($er in $errors.get($property1))
+            <li>$er</li>
+        #end
+        #foreach ($er in $errors.get($property2))
+            <li>$er</li>
+        #end
+        </b></ul></font>
+    #end
+#end                    
+
+## Display all queued Struts errors for a particular property
+#macro (errorMarkupForProperty $property)
+    #if ($errors.exist($property) )
+        <font color="#FF3333"><b>
+        #foreach ($er in $errors.get($property))
+            <li>$er</li>
+        #end
+        </b></font>
+    #end
+#end                    
+
+##ADD START 2007-07-02 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する共通メソッドとする。
+#macro (errorColorForProperty $property)
+    #if ($errors.exist($property) )
+        style="background-color:#FFCCCC"
+    #end
+#end
+##ADD END 2007-07-02 BIS 劉多良 
+
+/**
+ * $property指定する項目が入っていなければ、メッセージを出力する。
+ * @param $property	プロパティ
+ */
+#macro (errorMarkupForNonProperty $property)
+	#if (!$errors.exist($property) )
+	    #if ($errors.exist() )
+	    <font color="#FF3333"><b>以下のエラーがあります。:<ul>
+	        #foreach ($e in $errors.all )
+				<li>$e</li>
+	        #end
+	    </ul></b></font>
+	    #end
+	#end
+#end
+
+
+/**
+ * 月リストを作成する。(1～12)
+ * @param selected	選択値
+ */
+#macro (monthOptions $selected)
+    #foreach( $month in $[1..12] )
+        #if($velocityCount.toString() == $selected )
+	        <option selected>
+        #else
+            <option>
+        #end
+            $velocityCount</option>
+    #end 
+#end   
+
+/**
+ * 日リストを作成する。(1～31)
+ * @param selected	選択値
+ */
+#macro (dayOptions $selected)
+    #foreach( $month in $[1..31] )
+        #if($velocityCount.toString() == $selected )
+             <option selected>
+        #else
+            <option>
+        #end
+             $velocityCount</option>
+    #end 
+#end
+
+/**
+ * 回数リストを作成する。(1～9)
+ * @param selected	選択値
+ */
+#macro (kaisuOptions $selected)
+    #foreach( $month in $[1..9] )
+        #if($velocityCount.toString() == $selected )
+             <option selected>
+        #else
+            <option>
+        #end
+             $velocityCount</option>
+    #end 
+#end
+
+/**
+ * 年度リストを作成する。(16～24)
+ * @param selected	選択値
+ */
+#macro (nendoOptions $selected)
+    #foreach( $month in $[16..24] )
+        #if($month.toString() == $selected )
+             <option selected>
+        #else
+            <option>
+        #end
+             $month</option>
+    #end 
+#end
+
+/**
+ * 期間（年）リストを作成する。(0～9)
+ * @param selected	選択値
+ */
+#macro (nenOptions $selected)
+    #foreach( $month in $[0..9] )
+        #if($month.toString() == $selected )
+             <option selected>
+        #else
+            <option>
+        #end
+             $month</option>
+    #end 
+#end
+
+/**
+ * 期間（ヶ月）リストを作成する。(0～11)
+ * @param selected	選択値
+ */
+#macro (tsukiOptions $selected)
+    #foreach( $month in $[0..11] )
+        #if($month.toString() == $selected )
+             <option selected>
+        #else
+            <option>
+        #end
+             $month</option>
+    #end 
+#end
+
+/**
+ * 期間（日）リストを作成する。(1～30)
+ * @param selected	選択値
+ */
+#macro (hiOptions $selected)
+    #foreach( $month in $[1..30] )
+        #if($velocityCount.toString() == $selected )
+             <option selected>
+        #else
+            <option>
+        #end
+             $velocityCount</option>
+    #end 
+#end
+
+/**
+ * 選択リストを作成する。
+ * @param list		optionタグを作成するためのリスト
+ * @param selected	選択値
+ */
+#macro (showOptions $list $selected )
+    #foreach($option in $list)
+        #if($option.value == $selected )
+            <option value="$option.value" selected>
+        #else
+            <option value="$option.value">
+        #end
+        $!escape.getText($option.label)</option>
+    #end
+#end
+
+
+/**
+ * 選択リストを作成する。（先頭は空白になる）
+ * @param list		optionタグを作成するためのリスト
+ * @param selected	選択値
+ */
+#macro (showOptionsWithEmpty $list $selected )
+	<option></option>
+    #foreach($option in $list)
+        #if($option.value == $selected )
+            <option value="$option.value" selected>
+        #else
+            <option value="$option.value">
+        #end
+        $!escape.getText($option.label)</option>
+    #end
+#end
+
+
+##ADD START 2007-07-11 BIS 劉多良 
+/**
+ * 選択リストを作成する。（先頭に空白がない）
+ * @param list		optionタグを作成するためのリスト
+ * @param selected	選択値
+ */
+#macro (showOptionsWithoutEmpty $list $selected )
+	#foreach($option in $list)
+        #if($option.value == $selected )
+            <option value="$option.value" selected>
+        #else
+            <option value="$option.value">
+        #end
+        $!escape.getText($option.label)</option>
+    #end
+#end
+##ADD END 2007-07-11 BIS 劉多良 
+
+
+/**
+ * 選択ラジオ(横並び)を作成する。
+ * @param list		optionタグを作成するためのリスト
+ * @param selected	選択値
+ */
+#macro (showRadios $name $list $selected )
+    #foreach($option in $list)
+        #if($option.value == $selected )
+        	<input type="radio" value="$option.value" name="$name" checked>
+        #else
+        	<input type="radio" value="$option.value" name="$name">
+        #end
+        $!escape.getText($option.label)
+    #end
+#end
+
+/**
+ * 選択ラジオ(縦並び)を作成する。
+ * @param list		optionタグを作成するためのリスト
+ * @param selected	選択値
+ */
+#macro (showRadios2 $name $list $selected )
+    #foreach($option in $list)
+        #if($option.value == $selected )
+        	<input type="radio" value="$option.value" name="$name" checked>
+        #else
+        	<input type="radio" value="$option.value" name="$name">
+        #end
+        $!escape.getText($option.label)<br>
+    #end
+#end
+
+/**
+ * 選択ラジオ(横並び)を作成する。表示する項目を限定する。
+ * @param list		optionタグを作成するためのリスト
+ * @param selected	選択値
+ * @param value		非表示にする値
+ */
+#macro (showRadiosLimited $name $list $selected $value)
+    
+    #foreach($option in $list)
+		##非表示にする値と一致しない場合のみ表示
+		#if($option.value != $value)
+	        #if($option.value == $selected)
+	        	<input type="radio" value="$option.value" name="$name" checked>
+	        #else
+	        	<input type="radio" value="$option.value" name="$name">
+	        #end
+	        $!escape.getText($option.label)
+    	#end
+    #end
+
+#end
+
+/**
+ * 選択ラジオ(横並び)を作成する。
+ * 選択値が初期状態の場合（nullまたは''の場合）デフォルト値を選択させ、さらに表示する項目を限定する。
+ * @param list		optionタグを作成するためのリスト
+ * @param selected	選択値
+ * @param value		非表示にする値
+ */
+#macro (showRadiosDefaultLimited $name $list $selected $default $value)
+	
+	##選択値が初期状態の場合、選択値にデフォルト値をセット
+	#if(!$selected || $selected == '')
+		#set( $selected = $default )
+	#end
+
+	#showRadiosLimited($name $list $selected $value)
+	
+#end
+
+/**
+ * 選択ラジオ(横並び)を作成する。選択値が初期状態の場合（nullまたは''の場合）デフォルト値を選択させる。
+ * @param list		optionタグを作成するためのリスト
+ * @param selected	選択値
+ * @param default	デフォルト値
+ */
+#macro (showRadiosDefault $name $list $selected $default)
+	
+	##選択値が初期状態の場合、選択値にデフォルト値をセット
+	#if(!$selected || $selected == '')
+		#set( $selected = $default )
+	#end
+
+    #showRadios($name $list $selected)
+    
+#end
+
+/**
+ * 審査結果(ABC)に該当する文字列を返す。
+ * @param kekkaAbc  審査結果ABC
+ */
+#macro (getShinsaKekkaABC $kekkaABC )
+	#if($kekkaABC == "A")
+		A：積極的に推薦する
+	#elseif($kekkaABC == "B")
+		B：推薦する
+	#elseif($kekkaABC == "C")
+		C：推薦には消極的
+	#elseif($kekkaABC == "F")	
+		F：推薦しがたい
+	#else
+	#end	
+#end
+
+/**
+ * 専門領域チェックに該当する文字列を返す。
+ * @param senmonChk  専門領域チェック
+ */
+#macro (getSenmonChk $senmonChk )
+	#if($senmonChk == "1")
+		専門領域に直接関連しない
+	#elseif($senmonChk == "0")
+		
+	#end	
+#end
+
+/**
+ * 対象に該当する文字列を返す。
+ * @param taishoId  対象
+ */
+#macro (getTaishoId $taishoId )
+	#if($taishoId == "2")
+		所属研究機関向け
+	#elseif($taishoId == "4")
+		審査員向け
+	#elseif($taishoId == "5")
+		センター研究員向け	
+	#end	
+#end
+
+/**
+ * 文字数リストを作成する。(6～10)
+ * @param selected	選択値
+ */
+#macro (mojisuOptions $selected)
+    #foreach( $month in $[6..10] )
+        #if($month.toString() == $selected )
+             <option selected>
+        #else
+            <option>
+        #end
+             $month</option>
+    #end 
+#end
+
+/**
+ * 2次審査結果に該当する文字列を返す。
+ * @param kekka2 2次審査結果
+ */
+#macro (getShinsaKekka2 $kekka2 )
+	#if($kekka2 == "1")
+		採択
+	#elseif($kekka2 == "2")
+		採用候補
+	#elseif($kekka2 == "3")
+		補欠1
+	#elseif($kekka2 == "4")	
+		補欠2
+	#elseif($kekka2 == "5")	
+		補欠3
+	#elseif($kekka2 == "6")	
+		補欠4
+	#elseif($kekka2 == "7")	
+		補欠5
+	#elseif($kekka2 == "8")	
+		不採択
+	#else
+	#end	
+#end
+
+/**
+ * 分科細目番号の文字列を作成する。
+ * @param list		分科細目番号
+ */
+#macro (createSaimokuStr $list )
+    #set( $count = 0 )
+    #foreach($saimoku in $list)
+        $saimoku
+		#if($count < 4)
+			#set( $count = $count + 1 )
+		#else
+			<br>
+			#set( $count = 0 )
+		#end
+	#end
+#end
+
+/**
+ * 審査状況に該当する文字列を返す。
+ * @param shinsaJokyo 審査状況
+ */
+#macro (getShinsaJokyo $shinsaJokyo)
+	#if($shinsaJokyo == "0")
+		審査未完了
+	#elseif($shinsaJokyo == "1")
+		審査完了
+	#end	
+#end
+
+/**
+ * チェックボックス(縦並び)を作成する。
+ * @param jigyoNameList	optionタグを作成するためのリスト
+ * @param valueList		選択値リスト
+ */
+#macro (createChkbox $jigyoNameList $valueList )
+    #foreach($list in $jigyoNameList)
+        #set( $count = $velocityCount - 1)
+        #set( $chk = "")
+        #if($shinseiFormat.checkInList($valueList, $!list.value))
+            #set( $chk = " checked")
+        #end
+     <input type="checkbox" name="values[$count]" value="$!escape.getText($!list.value)"$chk> $!escape.getText($!list.label)<br>
+    #end
+#end
+
+/**
+ * チェックボックス(縦並び)を作成する。
+ * ネームは指定した文字列を使用する。
+ * @param jigyoNameList	optionタグを作成するためのリスト
+ * @param valueList		選択値リスト
+ * @param name			ネーム
+ */
+#macro (createChkboxName $jigyoNameList $valueList $naem)
+    #foreach($list in $jigyoNameList)
+        #set( $count = $velocityCount - 1)
+        #set( $chk = "")
+        #if($shinseiFormat.checkInList($valueList, $!list.value))
+            #set( $chk = " checked")
+        #end
+     <input type="checkbox" id="$naem" name="$!naem[$count]" value="$!escape.getText($!list.value)"$chk> $!escape.getText($!list.label)<br>
+	#end
+#end
+
+##2006/07/10 苗　追加ここから
+/**
+ * チェックボックス(縦並び)を作成する。
+ * ネームは指定した文字列を使用する。
+ * @param jigyoNameList	optionタグを作成するためのリスト
+ * @param valueList		選択値リスト
+ * @param name			ネーム
+ */
+#macro (createChkboxName1 $jigyoNameList $valueList $naem)
+    #foreach($list in $jigyoNameList)
+        #set( $count = $velocityCount - 1)
+        #set( $chk = "")
+        #if($shinseiFormat.checkInList($valueList, $!list.value))
+            #set( $chk = " checked")
+        #end
+     <input type="checkbox" id="$naem" name="$!naem[$count]" value="$!escape.getText($!list.value)"$chk/> $!escape.getText($!list.label)<br>
+     <input type="hidden" id="checkedList" name="checkedList[$count]" value="">
+	#end
+#end
+##2006/07/09　苗　追加ここまで
+
+/**
+ * 業務担当者用アクセス制御。
+ * 第4引数の担当事業の中に、第5引数の事業区分が含まれていた場合は
+ * 指定の文字列がHTMLリンクとなる。
+ * 含まれていなかった場合は、文字列表示のみとなる。
+ * 第5引数は CommonSettings.vm 内の「JIGYO_KUBUN_**」を渡すこと。
+ * 
+ * 「JIGYO_KUBUN_NONE」-> 無条件にリンクとならない。
+ * 「JIGYO_KUBUN_ANY」 -> どれか１つでも存在していたらリンクとなる。
+ * 「JIGYO_KUBUN_ALL」 -> 無条件にリンクとなる。
+ * 
+ * @param  url              リンク先
+ * @param  target           表示ターゲット
+ * @param  linkName         リンクとなる文字列
+ * @param  tantoJigyoKubun  担当している事業区分
+ * @param  targetJigyoKubun ターゲットとなる事業区分
+ */
+#macro (accessKanriLink $url $target $linkName $tantoJigyoKubun $targetJigyoKubun)
+  
+  ##無条件で文字列
+  #if($targetJigyoKubun == $JIGYO_KUBUN_NONE)
+  	$linkName
+  ##無条件でリンク
+  #elseif($targetJigyoKubun == $JIGYO_KUBUN_ALL)
+	    <a href="$url" target="$target">$linkName</a>
+  ##どれか１つでも存在していたらリンク
+  #elseif($targetJigyoKubun == $JIGYO_KUBUN_ANY)
+  		  #if($tantoJigyoKubun.contains($JIGYO_KUBUN_GAKUSOU_HIKOUBO))
+			      <a href="$url" target="$target">$linkName</a>
+  		  #elseif($tantoJigyoKubun.contains($JIGYO_KUBUN_GAKUSOU_KOUBO))
+			      <a href="$url" target="$target">$linkName</a>
+  		  #elseif($tantoJigyoKubun.contains($JIGYO_KUBUN_TOKUSUI))
+			      <a href="$url" target="$target">$linkName</a>
+  		  #elseif($tantoJigyoKubun.contains($JIGYO_KUBUN_KIBAN))
+  			    <a href="$url" target="$target">$linkName</a>
+  		  #elseif($tantoJigyoKubun.contains($JIGYO_KUBUN_TOKUTEI))
+  			    <a href="$url" target="$target">$linkName</a>
+  		  #elseif($tantoJigyoKubun.contains($JIGYO_KUBUN_WAKATE_START))
+  			    <a href="$url" target="$target">$linkName</a>
+  		  #elseif($tantoJigyoKubun.contains($JIGYO_KUBUN_SHOKUSHINHI))
+  			    <a href="$url" target="$target">$linkName</a>
+  		  #else
+		  	    $linkName
+		  #end
+  ##ターゲットとなる事業区分ならばリンク
+  #else
+  		  #if($tantoJigyoKubun.contains($targetJigyoKubun))
+  			    <a href="$url" target="$target">$linkName</a>
+  		  #else
+		  	    $linkName
+		  #end
+  #end
+  
+#end
+
+
+
+/**
+ * 業務担当者用アクセス制御。
+ * 第4引数の担当事業の中に、第5引数の事業区分が１つでも含まれていた場合は
+ * 指定の文字列がHTMLリンクとなる。
+ * 含まれていなかった場合は、文字列表示のみとなる。
+ * 第5引数は CommonSettings.vm 内の「JIGYO_KUBUN_**」の配列を渡すこと。
+ * 本マクロでは以下の特殊変数については考慮しない。
+ * 特殊変数を使用する場合は accessKanriLink を使用すること。
+ * 
+ * 「JIGYO_KUBUN_NONE」-> 無視
+ * 「JIGYO_KUBUN_ANY」 -> 無視
+ * 「JIGYO_KUBUN_ALL」 -> 無視
+ * 
+ * @param  url                   リンク先
+ * @param  target                表示ターゲット
+ * @param  linkName              リンクとなる文字列
+ * @param  tantoJigyoKubun       担当している事業区分
+ * @param  targetJigyoKubunArray ターゲットとなる事業区分の配列
+ */
+#macro (accessKanriLinkArray $url $target $linkName $tantoJigyoKubun $targetJigyoKubunArray)
+	
+	  ##繰り返し判断する
+	  #set ($result = "false")
+	  #foreach ($targetJigyoKubun in $targetJigyoKubunArray)
+		    #if($tantoJigyoKubun.contains($targetJigyoKubun))
+			      #set ($result = "true")
+		    #end
+	  #end
+	
+	  ##１つでも該当する事業区分が存在していた場合はリンクとする
+	  #if($result == "true")
+		    #accessKanriLink($url $target $linkName $tantoJigyoKubun $JIGYO_KUBUN_ALL)
+	  #else
+		    #accessKanriLink($url $target $linkName $tantoJigyoKubun $JIGYO_KUBUN_NONE)
+	  #end
+	
+#end
+
+
+/**
+ * 審査員向け審査担当分一覧。
+ * 件数／総件数の割合を返す。
+ * 
+ * @param  num1                件数
+ * @param  num2                総件数
+ */
+#macro (wariai $num1 $num2)
+
+	#if(!$num1)
+		0%（0/$num2件）
+	#else
+		$math.mul($math.div($num1, $num2), 100).intValue()%（$num1/$num2件）
+		
+	#end
+#end
+
+
+## 20050609 Start チェックボックス
+/**
+ * チェックボックスのチェックを判別する
+ * @param value		基準（True）となる値
+ * @param checked	判定する値
+ * @param objName	オブジェクト
+ * @param strText	表示テキスト
+ */
+#macro(ChkBoxCheck $value $checked)
+	#if(!$checked)
+	#else
+		#if($value == $checked)
+			 checked
+		#end
+	#end
+#end
+## Horikoshi End
+
+##2005/08/17 入力可能の部局コードであるかチェック
+#macro(ChkBukyokuCd $bukyoCd )
+	#if($bukyoCd == "709")
+	#elseif($bukyoCd == "875")
+	#elseif($bukyoCd == "899")
+##2006/06/30 苗　追加ここから　理由は：部局コードのその他に、「901」を追加
+	#elseif($bukyoCd == "901")
+##2006/06/30 苗　追加ここまで　
+	#elseif($bukyoCd == "903")
+	#elseif($bukyoCd == "913")
+	#elseif($bukyoCd == "999")
+	#else
+		##disabled" テスト項目が選択した状態にBSキーを押すと前画面に戻る為コメントする2005/8/26
+	#end
+#end
+
+##2005/08/17 入力可能の職種コードであるかチェック
+#macro(ChkShokuCd $shoCd )
+	#if($shoCd == "24")
+	#elseif($shoCd == "25")
+	#else
+		##disabled
+	#end
+#end
+
+
+##2005.11.14 iso チェックボックス表示用
+#macro(LabelChkBox $labelList )
+	#if($labelList.size() == 0)
+		$!escape.getLabel("")
+	#else
+		#foreach($label in $labelList)
+			$!escape.getText($!label)<br>
+		#end
+	#end
+#end
+
+#macro (getShinsaKekkaTen1 $kekkaTen )
+	#if($kekkaTen == "1")
+		1:劣っている
+	#elseif($kekkaTen == "2")
+		2:やや劣っている
+	#elseif($kekkaTen == "3")
+		3:良好である
+	#elseif($kekkaTen == "4")	
+		4:優れている
+	#end	
+#end
+#macro (getJinken $jinken )
+	#if($jinken == "0")
+		問題ない　
+	#elseif($jinken == "2")
+		△
+	#elseif($jinken == "3")
+		×
+	
+	#end	
+#end
+
+#macro (BackColor $errMap $item)
+   #if($errMap.containsKey("$item"))
+      style="background-color:#ffcccc"
+   #end 
+#end

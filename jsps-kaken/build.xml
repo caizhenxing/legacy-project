@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<project name="JSPS Webapp" default="war" basedir=".">
+
+<!--
+  *********************************************************************************
+  WEBサーバ用warファイルビルドファイル 
+  
+  ?@Tomcat停止
+  ?Aディレクトリ/usr/local/tomcat/webapps/jsps/　削除
+  ?Bディレクトリ/usr/local/tomcat/webapps/ に作成した/target/jsps.warをコピー
+  ?CTomcat起動
+  
+  ID RCSfile="$RCSfile: build.xml,v $"
+  Revision="$Revision: 1.1 $"
+  Date="$Date: 2007/06/28 02:07:18 $"
+  
+  *********************************************************************************
+-->
+
+
+
+<!-- 作業フォルダ -->
+<property name="webapp.dist"            value="target" />
+<!-- JSPS -->
+<property name="webapp.name"            value="kaken" />
+<property name="webapp.target"          value="${webapp.dist}/${webapp.name}" />
+<property name="webapp.jar"             value="${webapp.target}/WEB-INF/lib/${webapp.name}.jar"/>
+
+<!-- 申請者・審査員・アンケート -->
+<property name="webapp.default.name"    value="kaken1" />
+<property name="webapp.default.war"     value="${webapp.dist}/${webapp.default.name}.war" />
+
+<!-- 所属機関・部局 -->
+<property name="webapp.shozoku.name"    value="kaken2" />
+<property name="webapp.shozoku.war"     value="${webapp.dist}/${webapp.shozoku.name}.war" />
+
+<!-- WEBフォルダ -->
+<property name="webapp.web"             value="./web/" />
+<property name="webapp.web-inf"         value="${webapp.web}/WEB-INF" />
+<property name="webapp.classes"         value="${webapp.web}/WEB-INF/classes"/>
+<property name="webapp.libs"            value="${webapp.web}/WEB-INF/lib.web/" />
+<property name="webapp.web.xml"         value="${webapp.web}/WEB-INF/web.web.xml" />
+<property name="webapp.web.shozoku.xml" value="${webapp.web}/WEB-INF/web.shozoku.xml" />
+
+
+<!-- ========== Executable Targets ======================================== -->
+
+<!-- 前処理 -->
+<target name="prepare" depends="clean"
+        description="Prepare target directory">
+  <echo    message="Processing webapp ${webapp.name}"/>
+  <mkdir   dir="${webapp.target}" />
+  <mkdir   dir="${webapp.target}/WEB-INF" />
+  <mkdir   dir="${webapp.target}/WEB-INF/classes" />
+  <mkdir   dir="${webapp.target}/WEB-INF/lib" />
+  <mkdir   dir="${webapp.target}/WEB-INF/logs" />
+</target>
+
+<!-- ライブラリの追加 -->
+<target name="libs" depends="prepare" description="Copy dependent libraries">
+  <echo    message="Processing webapp ${webapp.name}"/>
+  <copy  todir="${webapp.target}/WEB-INF/lib">
+    <fileset dir="${webapp.libs}" includes="*.jar"/>
+  </copy>
+</target>
+
+<!-- jarの作成 -->
+<target name="jar" depends="libs" description="Copy webapp.jar file">
+  <echo    message="Processing webapp ${webapp.name}"/>
+  <jar jarfile="${webapp.jar}" basedir="${webapp.classes}"/>
+</target>
+
+<!-- html等の追加 -->
+<target name="static" depends="jar" description="Copy static files">
+  <echo    message="Processing webapp ${webapp.name}"/>
+
+  <copy  todir="${webapp.target}">
+    <fileset dir="${webapp.web}">
+      <exclude name="**/WEB-INF/CommonSettings*.vm"/>    
+      <exclude name="**/WEB-INF/classes/"/>
+      <exclude name="**/WEB-INF/lib*/**"/>
+      <exclude name="**/WEB-INF/web*.xml"/>
+      <exclude name="index.vm"/>
+      <!-- WEB公開しないものは除く-->
+      <exclude name="gyomu/**"/>
+      <exclude name="**/*gyomu.xml"/>
+      <exclude name="system/**"/>
+      <exclude name="**/*system.xml"/>
+      <exclude name="work/**"/>
+    </fileset>
+  </copy>
+
+  <!-- パッチのコピー -->
+  <copy  todir="${webapp.target}">
+    <fileset dir="${webapp.web}">
+      <include name="**/WEB-INF/classes/org/**"/>
+    </fileset>
+  </copy>
+
+  <!-- 変更しそうな設定ファイルとログ設定ファイルのコピー -->
+  <copy file="${webapp.classes}/ApplicationSettings.properties" todir="${webapp.target}/WEB-INF/classes/" />
+  <copy file="${webapp.web-inf}/CommonSettings.web.vm" tofile="${webapp.target}/WEB-INF/CommonSettings.vm" />
+</target>
+
+<!-- warの作成 -->
+<target name="war" depends="static">
+  
+  <!-- 申請者・審査員・アンケート -->
+  <echo    message="building war... ${webapp.default.name}"/>
+  <copy file="${webapp.classes}/log4j.web.properties" tofile="${webapp.target}/WEB-INF/classes/log4j.properties" />
+  <replace file="${webapp.target}/WEB-INF/classes/log4j.properties" value="${webapp.default.name}">
+    <replacetoken>@FILE_NAME@</replacetoken>
+  </replace>
+  <war warfile="${webapp.default.war}" webxml="${webapp.web.xml}">
+   <fileset dir="${webapp.target}">
+    <!-- 所属機関・部局を除く -->
+    <exclude name="shozoku/**"/>
+    <exclude name="bukyoku/**"/>
+   	<!-- アンケート機能の所属機関・部局は、残すよう細かく設定 -->
+    <exclude name="**/*config-shozoku.xml"/>
+    <exclude name="**/validation-shozoku.xml"/>
+    <exclude name="**/*config-bukyoku.xml"/>
+    <exclude name="**/validation-bukyoku.xml"/>
+    <!-- 申請者・審査員向けのマニュアル以外を除く -->
+    <exclude name="docs/manual2.pdf"/>
+    <exclude name="docs/manual3.pdf"/>    
+    <exclude name="docs/manual5.pdf"/>
+   </fileset>
+  </war>
+  <delete file="${webapp.target}/WEB-INF/classes/log4j.properties" />
+
+  <!-- 所属機関・部局 -->
+  <echo    message="building war... ${webapp.shozoku.name}"/>
+  <copy file="${webapp.classes}/log4j.web.properties" tofile="${webapp.target}/WEB-INF/classes/log4j.properties" />
+  <replace file="${webapp.target}/WEB-INF/classes/log4j.properties" value="${webapp.shozoku.name}">
+    <replacetoken>@FILE_NAME@</replacetoken>
+  </replace>
+  <war warfile="${webapp.shozoku.war}" webxml="${webapp.web.shozoku.xml}">
+   <fileset dir="${webapp.target}">
+    <!-- 申請者・審査員・アンケートを除く -->
+    <exclude name="shinsei/**"/>
+    <exclude name="**/*shinsei*.xml"/>
+    <exclude name="shinsa/**"/>
+    <exclude name="**/*shinsa.xml"/>
+    <exclude name="question/**"/>
+    <exclude name="**/*question*.xml"/>
+    <!-- 所属機関向けのマニュアル以外を除く -->
+    <exclude name="docs/manual1.pdf"/>
+    <exclude name="docs/manual3.pdf"/>    
+    <exclude name="docs/manual4.pdf"/>    
+    <exclude name="docs/manual5.pdf"/>
+   </fileset>
+  </war>
+  <delete file="${webapp.target}/WEB-INF/classes/log4j.properties" />
+
+</target>
+
+<!-- クリア -->
+<target name="clean"
+        description="Clean build and distribution directories">
+  <echo    message="Processing webapp ${webapp.name}"/>
+  <delete   dir="${webapp.target}" />
+  <delete  file="${webapp.default.war}"/>
+  <delete  file="${webapp.shozoku.war}"/>
+</target>
+
+</project>

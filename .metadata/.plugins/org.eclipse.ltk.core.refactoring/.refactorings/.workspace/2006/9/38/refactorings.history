@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<session version="1.0">
+<refactoring comment="Rename Java project 'TopgloryWorkFlow' to 'ETWorkFlow'&#13;&#10;- Original element: 'TopgloryWorkFlow'&#13;&#10;- Update references to refactored element" description="Rename Java project 'TopgloryWorkFlow'" flags="7" id="org.eclipse.jdt.ui.rename.java.project" input="=TopgloryWorkFlow" name="ETWorkFlow" references="true" stamp="1158648373468" version="1.0"/>
+</session>

@@ -1,0 +1,40 @@
+<jbpm-configuration>
+
+  <jbpm-context>
+    <service name="persistence" factory="org.jbpm.bpel.persistence.db.DbPersistenceServiceFactory" />
+    <service name="message" factory="org.jbpm.msg.db.DbMessageServiceFactory" />
+    <service name="scheduler" factory="org.jbpm.scheduler.db.DbSchedulerServiceFactory" />
+    <service name="logging" factory="org.jbpm.logging.db.DbLoggingServiceFactory" />
+    <service name="authentication" factory="org.jbpm.security.authentication.DefaultAuthenticationServiceFactory" />
+    <service name="integration">
+      <factory>
+        <bean class="org.jbpm.bpel.integration.jms.JmsIntegrationServiceFactory">
+          <field name="defaultDestinationName">
+            <string>queue/testQueue</string>
+          </field>
+          <field name="defaultConnectionFactoryName">
+            <string>java:ConnectionFactory</string>
+          </field>
+        </bean>
+      </factory>
+    </service>
+  </jbpm-context>
+
+  <!-- hibernate configuration resources -->
+  <string name="resource.hibernate.cfg.xml" value="hibernate.cfg.xml" />
+
+  <!-- configuration resources in jbpm-{version}.jar -->
+  <string name="resource.business.calendar" value="org/jbpm/calendar/jbpm.business.calendar.properties" />
+  <string name="resource.converter" value="org/jbpm/db/hibernate/jbpm.converter.properties" />
+  <string name="resource.action.types" value="org/jbpm/graph/action/action.types.xml" />
+  <string name="resource.node.types" value="org/jbpm/graph/node/node.types.xml" />
+  
+  <!-- configuration resources in jbpm-bpel-{version}.jar -->
+  <string name="resource.default.modules" value="org/jbpm/bpel/def/modules.properties" />
+  <string name="resource.parsers" value="org/jbpm/bpel/par/parsers.xml" />
+  <string name="resource.varmapping" value="org/jbpm/bpel/variable/exe/varmapping.xml" />
+  <string name="resource.activity.readers" value="org/jbpm/bpel/xml/activity.readers.xml"/>
+  <string name="resource.catalog.readers" value="org/jbpm/bpel/xml/catalog.readers.xml" />
+  <string name="resource.endpoint.factories" value="org/jbpm/bpel/integration/exe/endpoint.factories.xml" />
+
+</jbpm-configuration>

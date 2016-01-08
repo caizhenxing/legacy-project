@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="WINDOWS-31J"?>
+
+<form-validation>
+  <global/>
+  <formset>
+	<!--  -->
+	<form name="questionForm">
+	  <field property="shozokuName" depends="mask_roma,length">
+	    <arg0 position="0" key="研究機関番号" resource="false"/>
+	    <arg1 key="${var:length}" name="length" resource="false"/>
+	    <var>
+	      <var-name>length</var-name>
+	      <var-value>5</var-value>
+	    </var>
+	  </field>
+	  <field property="a1" depends="maxlength">
+	    <arg0 position="0" key="［電子申請システム全般について］Q1コメント" resource="false"/>
+	    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+	    <var>
+	      <var-name>maxlength</var-name>
+	      <var-value>600</var-value>
+	    </var>
+	  </field>
+	  <field property="a3" depends="maxlength">
+	    <arg0 position="0" key="［電子申請システム全般について］Q2コメント" resource="false"/>
+	    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+	    <var>
+	      <var-name>maxlength</var-name>
+	      <var-value>600</var-value>
+	    </var>
+	  </field>
+	  <field property="kankyoosSonota" depends="maxlength">
+	    <arg0 position="0" key="［ご利用環境について］OSその他" resource="false"/>
+	    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+	    <var>
+	      <var-name>maxlength</var-name>
+	      <var-value>25</var-value>
+	    </var>
+	  </field>
+	  <field property="kankyowebSonota" depends="maxlength">
+	    <arg0 position="0" key="［ご利用環境について］Webブラウザその他" resource="false"/>
+	    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+	    <var>
+	      <var-name>maxlength</var-name>
+	      <var-value>25</var-value>
+	    </var>
+	  </field>
+	  <field property="a4" depends="maxlength">
+	    <arg0 position="0" key="［電子申請のご案内ページについて］Q2コメント" resource="false"/>
+	    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+	    <var>
+	      <var-name>maxlength</var-name>
+	      <var-value>600</var-value>
+	    </var>
+	  </field>
+	  <field property="a5" depends="maxlength">
+	    <arg0 position="0" key="［操作手引について］Q2コメント" resource="false"/>
+	    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+	    <var>
+	      <var-name>maxlength</var-name>
+	      <var-value>600</var-value>
+	    </var>
+	  </field>
+	  <field property="a6" depends="maxlength">
+	    <arg0 position="0" key="［操作手引について］Q4コメント" resource="false"/>
+	    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+	    <var>
+	      <var-name>maxlength</var-name>
+	      <var-value>600</var-value>
+	    </var>
+	  </field>
+	  <field property="a7" depends="maxlength">
+	    <arg0 position="0" key="［操作手引について］Q5コメント" resource="false"/>
+	    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+	    <var>
+	      <var-name>maxlength</var-name>
+	      <var-value>600</var-value>
+	    </var>
+	  </field>
+	  <field property="a11" depends="maxlength">
+	    <arg0 position="0" key="［コールセンターについて］Q2" resource="false"/>
+	    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+	    <var>
+	      <var-name>maxlength</var-name>
+	      <var-value>600</var-value>
+	    </var>
+	  </field>
+	  <field property="a12" depends="maxlength">
+	    <arg0 position="0" key="［コールセンターについて］Q3" resource="false"/>
+	    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+	    <var>
+	      <var-name>maxlength</var-name>
+	      <var-value>600</var-value>
+	    </var>
+	  </field>
+	  <field property="a8" depends="maxlength">
+	    <arg0 position="0" key="［電子申請システムについて］Q2コメント" resource="false"/>
+	    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+	    <var>
+	      <var-name>maxlength</var-name>
+	      <var-value>600</var-value>
+	    </var>
+	  </field>
+	  <field property="a13" depends="maxlength">
+	    <arg0 position="0" key="［電子申請システムについて］Q4応募者その他問い合わせ内容" resource="false"/>
+	    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+	    <var>
+	      <var-name>maxlength</var-name>
+	      <var-value>600</var-value>
+	    </var>
+	  </field>
+	  <field property="a14" depends="maxlength">
+	    <arg0 position="0" key="［電子申請システムについて］Q6部局担当者その他問い合わせ内容" resource="false"/>
+	    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+	    <var>
+	      <var-name>maxlength</var-name>
+	      <var-value>600</var-value>
+	    </var>
+	  </field>
+	  <field property="a9" depends="maxlength">
+	    <arg0 position="0" key="［電子申請システムについて］Q7コメント" resource="false"/>
+	    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+	    <var>
+	      <var-name>maxlength</var-name>
+	      <var-value>600</var-value>
+	    </var>
+	  </field>
+	  <field property="a10" depends="maxlength">
+	    <arg0 position="0" key="［電子申請システムについて］Q8コメント" resource="false"/>
+	    <arg1 key="${var:maxlength}" name="maxlength" resource="false"/>
+	    <var>
+	      <var-name>maxlength</var-name>
+	      <var-value>1000</var-value>
+	    </var>
+	  </field>
+	</form>	 
+  </formset>
+</form-validation>

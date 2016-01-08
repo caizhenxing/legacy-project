@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/sms/columnInfo.do" location="750,0" dimension="358,84" />
+  <StrutsActivity path="/sms/columnInfo/columnInfoList.jsp" location="0,204" dimension="244,48" />
+  <StrutsActivity path="/sms/columnInfo/columnInfoOrderLoad.jsp" location="910,179" dimension="150,100" />
+  <StrutsActivity path="/sms/columnInfo/columnInfoSetList.jsp" location="50,350" dimension="262,48" />
+  <StrutsActivity path="/sms/columnInfo/addMessage.jsp" location="1080,345" dimension="150,100" />
+  <StrutsActivity path="/sms/columnInfo/addMessageMain.jsp" location="50,450" dimension="244,48" />
+  <StrutsActivity path="/sms/columnInfo/messageList.jsp" location="650,450" dimension="226,48" />
+  <StrutsActivity path="/sms/columnInfo/messageQuery.jsp" location="350,450" dimension="232,48" />
+  <StrutsActivity path="/sms/columnInfo/error.jsp" location="1720,204" dimension="190,48" />
+  <StrutsActivity path="/sms/columnInfo/columnInfoMain.jsp" location="344,204" dimension="244,48" />
+  <StrutsActivity path="/sms/columnInfo/columnInfoQuery.jsp" location="1370,204" dimension="250,48" />
+  <StrutsActivity path="/sms/columnInfo/columnInfoLoad.jsp" location="1026,204" dimension="244,48" />
+  <StrutsActivity path="/sms/columnInfo/columnInfoSet.jsp" location="632,104" dimension="150,100" />
+  <StrutsActivity path="/sms/columnInfo/columnInfoSettime.jsp" location="650,350" dimension="219,49" />
+  <StrutsActivity path="/sms/columnInfo/addColumnInfo.jsp" location="688,204" dimension="238,48" />
+  <StrutsActivity path="/sms/columnInfo/messageLoad.jsp" location="50,550" dimension="226,48" />
+  <StrutsTransition id="/sms/columnInfo.do,orderLoad,/sms/columnInfo/columnInfoOrderLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="911,84" />
+      <AbsolutePoint location="911,179" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/columnInfo.do,messageMain,/sms/columnInfo/addMessageMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="959,0" />
+      <AbsolutePoint location="959,-150" />
+      <AbsolutePoint location="-75,-150" />
+      <AbsolutePoint location="-75,474" />
+      <AbsolutePoint location="50,474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/columnInfo.do,settime,/sms/columnInfo/columnInfoSetList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="750,42" />
+      <AbsolutePoint location="259,42" />
+      <AbsolutePoint location="259,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/columnInfo.do,load,/sms/columnInfo/columnInfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1075,84" />
+      <AbsolutePoint location="1075,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/columnInfo.do,messageQuery,/sms/columnInfo/messageQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="941,84" />
+      <AbsolutePoint location="941,149" />
+      <AbsolutePoint location="1665,149" />
+      <AbsolutePoint location="1665,474" />
+      <AbsolutePoint location="582,474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/columnInfo.do,messageList,/sms/columnInfo/messageList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="929,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/columnInfo.do,messageLoad,/sms/columnInfo/messageLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="899,0" />
+      <AbsolutePoint location="899,-225" />
+      <AbsolutePoint location="-150,-225" />
+      <AbsolutePoint location="-150,574" />
+      <AbsolutePoint location="50,574" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/columnInfo.do,query,/sms/columnInfo/columnInfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1108,42" />
+      <AbsolutePoint location="1495,42" />
+      <AbsolutePoint location="1495,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/columnInfo.do,list,/sms/columnInfo/columnInfoList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="750,12" />
+      <AbsolutePoint location="122,12" />
+      <AbsolutePoint location="122,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/columnInfo.do,message,/sms/columnInfo/addMessage.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1108,72" />
+      <AbsolutePoint location="1315,72" />
+      <AbsolutePoint location="1315,395" />
+      <AbsolutePoint location="1230,395" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/columnInfo.do,error,/sms/columnInfo/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1108,12" />
+      <AbsolutePoint location="1815,12" />
+      <AbsolutePoint location="1815,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/columnInfo.do,timeSet,/sms/columnInfo/columnInfoSettime.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="929,0" />
+      <AbsolutePoint location="929,-75" />
+      <AbsolutePoint location="603,-75" />
+      <AbsolutePoint location="603,374" />
+      <AbsolutePoint location="650,374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/columnInfo.do,set,/sms/columnInfo/columnInfoSet.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="767,84" />
+      <AbsolutePoint location="767,104" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sms/columnInfo.do,main,/sms/columnInfo/columnInfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="750,72" />
+      <AbsolutePoint location="466,72" />
+      <AbsolutePoint location="466,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

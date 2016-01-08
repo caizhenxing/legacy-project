@@ -1,0 +1,217 @@
+package et.bo.callcenter.server.socket;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import et.bo.callcenter.ConstantsI;
+import et.bo.callcenter.message.EventExcute;
+import et.bo.callcenter.message.impl.EventExcuteImpl;
+import et.bo.common.ConstantsCommonI;
+import et.bo.common.testing.MyLog;
+import excellence.framework.base.container.SpringContainer;
+import excellence.framework.base.container.SpringRunningContainer;
+
+public class ConnectionHandler implements Runnable {
+	private static Log log = LogFactory.getLog(ConnectionHandler.class);
+	private static Map<String,Socket> ipMap = new HashMap<String,Socket>();//key is ip,value is socket
+	
+	private static Map<String,ConnectionHandler> ipMapUseable = 
+		new HashMap<String,ConnectionHandler>();//key is ip,value is socket
+	private boolean isConnection=true;
+	public Socket socket;
+	public String socketIp="";
+	/*
+	 * 注入
+	 */
+	private static EventExcute ee=new EventExcuteImpl();//(EventExcute)(SpringRunningContainer.getInstance().getBean("EventExcuteService"));
+//	private EventExcute ee=(EventExcute)(SpringRunningContainer.getInstance().getBean("EventExcuteService"));
+	public ConnectionHandler() {
+//		ee=(EventExcute)(SpringRunningContainer.getInstance().getBean("EventExcuteService"));
+	}
+   public ConnectionHandler(Socket aSocketToHandle) {
+      socket = aSocketToHandle;
+      socketIp=socket.getInetAddress().getHostAddress();
+   }
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		SpringContainer sc=SpringContainer.getInstance();
+		EventExcute ee=(EventExcute)(SpringRunningContainer.getInstance().getBean("EventExcuteService"));
+	}
+	public void run() {
+		connectionHandler(socket);
+
+	}
+	             
+	private void connectionHandler(Socket incomingConnection){
+    	try {
+    		log.debug(ConstantsCommonI.TEST_RETURN);
+    		log.debug(ConstantsCommonI.TEST_LINE);
+    		log.debug("in to ConnectionHandler");
+    		log.debug(ConstantsCommonI.TEST_RETURN);
+    		log.debug(ConstantsCommonI.TEST_LINE);
+    		String ip = incomingConnection.getInetAddress().getHostAddress();
+    		BufferedInputStream bis = 
+    			new BufferedInputStream(incomingConnection.getInputStream());
+            DataInputStream dis = 
+            	new DataInputStream(
+            			new BufferedInputStream(incomingConnection.getInputStream())
+            			);
+            
+            while(isConnection){
+            	StringBuffer sb=new StringBuffer();
+            	/*
+                char c;
+                while((c=dis.readChar())!=delim2){
+                	sb.append(c);
+                }
+              log.debug("receiveing begin............\r\n");
+              sb.append(';');
+              log.debug(sb.toString());
+              log.debug("receiveing end........");
+              dealWith(sb.toString());
+              */
+            	int i;
+            	while((i=bis.read())!=ConstantsI.INT_SEMICOLON & i!=-1&isConnection){
+                	sb.append((char)i);
+//                	log.debug(sb.toString()); 
+                	//System.err.println(socketIp);
+//                	System.err.println(sb.toString());
+                }
+            	if(i!=-1)sb.append(ConstantsI.SEMICOLON);
+//            	log.debug(sb.toString());
+//            	log.info(sb.toString());
+//            	System.err.println(sb.toString());
+            	dealWith(sb.toString(),ip);
+            }
+        }catch (IOException e) {
+            log.error("Error handling a client: " + e);
+        }
+	}
+	public void dealWith(String s,String ip){
+		ee.excute(s, ip);
+	}
+	/*
+	 * 向某个客户端发送一个信息。
+	 */
+	public void sendMsg(String ip,String s){
+		
+		log.debug("public void sendMsg(String ip,String s){-- ip is "+ip);		
+		if(!ipMap.containsKey(ip))return;
+		log.debug("public void sendMsg(String ip,String s){-- have????? ");
+		Object o=ipMap.get(ip);
+		if(o==null){
+			log.debug("public void sendMsg(String ip,String s){-- nulll ");
+    		ipMap.remove(ip);
+    		return;
+    	}
+		Socket socket =(Socket)o;
+		try {
+			sendString(socket,s);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			
+		}
+	}
+	public static void staticSendMsg(String ip,String s){
+		
+		log.debug("public void sendMsg(String ip,String s){-- ip is "+ip);		
+		if(!ipMap.containsKey(ip))return;
+		log.debug("public void sendMsg(String ip,String s){-- have????? ");
+		Object o=ipMap.get(ip);
+		if(o==null){
+			log.debug("public void sendMsg(String ip,String s){-- nulll ");
+    		ipMap.remove(ip);
+    		return;
+    	}
+		Socket socket =(Socket)o;
+		try {
+			BufferedOutputStream bos = 
+    			new BufferedOutputStream(socket.getOutputStream());
+			bos.write(s.getBytes());
+			bos.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			
+		}
+	}
+	public boolean testNet(){
+		
+		try {
+			
+			sendString(this.socket,"NETTST:;");
+			this.isConnection=true;
+			return true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			this.isConnection=false;
+			return false;
+		}
+	}
+	/*
+	 * 
+	 */
+	public static void sendAllMsg(String msg)
+	{
+		Iterator it =ipMap.keySet().iterator();
+		while(it.hasNext()){
+			String ip=(String)it.next();
+			staticSendMsg(ip,msg);
+		}
+	}
+	private void sendString(Socket incomingConnection,String s) throws IOException{
+		MyLog.info("begin to set cmd");
+		try {
+//            PrintWriter streamWriter =
+//            	new PrintWriter(incomingConnection.getOutputStream());
+//            log.debug("begin sending............\r\n");
+//            log.debug(s);
+//            streamWriter.write(s);            
+//            log.debug("end send........");
+//            streamWriter.flush();
+			BufferedOutputStream bos = 
+    			new BufferedOutputStream(incomingConnection.getOutputStream());
+			bos.write(s.getBytes());
+			//System.err.println(incomingConnection.getInetAddress().getHostAddress()+"  "+s);
+			bos.flush();
+        }catch (IOException e) {
+            //log.error("Error handling a client: " + e);
+            //e.printStackTrace();
+        	System.out.println(this.socketIp+"连接超时");
+            throw e;
+        }
+        MyLog.info(s);
+        MyLog.info("end send cmd");
+	}
+	public Map refreshLinkedMap(){
+		Iterator it = ipMap.keySet().iterator();
+		while(it.hasNext()){
+			String ip=(String)it.next();
+			Object o=ipMap.get(ip);
+			if(o==null){
+	    		ipMap.remove(ip);
+	    	}	
+		}
+		return ipMap;
+	}
+	public static Map getIpMap() {
+		return ipMap;
+	}
+	public void setEe(EventExcute ee) {
+		this.ee = ee;
+	}
+	
+}

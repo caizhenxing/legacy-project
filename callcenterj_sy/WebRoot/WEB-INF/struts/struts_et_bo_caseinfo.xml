@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+
+	<form-beans>
+		<!-- 普通案例表单bean信息 -->
+		<form-bean name="generalCaseinfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">			
+			<form-property name="caseId" type="java.lang.String" />
+			<form-property name="dictCaseType" type="java.lang.String" />
+			<form-property name="caseRid" type="java.lang.String" />
+			<form-property name="expertType" type="java.lang.String" />
+			<form-property name="caseExpert" type="java.lang.String" />
+			<form-property name="caseTime" type="java.lang.String" />
+			<form-property name="custName" type="java.lang.String" />
+			<form-property name="custAddr" type="java.lang.String" />
+			<form-property name="custTel" type="java.lang.String" />
+			<form-property name="dictCaseState" type="java.lang.String" />
+			<form-property name="caseAttr1" type="java.lang.String" />
+			<form-property name="caseAttr2" type="java.lang.String" />
+			<form-property name="caseAttr3" type="java.lang.String" />
+			<form-property name="caseContent" type="java.lang.String" />
+			<form-property name="caseReply" type="java.lang.String" />
+			<form-property name="caseReview" type="java.lang.String" />
+			<form-property name="casePic" type="java.lang.String" />
+			<form-property name="caseVideo" type="java.lang.String" />
+			<form-property name="caseAttr4" type="java.lang.String" />
+			<form-property name="caseAttr5" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+			<form-property name="caseReport" type="java.lang.String" />
+			<form-property name="caseInquiry" type="java.lang.String" />
+			<form-property name="caseJoins" type="java.lang.String" />
+			<form-property name="caseSubject" type="java.lang.String" />
+
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="bill_num" type="java.lang.String" />
+			<form-property name="subid" type="java.lang.String" /><!-- 用于审核的提交人ID -->
+			<form-property name="accid" type="java.lang.String" /><!-- 用于审核的受理人ID -->
+			<form-property name="uploadfile" type="java.lang.String" /><!-- 用于记录上传图片的路径 -->
+			
+			<form-property name="statisticType" type="java.lang.String" />
+			
+			<form-property name="state" type="java.lang.String" />
+		</form-bean>
+
+
+
+		<!-- 效果案例表单bean信息 -->
+		<form-bean name="effectCaseinfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+
+			<form-property name="caseId" type="java.lang.String" />
+			<form-property name="dictCaseType" type="java.lang.String" />
+			<form-property name="caseRid" type="java.lang.String" />
+			<form-property name="expertType" type="java.lang.String" />
+			<form-property name="caseExpert" type="java.lang.String" />
+			<form-property name="custName" type="java.lang.String" />
+			<form-property name="custAddr" type="java.lang.String" />
+			<form-property name="custTel" type="java.lang.String" />
+			<form-property name="dictCaseState" type="java.lang.String" />
+			<form-property name="caseTime" type="java.lang.String" />
+			<form-property name="caseAttr5" type="java.lang.String" />
+			<form-property name="caseContent" type="java.lang.String" />
+			<form-property name="caseReply" type="java.lang.String" />
+			<form-property name="casePic" type="java.lang.String" />
+			<form-property name="caseVideo" type="java.lang.String" />
+			<form-property name="caseReport" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+			<form-property name="caseReview" type="java.lang.String" />
+			
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+
+			<form-property name="subid" type="java.lang.String" /><!-- 用于审核的提交人ID -->
+			<form-property name="accid" type="java.lang.String" /><!-- 用于审核的受理人ID -->
+			<form-property name="uploadfile" type="java.lang.String" /><!-- 用于记录上传图片的路径 -->
+			
+			<form-property name="statisticType" type="java.lang.String" />
+			<form-property name="bill_num" type="java.lang.String" />
+			
+			<form-property name="state" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 焦点案例表单bean信息 -->
+		<form-bean name="focusCaseinfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="caseId" type="java.lang.String" />
+			<form-property name="dictCaseType" type="java.lang.String" />
+			<form-property name="caseRid" type="java.lang.String" />
+			<form-property name="expertType" type="java.lang.String" />
+			<form-property name="caseExpert" type="java.lang.String" />
+			<form-property name="caseTime" type="java.lang.String" />
+			<form-property name="custName" type="java.lang.String" />
+			<form-property name="custAddr" type="java.lang.String" />
+			<form-property name="custTel" type="java.lang.String" />
+			<form-property name="dictCaseState" type="java.lang.String" />
+			<form-property name="caseAttr4" type="java.lang.String" />
+			<form-property name="caseContent" type="java.lang.String" />
+			<form-property name="caseReply" type="java.lang.String" />
+			<form-property name="caseReview" type="java.lang.String" />
+			<form-property name="casePic" type="java.lang.String" />
+			<form-property name="caseVideo" type="java.lang.String" />
+			<form-property name="caseInquiry" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+			<form-property name="printCheck" type="java.lang.String" />
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="subid" type="java.lang.String" /><!-- 用于审核的提交人ID -->
+			<form-property name="accid" type="java.lang.String" /><!-- 用于审核的受理人ID -->
+			<form-property name="uploadfile" type="java.lang.String" /><!-- 用于记录上传图片的路径 -->
+			<form-property name="bill_num" type="java.lang.String" />
+			
+			<form-property name="state" type="java.lang.String" />
+		</form-bean>
+
+		<!-- 会诊案例表单bean信息 -->
+		<form-bean name="hzinfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+
+			<form-property name="caseId" type="java.lang.String" />
+			<form-property name="dictCaseType" type="java.lang.String" />
+			<form-property name="caseRid" type="java.lang.String" />
+			<form-property name="expertType" type="java.lang.String" />
+			<form-property name="caseExpert" type="java.lang.String" />
+			<form-property name="caseTime" type="java.lang.String" />
+			<form-property name="custName" type="java.lang.String" />
+			<form-property name="custAddr" type="java.lang.String" />
+			<form-property name="custTel" type="java.lang.String" />
+			<form-property name="dictCaseState" type="java.lang.String" />
+			<form-property name="caseAttr1" type="java.lang.String" />
+			<form-property name="caseAttr2" type="java.lang.String" />
+			<form-property name="caseAttr3" type="java.lang.String" />
+			<form-property name="caseContent" type="java.lang.String" />
+			<form-property name="caseReview" type="java.lang.String" />
+			<form-property name="casePic" type="java.lang.String" />
+			<form-property name="caseVideo" type="java.lang.String" />
+			<form-property name="caseReport" type="java.lang.String" />
+			<form-property name="caseJoins" type="java.lang.String" />
+			<form-property name="caseSubject" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			
+			<form-property name="hzTime" type="java.lang.String" /><!-- 会诊时间 -->
+			
+			<form-property name="subid" type="java.lang.String" /><!-- 用于审核的提交人ID -->
+			<form-property name="accid" type="java.lang.String" /><!-- 用于审核的受理人ID -->
+
+			<form-property name="uploadfile" type="java.lang.String" /><!-- 用于记录上传图片的路径 -->
+			<form-property name="bill_num" type="java.lang.String" />
+			
+			<form-property name="state" type="java.lang.String" />
+		</form-bean>
+
+		<!--文档上传-->
+		<form-bean name="generalUploadFileForm"
+			type="et.bo.caseinfo.generalCaseinfo.form.GeneralForm" />
+		<!--文档上传-->
+		<form-bean name="effectUploadFileForm"
+			type="et.bo.caseinfo.effectCaseinfo.form.EffectForm" />
+		<!--文档上传-->
+		<form-bean name="focusUploadFileForm"
+			type="et.bo.caseinfo.focusCaseinfo.form.FocusForm" />
+		<!--文档上传-->
+		<form-bean name="hzUploadFileForm"
+			type="et.bo.caseinfo.hzinfo.form.HZForm" />
+
+		<!-- 以下为《经典案例维护》下的4个子模块的相关上传、下载视频的FormBean -->
+		<!--视频上传-->
+		<form-bean name="generalUploadVideoForm"
+			type="et.bo.caseinfo.generalCaseinfo.form.GeneralForm" />
+		<form-bean name="effectUploadVideoForm"
+			type="et.bo.caseinfo.effectCaseinfo.form.EffectForm" />
+		<form-bean name="focusUploadVideoForm"
+			type="et.bo.caseinfo.focusCaseinfo.form.FocusForm" />
+		<form-bean name="hzUploadVideoForm"
+			type="et.bo.caseinfo.hzinfo.form.HZForm" />
+		
+		<!-- 案例类别 -->
+		<form-bean name="CaseTypeBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">			
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="type1" type="java.lang.String" />
+			<form-property name="type2" type="java.lang.String" />
+			<form-property name="bigType" type="java.lang.String" />
+			<form-property name="smallType" type="java.lang.String" />
+						
+		</form-bean>
+
+	</form-beans>
+
+	<global-exceptions />
+
+	<global-forwards />
+
+	<action-mappings>
+		<!-- action -->
+		<action attribute="generalCaseinfoBean"
+			name="generalCaseinfoBean" scope="request"
+			path="/caseinfo/generalCaseinfo"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+
+			<forward name="toGeneralCaseinfoMain"
+				path="/caseinfo/generalCaseinfo/generalCaseinfoMain.jsp" />
+			<forward name="toGeneralCaseinfoList"
+				path="/caseinfo/generalCaseinfo/generalCaseinfolist.jsp" />
+			<forward name="toGeneralCaseinfoLoad"
+				path="/caseinfo/generalCaseinfo/generalCaseinfoLoad.jsp" />
+			<forward name="toGeneralCaseinfoQuery"
+				path="/caseinfo/generalCaseinfo/generalCaseinfoQuery.jsp" />
+			<forward name="upload"
+				path="/caseinfo/generalCaseinfo/generaUpload.jsp" />
+			<forward name="uploadVideo"
+				path="/caseinfo/generalCaseinfo/generaUploadVideo.jsp" />
+			<forward name="toGeneralCaseinfoStatisticQuery"
+				path="/caseinfo/generalCaseinfo/generalCaseinfoStatisticQuery.jsp" />
+      <forward name="main1" path="/caseinfo/generalCaseinfo/generalCaseinfoMain1.jsp" />
+      <forward name="query1" path="/caseinfo/generalCaseinfo/generalCaseinfoQuery1.jsp" />
+      <forward name="toSendAndReceiveMain" path="/sms/sendAndReceive/sendAndReceiveMain.jsp" />
+      <forward name="toSendAndReceiveQuery" path="/sms/sendAndReceive/sendAndReceiveQuery.jsp" />
+      <forward name="toSendAndReceiveList" path="/sms/sendAndReceive/sendAndReceiveList.jsp" />
+		</action>
+
+		<action attribute="effectCaseinfoBean" name="effectCaseinfoBean"
+			scope="request" path="/caseinfo/effectCaseinfo"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+
+			<forward name="toEffectCaseinfoMain"
+				path="/caseinfo/effectCaseinfo/effectCaseinfoMain.jsp" />
+			<forward name="toEffectCaseinfoList"
+				path="/caseinfo/effectCaseinfo/effectCaseinfolist.jsp" />
+			<forward name="toEffectCaseinfoLoad"
+				path="/caseinfo/effectCaseinfo/effectCaseinfoLoad.jsp" />
+			<forward name="toEffectCaseinfoQuery"
+				path="/caseinfo/effectCaseinfo/effectCaseinfoQuery.jsp" />
+			<forward name="upload"
+				path="/caseinfo/effectCaseinfo/effectUpload.jsp" />
+			<forward name="uploadVideo"
+				path="/caseinfo/effectCaseinfo/effectUploadVideo.jsp" />
+			<forward name="toEffectCaseinfoStatisticQuery"
+				path="/caseinfo/effectCaseinfo/effectCaseinfoStatisticQuery.jsp" />
+		</action>
+
+		<action attribute="focusCaseinfoBean" name="focusCaseinfoBean"
+			scope="request" path="/caseinfo/focusCaseinfo"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+
+			<forward name="toFocusCaseinfoMain"
+				path="/caseinfo/focusCaseinfo/focusCaseinfoMain.jsp" />
+			<forward name="toFocusCaseinfoList"
+				path="/caseinfo/focusCaseinfo/focusCaseinfolist.jsp" />
+			<forward name="toFocusCaseinfoLoad"
+				path="/caseinfo/focusCaseinfo/focusCaseinfoLoad.jsp" />
+			<forward name="toFocusCaseinfoQuery"
+				path="/caseinfo/focusCaseinfo/focusCaseinfoQuery.jsp" />
+			<forward name="upload"
+				path="/caseinfo/focusCaseinfo/focusUpload.jsp" />
+			<forward name="uploadVideo"
+				path="/caseinfo/focusCaseinfo/focusUploadVideo.jsp" />
+      		<forward name="toFocusCaseinfoStatisticQuery" path="/caseinfo/focusCaseinfo/focusCaseinfoStatisticQuery.jsp" />
+      <forward name="query1" path="/caseinfo/focusCaseinfo/focusCaseinfoQuery1.jsp" />
+      <forward name="main1" path="/caseinfo/focusCaseinfo/focusCaseinfoMain1.jsp" />
+		</action>
+
+		<action attribute="hzinfoBean" name="hzinfoBean" scope="request"
+			path="/caseinfo/hzinfo"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+
+			<forward name="tohzinfoMain"
+				path="/caseinfo/hzinfo/hzinfoMain.jsp" />
+			<forward name="tohzinfoList"
+				path="/caseinfo/hzinfo/hzinfolist.jsp" />
+			<forward name="tohzinfoLoad"
+				path="/caseinfo/hzinfo/hzinfoLoad.jsp" />
+			<forward name="tohzinfoQuery"
+				path="/caseinfo/hzinfo/hzinfoQuery.jsp" />
+			<forward name="upload" path="/caseinfo/hzinfo/hzUpload.jsp" />
+			<forward name="uploadVideo"
+				path="/caseinfo/hzinfo/hzUploadVideo.jsp" />
+      		<forward name="toHZInfoStatisticQuery" path="/caseinfo/hzinfo/hzInfoStatisticQuery.jsp" />
+		</action>
+
+		<!-- 上传文档文件 -->
+		<action attribute="generalUploadFileForm"
+			name="generalUploadFileForm" path="/generalUploadFile"
+			scope="request" parameter="method"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="upload"
+				path="/caseinfo/generalCaseinfo/generaUpload.jsp" />
+		</action>
+
+
+		<!-- 上传文档文件 -->
+		<action attribute="effectUploadFileForm"
+			name="effectUploadFileForm" path="/effectUploadFile" scope="request"
+			parameter="method"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="upload"
+				path="/caseinfo/effectCaseinfo/effectUpload.jsp" />
+		</action>
+
+		<!-- 上传文档文件 -->
+		<action attribute="focusUploadFileForm"
+			name="focusUploadFileForm" path="/focusUploadFile" scope="request"
+			parameter="method"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="upload"
+				path="/caseinfo/focusCaseinfo/focusUpload.jsp" />
+		</action>
+
+		<!-- 上传文档文件 -->
+		<action attribute="hzUploadFileForm" name="hzUploadFileForm"
+			path="/hzUploadFile" scope="request" parameter="method"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="upload" path="/caseinfo/hzinfo/hzUpload.jsp" />
+		</action>
+
+		<!-- 王默 -->
+		<!-- 上传视频文件 -->
+		<action attribute="generalUploadVideoForm"
+			name="generalUploadVideoForm" path="/generalUploadVideo"
+			scope="request" parameter="method"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="uploadVideo"
+				path="/caseinfo/generalCaseinfo/generaUploadVideo.jsp" />
+		</action>
+
+		<!-- 上传视频文件 -->
+		<action attribute="effectUploadVideoForm"
+			name="effectUploadVideoForm" path="/effectUploadVideo"
+			scope="request" parameter="method"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="uploadVideo"
+				path="/caseinfo/effectCaseinfo/effectUploadVideo.jsp" />
+		</action>
+
+		<!-- 上传视频文件 -->
+		<action attribute="focusUploadVideoForm"
+			name="focusUploadVideoForm" path="/focusUploadVideo" scope="request"
+			parameter="method"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="uploadVideo"
+				path="/caseinfo/focusCaseinfo/focusUploadVideo.jsp" />
+		</action>
+
+		<!-- 上传视频文件 -->
+		<action attribute="hzUploadVideoForm" name="hzUploadVideoForm"
+			path="/hzUploadVideo" scope="request" parameter="method"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="uploadVideo"
+				path="/caseinfo/hzinfo/hzUploadVideo.jsp" />
+		</action>
+		
+		<!-- 案例类别 -->
+		<action attribute="CaseTypeBean"
+			name="CaseTypeBean" scope="request"
+			path="/caseinfo/caseType"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="method">
+			<forward name="toCaseTypeMain" path="/caseinfo/caseType/caseTypeMain.jsp" />
+			<forward name="toCaseTypeList" path="/caseinfo/caseType/caseTypelist.jsp" />
+			<forward name="toCaseTypeLoad" path="/caseinfo/caseType/caseTypeLoad.jsp" />
+			<forward name="toCaseTypeQuery" path="/caseinfo/caseType/caseTypeQuery.jsp" />
+			
+			<forward name="Main" path="/caseinfo/caseType/caseType.jsp" />			
+		</action>
+	</action-mappings>
+
+</struts-config>
+

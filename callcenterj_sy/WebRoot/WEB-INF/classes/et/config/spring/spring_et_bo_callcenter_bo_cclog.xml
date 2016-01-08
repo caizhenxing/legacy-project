@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<beans>
+	<!-- 日志添加 -->
+	<bean name="CcLogService"
+		class="et.bo.callcenter.bo.cclog.service.impl.CcLogImpl">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+	<bean name="CcLogTalkService"
+		class="et.bo.callcenter.bo.cclog.service.impl.CcLogTalkImpl">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+	<bean name="CcLogIvrService"
+		class="et.bo.callcenter.bo.cclog.service.impl.CcLogIvrImpl">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+	<bean name="CcLogIvrDateService"
+		class="et.bo.callcenter.bo.cclog.service.impl.CcLogIvrDateImpl">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+	<bean name="CcLogMailService"
+		class="et.bo.callcenter.bo.cclog.service.impl.CcLogMailImpl">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+	<bean name="CcUserAppraiseInfoService"
+		class="et.bo.callcenter.bo.cclog.service.impl.CcUserAppraiseInfoImpl">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+	</bean>
+	<bean name="CcMainService"
+		class="et.bo.callcenter.bo.cclog.service.impl.CcMainImpl">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+	</bean>
+	
+	<!-- 三方通话 -->
+	<bean name="ThreeCallService" class="et.bo.callcenter.threecall.impl.ThreeCallImpl">
+		<!-- dao -->
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<!-- 端口管理 -->
+		<property name="pcs">
+			<ref bean="PortCompareService"/>
+		</property>
+	</bean>
+</beans>

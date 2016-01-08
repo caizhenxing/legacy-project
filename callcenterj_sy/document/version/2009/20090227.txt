@@ -1,0 +1,231 @@
+修改人：王文权
+修改日期：2009-02-25
+
+需求：座席服务统计 不准
+
+修改说明:
+1 座席服务统计存储过程修改
+ALTER PROCEDURE [dbo].[proc_telephone](@beginTime varchar(20),@endTime varchar(20),@condition varchar(20))
+AS
+BEGIN
+	--创建存储统计结果数据的临时表
+	--其中coun是电话数量、svm是电话时长、respondent对应的坐席员、teltype是电话量类型（呼入和呼出）
+	create table #tmp_telephone_value 
+		(coun int, svm int,respondent varchar(20), teltype varchar(20))
+	--创建横坐标标签临时表
+	create table #tmp_telephone_xaxis
+		(xaxis varchar(20))
+	declare @respondent varchar(20)
+	--向横坐标标签临时表添加数据	
+	declare respondent_cur cursor for
+		select distinct [user_name] from sys_user
+			where delete_mark<>'1'
+	open respondent_cur
+	fetch next from respondent_cur into @respondent	
+	while(@@fetch_status=0)
+	begin
+	insert into #tmp_telephone_xaxis values(@respondent)
+	fetch next from respondent_cur into @respondent
+	end
+	close respondent_cur
+	deallocate respondent_cur	
+	--创建纵坐标标签临时表
+	create table #tmp_telephone_yaxis
+		(yaxis varchar(20))
+	--向纵坐标标签临时表添加数据
+	insert into #tmp_telephone_yaxis values('呼入')
+	insert into #tmp_telephone_yaxis values('呼出')
+	declare @coun int
+	declare @svm int	
+	declare @resp varchar(20)
+	--呼入电话总数、时长统计
+	declare talk_in_cur cursor for 
+	select b.countNum coun,a.svm,a.respondent
+	from
+	(
+		select count(*) as coun, sum(convert(int,isnull(touch_keeptime,0)))/1000 
+		as svm,respondent from cc_talk 
+		where respondent_type='AGENT' 
+		and respondent is not null 
+		and convert(varchar(19),touch_begintime,120) between @beginTime and @endTime 
+		group by respondent
+	) a,
+	(
+		select answer_agent,count(*) countNum from oper_question 
+		where convert(varchar(19),addtime,120) between @beginTime and @endTime 
+		group by answer_agent
+	) b
+	where a.respondent=b.answer_agent
+ 
+	open talk_in_cur
+	fetch next from talk_in_cur into @coun,@svm,@resp
+	while(@@fetch_status=0)
+	begin
+	insert into #tmp_telephone_value values(@coun,@svm,@resp,'呼入')
+	fetch next from talk_in_cur into @coun,@svm,@resp
+	end
+	close talk_in_cur
+	deallocate talk_in_cur
+	--呼出电话总数、时长统计
+	declare talk_out_cur cursor for 
+		select count(*) as coun, sum(convert(int,isnull(touch_keeptime,0)))/1000 
+		as svm,respondent from cc_talk 
+		where respondent_type='OUTINGAGENT' 
+			and respondent is not null 
+			and convert(varchar(19),touch_begintime,120) between @beginTime and @endTime
+		group by respondent
+	open talk_out_cur
+	fetch next from talk_out_cur into @coun,@svm,@resp
+	while(@@fetch_status=0)
+	begin
+	insert into #tmp_telephone_value values(@coun,@svm,@resp,'呼出')
+	fetch next from talk_out_cur into @coun,@svm,@resp
+	end
+	close talk_out_cur
+	deallocate talk_out_cur	
+
+
+
+
+	--临时使用
+	select distinct respondent as xaxis from cc_talk where respondent is not null and is_delete='0' order by respondent
+	--得到横坐标标签结果集（全体坐席人员）	
+	--select xaxis from #tmp_telephone_xaxis
+	--得到纵坐标标签结果集	
+	select yaxis from #tmp_telephone_yaxis
+	--得到统计结果集
+	if(@condition='count')
+		select coun as statValue,respondent, teltype from #tmp_telephone_value
+	else 
+		select svm as statValue, respondent, teltype from #tmp_telephone_value
+END
+
+--栏目资讯统计修改
+ALTER PROCEDURE [dbo].[proc_use] (@begintime varchar(20),@endtime varchar(20),@address varchar(500))
+AS
+BEGIN
+	--创建X表并插值
+	create table #use_X (X varchar(50))
+	insert into #use_X values ('热线调查')
+	insert into #use_X values ('政策咨询')
+    insert into #use_X values ('种植咨询')
+    insert into #use_X values ('养殖咨询')
+    insert into #use_X values ('项目咨询')
+    insert into #use_X values ('环保咨询')
+    insert into #use_X values ('重大事件上报')
+    insert into #use_X values ('信息定制')
+	insert into #use_X values ('金农通')
+    insert into #use_X values ('企业服务')
+    insert into #use_X values ('医疗服务')
+    insert into #use_X values ('价格行情')
+    insert into #use_X values ('价格报送')
+	insert into #use_X values ('供求发布')
+    insert into #use_X values ('热线调查')
+	--创建Y表并插值
+	create table #use_Y (Y varchar(50))
+	insert into #use_Y values ('使用情况')
+	--创建总表并且插值
+	create table #use_sum (Sum1 varchar(50),X varchar(50),Y varchar(50))
+	
+	declare use_X cursor for select * from #use_X
+	declare @lm varchar(50)
+	open use_X
+	Fetch Next From use_X Into @lm
+	While ( @@Fetch_Status=0 )
+	begin
+		declare @sum1 varchar(50)
+		select @sum1=count(*) FROM oper_question INNER JOIN
+		oper_custinfo ON oper_question.cust_id = oper_custinfo.cust_id
+		where oper_question.dict_question_type1 = @lm
+		and convert(varchar(19),oper_question.addtime,120) between @begintime and  @endtime 
+		and oper_custinfo.cust_addr like '%'+ @address +'%'
+		insert into #use_sum (Sum1,X,Y) values (@sum1,@lm,'使用情况')
+		
+		Fetch Next From use_X Into @lm
+	end
+	close use_X
+	Deallocate use_X
+
+	select distinct X from #use_X order by X
+	select distinct Y from #use_Y order by Y
+	select Sum1,X,Y from #use_sum order by X,Y
+
+END
+--ivr拨打统计
+ALTER procedure [dbo].[proc_ivrdata] (@begintime varchar(20),@endtime varchar(20),@qtype varchar(50))
+as 
+BEGIN
+	create table #temp_ivr_X (X varchar(200))
+	declare @ivr varchar(20)
+	--查询ivr_date表，把统计时间内有记录的ivr模块记录进临时表
+	declare ivr_cur cursor for
+		SELECT DISTINCT module_id
+FROM   cc_ivr_date
+WHERE     module_id IS NOT NULL AND module_id NOT IN ('','#','*')
+and module_begintime >= @begintime and module_begintime <= @endtime
+
+	open ivr_cur
+	fetch next from ivr_cur into @ivr
+	while(@@fetch_status=0)
+	begin
+	insert into #temp_ivr_X values(@ivr)
+	fetch next from ivr_cur into @ivr
+	end	
+	close ivr_cur
+	deallocate ivr_cur
+
+	--创建Y表并插值，Y表为查询类型，次数或时长
+	create table #temp_ivr_Y (Y varchar(50))
+	insert into #temp_ivr_Y values (@qtype)
+	--创建总表
+	create table #temp_ivr_sum (Sum1 varchar(50),X varchar(50),Y varchar(50))
+	declare @sum1 varchar(50)
+	--向总表插值
+	if @qtype = '统计次数'
+		begin
+			--联合查询
+declare temp_ivr_X cursor for 
+			SELECT     COUNT(*), module_id
+FROM         cc_ivr_date
+WHERE     (module_id IS NOT NULL) AND (module_id NOT IN ('','#','*'))
+and convert(varchar(19),module_begintime,120) between @begintime and @endtime
+GROUP BY module_id
+		end
+	else
+		begin
+declare temp_ivr_X cursor for 
+			select sum(datediff(ss,module_begintime,module_endtime)),module_id 
+from  cc_ivr_date
+WHERE     (module_id IS NOT NULL) AND (module_id NOT IN ('','#','*'))
+and convert(varchar(19),module_begintime,120) between @begintime and @endtime
+GROUP BY module_id
+
+		end
+		--向总表插入数据
+	open temp_ivr_X
+	Fetch Next From temp_ivr_X Into @sum1,@ivr
+	While ( @@Fetch_Status=0 )
+	begin
+		if @qtype = '统计次数'
+			begin
+				insert into #temp_ivr_sum (Sum1,X,Y) values (@sum1,@ivr,@qtype)
+			end
+		else
+			begin
+				insert into #temp_ivr_sum (Sum1,X,Y) values (@sum1,@ivr,@qtype)
+			end
+		Fetch Next From temp_ivr_X Into @sum1,@ivr
+	end
+		
+	close temp_ivr_X
+	Deallocate temp_ivr_X
+
+	--得到横坐标标签结果集（所有表中记录过的IVR模块）
+	select distinct X from #temp_ivr_X order by X
+	--得到纵坐标标签结果集
+	select distinct Y from #temp_ivr_Y order by Y
+	--得到统计结果集
+	select Sum1,X,Y from #temp_ivr_sum order by X,Y
+
+END
+

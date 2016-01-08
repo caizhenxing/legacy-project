@@ -1,0 +1,10 @@
+修改人：王文权
+修改日期：2008-11-28
+修改内容：农委三方通话问题,来电弹出接听点话页面 
+修改agengPanel.jsp
+agengPanel.jsp 修改 实现座席外呼外线, 后在呼叫专家发起三方通话.来电弹出接听页面(agentCallInOper.html) 电击接听 接听外线
+增加 agentCallInOper.html
+agentCallInOper.html 来电弹出页面座席点接听按钮接听
+1 js修改
+packageAgentOuter.js
+增加了 function MyOpenWin 作用打开窗口

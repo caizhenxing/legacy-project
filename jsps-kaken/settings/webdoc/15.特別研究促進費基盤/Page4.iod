@@ -1,0 +1,652 @@
+
+#V4.5 IOTHE-Printerfile
+#
+#
+
+cd=ÇxÇìÇì
+it=n
+doc={
+t=
+st=
+c=
+ap=
+ss=e487av1Tav1Tav1Tav1Tav1Tav+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+#
+}
+pagesize=a4 v 595 842
+pr=0 a4 v 595 842 0 0 100 n
+opt=255 255 255
+addole={
+}
+page
+ptype=overlay
+pagesize=a4 v 595 842
+sheet=1 0 0 0 0 4 0 0 |
+figs={
+}
+page
+ptype=normal
+figs={
+tvp=1
+tuf=0
+ts=12
+tw=1
+td=0
+tr=0
+ti=0
+tb=0
+twh=ÇlÇr ñæí©
+twz=ÇlÇr ñæí©
+twk=ÇlÇr ñæí©
+tc=0 0 0
+tov=1
+FT={
+xy=66.5 40
+str=å§ãÜëgêDÅiå§ãÜã¶óÕé“Åj
+}
+pf=1
+pw=0
+pk=0
+pc=0 0 0
+ff=-1
+fc=255 255 255
+fb=0
+jo=2
+ml=10
+PL={
+p={
+70.5 45
+526.5 45
+}
+}
+PL={
+p={
+70.5 75
+526.5 75
+}
+}
+PL={
+p={
+70.5 45
+70.5 792
+}
+}
+PL={
+p={
+526.5 45
+526.5 792
+}
+}
+PL={
+p={
+70.5 145
+526.5 145
+}
+}
+PL={
+p={
+70.5 495
+526.5 495
+}
+}
+PL={
+p={
+70.5 565
+526.5 565
+}
+}
+PL={
+p={
+70.5 775
+526.5 775
+}
+}
+PL={
+p={
+80.5 45
+80.5 775
+}
+}
+PL={
+p={
+165.5 45
+165.5 775
+}
+}
+PL={
+p={
+344.5 45
+345.5 792
+}
+}
+ts=10.5
+tb=1
+FT={
+xy=96.75 65.25
+str=éÅñº(îNóÓ)
+}
+FT={
+xy=223.5 55.5
+str=èäëÆå§ãÜã@ä÷
+}
+FT={
+xy=244.5 65.5
+str=ïîã«
+}
+FT={
+xy=249.75 75.5
+str=êE
+}
+FT={
+xy=409.75 55.5
+str=åªç›ÇÃêÍñÂ
+}
+FT={
+xy=424.75 65.5
+str=äwà 
+}
+FT={
+xy=414.75 75.5
+str=ñäÑï™íS
+}
+PL={
+p={
+70.5 215
+526.5 215
+}
+}
+PL={
+p={
+70.5 285
+526.5 285
+}
+}
+PL={
+p={
+70.5 355
+526.5 355
+}
+}
+PL={
+p={
+70.5 425
+526.5 425
+}
+}
+PL={
+p={
+70.5 635
+526.5 635
+}
+}
+PL={
+p={
+70.5 705
+526.5 705
+}
+}
+tvp=0
+ts=9
+tb=0
+twh=
+twz=
+twk=
+tov=0
+pf=0
+TF={
+name=NAME_KANA#1
+xywh=80.5 77 85 27
+}
+TF={
+name=SHOZOKU_NAME#1
+xywh=166.5 77 180 27
+}
+TF={
+name=BUKYOKU_NAME#1
+xywh=166.5 106 180 27
+}
+TF={
+name=SHOKU_NAME#1
+xywh=166.5 135 180 10
+}
+TF={
+name=SENMON#1
+xywh=345.5 77 183 18
+}
+TF={
+name=GAKUI#1
+xywh=345.5 97 183 18
+}
+TF={
+name=BUNTAN#1
+xywh=345.5 117 183 27
+}
+TF={
+name=SENMON#2
+xywh=345.5 147 183 18
+}
+TF={
+name=GAKUI#2
+xywh=345.5 167 183 18
+}
+TF={
+name=BUNTAN#2
+xywh=345.5 187 183 27
+}
+TF={
+name=SENMON#3
+xywh=345.5 217 183 18
+}
+TF={
+name=GAKUI#3
+xywh=345.5 237 183 18
+}
+TF={
+name=BUNTAN#3
+xywh=345.5 257 183 27
+}
+ts=12
+TF={
+name=PAGENUM
+xywh=282 796 40 20
+}
+ts=9
+TF={
+name=NAME_KANJI#1
+xywh=80.5 107 85 27
+}
+TF={
+name=SHOZOKU_NAME#2
+xywh=166.5 147 180 27
+}
+TF={
+name=BUKYOKU_NAME#2
+xywh=166.5 176 180 27
+}
+TF={
+name=SHOKU_NAME#2
+xywh=166.5 205 180 10
+}
+TF={
+name=NAME_KANA#2
+xywh=80.5 147 85 27
+}
+TF={
+name=NAME_KANJI#2
+xywh=80.5 177 85 27
+}
+TF={
+name=SHOZOKU_NAME#3
+xywh=166.5 217 180 27
+}
+TF={
+name=SHOZOKU_NAME#3
+xywh=166.5 247 180 27
+}
+TF={
+name=SHOKU_NAME#3
+xywh=166.5 275 180 10
+}
+TF={
+name=NAME_KANA#3
+xywh=80.5 217 85 27
+}
+TF={
+name=NAME_KANJI#3
+xywh=80.5 247 85 27
+}
+TF={
+name=SENMON#4
+xywh=345.5 287 183 18
+}
+TF={
+name=GAKUI#4
+xywh=345.5 307 183 18
+}
+TF={
+name=BUNTAN#4
+xywh=345.5 327 183 27
+}
+TF={
+name=SHOZOKU_NAME#4
+xywh=166.5 287 180 27
+}
+TF={
+name=BUKYOKU_NAME#4
+xywh=166.5 316 180 27
+}
+TF={
+name=SHOKU_NAME#4
+xywh=166.5 345 180 10
+}
+TF={
+name=NAME_KANA#4
+xywh=80.5 287 85 27
+}
+TF={
+name=NAME_KANJI#4
+xywh=80.5 317 85 27
+}
+TF={
+name=SENMON#5
+xywh=345.5 357 183 18
+}
+TF={
+name=GAKUI#5
+xywh=345.5 377 183 18
+}
+TF={
+name=BUNTAN#5
+xywh=345.5 397 183 27
+}
+TF={
+name=SHOZOKU_NAME#5
+xywh=166.5 357 180 27
+}
+TF={
+name=BUKYOKU_NAME#5
+xywh=166.5 386 180 27
+}
+TF={
+name=SHOKU_NAME#5
+xywh=166.5 415 180 10
+}
+TF={
+name=NAME_KANA#5
+xywh=80.5 357 85 27
+}
+TF={
+name=NAME_KANJI#5
+xywh=80.5 387 85 27
+}
+TF={
+name=SENMON#6
+xywh=345.5 427 183 18
+}
+TF={
+name=GAKUI#6
+xywh=345.5 447 183 18
+}
+TF={
+name=BUNTAN#6
+xywh=345.5 467 183 27
+}
+TF={
+name=SHOZOKU_NAME#6
+xywh=166.5 427 180 27
+}
+TF={
+name=BUKYOKU_NAME#6
+xywh=166.5 456 180 27
+}
+TF={
+name=SHOKU_NAME#6
+xywh=166.5 485 180 10
+}
+TF={
+name=NAME_KANA#6
+xywh=80.5 427 85 27
+}
+TF={
+name=NAME_KANJI#6
+xywh=80.5 457 85 27
+}
+TF={
+name=SENMON#9
+xywh=345.5 637 183 18
+}
+TF={
+name=GAKUI#9
+xywh=345.5 657 183 18
+}
+TF={
+name=BUNTAN#9
+xywh=345.5 677 183 27
+}
+TF={
+name=SHOZOKU_NAME#9
+xywh=166.5 637 180 27
+}
+TF={
+name=BUKYOKU_NAME#9
+xywh=166.5 666 180 27
+}
+TF={
+name=SHOKU_NAME#9
+xywh=166.5 695 180 10
+}
+TF={
+name=NAME_KANA#9
+xywh=80.5 637 85 27
+}
+TF={
+name=NAME_KANJI#9
+xywh=80.5 667 85 27
+}
+TF={
+name=SENMON#10
+xywh=345.5 707 183 18
+}
+TF={
+name=GAKUI#10
+xywh=345.5 727 183 18
+}
+TF={
+name=BUNTAN#10
+xywh=345.5 747 183 27
+}
+TF={
+name=SHOZOKU_NAME#10
+xywh=166.5 707 180 27
+}
+TF={
+name=BUKYOKU_NAME#10
+xywh=166.5 736 180 27
+}
+TF={
+name=SHOKU_NAME#10
+xywh=166.5 765 180 10
+}
+TF={
+name=NAME_KANA#10
+xywh=80.5 707 85 27
+}
+TF={
+name=NAME_KANJI#10
+xywh=80.5 737 85 27
+}
+TF={
+name=SENMON#7
+xywh=345.5 497 183 18
+}
+TF={
+name=GAKUI#7
+xywh=345.5 517 183 18
+}
+TF={
+name=BUNTAN#7
+xywh=345.5 537 183 27
+}
+TF={
+name=SHOZOKU_NAME#7
+xywh=166.5 497 180 27
+}
+TF={
+name=BUKYOKU_NAME#7
+xywh=166.5 526 180 27
+}
+TF={
+name=SHOKU_NAME#7
+xywh=166.5 555 180 10
+}
+TF={
+name=NAME_KANA#7
+xywh=80.5 497 85 27
+}
+TF={
+name=NAME_KANJI#7
+xywh=80.5 527 85 27
+}
+TF={
+name=SENMON#8
+xywh=345.5 567 183 18
+}
+TF={
+name=GAKUI#8
+xywh=345.5 587 183 18
+}
+TF={
+name=BUNTAN#8
+xywh=345.5 607 183 27
+}
+TF={
+name=SHOZOKU_NAME#8
+xywh=166.5 567 180 27
+}
+TF={
+name=BUKYOKU_NAME#8
+xywh=166.5 596 180 27
+}
+TF={
+name=SHOKU_NAME#8
+xywh=166.5 625 180 10
+}
+TF={
+name=NAME_KANA#8
+xywh=80.5 567 85 27
+}
+TF={
+name=NAME_KANJI#8
+xywh=80.5 597 85 27
+}
+tb=1
+TF={
+name=BUNTAN_FLG#2
+xywh=71.5 155 9 50
+}
+TF={
+name=BUNTAN_FLG#1
+xywh=71.5 85 9 50
+}
+TF={
+name=BUNTAN_FLG#3
+xywh=71.5 225 9 50
+}
+TF={
+name=BUNTAN_FLG#4
+xywh=71.5 295 9 50
+}
+TF={
+name=BUNTAN_FLG#5
+xywh=71.5 365 9 50
+}
+TF={
+name=BUNTAN_FLG#6
+xywh=71.5 435 9 50
+}
+TF={
+name=BUNTAN_FLG#7
+xywh=71.5 505 9 50
+}
+TF={
+name=BUNTAN_FLG#8
+xywh=71.5 575 9 50
+}
+TF={
+name=BUNTAN_FLG#9
+xywh=71.5 645 9 50
+}
+TF={
+name=BUNTAN_FLG#10
+xywh=71.5 715 9 50
+}
+tb=0
+TF={
+name=NENREI#1
+xywh=130.5 132 36 9
+}
+TF={
+name=NENREI#2
+xywh=130.5 202 36 9
+}
+TF={
+name=NENREI#3
+xywh=130.5 272 36 9
+}
+TF={
+name=NENREI#4
+xywh=130.5 342 36 9
+}
+TF={
+name=NENREI#5
+xywh=130.5 412 36 9
+}
+TF={
+name=NENREI#6
+xywh=130.5 482 36 9
+}
+TF={
+name=NENREI#7
+xywh=130.5 552 36 9
+}
+TF={
+name=NENREI#8
+xywh=130.5 622 36 9
+}
+TF={
+name=NENREI#9
+xywh=130.5 692 36 9
+}
+TF={
+name=NENREI#10
+xywh=130.5 762 36 9
+}
+tvp=1
+ts=10.5
+tb=1
+twh=ÇlÇr ñæí©
+twz=ÇlÇr ñæí©
+twk=ÇlÇr ñæí©
+tov=1
+FT={
+xy=85 789.5
+str=çáåv
+}
+tvp=0
+twh=
+twz=
+twk=
+tov=0
+TF={
+name=KENKYU_NINZU
+xywh=118 777.5 30 12
+}
+tvp=1
+twh=ÇlÇr ñæí©
+twz=ÇlÇr ñæí©
+twk=ÇlÇr ñæí©
+tov=1
+FT={
+xy=145 789.5
+str=ñº
+}
+pf=1
+PL={
+name=x
+p={
+70.5 792
+526.5 792
+}
+}
+tvp=0
+ts=12
+tb=0
+twh=
+twz=
+twk=
+tov=0
+pf=0
+TF={
+name=UKETUKE_NO
+xywh=392 796 140 20
+}
+}

@@ -1,0 +1,378 @@
+<project name="jbpm.module.build" basedir="." default="install">
+
+  <!--
+  ################
+  ## PROPERTIES ##
+  ################
+  -->
+
+  <!--
+  Required input properties:
+    module.name
+    module.version
+    jbpm.root
+  -->
+
+  <tstamp>
+    <format property="now" pattern="dd-MMM-yyyy HH:mm" locale="en"/>
+  </tstamp>
+
+  <!--
+  ########### 
+  ## CLEAN ##
+  ###########
+  -->
+  
+  <target name="clean" 
+          description="delete the target directory">
+    <delete dir="target" />
+  </target>
+
+  <!--
+  ################ 
+  ## CLASSPATHS ##
+  ################
+  -->
+  
+  <path id="repository.jbpm.libs">
+    <fileset dir="${local.repository}">
+      <include name="${lib.jbpm.identity.dir}/jbpm-identity.jar"/>
+      <include name="${lib.jbpm.jpdl.dir}/jbpm-jpdl.jar"/>
+      <include name="${lib.jbpm.enterprise.dir}/jbpm-cmdservice.jar"/>
+      <include name="${lib.jbpm.enterprise.dir}/jbpm-cmdlistener.jar"/>
+    </fileset>
+  </path>
+
+  <path id="repository.external.dependency.libs" 
+        description="All the external dependency libs in the local repository">
+    <fileset dir="${local.repository}">
+      <!-- EXTERNAL DEPENDENCIES (3/4): BUILD CLASSPATH -->
+      <include name="${lib.activation.path}"/>
+      <include name="${lib.ant.path}"/>
+      <include name="${lib.antlr.path}" />
+      <include name="${lib.asm.path}" />
+      <include name="${lib.asm.attr.path}" />
+      <include name="${lib.aspectjrt.path}"/>
+      <include name="${lib.bsh.path}"/>
+      <include name="${lib.cactus.path}"/>
+      <include name="${lib.cglib.path}"/>
+      <include name="${lib.commons.logging.path}"/>
+      <include name="${lib.commons.codec.path}" />
+      <include name="${lib.commons.collections.path}" />
+      <include name="${lib.commons.httpclient.path}"/>
+      <include name="${lib.commons.fileupload.path}" />
+      <include name="${lib.dom4j.path}"/>
+      <include name="${lib.dumbster.path}"/>
+      <include name="${lib.ehcache.path}" />
+      <include name="${lib.el.api.path}" />
+      <include name="${lib.facelets.path}"/>
+      <include name="${lib.hibernate.path}"/>
+      <include name="${lib.hsqldb.path}"/>
+      <include name="${lib.httpunit.path}"/>
+      <include name="${lib.jackrabbit.path}"/>
+      <include name="${lib.javamail.path}"/>
+      <include name="${lib.jaxen.path}"/>
+      <include name="${lib.jboss.common.path}"/>
+      <include name="${lib.jboss.j2ee.path}"/>
+      <include name="${lib.jboss.jmx.path}"/>
+      <include name="${lib.jboss.system.path}"/>
+      <include name="${lib.jcr.path}"/>
+      <include name="${lib.junit.path}"/>
+      <include name="${lib.jwebunit.path}"/>
+      <include name="${lib.log4j.path}"/>
+      <include name="${lib.jsf.api.path}"/>
+      <include name="${lib.jsf.impl.path}"/>
+      <include name="${lib.nekohtml.path}"/>
+      <include name="${lib.quartz.path}"/>
+      <include name="${lib.servlet.path}"/>
+      <include name="${lib.xercesimpl.path}"/>
+    </fileset>
+  </path>
+
+  <path id="compile.classpath" 
+        description="default compile classpath">
+    <path refid="repository.jbpm.libs" />
+    <path refid="repository.external.dependency.libs" />
+  </path>
+  
+  <path id="compile.test.classpath">
+    <pathelement location="${classes.dir}"/>
+    <path refid="compile.classpath"/>
+  </path>
+
+  <path id="test.classpath">
+    <pathelement location="${test.classes.dir}"/>
+    <pathelement location="${config.dir}"/>
+    <pathelement location="${test.resources.dir}"/>
+    <path refid="compile.test.classpath"/>
+  </path>
+
+  <!-- 
+  Users should create a classpath and declare the jbpm tasks like this:
+  <taskdef resource="org/jbpm/ant/jbpm.ant.tasks.properties" 
+           classpathref="config.included.task.classpath" />
+  The jbpm.task.classpath can be used as a basis for creating the classpath.
+  Users must add the jbpm and hibernate configuration files to the classpath 
+  before defining the tasks.
+  -->
+  <path id="task.classpath.base">
+    <path refid="repository.external.dependency.libs" />
+	<fileset dir="${local.repository}/${lib.jbpm.jpdl.dir}">
+      <include name="jbpm-jpdl.jar" />
+	</fileset>
+	<fileset dir="${local.repository}/${lib.jbpm.identity.dir}">
+      <include name="jbpm-identity.jar" />
+    </fileset>
+  </path>
+
+  <!--
+  ############# 
+  ## COMPILE ##
+  ############# 
+  -->
+  
+  <target name="compile" 
+          depends="compile.dependencies"
+          description="compile">
+    <mkdir dir="${classes.dir}" />
+    <available file="${java.dir}" property="java.sources.available" />
+    <antcall target="compile.java.sources" />
+    <available file="src/main/resources" property="resources.available" />
+    <antcall target="include.resources" />
+  </target>
+    
+  <target name="compile.java.sources" if="java.sources.available">
+    <javac classpathref="${compile.classpath}" 
+           srcdir="${java.dir}" 
+           destdir="${classes.dir}" 
+           source="${javac.source}" 
+           target="${javac.target}"
+           debug="${javac.debug}"
+           deprecation="${javac.deprecation}"/>
+    <copy todir="${classes.dir}">
+      <fileset dir="${java.dir}">
+        <patternset refid="jar.resource.files" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="include.resources" if="resources.available">
+    <copy todir="${classes.dir}">
+      <fileset dir="src/main/resources"/>
+    </copy>
+  </target>
+    
+  <!-- overwrite this target if you want to include compile dependencies -->
+  <target name="compile.dependencies" />
+
+  <!--
+  #########
+  ## JAR ##
+  #########
+  -->
+
+  <!-- 
+  the jar.resource.files are copied from src/main/java to 
+  target/classes in the compile target.  that way they end up 
+  in the jar.  
+  -->
+  <patternset id="jar.resource.files">
+    <include name="**/*.dtd"/>
+    <include name="**/*.xml"/>
+    <include name="**/*.tld"/>
+    <include name="**/*.xslt"/>
+    <include name="**/*.properties"/>
+    <include name="**/*.js"/>
+    <include name="**/*.html"/>
+    <include name="**/*.xhtml"/>
+    <exclude name="**/package.html"/>
+  </patternset>
+
+  <target name="create.manifest">
+    <mkdir dir="target/manifest" />
+    <manifest file="target/manifest/MANIFEST.MF">
+      <attribute name="Implementation-Title" value="${artifact.name}"/>
+      <attribute name="Implementation-Version" value="${module.version} (date:${now})"/>
+      <attribute name="Implementation-URL" value="http://www.jboss.org/"/>
+      <attribute name="Implementation-Vendor" value="JBoss Inc."/>
+      <attribute name="Implementation-Vendor-Id" value="http://www.jboss.org/"/>
+    </manifest>
+  </target>
+
+  <target name="jar" 
+          depends="compile, create.manifest, jar.dependencies"
+          description="creates java archive package"
+          unless="is.packaged">
+    <jar jarfile="target/${artifact.name}"
+         manifest="target/manifest/MANIFEST.MF">
+      <fileset dir="${classes.dir}" />
+    </jar>
+  </target>
+  
+  <target name="jar.dependencies" />
+
+  <!--
+  ##########
+  ## JPDL ##
+  ##########
+  -->
+
+  <available file="src/main/jpdl" property="jpdl.available" />
+  <target name="jpdl" 
+          depends="compile, create.manifest, jpdl.dependencies"
+          description="creates a jpdl process archive"
+          if="jpdl.available">
+    <property name="is.packaged" value="true" />
+    <jar jarfile="target/${artifact.name}"
+         manifest="target/manifest/MANIFEST.MF">
+      <fileset dir="src/main/jpdl" />
+      <fileset dir="target">
+        <include name="classes/**" />
+      </fileset>
+    </jar>
+  </target>
+
+  <target name="jpdl.dependencies" />
+
+  <!--
+  ############# 
+  ## PACKAGE ##
+  ############# 
+  -->
+
+  <!-- 
+  The default packaging is the jar target.  Overwrite this 
+  target if you want different behaviour.
+  -->
+  <target name="package"
+          depends="jpdl, jar"
+          description="create the package">
+  </target>
+
+  <!--
+  ################## 
+  ## COMPILE TEST ##
+  ################## 
+  -->
+
+  <target name="compile.test" 
+          depends="compile, compile.test.dependencies"
+          description="compiles test classes">
+    <mkdir dir="${test.classes.dir}" />
+    <javac classpathref="${compile.test.classpath}" 
+           srcdir="${test.java.dir}" 
+           destdir="${test.classes.dir}" 
+           source="${javac.source}" 
+           target="${javac.target}"
+           debug="${javac.debug}"
+           deprecation="${javac.deprecation}"/>
+    <copy todir="${test.classes.dir}">
+      <fileset dir="${test.java.dir}">
+        <patternset refid="jar.resource.files" />
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- overwrite this target if you want to include test compilation dependencies -->
+  <target name="compile.test.dependencies">
+  </target>
+
+  <!--
+  ##########
+  ## TEST ##
+  ##########
+  -->
+
+  <target name="test" 
+          depends="compile.test, test.dependencies"
+          description="run the unit tests">
+    <delete dir="target/test.results" />
+    <mkdir dir="target/test.results/xml" />
+    <junit printsummary="yes" fork="yes" forkmode="once" showoutput="false">
+      <classpath refid="${test.classpath}" />
+      <formatter type="xml" />
+      <batchtest todir="target/test.results/xml">
+        <fileset dir="target/test.classes">
+          <include name="**/*Test.class" />
+        </fileset>
+      </batchtest>
+    </junit>
+    <junitreport todir="target/test.results/xml">
+      <fileset dir="." includes="**/TEST-*.xml"/>
+      <report todir="target/test.results" />
+    </junitreport>
+  </target>
+
+  <!-- overwrite this target if you want to include test suite execution dependencies -->
+  <target name="test.dependencies" />
+
+  <target name="view.testresults" 
+          description="view the testresults in a browser">
+    <exec executable="${windows.browser}" os="Windows XP,Windows 2000,Windows 98">
+      <arg value="file://${basedir}/target/test.results/index.html" />
+    </exec>
+    <exec executable="${macos.browser}" os="Mac OS X">
+      <arg value="file://${basedir}/target/test.results/index.html" />
+    </exec>
+    <exec executable="${linux.browser}" os="Linux">
+      <arg value="file://${basedir}/target/test.results/index.html" />
+    </exec>
+  </target> 
+
+  <target name="test.and.view" 
+          depends="test, view.testresults" 
+          description="run the unit tests and view the results in a browser">
+  </target>
+
+  <!--
+  #############
+  ## JAVADOC ##
+  #############
+  -->
+
+  <target name="javadoc"
+          description="creates javadoc api documentation">
+    <javadoc destdir="${javadoc.destdir}"
+             windowtitle="jBPM ${module.name} ${module.version}"
+             classpathref="${compile.classpath}"
+             overview="${javadoc.sourcepath}/package.html">
+      <packageset dir="${javadoc.sourcepath}" />
+    </javadoc>
+  </target>
+
+  <!--
+  ################
+  ## REPOSITORY ##
+  ################
+  -->
+
+  <target name="install"
+          depends="package"
+          description="publishes the packaged artifact in the local repository">
+    <mkdir dir="${local.repository}/jbpm/${module.name}/${module.version}/lib" />
+    <copy file="target/${artifact.name}" todir="${local.repository}/jbpm/${module.name}/${module.version}/lib" />
+  </target>
+
+  <target name="publish"
+          depends="install"
+          description="uploads the local repository artifact to the remote repository">
+    <available file="${local.repository}/jbpm/CVS" type="dir" property="cvs.info.available" />
+    <fail unless="cvs.info.available" message="jbpm repository is not fetched with cvs.  use target checkout.jbpm.repository in build file build/build.xml" />
+    <cvs command="add ${module.name}" 
+         dest="${local.repository}/jbpm"
+         cvsroot=":ext:${cvs.username}@cvs.forge.jboss.com:/cvsroot/jboss" />
+    <cvs command="add ${module.name}/${module.version}"  
+         dest="${local.repository}/jbpm"
+         cvsroot=":ext:${cvs.username}@cvs.forge.jboss.com:/cvsroot/jboss" />
+    <cvs command="add ${module.name}/${module.version}/lib"
+         dest="${local.repository}/jbpm"
+         cvsroot=":ext:${cvs.username}@cvs.forge.jboss.com:/cvsroot/jboss" />
+    <cvs command="add -kb ${module.name}/${module.version}/lib/${artifact.name}" 
+         dest="${local.repository}/jbpm"
+         cvsroot=":ext:${cvs.username}@cvs.forge.jboss.com:/cvsroot/jboss" />
+    <cvs command="commit -m 'uploading jbpm artifact ${artifact.name}' ${module.name}/${module.version}/lib/${artifact.name}" 
+         dest="${local.repository}/jbpm"
+         cvsroot=":ext:${cvs.username}@cvs.forge.jboss.com:/cvsroot/jboss" />
+  </target>
+  
+</project>

@@ -1,0 +1,75 @@
+作者王文权 192.168.0.11 192.168.0.12
+需求 页面单文件通用上传数据库建表语句
+CREATE TABLE [dbo].[uploadFileTbl](
+	[id] [varchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[oldName] [varchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+	[filePath] [nchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+	[newName] [varchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+	[type] [nchar](20) COLLATE Chinese_PRC_CI_AS NULL,
+	[addtime] [datetime] NULL CONSTRAINT [DF_uploadFileTbl_addtime]  DEFAULT (getdate()),
+ CONSTRAINT [PK_uploadFileTbl] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'用户上传的文件名字' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'uploadFileTbl', @level2type=N'COLUMN', @level2name=N'oldName'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'web饮用path' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'uploadFileTbl', @level2type=N'COLUMN', @level2name=N'filePath'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'服务器生成的唯一名字' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'uploadFileTbl', @level2type=N'COLUMN', @level2name=N'newName'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'文件类型' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'uploadFileTbl', @level2type=N'COLUMN', @level2name=N'type'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'增加时间' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'uploadFileTbl', @level2type=N'COLUMN', @level2name=N'addtime'
+1、新建表refer_column（咨询栏目，用于大屏幕话务分析的类别统计记录）sql语句如下：
+USE [callcenterj_sy]
+GO
+/****** 对象:  Table [dbo].[refer_column]    脚本日期: 03/20/2009 14:43:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[refer_column](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[column_name] [varchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+ CONSTRAINT [PK_refer_column] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'服务记录里咨询栏目的栏目名' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'refer_column', @level2type=N'COLUMN', @level2name=N'column_name'
+
+2、向refer_column表填数据，sql语句如下：
+
+begin
+insert into refer_column(column_name) values('政策咨询');
+insert into refer_column(column_name) values('种植咨询');
+insert into refer_column(column_name) values('养殖咨询');
+insert into refer_column(column_name) values('项目咨询');
+insert into refer_column(column_name) values('环保咨询');
+insert into refer_column(column_name) values('重大事件上报');
+insert into refer_column(column_name) values('信息定制');
+insert into refer_column(column_name) values('金农通');
+insert into refer_column(column_name) values('企业服务');
+insert into refer_column(column_name) values('医疗服务');
+insert into refer_column(column_name) values('价格行情');
+insert into refer_column(column_name) values('价格报送');
+insert into refer_column(column_name) values('供求发布');
+insert into refer_column(column_name) values('热线调查');
+insert into refer_column(column_name) values('万事通');
+insert into refer_column(column_name) values('供求查询');
+end

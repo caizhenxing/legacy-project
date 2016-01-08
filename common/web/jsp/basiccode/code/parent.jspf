@@ -1,0 +1,31 @@
+<%--
+    @version:$Id: parent.jspf,v 1.10 2008/01/02 16:30:50 wenjb Exp $
+    @since $Date: 2008/01/02 16:30:50 $
+--%>
+
+
+<div class="update_subhead">
+	 <span class="switch_open" onclick="StyleControl.switchDiv(this,$('parenttable'))" title="伸缩节点">上级代码信息</span>
+</div>
+<table border="0" cellpadding="0" cellspacing="0" class="Detail" id="parenttable">
+	<tr>
+		<td class="attribute">所属ID</td>
+		<td><input name="parent" value="<c:out value='${parent.id}'/>" class="readonly" readonly="readonly"/></td>
+		<td class="attribute">所属名称</td>
+		<td><input name="dummy.bean.parent.name" value="<c:out value='${parent.name}'/>" class="readonly" readonly="readonly"/></td>
+	</tr>
+	<tr>
+		<td class="attribute">所属子系统</td>
+		<td><input name="parent" value="<c:out value='${parent.subid}'/>" class="readonly" readonly="readonly"/></td>
+		<td class="attribute">所属模块</td>
+		<td><input name="dummy.bean.parent.name" value="<c:out value='${parent.typeCode}'/>" class="readonly" readonly="readonly"/></td>
+	</tr>
+	<tr>
+		<td class="attribute">描述</td>
+		<td colspan="3">
+		<input name="dummy.bean.parent.description" value="<c:out value='${parent.codeDesc}'/>" class="readonly" readonly="readonly" style="width:84.6%"/>
+		<span title="<c:out value='${parent.codeDesc}'/>">
+		<input type="button" id="edit_longText" onClick="definedWin.openLongTextWin(document.getElementsByName('dummy.bean.parent.description')[0],'',true);"/>
+		</span></td>
+	</tr>
+</table>

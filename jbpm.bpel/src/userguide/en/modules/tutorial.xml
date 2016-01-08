@@ -1,0 +1,114 @@
+<chapter id="tutorial">
+
+  <title>Tutorial</title>
+
+  <para>The best way to get acquainted with BPEL is to see it in action. For this reason,
+    we included some examples that will help you get started quickly. At
+    this point, you should have the jBPM BPEL service running inside JBoss. If you
+    do not, please read the <link linkend="getstarted" endterm="getstarted.title"/>
+    chapter first.</para>
+    
+  <para>In this chapter we will guide you through the example setup procedure. The next two 
+    chapters contain the actual examples.</para>
+    
+  <section id="tutorial.setup.jwsdp">
+
+    <title>Getting the Java Web Services Development Pack</title>
+    
+    <para>jBPM BPEL relies on the Web Services for J2EE (WSEE) model for exposing the 
+      functionality a BPEL process delivers. Some of the server artifacts required for a WSEE 
+      deployment can be automatically generated from WSDL documents.</para>
+      
+    <para>Starting from JBoss AS 4.0.4, the web services implementation features a
+      toolkit called <literal>wstools</literal>. If you are using that version of JBoss AS, no
+      further action is required in this section.</para>
+      
+    <para>For earlier JBoss AS versions, JBoss recommended the <literal>wscompile</literal> 
+      tool from the Java Web Services Development Pack. Please refer to the <ulink 
+      url="http://java.sun.com/webservices/jwsdp/index.jsp">Java WSDP</ulink> site for download
+      and installation instructions.</para>
+  
+  </section>
+    
+  <section id="tutorial.setup.environment">
+  
+    <title>Defining the environment</title>
+    
+    <para>The resources related to each sample process reside in a separate subdirectory 
+       under <literal>doc/examples</literal>. Each subdirectory contains an Ant script to assist
+       in carrying out process deployment tasks.</para>
+       
+    <para>Note that the individual scripts import a template located in the <literal>common
+      </literal> subdirectory. If you organize your resources in the same way as the examples,
+      you can take advantage of this template in your own project.</para>
+      
+    <para>Each runtime environment is likely to be different from all others. For this
+      reason, the build template needs to be made aware of your particular environment.
+      Copy or rename file <literal>ant.example.properties</literal> in the <literal>doc/examples
+      </literal> subdirectory to <literal>ant.properties</literal>. Edit the values there to 
+      match your jBPM BPEL and JWSDP installation directories. The new values are shared
+      among all examples.</para>
+    
+    <programlisting><![CDATA[# jBPM BPEL installation directory 
+jbpm.bpel.home=/jbpm/bpel/home
+
+# JWSDP installation directory
+# optional for JBoss 4.0.4+
+# required for JBoss 4.0.3-
+!jwsdp.home=/jwsdp/home]]></programlisting>
+
+    <para>Controlling multiple processes at once becomes as easy as controlling a single
+      process with the build file located in <literal>doc/examples</literal>. This script 
+      leverages the <literal>subant</literal> task for running build targets on a collection 
+      of projects.</para>
+  
+  </section>
+
+  <section id="tutorial.setup.dbschema">
+  
+    <title>Creating the database schema</title>
+    
+    <para>Starting with version 1.0 alpha 4, a web application deployed along the jBPM BPEL
+      service executes administrative requests such as creating the database schema and
+      deploying a process definition.</para>      
+    
+    <para>Before you deploy process definitions to the database, the jBPM schema must exist in
+      the database. The schema creation can be manual or automatic, at your choice.</para>
+      
+    <para>Automatic schema creation is convenient for evaluation and development purposes.
+      This is why it is the default setting. To disable it, remove the <literal>
+      hibernate.hbm2ddl.auto</literal> property from <literal>hibernate.properties</literal> in 
+      <literal>src/resources/jbpm-bpel.sar</literal> and redeploy the jBPM BPEL service.
+    </para>
+    
+    <para>When you turn off automatic schema creation, you need a way to create it manually. 
+      The global process deployment script provides some targets for posting administrative 
+      schema requests to the jBPM BPEL web application: <literal>create-schema</literal> and 
+      <literal>drop-schema</literal>.</para>
+      
+    <para>Hibernate will emit a few log messages to the server console when the schema gets
+      created either way. The output below corresponds to manual creation.</para>
+      
+    <screen><![CDATA[22:45:00,796 INFO  [SchemaExport] Running hbm2ddl schema export
+22:45:00,812 INFO  [SchemaExport] exporting generated schema to database
+22:45:00,828 INFO  [DatasourceConnectionProvider] Using datasource: java:/jbpmBpelDS
+22:45:00,921 INFO  [SchemaExport] schema export complete]]></screen>
+  
+  </section>
+    
+  <section id="tutorial.setup.xmlapis">
+  
+    <title>Replacing the default implementation of the XML APIs</title>
+    
+    <para>There are known issues with the implementations of the XML APIs in Java SE 1.4.2 and 
+      1.5.0. The solution is to employ the Endorsed Standards Override Mechanism for replacing
+      these implementations with more recent versions of Apache Xalan and Apache Xerces.</para>
+      
+    <para>You will find adequate replacement libraries in the <literal>lib/endorsed</literal> 
+      subdirectory of JBoss AS. Please follow the instructions for deploying endorsed standards
+      classes in the Java SE <ulink url="http://java.sun.com/j2se/1.4.2/docs/guide/standards/">
+      Guide to Features</ulink>.</para>
+
+  </section>
+
+</chapter>

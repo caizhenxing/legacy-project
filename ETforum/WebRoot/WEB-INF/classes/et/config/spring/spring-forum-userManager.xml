@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean name="/forum/userManager"
+		class="et.bo.forum.userManager.action.UserManagerAction" singleton="false">			
+		<property name="userManagerService">
+			<ref bean="UserManagerService" />
+		</property>	
+		<property name="userInfoService">
+		    <ref bean="UserInfoService"/>
+		</property>			
+	</bean>
+	
+	<!--  service begin -->	
+	<bean id="UserManagerService"
+		class="et.bo.forum.userManager.service.impl.UserManagerServiceImpl" singleton="true">
+<!--        <property name="userInfoService">-->
+<!--			<ref bean="UserInfoService" />-->
+<!--		</property>-->
+		<property name="dao">
+			<ref bean="ForumDao" />
+		</property>
+	</bean>	
+</beans>

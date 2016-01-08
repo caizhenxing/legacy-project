@@ -1,0 +1,99 @@
+package et.bo.ccserver.info;
+
+public class OperatorInfo {
+
+	private String state;
+	private String ip;
+	private TelCardInfo ti;
+	private String code;
+	
+	private static String STATE_LOGIN="login";
+	private static String STATE_WAITING="waiting";
+	private static String STATE_NO_WAITING="nowaiting";
+	private static String STATE_CALLING="calling";
+	
+	public OperatorInfo(String code,String ip)
+	{
+		this(code,ip,null);
+	}
+	public OperatorInfo(String code,String ip,TelCardInfo ti)
+	{
+		this.code=code;
+		this.ip=ip;
+		this.ti=ti;
+		this.state=this.STATE_LOGIN;
+	}
+	public TelCardInfo getTi() {
+		return ti;
+	}
+	public void setTi(TelCardInfo ti) {
+		this.ti = ti;
+	}
+	public String getCode() {
+		return code;
+	}
+	public String getIp() {
+		return ip;
+	}
+	public String getState() {
+		return state;
+	}
+	
+	public boolean sign(boolean issign)
+	{
+		if(state.equals(this.STATE_LOGIN)&&issign)
+		{
+			this.state=this.STATE_WAITING;
+			return true;
+		}
+		if(!((!state.equals(this.STATE_WAITING))&&issign))
+		{
+			this.state=this.STATE_LOGIN;
+			return true;
+		}
+		return false;
+	}
+	public boolean seat(boolean isseat)
+	{
+		if(state.equals(this.STATE_WAITING)&&!isseat)
+		{
+			this.state=this.STATE_NO_WAITING;
+			return true;
+		}
+		if(state.equals(this.STATE_NO_WAITING)&&isseat)
+		{
+			this.state=this.STATE_WAITING;
+			return true;
+		}
+		return false;
+	}
+	public boolean call(boolean iscall)
+	{
+		if(state.equals(this.STATE_WAITING)&&iscall)
+		{
+			this.state=this.STATE_CALLING;
+			return true;
+		}
+		if(state.equals(this.STATE_CALLING)&&!iscall)
+		{
+			this.state=this.STATE_WAITING;
+			return true;
+		}
+		return false;
+	}
+	public void interrupt()
+	{
+		this.state=this.STATE_LOGIN;
+	}
+	public static void main(String[] arg0)
+	{
+		OperatorInfo oi=new OperatorInfo("aa","aa");
+		oi.sign(true);
+		oi.sign(false);
+		oi.sign(true);
+		oi.seat(false);
+		oi.seat(true);
+		oi.call(true);
+		oi.call(false);
+	}
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<beans>
+<!--  action begin -->
+    <!--来电防火墙action-->
+    <bean name="/callcenter/appraise"
+		class="et.bo.callcenter.appraise.action.AppraiseAction" scope="singleton">			
+		<property name="as">
+			<ref bean="AppraiseService" />
+		</property>			
+	</bean>
+<!-- action end -->
+<!--  service begin -->
+     <!--  来电防火墙service	-->
+     <bean id="AppraiseService"
+		class="et.bo.callcenter.appraise.service.impl.AppraiseImpl">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+<!--  service end   -->
+</beans>

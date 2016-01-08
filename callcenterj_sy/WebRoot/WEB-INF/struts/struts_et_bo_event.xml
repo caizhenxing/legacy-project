@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+
+		<form-bean name="event" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id"       			type="java.lang.String" />
+			<form-property name="topic"       		type="java.lang.String" />
+			<form-property name="contents"       	type="java.lang.String" />
+			<form-property name="eventdate"       	type="java.lang.String" />
+			<form-property name="principal"       	type="java.lang.String" />
+			<form-property name="actor"       		type="java.lang.String" />
+			<form-property name="addtime"       	type="java.lang.String" />
+			<form-property name="adduser"       	type="java.lang.String" />
+			
+			<form-property name="beginTime"       	type="java.lang.String" />
+			<form-property name="endTime"       	type="java.lang.String" />
+		</form-bean>
+		
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+
+		<action attribute="event" 
+				name="event" 
+				scope="request" 
+				path="/event/event" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main"  path="/event/eventMain.jsp"/>
+			<forward name="list"  path="/event/eventList.jsp"/>
+			<forward name="load"  path="/event/eventLoad.jsp"/>
+			<forward name="query" path="/event/eventQuery.jsp"/>
+		</action>
+
+	</action-mappings>
+	
+</struts-config>
+

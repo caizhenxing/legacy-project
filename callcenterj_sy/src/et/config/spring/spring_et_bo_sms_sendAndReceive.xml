@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+	
+	<bean name="/sms/sendAndReceive/send" class="et.bo.sms.sendAndReceive.action.sendAndReceiveAction" scope="singleton">
+		<property name="sars">
+			<ref bean="sendAndReceiveService"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+	
+	<bean name="/sms/sendAndReceive/sendNot" class="et.bo.sms.sendAndReceive.action.sendAndReceiveAction" scope="singleton">
+		<property name="sars">
+			<ref bean="sendAndReceiveService"/>
+		</property>
+	</bean>
+	
+	<bean name="/sms/sendAndReceive/receive" class="et.bo.sms.sendAndReceive.action.sendAndReceiveAction" scope="singleton">
+		<property name="sars">
+			<ref bean="sendAndReceiveService"/>
+		</property>
+	</bean>
+
+	<bean id="sendAndReceiveService" class="et.bo.sms.sendAndReceive.service.impl.sendAndReceiveServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+</beans>

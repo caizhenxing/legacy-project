@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="urn:samples:ticket" 
+  xsi:schemaLocation="http://schemas.xmlsoap.org/wsdl/ http://schemas.xmlsoap.org/wsdl/"
+  xmlns:tns="urn:samples:ticket" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+  <import namespace="urn:samples:ticket" location="ticket.wsdl" />
+
+  <binding name="ticketBinding" type="tns:ticketIssuer">
+
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+
+    <operation name="createTicket">
+      <soap:operation soapAction="urn:samples:ticket:action:createTicket" />
+      <input>
+        <soap:body use="literal" namespace="urn:samples:ticket" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="urn:samples:ticket" />
+      </output>
+    </operation>
+
+  </binding>
+
+  <service name="ticketService">
+    <port name="ticketPort" binding="tns:ticketBinding">
+      <soap:address location="REPLACE_WITH_ACTUAL_URI" />
+    </port>
+  </service>
+
+</definitions>

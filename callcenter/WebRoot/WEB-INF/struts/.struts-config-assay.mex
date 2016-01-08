@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/pcc/assay/question.do" location="481,0" dimension="358,84" />
+  <StrutsActivity path="/pcc/assay/phone.do" location="409,277" dimension="358,84" />
+  <StrutsActivity path="/pcc/phonesearch/search.do" location="650,650" dimension="358,84" />
+  <StrutsActivity path="/pcc/assay/question/questionList.jsp" location="0,184" dimension="256,48" />
+  <StrutsActivity path="/pcc/assay/question/questionMain.jsp" location="356,184" dimension="256,48" />
+  <StrutsActivity path="/pcc/assay/question/seeQuestion.jsp" location="712,184" dimension="250,48" />
+  <StrutsActivity path="/pcc/assay/question/questionQuery.jsp" location="1062,184" dimension="262,48" />
+  <StrutsActivity path="/pcc/assay/phone/phoneList.jsp" location="0,461" dimension="220,48" />
+  <StrutsActivity path="/pcc/assay/phone/phoneMain.jsp" location="320,461" dimension="220,48" />
+  <StrutsActivity path="/pcc/assay/phone/seePhone.jsp" location="640,461" dimension="214,48" />
+  <StrutsActivity path="/pcc/assay/phone/phoneQuery.jsp" location="954,461" dimension="226,48" />
+  <StrutsActivity path="/pcc/phonesearch/searchList.jsp" location="50,750" dimension="226,48" />
+  <StrutsActivity path="/pcc/phonesearch/searchMain.jsp" location="350,750" dimension="226,48" />
+  <StrutsActivity path="/pcc/phonesearch/seeSearch.jsp" location="650,850" dimension="220,48" />
+  <StrutsActivity path="/pcc/phonesearch/searchQuery.jsp" location="350,850" dimension="232,48" />
+  <StrutsActivity path="/pcc/phonesearch/searchLoad.jsp" location="950,850" dimension="226,48" />
+  <StrutsActivity path="/pcc/phonesearch/phoneList.jsp" location="50,350" dimension="220,48" />
+  <StrutsActivity path="/pcc/phonesearch/phoneMain.jsp" location="950,350" dimension="220,48" />
+  <StrutsActivity path="/pcc/phonesearch/seePhone.jsp" location="50,650" dimension="214,48" />
+  <StrutsActivity path="/pcc/phonesearch/phoneQuery.jsp" location="350,650" dimension="226,48" />
+  <StrutsActivity path="/pcc/phonesearch/seesearch.jsp" location="50,850" dimension="220,48" />
+  <StrutsTransition id="/pcc/assay/question.do,list,/pcc/assay/question/questionList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="526,84" />
+      <AbsolutePoint location="526,119" />
+      <AbsolutePoint location="128,119" />
+      <AbsolutePoint location="128,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/assay/question.do,main,/pcc/assay/question/questionMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="615,84" />
+      <AbsolutePoint location="615,149" />
+      <AbsolutePoint location="484,149" />
+      <AbsolutePoint location="484,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/phonesearch/search.do,main,/pcc/phonesearch/searchMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="769,734" />
+      <AbsolutePoint location="769,774" />
+      <AbsolutePoint location="576,774" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/assay/phone.do,main,/pcc/assay/phone/phoneMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="543,361" />
+      <AbsolutePoint location="543,426" />
+      <AbsolutePoint location="430,426" />
+      <AbsolutePoint location="430,461" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/assay/phone.do,list,/pcc/assay/phone/phoneList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="454,361" />
+      <AbsolutePoint location="454,396" />
+      <AbsolutePoint location="110,396" />
+      <AbsolutePoint location="110,461" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/phonesearch/search.do,load,/pcc/phonesearch/searchLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,692" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/phonesearch/search.do,list,/pcc/phonesearch/searchList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,713" />
+      <AbsolutePoint location="163,713" />
+      <AbsolutePoint location="163,750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/assay/phone.do,see,/pcc/assay/phone/seePhone.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="633,361" />
+      <AbsolutePoint location="633,426" />
+      <AbsolutePoint location="747,426" />
+      <AbsolutePoint location="747,461" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/assay/question.do,see,/pcc/assay/question/seeQuestion.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="705,84" />
+      <AbsolutePoint location="705,149" />
+      <AbsolutePoint location="837,149" />
+      <AbsolutePoint location="837,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/assay/question.do,query,/pcc/assay/question/questionQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="794,84" />
+      <AbsolutePoint location="794,119" />
+      <AbsolutePoint location="1193,119" />
+      <AbsolutePoint location="1193,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/phonesearch/search.do,see,/pcc/phonesearch/seeSearch.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="799,734" />
+      <AbsolutePoint location="799,850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/assay/phone.do,query,/pcc/assay/phone/phoneQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="722,361" />
+      <AbsolutePoint location="722,396" />
+      <AbsolutePoint location="1067,396" />
+      <AbsolutePoint location="1067,461" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/phonesearch/search.do,query,/pcc/phonesearch/searchQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,683" />
+      <AbsolutePoint location="597,683" />
+      <AbsolutePoint location="597,874" />
+      <AbsolutePoint location="582,874" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

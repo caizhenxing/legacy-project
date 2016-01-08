@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<!--角色管理-->
+<beans>		
+	<bean id="RoleService"
+		class="et.bo.sys.role.service.impl.RoleServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	<bean name="/sys/role/Role"
+		class="et.bo.sys.role.action.RoleAction" scope="singleton">
+		<property name="roleService">
+			<ref bean="RoleService" />
+		</property>	
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>	
+</beans>

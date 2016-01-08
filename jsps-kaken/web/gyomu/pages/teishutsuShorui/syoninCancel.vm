@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	
+## ************************************************
+#parse( $commonSetting )
+## 変数の置き換え
+#set ($info= $userContainer.ryoikikeikakushoInfo)
+## ***********************************************
+
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+## スクリプト*************************************
+<script language=javascript>
+<!--
+	/* 「OK」ボタン*/
+	function onSave(ryoikiSystemNo){
+		document.next_form.action="$link.setAction("/gyomu/teishutsuShorui/syoninCancelSave")";
+		document.next_form.submit();
+	}
+
+	/* キャンセル */
+	function goBack(){
+		document.next_form.action="$link.setAction("/gyomu/teishutsuShorui/searchList.do")";
+		document.next_form.submit();
+	}
+//-->
+</script>
+## ***********************************************	
+</head>
+<body class="bodyStyle">
+
+<div align="center">
+  <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td>
+		<a href="javascript:fncWindowOpen('$path/docs/manual3.pdf','help');">
+			<img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/gyomu/logoff')"><IMG SRC="$path/images/header_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=20 border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+   <tr>
+     <td width="1" bgcolor="#CCCCCC">
+		<img src="$path/images/spacer.gif" alt="" width="1" height="1">
+	 </td>
+     <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+       <table width="100%" border="0" cellpadding="4" cellspacing="0">
+         <tr>
+           <td bgcolor="#999966" class="rootFont">
+			 <font color="#FFFFFF"><a href="$link.setAction('/gyomu/showMainMenu')">業務担当者向けメニュー</a>＞提出書類管理（提出書類検索＞提出書類一覧＞<b>承認解除</b>）
+			 </font>
+		   </td>
+         </tr>
+       </table>
+	   
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+     <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr>
+      <td width="92" valign="bottom"><IMG SRC="$path/images/title_img1.gif" WIDTH=92 HEIGHT=53 ALT=""></td>
+      <td width="98%" valign="bottom" class="menuTitle">承認解除</td>
+      <td width="214" valign="bottom"><IMG SRC="$path/images/title_img5.gif" WIDTH=214 HEIGHT=38 ALT=""></td>
+     </tr>
+     <tr>
+      <td width="92"><IMG SRC="$path/images/title_img2.gif" WIDTH=92 HEIGHT=29 ALT=""></td>
+      <td background="$path/images/title_img3.gif"><IMG SRC="$path/images/title_img3.gif" WIDTH=8 HEIGHT=29 ALT=""></td>
+      <td width="214"><IMG SRC="$path/images/title_img6.gif" WIDTH=214 HEIGHT=29 ALT=""></td>
+     </tr>
+    </table>
+ 
+ 
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+    <!-- ログイン入力フォーム、メニュー項目用テーブルここから -->
+ <table width="100%" border="0" cellpadding="0" cellspacing="0">
+   <tr>
+     <td width="92" valign="top"><IMG SRC="$path/images/title_img7.gif" WIDTH=92 HEIGHT=38 ALT="">
+	 </td>
+     <td width="52" class="menuLine"><img src="$path/images/spacer.gif" alt="" width="52" height="1">
+	 </td>
+     <td width="90%" align="left">
+		<br>
+       <!-- メニュー用テーブルここから -->
+	   		#errorMarkup()
+       <table border="0" cellspacing="6">
+         <tr>
+           <td width="50">&nbsp;
+		   </td>
+           <td>提出書類の承認を解除します。
+		   </td>
+         </tr>
+         <tr>
+           <td width="50">&nbsp;
+		   </td>
+           <td>提出書類の承認を解除すると、所属研究機関が再度提出書類を承認させる必要があります。
+		   </td>
+         </tr>
+         <tr>
+           <td width="50">&nbsp;
+		   </td>
+           <td>よろしければ[OK]ボタンをクリックしてください。
+		   </td>
+         </tr>
+       </table>
+       <!-- メニュー用テーブルここまで -->
+     </td>
+   </tr>
+ </table>
+<br>
+
+<!-- ボタン用テーブルここから -->
+##<form method="POST" action="$link.setAction('/teishutsuShorui/syoninCancelSave')" id=form1 name=form1>       
+    <!-- ボタン用テーブルここから -->
+  <div align="center">
+    <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+        <td>
+		  <a href="javascript:onSave('$!info.ryoikiSystemNo')">
+		    <img src="$path/images/bt_ok.gif" width=114 height=28 alt="OK" border="0">
+		  </a>
+		</td>
+        <td>
+		  <a href="javascript:goBack()">
+		    <img src="$path/images/bt_cancel.gif" width=114 height=28 alt="キャンセル" border="0">
+		  </a>
+		</td>
+     </tr>
+   </table>
+ </div>
+##</form>
+<!-- ボタン用テーブルここまで -->
+     <!-- サブ画面フッター用テーブルここから -->
+
+       <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img1.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/gyomu/logoff')"><IMG SRC="$path/images/footer_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=26 border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img3.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+     </tr>
+
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+  <!-- 左右の縦線用テーブルここまで -->
+</div>
+##隠しフォーム情報----------
+<form name="next_form" action="" method="post">
+    <input type="hidden" name="ryoikiSystemNo" value="">
+	<input type="hidden" name="jigyoId" >
+	<input type="hidden" name="count" >
+	<input type="hidden" name="ryoikiNO" >
+</form>
+##----------
+</body>
+</html>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<beans>
+	<!--  action begin -->
+
+	<!--呼叫中心日志-->
+	<bean name="/callcenter/cclog" class="et.bo.callcenter.cclog.action.CclogMainAction"
+		scope="singleton">
+		<property name="cclogMainService">
+			<ref bean="CclogMainService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+	
+	<!-- 日志添加 -->
+<!--	<bean name="/pcc/addcclog" class="et.bo.pcc.addcclog.action.AddCclogAction"-->
+<!--		scope="singleton">-->
+<!--		<property name="cclogService">-->
+<!--			<ref bean="AddCclogService" />-->
+<!--		</property>-->
+<!--		<property name="cts">-->
+<!--			<ref bean="ClassTreeService" />-->
+<!--		</property>-->
+<!--		<property name="igs">-->
+<!--			<ref bean="InfoGroupService" />-->
+<!--		</property>-->
+<!--	</bean>-->
+<!---->
+<!---->
+<!--	<bean name="/pcc/cclogOper"-->
+<!--		class="et.bo.pcc.cclogOper.action.CclogOperAction"-->
+<!--		scope="singleton">-->
+<!---->
+<!--		<property name="cs">-->
+<!--			<ref bean="CclogOperService" />-->
+<!--		</property>-->
+<!--		<property name="cts">-->
+<!--			<ref bean="ClassTreeService" />-->
+<!--		</property>-->
+<!--		<property name="depTree">-->
+<!--			<ref bean="DepTreeService" />-->
+<!--		</property>-->
+<!--	</bean>-->
+<!---->
+<!---->
+<!--	 action end -->
+<!--	  service begin -->
+	<bean id="CclogMainService"
+		class="et.bo.callcenter.cclog.service.impl.CclogMainImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+		<property name="cbts">
+			<ref bean="ClassBaseTreeService" />
+		</property>
+	</bean>
+	
+	<!-- 电话查询 -->
+	<bean name="/callcenter/cclog/telQuery" class="et.bo.callcenter.cclog.action.TelQueryAction"
+		scope="singleton">
+		<property name="telQueryService">
+			<ref bean="telQueryService"/>
+		</property>
+	</bean>
+	<bean id="telQueryService"
+		class="et.bo.callcenter.cclog.service.impl.TelQueryServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+	</bean>
+	
+	<bean  name="/callcenter/award" class="et.bo.callcenter.cclog.action.AwardAction" scope="singleton">
+		
+	</bean>
+</beans>

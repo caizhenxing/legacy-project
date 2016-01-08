@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<beans>
+	<!--  专家信息操作 -->
+	<bean id="OperExperterService"
+		class="et.bo.callcenter.bo.experter.impl.OperExperterImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+<beans>
+	<!-- 座席查询 -->
+	<bean name="/pcc/operatorlisten/operatorlisten" class="et.bo.pcc.operatorlisten.action.OperatorListenAction" singleton="false">
+		<property name="operatorListen">
+			<ref local="OperatorListenService"/>
+		</property>
+	</bean>
+	
+	<!-- 警务人员管理 -->
+	<bean name="/pcc/policefuzz/fuzz" class="et.bo.pcc.policefuzz.action.FuzzAction" singleton="false">
+		<property name="fuzz">
+			<ref local="PoliceFuzzService"/>
+		</property>
+		<property name="ctree">
+			<ref bean="ClassTreeService"/>
+		</property>
+		<property name="depTree">
+			<ref bean="DepTreeService" />
+		</property>
+	</bean>
+	
+	<!-- 警务信息查询录入 -->
+	<bean name="/pcc/policeinfo/info" class="et.bo.pcc.policeinfo.action.PoliceInfoAction" singleton="false">
+		<property name="info">
+			<ref local="PoliceInfoService"/>
+		</property>
+		<property name="ctree">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	
+	<!-- 电话录入信息 -->
+	<bean name="/pcc/phoneinfo/phone" class="et.bo.pcc.phoneinfo.action.PhoneAction" singleton="false">
+		<property name="phoneinfo">
+			<ref local="PhoneInfoService"/>
+		</property>
+		<property name="ctree">
+			<ref bean="ClassTreeService"/>
+		</property>
+		<property name="cclog">
+			<ref bean="CclogService"/>
+		</property>	
+	</bean>
+	
+	<!-- 警务人员验证信息 -->
+	<bean name="/pcc/policeValid/valid" class="et.bo.pcc.policevalid.action.ValidAction" singleton="false">
+		<property name="valid">
+			<ref local="PoliceValidService"/>
+		</property>
+		<property name="depTree">
+			<ref bean="DepTreeService" />
+		</property>
+	</bean>
+	
+	<bean name="/pcc/policeValid/post" class="et.bo.pcc.policevalid.action.PostAction" singleton="false">
+		<property name="post">
+			<ref local="PostService"/>
+		</property>
+		<property name="depTree">
+			<ref bean="DepTreeService" />
+		</property>
+	</bean>
+	
+	<!-- 座席查询 -->
+	<bean id="OperatorListenService"
+		class="et.bo.pcc.operatorlisten.impl.OperatorListenServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="ctree">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	
+	<!-- 警务人员管理 -->
+	<bean id="PoliceFuzzService"
+		class="et.bo.pcc.policefuzz.impl.PoliceFuzzServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="ctree">
+			<ref bean="ClassTreeService"/>
+		</property>
+		<property name="depTree">
+			<ref bean="DepTreeService" />
+		</property>
+	</bean>
+	
+	<!-- 警务信息查询录入 -->
+	<bean id="PoliceInfoService"
+		class="et.bo.pcc.policeinfo.impl.PoliceInfoServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="ctree">
+			<ref bean="ClassTreeService"/>
+		</property>
+		<property name="depTree">
+			<ref bean="DepTreeService" />
+		</property>
+	</bean>
+	
+	<!-- 警员呼入信息录入 -->
+	<bean id="PhoneInfoService"
+		class="et.bo.pcc.phoneinfo.impl.PhoneInfoServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="ctree">
+			<ref bean="ClassTreeService"/>
+		</property>
+		<property name="depTree">
+			<ref bean="DepTreeService" />
+		</property>
+	</bean>
+	
+	<!-- 公安呼入信息记入 -->
+	<bean id="PoliceCallInService"
+		class="et.bo.pcc.policeinfo.impl.PoliceCallInServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+	<!-- 警员查询修改密码 -->
+	<bean id="PoliceValidService"
+		class="et.bo.pcc.policevalid.impl.PoliceValidServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="depTree">
+			<ref bean="DepTreeService" />
+		</property>
+	</bean>
+	
+	<bean id="PostService"
+		class="et.bo.pcc.policevalid.impl.PostServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+</beans>

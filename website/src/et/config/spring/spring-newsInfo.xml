@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean name="/news/newsInfo"
+		class="et.bo.newsInfo.action.NewsInfoAction" singleton="false">			
+		<property name="newsInfoService">
+			<ref bean="NewsInfoService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>				
+	</bean>
+	
+	<bean name="/news/newsArea"
+		class="et.bo.news.newsArea.action.NewsAreaAction" singleton="false">			
+		<property name="newsAreaService">
+			<ref bean="NewsAreaService" />
+		</property>
+        <property name="formatService">
+			<ref bean="FormatService" />
+		</property>			
+        <property name="newsInfoService">
+			<ref bean="NewsInfoService" />
+		</property>
+	</bean>
+	
+	<!--  service begin -->	
+	<bean id="NewsInfoService"
+		class="et.bo.newsInfo.service.impl.NewsInfoServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>	
+	
+	<bean id="NewsAreaService"
+		class="et.bo.news.newsArea.service.impl.NewsAreaServiceImpl" singleton="true">
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>	
+</beans>

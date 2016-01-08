@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="GB18030"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="common.CommonCURD" class="base.zyf.web.crud.service.impl.CommonServiceImpl">
+		<property name="hibernateTemplate"><ref bean="hibernateTemplate"/></property>
+		<property name="ctvs" >
+		<ref local="common.ViewRows"/>
+		</property>
+		<property name="bcs" >
+		<ref bean="sys.tree.ClassTreeService"/>
+		</property>
+		
+	</bean>
+	<bean id="common.ViewRows" class="base.zyf.web.crud.service.impl.CommonTableViewServiceImpl">
+		<property name="hibernateTemplate"><ref bean="hibernateTemplate"/></property>
+	</bean>
+</beans>

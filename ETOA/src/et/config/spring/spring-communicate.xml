@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+<beans>
+
+	<bean name="/oa/communicate/im" class="et.bo.oa.communicate.instant.action.InstantMsgAction" singleton="false">
+		<property name="ims">
+			<ref local="InstantMsgService"/>
+		</property>
+	</bean>
+	<bean id="InstantMsgService" class="et.bo.oa.communicate.instant.service.impl.InstantMsgServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+	</bean>
+	<!-- 公告管理 -->
+	<bean name="/oa/operaffiche" class="et.bo.oa.commoninfo.affiche.action.AficheAction" singleton="false">
+		<property name="aficheService">
+			<ref local="AficheService"/>
+		</property>
+	</bean>
+	<!-- 内网邮件 -->
+	<bean name="/oa/communicate/email" class="et.bo.oa.communicate.email.action.EmailInAction" singleton="false">
+		<property name="emailService">
+			<ref local="EmailService"/>
+		</property>
+	</bean>
+	<!-- 邮箱管理 -->
+	<bean name="/oa/communicate/emailbox" class="et.bo.oa.communicate.mailbox.action.EmailBoxAction" singleton="false">
+		<property name="mailboxService">
+			<ref local="MailBoxService"/>
+		</property>
+	</bean>
+	<!-- 外网邮件操作 -->
+	<bean name="/oa/communicate/outemail" class="et.bo.oa.communicate.email.action.EmailOutAction" singleton="false">
+		<property name="emailOutService">
+			<ref local="EmailOutService"/>
+		</property>
+	</bean>
+	<!-- 手机短信操作 -->
+	<bean name="/oa/communicate/handsetnote" class="et.bo.oa.communicate.handsetnote.action.HandsetNoteAction" singleton="false">
+		<property name="handsetNoteService">
+			<ref local="HandsetNoteService"/>
+		</property>
+	</bean>
+	<!-- 内网附件 -->
+	<bean name="/oa/communicate/inUploadFile"
+		class="et.bo.oa.communicate.email.action.UploadInAction"
+		singleton="false">
+		<property name="loadService">
+			<ref bean="LoadService" />
+		</property>
+	</bean>
+	<!-- 外网附件 -->
+	<bean name="/oa/communicate/outUploadFile"
+		class="et.bo.oa.communicate.email.action.UploadOutAction"
+		singleton="false">
+	</bean>
+	
+	<!-- 公告注入 -->
+	<bean id="AficheService"
+		class="et.bo.oa.commoninfo.affiche.service.impl.AficheServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+	<!-- 内部邮件注入 -->
+	<bean id="EmailService"
+		class="et.bo.oa.communicate.email.service.impl.EmailInServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+	<!-- 邮箱管理 -->
+	<bean id="MailBoxService"
+		class="et.bo.oa.communicate.mailbox.service.impl.MailBoxServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+	<!-- 外部邮件注入 -->
+	<bean id="EmailOutService"
+		class="et.bo.oa.communicate.email.service.impl.EmailOutServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+	<!-- 手机短信注入 -->
+	<bean id="HandsetNoteService"
+		class="et.bo.oa.communicate.handsetnote.service.impl.HandsetNoteServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+</beans>

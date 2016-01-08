@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+   <TITLE>Applet HTML 页面</TITLE>
+</HEAD>
+<script language="javascript" src="./js/tools.js"></script>
+<script language="javascript">
+
+/*
+function testJs2Applet(inputParam)
+{
+	document.applets[0].testJs2Applet(inputParam);
+}
+*/
+//js调用applet 并给它传个参数
+function jsAuto2Applet(param)
+{
+	//jsAuto2Applet
+	document.applets[0].jsAuto2Applet(param);
+}
+//打开电话薄
+function openTelBook()
+{
+	window.open('./custinfo/custinfo.do?method=toCustinfoMain','','width=800,height=600,status=no,resizable=yes,scrollbars=yes,top=200,left=280');
+}
+//来电弹屏
+function openWin(telNum)
+{
+	var url = "./custinfo/openwin.do?method=toOpenwinLoad&tel="+telNum
+	window.open(url,'','width=800,height=600,status=no,resizable=yes,scrollbars=yes,top=200,left=280');
+}
+//转自动
+function openIVR(someParam)
+{
+	//yuyin.do?method=toyuyinTreeLoad
+	var url = "./yuyin/yuyinMain.jsp";
+	window.open(url,'','width=800,height=600,status=no,resizable=yes,scrollbars=yes,top=200,left=280');
+}
+//面板错误提示框
+function agentPanelError(errorInfo)
+{
+	alert(errorInfo);
+}
+</script>
+<BODY>
+
+<!--"CONVERTED_APPLET"-->
+<!-- CONVERTER VERSION 1.0 -->
+<OBJECT classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93"
+WIDTH = "220" HEIGHT = "420"  codebase="http://java.sun.com/products/plugin/1.2/jinstall-12-win32.cab#Version=1,2,0,0">
+<PARAM NAME = CODE VALUE = "et/bo/applet/ClientApp" >
+<PARAM NAME = ARCHIVE VALUE = "TestApplet.jar,swing-layout-1.0.jar" >
+
+<PARAM NAME="type" VALUE="application/x-java-applet;version=1.2">
+<COMMENT>
+<EMBED type="application/x-java-applet;version=1.2" java_CODE = "et/bo/applet/ClientApp" java_ARCHIVE = "TestApplet.jar,swing-layout-1.0.jar" WIDTH = "300" HEIGHT = "600"   pluginspage="http://java.sun.com/products/plugin/1.2/plugin-install.html"><NOEMBED></COMMENT>
+需要javaapplet支持!!!
+</NOEMBED></EMBED>
+</OBJECT>
+</BODY>
+</HTML>

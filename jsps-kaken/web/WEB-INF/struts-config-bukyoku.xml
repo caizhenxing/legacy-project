@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="WINDOWS-31J"?>
+
+<!DOCTYPE struts-config PUBLIC 
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+  <form-beans>
+    <!-- [共通]メニュー→一覧表示用 -->    
+    <form-bean name="baseSearchForm"
+               type="jp.go.jsps.kaken.web.struts.BaseSearchForm"/>
+    <!-- ログイン -->
+    <form-bean name="logonForm" type="jp.go.jsps.kaken.web.logon.LogonForm"/>
+    <!-- Password変更 -->
+    <form-bean name="passwordChangeForm"
+               type="jp.go.jsps.kaken.web.bukyoku.passwordChange.PasswordChangeForm"/>
+    <!-- 申請者管理 --> 
+    <form-bean name="shinseishaForm"
+               type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.ShinseishaForm"/>
+    <form-bean name="shinseishaSearchForm"
+               type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.ShinseishaSearchForm"/>
+    <form-bean name="shinseishaListForm"
+               type="jp.go.jsps.kaken.web.shozoku.shinseishaKanri.ShinseishaListForm"/>
+    <!-- 所属機関情報変更 --> 
+    <form-bean name="shozokuForm"
+               type="jp.go.jsps.kaken.web.shozoku.shozokuKanri.ShozokuForm"/>
+    <!-- 書類管理 -->    
+    <form-bean name="shoruiKanriForm"
+               type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.ShoruiKanriForm"/>
+    <!-- 申請情報 -->    
+    <form-bean name="shinseiSearchForm"
+               type="jp.go.jsps.kaken.web.bukyoku.shinseiJohoKanri.ShinseiSearchForm"/>
+    <form-bean name="shinseiDataForm"
+               type="jp.go.jsps.kaken.web.bukyoku.shinseiJohoKanri.ShinseiDataForm"/>
+    <form-bean name="gshinseishaForm"
+               type="jp.go.jsps.kaken.web.gyomu.shinseishaKanri.ShinseishaForm"/>
+    <form-bean name="simpleShinseiForm"
+               type="jp.go.jsps.kaken.web.shinsei.SimpleShinseiForm"/>
+    <form-bean name="checkListForm"
+               type="jp.go.jsps.kaken.web.bukyoku.checkList.CheckListForm"/>
+ 
+     <!-- ご意見ご要望 --> 
+    <form-bean name="ikenForm" type="jp.go.jsps.kaken.web.iken.IkenForm"/>
+  </form-beans>
+ 
+  <global-exceptions>
+    <exception handler="jp.go.jsps.kaken.web.struts.ApplicationExceptionHandler"
+               key="errors.application" path="/pages/common/appError.vm"
+               scope="request"
+               type="jp.go.jsps.kaken.model.exceptions.ApplicationException"/>
+    <exception handler="jp.go.jsps.kaken.web.struts.SystemExceptionHandler"
+               key="errors.system" path="/pages/common/sysError.vm"
+               type="jp.go.jsps.kaken.model.exceptions.SystemException"/>
+    <exception handler="jp.go.jsps.kaken.web.struts.ApplicationExceptionHandler" 
+               key="errors.fileio" path="/pages/common/downloadError.vm"
+               scope="request"
+               type="jp.go.jsps.kaken.model.exceptions.FileIOException"/>
+  </global-exceptions>
+
+  <global-forwards>
+    <forward name="session" path="/pages/common/timeoutError.vm" redirect="false"/>
+    <forward name="token" path="/tokenError.do" redirect="false"/>
+    <forward name="welcome" path="/logon.do" redirect="false"/>
+  </global-forwards>
+
+  <action-mappings type="jp.go.jsps.kaken.web.struts.ActionMapping">
+    <!-- ### ご意見ご要望入力画面 ### --> 
+    <action path="/iken" scope="session" name="ikenForm"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/pages/iken/iken.vm" redirect="false"/>
+    </action>
+    <!-- ### ご意見ご要望入力確認画面 ### --> 
+    <action path="/ikenKakunin" scope="session" name="ikenForm"
+            input="/pages/iken/iken.vm" 
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="true">
+      <forward name="success" path="/pages/iken/ikenKakunin.vm" redirect="false"/>
+    </action>
+    <!-- ### ご意見ご要望保存完了画面 ### --> 
+    <action path="/ikenSave" scope="session" name="ikenForm"
+            type="jp.go.jsps.kaken.web.iken.IkenSaveAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/pages/iken/ikenSave.vm" redirect="false"/>
+    </action>
+
+    <!-- ### ログアウト ### -->
+    <action path="/logoff" scope="request"
+            type="jp.go.jsps.kaken.web.logon.LogoffAction" unknown="false"
+            validate="false">
+      <set-property property="logonCheck" value="false"/>
+      <set-property property="description" value="ログアウト"/>
+      <forward name="success" path="/logon.do" redirect="false"/>
+    </action>
+    <!-- ### ログイン ### -->
+    <action path="/logon" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="true"
+            validate="false">
+      <set-property property="logonCheck" value="false"/>
+      
+      <set-property property="description" value="ログイン"/>
+      <forward name="success" path="/pages/logon/logon.vm" redirect="false"/>
+    </action>
+    <action path="/logonCheck" scope="request" name="logonForm"
+            parameter="bukyokutanto.logon.service"
+            type="jp.go.jsps.kaken.web.logon.LogonCheckAction"
+            unknown="false" validate="true" input="/pages/logon/logon.vm">
+      <set-property property="logonCheck" value="false"/>
+      <set-property property="memoryCheck" value="true"/>
+      <set-property property="description" value="ログイン完了"/>
+      <forward contextRelative="false" name="success" path="/showMainMenu.do"
+               redirect="false"/>
+    </action>
+    
+    <!-- ### 部局担当者向けメニュー ### -->
+    <action path="/showMainMenu" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="部局担当者向けメニュー"/>
+      <forward name="success" path="/pages/menu/mainMenu.vm" redirect="false"/>
+    </action>
+
+    <!-- ### 共通 ### --> 
+    <action path="/tokenError" scope="request"
+            type="jp.go.jsps.kaken.web.struts.TokenErrorAction" unknown="false"
+            validate="false">
+    </action>
+    
+    <!-- Password変更 -->
+    <action path="/passwordChange" scope="session" name="passwordChangeForm"
+            type="jp.go.jsps.kaken.web.bukyoku.passwordChange.ChangeAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="Password変更"/>
+      <forward name="success" path="/pages/passwordChange/change.vm" redirect="false"/>
+    </action>
+    <action path="/passwordChangeSave" scope="session" name="passwordChangeForm"
+            type="jp.go.jsps.kaken.web.bukyoku.passwordChange.ChangeSaveAction"
+            unknown="false" validate="true" input="/pages/passwordChange/change.vm">
+      <set-property property="description" value="Password変更完了"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/passwordChange/changeSave.vm" redirect="false"/>
+    </action>
+    
+    <!-- ### 書類取得 ### -->
+    <!-- 書類一覧 -->
+    <action path="/shoruiShutoku/searchList" scope="session" name="baseSearchForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shoruiShutoku.SearchListAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="書類一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shoruiShutoku/searchList.vm" redirect="false"/>
+    </action>
+    <!-- 書類ファイルダウンロード -->   
+    <action path="/shoruiShutoku/shoruiDownloadFile" scope="session" name="shoruiKanriForm"
+            type="jp.go.jsps.kaken.web.gyomu.jigyoKanri.DownloadShoruiFileAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="書類ファイルダウンロード"/>
+    </action>
+
+    <!-- ### 申請者管理 ### -->
+    <!-- 申請者登録 -->
+    <!-- 未登録申請者検索 -->
+    <action path="/shinseishaKanri/unregisteredSearch" scope="session" name="shinseishaSearchForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.SearchUnregistAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="未登録申請者情報検索"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseishaKanri/unregisteredSearch.vm" redirect="false"/>
+    </action>
+    <!-- 未登録申請者情報一覧 -->
+    <action path="/shinseishaKanri/unregisteredSearchList" scope="session" name="shinseishaSearchForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.SearchUnregistListAction"
+            unknown="false" validate="true" input="/pages/shinseishaKanri/unregisteredSearch.vm">
+      <set-property property="description" value="未登録申請者情報一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseishaKanri/unregisteredSearchList.vm" redirect="false"/>
+    </action>
+    
+    <!-- 申請者一括登録 -->
+    <action path="/shinseishaKanri/multipleAddSave" scope="session" name="shinseishaListForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.MultipleAddCheckAction"
+            unknown="false" validate="true" input="/pages/shinseishaKanri/unregisteredSearchList.vm">
+      <set-property property="description" value="申請者一括登録中"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseishaKanri/multipleApplication.vm" redirect="false"/>
+      <forward contextRelative="false" name="failure" 
+                 path="/pages/shinseishaKanri/unregisteredSearchList.vm" redirect="false"/>
+    </action>
+    <action path="/shinseishaKanri/multipleAddSaveEnd" scope="session" name="shinseishaListForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.MultipleAddSaveAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="申請者一括登録完了"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseishaKanri/multipleAddSave.vm" redirect="false"/>
+    </action>
+    <!-- 申請者削除 -->
+    <action path="/shinseishaKanri/delete" scope="session" name="shinseishaForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.DeleteAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="申請者情報削除確認"/>
+      <forward name="success" path="/shinseishaKanri/deleteCheck.do"
+               redirect="false"/>
+    </action>
+    <action path="/shinseishaKanri/deleteCheck" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <set-property property="description" value=""/>
+      <forward name="success" path="/pages/shinseishaKanri/deleteCheck.vm"
+               redirect="false"/>
+    </action>
+    <action path="/shinseishaKanri/deleteSave" scope="session" name="shinseishaForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.DeleteSaveAction"
+            unknown="false" validate="false" input="/pages/shinseishaKanri/deleteCheck.vm">
+      <set-property property="description" value="申請者情報削除完了"/>
+      <forward name="success" path="/pages/shinseishaKanri/deleteSave.vm"
+               redirect="false"/>
+    </action>
+    
+    <!-- 申請者修正 -->
+    <action path="/shinseishaKanri/edit" scope="session" name="shinseishaForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.EditAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="申請者情報修正"/>
+      <forward name="success" path="/pages/shinseishaKanri/edit.vm"
+               redirect="false"/>
+    </action>
+    <action path="/shinseishaKanri/editCheck" scope="session" name="shinseishaForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.EditCheckAction"
+            unknown="false" validate="true" input="/pages/shinseishaKanri/edit.vm">
+      <set-property property="description" value="申請者情報修正確認"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseishaKanri/editCheck.vm" redirect="false"/>
+    </action>
+    <action path="/shinseishaKanri/editSave" scope="session" name="shinseishaForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.EditSaveAction"
+            unknown="false" validate="false" input="/pages/shinseishaKanri/editCheck.vm">
+      <set-property property="description" value="申請者情報修正完了"/>
+      <forward name="cancel" path="/pages/shinseishaKanri/edit.vm"
+               redirect="false"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseishaKanri/editSave.vm" redirect="false"/>
+    </action>
+    
+    <!-- 申請者検索 -->
+    <action path="/shinseishaKanri/search" scope="session" name="shinseishaSearchForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.SearchAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="申請者情報検索"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseishaKanri/search.vm" redirect="false"/>
+    </action>
+    <action path="/shinseishaKanri/searchList" scope="session" name="shinseishaSearchForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.SearchListAction"
+            unknown="false" validate="true" input="/pages/shinseishaKanri/search.vm">
+      <set-property property="description" value="申請者情報一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseishaKanri/searchList.vm" redirect="false"/>
+      <forward contextRelative="false" name="cancel"
+               path="/pages/shinseishaKanri/search.vm" redirect="false"/>
+    </action>
+    <action path="/shinseishaKanri/hyoji" scope="session" name="shinseishaForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.DeleteAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="申請者情報"/>
+      <!--<set-property property="errorClose" value="true"/>-->
+      <forward name="success" path="/pages/shinseishaKanri/shinseishaInfo.vm"
+               redirect="false"/>
+    </action>
+    <action path="/shinseishaKanri/afterReconfigurePassword" scope="session" name="shinseishaSearchForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.SearchListAction"
+            unknown="false" validate="true" input="/pages/shinseishaKanri/searchList.vm">
+      <set-property property="description" value="申請者情報一覧に戻る"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseishaKanri/searchList.vm" redirect="false"/>
+    </action>
+    
+    <!-- 申請者管理メニュー -->
+    <action path="/shinseishaKanri/showMenu" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="申請者管理メニュー"/>
+      <forward name="success" path="/pages/shinseishaKanri/menu.vm"
+               redirect="false"/>
+    </action>
+    <!-- 申請者パスワード再設定 -->
+    <action path="/shinseishaKanri/reconfigure" scope="session" name="shinseishaForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.ReconfigurePasswordAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="パスワード再設定"/>
+      <forward name="success" path="/shinseishaKanri/reconfigurePasswordCheck.do"
+               redirect="false"/>
+    </action>
+    <action path="/shinseishaKanri/reconfigurePasswordCheck" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="false"
+            validate="false">
+      <set-property property="description" value=""/>
+      <forward name="success" path="/pages/shinseishaKanri/reconfigurePasswordCheck.vm"
+               redirect="false"/>
+    </action>
+    <action path="/shinseishaKanri/reconfigurePasswordSave" scope="session" name="shinseishaForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.ReconfigurePasswordSaveAction"
+            unknown="false" validate="false" input="/pages/shinseishaKanri/reconfigurePasswordCheck.vm">
+      <set-property property="description" value="パスワード再設定通知書"/>
+      <forward name="success" path="/pages/shinseishaKanri/reconfigurePasswordSave.vm"
+               redirect="false"/>
+    </action>
+    <!-- パスワード一括再設定 -->
+    <action path="/shinseishaKanri/reconfigureAll" scope="session" name="shinseishaForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.ReconfigurePasswordAllAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="パスワード一括再設定"/>
+      <forward name="success" path="/pages/shinseishaKanri/reconfigurePasswordAllCheck.vm"
+               redirect="false"/>
+    </action>
+    <!-- パスワード一括再設定処理中 -->
+    <action path="/shinseishaKanri/reconfigurePasswordAllCheck" scope="session" name="shinseishaForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.ReconfigurePasswordCheckAllAction"
+            unknown="false" validate="false" input="/pages/shinseishaKanri/reconfigurePasswordAllCheck.vm">
+      <set-property property="description" value="パスワード一括再設定中"/>
+      <forward name="success" path="/pages/shinseishaKanri/reconfigureApplication.vm"
+               redirect="false"/>
+    </action>
+    <!-- パスワード一括再設定通知書 --> 
+    <action path="/shinseishaKanri/reconfigurePasswordAllSave" scope="session" name="shinseishaForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.ReconfigurePasswordSaveAllAction"
+            unknown="false" validate="false" input="/pages/shinseishaKanri/reconfigurePasswordAllCheck.vm">
+      <set-property property="description" value="パスワード一括再設定通知書"/>
+      <forward name="success" path="/pages/shinseishaKanri/reconfigurePasswordAllSave.vm"
+               redirect="false"/>
+    </action>
+
+    
+    <!-- 通知書ファイルダウンロード -->   
+    <action path="/shinseishaKanri/cleateTsuchisho" scope="session"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseishaKanri.CreateTsuchishoAction"
+            unknown="false" validate="false" >
+      <set-property property="description" value="通知書ファイルダウンロード"/>
+    </action>
+
+    <!-- ### 申請情報管理 ### -->
+    <!-- 承認・却下一覧 -->
+    <action path="/shinseiJohoKanri/shoninKyakaList" scope="session" name="shinseiSearchForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseiJohoKanri.ShoninKyakaListAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="承認・却下一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseiJohoKanri/shoninKyakaList.vm" redirect="false"/>
+    </action>
+    <!-- 申請情報検索 -->
+    <action path="/shinseiJohoKanri/search" scope="session" name="shinseiSearchForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseiJohoKanri.SearchAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="申請情報検索"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseiJohoKanri/search.vm" redirect="false"/>
+    </action>
+    <action path="/shinseiJohoKanri/searchList" scope="session" name="shinseiSearchForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseiJohoKanri.SearchListAction"
+            unknown="false" validate="true" input="/pages/shinseiJohoKanri/search.vm">
+      <set-property property="description" value="申請情報検索結果一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/pages/shinseiJohoKanri/searchList.vm" redirect="false"/>
+      <forward contextRelative="false" name="cancel"
+               path="/pages/shinseiJohoKanri/search.vm" redirect="false"/>
+    </action>
+    <!-- CSV出力 -->
+    <action path="/checkList/csvOut" scope="session" name="CheckListSearchForm"
+            type="jp.go.jsps.kaken.web.bukyoku.checkList.CsvOutAction"
+            unknown="false" validate="false">
+      <set-property property="description" value=""/>
+      <set-property property="description" value=""/>
+    </action>
+    <!-- 申請情報承認 -->
+    <action path="/shinseiJohoKanri/shonin" scope="session" name="shinseiDataForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseiJohoKanri.ShoninAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="申請情報承認"/>
+      <forward name="success" path="/pages/shinseiJohoKanri/shonin.vm"
+               redirect="false"/>
+    </action>
+    <action path="/shinseiJohoKanri/shoninSave" scope="session" name="shinseiDataForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseiJohoKanri.ShoninSaveAction"
+            unknown="false" validate="false" input="/pages/shinseiJohoKanri/shonin.vm">
+      <set-property property="description" value="申請情報承認完了"/>
+      <forward name="success" path="/shinseiJohoKanri/dispatchApplication.do"
+               redirect="false"/>
+    </action>
+    <!-- 申請情報却下 -->
+    <action path="/shinseiJohoKanri/kyakka" scope="session" name="shinseiDataForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseiJohoKanri.KyakkaAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="申請情報却下"/>
+      <forward name="success" path="/pages/shinseiJohoKanri/kyakka.vm"
+               redirect="false"/>
+    </action>
+    <action path="/shinseiJohoKanri/kyakkaSave" scope="session" name="shinseiDataForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseiJohoKanri.KyakkaSaveAction"
+            unknown="false" validate="false" input="/pages/shinseiJohoKanri/kyakka.vm">
+      <set-property property="description" value="申請情報却下完了"/>
+      <forward name="success" path="/shinseiJohoKanri/dispatchApplication.do"
+               redirect="false"/>
+    </action>
+    <!-- 申請承認却下画面遷移振り分けアクション -->
+    <action path="/shinseiJohoKanri/dispatchApplication" scope="session" name="shinseiDataForm"
+            type="jp.go.jsps.kaken.web.bukyoku.shinseiJohoKanri.DispatchApplicationAction"
+            unknown="false" validate="false">
+      <set-property property="description" value="申請承認却下画面遷移振分"/>
+      <!-- 承認却下対象一覧 -->
+      <forward name="1" path="/shinseiJohoKanri/shoninKyakaList.do"
+               redirect="false"/>
+      <!-- 申請情報検索結果一覧 -->
+      <forward name="2" path="/shinseiJohoKanri/searchList.do"
+               redirect="false"/>
+    </action>
+    <!-- 申請者情報 -->
+    <action path="/shinseiJohoKanri/shinseishaJoho" scope="session" name="gshinseishaForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseishaKanri.DeleteAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="申請者情報"/>
+     <set-property property="errorClose" value="true"/>
+      <forward name="success" path="/pages/shinseiJohoKanri/shinseisha.vm"
+               redirect="false"/>
+    </action>
+    <!-- 申請書PDFファイルダウンロードアクション -->
+    <action path="/downloadPdf" scope="request" name="simpleShinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.DownloadPdfAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="申請書PDFファイルダウンロード"/>
+    </action>
+    
+    <!-- ### チェックリスト・表紙出力 ### -->
+    <!-- チェックリスト一覧 -->
+    <action path="/checkList/searchList" scope="session" name="checkListForm" 
+            type="jp.go.jsps.kaken.web.bukyoku.checkList.SearchCheckListAction" unknown="false"
+            input="/pages/checkList/searchList.vm" validate="false">
+      <set-property property="description" value="チェックリスト一覧"/>
+      <forward name="success" path="/pages/checkList/searchList.vm" redirect="false"/>
+    </action>
+    <!-- チェックリスト -->
+    <action path="/checkList/checkList" scope="session" name="checkListForm" 
+            type="jp.go.jsps.kaken.web.bukyoku.checkList.CheckListAction" unknown="false"
+            input="/pages/checkList/checkList.vm" validate="false">
+      <set-property property="description" value="チェックリスト"/>
+      <forward name="success" path="/pages/checkList/checkList.vm" redirect="false"/>
+    </action>
+    <!-- チェックリスト申請者情報 -->
+    <action path="/checkList/shinseisha" scope="session" name="gshinseishaForm"
+            type="jp.go.jsps.kaken.web.gyomu.shinseishaKanri.DeleteAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="申請者情報"/>
+     <set-property property="errorClose" value="true"/>
+      <forward name="success" path="/pages/checkList/shinseisha.vm"
+               redirect="false"/>
+    </action>
+    <!-- 飛び番号リスト -->
+    <action path="/checkList/tobiList" scope="session" name="checkListForm" 
+            type="jp.go.jsps.kaken.web.bukyoku.checkList.TobiListAction" unknown="false"
+            input="/pages/checkList/tobiList.vm" validate="false">
+      <set-property property="description" value="飛び番号リスト"/>
+      <forward name="success" path="/pages/checkList/tobiList.vm"
+               redirect="false"/>
+    </action>
+    <!-- 表紙ダウンロード -->
+    <action path="/checkList/coverDownload" scope="session" name="checkListForm" 
+            type="jp.go.jsps.kaken.web.bukyoku.checkList.DownloadCoverAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="表紙ダウンロード"/>
+      <forward name="failure" path="/pages/common/downloadError.vm" redirect="false"/>
+    </action>
+    
+    <!-- 登録済み部局担当者情報確認 -->
+    <action path="/bukyokuKanri/bukyokuInfo" scope="session" name="bukyokuForm" 
+            type="jp.go.jsps.kaken.web.bukyoku.bukyokuKanri.BukyokuKanriAction" 
+            unknown="false" validate="false">
+      <set-property property="description" value="登録済み部局担当者情報確認"/>
+      <forward name="success" path="/pages/bukyokuKanri/bukyokuInfo.vm" redirect="false"/>
+    </action>
+
+<!-- 20050606 Start 特定領域 -->
+    <!-- チェックリスト一覧 -->
+    <action path="/checkList/searchListTokutei" scope="session" name="checkListForm" 
+            type="jp.go.jsps.kaken.web.bukyoku.checkList.SearchCheckListTokuteiAction" unknown="false"
+            input="/pages/checkList/searchListTokutei.vm" validate="false">
+      <set-property property="description" value="チェックリスト一覧（特定領域）"/>
+      <forward name="success" path="/pages/checkList/searchListTokutei.vm" redirect="false"/>
+    </action>
+    <!-- チェックリスト -->
+    <action path="/checkList/checkListTokutei" scope="session" name="checkListForm" 
+            type="jp.go.jsps.kaken.web.bukyoku.checkList.CheckListTokuteiAction" unknown="false"
+            input="/pages/checkList/checkListTokutei.vm" validate="false">
+      <set-property property="description" value="チェックリスト（特定領域）"/>
+      <forward name="success" path="/pages/checkList/checkListTokutei.vm" redirect="false"/>
+    </action>
+    <!-- 飛び番号リスト -->
+    <action path="/checkList/tobiListTokutei" scope="session" name="checkListForm" 
+            type="jp.go.jsps.kaken.web.bukyoku.checkList.TobiListTokuteiAction" unknown="false"
+            input="/pages/checkList/tobiListTokutei.vm" validate="false">
+      <set-property property="description" value="飛び番号リスト"/>
+      <forward name="success" path="/pages/checkList/tobiListTokutei.vm"
+               redirect="false"/>
+    </action>
+    <!-- CSV出力 -->
+    <action path="/checkList/csvOutTokutei" scope="session" name="CheckListSearchForm"
+            type="jp.go.jsps.kaken.web.bukyoku.checkList.CsvOutTokuteiAction"
+            unknown="false" validate="false">
+      <set-property property="description" value=""/>
+      <set-property property="description" value=""/>
+    </action>
+<!-- Horikoshi End -->
+
+<!-- 20050707 -->
+    <!-- 応募状況詳細 -->
+    <action path="/shinseiJohoKanri/commentConfirm" scope="session" name="simpleShinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.PrintShinseiAction" unknown="false"
+            validate="false">
+      <set-property property="description" value="申請状況詳細"/>
+      <forward name="success" path="/pages/shinseiJohoKanri/shinsei.vm"
+               redirect="false"/>
+    </action>
+<!-- Horikoshi -->
+
+ </action-mappings>
+
+  <controller processorClass="jp.go.jsps.kaken.web.struts.RequestProcessor"/>
+  <message-resources null="false"
+                     parameter="jp.go.jsps.kaken.web.resources.Application"/>
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property property="pathnames"
+                  value="/WEB-INF/validation-default.xml,/WEB-INF/validation-bukyoku.xml,/WEB-INF/validator-rules.xml"/>
+  </plug-in>
+</struts-config>

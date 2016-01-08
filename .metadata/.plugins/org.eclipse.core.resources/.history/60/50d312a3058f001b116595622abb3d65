@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/forum/userOper/register.do" location="950,350" dimension="358,84" />
+  <StrutsActivity path="/forum/register/declare.jsp" location="50,550" dimension="202,48" />
+  <StrutsActivity path="/forum/register/register.jsp" location="350,550" dimension="208,48" />
+  <StrutsActivity path="/forum/register/error.jsp" location="950,50" dimension="190,48" />
+  <StrutsActivity path="/forum/register/success.jsp" location="650,550" dimension="202,48" />
+  <StrutsActivity path="/forum/register/sendPosts.jsp" location="650,450" dimension="214,48" />
+  <StrutsActivity path="/forum/postOper/sendPosts.jsp" location="350,450" dimension="214,48" />
+  <StrutsActivity path="/forum/postOper/answerPosts.jsp" location="50,450" dimension="226,48" />
+  <StrutsActivity path="/sys/mainapplet.jsp" location="0,332" dimension="154,48" />
+  <StrutsActivity path="/index.jsp" location="582,332" dimension="100,48" />
+  <StrutsActivity path="/sys/main.jsp" location="253,332" dimension="118,48" />
+  <StrutsActivity path="" location="292,0" dimension="40,48" />
+  <StrutsActivity path="/sys/station/tree.jsp" location="0,659" dimension="166,48" />
+  <StrutsActivity path="/sys/right/grantUser.jsp" location="266,659" dimension="184,48" />
+  <StrutsActivity path="/sys/right/grantGroup.jsp" location="550,659" dimension="190,48" />
+  <StrutsActivity path="/sys/type/tree.jsp" location="840,659" dimension="148,48" />
+  <StrutsActivity path="/sys/tree.jsp" location="1088,659" dimension="118,48" />
+  <StrutsActivity path="/oa/file/tree.jsp" location="1306,659" dimension="142,48" />
+  <StrutsActivity path="/sys/treetree.jsp" location="1548,659" dimension="142,48" />
+  <StrutsActivity path="/sys/deptree.jsp" location="1790,659" dimension="136,48" />
+  <StrutsActivity path="/sys/moduletree.jsp" location="2026,659" dimension="154,48" />
+  <StrutsActivity path="/forum/register/upUserInfo.jsp" location="950,550" dimension="220,48" />
+  <StrutsTransition id="/forum/userOper/register.do,toDeclare,/forum/register/declare.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1069,434" />
+      <AbsolutePoint location="1069,513" />
+      <AbsolutePoint location="151,513" />
+      <AbsolutePoint location="151,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/userOper/register.do,error,/forum/register/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1129,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/userOper/register.do,register,/forum/register/success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,365" />
+      <AbsolutePoint location="909,365" />
+      <AbsolutePoint location="909,574" />
+      <AbsolutePoint location="852,574" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/userOper/register.do,toUpdate,/forum/register/upUserInfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1099,434" />
+      <AbsolutePoint location="1099,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/userOper/register.do,toUpdate,/forum/register/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1125,350" />
+      <AbsolutePoint location="1125,98" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/userOper/register.do,toRegister,/forum/register/register.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,395" />
+      <AbsolutePoint location="627,395" />
+      <AbsolutePoint location="627,574" />
+      <AbsolutePoint location="558,574" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

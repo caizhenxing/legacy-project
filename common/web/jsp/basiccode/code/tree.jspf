@@ -1,0 +1,35 @@
+<%-- 
+  @version:$Id: tree.jspf,v 1.3 2007/09/20 03:33:10 zhaoyf Exp $
+  @since:$Date: 2007/09/20 03:33:10 $          
+--%>
+
+<script type="text/javascript">
+  var parentId = '';
+  function CodeTree.initTreeList0(arr) {
+    var obj = new this.Node(0, '<c:out value="${theForm.bean.id}"/>', '<c:out value="${theForm.bean.displayName}"/>', 0, '', '', '', '', ''); 
+    return obj;
+  }
+
+  var codeTree = new CodeTree.CodeTree('codeTree','<c:out value="${initParam['publicResourceServer']}"/>/image/tree/column/');
+
+  codeTree.dispPlace = 'span_menu';
+  codeTree.hostUrl   = '<c:url value="/common/basiccodemanager.do?step=tree&parentCode="/>';
+  codeTree.getDataID = '<c:out value="${theForm.bean.id}"/>';
+  codeTree.Load(0);
+  
+  function CodeTree.getPageUrl(cid) {
+    var selectedId = this.TreeList[cid].selfId;
+    var imageType = this.TreeList[cid].imgType;
+    var pat = new RegExp('([\?\&])parentCode=[^\&]*');
+    for (i = 0; i < panel.dataArr.length; i++) {
+	    var url = panel.dataArr[i][2];
+	    if (pat.test(url)) {
+		    panel.dataArr[i][2]=url.replace(pat, RegExp.$1 + "parentCode=" + selectedId);
+	    }
+    }
+    panel.click(0);
+  }
+
+  
+  
+</script>

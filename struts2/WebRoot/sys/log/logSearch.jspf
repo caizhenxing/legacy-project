@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html;charset=GB2312" %>
+
+<div class="update_subhead">
+	<span class="switch_close"
+		onClick="StyleControl.switchDiv(this,$(supplierQuery))"
+		title="伸缩节点">查询条件</span>
+</div>
+<div id="supplierQuery" style="display: none">
+	<table border="0" cellpadding="0" cellspacing="0" class="Detail" id="parenttable" style="display: ">
+		<tr>
+		<td  class="attribute" >用户名</td>
+		<td >
+			<search:text name="operator.name" oper="like" type="java.lang.String"/>
+		</td>
+		<td  class="attribute" >ip</td>
+		<td >
+			<search:text name="ip" oper="=" type="java.lang.String"/>
+		</td>
+
+		</tr>
+		<tr>
+		<td  class="attribute" >表名</td>
+		<td >
+			<search:select name="modu.code"/><ec:composite value='${conditions["modu.code"].value[0]}' valueName = "conditions['modu.code'].value" textName = "temp.conditions['modu.code'].value" source = "logmodu" />
+		</td>
+		<td  class="attribute" >操作</td>
+		<td >
+			<search:select name="oper.code"/><ec:composite value='${conditions["oper.code"].value[0]}' valueName = "conditions['oper.code'].value" textName = "temp.conditions['oper.code'].value" source = "logoper" />
+		</td>
+
+		</tr>
+		<tr>			
+		<td class="attribute">日期</td>
+		<td colspan="4">
+			<search:time name="operTime" pattern="yyyy-MM-dd"/>            
+	    </td>			
+	</tr>
+
+	</table>
+	<div class="query_button">
+		<input type="button" value="" name="" id="opera_query" onClick="$('showPage').value = '1';CurrentPage.query();" />
+	</div>
+</div>

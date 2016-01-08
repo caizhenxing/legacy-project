@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/schema/fixedContact.do" location="1261,0" dimension="416,88" />
+  <StrutsActivity path="/schema/fixedContactUpload.do" location="2426,0" dimension="416,88" />
+  <StrutsActivity path="/schema/fixedContact/fixedContactList.jsp" location="0,208" dimension="332,49" />
+  <StrutsActivity path="/schema/fixedContact/fixedContactMain.jsp" location="432,208" dimension="332,49" />
+  <StrutsActivity path="/schema/fixedContact/fixedContactQuery.jsp" location="863,208" dimension="339,49" />
+  <StrutsActivity path="/schema/fixedContact/fixedContactLoad.jsp" location="1303,208" dimension="332,49" />
+  <StrutsActivity path="/schema/fixedContact/fixedContactUpload.jsp" location="2160,208" dimension="346,49" />
+  <StrutsActivity path="/schema/fixedContact/fixedContactAll.jsp" location="1735,208" dimension="325,49" />
+  <StrutsActivity path="/schema/fixedContact/error.jsp" location="2606,208" dimension="255,49" />
+  <StrutsTransition id="/schema/fixedContactUpload.do,upload,/schema/fixedContact/fixedContactUpload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2530,88" />
+      <AbsolutePoint location="2530,148" />
+      <AbsolutePoint location="2419,148" />
+      <AbsolutePoint location="2419,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/schema/fixedContact.do,upload,/schema/fixedContact/fixedContactUpload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1587,88" />
+      <AbsolutePoint location="1587,148" />
+      <AbsolutePoint location="2246,148" />
+      <AbsolutePoint location="2246,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/schema/fixedContact.do,query,/schema/fixedContact/fixedContactQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1409,88" />
+      <AbsolutePoint location="1409,178" />
+      <AbsolutePoint location="1033,178" />
+      <AbsolutePoint location="1033,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/schema/fixedContact.do,error,/schema/fixedContact/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1647,88" />
+      <AbsolutePoint location="1647,118" />
+      <AbsolutePoint location="2669,118" />
+      <AbsolutePoint location="2669,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/schema/fixedContact.do,main,/schema/fixedContact/fixedContactMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1350,88" />
+      <AbsolutePoint location="1350,148" />
+      <AbsolutePoint location="598,148" />
+      <AbsolutePoint location="598,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/schema/fixedContact.do,alllist,/schema/fixedContact/fixedContactAll.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1528,88" />
+      <AbsolutePoint location="1528,178" />
+      <AbsolutePoint location="1897,178" />
+      <AbsolutePoint location="1897,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/schema/fixedContact.do,list,/schema/fixedContact/fixedContactList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1290,88" />
+      <AbsolutePoint location="1290,118" />
+      <AbsolutePoint location="166,118" />
+      <AbsolutePoint location="166,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/schema/fixedContactUpload.do,error,/schema/fixedContact/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2738,88" />
+      <AbsolutePoint location="2738,118" />
+      <AbsolutePoint location="2797,118" />
+      <AbsolutePoint location="2797,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/schema/fixedContact.do,load,/schema/fixedContact/fixedContactLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1469,88" />
+      <AbsolutePoint location="1469,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	
+	<bean name="/quoteCircs/quoteCircs" class="et.bo.quoteCircs.action.QuoteCircsAction" singleton="false">
+		<property name="quoteCircsService">
+			<ref bean="QuoteCircsService"/>
+		</property>
+	</bean>
+	<bean id="QuoteCircsService" class="et.bo.quoteCircs.service.impl.QuoteCircsServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+	</bean>
+	
+</beans>

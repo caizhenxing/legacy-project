@@ -1,0 +1,924 @@
+## ***********************************************
+## 応募情報入力画面（領域計画書入力） → RyoikiGaiyoForm
+## ***********************************************
+## 2006/06/20 新規作成 苗
+
+#parse($commonSetting)
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpenClose.js"></script>
+## スクリプト*************************************
+<script language="javascript">
+<!--
+    var isClosed1 = false;
+    var isClosed2 = false;
+
+    //画面チェックについて
+    function onCheck(){
+        if(document.shinsei_form.page.value == "0"){
+          return false;
+        }else{
+          return true;
+        }
+    }
+
+    //応募内容ファイル添附
+    function onUpload(){
+        document.upload_form.action="$link.setAction("/shinsei-ryoikiGaiyo/uploadFile")";
+        document.upload_form.target="tmp";
+        document.upload_form.submit();
+    }
+
+    //一時保存について
+    function onTransientSave(){
+        document.shinsei_form.action="$link.setAction("/shinsei-ryoikiGaiyo/transientSaveApplication")";
+        document.shinsei_form.page.value="1";
+        document.shinsei_form.submit();
+    }
+
+    //本登録について
+    function onSave(){
+        document.shinsei_form.action="$link.setAction("/shinsei-ryoikiGaiyo/registApplication")";
+        document.shinsei_form.page.value="2";
+        document.shinsei_form.submit();
+    }
+
+    //一時保存と応募内容ファイル添附
+    function onTransientSaveWithUpload(){
+        //サブウィンドウが開いたままの場合は処理中止
+        if(fncAlertWindowOpen("「研究組織表」画面の[OK]をクリックしてから再度実行してください。")){
+            isClosed1 = true;
+        }
+        if(fncAlertWindowOpen2("「研究経費表」画面の[OK]をクリックしてから再度実行してください。")){
+            isClosed2 = true;
+        }
+        if(isClosed1 && isClosed2){
+            //バックグラウンドで処理を実行する
+            //2006/08/10 dyh delete
+            //changeCheckBOX();
+            setTimeout("onUpload();", 0);
+            setTimeout("onTransientSave();", 500);
+        }
+    }
+
+    //本登録と応募内容ファイル添附
+    function onSaveWithUpload(){
+        //サブウィンドウが開いたままの場合は処理中止
+        if(fncAlertWindowOpen("「研究組織表」画面の[OK]をクリックしてから再度実行してください。")){
+            isClosed1 = true;
+        }
+        if(fncAlertWindowOpen2("「研究経費表」画面の[OK]をクリックしてから再度実行してください。")){
+            isClosed2 = true;
+        }
+
+        if(isClosed1 && isClosed2){
+            //バックグラウンドで処理を実行する
+            //2006/08/10 dyh delete
+            //changeCheckBOX();
+            setTimeout("onUpload();", 0);
+            setTimeout("onSave();", 500);
+        }
+    }
+
+    //2006/08/10 dyh delete
+    //研究の必要性について
+    //function changeCheckBOX(){
+    //    for (var i = 0; i < document.forms[0]["valuesList"].length; i++) {
+    //        if(document.forms[0]["valuesList"][i].checked == true){
+    //            document.forms[0]["checkedList"][i].value = i+1+"1";
+    //        } else {
+    //            document.forms[0]["checkedList"][i].value = i+1+"0";
+    //        }
+    //    }
+    //}
+//-->
+</script>
+## ***********************************************
+</head>
+
+<body class="bodyStyle" onUnload="javascript:fncKeepedWindowClose();">
+<form name="shinsei_form" method="post" action="" onSubmit="return onCheck()">
+<input type="hidden" name="page" value="0">    <!-- Validate処理をコマンドによって変更させるため -->
+<input type="hidden" name="$form.tokenName" value="$form.token">    <!-- ２重押し防止のため -->
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+   <tr>
+    <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+    <td align="right" background="$path/images/header_bg2.gif">
+     <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+     <table border="0" cellpadding="0" cellspacing="1">
+      <tbody>
+       <tr>
+        <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+       </tr>
+       <tr>
+        <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+        <td><a href="$link.setAction('/shinsei/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width="72" height="20" border="0"></a></td>
+       </tr>
+      </tbody>
+     </table>
+     <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+    </td> 
+    <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+   </tr>
+  </tbody>
+ </table>
+ <!-- ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+   <tr>
+    <td width="1" bgcolor="#cccccc"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+    <td>
+     <!-- コンテンツエリアここから -->
+     <!-- ログインユーザ、ルート情報用テーブルここから -->
+     <table width="100%" border="0" cellpadding="4" cellspacing="0">
+      <tbody>
+       <tr>
+        <td bgcolor="#6699cc" class="rootFont"><font color="#ffffff"><a href="$link.setAction('/shinsei/showMainMenu')">応募者向けメニュー</a>＞領域計画書作成（<b>領域計画書入力</b><font size="1">＞領域計画書確認＞領域計画書確認完了</font>）</font></td>
+       </tr>
+      </tbody>
+     </table>
+     <!-- ログインユーザ、ルート情報用テーブルここまで -->
+     <!-- サブ画面タイトル用テーブルここから -->
+     <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tbody>
+       <tr valign="bottom">
+        <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width="61" height="49" alt=""></td>
+        <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont">
+         <br>領域計画書入力</td>
+        <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width="213" height="49" alt=""></td>
+       </tr>
+      </tbody>
+     </table>
+     <!-- サブ画面タイトル用テーブルここまで -->
+     <!-- 注意事項ここから -->
+     <p class="comment">＜注意事項＞</p>
+     <ul>
+      <li class="comment">領域内研究計画調書を確定すると、[次に進む]ボタンが表示されます。領域計画書の作成を完了するには、「領域計画書作成」画面から領域内研究計画調書を確定してください。 </li>
+      <li class="comment"> <font color="#ff0000">*</font>のついた項目は必須項目です。 </li>
+      #if( ($ryoikiGaiyoForm.ryoikikeikakushoInfo.ryoikiJokyoId == "33") || ($ryoikiGaiyoForm.ryoikikeikakushoInfo.ryoikiJokyoId == "01") )
+        <li class="comment">入力中に、一定時間、ボタン操作をせずにおくと、セッションタイムアウトにより、入力した情報が保存されない場合があります。随時[一時保存]ボタンをクリックして情報を保存して下さい。もし、セッションタイムアウトのエラーメッセージが出た場合は、「電子申請のご案内」ページの「よくあるご質問」をご参照下さい。 </li>
+      #end
+     </ul>
+     <!-- 注意事項ここまで -->
+     <!-- ボタン用テーブルここから -->
+     <div align="center">
+      <table border="0" cellpadding="0" cellspacing="4">
+       <tbody>
+        <tr>
+         #if($!ryoikiGaiyoForm.ryoikikeikakushoInfo.ryoikikeikakushoKakuteiFlg.equals("1"))
+           <td><a href="javascript:onSaveWithUpload()"><img src="$path/images/bt_forward.gif" alt="次へ進む" width="219" height="28" border="0"></a></td>
+         #end
+         #if(($ryoikiGaiyoForm.ryoikikeikakushoInfo.ryoikiJokyoId == "33") || ($ryoikiGaiyoForm.ryoikikeikakushoInfo.ryoikiJokyoId == "01") )
+           <td><a href="javascript:onTransientSaveWithUpload()"><img src="$path/images/bt_keep.gif" alt="一時保存して中断" width="219" height="28" border="0"></a></td>
+         #end
+         <td><a href="$link.setAction('/shinsei/ryoikiGaiyo')"><img src="$path/images/bt_back.gif" alt="保存せずに戻る" width="219" height="28" border="0"></a></td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <!-- ボタン用テーブルここまで -->
+     <!-- 本文ここから -->
+     <div align="left">
+      #errorExistMsg()
+      #errorMarkupForGlobalError()
+      #errorMarkupForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.keihi0Title")
+      #errorMarkupForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.keihi0Total")
+	  #errorMarkupForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.keihi0")
+      <center>
+       <table border="0" cellpadding="0" cellspacing="0" width="800">
+        <tr>
+         <td>
+          <div align="center">
+           <table border="0" cellpadding="0" cellspacing="0" width="800">
+            <tr>
+             <td align="center">
+              <p align="center"><b>
+               <font size="4">平成$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.nendo)年度（20$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.nendoSeireki)年度）
+                 #if($ryoikiGaiyoForm.ryoikikeikakushoInfo.kaisu != "1")
+                	第$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kaisu)回
+                 #end
+                 $!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jigyoName)　領域計画書
+               </font></b>
+              </p>
+             </td>
+            </tr>
+           </table>
+          </div>
+         </td>
+        </tr>
+       </table>
+      </center>
+     </div>
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kiboubumonCd")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.ryoikiName")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.ryoikiNameEigo")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.ryoikiNameRyaku")
+     <div align="left">
+      <center>
+       <table border="1" cellpadding="0" cellspacing="0" width="800" bgcolor="#ffffff">
+        <tr>
+         <th width="180">審査希望部門（系等）</th>
+         <td>
+          <font color="#ff0000">*</font>
+          <select name="ryoikikeikakushoInfo.kiboubumonCd"
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  	#errorColorForProperty("ryoikikeikakushoInfo.kiboubumonCd")
+##ADD END 2007-07-12 BIS 劉多良               
+          >
+            #showOptionsWithEmpty($ryoikiGaiyoForm.kiboubumonList $ryoikiGaiyoForm.ryoikikeikakushoInfo.kiboubumonCd.trim())
+          </select><br>
+         </td>
+        </tr>
+        <tr>
+         <th>仮領域番号</th>
+         <td>$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kariryoikiNo)　</td>
+        </tr>
+        <tr>
+         <th rowspan="3">応募領域名</th>
+         <td colspan="2" valign="middle">（全角40字以内。半角は使用不可）<br>
+          <font color="#ff0000">*</font>
+          <input size="70" name="ryoikikeikakushoInfo.ryoikiName" 
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  	#errorColorForProperty("ryoikikeikakushoInfo.ryoikiName")
+##ADD END 2007-07-12 BIS 劉多良               
+          value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.ryoikiName)">
+         </td>
+        </tr>
+        <tr>
+         <td colspan="2">（英文：改行は使用不可）<br>
+          <font color="#ff0000">*</font>
+          <textarea rows="2" cols="95" name="ryoikikeikakushoInfo.ryoikiNameEigo"
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  	#errorColorForProperty("ryoikikeikakushoInfo.ryoikiNameEigo")
+##ADD END 2007-07-12 BIS 劉多良               
+          >$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.ryoikiNameEigo)</textarea>
+         </td>
+        </tr>
+        <tr>
+         <td colspan="2">（領域略称名）<br>
+          <font color="#ff0000">*</font>
+          <input size="20" name="ryoikikeikakushoInfo.ryoikiNameRyaku" 
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  	#errorColorForProperty("ryoikikeikakushoInfo.ryoikiNameRyaku")
+##ADD END 2007-07-12 BIS 劉多良               
+          value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.ryoikiNameRyaku)">
+         </td>
+        </tr>
+       </table>
+      </center>
+     </div>
+     <br>
+
+     #errorMarkupForProperty("ryoikikeikakushoInfo.bukyokuName")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.shokushuNameKanji")
+     <div align="left">
+      <center>
+       <table border="1" cellpadding="0" cellspacing="0" width="800" bgcolor="#ffffff">
+        <tr>
+         <th rowspan="2">領域代表者氏名</th>
+         <td colspan="2" valign="middle">（フリガナ）$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.nameKanaSei)　$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.nameKanaMei)</td>
+        </tr>
+        <tr>
+         <td colspan="2" valign="middle">（漢字等）$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.nameKanjiSei)　$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.nameKanjiMei)</td>
+        </tr>
+        <tr>
+         <th>所属研究機関</th>
+         <td valign="middle">（番号）$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.shozokuCd)</td>
+         <td valign="middle">$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.shozokuName)　</td>
+        </tr>
+        <tr>
+         <th>部局</th>
+         <td valign="middle">（番号）$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.bukyokuCd)　</td>
+         <td valign="middle">
+          <input size="20" name="ryoikikeikakushoInfo.bukyokuName" 
+##ADD START 2007-07-19 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+	              #errorColorForProperty("ryoikikeikakushoInfo.bukyokuName")
+##ADD END 2007-07-19 BIS 劉多良               
+          	value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.bukyokuName)">
+          <font size="1">（その他等の番号を使用した場合に記入）</font>
+         </td>
+        </tr>
+        <tr>
+         <th>職</th>
+         <td valign="middle">（番号）$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.shokushuCd)　</td>
+         <td valign="middle">
+          <input size="20" name="ryoikikeikakushoInfo.shokushuNameKanji" 
+##ADD START 2007-07-19 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+	              #errorColorForProperty("ryoikikeikakushoInfo.shokushuNameKanji")
+##ADD END 2007-07-19 BIS 劉多良               
+          	value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.shokushuNameKanji)">
+          <font size="1">（「研究員」、「その他」を選択した場合に記入）</font>
+         </td>
+        </tr>
+       </table>
+      </center>
+     </div>
+     <br>
+
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kenkyuGaiyou")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.jizenchousaFlg")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.jizenchousaSonota")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kakoOubojyoukyou")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.zennendoOuboFlg")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.zennendoOuboNo")
+     <div align="left">
+      <center>
+       <table border="1" cellpadding="0" cellspacing="0" width="800" bgcolor="#ffffff">
+        <tr>
+         <th width="200">応募領域の研究概要</th>
+         <td colspan="3">（改行は使用不可）
+          <br><font color="#ff0000">*</font>
+          <textarea rows="14" name="ryoikikeikakushoInfo.kenkyuGaiyou" cols="85"
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  	#errorColorForProperty("ryoikikeikakushoInfo.kenkyuGaiyou")
+##ADD END 2007-07-12 BIS 劉多良               
+          >$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kenkyuGaiyou)</textarea>
+         </td>
+        </tr>
+        <tr>
+         <th width="200">準備研究・事前調査の状況</th>
+         <td colspan="3">
+          <font color="#ff0000">*</font>
+          <select name="ryoikikeikakushoInfo.jizenchousaFlg"
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  	#errorColorForProperty("ryoikikeikakushoInfo.jizenchousaFlg")
+		  	#errorColorForProperty("ryoikikeikakushoInfo.jizenchousaSonota.kumiai")
+##ADD END 2007-07-12 BIS 劉多良               
+          >
+            #showOptionsWithEmpty($ryoikiGaiyoForm.jizenchousaList $ryoikiGaiyoForm.ryoikikeikakushoInfo.jizenchousaFlg)
+          </select>
+    	  その他の場合：<input size="30" name="ryoikikeikakushoInfo.jizenchousaSonota" 
+##ADD START 2007-07-18 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  	#errorColorForProperty("ryoikikeikakushoInfo.jizenchousaSonota")
+		  	#errorColorForProperty("ryoikikeikakushoInfo.jizenchousaSonota.kumiai")
+##ADD END 2007-07-18 BIS 劉多良               
+    	  	value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jizenchousaSonota)">
+         </td>
+        </tr>
+        <tr>
+         <th width="200">過去の特定領域の応募状況</th>
+         <td colspan="3">（改行は使用不可）<br>
+          <textarea rows="2" name="ryoikikeikakushoInfo.kakoOubojyoukyou" cols="85"
+##ADD START 2007-07-18 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  	#errorColorForProperty("ryoikikeikakushoInfo.kakoOubojyoukyou")
+##ADD END 2007-07-18 BIS 劉多良               
+          >$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kakoOubojyoukyou)</textarea>
+         </td>
+        </tr>
+        <tr>
+         <th rowspan="5" width="200">研究領域最終年度前年度の応募</th>
+        </tr>
+        <tr>
+         <th>該当の有無</th>
+         <td colspan="2">
+          <font color="#ff0000">*</font>
+          <select name="ryoikikeikakushoInfo.zennendoOuboFlg"
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  	#errorColorForProperty("ryoikikeikakushoInfo.zennendoOuboFlg")
+		  	#errorColorForProperty("ryoikikeikakushoInfo.zennendoOuboNo.kumiai")
+##ADD END 2007-07-12 BIS 劉多良               
+          >
+            #showOptionsWithEmpty($ryoikiGaiyoForm.zenNendoOuboFlgList $ryoikiGaiyoForm.ryoikikeikakushoInfo.zennendoOuboFlg)
+          </select>
+         </td>
+        </tr>
+        <tr>
+         <th rowspan="3">対象領域</th>
+         <th>領域番号　<a href="$link.setAction('/ryoikiSinnkiList')" target="_blank"><img src="$path/images/bt_list.gif" alt="一覧" border="0" height="22" width="41"></a></th>
+         <td><input type="text" size="10" name="ryoikikeikakushoInfo.zennendoOuboNo" 
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  		#errorColorForProperty("ryoikikeikakushoInfo.zennendoOuboNo")
+		  		#errorColorForProperty("ryoikikeikakushoInfo.zennendoOuboNo.kumiai")
+##ADD END 2007-07-12 BIS 劉多良               
+         		value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.zennendoOuboNo)"> （該当の有無で「有」を選択した場合に記入）
+         </td>
+        </tr>
+        <tr>
+         <th>領域略称名</th>
+         <td>$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.zennendoOuboRyoikiRyaku)　</td>
+        </tr>
+        <tr>
+         <th>設定期間</th>
+         <td>$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.zennendoOuboSettei)　</td>
+        </tr>
+       </table>
+      </center>
+     </div>
+     <br>
+
+     #errorMarkupForProperty("ryoikikeikakushoInfo.bunkasaimokuCd1")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.bunkasaimokuCd2")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenbunyaBunruiNo")
+     <div align="left">
+      <center>
+       <table border="1" cellpadding="0" cellspacing="0" width="800" bgcolor="#ffffff">
+        <tr>
+         <th rowspan="8">関連分野</th>
+        </tr>
+        <tr>
+         <th>　</th>
+         <th size=50%>(1)</th>
+         <th size=50%>(2)</th>
+        </tr>
+        <tr>
+         <th>細目番号　<a href="$link.setAction('/saimokuList')" target="_blank"><img src="$path/images/bt_list.gif" alt="一覧" width="41" height="22" border="0"></a></th>
+         <td valign="middle">
+          <font color="#ff0000">*</font>
+          <input size="8" name="ryoikikeikakushoInfo.bunkasaimokuCd1" 
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  	#errorColorForProperty("ryoikikeikakushoInfo.bunkasaimokuCd1")
+##ADD END 2007-07-12 BIS 劉多良               
+          value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.bunkasaimokuCd1)">
+         </td>
+         <td valign="middle">
+          <font color="#ff0000"></font>
+          <input size="8" name="ryoikikeikakushoInfo.bunkasaimokuCd2" 
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  	#errorColorForProperty("ryoikikeikakushoInfo.bunkasaimokuCd2")
+##ADD END 2007-07-12 BIS 劉多良               
+          value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.bunkasaimokuCd2)">
+         </td>
+        </tr>
+        <tr>
+         <th>分野</th>
+         <td valign="middle">$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.bunyaName1)　</td>
+         <td valign="middle">$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.bunyaName2)　</td>
+        </tr>
+        <tr>
+         <th>分科</th>
+         <td valign="middle">$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.bunkaName1)　</td>
+         <td valign="middle">$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.bunkaName2)　</td>
+        </tr>
+        <tr>
+         <th>細目</th>
+         <td valign="middle">$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.saimokuName1)　</td>
+         <td valign="middle">$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.saimokuName2)　</td>
+        </tr>
+
+        <tr>
+         <th >15分類</th>
+         <td colspan="2">
+          <font color="#ff0000">*</font>
+          <select name="ryoikikeikakushoInfo.kanrenbunyaBunruiNo" size="1"
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  	#errorColorForProperty("ryoikikeikakushoInfo.kanrenbunyaBunruiNo")
+##ADD END 2007-07-12 BIS 劉多良               
+          >
+            #showOptionsWithEmpty($ryoikiGaiyoForm.kanrenbunyaBunruiList $ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenbunyaBunruiNo)
+          </select>
+         </td>
+        </tr>
+       </table>
+      </center>
+     </div>  
+     <br>
+
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kenkyuHitsuyousei")
+
+     <div align="left">
+      <center>
+       <table border="1" cellpadding="0" cellspacing="0" width="800" bgcolor="#ffffff">
+        <tr>
+         <th>研究の必要性<font color="#ff0000">*</font></th>
+         <td colspan="2"
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  	#errorColorForProperty("ryoikikeikakushoInfo.kenkyuHitsuyousei")
+##ADD END 2007-07-12 BIS 劉多良               
+         >
+           ##2006/08/10 dyh update start
+           #createChkbox($ryoikiGaiyoForm.kenkyuHitsuyouseiList $ryoikiGaiyoForm.valuesList)
+           ##createChkboxName1($ryoikiGaiyoForm.kenkyuHitsuyouseiList $ryoikiGaiyoForm.valuesList 'valuesList')
+           ##2006/08/10 dyh update end
+         </td>
+        </tr>
+       </table>
+      </center>
+     </div>
+
+     <p aling="left"></p>
+
+     #errorMarkupForProperty("ryoikikeikakushoInfo.daihyouZip")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.daihyouAddress")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.daihyouTel")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.daihyouFax")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.daihyouEmail")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.jimutantoNameKanaSei")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.jimutantoNameKanaMei")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.jimutantoNameKanjiSei")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.jimutantoNameKanjiMei")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.jimutantoShozokuCd")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.jimutantoBukyokuCd")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.jimutantoBukyokuName")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.jimutantoShokushuCd")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.jimutantoShokushuNameKanji")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.jimutantoZip")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.jimutantoAddress")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.jimutantoTel")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.jimutantoFax")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.jimutantoEmail")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kenkyuSyokei1")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kenkyuSyokei2")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kenkyuSyokei3")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kenkyuSyokei4")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kenkyuSyokei5")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kenkyuSyokei6")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kenkyuUtiwake1")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kenkyuUtiwake2")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kenkyuUtiwake3")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kenkyuUtiwake4")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kenkyuUtiwake5")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kenkyuUtiwake6")
+
+     <div align="left">
+      <center>
+       <table border="1" cellpadding="0" cellspacing="0" width="800" bgcolor="#ffffff">
+        <tbody>
+         <tr>
+          <th>研究組織</th>
+          <td valign="middle" colspan="3">
+           <a href=javascript:fncWindowOpenAndKeep("$link.setAction('/shinsei/kenkyusosiki')","kenkyuSoshiki")><img src="$path/images/bt_kenkyu_sosiki.gif" width="219" height="28" border="0" alt="研究組織確認"></a>
+          </td>
+         </tr>
+         <tr>
+          <th>研究経費</th>
+          <td valign="middle" colspan="3">
+           <a href=javascript:fncWindowOpenAndKeep2("$link.setAction('/shinsei/kenkyusosikiKeihi')","kenkyusosikiKeihi")><img src="$path/images/bt_kenkyu_sosiki_keihi.gif" width="219" height="28" border="0" alt="研究組織経費確認"></a>
+          </td>
+         </tr>
+         <tr>
+          <th>領域代表者</th>
+          <td colspan="3" valign="middle">
+           <p>〒<font color="#ff0000">*</font>
+            <input size="10" name="ryoikikeikakushoInfo.daihyouZip" 
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  		#errorColorForProperty("ryoikikeikakushoInfo.daihyouZip")
+##ADD END 2007-07-12 BIS 劉多良               
+            	value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.daihyouZip)">　（住所）
+            <font color="#ff0000">*</font>
+            <input size="60" name="ryoikikeikakushoInfo.daihyouAddress" 
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  		#errorColorForProperty("ryoikikeikakushoInfo.daihyouAddress")
+##ADD END 2007-07-12 BIS 劉多良               
+            	value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.daihyouAddress)">
+           </p>
+           <p>電話番号：
+            <font color="#ff0000">*</font>
+            <input size="15" name="ryoikikeikakushoInfo.daihyouTel" 
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  		#errorColorForProperty("ryoikikeikakushoInfo.daihyouTel")
+##ADD END 2007-07-12 BIS 劉多良               
+            	value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.daihyouTel)">　　　FAX番号：
+            <font color="#ff0000">*</font>
+            <input size="15" name="ryoikikeikakushoInfo.daihyouFax" 
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  		#errorColorForProperty("ryoikikeikakushoInfo.daihyouFax")
+##ADD END 2007-07-12 BIS 劉多良               
+            	value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.daihyouFax)">
+           </p>
+           <p>Email：
+            <font color="#ff0000">*</font>
+            <input size="70" name="ryoikikeikakushoInfo.daihyouEmail" 
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  		#errorColorForProperty("ryoikikeikakushoInfo.daihyouEmail")
+##ADD END 2007-07-12 BIS 劉多良               
+            	value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.daihyouEmail)">
+           </p>
+          </td>
+         </tr>
+         <tr>
+          <th rowspan="7">事務担当者</th>
+         </tr>
+         <tr>
+          <th rowspan="2">氏名</th>
+          <td colspan="2">（フリガナ）<font color="#ff0000">*</font>（姓）
+##UPDATE START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+##           <input size="20" name="ryoikikeikakushoInfo.jimutantoNameKanaSei" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoNameKanaSei)">　　（名）
+##           <input size="20" name="ryoikikeikakushoInfo.jimutantoNameKanaMei" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoNameKanaMei)">
+           <input size="20" name="ryoikikeikakushoInfo.jimutantoNameKanaSei" #errorColorForProperty("ryoikikeikakushoInfo.jimutantoNameKanaSei") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoNameKanaSei)">　　（名）
+           <input size="20" name="ryoikikeikakushoInfo.jimutantoNameKanaMei" #errorColorForProperty("ryoikikeikakushoInfo.jimutantoNameKanaMei") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoNameKanaMei)">
+##UPDATE END 2007-07-12 BIS 劉多良               
+          </td>
+         </tr>
+         <tr>
+          <td colspan="2">（漢字等）<font color="#ff0000">*</font>（姓）
+##UPDATE START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+##           <input size="20" name="ryoikikeikakushoInfo.jimutantoNameKanjiSei" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoNameKanjiSei)">　　　（名）
+##           <input size="20" name="ryoikikeikakushoInfo.jimutantoNameKanjiMei" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoNameKanjiMei)">
+           <input size="20" name="ryoikikeikakushoInfo.jimutantoNameKanjiSei" #errorColorForProperty("ryoikikeikakushoInfo.jimutantoNameKanjiSei") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoNameKanjiSei)">　　　（名）
+           <input size="20" name="ryoikikeikakushoInfo.jimutantoNameKanjiMei" #errorColorForProperty("ryoikikeikakushoInfo.jimutantoNameKanjiMei") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoNameKanjiMei)">
+##UPDATE END 2007-07-12 BIS 劉多良               
+          </td>
+         </tr>
+         <tr>
+          <th>所属　<a href="$link.setAction('/kikanList')" target="_blank"><img src="$path/images/bt_list.gif" width=41 height=22 alt="一覧" border="0"></a></th>
+          <td>（番号）<font color="#ff0000">*</font>
+           <input type="text" size="6" name="ryoikikeikakushoInfo.jimutantoShozokuCd" 
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  		#errorColorForProperty("ryoikikeikakushoInfo.jimutantoShozokuCd")
+##ADD END 2007-07-12 BIS 劉多良               
+	       		value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoShozokuCd)">
+          </td>
+          <td>$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoShozokuName)　</td>
+         </tr>
+         <tr>
+          <th>部局　<a href="$link.setAction('/bukyokuList')" target="_blank"><img src="$path/images/bt_list.gif" width=41 height=22 alt="一覧" border="0"></a></th>
+          <td>（番号）<font color="#ff0000">*</font>
+           <input type="text" size="4" name="ryoikikeikakushoInfo.jimutantoBukyokuCd" 
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  		#errorColorForProperty("ryoikikeikakushoInfo.jimutantoBukyokuCd")
+##ADD END 2007-07-12 BIS 劉多良               
+           	value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoBukyokuCd)">
+          </td>
+          <td><input type="text" size="20" name="ryoikikeikakushoInfo.jimutantoBukyokuName" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoBukyokuName)"
+##ADD START 2007-07-12 BIS 劉多良  
+          		#errorColorForProperty("ryoikikeikakushoInfo.jimutantoBukyokuName")
+##ADD END 2007-07-12 BIS 劉多良            		
+          		>
+           <font size="1">（その他等の番号を使用した場合に記入）</font>
+          </td>
+         </tr>
+         <tr>
+          <th>職</th>
+          <td>
+           <font color="#ff0000">*</font>
+           <select name="ryoikikeikakushoInfo.jimutantoShokushuCd"
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  		#errorColorForProperty("ryoikikeikakushoInfo.jimutantoShokushuCd")
+		  		#errorColorForProperty("ryoikikeikakushoInfo.jimutantoShokushuNameKanji.kumiai")
+##ADD END 2007-07-12 BIS 劉多良               
+           >
+            #showOptionsWithEmpty($ryoikiGaiyoForm.shokushuList $ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoShokushuCd)
+           </select>
+          </td>
+          <td>
+           <input size="20" name="ryoikikeikakushoInfo.jimutantoShokushuNameKanji" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoShokushuNameKanji)"
+##ADD START 2007-07-12 BIS 劉多良            	
+           	#errorColorForProperty("ryoikikeikakushoInfo.jimutantoShokushuNameKanji")
+           	#errorColorForProperty("ryoikikeikakushoInfo.jimutantoShokushuNameKanji.kumiai")
+##ADD END 2007-07-12 BIS 劉多良            	
+           	>
+           <font size="1">（「研究員」、「その他」を選択した場合に記入）</font>
+          </td>
+         </tr>
+         <tr>
+          <td colspan="3">
+##UPDATE START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+##           <p>〒<font color="#ff0000">*</font>
+##            <input size="10" name="ryoikikeikakushoInfo.jimutantoZip" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoZip)">　（住所）
+##            <font color="#ff0000">*</font>
+##            <input size="60" name="ryoikikeikakushoInfo.jimutantoAddress" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoAddress)">
+##           </p>
+##           <p>電話番号：<font color="#ff0000">*</font>
+##            <input size="15" name="ryoikikeikakushoInfo.jimutantoTel" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoTel)">　　　FAX番号：
+##            <font color="#ff0000">*</font>
+##            <input size="15" name="ryoikikeikakushoInfo.jimutantoFax" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoFax)">
+##           </p>
+##           <p>Email：<font color="#ff0000">*</font>
+##            <input size="70" name="ryoikikeikakushoInfo.jimutantoEmail" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoEmail)">
+##           </p>
+           <p>〒<font color="#ff0000">*</font>
+            <input size="10" name="ryoikikeikakushoInfo.jimutantoZip" #errorColorForProperty("ryoikikeikakushoInfo.jimutantoZip") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoZip)">　（住所）
+            <font color="#ff0000">*</font>
+            <input size="60" name="ryoikikeikakushoInfo.jimutantoAddress" #errorColorForProperty("ryoikikeikakushoInfo.jimutantoAddress") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoAddress)">
+           </p>
+           <p>電話番号：<font color="#ff0000">*</font>
+            <input size="15" name="ryoikikeikakushoInfo.jimutantoTel" #errorColorForProperty("ryoikikeikakushoInfo.jimutantoTel") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoTel)">　　　FAX番号：
+            <font color="#ff0000">*</font>
+            <input size="15" name="ryoikikeikakushoInfo.jimutantoFax" #errorColorForProperty("ryoikikeikakushoInfo.jimutantoFax") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoFax)">
+           </p>
+           <p>Email：<font color="#ff0000">*</font>
+            <input size="70" name="ryoikikeikakushoInfo.jimutantoEmail" #errorColorForProperty("ryoikikeikakushoInfo.jimutantoEmail") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.jimutantoEmail)">
+           </p>
+##UPDATE END 2007-07-12 BIS 劉多良               
+          </td>
+         </tr>
+        </tbody>
+       </table>
+      </center>
+     </div>
+     
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenShimei1")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenKikan1")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenBukyoku1")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenShoku1")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenSenmon1")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenTel1")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenJitakutel1")
+
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenShimei2")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenKikan2")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenBukyoku2")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenShoku2")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenSenmon2")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenTel2")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenJitakutel2")
+
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenShimei3")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenKikan3")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenBukyoku3")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenShoku3")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenSenmon3")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenTel3")
+     #errorMarkupForProperty("ryoikikeikakushoInfo.kanrenJitakutel3")
+
+     <p align="left">【関連研究分野研究者】</p>
+      <center>
+       <table bgcolor="#ffffff" border="1" cellpadding="0" cellspacing="0" width="800">
+        <tbody>
+         <tr>
+          <th>氏名</th>
+          <th>所属研究機関</th>
+          <th>部局</th>
+          <th>職</th>
+          <th>現在の専門</th>
+          <th>勤務先電話番号</th>
+          <th>自宅電話番号</th>
+         </tr>
+##UPDATE START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+##         <tr>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenShimei1" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenShimei1)"></td>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenKikan1" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenKikan1)"></td>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenBukyoku1" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenBukyoku1)"></td>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenShoku1" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenShoku1)"></td>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenSenmon1" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenSenmon1)"></td>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenTel1" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenTel1)"></td>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenJitakutel1" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenJitakutel1)"></td>
+##         </tr>
+##         <tr>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenShimei2" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenShimei2)"></td>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenKikan2" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenKikan2)"></td>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenBukyoku2" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenBukyoku2)"></td>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenShoku2" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenShoku2)"></td>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenSenmon2" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenSenmon2)"></td>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenTel2" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenTel2)"></td>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenJitakutel2" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenJitakutel2)"></td>
+##         </tr>
+##         <tr>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenShimei3" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenShimei3)"></td>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenKikan3" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenKikan3)"></td>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenBukyoku3" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenBukyoku3)"></td>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenShoku3" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenShoku3)"></td>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenSenmon3" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenSenmon3)"></td>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenTel3" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenTel3)"></td>
+##          <td><input size="15" name="ryoikikeikakushoInfo.kanrenJitakutel3" value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenJitakutel3)"></td>
+##         </tr>
+         <tr>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenShimei1" #errorColorForProperty("ryoikikeikakushoInfo.kanrenShimei1") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenShimei1)"></td>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenKikan1" #errorColorForProperty("ryoikikeikakushoInfo.kanrenKikan1") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenKikan1)"></td>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenBukyoku1" #errorColorForProperty("ryoikikeikakushoInfo.kanrenBukyoku1") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenBukyoku1)"></td>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenShoku1" #errorColorForProperty("ryoikikeikakushoInfo.kanrenShoku1") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenShoku1)"></td>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenSenmon1" #errorColorForProperty("ryoikikeikakushoInfo.kanrenSenmon1") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenSenmon1)"></td>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenTel1" #errorColorForProperty("ryoikikeikakushoInfo.kanrenTel1") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenTel1)"></td>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenJitakutel1" #errorColorForProperty("ryoikikeikakushoInfo.kanrenJitakutel1") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenJitakutel1)"></td>
+         </tr>
+         <tr>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenShimei2" #errorColorForProperty("ryoikikeikakushoInfo.kanrenShimei2") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenShimei2)"></td>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenKikan2" #errorColorForProperty("ryoikikeikakushoInfo.kanrenKikan2") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenKikan2)"></td>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenBukyoku2" #errorColorForProperty("ryoikikeikakushoInfo.kanrenBukyoku2") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenBukyoku2)"></td>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenShoku2" #errorColorForProperty("ryoikikeikakushoInfo.kanrenShoku2") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenShoku2)"></td>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenSenmon2" #errorColorForProperty("ryoikikeikakushoInfo.kanrenSenmon2") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenSenmon2)"></td>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenTel2" #errorColorForProperty("ryoikikeikakushoInfo.kanrenTel2") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenTel2)"></td>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenJitakutel2" #errorColorForProperty("ryoikikeikakushoInfo.kanrenJitakutel2") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenJitakutel2)"></td>
+         </tr>
+         <tr>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenShimei3" #errorColorForProperty("ryoikikeikakushoInfo.kanrenShimei3") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenShimei3)"></td>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenKikan3" #errorColorForProperty("ryoikikeikakushoInfo.kanrenKikan3") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenKikan3)"></td>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenBukyoku3" #errorColorForProperty("ryoikikeikakushoInfo.kanrenBukyoku3") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenBukyoku3)"></td>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenShoku3" #errorColorForProperty("ryoikikeikakushoInfo.kanrenShoku3") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenShoku3)"></td>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenSenmon3" #errorColorForProperty("ryoikikeikakushoInfo.kanrenSenmon3") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenSenmon3)"></td>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenTel3" #errorColorForProperty("ryoikikeikakushoInfo.kanrenTel3") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenTel3)"></td>
+          <td><input size="15" name="ryoikikeikakushoInfo.kanrenJitakutel3" #errorColorForProperty("ryoikikeikakushoInfo.kanrenJitakutel3") value="$!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.kanrenJitakutel3)"></td>
+         </tr>
+##UPDATE END 2007-07-12 BIS 劉多良               
+        </tbody>
+       </table>
+      </center>
+     </form>
+   <p align="left">
+    <form name="upload_form" method="post" action="" enctype="multipart/form-data">
+      <table width="100%" border="0" cellpadding="4" cellspacing="0">
+       <tbody>
+        <tr>
+         <td bgcolor="#6699cc" class="rootFont">　</td>
+        </tr>
+       </tbody>
+      </table>
+      <table border="0" width="100%">
+       <tbody>
+        <tr>
+         <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width="61" height="49" alt=""></td>
+         <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont">
+          <br>参考資料ファイル選択
+         </td>
+         <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width="213" height="49" alt=""></td>
+        </tr>
+       </tbody>
+      </table>
+      <div align="left">
+       #errorMarkupForProperty("uploadFile")
+      </div> 
+	  その他審査の際の参考資料ファイル（Word又はPDF）があれば選択してください。<br>
+       #set($option1 = $ryoikiGaiyoForm.tenpuFileList.get(0))
+       #set($option2 = $ryoikiGaiyoForm.tenpuFileList.get(1))
+       #if($!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.tenpuFileFlg) == "1")
+        <input type="radio" value="$option1.value" name="ryoikikeikakushoInfo.tenpuFileFlg" checked>$!escape.getText($option1.label)
+       #else
+        <input type="radio" value="$option1.value" name="ryoikikeikakushoInfo.tenpuFileFlg">$!escape.getText($option1.label)
+       #end
+       <input type="file" size="100" name="uploadFile"
+##ADD START 2007-07-12 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+		  		#errorColorForProperty("uploadFile")
+##ADD END 2007-07-12 BIS 劉多良               
+       > <br>
+       #if($!escape.getText($!ryoikiGaiyoForm.ryoikikeikakushoInfo.tenpuFileFlg) == "0")
+        <input type="radio" value="$option2.value" name="ryoikikeikakushoInfo.tenpuFileFlg" checked>$!escape.getText($option2.label)
+       #else
+        <input type="radio" value="$option2.value" name="ryoikikeikakushoInfo.tenpuFileFlg">$!escape.getText($option2.label)
+       #end
+      </form>
+     </p>
+     <ul>
+      <li class="comment">参考資料を修正する場合は、修正済みの参考資料ファイルを選択しなおすと、前のファイルが削除されて上書きされます。</li>
+      <li class="comment">参考資料を削除する場合は、「参考資料なし」にチェックをつけて保存しなおすと、前のファイルが削除されます。</li>
+      <li class="comment">参考資料ファイルについてはWordファイルの代わりにPDFファイルを選択することも可能です。</li>
+     </ul>
+     &nbsp;
+     <!-- 本文ここまで --><!-- ボタン用テーブルここから -->
+     <br>
+     <!-- 本文ここまで --><!-- ボタン用テーブルここから -->
+     <div align="center">
+      <table border="0" cellpadding="0" cellspacing="4">
+       <tbody>
+        <tr>
+         #if($!ryoikiGaiyoForm.ryoikikeikakushoInfo.ryoikikeikakushoKakuteiFlg.equals("1"))
+           <td><a href="javascript:onSaveWithUpload()"><img src="$path/images/bt_forward.gif" alt="次へ進む" width="219" height="28" border="0"></a></td>
+         #end
+         #if(($ryoikiGaiyoForm.ryoikikeikakushoInfo.ryoikiJokyoId == "33") || ($ryoikiGaiyoForm.ryoikikeikakushoInfo.ryoikiJokyoId == "01") )
+           <td><a href="javascript:onTransientSaveWithUpload()"><img src="$path/images/bt_keep.gif" alt="一時保存して中断" width="219" height="28" border="0"></a></td>
+         #end
+         <td><a href="$link.setAction('/shinsei/ryoikiGaiyo')"><img src="$path/images/bt_back.gif" alt="保存せずに戻る" width="219" height="28" border="0"></a></td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <!-- ボタン用テーブルここまで --><!-- サブ画面フッター用テーブルここから -->
+     <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tbody>
+       <tr bgcolor="#336699">
+        <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width="8" height="26" alt=""></td>
+        <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shinsei/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width="72" height="26" border="0"></a></td>
+        <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width="8" height="26" alt=""></td>
+       </tr>
+      </tbody>
+     </table>
+     <!-- サブ画面フッター用テーブルここまで --><!-- コンテンツエリアここまで --> </td>
+    <td width="1" bgcolor="#cccccc"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   </tr>
+  </tbody>
+ </table>
+<!-- 左右の縦線用テーブルここまで -->
+<form name="ryoikiGaiyo_form" method="post" action="">
+ <input type="hidden" name="kariryoikiNo" value="">
+</form>
+</div>
+</body>
+$ryoikiGaiyoForm.init()
+</html>

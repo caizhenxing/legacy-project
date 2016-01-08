@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/inquiry.do" location="197,0" dimension="358,84" />
+  <StrutsActivity path="/inquiryCard.do" location="0,277" dimension="358,84" />
+  <StrutsActivity path="/inquiryResult.do" location="950,250" dimension="358,84" />
+  <StrutsActivity path="/detailForm.do" location="1250,450" dimension="358,84" />
+  <StrutsActivity path="/inquiry/inquiryFilter.jsp" location="650,50" dimension="196,48" />
+  <StrutsActivity path="/inquiry/inquiryList.jsp" location="0,184" dimension="184,48" />
+  <StrutsActivity path="/inquiry/inquiryinfoStatisticQuery.jsp" location="950,850" dimension="205,49" />
+  <StrutsActivity path="/inquiry/inquiryMain.jsp" location="650,450" dimension="184,48" />
+  <StrutsActivity path="/info/zf/dcbg/report.jsp" location="650,850" dimension="184,48" />
+  <StrutsActivity path="/inquiry/inquiryLoad.jsp" location="284,184" dimension="184,48" />
+  <StrutsActivity path="/inquiry/inquiryQuery.jsp" location="568,184" dimension="190,48" />
+  <StrutsActivity path="/inquiry/inquiryStat.jsp" location="950,750" dimension="184,48" />
+  <StrutsActivity path="/inquiry/inquiryDetail.jsp" location="50,750" dimension="196,48" />
+  <StrutsActivity path="/inquiry/inquiryReport.jsp" location="350,750" dimension="196,48" />
+  <StrutsActivity path="/inquiry/inquiryDisplayCard.jsp" location="950,150" dimension="226,48" />
+  <StrutsActivity path="/inquiry/inquiryCardLoad.jsp" location="75,461" dimension="208,48" />
+  <StrutsActivity path="/inquiry/inquiryResultList.jsp" location="350,550" dimension="220,48" />
+  <StrutsActivity path="/inquiry/inquiryResultMain.jsp" location="950,450" dimension="220,48" />
+  <StrutsActivity path="/inquiry/inquiryResultQuery.jsp" location="650,550" dimension="226,48" />
+  <StrutsActivity path="/inquiry/inquiryResultDetail.jsp" location="950,550" dimension="232,48" />
+  <StrutsActivity path="/inquiry/inquiryResult.jsp" location="950,650" dimension="196,48" />
+  <StrutsActivity path="/inquiry/inquiryinfoAnalysisStatisticQuery.jsp" location="1250,850" dimension="244,49" />
+  <StrutsActivity path="/inquiry/detail/detailList.jsp" location="1250,650" dimension="220,48" />
+  <StrutsActivity path="/inquiry/detail/detailQuery.jsp" location="1250,750" dimension="226,48" />
+  <StrutsActivity path="/info/nm/dcbg/report.jsp" location="1250,150" dimension="184,48" />
+  <StrutsActivity path="/inquiry/inquiryResult.html" location="350,450" dimension="202,48" />
+  <StrutsActivity path="/inquiry/inquiryResultList.html" location="350,650" dimension="226,48" />
+  <StrutsActivity path="/inquiry/inquiryResultTMP.html" location="50,650" dimension="220,48" />
+  <StrutsActivity path="/inquiry/inquiryResultPage.html" location="650,350" dimension="226,48" />
+  <StrutsActivity path="/inquiry/inquiryResultDetail.html" location="650,650" dimension="238,48" />
+  <StrutsActivity path="/inquiry/reportStat.jsp" location="650,750" dimension="178,48" />
+  <StrutsActivity path="/inquiry/detailQuery.jsp" location="50,850" dimension="184,48" />
+  <StrutsActivity path="/inquiry/detailList.jsp" location="350,850" dimension="178,48" />
+  <StrutsTransition id="/inquiryResult.do,toinquiryinfoAnalysisStatisticQuery,/inquiry/inquiryinfoAnalysisStatisticQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1227,334" />
+      <AbsolutePoint location="1227,874" />
+      <AbsolutePoint location="1250,874" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inquiryResult.do,query,/inquiry/inquiryResultQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,292" />
+      <AbsolutePoint location="921,292" />
+      <AbsolutePoint location="921,574" />
+      <AbsolutePoint location="876,574" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inquiryResult.do,main,/inquiry/inquiryResultMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1129,334" />
+      <AbsolutePoint location="1129,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inquiryResult.do,resultDetail,/inquiry/inquiryResultDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1197,334" />
+      <AbsolutePoint location="1197,574" />
+      <AbsolutePoint location="1182,574" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inquiry.do,load,/inquiry/inquiryLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="376,84" />
+      <AbsolutePoint location="376,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inquiry.do,detail,/inquiry/inquiryDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="376,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inquiryResult.do,success,/inquiry/inquiryResult.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1129,292" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inquiryCard.do,load,/inquiry/inquiryCardLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="179,361" />
+      <AbsolutePoint location="179,461" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inquiry.do,query,/inquiry/inquiryQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="495,84" />
+      <AbsolutePoint location="495,134" />
+      <AbsolutePoint location="663,134" />
+      <AbsolutePoint location="663,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/detailForm.do,list,/inquiry/detail/detailList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1429,534" />
+      <AbsolutePoint location="1429,650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inquiry.do,filter,/inquiry/inquiryFilter.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="376,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inquiry.do,reportLast,/info/zf/dcbg/report.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="376,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inquiry.do,displayCard,/inquiry/inquiryDisplayCard.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="376,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inquiry.do,toinquiryinfoStatisticQuery,/inquiry/inquiryinfoStatisticQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="376,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inquiry.do,report,/inquiry/inquiryReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="376,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inquiryResult.do,list,/inquiry/inquiryResultList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,262" />
+      <AbsolutePoint location="621,262" />
+      <AbsolutePoint location="621,574" />
+      <AbsolutePoint location="570,574" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inquiry.do,stat,/inquiry/inquiryStat.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="376,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inquiry.do,list,/inquiry/inquiryList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="256,84" />
+      <AbsolutePoint location="256,134" />
+      <AbsolutePoint location="92,134" />
+      <AbsolutePoint location="92,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inquiry.do,main,/inquiry/inquiryMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="376,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/detailForm.do,query,/inquiry/detail/detailQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1491,534" />
+      <AbsolutePoint location="1491,774" />
+      <AbsolutePoint location="1476,774" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="GB18030"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean id="sys.tree.ClassTreeService" class="base.zyf.common.tree.classtree.impl.ClassTreeServiceImpl">
+		<property name="classTreeLoadService"><ref bean="sys.tree.ClassTreeLoadService"/></property>
+	</bean>
+	<bean id="sys.tree.ClassTreeLoadService" class="com.cc.sys.tree.service.impl.SysTreeServiceImpl">
+		<property name="hibernateTemplate"><ref bean="hibernateTemplate"/></property>
+	</bean>
+	<bean id="sys.tree.ModuleLoadService" class="com.cc.sys.module.service.impl.SysModuleServiceImpl">
+		<property name="hibernateTemplate"><ref bean="hibernateTemplate"/></property>
+	</bean>
+	<bean id="sys.code.SysCodeService" class="base.zyf.common.code.impl.SysCodeServiceImpl">
+		<property name="hibernateTemplate"><ref bean="hibernateTemplate"/></property>
+	</bean>
+</beans>

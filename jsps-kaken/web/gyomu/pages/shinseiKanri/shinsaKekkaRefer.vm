@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+## ************************************************
+#parse( $commonSetting )
+#set ($info= $result)
+
+## ***********************************************
+
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="javascript:fncWindowOpen('$path/docs/manual3.pdf','help');"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><IMG SRC="$path/images/subtitle_img1.gif" WIDTH=61 HEIGHT=49 ALT=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+       審査結果参照</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <IMG SRC="$path/images/subtitle_img3.gif" WIDTH=213 HEIGHT=49 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+<!-- 本文ここから -->
+
+<!-- 一覧用テーブルここから -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th colspan="2" align="left">研究種目名</th>
+     <td>
+     	#if($info.kaisu.toString() == '0' || $info.kaisu.toString() == '1')
+     		平成$!escape.getText($!info.nendo)年度 $!escape.getText($!info.jigyoName)
+     	#else
+     		平成$!escape.getText($!info.nendo)年度 第$!escape.getText($!info.kaisu)回 $!escape.getText($!info.jigyoName)
+		#end
+     </td>
+    </tr>
+    <tr>
+     <th colspan="2" align="left">応募番号</th>
+     <td>$!escape.getText($!info.uketukeNo)</td>
+    </tr>
+    <tr>
+     <th colspan="2" align="left">研究課題名</th>
+     <td>$!escape.getText($!info.kadaiNameKanji)</td>
+    </tr>
+    <tr>
+     <th rowspan="3" align="left">応募者</th>
+     <th align="left">氏名</th>
+     <td>$!escape.getText($!info.nameKanjiSei) $!escape.getText($!info.nameKanjiMei)</td>
+    </tr>
+    <tr>
+     <th align="left">所属研究機関名</th>
+     <td>$!escape.getText($!info.shozokuName)</td>
+    </tr>
+    <tr>
+     <th align="left">部局名・職名</th>
+     <td>
+ 		#if($info.bukyokuName)
+ 			$!escape.getText($!info.bukyokuName) 
+ 		#end
+ 		#if($info.shokushuName)
+ 			$!escape.getText($!info.shokushuName)
+ 		#end     
+     </td>
+    </tr>
+    <tr>
+     <th colspan="2" align="left">上記研究課題が推薦された観点</th>
+     <td>$!escape.getText($!info.kanten)</td>
+    </tr>
+    <tr>
+     <th colspan="2" align="left">系等の区分</th>
+     <td>$!escape.getText($!info.keiName)</td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th colspan="2" align="left">審査結果</th>
+     <td>$!escape.getText($!info.kekkaAbcLabel)</td>
+    </tr>
+    <tr>
+     <th colspan="2" align="left">研究課題について</th>
+     <td>
+      1.推薦された観点に照らし、研究課題の意義、重要性についてご意見をお書きください。<br>
+      $!escape.getText($!info.comment1)<br><br>
+      2.その他、気がついた点があればお書きください。<br>
+      $!escape.getText($!info.comment2)　
+     </td>
+    </tr>
+    <tr>
+     <th colspan="2" align="left">研究計画・研究目的などについて</th>
+     <td>
+      1.推薦された理由と研究目的・研究計画との整合性についてご意見をお書きください。<br>
+      $!escape.getText($!info.comment3)<br><br>
+      2.研究目的・研究計画の妥当性についてご意見をお書きください。<br>
+      $!escape.getText($!info.comment4)<br><br>
+      3.研究者の研究業績及びエフォートを念頭に置いて研究組織及び研究費の妥当性についてご意見をお書きください。<br>
+      $!escape.getText($!info.comment5)<br><br>
+      4.その他<br>
+      $!escape.getText($!info.comment6)　
+     </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+<!-- 一覧用テーブルここまで-->
+    <br>
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+      <td><a href="javascript:window.close()"><img src="$path/images/bt_close.gif" width=114 height=28 border="0" alt="閉じる"></a></td>
+      </tr>
+     </table>
+    </div>
+
+    <!-- ログイン画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="4" background="$path/images/footer_login2.gif"> <IMG SRC="$path/images/footer_login1.gif" width=4 height=11 ALT=""></td>
+      <td background="$path/images/footer_login2.gif"><IMG SRC="$path/images/footer_login2.gif" width=4 height=11 ALT=""></td>
+      <td width="4" align="right" background="$path/images/footer_login2.gif"> <IMG SRC="$path/images/footer_login3.gif" width=4 height=11 ALT=""></td>
+     </tr>
+    </table>
+    <!-- ログイン画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+</body>
+</html>

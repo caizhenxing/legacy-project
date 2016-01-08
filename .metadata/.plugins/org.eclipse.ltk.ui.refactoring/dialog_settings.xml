@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="RefactoringWizard.Extract Superclass">
+		<item value="351" key="height"/>
+		<item value="550" key="width"/>
+	</section>
+	<section name="RefactoringWizard.preview">
+		<item value="636" key="height"/>
+		<item value="870" key="width"/>
+	</section>
+	<section name="org.eclipse.ltk.ui.refactoring.settings">
+		<item value="true" key="deleteSubPackages"/>
+		<item value="true" key="updateQualifiedNames"/>
+		<item value="true" key="renameSubpackages"/>
+		<item value="*.xml" key="patterns"/>
+		<item value="1" key="updateSimilarElementsMatchStrategy"/>
+		<item value="true" key="updateTextualMatches"/>
+		<item value="false" key="updateSimilarElements"/>
+	</section>
+	<section name="RefactoringPropertyPage">
+		<item value="true" key="org.eclipse.ltk.ui.refactoring.sortRefactorings"/>
+	</section>
+</section>

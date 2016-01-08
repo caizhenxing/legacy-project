@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+
+<beans>
+<!--  action begin -->
+<bean name="/oa/assissant/hr"
+		class="et.bo.oa.assissant.hr.action.HRAction" singleton="false">
+		<property name="hrService">
+			<ref bean="hrService" />
+		</property>	
+		<property name="ctree">
+			<ref bean="ClassTreeService"/>
+		</property>
+		<property name="departTree">
+			<ref bean="DepTreeService"/>
+		</property>
+</bean>
+<bean name="/oa/assissant/hrphoto"
+		class="et.bo.oa.assissant.hr.action.HRUploadAction" singleton="false">
+		<property name="hrService">
+			<ref bean="hrService" />
+		</property>	
+		
+</bean>
+<bean id="hrService"
+		class="et.bo.oa.assissant.hr.service.impl.HRServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+<!--文档管理-->
+<bean name="/oa/assissant/doc"
+		class="et.bo.oa.assissant.document.action.DocumentAction" singleton="false">
+		<property name="documentService">
+			<ref bean="documentService" />
+		</property>	
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+</bean>
+<bean name="/oa/assissant/docUploadFile"
+		class="et.bo.oa.assissant.document.action.DocUploadFileAction"
+		singleton="false">
+		<property name="loadService">
+			<ref local="LoadService" />
+		</property>
+</bean>
+<!-- action end -->
+<!--  service begin -->	
+
+<bean id="documentService"
+		class="et.bo.oa.assissant.document.service.impl.DocumentServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+</bean>
+	
+<bean id="LoadService"
+	  class="excellence.common.load.impl.LoadServiceImpl"
+	  singleton="false">
+</bean>
+	
+<!-- service end -->
+
+</beans>

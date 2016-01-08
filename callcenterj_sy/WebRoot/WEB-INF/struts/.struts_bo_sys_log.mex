@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/sys/log.do" location="477,0" dimension="308,88" />
+  <StrutsActivity path="/sys/log/popLog.jsp" location="0,208" dimension="124,49" />
+  <StrutsActivity path="/sys/log/main.jsp" location="224,208" dimension="111,49" />
+  <StrutsActivity path="/sys/log/searchResult.jsp" location="435,208" dimension="151,49" />
+  <StrutsActivity path="/sys/log/toSearch.jsp" location="686,208" dimension="132,49" />
+  <StrutsActivity path="/sys/error.jsp" location="918,208" dimension="95,49" />
+  <StrutsActivity path="/sys/success.jsp" location="1113,208" dimension="108,49" />
+  <StrutsTransition id="/sys/log.do,success,/sys/success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="759,88" />
+      <AbsolutePoint location="759,118" />
+      <AbsolutePoint location="1167,118" />
+      <AbsolutePoint location="1167,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/log.do,error,/sys/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="708,88" />
+      <AbsolutePoint location="708,148" />
+      <AbsolutePoint location="965,148" />
+      <AbsolutePoint location="965,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/log.do,searchresult,/sys/log/searchResult.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="605,88" />
+      <AbsolutePoint location="605,178" />
+      <AbsolutePoint location="510,178" />
+      <AbsolutePoint location="510,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/log.do,main,/sys/log/main.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="554,88" />
+      <AbsolutePoint location="554,148" />
+      <AbsolutePoint location="279,148" />
+      <AbsolutePoint location="279,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/log.do,popLog,/sys/log/popLog.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="502,88" />
+      <AbsolutePoint location="502,118" />
+      <AbsolutePoint location="62,118" />
+      <AbsolutePoint location="62,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/log.do,tosearch,/sys/log/toSearch.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="656,88" />
+      <AbsolutePoint location="656,178" />
+      <AbsolutePoint location="752,178" />
+      <AbsolutePoint location="752,208" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

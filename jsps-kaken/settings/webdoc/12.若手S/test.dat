@@ -1,0 +1,106 @@
+SHOZOKU_CD 12601
+JIGYO_CD 12
+BUNKASAIMOKU_CD 1234
+BUNKATSU_NO A
+UKETUKE_NO 1234
+
+NENDO 平成18年度
+NENDO_SEIREKI (2006年度)
+SAKUSEI_DATE_Y 18
+SAKUSEI_DATE_M 1
+SAKUSEI_DATE_D 25
+EDITION 1
+SHINSEI_KUBUN 新規
+SYUMOKU 若手研究（Ｓ）
+atextframe: BUNYA_NAME 0 0 EOF
+文字枠データ５０文字○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※
+EOF
+atextframe: BUNKA_NAME 0 0 EOF
+文字枠データ５０文字○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※
+EOF
+atextframe: SAIMOKU_NAME 0 0 EOF
+文字枠データ５０文字○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※
+EOF
+atextframe: KEYWORD 0 0 EOF
+文字枠データ６０文字○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※
+EOF
+atextframe: KEYWORD_IGAI 0 0 EOF
+文字枠データ６０文字○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※
+EOF
+atextframe: NAME_KANA 0 0 EOF
+フリガナ姓１６文字○○○○○○※ フリガナ名１６文字○○○○○○※
+EOF
+NAME_KANJI 漢字姓１６文字○○○○○○○○※ 漢字名１６文字○○○○○○○○※
+NENREI_KIKAN (H18.4.1現在)
+NENREI 26
+BIRTHDAY （S. 48年10月8日）
+atextframe: SHOZOKU_NAME 0 0 EOF
+文字枠データ４０文字○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※
+EOF
+atextframe: BUKYOKU_NAME 0 0 EOF
+文字枠データ５０文字○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※
+EOF
+atextframe: SHOKU_NAME_KANJI 0 0 EOF
+文字枠データ２０文字○○○○○○○○○※
+EOF
+atextframe: GAKUI 0 0 EOF
+文字枠データ５０文字○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※
+EOF
+SENMON 文字枠データ２０文字○○○○○○○○○※
+EFFORT 90%
+SAIYO_DATE_Y 18
+SAIYO_DATE_M 8
+SAIYO_DATE_D 12
+KINMU_HOUR 40
+atextframe: KADAI_NAME_KANJI 0 0 EOF
+文字枠データ４０文字○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※
+EOF
+
+NENDO1 平成18年度
+KEIHI1 5678901
+BIHINHI1 1234567
+SHOMOHINHI1 5678901
+RYOHI1 9012345
+SHAKIN1 3456789
+SONOTA1 7890123
+NENDO2 平成19年度
+KEIHI2 2345678
+BIHINHI2 8901234
+SHOMOHINHI2 2345678
+RYOHI2 6789012
+SHAKIN2 0123456
+SONOTA2 4567890
+
+NENDO3 平成20年度
+KEIHI3 5678901
+BIHINHI3 1234567
+SHOMOHINHI3 5678901
+RYOHI3 9012345
+SHAKIN3 3456789
+SONOTA3 7890123
+NENDO4 平成21年度
+KEIHI4 5678901
+BIHINHI4 1234567
+SHOMOHINHI4 5678901
+RYOHI4 9012345
+SHAKIN4 3456789
+SONOTA4 7890123
+NENDO5 平成22年度
+KEIHI5 5678901
+BIHINHI5 1234567
+SHOMOHINHI5 5678901
+RYOHI5 9012345
+SHAKIN5 3456789
+SONOTA5 7890123
+
+KEIHI_TOTAL 9012345
+BIHINHI_TOTAL 6789012
+SHOMOHINHI_TOTAL 3456789
+RYOHI_TOTAL 0123456
+SHAKIN_TOTAL 7890123
+SONOTA_TOTAL 4567890
+
+KAIJIKIBO_FLG 審査結果の開示を希望する
+NAIYAKUGAKU 6789012
+SHOREIHI_NO XX-XXXXX
+RYOIKI_NAME 人文学

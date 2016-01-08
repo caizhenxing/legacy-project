@@ -1,0 +1,142 @@
+## ***********************************************
+## 仮領域番号発行情報登録完了
+## ***********************************************
+## 2005/06/20 新規作成　宮秀彬
+
+#parse($commonSetting)
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script language="javascript">
+  <!--
+  /* OKボタンをクッリク時 */
+  function onOkClick(){
+      document.ryoiki_form.action="$link.setAction('/shinsei/registKariBangoHakkoEnd')";
+      document.ryoiki_form.submit();
+  }
+ //-->
+</script>
+</head>
+
+<body class="bodyStyle">
+<div align="center"><!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+   <tr>
+    <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+    <td align="right" background="$path/images/header_bg2.gif"><!-- ヘルプ、ログアウトボタン用テーブルここから -->
+     <table border="0" cellpadding="0" cellspacing="1">
+      <tbody>
+       <tr>
+        <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+       </tr>
+       <tr>
+        <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+        <td><a href="$link.setAction('/shinsei/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width="72" height="20" border="0"></a></td>
+       </tr>
+      </tbody>
+     </table>
+     <!-- ヘルプ、ログアウトボタン用テーブルここまで --> </td>
+    <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+   </tr>
+  </tbody>
+ </table>
+ <!--  ヘッダー 用テーブルここまで--><!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+   <tr>
+    <td width="1" bgcolor="#cccccc"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+    <td><!-- コンテンツエリアここから --><!-- ログインユーザ、ルート情報用テーブルここから　-->
+     <table width="100%" border="0" cellpadding="4" cellspacing="0">
+      <tbody>
+       <tr>
+        <td bgcolor="#6699CC" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/shinsei/showMainMenu')">応募者向けメニュー</a>＞仮領域番号発行（受付中研究種目一覧＞仮領域番号発行情報登録＞<b>仮領域番号発行情報登録完了</b>）</font></td>
+       </tr>
+      </tbody>
+     </table>
+     <!-- ログインユーザ、ルート情報用テーブルここまで　--><!-- サブ画面タイトル用テーブルここから -->
+     <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+       <td width="92" valign="bottom"><img src="$path/images/title_img1.gif" width="92" height="53" alt=""></td>
+       <td width="98%" valign="bottom" class="menuTitle">仮領域番号発行情報登録完了</td>
+       <td width="214" valign="bottom"><img src="$path/images/title_img5.gif" width="214" height="38" alt=""></td>
+      </tr>
+      <tr>
+       <td width="92"><img src="$path/images/title_img2.gif" width="92" height="29" alt=""></td>
+       <td background="$path/images/title_img3.gif"><img src="$path/images/title_img3.gif" width="8" height="29" alt=""></td>
+       <td width="214"><img src="$path/images/title_img6.gif" width="214" height="29" alt=""></td>
+      </tr>
+     </table>
+     <!-- サブ画面タイトル用テーブルここまで -->
+     <!-- 本文ここから -->
+
+     <!-- ※仮領域番号発行の承認を所属機関にさせる場合は、注意書きを表示。start -->
+     <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+       <td width="92" valign="top"><img src="$path/images/title_img7.gif" width="92" height="38" alt=""></td>
+       <td width="52" class="menuLine"><img src="$path/images/spacer.gif" alt="" width="52" height="1"></td>
+       <td width="90%" align="left"> <br>
+        <!-- メニュー用テーブルここから -->
+        <table border="0" cellspacing="6">
+         <tr>
+          <td width="50">&nbsp;</td>
+          <td>仮領域番号発行情報の登録が完了しました。</td>
+         </tr>
+         <tr>
+          <td width="50">&nbsp;</td>
+          <td>所属研究機関が確認すると、仮領域番号が発行されます。</td>
+         </tr>
+         <tr>
+          <td width="50">&nbsp;</td>
+          <td>発行された仮領域番号は、領域計画書作成画面で確認してください。</td>
+         </tr>
+         <tr>
+          <td width="50">&nbsp;</td>
+         </tr>
+         <tr>
+          <td width="50">&nbsp;</td>
+         </tr>
+        </table>
+        <!-- メニュー用テーブルここまで -->
+       </td>
+      </tr>
+     </table>
+     <!-- ※仮領域番号発行の承認を所属機関にさせる場合は、注意書きを表示。end -->
+
+     <!-- 本文ここまで --><!-- ボタン用テーブルここから -->
+     <div align="center">
+      <table border="0" cellpadding="0" cellspacing="4">
+       <tbody>
+        <tr>
+         <td><a href="javascript:onOkClick()"><img src="$path/images/bt_ok.gif" width="114" height="28" alt="OK" border="0"></a></td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <!-- ボタン用テーブルここまで --><!-- サブ画面フッター用テーブルここから -->
+     <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tbody>
+       <tr bgcolor="#336699">
+        <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width="8" height="26" alt=""></td>
+        <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shinsei/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width="72" height="26" border="0"></a></td>
+        <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width="8" height="26" alt=""></td>
+       </tr>
+      </tbody>
+     </table>
+     <!-- サブ画面フッター用テーブルここまで --><!-- コンテンツエリアここまで --> </td>
+    <td width="1" bgcolor="#cccccc"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   </tr>
+  </tbody>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+##隠しフォーム情報----------
+<form name="ryoiki_form" action="" method="post">
+  <input type="hidden" name="kariryoikiNo" value="">
+  <input type="hidden" name="screenFlg" value="come">
+</form>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/medical/medicinfo.do" location="727,277" dimension="358,84" />
+  <StrutsActivity path="/medical/bookMedicinfo.do" location="781,0" dimension="358,84" />
+  <StrutsActivity path="/medical/medicinfo/medicinfoStatisticQuery.jsp" location="0,461" dimension="316,48" />
+  <StrutsActivity path="/medical/medicinfo/medicinfoQuery.jsp" location="416,461" dimension="262,48" />
+  <StrutsActivity path="/medical/medicinfo/medicinfoMain.jsp" location="778,461" dimension="256,48" />
+  <StrutsActivity path="/medical/medicinfo/medicinfoLoad.jsp" location="1134,461" dimension="256,48" />
+  <StrutsActivity path="/medical/medicinfo/medicinfolist.jsp" location="1490,461" dimension="256,48" />
+  <StrutsActivity path="/medical/bookMedicinfo/medicinfoStatisticQuery.jsp" location="1622,184" dimension="340,48" />
+  <StrutsActivity path="/medical/bookMedicinfo/bookMedicinfoLoad.jsp" location="0,184" dimension="304,48" />
+  <StrutsActivity path="/medical/bookMedicinfo/bookMedicinfolist.jsp" location="404,184" dimension="304,48" />
+  <StrutsActivity path="/medical/bookMedicinfo/bookMedicinfoMain.jsp" location="808,184" dimension="304,48" />
+  <StrutsActivity path="/medical/bookMedicinfo/bookMedicinfoQuery.jsp" location="1212,184" dimension="310,48" />
+  <StrutsActivity path="/medical/bookMedicinfo/medicinfoQuery.jsp" location="0,554" dimension="286,48" />
+  <StrutsActivity path="/medical/bookMedicinfo/medicinfoMain.jsp" location="662,554" dimension="280,48" />
+  <StrutsActivity path="/medical/bookMedicinfo/medicinfoLoad.jsp" location="0,647" dimension="280,48" />
+  <StrutsActivity path="/medical/bookMedicinfo/medicinfolist.jsp" location="325,647" dimension="280,48" />
+  <StrutsActivity path="/medical/medicinfo/bookMedicinfoQuery.jsp" location="331,554" dimension="286,48" />
+  <StrutsActivity path="/medical/medicinfo/bookMedicinfoMain.jsp" location="650,647" dimension="280,48" />
+  <StrutsActivity path="/medical/medicinfo/bookMedicinfoLoad.jsp" location="0,740" dimension="280,48" />
+  <StrutsActivity path="/medical/medicinfo/bookMedicinfolist.jsp" location="325,740" dimension="280,48" />
+  <StrutsTransition id="/medical/medicinfo.do,tomedicinfoStatisticQuery,/medical/medicinfo/medicinfoStatisticQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="762,361" />
+      <AbsolutePoint location="762,396" />
+      <AbsolutePoint location="158,396" />
+      <AbsolutePoint location="158,461" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/medical/bookMedicinfo.do,toBookMedicinfoStatisticQuery,/medical/bookMedicinfo/medicinfoStatisticQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1103,84" />
+      <AbsolutePoint location="1103,119" />
+      <AbsolutePoint location="1792,119" />
+      <AbsolutePoint location="1792,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/medical/bookMedicinfo.do,toBookMedicinfoMain,/medical/bookMedicinfo/bookMedicinfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="960,84" />
+      <AbsolutePoint location="960,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/medical/medicinfo.do,toMedicinfoQuery,/medical/medicinfo/medicinfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="834,361" />
+      <AbsolutePoint location="834,426" />
+      <AbsolutePoint location="547,426" />
+      <AbsolutePoint location="547,461" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/medical/medicinfo.do,toMedicinfoLoad,/medical/medicinfo/medicinfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="977,361" />
+      <AbsolutePoint location="977,426" />
+      <AbsolutePoint location="1262,426" />
+      <AbsolutePoint location="1262,461" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/medical/bookMedicinfo.do,toBookMedicinfoQuery,/medical/bookMedicinfo/bookMedicinfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1031,84" />
+      <AbsolutePoint location="1031,149" />
+      <AbsolutePoint location="1367,149" />
+      <AbsolutePoint location="1367,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/medical/medicinfo.do,toMedicinfoList,/medical/medicinfo/medicinfolist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1049,361" />
+      <AbsolutePoint location="1049,396" />
+      <AbsolutePoint location="1618,396" />
+      <AbsolutePoint location="1618,461" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/medical/medicinfo.do,toMedicinfoMain,/medical/medicinfo/medicinfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="906,361" />
+      <AbsolutePoint location="906,461" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/medical/bookMedicinfo.do,toBookMedicinfoLoad,/medical/bookMedicinfo/bookMedicinfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="816,84" />
+      <AbsolutePoint location="816,119" />
+      <AbsolutePoint location="152,119" />
+      <AbsolutePoint location="152,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/medical/bookMedicinfo.do,toBookMedicinfoList,/medical/bookMedicinfo/bookMedicinfolist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="888,84" />
+      <AbsolutePoint location="888,149" />
+      <AbsolutePoint location="556,149" />
+      <AbsolutePoint location="556,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

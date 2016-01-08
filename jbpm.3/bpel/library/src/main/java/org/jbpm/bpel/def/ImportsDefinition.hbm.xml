@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+
+  <subclass name="org.jbpm.bpel.def.ImportsDefinition" extends="org.jbpm.module.def.ModuleDefinition"
+    discriminator-value="P">
+
+    <list name="imports" cascade="all">
+      <key column="IMPORTS_" />
+      <list-index column="IMPORTSINDEX_" />
+      <one-to-many class="org.jbpm.bpel.def.Import" />
+    </list>
+
+    <map name="properties" cascade="all">
+      <key column="IMPORTS_" />
+      <index type="qname">
+        <column name="LOCALNAME_" />
+        <column name="NAMESPACE_" />
+      </index>
+      <one-to-many class="org.jbpm.bpel.wsdl.impl.PropertyImpl" />
+    </map>
+
+    <map name="messages" cascade="all">
+      <key column="IMPORTS_" />
+      <index type="qname">
+        <column name="LOCALNAME_" />
+        <column name="NAMESPACE_" />
+      </index>
+      <one-to-many class="org.jbpm.bpel.wsdl.impl.MessageImpl" />
+    </map>
+
+    <map name="partnerLinkTypes" cascade="all">
+      <key column="IMPORTS_" />
+      <index type="qname">
+        <column name="LOCALNAME_" />
+        <column name="NAMESPACE_" />
+      </index>
+      <one-to-many class="org.jbpm.bpel.wsdl.impl.PartnerLinkTypeImpl" />
+    </map>
+
+    <map name="portTypes" cascade="all">
+      <key column="IMPORTS_" />
+      <index type="qname">
+        <column name="LOCALNAME_" />
+        <column name="NAMESPACE_" />
+      </index>
+      <one-to-many class="org.jbpm.bpel.wsdl.impl.PortTypeImpl" />
+    </map>
+
+    <map name="elementTypes" cascade="all">
+      <key column="IMPORTS_" />
+      <index type="qname">
+        <column name="LOCALNAME_" />
+        <column name="NAMESPACE_" />
+      </index>
+      <one-to-many class="org.jbpm.bpel.variable.def.ElementType" />
+    </map>
+
+    <map name="schemaTypes" cascade="all">
+      <key column="IMPORTS_" />
+      <index type="qname">
+        <column name="LOCALNAME_" />
+        <column name="NAMESPACE_" />
+      </index>
+      <one-to-many class="org.jbpm.bpel.variable.def.SchemaType" />
+    </map>
+
+    <map name="messageTypes" cascade="all">
+      <key column="IMPORTS_" />
+      <index type="qname">
+        <column name="LOCALNAME_" />
+        <column name="NAMESPACE_" />
+      </index>
+      <one-to-many class="org.jbpm.bpel.variable.def.MessageType" />
+    </map>
+  </subclass>
+
+  <class name="org.jbpm.bpel.def.Import" table="BPEL_IMPORT">
+    <cache usage="nonstrict-read-write" />
+    <id name="id">
+      <generator class="native" />
+    </id>
+
+    <property name="namespace" column="NAMESPACE_" />
+    <property name="location" column="LOCATION_" />
+    <property name="type" column="TYPE_">
+      <type name="enum">
+        <param name="class">org.jbpm.bpel.def.Import$Type</param>
+      </type>
+    </property>
+  </class>
+
+</hibernate-mapping>

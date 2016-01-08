@@ -1,0 +1,18 @@
+project_name=callcenterj_sy
+web_server_ip=192.168.1.3
+web_server_port=8080
+web_html_css=styleA.css
+file_manager_realpath=e:/filemanager/
+employee_photo_realpath=D:/apache-tomcat-5.5.17/webapps/loadfile/
+photo_realpath=D:/apache-tomcat-5.5.17/webapps
+
+#保存上传的视频在服务器磁盘上的目标位置(经典案例维护)
+video_realpath=E:/myPrograme/Tomcate5/Tomcat 5.5/webapps/loadfile
+
+
+#保存上传的图片在服务器磁盘上的目标位置(固定联络员)
+fixedContact_pic_realpath=E:/myPrograme/Tomcate5/Tomcat 5.5/webapps/callcenterj_sy/schema/fixedContact/user_images
+
+employee_photo_webpath=/loadfile/
+employee_nopic=/loadfile/nopic.jpg
+web_images_link_path=images

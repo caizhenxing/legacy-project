@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/forum/postOper/answerPosts.jsp" location="350,50" dimension="226,48" />
+  <StrutsActivity path="/forum/postOper/sendPosts.jsp" location="950,250" dimension="214,48" />
+  <StrutsActivity path="/forum/forumList/forumList.jsp" location="0,184" dimension="220,48" />
+  <StrutsActivity path="/forum/forumList/postList.jsp" location="320,184" dimension="214,48" />
+  <StrutsActivity path="/forum/postOper/forumList.jsp" location="650,250" dimension="214,48" />
+  <StrutsActivity path="" location="50,350" dimension="40,48" />
+  <StrutsActivity path="/forum/forumList.do" location="350,350" dimension="358,84" />
+  <StrutsActivity path="/forum/forumList/answerList.jsp" location="950,350" dimension="226,48" />
+  <StrutsTransition id="/forum/forumList.do,list,/forum/forumList/forumList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="350,383" />
+      <AbsolutePoint location="110,383" />
+      <AbsolutePoint location="110,232" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/postOper/oper.do,sendpost,/forum/postOper/sendPosts.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="965,134" />
+      <AbsolutePoint location="965,250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/forumList.do,answerlist,/forum/forumList/answerList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="708,383" />
+      <AbsolutePoint location="950,383" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/forumList.do,postlist,/forum/forumList/postList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="519,350" />
+      <AbsolutePoint location="519,232" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/postOper/oper.do,answerpost,/forum/postOper/answerPosts.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,92" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

@@ -1,0 +1,245 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<!-- 引入jquery -->
+<script type="text/javascript" src="../../../js/jquery/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="../../../js/jquery/plug/jquery[1].json-1.3.min.js"></script>
+<script type="text/javascript" src="../../../js/jquery/plug/jquery.blockUI.js"></script>
+<!-- 滚动页面 -->
+<script language="javascript" src="../../../js/MSClass.js" ></script>
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+	
+		//$.blockUI({message:'waiting......'});
+		//setTimeout($.unblockUI, 2000);
+		
+		loadData();
+		$("tr.templeteRow").hide();//确保隐藏
+	}
+	);
+
+	function loadData(){
+		$.post(
+			"../../../screen/scrspesur.do?method=specialSurvey",
+			function(data){
+				
+				var result = $.evalJSON(data);
+				
+				//解析数组
+				for(var key in result){
+						var obj = result[key];
+
+						//根据解析得到问题的内容的值obj.casereply是得到问题答案的值
+            			var str = '<tr>';
+            			
+            			str = str + '<td width="234" height="213" align="left" valign="top" class="Even"><br>';
+            			str = str + '<table width="90%" border="0" cellpadding="0" cellspacing="1">';
+            			str = str + '<tr>';
+            			str = str + '<td><span class="Title5">【调查主题】';
+            			str = str + obj.surveyTitle;
+            			str = str + '<br>';
+            			str = str + '<span class="Title4">【调查时间】</span>';
+            			str = str + '<span class="wenzi21">';
+            			str = str + obj.surveyTime;
+            			str = str + '<br>';
+            			str = str + '<span class="Title4">【调查样本】</span>';
+            			str = str + obj.surveyExample;
+            			str = str + '<br>';
+            			str = str + '<span class="Title4">【委托机构】</span>';
+            			str = str + obj.delegateDep;
+            			str = str + '</span></span>';
+            			str = str + '</td>';
+            			str = str + '</tr>';
+            			str = str + '</table><br>';
+            			str = str + '</td>';
+            			
+            			str = str + '<td align="center" valign="top" class="Odd"><br>';
+            			str = str + '<table width="95%" height="173" border="0" cellpadding="0" cellspacing="0">';
+                		str = str + '<tr>';
+                		str = str + '<td valign="top"><span class="Title5">【标&nbsp;&nbsp;&nbsp;&nbsp;题】';
+                		str = str + obj.surveyTitle;
+            			str = str + '</span><br>';
+                		str = str + '<span class="Title4">【撰&nbsp;稿&nbsp;人】';
+                		str = str + obj.writter;
+            			str = str + '</span><br>';
+                		str = str + '<span class="Title4">【关&nbsp;键&nbsp;字】</span>';
+                		str = str + '<span class="wenzi21">';
+                		str = str + obj.keywords;
+            			str = str + '</span><br>';
+                		str = str + '<span class="Title5">【摘&nbsp;&nbsp;&nbsp;&nbsp;要】</span>';
+                		str = str + '<span class="wenzi21">';
+                		str = str + obj.summary;
+            			str = str + '</span></td>';
+                		str = str + '</tr>';
+                		str = str + '</table><br>';
+                 		str = str + '</td>';
+                 		
+            			str = str + '</tr>';
+            			
+            			$("#marqueeTableId").append(str);
+            			
+				}
+
+			}
+		);
+	}
+	
+</script>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+/*整个页面div的宽为100%*/
+#width{
+	width: 100%;
+}
+.color{
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	background-color: #FFFFFF;
+}
+/*数据标题文字，黑色12号字体*/
+.wenzi1{
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	text-align: center;
+}
+/*数据标题文字，黄色12号字体*/
+.wenzi2{
+	font-family: "宋体";
+	font-size: 14px;
+	font-weight: bolder;
+	color: #FFFF00;
+	text-align: center;
+}
+.Title {
+	font-family: "宋体";
+	font-size: 14px;
+	color: #000000;
+	text-align: center;
+	border: 1px solid #B5E38A;
+	font-weight: bolder;
+}
+.Even {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #000000;
+	background-color: #EBF8E0;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #B5E38A;
+	border-bottom-color: #B5E38A;
+	border-left-color: #B5E38A;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	text-align: center;
+	line-height: 24px;
+}
+.Odd {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #000000;
+	background-color: #FFFFFF;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #B5E389;
+	border-bottom-color: #B5E389;
+	border-left-color: #B5E389;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	text-align: center;
+	line-height: 24px;
+}
+.time {	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	text-align: center;
+	padding-top: 6px;
+}
+.Title4 {font-family: "宋体";
+	font-size: 12px;
+	color: #C00000;
+	text-align: left;
+	font-weight: bold;
+}
+.Title5 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #499B1F;
+	text-align: left;
+	font-weight: bold;
+}
+.Title51 {font-family: "宋体";
+	font-size: 12px;
+	color: #2270A9;
+	text-align: left;
+	font-weight: bold;
+}
+.wenzi21 {font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	line-height: 22px;
+}
+.STYLE2 {font-family: "宋体"; font-size: 12px; font-weight: bold; color: #000000; text-align: center; padding-top: 6px; }
+-->
+</style>
+</head>
+
+<body>
+ <table width="900" height="20" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="234" height="28" background="images/Price Kanban30.jpg" class="Title"><img src="images/Price Kanban31.jpg" width="6" height="14" align="absmiddle">&nbsp;调查基本信息</td>
+      <td width="666" background="images/Price Kanban30.jpg" class="Title">&nbsp;<img src="images/Price Kanban31.jpg" width="6" height="14" align="absmiddle">&nbsp;调查分析报告<span class="Title1"></span></td>
+     </tr>
+ </table>
+     <div id="marquees">
+      <table id="marqueeTableId" width="900" height="561" border="0" cellpadding="0" cellspacing="0">
+    <tr class="templeteRow">
+      <td height="213" align="left" valign="top" class="Even"><br>
+        <table width="90%" border="0" cellpadding="0" cellspacing="1">
+        <tr>
+          <td><span class="Title5">【调查主题】孙主任<br>
+                <span class="Title4">【调查时间】</span><span class="wenzi21">1987年<br>
+                <span class="Title4">【调查样本】</span>1987年<br>
+                <span class="Title4">【委托机构】</span>沈阳农委</span></span></td>
+        </tr>
+      </table>
+       <br></td>
+      <td align="center" valign="top" class="Odd"><br>                         
+      <table width="95%" height="173" border="0" cellpadding="0" cellspacing="0">
+         <tr>
+           <td valign="top"><span class="Title5">【标&nbsp;&nbsp;&nbsp;&nbsp;题】 孙主任</span> <span class="Title4"><br>
+             【撰&nbsp;稿&nbsp;人】</span><span class="wenzi21">苹果树下正在进行改版，希望养眼的界面、全新的栏目和有价值的内容会让新的树下重新焕发生机.同时也希望苹果精灵们把心里的想法说出来，你们希望新的苹果树下是什么样的。 希望有什么样的栏目，现有栏目如何改进，如何提高人气等。 苹果树下的新域名是 shuxia.cc，更好记并且还是CC后缀 <br>
+               <span class="Title4">【关&nbsp;键&nbsp;字】</span>关于新版上线时间，估计最快也要8月份，我们会精雕细琢新网站，所有的元素都是handmade <br>
+               <span class="Title5">【摘&nbsp;&nbsp;&nbsp;&nbsp;要】</span>苹果树下正在进行改版，希望养眼的界面、全新的栏目和有价值的内容会让新的树下重新焕发生机.同时也希望苹果精灵们把心里的想法说出来，你们希望新的苹果树下是什么样的。 希望有什么样的栏目，现有栏目如何改进，如何提高人气等。 苹果树下的新域名是 shuxia.cc，更好记并且还是CC后缀 <br>
+               关于新版上线时间，估计最快也要8月份，我们会精雕细琢新网站，所有的元素都是handmade <br>
+             </span></td>
+         </tr>
+       </table>
+       <br>
+       <br>                        <br></td>
+     </tr>
+    
+  </table>
+</body>
+</html>
+<script language="javascript">
+		new Marquee("marquees","top",1,975,600,30,1000);
+</script>

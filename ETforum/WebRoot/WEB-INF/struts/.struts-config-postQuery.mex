@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/forum/postQuery.do" location="50,350" dimension="358,84" />
+  <StrutsActivity path="/forum/postQuery/pointRankList.jsp" location="950,650" dimension="244,48" />
+  <StrutsActivity path="/forum/postQuery/netfriendGroomList.jsp" location="350,50" dimension="274,48" />
+  <StrutsActivity path="/forum/postQuery/myAnswerPostList.jsp" location="950,350" dimension="262,48" />
+  <StrutsActivity path="/forum/postQuery/forumHostGroomList.jsp" location="650,450" dimension="274,48" />
+  <StrutsActivity path="/forum/postQuery/mySendPostList.jsp" location="650,350" dimension="250,48" />
+  <StrutsActivity path="/forum/postQuery/sendPostRankList.jsp" location="50,550" dimension="262,48" />
+  <StrutsActivity path="/forum/postQuery/answerTopTenList.jsp" location="650,550" dimension="262,48" />
+  <StrutsActivity path="/forum/postQuery/mySavePostList.jsp" location="950,50" dimension="250,48" />
+  <StrutsActivity path="/forum/postQuery/bestNewPostList.jsp" location="50,650" dimension="256,48" />
+  <StrutsActivity path="/forum/postQuery/pointRandList.jsp" location="650,650" dimension="244,48" />
+  <StrutsActivity path="/user/userList.jsp" location="0,184" dimension="148,48" />
+  <StrutsActivity path="/user/userMain.jsp" location="248,184" dimension="148,48" />
+  <StrutsActivity path="/user/userLoad.jsp" location="496,184" dimension="148,48" />
+  <StrutsActivity path="/user/userQuery.jsp" location="744,184" dimension="154,48" />
+  <StrutsActivity path="/user/userDetail.jsp" location="998,184" dimension="160,48" />
+  <StrutsTransition id="/forum/postQuery.do,sendPostRankList,/forum/postQuery/sendPostRankList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/postQuery.do,mySavePost,/forum/postQuery.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="229,392" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/postQuery.do,forumHostGroomList,/forum/postQuery/forumHostGroomList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/postQuery.do,mySendPostList,/forum/postQuery/mySendPostList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,383" />
+      <AbsolutePoint location="650,383" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/postQuery.do,answerTopTenList,/forum/postQuery/answerTopTenList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/postQuery.do,netfriendGroomList,/forum/postQuery/netfriendGroomList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/postQuery.do,myAnswerPostList,/forum/postQuery/myAnswerPostList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,413" />
+      <AbsolutePoint location="1081,413" />
+      <AbsolutePoint location="1081,398" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/postQuery.do,mySavePostList,/forum/postQuery/mySavePostList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/postQuery.do,pointRankList,/forum/postQuery/pointRankList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/postQuery.do,bestNewPostList,/forum/postQuery/bestNewPostList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

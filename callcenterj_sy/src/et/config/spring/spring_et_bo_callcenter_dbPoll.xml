@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+
+	<bean id="PollDBService" class="et.bo.callcenter.dbPoll.service.impl.PollDBImpl" scope="singleton">
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>	
+	
+	<bean id="pollDBTimerTask"
+		class="et.bo.callcenter.dbPoll.task.PollDBTask">
+		<property name="ps">
+			<ref bean="PollDBService"/>
+		</property>
+	</bean>
+
+<!--	配置定时执行任务开始-->
+	<bean id="scheduledPollDBTask"
+		class="org.springframework.scheduling.timer.ScheduledTimerTask"
+		scope="singleton">
+		<property name="timerTask">
+			<ref bean="pollDBTimerTask" />
+		</property>
+		<property name="period">
+			<value>60000</value>
+		</property>
+		<property name="delay">
+			<value>100000</value>
+		</property>
+	</bean>
+	
+<!--	配置定时执行任务结束-->
+<!--	-->
+<!--	启动定时任务-->
+	<bean class="org.springframework.scheduling.timer.TimerFactoryBean">
+		<property name="scheduledTimerTasks">
+			<list>
+				<ref bean="scheduledPollDBTask"/>
+			</list>
+		</property>
+	</bean>
+<!--	启动定时任务结束-->
+	
+<!--	<bean id="cronReportTrigger" -->
+<!--		class="org.springframework.scheduling.quartz.CronTriggerBean">-->
+<!--		<property name="jobDetail">-->
+<!--		  <ref bean="reportJob"/>-->
+<!--		</property>-->
+<!--		<property name="cronExpression">-->
+<!--		  <value>0 0 6 * * ?</value>-->
+<!--		</property>-->
+<!--	</bean>-->
+<!--	-->
+<!--	<bean id="reportJob"-->
+<!--		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">-->
+<!--		<property name="targetObject">-->
+<!--		  <ref bean="ShortMessageService"/>-->
+<!--		</property>-->
+<!--		<property name="targetMethod">-->
+<!--		  <value>sendMessageOnTime</value>-->
+<!--		</property>-->
+<!--	</bean>-->
+<!--	-->
+<!--	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">-->
+<!--		<property name="triggers">-->
+<!--			<list>-->
+<!--			  <ref bean="cronReportTrigger"/>-->
+<!--			</list>-->
+<!--		</property>-->
+<!--	</bean>-->
+</beans>

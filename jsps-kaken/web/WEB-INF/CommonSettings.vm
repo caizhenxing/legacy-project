@@ -1,0 +1,19 @@
+## ************************************************
+##
+## ************************************************
+
+## 画像、スタイルシート、JavaScriptリンクパス
+
+#set ($path = $link.getContextURL())
+
+## ----- 担当事業区分値 -----
+#set ($JIGYO_KUBUN_NONE            = "-2")  ##全てNG
+#set ($JIGYO_KUBUN_ANY             = "-1")  ##ALL以外のどれか１つでも
+#set ($JIGYO_KUBUN_ALL             = "0")   ##全てOK
+#set ($JIGYO_KUBUN_GAKUSOU_HIKOUBO = "1")   ##学創（非公募）
+#set ($JIGYO_KUBUN_GAKUSOU_KOUBO   = "2")   ##学創（公募）
+#set ($JIGYO_KUBUN_TOKUSUI         = "3")   ##特推
+#set ($JIGYO_KUBUN_KIBAN           = "4")   ##基盤
+#set ($JIGYO_KUBUN_TOKUTEI         = "5")   ##特定領域
+#set ($JIGYO_KUBUN_WAKATE_START    = "6")   ##若手研究スタータアップ
+#set ($JIGYO_KUBUN_SHOKUSHINHI     = "7")   ##特別研究促進費

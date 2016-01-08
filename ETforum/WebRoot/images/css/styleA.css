@@ -1,0 +1,196 @@
+/* 网站链接总的css定义:可定义内容为链接字体颜色、样式等 */
+a{text-decoration: none;} /* 链接无下划线,有为underline */ 
+a:link {color: #000000;} /* 未访问的链接 */
+a:visited {color: #333333;} /* 已访问的链接 */
+a:hover{color: #ae0927;} /* 鼠标在链接上 */ 
+a:active {color: #0000ff;} /* 点击激活链接 */
+/* 顶部频道文字链接的css定义－－将顶部频道文字链接与网站链接总的css定义分开，以后可以制作深底浅字的格式，如果要保持原来的设计样式，将此定义内容删除或定义成与网站链接总的css相同即可。调用代码为<a class='channel' ***>***</a> */
+a.channel:link {color: #ffffff;}
+a.channel:visited {
+	color: #ffffff;
+	font-family: "黑体";
+	font-size: 16px;
+	text-decoration: none;
+}
+a.channel:hover{color: #ffff00;}
+a.channel:active {color: #ffffff;}
+/* 顶部当前频道文字链接的css定义－－调用代码为<a class='channel2' ***>***</a> */
+a.channel2:link {color: #333333;}
+a.channel2:visited {color: #333333;}
+a.channel2:hover{color: #ff6600;}
+a.channel2:active {color: #333333;}
+/* 底部版权信息文字链接的css定义－－与顶部频道文字链接定义的想法相同。可设置与顶部频道文字链接定义不同的文字颜色，网页内定义以预留。调用代码为<a class='bottom' ***>***</a> */
+a.bottom:link {color: #FFFF00;}
+a.bottom:visited {color: #003300;}
+a.bottom:hover{color: #ffff00;}
+a.bottom:active {color: #006600;}
+/* 文章栏目标题文字链接的css定义－－可设置与顶部频道文字链接定义不同的文字颜色，网页内定义以预留。要相同可不设置。调用代码为<a class='class' ***>***</a> */
+a.class:link {color: #037fa8;}
+a.class:visited {color: #037fa8;}
+a.class:hover{color: #ae0927;}
+a.class:active {color: #037fa8;}
+
+/* body的css定义:对应css中“body”，可定义内容为网页字体颜色、背景、浏览器边框等 */
+body
+{
+font-size: 9pt;background:url(/skin/blue/bg_all.gif);
+text-decoration: none;
+scrollbar-face-color: #f6f6f6;
+scrollbar-highlight-color: #ffffff; scrollbar-shadow-color: #cccccc; scrollbar-3dlight-color: #cccccc; scrollbar-arrow-color: #330000; scrollbar-track-color: #f6f6f6; scrollbar-darkshadow-color: #ffffff;
+}
+/* 单元格的css定义:对应css中的“td”，这里为总的表格定义，为一般表格的的单元格风格设置，可定义内容为背景、字体颜色、样式等 */
+td
+{
+font-family:"宋体";font-size: 9pt;line-height: 250%; 
+}
+/* 文本框的css定义:对应css中的“input”，这里为文本框的风格设置，可定义内容为背景、字体、颜色、边框等 */
+.input
+{
+background-color: #ffffff; 
+border-bottom: #666666 1px solid;
+border-left: #666666 1px solid;
+border-right: #666666 1px solid;
+border-top: #666666 1px solid;
+color: #666666;
+height: 16px;
+border-color: #666666 #666666 #666666 #666666; font-size: 9pt
+}
+/* 按钮的css定义:对应css中的“button”，这里为按钮的风格设置，可定义内容为背景、字体、颜色、边框等 */
+button
+{
+font-size: 9pt;height: 20px;
+}
+/* 下拉列表框的css定义:对应css中的“select”，这里为下拉列表框的风格设置，可定义内容为背景、字体、颜色、边框等 */
+select
+{
+font-size: 9pt;height: 20px;
+}
+/* 顶部用户登录文字链接的css定义 */
+.top_userlogin
+{
+color: #037fa8;
+}
+
+/* ==简短标题文字的css定义开始== */
+/* [图文]简短标题文字的css定义 */
+.s_headline1
+{
+color: blue;
+}
+/* [组图]简短标题文字的css定义 */
+.s_headline2
+{
+color: #ff6600;
+}
+/* [推荐]简短标题文字的css定义 */
+.s_headline3
+{
+color: green;
+}
+/* [注意]简短标题文字的css定义 */
+.s_headline4
+{
+color: red;
+}
+.tdbgpic1 {
+	font-size: 9pt;
+	line-height: 26px;
+	font-weight: bold;
+	color: #000000;
+	background-image: url(../images/tdbg.jpg);
+	background-repeat: repeat-x;
+	border: 1px solid #d8d8e5;
+}
+/* 表格背景颜色 */
+.tablebgcolor {
+	background-image: url(../images/images/nabiaoti_03.jpg);
+}
+
+/***********************查询信息页**********************************/
+/* 表格背景颜色 */
+/*查询条件背景颜色,靠左*/
+.tdbgcolorqueryleft {
+	text-align:left;
+	background-color: #ffffff;
+}
+/*查询条件背景颜色,靠右*/
+.tdbgcolorqueryright {
+	text-align:right;
+	background-color: #ffffff;
+}
+
+/*查询标题背景颜色*/
+.tdbgcolorquerytitle {
+	text-align:left;
+	background-color: #f2f2f7;
+}
+/***********************查询列表页**********************************/
+/*每隔一行一个颜色，1为第一行的颜色，2为第2行的*/
+.tdbgcolorlist1 {
+	text-align:left;
+	background-color: #ffffff;
+}
+.tdbgcolorlist2 {
+	text-align:left;
+	background-color: #f2f2f7;
+}
+/*查询表列表大标题头颜色，背景为图片（可换）*/
+.tdbgpiclist {
+	font-size: 9pt;
+	line-height: 26px;
+	font-weight: bold;
+	color: #000000;
+	background-image: url(../images/tdbg.jpg);
+	background-repeat: repeat-x;
+	border: 1px solid #d8d8e5;
+}
+
+/***********************添加信息页(弹出页)**********************************/
+/*添加信息等操作弹出页底部，放置添加等按钮位置处样式信息*/
+.tdbgcolorloadbuttom{
+	text-align:center;
+	background-color: #ffffff;
+}
+/*添加信息等操作弹出页列出单个文件详细信息处所用样式,靠左*/
+.tdbgcolorloadleft {
+	text-align:left;
+	background-color: #f2f2f7;
+}
+/*添加信息等操作弹出页列出单个文件详细信息处所用样式,靠右*/
+.tdbgcolorloadright {
+	text-align:right;
+	background-color: #f2f2f7;
+}
+/*添加信息等操作弹出页大标题头颜色，背景为图片（可换）*/
+.tdbgpicload {
+	font-size: 9pt;
+	line-height: 26px;
+	font-weight: bold;
+	color: #000000;
+	background-image: url(../images/tdbg.jpg);
+	background-repeat: repeat-x;
+	border: 1px solid #d8d8e5;
+}
+.font-big {
+	font-family: "黑体";
+	font-size: 16px;
+	color: #000000;
+	text-decoration: none;
+}
+.danzhi {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 150%;
+	color: #666666;
+	text-decoration: none;
+}
+/*top页菜单栏样式*/
+.menuitems {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; MARGIN: 2px; WORD-BREAK: keep-all; PADDING-TOP: 2px
+}
+.menuskin {
+	BORDER-RIGHT: #d6e0ef 1px solid; BORDER-TOP: #d6e0ef 1px solid; BACKGROUND-IMAGE: url(../forum/menubgnew.gif); VISIBILITY: hidden; FONT: 12px verdana; BORDER-LEFT: #d6e0ef 1px solid; BORDER-BOTTOM: #d6e0ef 1px solid; BACKGROUND-REPEAT: repeat-y; POSITION: absolute; BACKGROUND-COLOR: #ffffff
+}
+.menuskin A {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 25px; COLOR: black; TEXT-DECORATION: none
+}

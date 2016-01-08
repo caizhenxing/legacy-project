@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="properties" 
+  targetNamespace="http://example.com/supplyCorrelation.wsdl" 
+  xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <bpws:property name="customerID" type="xsd:string"/>
+  <bpws:property name="orderNumber" type="xsd:int"/>
+  <bpws:property name="vendorID" type="xsd:string"/>
+  <bpws:property name="invoiceNumber" type="xsd:int"/>
+</definitions>

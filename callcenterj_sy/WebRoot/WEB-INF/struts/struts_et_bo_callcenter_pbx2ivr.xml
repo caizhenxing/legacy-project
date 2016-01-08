@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+	<data-sources />
+	<form-beans>
+		<form-bean name="pbx2ivrForm"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="pbxPort" type="java.lang.String" />
+			<form-property name="pbxType" type="java.lang.String" />
+			<form-property name="ivrPort" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+		</form-bean>
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<action attribute="pbx2ivrForm" name="pbx2ivrForm"
+			path="/callcenter/pbx2ivr" parameter="method" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="main"
+				path="/callcenter/pbx2ivr/pbx2ivrMain.jsp" />
+			<forward name="query"
+				path="/callcenter/pbx2ivr/pbx2ivrQuery.jsp" />
+			<forward name="load"
+				path="/callcenter/pbx2ivr/pbx2ivrLoad.jsp" />
+			<forward name="list"
+				path="/callcenter/pbx2ivr/pbx2ivrList.jsp" />
+		</action>
+	</action-mappings>
+
+</struts-config>
+

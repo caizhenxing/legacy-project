@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/callcenter/callOutSet.do" location="350,0" dimension="358,84" />
+  <StrutsActivity path="/callcenter/callOutSet/callOutSetList.jsp" location="0,184" dimension="286,48" />
+  <StrutsActivity path="/callcenter/callOutSet/userQuery.jsp" location="50,350" dimension="256,48" />
+  <StrutsActivity path="/callcenter/callOutSet/callOutSetLoad.jsp" location="386,184" dimension="286,48" />
+  <StrutsActivity path="/callcenter/callOutSet/select.jsp" location="650,350" dimension="238,48" />
+  <StrutsActivity path="/callcenter/callOutSet/selectUser.jsp" location="772,184" dimension="262,48" />
+  <StrutsActivity path="/callcenter/callOutSet/callOutSetFromText.jsp" location="950,350" dimension="310,48" />
+  <StrutsTransition id="/callcenter/callOutSet.do,select,/callcenter/callOutSet/selectUser.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="648,84" />
+      <AbsolutePoint location="648,134" />
+      <AbsolutePoint location="873,134" />
+      <AbsolutePoint location="873,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/callOutSet.do,text,/callcenter/callOutSet/callOutSetFromText.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="708,42" />
+      <AbsolutePoint location="1105,42" />
+      <AbsolutePoint location="1105,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/callOutSet.do,load,/callcenter/callOutSet/callOutSetLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="529,84" />
+      <AbsolutePoint location="529,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/callOutSet.do,selectFrame,/callcenter/callOutSet/select.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="529,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/callOutSet.do,query,/callcenter/callOutSet/userQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="350,42" />
+      <AbsolutePoint location="301,42" />
+      <AbsolutePoint location="301,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/callOutSet.do,list,/callcenter/callOutSet/callOutSetList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="409,84" />
+      <AbsolutePoint location="409,134" />
+      <AbsolutePoint location="143,134" />
+      <AbsolutePoint location="143,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

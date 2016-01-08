@@ -1,0 +1,14 @@
+/EditPolicyDescriptor.java/1.3/Thu Jun  1 12:46:50 2006//
+/EditPolicyInstaller.java/1.3/Thu Jun  1 12:46:50 2006//
+/GraphElementComponentEditPolicy.java/1.1/Tue May  9 14:02:03 2006//
+/NodeComponentEditPolicy.java/1.1/Tue May  9 14:02:03 2006//
+/NodeDirectEditPolicy.java/1.1/Tue May  9 14:02:03 2006//
+/NodeGraphicalNodeEditPolicy.java/1.1/Tue May  9 14:02:03 2006//
+/ProcessDefinitionComponentEditPolicy.java/1.1/Tue May  9 14:02:03 2006//
+/ProcessDefinitionXYLayoutEditPolicy.java/1.1/Tue May  9 14:02:03 2006//
+/TaskSelectionFeedbackEditPolicy.java/1.1/Tue May  9 14:02:03 2006//
+/TransitionConnectionBendpointEditPolicy.java/1.1/Tue May  9 14:02:03 2006//
+/TransitionConnectionEditPolicy.java/1.1/Tue May  9 14:02:03 2006//
+/TransitionConnectionEndpointsEditPolicy.java/1.1/Tue May  9 14:02:03 2006//
+/TransitionLabelDirectEditPolicy.java/1.1/Tue May  9 14:02:03 2006//
+/TransitionLabelGraphicalNodeEditPolicy.java/1.1/Tue May  9 14:02:03 2006//

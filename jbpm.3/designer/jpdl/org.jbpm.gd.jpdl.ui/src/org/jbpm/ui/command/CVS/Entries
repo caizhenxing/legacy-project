@@ -1,0 +1,14 @@
+/GraphElementAddActionCommand.java/1.1/Tue May  9 14:02:03 2006//
+/GraphElementDeleteCommand.java/1.1/Tue May  9 14:02:03 2006//
+/NodeAddTaskCommand.java/1.1/Tue May  9 14:02:03 2006//
+/NodeChangeConstraintCommand.java/1.1/Tue May  9 14:02:03 2006//
+/NodeCreateCommand.java/1.1/Tue May  9 14:02:03 2006//
+/NodeDeleteCommand.java/1.3/Thu Jun  1 12:46:50 2006//
+/NodeSetNameCommand.java/1.1/Tue May  9 14:02:03 2006//
+/TransitionAbstractBendpointCommand.java/1.1/Tue May  9 14:02:03 2006//
+/TransitionCreateBendpointCommand.java/1.1/Tue May  9 14:02:03 2006//
+/TransitionCreateCommand.java/1.1/Tue May  9 14:02:03 2006//
+/TransitionDeleteBendpointCommand.java/1.1/Tue May  9 14:02:03 2006//
+/TransitionLabelMoveCommand.java/1.1/Tue May  9 14:02:03 2006//
+/TransitionMoveBendpointCommand.java/1.1/Tue May  9 14:02:03 2006//
+/TransitionSetNameCommand.java/1.1/Tue May  9 14:02:03 2006//

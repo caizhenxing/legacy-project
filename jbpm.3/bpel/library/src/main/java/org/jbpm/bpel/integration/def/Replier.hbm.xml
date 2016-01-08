@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  
+<hibernate-mapping default-access="field">
+  <class name="org.jbpm.bpel.integration.def.Replier" table="BPEL_REPLIER">
+    <cache usage="nonstrict-read-write" />
+    <id name="id">
+      <generator class="native" />
+    </id>
+
+    <property name="messageExchange" column="MESSAGEEXCHANGE_" />
+    <property name="faultName" type="qname">
+      <column name="FAULTLOCALNAME_" />
+      <column name="FAULTNAMESPACE_" />
+    </property>
+
+    <many-to-one name="correlations" column="CORRELATIONS_" foreign-key="FK_REPLIER_CORRELATIONS" cascade="all" />
+    <many-to-one name="operation" class="org.jbpm.bpel.wsdl.impl.OperationImpl" column="OPERATION_"
+      foreign-key="FK_REPLIER_OPERATION" />
+    <many-to-one name="partnerLink" column="PARTNERLINKDEFINITION_" foreign-key="FK_REPLIER_PLINKDEF" />
+    <many-to-one name="variable" column="VARIABLEDEFINITION_" foreign-key="FK_REPLIER_VARDEF" />
+  </class>
+</hibernate-mapping>

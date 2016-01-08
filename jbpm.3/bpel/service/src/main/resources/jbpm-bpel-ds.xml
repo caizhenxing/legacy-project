@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<datasources>
+
+  <local-tx-datasource>
+
+    <!-- The jndi name of the DataSource, it is prefixed with java:/ -->
+    <!-- Datasources are not available outside the virtual machine -->
+    <jndi-name>jbpmBpelDS</jndi-name>
+
+    <!-- for tcp connection, allowing other processes to use the hsqldb
+      database. This requires the org.jboss.jdbc.HypersonicDatabase mbean.
+    <connection-url>jdbc:hsqldb:hsql://localhost:1701</connection-url>
+      -->
+    <!-- for totally in-memory db, not saved when jboss stops. 
+      The org.jboss.jdbc.HypersonicDatabase mbean necessary
+    <connection-url>jdbc:hsqldb:.</connection-url>
+      -->
+    <!-- for in-process persistent db, saved when jboss stops. The
+      org.jboss.jdbc.HypersonicDatabase mbean is necessary for properly db shutdown -->
+    <connection-url>
+      jdbc:hsqldb:${jboss.server.data.dir}${/}hypersonic${/}jbpmBpel
+    </connection-url>
+
+    <!-- The driver class -->
+    <driver-class>org.hsqldb.jdbcDriver</driver-class>
+
+    <!-- The login and password -->
+    <user-name>sa</user-name>
+    <password></password>
+
+    <!-- The minimum connections in a pool/sub-pool. Pools are lazily constructed on first use -->
+    <min-pool-size>5</min-pool-size>
+
+    <!-- The maximum connections in a pool/sub-pool -->
+    <max-pool-size>20</max-pool-size>
+
+    <!-- The time before an unused connection is destroyed -->
+    <!-- NOTE: This is the check period. It will be destroyed somewhere between 1x and 2x this timeout after last use -->
+    <!-- TEMPORARY FIX! - Disable idle connection removal, HSQLDB has a problem with not reaping threads on closed connections -->
+    <idle-timeout-minutes>0</idle-timeout-minutes>
+
+    <!-- Whether to check all statements are closed when the connection is returned to the pool,
+      this is a debugging feature that should be turned off in production -->
+    <track-statements />
+
+    <!-- Use the security domain defined in conf/login-config.xml 
+    <security-domain>HsqlDbRealm</security-domain>
+      -->
+
+    <!-- Use the security domain defined in conf/login-config.xml or the
+      getConnection(user, pw) for logins. The security domain takes precedence.
+    <security-domain-and-application>HsqlDbRealm</security-domain-and-application>
+      -->
+
+    <!-- corresponding type-mapping in the standardjbosscmp-jdbc.xml (optional) -->
+    <metadata>
+      <type-mapping>Hypersonic SQL</type-mapping>
+    </metadata>
+
+    <!-- This mbean can be used when using in process persistent hypersonic -->
+    <depends>jboss:service=Hypersonic,database=jbpmBpelDB</depends>
+
+  </local-tx-datasource>
+
+  <!-- This mbean should be used only when using tcp connections. Uncomment
+    when the tcp based connection-url is used.
+  <mbean code="org.jboss.jdbc.HypersonicDatabase" name="jboss:service=Hypersonic">
+    <attribute name="Port">1701</attribute>
+    <attribute name="Silent">true</attribute>
+    <attribute name="Database">default</attribute>
+    <attribute name="Trace">false</attribute>
+    <attribute name="No_system_exit">true</attribute>
+    </mbean>
+    -->
+
+  <!-- This mbean can be used when using in process persistent db -->
+  <mbean code="org.jboss.jdbc.HypersonicDatabase" name="jboss:service=Hypersonic,database=jbpmBpelDB">
+    <attribute name="Database">jbpmBpel</attribute>
+    <attribute name="InProcessMode">true</attribute>
+  </mbean>
+
+</datasources>

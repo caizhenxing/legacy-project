@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/output.do" location="950,150" dimension="358,84" />
+  <StrutsActivity path="/output/xlsCase2.jsp" location="50,650" dimension="160,48" />
+  <StrutsActivity path="/output/txtCase.jsp" location="950,450" dimension="154,48" />
+  <StrutsActivity path="/output/xlsCase3.jsp" location="950,550" dimension="160,48" />
+  <StrutsActivity path="../messages/messagesMain.jsp" location="1250,550" dimension="179,49" />
+  <StrutsActivity path="/output/xlsInquiryCard.jsp" location="950,650" dimension="196,48" />
+  <StrutsActivity path="/output/xlsCase1.jsp" location="350,650" dimension="160,48" />
+  <StrutsActivity path="/output/xlsInquiryResult.jsp" location="650,650" dimension="208,48" />
+  <StrutsActivity path="/output/docCase.jsp" location="650,450" dimension="154,48" />
+  <StrutsActivity path="/output/xlsSad.jsp" location="650,550" dimension="148,48" />
+  <StrutsActivity path="/output/xlsTrace.jsp" location="950,50" dimension="160,48" />
+  <StrutsActivity path="/output/xlsPrice.jsp" location="350,550" dimension="160,48" />
+  <StrutsActivity path="/output/xlsMarkanainfo.jsp" location="650,50" dimension="196,48" />
+  <StrutsActivity path="../messages" location="1250,50" dimension="88,49" />
+  <StrutsActivity path="/output/xlsCase.jsp" location="50,550" dimension="154,48" />
+  <StrutsActivity path="/output/ok.jsp" location="650,350" dimension="124,48" />
+  <StrutsActivity path="/flow/flowList.jsp" location="0,184" dimension="148,48" />
+  <StrutsActivity path="/flow/flowMain.jsp" location="248,184" dimension="148,48" />
+  <StrutsActivity path="/flow/flowQuery.jsp" location="496,184" dimension="154,48" />
+  <StrutsActivity path="/flow/flowLoad.jsp" location="750,184" dimension="148,48" />
+  <StrutsActivity path="/out/flowMain.jsp" location="50,350" dimension="142,48" />
+  <StrutsActivity path="/output/flowMain.jsp" location="350,350" dimension="160,48" />
+  <StrutsActivity path="/priceinfo/priceinfoMain.jsp" location="950,350" dimension="208,48" />
+  <StrutsActivity path="/output/priceinfoMain.jsp" location="50,450" dimension="190,48" />
+  <StrutsActivity path="/output/.jsp" location="350,450" dimension="112,48" />
+  <StrutsActivity path="../output/xlsInquiryCard.jsp" location="50,750" dimension="165,49" />
+  <StrutsActivity path="../messages/xlsInquiryCard.jsp" location="1250,450" dimension="180,49" />
+  <StrutsActivity path="/output/../xlsInquiryCard.jsp" location="1250,650" dimension="169,49" />
+  <StrutsActivity path="../" location="350,750" dimension="41,49" />
+  <StrutsActivity path="../messages/" location="650,750" dimension="92,49" />
+  <StrutsTransition id="/output.do,xlsInquiryCardFormat,/output/xlsInquiryCard.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1129,192" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/output.do,xlsMarkanainfoFormat,/output/xlsMarkanainfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,169" />
+      <AbsolutePoint location="735,169" />
+      <AbsolutePoint location="735,98" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/output.do,xlsSadFormat,/output/xlsSad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,199" />
+      <AbsolutePoint location="913,199" />
+      <AbsolutePoint location="913,574" />
+      <AbsolutePoint location="798,574" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/output.do,docFormat,/output/docCase.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1099,234" />
+      <AbsolutePoint location="1099,279" />
+      <AbsolutePoint location="789,279" />
+      <AbsolutePoint location="789,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/output.do,xlsCaseFormat1,/output/xlsCase1.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1308,162" />
+      <AbsolutePoint location="1505,162" />
+      <AbsolutePoint location="1505,613" />
+      <AbsolutePoint location="430,613" />
+      <AbsolutePoint location="430,650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/output.do,xlsInquiryResultFormat,/output/xlsInquiryResult.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1129,234" />
+      <AbsolutePoint location="1129,309" />
+      <AbsolutePoint location="819,309" />
+      <AbsolutePoint location="819,650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/output.do,xlsCaseFormat2,/output/xlsCase2.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1069,234" />
+      <AbsolutePoint location="1069,249" />
+      <AbsolutePoint location="293,249" />
+      <AbsolutePoint location="293,674" />
+      <AbsolutePoint location="210,674" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/output.do,query,../messages/messagesMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1129,192" />
+      <AbsolutePoint location="1339,574" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/output.do,txtFormat,/output/txtCase.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1173,234" />
+      <AbsolutePoint location="1173,474" />
+      <AbsolutePoint location="1104,474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/output.do,xlsPriceFormat,/output/xlsPrice.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1203,234" />
+      <AbsolutePoint location="1203,513" />
+      <AbsolutePoint location="430,513" />
+      <AbsolutePoint location="430,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/output.do,xlsCaseFormat3,/output/xlsCase3.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1233,234" />
+      <AbsolutePoint location="1233,574" />
+      <AbsolutePoint location="1110,574" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/output.do,xlsTraceFormat,/output/xlsTrace.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1095,150" />
+      <AbsolutePoint location="1095,98" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

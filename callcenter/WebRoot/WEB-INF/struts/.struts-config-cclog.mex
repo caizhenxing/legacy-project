@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/pcc/cclog.do" location="481,0" dimension="358,84" />
+  <StrutsActivity path="/pcc/cclog/cclogList.jsp" location="0,184" dimension="184,48" />
+  <StrutsActivity path="/pcc/cclog/cclogMain.jsp" location="284,184" dimension="184,48" />
+  <StrutsActivity path="/pcc/cclog/cclogLoad.jsp" location="568,184" dimension="184,48" />
+  <StrutsActivity path="/pcc/cclog/cclogQuery.jsp" location="852,184" dimension="190,48" />
+  <StrutsActivity path="/pcc/cclog/departmentList.jsp" location="350,350" dimension="214,48" />
+  <StrutsActivity path="/pcc/cclog/departmentQuery.jsp" location="650,350" dimension="220,48" />
+  <StrutsActivity path="/pcc/cclog/cclogDetail.jsp" location="1142,184" dimension="196,48" />
+  <StrutsActivity path="/pcc/cclog/departmentMain.jsp" location="50,450" dimension="214,48" />
+  <StrutsActivity path="/pcc/cclog/operList.jsp" location="50,350" dimension="178,48" />
+  <StrutsTransition id="/pcc/cclog.do,depmain,/pcc/cclog/departmentMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="660,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/cclog.do,main,/pcc/cclog/cclogMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="588,84" />
+      <AbsolutePoint location="588,149" />
+      <AbsolutePoint location="376,149" />
+      <AbsolutePoint location="376,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/cclog.do,query,/pcc/cclog/cclogQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="731,84" />
+      <AbsolutePoint location="731,149" />
+      <AbsolutePoint location="917,149" />
+      <AbsolutePoint location="917,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/cclog.do,detail,/pcc/cclog/cclogDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="803,84" />
+      <AbsolutePoint location="803,119" />
+      <AbsolutePoint location="1240,119" />
+      <AbsolutePoint location="1240,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/cclog.do,depquery,/pcc/cclog/departmentQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="660,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/cclog.do,deplist,/pcc/cclog/departmentList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="660,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/cclog.do,load,/pcc/cclog/cclogLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="660,84" />
+      <AbsolutePoint location="660,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/cclog.do,slist,/pcc/cclog/operList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="660,42" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/cclog.do,list,/pcc/cclog/cclogList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="516,84" />
+      <AbsolutePoint location="516,119" />
+      <AbsolutePoint location="92,119" />
+      <AbsolutePoint location="92,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

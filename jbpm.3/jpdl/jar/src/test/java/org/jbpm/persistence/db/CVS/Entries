@@ -1,0 +1,15 @@
+/ConcurrentUpdateDbTest.java/1.1/Fri Apr 28 15:09:22 2006/-kk/
+/FlushDbTest.java/1.2/Mon May 22 16:33:48 2006/-kk/
+/MockConnection.java/1.1/Fri Apr 28 15:09:22 2006/-kk/
+/MockSession.java/1.1/Fri Apr 28 15:09:22 2006/-kk/
+/MockSessionFactory.java/1.1/Fri Apr 28 15:09:22 2006/-kk/
+/MockTransaction.java/1.1/Fri Apr 28 15:09:22 2006/-kk/
+/PersistenceConfigurationDbTest.java/1.1/Fri Apr 28 15:09:22 2006/-kk/
+/PersistenceDbPojoTests.java/1.1/Fri Apr 28 15:09:22 2006/-kk/
+/PersistenceDbServiceNoTxTest.java/1.1/Fri Apr 28 15:09:22 2006/-kk/
+/PersistenceDbServiceTest.java/1.1/Fri Apr 28 15:09:22 2006/-kk/
+/PersistenceDbTests.java/1.1/Fri Apr 28 15:09:22 2006/-kk/
+/PersistenceServiceDbTest.java/1.2/Fri Sep  1 14:48:31 2006/-kk/
+/PersistenceServiceFactoryDbTest.java/1.1/Fri Apr 28 15:09:22 2006/-kk/
+/custom.hibernate.cfg.xml/1.1/Fri Apr 28 15:09:22 2006/-kk/
+/custom.hibernate.properties/1.1/Fri Apr 28 15:09:22 2006/-kk/

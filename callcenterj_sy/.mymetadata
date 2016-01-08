@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="callcenterj_sy"
+  id="myeclipse.1205217473687"
+  context-root="/callcenterj_sy"
+  j2ee-spec="5.0"
+  archive="callcenterj_sy.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

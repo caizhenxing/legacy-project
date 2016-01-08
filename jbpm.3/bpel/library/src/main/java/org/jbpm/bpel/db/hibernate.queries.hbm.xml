@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+  <query name="IntegrationSession.findReceiveTokens">
+    <![CDATA[
+     select token
+     from Token token
+       join token.processInstance processInstance
+       join fetch token.node receive
+       join fetch receive.receiver receiver
+       join fetch receiver.partnerLink
+       join fetch receiver.operation
+     where token.end is null
+       and processInstance.processDefinition = :processDefinition
+    ]]>
+  </query>
+
+  <query name="IntegrationSession.findPickTokens">
+    <![CDATA[
+     select token
+     from Token token
+       join token.processInstance processInstance
+       join fetch token.node begin
+       join fetch begin.compositeActivity pick
+       join fetch pick.onMessages receiver
+       join fetch receiver.partnerLink
+       join fetch receiver.operation
+     where token.end is null
+       and processInstance.processDefinition = :processDefinition
+    ]]>
+  </query>
+  
+  <query name="IntegrationSession.findEventTokens">
+    <![CDATA[
+     select token
+     from Token token
+       join token.processInstance processInstance
+       join fetch token.node scope
+       join fetch scope.onEvents onEvent
+       join fetch onEvent.receiver receiver
+       join fetch receiver.partnerLink
+       join fetch receiver.operation
+     where token.end is null
+       and token.name = 'events'
+       and processInstance.processDefinition = :processDefinition
+    ]]>
+  </query>  
+
+  <query name="ScopeSession.findNextScopeToCompensate">
+    <![CDATA[
+     select scope
+     from ScopeInstance scope join scope.token token
+     where token.processInstance = :processInstance
+       and token.node in (:nestedScopes)
+       and scope.state = 15 
+       and token.end is not null
+     order by token.end
+    ]]>
+  </query>
+
+</hibernate-mapping>

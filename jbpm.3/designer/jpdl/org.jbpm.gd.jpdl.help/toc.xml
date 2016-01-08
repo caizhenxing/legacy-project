@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="JBoss jBPM User Guide" >
+   <topic label="GPD User Guide">
+      <anchor id="gpduserguide"/>
+   </topic>
+   <topic label="Concepts">
+      <anchor id="concepts"/>
+   </topic>
+</toc>

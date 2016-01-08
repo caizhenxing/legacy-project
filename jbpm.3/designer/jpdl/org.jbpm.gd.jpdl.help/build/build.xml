@@ -1,0 +1,51 @@
+<project name="org.jbpm.help" basedir=".." default="generate-toc">
+
+  <description>org.jbpm.help build</description>
+	
+  <target name="get.jbpm.userguide">
+  	<mkdir dir="temp" />
+  	<unzip dest="temp" src="${local.repository}/jbpm/jpdl/${jbpm.version}/lib/jbpm-jpdl-userguide.zip" />
+    <copy todir="html/concepts">
+      <fileset dir="temp/html" />
+    </copy>
+  </target>
+	
+  <target name="get.gpd.userguide">
+    <copy todir="html/gettingstarted">
+      <fileset dir="${docs.dir}/gpd.userguide/target/en/html" />
+    </copy>
+  </target>
+	
+  <target name="generate-toc" depends="get.jbpm.userguide,get.gpd.userguide">
+    <mkdir dir="bin" />
+    <javac  srcdir="${basedir}/src" destdir="${basedir}/bin" />
+    <java classname="org.jbpm.help.GenerateToc" fork="true" dir="${basedir}">
+        <classpath path="${basedir}/bin"/>
+        <arg value="xmlDir=${docs.dir}/gpd.userguide/en/" />
+        <arg value="htmlDir=html/gettingstarted/"/>
+        <arg value="tocDir=./"/>
+        <arg value="tocName=gpduserguide"/>
+        <arg value="tocLabel=Graphical Process Designer : How to author your process definitions graphically" />
+    </java>
+    <java classname="org.jbpm.help.GenerateToc" fork="true" dir="${basedir}">
+        <classpath path="${basedir}/bin"/>
+        <arg value="xmlDir=temp/" />
+        <arg value="htmlDir=html/concepts/"/>
+        <arg value="tocDir=./"/>
+        <arg value="tocName=concepts"/>
+        <arg value="tocLabel=Concepts : Workflow and BPM made practical" />
+    </java>
+  	<delete dir="temp" />
+  </target>
+  
+  <target name="clean">
+    <delete>
+      <fileset dir="html" />
+      <fileset dir="." >
+        <filename name="tocgettingstarted.xml"/>
+        <filename name="tocconcepts.xml"/>
+      </fileset>
+    </delete>
+  </target>
+  
+</project>

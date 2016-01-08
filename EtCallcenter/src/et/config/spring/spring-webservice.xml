@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "spring-beans.dtd" >
+<beans>
+<import resource="classpath:excellence/framework/base/ws/spring-webservices-excellence.xml" />
+</beans>

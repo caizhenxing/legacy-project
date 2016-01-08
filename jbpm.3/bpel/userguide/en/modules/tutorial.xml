@@ -1,0 +1,139 @@
+<chapter id="tutorial">
+
+  <title>Tutorial</title>
+
+  <para>The best way to get acquainted with BPEL is to see it in action. For this reason,
+    we included some examples that will help you get started quickly. At
+    this point, you should have the jBPM BPEL service running inside JBoss. If you
+    do not, please read the <link linkend="getstarted" endterm="getstarted.title"/>
+    chapter first.</para>
+    
+  <section id="tutorial.setup">
+  
+    <title>Example setup</title>
+    
+    <section id="tutorial.setup.jwsdp">
+
+      <title>Getting the Java Web Services Development Pack</title>
+      
+      <para>The BPEL extension relies on the Web Services for J2EE (WSEE) model
+        for exposing the functionality a BPEL process delivers. Some of the server artifacts
+        required for a WSEE deployment can be automatically generated from WSDL documents.
+        JBoss recommends the <literal>wscompile</literal> tool from the Java Web Services 
+        Development Pack.</para>
+        
+      <para>For details and installation instructions, please refer to the 
+        <ulink url="http://java.sun.com/webservices/jwsdp/index.jsp">Java WSDP</ulink>.</para>
+    
+    </section>
+    
+    <section id="tutorial.setup.environment">
+    
+      <title>Defining the environment</title>
+      
+      <para>The resources related to each of the example processes are in a separate subdirectory 
+         under <literal>doc/examples</literal>. Said subdirectory contains an Ant script to assist
+         in carrying out process deployment operations.</para>
+         
+      <para>Note that the individual process deployment scripts import a template located in 
+        <literal>doc/examples/admin.template.xml</literal>. If you organize your resources in the
+        same way as the examples, you can quickly leverage this template within your own project.</para>
+        
+      <para>Each process enactment environment is likely to be different from any other. For this
+        reason the process deployment template needs to be made aware of your particular enviroment.
+        Modify the values in <literal>doc/examples/config.files/build.properties</literal> to match 
+        the directories where you installed jBPM BPEL, JBoss and JWSDP respectively. The new values 
+        will be shared among all examples.</para>
+      
+      <programlisting>jbpm.bpel.home=/my/bpel/home
+jboss.home=/my/jboss/home
+wsdp.home=/my/wsdp/home</programlisting>
+
+      <para>Controlling multiple processes at once becomes as easy as controlling a single process
+        with the global process deployment script. It is conveniently placed in 
+        <literal>doc/examples/build.xml</literal>. This script harnesses the power of the
+        <literal>subant</literal> task to perform operations on a collection of processes in an 
+        iterative fashion.</para>
+    
+    </section>
+
+    <section id="tutorial.setup.dbschema">
+    
+      <title>Creating the database schema</title>
+      
+      <para>Starting with version 1.0 alpha 4, a web application deployed along the jBPM BPEL
+        service performs administrative operations such as creating the database schema and
+        deploying a process definition.</para>      
+      
+      <para>Before you deploy process definitions to the database, the jBPM schema must exist in the database.
+        The schema creation can be manual or automatic, at your choice.</para>
+        
+      <para>Automatic schema creation is convenient for evaluation and testing purposes; therefore, 
+        it is the default setting. To disable it, remove the <literal>hibernate.hbm2ddl.auto</literal>
+        property from <literal>hibernate.properties</literal> in 
+        <literal>src/resources/jbpm-bpel.sar</literal>.
+      </para>
+      
+      <para>When you turn off automatic schema creation, you need a way to create it manually. 
+        The global process deployment script provides some targets for posting administrative schema 
+        requests to the jBPM BPEL web application: <literal>create-schema</literal> and 
+        <literal>drop-schema</literal>.</para>
+        
+      <para>Hibernate will emit a few log messages to the server console when the schema gets
+        created either way. The output below corresponds to manual creation.</para>
+        
+      <screen>22:45:00,796 INFO  [SchemaExport] Running hbm2ddl schema export
+22:45:00,812 INFO  [SchemaExport] exporting generated schema to database
+22:45:00,828 INFO  [DatasourceConnectionProvider] Using datasource: java:/jbpmBpelDS
+22:45:00,921 INFO  [SchemaExport] schema export complete</screen>
+    
+    </section>
+    
+    <section id="tutorial.setup.xmlapis">
+    
+      <title>Replacing the default implementation of the XML APIs</title>
+      
+      <para>There are known issues with the implementations of the XML APIs in Java SE 1.4.2 and 1.5.0. 
+        The solution is different in each case, so we'll examine them separately.</para>
+        
+      <section id="tutorial.setup.xmlapis.jse142">
+      
+        <title>Java SE 1.4.2</title>
+        
+        <para>The TrAX as well as the JAXP implementations have issues and must be replaced
+          using the <ulink url="http://java.sun.com/j2se/1.4.2/docs/guide/standards/index.html">
+          endorsed standards</ulink> override mechanism. The simplest way is to copy the libraries 
+          from <literal>&lt;jbpm-bpel-home&gt;/lib/xalan</literal> and
+          <literal>&lt;jbpm-bpel-home&gt;/lib/xerces</literal> to 
+          <literal>&lt;java-home&gt;/lib/endorsed</literal>. Here, <literal>&lt;java-home&gt;</literal> 
+          refers to the directory where the runtime software is installed, which is the top-level
+          directory of the JRE or the <literal>jre</literal> directory in the JDK.</para>
+        
+      </section>
+      
+      <section id="tutorial.setup.xmlapis.jse150">
+        
+        <title>Java SE 1.5.0</title>
+        
+        <para>Only the TrAX implementation has issues. You can replace it either (preferrably) uncommenting
+          the path element that references Xalan in the process deployment template or
+          using the endorsed standards override mechanism as described above.</para>
+          
+        <programlisting>&lt;path id=&quot;servicegen.classpath&quot;&gt;
+  ...
+  &lt;!-- <emphasis role="bold">uncomment to replace the TrAX implementation in Java SE 1.5.0</emphasis>
+  &lt;pathelement location="${jbpm.bpel.home}/lib/xalan/xalan-2.6.0.jar"/&gt;
+  --&gt;
+&lt;/path&gt;</programlisting>
+      
+      </section>
+    
+    </section>
+  
+  </section>
+  
+  &helloExample;
+  
+  &atmExample;
+
+</chapter>

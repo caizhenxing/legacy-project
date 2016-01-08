@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="WINDOWS-31J"?>
+
+<!DOCTYPE struts-config PUBLIC 
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <form-beans>
+    <!-- 領域計画書 -->
+    <form-bean name="ryoikiGaiyoForm" type="jp.go.jsps.kaken.web.shinsei.RyoikiGaiyoForm"/>
+  </form-beans>
+
+  <global-exceptions>
+    <exception handler="jp.go.jsps.kaken.web.struts.ApplicationExceptionHandler"
+               key="errors.application" 
+               path="/pages/common/appError.vm"
+               scope="request"
+               type="jp.go.jsps.kaken.model.exceptions.ApplicationException"/>
+    <exception handler="jp.go.jsps.kaken.web.struts.SystemExceptionHandler"
+               key="errors.system" 
+               path="/pages/common/sysError.vm"
+               type="jp.go.jsps.kaken.model.exceptions.SystemException"/>
+    <exception handler="jp.go.jsps.kaken.web.struts.ApplicationExceptionHandler" 
+               key="errors.fileio"
+               path="/pages/common/downloadError.vm"
+               scope="request"
+               type="jp.go.jsps.kaken.model.exceptions.FileIOException"/>
+  </global-exceptions>
+
+  <global-forwards>
+    <forward name="session" path="/pages/common/timeoutError.vm" redirect="false"/>
+    <forward name="token" path="/tokenError.do" redirect="false"/>
+    <forward name="welcome" path="/logon.do" redirect="false"/>
+    <forward name="beforeRyoikiGaiyo" path="/beforeInputRyoikiGaiyo.do" redirect="false"/>
+  </global-forwards>
+
+  <action-mappings type="jp.go.jsps.kaken.web.struts.ActionMapping">
+
+    <!-- ### 共通 ### --> 
+    <action path="/tokenError"
+            scope="request"
+            type="jp.go.jsps.kaken.web.struts.TokenErrorAction"
+            unknown="false"
+            validate="false">
+    </action>
+
+    <!-- ### 領域計画書(特定領域) ### --> 
+    <!-- アップロードファイルアクション -->
+    <action path="/uploadFile" scope="session" name="ryoikiGaiyoForm"
+            type="jp.go.jsps.kaken.web.shinsei.GaiyoUploadFileAction" unknown="false"
+            validate="false">
+      <forward name="success" path="/tmp.html"
+               redirect="false"/>
+      <set-property property="description" value="アップロードファイルアクション"/>
+    </action>
+
+    <!-- 一時保存(領域計画書) -->
+    <action path="/transientSaveApplication" scope="session" name="ryoikiGaiyoForm"
+            type="jp.go.jsps.kaken.web.shinsei.TransientSaveGaiyoApplicationAction"
+            unknown= "false" validate= "true" input="beforeRyoikiGaiyo" parameter="synchronized">
+       <set-property property="description" value="一時保存(領域計画書)"/>
+       <forward name="success" path="/pages/edit/transientGaiyoSaveOk.vm" redirect="false"/>
+       <forward name="failure" path="/beforeInputRyoikiGaiyo.do" redirect="false"/>
+    </action>
+    <!--2006/07/04 zhangt add start -->
+    <!-- 申請本登録(領域計画書) -->
+    <action path="/registApplication" scope= "session" name= "ryoikiGaiyoForm"
+            type= "jp.go.jsps.kaken.web.shinsei.RegistGaiyoApplicationAction"
+            unknown= "false" validate= "true" input= "beforeRyoikiGaiyo" parameter="synchronized">
+       <set-property property="description" value="申請本登録(領域計画書)"/>
+       <forward name="success" path="/pages/edit/convertGaiyoApplication.vm" redirect="false"/>
+       <forward name="failure" path="/beforeInputRyoikiGaiyo.do" redirect="false"/>
+    </action>
+    <!--2006/07/04 zhangt add end -->
+  </action-mappings>
+
+  <!-- ###  ### --> 
+  <controller processorClass="jp.go.jsps.kaken.web.struts.RequestProcessor"
+              forwardPattern="/shinsei$P" inputForward="true" pagePattern="/shinsei$P"/>
+
+  <message-resources null="false"
+                     parameter="jp.go.jsps.kaken.web.resources.Application"/>
+
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property property="pathnames"
+                  value="/WEB-INF/validator-rules.xml
+                        ,/WEB-INF/validation-default.xml
+                        ,/WEB-INF/validation-shinsei-ryoikiGaiyo.xml"/>
+  </plug-in>
+</struts-config>

@@ -1,0 +1,53 @@
+<chapter id="docmgmt">
+  <title>Document management</title>
+  
+  <para>The document management support of jBPM is based on 
+    <ulink url="http://www.jcp.org/en/jsr/detail?id=170">Java Content Repository</ulink>.
+    That is a standard java specification for integrating document management
+    systems into Java.  The basic idea is as follows: 
+  </para>
+  
+  <itemizedlist>
+    <listitem>In the jBPM configuration, one or more JCR repository services are configured</listitem>
+    <listitem>Next, JCR Node's can be stored in the process variables</listitem>
+    <listitem>Upon retrieval, the stored information will result in a lookup of the node in the repository</listitem>
+  </itemizedlist>
+  
+  <para>That way, a multiversioned document can be stored one process variable.
+  </para>
+  
+  <para>The typical use case for this feature is a document approval process.  A document 
+    needs to be approved and updated.  That document (e.g. a word document), can be 
+    stored in a JCR-content-repository-node.  The node contains all the versions of the 
+    document.  So that later in the process, people still can consult the historical 
+    versions of the document.
+  </para>
+  
+  <para><emphasis role="bold">IMPORTANT NOTE:</emphasis> The name of the jbpm context service 
+    MUST correspond with the name of the repository (repository.getDescriptor(Repository.REP_NAME_DESC)).
+    This is to make the match between the reference stored in the jbpm process variables and 
+    the repository when a node-variable is being loaded from the jBPM DB.
+  </para>
+
+  <section id="repositorylookupinjndi">
+    <title>Repository lookup in JNDI</title>
+  </section>
+
+  <section id="Jackrabbit">
+    <title>Jackrabbit</title>
+    <para>see also http://jackrabbit.apache.org/
+    </para>
+    <para>Deploying jackrabbit.  library requirements.  jboss deployment issue 
+      with commons-collections-3.1.
+    </para>
+    <para>configuring the jbpm jackrabbit service.
+    </para>
+    <para>configuring jackrabbit.  see http://jackrabbit.apache.org/doc/config.html
+    </para>
+  </section>
+
+  <section id="Multiple workspaces">
+    <title>Multiple workspaces</title>
+  </section>
+
+</chapter>

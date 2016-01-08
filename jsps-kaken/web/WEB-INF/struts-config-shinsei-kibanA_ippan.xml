@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="WINDOWS-31J"?>
+
+<!DOCTYPE struts-config PUBLIC 
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+  <form-beans>
+
+    <form-bean name="shinseiForm" type="jp.go.jsps.kaken.web.shinsei.ShinseiForm"/>
+
+  </form-beans>
+
+  <global-exceptions>
+    <exception handler="jp.go.jsps.kaken.web.struts.ApplicationExceptionHandler"
+               key="errors.application" path="/pages/common/appError.vm"
+               scope="request"
+               type="jp.go.jsps.kaken.model.exceptions.ApplicationException"/>
+    <exception handler="jp.go.jsps.kaken.web.struts.SystemExceptionHandler"
+               key="errors.system" path="/pages/common/sysError.vm"
+               type="jp.go.jsps.kaken.model.exceptions.SystemException"/>
+    <exception handler="jp.go.jsps.kaken.web.struts.ApplicationExceptionHandler" 
+                key="errors.fileio" path="/pages/common/downloadError.vm"
+               scope="request"
+               type="jp.go.jsps.kaken.model.exceptions.FileIOException"/>
+  </global-exceptions>
+
+  <global-forwards>
+    <forward name="session" path="/pages/common/timeoutError.vm" redirect="false"/>
+    <forward name="token" path="/tokenError.do" redirect="false"/>
+    <forward name="welcome" path="/logon.do" redirect="false"/>
+    <forward name="dispatchApplication" path="/dispatchApplication.do" redirect="false"/>
+  </global-forwards>
+  
+  <action-mappings type="jp.go.jsps.kaken.web.struts.ActionMapping">
+
+    <!-- ### 共通 ### --> 
+    <action path="/tokenError" scope="request"
+            type="jp.go.jsps.kaken.web.struts.TokenErrorAction" unknown="false"
+            validate="false">
+    </action>
+
+<!-- ======================================================================= -->
+    <!-- 申請一時保存アクション -->
+    <action path="/transientSaveApplication" scope="session" name="shinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.TransientSaveApplicationAction" unknown="false"
+            validate="true" input="dispatchApplication" parameter="synchronized">
+      <!-- for TEST start -->
+      <set-property property="logonCheck" value="false"/>
+      <!-- for TEST end -->
+      <forward name="success" path="/pages/edit/transientSaveOk.vm"
+               redirect="false"/>
+      <forward name="failure" path="/dispatchApplication.do"
+               redirect="false"/>
+      <set-property property="description" value="基盤A一般申請一時保存アクション"/>
+    </action>
+
+    <!-- 申請本登録アクション -->
+    <action path="/registApplication" scope="session" name="shinseiForm"
+            type="jp.go.jsps.kaken.web.shinsei.RegistApplicationAction" unknown="false"
+            validate="true" input="dispatchApplication" parameter="synchronized">
+      <!-- for TEST start -->
+      <set-property property="logonCheck" value="false"/>
+      <!-- for TEST end -->
+      <forward name="success" path="/pages/edit/convertApplication.vm"
+               redirect="false"/>
+      <forward name="failure" path="/dispatchApplication.do"
+               redirect="false"/>
+      <set-property property="description" value="基盤A一般申請本登録アクション"/>
+    </action>
+<!-- ======================================================================= -->
+
+  </action-mappings>
+  
+  <controller processorClass="jp.go.jsps.kaken.web.struts.RequestProcessor"
+                forwardPattern="/shinsei$P" inputForward="true" pagePattern="/shinsei$P"/>
+
+  <message-resources null="false"
+                     parameter="jp.go.jsps.kaken.web.resources.Application"/>
+
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property property="pathnames"
+                  value="/WEB-INF/validator-rules.xml
+                        ,/WEB-INF/validation-default.xml
+                        ,/WEB-INF/validation-shinsei-kibanA_ippan.xml"/>
+  </plug-in>
+</struts-config>

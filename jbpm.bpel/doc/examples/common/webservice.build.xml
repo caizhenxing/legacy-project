@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+<project name="template">
+
+  <!-- parameters -->
+  <property name="app.name" value="${ant.project.name}" />
+
+  <!-- project directories -->
+  <property name="common.dir" value="${ant.file.template}/.." />
+  <property name="project.dir" value="${basedir}" />
+
+  <property name="java.dir" value="${project.dir}/src/main/java" />
+  <property name="resources.dir" value="${project.dir}/src/main/resources" />
+  <property name="web.dir" value="${project.dir}/src/main/resources/WEB-INF" />
+  <property name="client.dir" value="${resources.dir}/META-INF" />
+
+  <property name="test.java.dir" value="${project.dir}/src/test/java" />
+
+  <property name="output.dir" value="${project.dir}/output" />
+  <property name="output.java.dir" value="${output.dir}/java" />
+  <property name="output.classes.dir" value="${output.dir}/classes" />
+  <property name="output.web.dir" value="${output.dir}/resources/WEB-INF" />
+
+  <property name="output.test.dir" value="${output.dir}/test" />
+  <property name="output.test.classes.dir" value="${output.test.dir}/classes" />
+  <property name="output.test.reports.dir" value="${output.test.dir}/reports" />
+
+  <property name="common.java.dir" value="${common.dir}/src/main/java" />
+  <property name="common.classes.dir" value="${common.dir}/output/classes" />
+
+  <!-- build properties -->
+  <property file="${common.dir}/../ant.properties" />
+  <property file="${jbpm.bpel.home}/ant.properties" />
+  <property name="jboss.server.dir"
+            value="${jboss.home}/server/${jboss.server}" />
+  <property name="jboss.server.deploy.dir"
+            value="${jboss.home}/server/${jboss.server}/deploy" />
+
+  <!-- ================== -->
+  <!-- === CLASSPATHS === -->
+  <!-- ================== -->
+
+  <path id="jboss.path">
+    <pathelement location="${common.dir}/src/main/resources" />
+    <fileset dir="${jboss.home}/client" includes="*.jar" />
+  </path>
+
+  <path id="wstools.path">
+    <path refid="jboss.path" />
+    <pathelement location="${web.dir}" />
+    <pathelement location="${output.web.dir}" />
+  </path>
+
+  <path id="wscompile.path">
+    <fileset dir="${jwsdp.home}/jaxrpc/lib" includes="*.jar" />
+    <pathelement location="${java.home}/../lib/tools.jar" />
+    <pathelement location="${resources.dir}" />
+  </path>
+
+  <path id="test.path">
+    <path refid="jboss.path" />
+    <pathelement location="${common.classes.dir}" />
+    <pathelement location="${output.classes.dir}" />
+  </path>
+
+  <!-- =============== -->
+  <!-- === CLEANUP === -->
+  <!-- =============== -->
+
+  <target name="clean" description="remove generated files">
+    <delete dir="${output.dir}" failonerror="no" />
+  </target>
+
+  <!-- ==================================== -->
+  <!-- === MAPPING ARTIFACTS GENERATION === -->
+  <!-- ==================================== -->
+
+  <target name="detect-wsgenerator">
+    <available property="wstools.available"
+               classname="org.jboss.ws.tools.ant.wstools"
+               classpathref="jboss.path" />
+    <condition property="wsgenerator.available">
+      <or>
+        <isset property="wstools.available" />
+        <isset property="jwsdp.home" />
+      </or>
+    </condition>
+    <fail message="no artifacts generator available"
+          unless="wsgenerator.available" />
+  </target>
+
+  <target name="wstools" if="wstools.available" unless="jwsdp.home">
+    <taskdef name="wstools"
+             classname="org.jboss.ws.tools.ant.wstools"
+             classpathref="wstools.path" />
+    <wstools dest="${output.java.dir}" config="${resources.dir}/wstools.xml" />
+    <move file="${output.java.dir}/jaxrpc-mapping.xml"
+          todir="${output.web.dir}" />
+  </target>
+
+  <target name="wscompile" if="jwsdp.home">
+    <taskdef name="wscompile"
+             classname="com.sun.xml.rpc.tools.ant.Wscompile"
+             classpathref="wscompile.path" />
+    <mkdir dir="${output.classes.dir}" />
+    <mkdir dir="${output.web.dir}" />
+    <wscompile fork="on"
+               verbose="on"
+               import="on"
+               keep="on"
+               features="norpcstructures,wsi,strict"
+               base="${output.classes.dir}"
+               sourcebase="${output.java.dir}"
+               mapping="${output.web.dir}/jaxrpc-mapping.xml"
+               config="${resources.dir}/wscompile.xml"
+               classpathref="wscompile.path"
+               jvmargs="-Duser.dir=${project.dir}">
+    </wscompile>
+    <delete>
+      <fileset dir="${output.java.dir}" includes="**/*_Impl.java" />
+      <fileset dir="${output.classes.dir}" includes="**/*_Impl.class" />
+    </delete>
+  </target>
+
+  <target name="generate-artifacts"
+          depends="detect-wsgenerator"
+          description="generate java mapping artifacts">
+    <mkdir dir="${output.java.dir}" />
+    <antcall target="wstools" />
+    <antcall target="wscompile" />
+  </target>
+
+  <!-- ================================= -->
+  <!-- === WEB APPLICATION ASSEMBLY === -->
+  <!-- ================================= -->
+
+  <target name="compile-web">
+    <mkdir dir="${output.classes.dir}" />
+    <javac destdir="${output.classes.dir}" classpathref="jboss.path">
+      <src path="${java.dir}" />
+      <src path="${output.java.dir}" />
+    </javac>
+    <copy todir="${output.classes.dir}">
+      <fileset dir="${java.dir}" excludes="**/*.java" />
+    </copy>
+  </target>
+
+  <target name="pack-web" depends="compile-web">
+    <war warfile="${output.dir}/${app.name}.war" webxml="${web.dir}/web.xml">
+      <classes dir="${output.classes.dir}" />
+      <webinf dir="${web.dir}" excludes="web.xml" />
+      <webinf dir="${output.web.dir}" />
+    </war>
+  </target>
+
+  <!-- ================================== -->
+  <!-- === WEB APPLICATION DEPLOYMENT === -->
+  <!-- ================================== -->
+
+  <target name="deploy-web"
+          depends="pack-web"
+          description="deploy webservice to server">
+    <copy todir="${jboss.server.deploy.dir}"
+          file="${output.dir}/${app.name}.war" />
+  </target>
+
+  <target name="undeploy-web" description="undeploy webservice from server">
+    <delete file="${jboss.server.deploy.dir}/${app.name}.war" />
+  </target>
+
+  <target name="redeploy-web"
+          depends="generate-artifacts, deploy-web"
+          description="regenerate artifacts and deploy webservice" />
+
+  <!-- ===================================== -->
+  <!-- === APPLICATION CLIENT DEPLOYMENT === -->
+  <!-- ===================================== -->
+
+  <available property="client.available" file="${client.dir}" type="dir" />
+
+  <target name="pack-client" if="client.available">
+    <mkdir dir="${output.dir}" />
+    <jar destfile="${output.dir}/${app.name}-client.jar">
+      <metainf dir="${client.dir}" />
+      <metainf file="${output.web.dir}/jaxrpc-mapping.xml" />
+      <zipfileset dir="${jboss.server.dir}/data/wsdl/${app.name}.war"
+                  prefix="META-INF/wsdl" />
+    </jar>
+  </target>
+
+  <target name="deploy-client" depends="pack-client" if="client.available">
+    <copy todir="${jboss.server.deploy.dir}"
+          file="${output.dir}/${app.name}-client.jar" />
+  </target>
+
+  <target name="undeploy-client" if="client.available">
+    <delete file="${jboss.server.deploy.dir}/${app.name}-client.jar" />
+  </target>
+
+  <!-- ====================== -->
+  <!-- === TEST EXECUTION === -->
+  <!-- ====================== -->
+
+  <available property="test.available" file="${test.java.dir}" type="dir" />
+
+  <target name="compile-common">
+    <mkdir dir="${common.classes.dir}" />
+    <javac destdir="${common.classes.dir}"
+           srcdir="${common.java.dir}"
+           classpathref="jboss.path"
+           debug="on" />
+  </target>
+
+  <target name="compile-test" depends="compile-common" if="test.available">
+    <mkdir dir="${output.test.classes.dir}" />
+    <javac destdir="${output.test.classes.dir}"
+           srcdir="${test.java.dir}"
+           classpathref="test.path"
+           debug="on" />
+  </target>
+
+  <target name="run-test"
+          depends="pack-client, compile-test"
+          description="test the deployed webservice"
+          if="test.available">
+    <mkdir dir="${output.test.reports.dir}" />
+    <junit fork="on"
+           forkmode="once"
+           printsummary="on"
+           showoutput="on"
+           haltonfailure="on"
+           dir="${output.dir}">
+      <sysproperty key="jbossws.target.server" value="jboss" />
+      <classpath>
+        <path refid="test.path" />
+        <pathelement path="${output.test.classes.dir}" />
+      </classpath>
+      <batchtest todir="${output.test.reports.dir}">
+        <fileset dir="${output.test.classes.dir}" includes="**/*Test.class" />
+      </batchtest>
+      <formatter type="xml" />
+    </junit>
+  </target>
+
+</project>

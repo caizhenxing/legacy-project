@@ -1,0 +1,392 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Chapter&nbsp;5.&nbsp;Hello World Example</title><link rel="stylesheet" href="css/html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.65.1"><link rel="home" href="index.html" title="JBoss jBPM BPEL User Guide"><link rel="up" href="index.html" title="JBoss jBPM BPEL User Guide"><link rel="previous" href="tutorial.html" title="Chapter&nbsp;4.&nbsp;Tutorial"><link rel="next" href="tutorial.atm.html" title="Chapter&nbsp;6.&nbsp;ATM Example"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter&nbsp;5.&nbsp;Hello World Example</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tutorial.html">Prev</a>&nbsp;</td><th width="60%" align="center">&nbsp;</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="tutorial.atm.html">Next</a></td></tr></table><hr></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="tutorial.hello"></a>Chapter&nbsp;5.&nbsp;Hello World Example</h2></div></div><div></div></div><p>In this example, we will develop a very simple BPEL process that receives
+    a message carrying the name of a person, composes a greeting phrase containing
+    the name, and then replies with a message carrying the greeting. The resources related
+    to this example come with in the download package. Look in <tt class="literal">doc/examples/hello
+    </tt>.</p><p>The following picture represents the Hello World process.</p><div class="figure"><a name="tutorial.hello.graph"></a><div class="mediaobject" align="center"><img src="images/hello.png" align="middle" alt="Graphical representation of the Hello World process"></div><p class="title"><b>Figure&nbsp;5.1.&nbsp;Graphical representation of the Hello World process</b></p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.hello.def"></a>5.1.&nbsp;Define the BPEL process</h2></div></div><div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.def.bpel"></a>5.1.1.&nbsp;Create the BPEL document</h3></div></div><div></div></div><p>The first step is creating the process definition document. The description
+        ahead assumes familiarity with the BPEL concepts, but even if you are new
+        to BPEL you will find it easy to follow. If you get interested in BPEL
+        and decide to take it to a real project, you should read the
+        specification in its entirety. The OASIS BPEL Technical Committee 
+        <a href="http://www.oasis-open.org/committees/tc_home.php?wg_abbrev=wsbpel" target="_top">web site</a>
+        provides the specification document and a number of useful resources.</p><p>Let's call our process document <tt class="literal">hello.bpel</tt>. We create a partner link to
+        establish a relationship with the client of the process. We indicate that the process
+        will play the <span class="emphasis"><em>Greeter</em></span> role. Next we create two variables to hold the 
+        incoming and outgoing messages. Finally, we create a sequence of three activities that 
+        receives a request message from a client, prepares a response message and sends it back.
+        </p><pre class="programlisting">&lt;process name="HelloWorld" targetNamespace="http://jbpm.org/examples/hello"
+  xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+  xmlns:tns="http://jbpm.org/examples/hello"
+  xmlns:bpel="http://schemas.xmlsoap.org/ws/2003/03/business-process/"&gt;
+
+  &lt;partnerLinks&gt;
+    &lt;!-- establishes the relationship with the caller agent --&gt;
+    &lt;partnerLink name="caller" partnerLinkType="tns:Greeter-Caller"
+      myRole="Greeter" /&gt;
+  &lt;/partnerLinks&gt;
+
+  &lt;variables&gt;
+    &lt;!-- holds the incoming message --&gt;
+    &lt;variable name="request" messageType="tns:nameMessage" /&gt;
+    &lt;!-- holds the outgoing message --&gt;
+    &lt;variable name="response" messageType="tns:greetingMessage" /&gt;
+  &lt;/variables&gt;
+
+  &lt;sequence&gt;
+
+    &lt;!-- receive the name of a person --&gt;
+    &lt;receive operation="sayHello" partnerLink="caller" portType="tns:Greeter"
+      variable="request" createInstance="yes" /&gt;
+
+    &lt;!-- compose a greeting phrase --&gt;
+    &lt;assign&gt;
+      &lt;copy&gt;
+        &lt;from expression="concat('Hello, ', 
+            bpel:getVariableData('request', 'name'), '!')" /&gt;
+        &lt;to variable="response" part="greeting" /&gt;
+      &lt;/copy&gt;
+    &lt;/assign&gt;
+
+    &lt;!-- reply with the greeting --&gt;
+    &lt;reply operation="sayHello" partnerLink="caller" portType="tns:Greeter"
+      variable="response" /&gt;
+  &lt;/sequence&gt;
+
+&lt;/process&gt;</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The <tt class="literal">partnerLinkType</tt> and <tt class="literal">messageType</tt> attributes 
+        refer to external WSDL definitions. We will deal with them in the <a href="tutorial.hello.html#tutorial.hello.def.wsdl" title="5.1.2.&nbsp;Create/obtain the WSDL interface documents">next section</a>.</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.def.wsdl"></a>5.1.2.&nbsp;Create/obtain the WSDL interface documents</h3></div></div><div></div></div><p>WSDL documents describe the interface of the process that will be presented
+        to the outside world. To promote clarity and reuse, the  
+        <a href="http://www.w3.org/TR/wsdl#_style" target="_top">WSDL specification</a>
+        recommends separating the different elements of a service definition into independent
+        documents according to their level of abstraction. The proposed levels are data
+        type definitions, abstract definitions, and specific service bindings.</p><p>A service interface document describes a specific type of service. It contains
+        the <tt class="literal">types</tt>, <tt class="literal">import</tt>, <tt class="literal">message</tt> 
+        and <tt class="literal">portType</tt> elements; it can reference other abstract definitions 
+        documents using <tt class="literal">import</tt> elements. A service implementation document 
+        contains the description of a service that implements a service interface. It contains 
+        the <tt class="literal">import</tt>, <tt class="literal">binding</tt> and <tt class="literal">service</tt>
+        elements. At least one of the <tt class="literal">import</tt> elements references the WSDL 
+        interface document.</p><p>The process definition is dependent on data type definitions and abstract definitions.
+        The BPEL runtime is responsible of supplying the specific bindings for web services produced
+        by a BPEL process. The specific bindings for partner services can be typically obtained at 
+        deployment or runtime.</p><p>We use only one WSDL interface document. Let's name it <tt class="literal">hello.wsdl</tt>. We
+        create two mesages that respectively carry the name and greeting. Next we create a port type
+        that describes the interface that the process presents to its callers. It exposes a single 
+        operation <tt class="literal">sayHello</tt>, which takes the name message as input and returns the
+        greeting message as output.</p><p>Once the service interface is defined, we create a partner link type to characterize the
+        relationship between greeter and caller. We define the roles played by each service and 
+        specify the interfaces (i.e. port types) they expose to each other. Because our greeter
+        process does not call the client back, only one role appears. No responsibilities are placed
+        on the caller.</p><pre class="programlisting">&lt;definitions targetNamespace="http://jbpm.org/examples/hello"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:tns="http://jbpm.org/examples/hello"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"&gt;
+
+  &lt;!-- characterizes the relationship between the greeter and its caller --&gt;
+  &lt;plt:partnerLinkType name="Greeter-Caller"&gt;
+    &lt;plt:role name="Greeter"&gt;
+      &lt;plt:portType name="tns:Greeter" /&gt;
+    &lt;/plt:role&gt;
+    &lt;!-- the Caller does not provide services to the Greeter,
+      this is why we omit the "Caller" role --&gt;
+  &lt;/plt:partnerLinkType&gt;
+
+  &lt;!-- carries the name of a person --&gt;
+  &lt;message name="nameMessage"&gt;
+    &lt;part name="name" type="xsd:string" /&gt;
+  &lt;/message&gt;
+
+  &lt;!-- carries the greeting --&gt;
+  &lt;message name="greetingMessage"&gt;
+    &lt;part name="greeting" type="xsd:string" /&gt;
+  &lt;/message&gt;
+
+  &lt;!-- describes the interface presented to callers --&gt;
+  &lt;portType name="Greeter"&gt;
+    &lt;operation name="sayHello"&gt;
+      &lt;input message="tns:nameMessage" /&gt;
+      &lt;output message="tns:greetingMessage" /&gt;
+    &lt;/operation&gt;
+  &lt;/portType&gt;
+
+&lt;/definitions&gt;</pre><p>Notice the values of <tt class="literal">name</tt> attributes in child elements of 
+        <tt class="literal">definitions</tt> match the names used earlier in the process definition.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.def.deploy"></a>5.1.3.&nbsp;Deploy the process definition</h3></div></div><div></div></div><p>jBPM provides a mechanism to package all files related to a process definition
+        into a process archive, and then deploy the archive to a database. The BPEL
+        extension uses this mechanism to make the definition available to the port components
+        and the BPEL application (we will talk about it in <a href="tutorial.hello.html#tutorial.hello.server.artifacts" title="5.2.2.&nbsp;Java mapping artifacts">Java mapping artifacts</a>).</p><p>The central file in the process archive is the definition descriptor, 
+        <tt class="literal">bpel-definition.xml</tt>. It specifies the location of the process document
+        within the package. The descriptor also indicates the location of WSDL interface files, 
+        either relative to the package root or at some absolute URL.</p><pre class="programlisting">&lt;bpelDefinition location="hello.bpel" xmlns="http://jbpm.org/bpel"&gt;
+
+  &lt;!-- makes WSDL interface elements available to the process --&gt;
+  &lt;imports&gt;
+    &lt;wsdl location="hello.wsdl" /&gt;
+  &lt;/imports&gt;
+
+&lt;/bpelDefinition&gt;</pre><p>To deploy the process definition to the jBPM database, call:</p><pre class="synopsis">ant deploy-definition</pre><p>This will build a file named <tt class="literal">hello-process.zip</tt> and submit it to the
+        jBPM service. When successful, the messages below appear in the server console:</p><pre class="screen">23:55:21,750 INFO  [[/jbpm-bpel]] processDeployServlet: deploying process definition: file=file:/.../hello-process.zip
+23:55:22,078 INFO  [BpelReader] read wsdl definitions: hello.wsdl
+23:55:22,171 INFO  [BpelReader] read bpel process: hello.bpel
+23:55:22,250 INFO  [[/jbpm-bpel]] processDeployServlet: deployed process definition: HelloWorld</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>If this is the first process you deploy after starting the jBPM service, you will see
+        a flurry of logs from Hibernate before the last log shown above. This is normal as long as
+        no ERROR entries appear. Hibernate initializes on demand.</div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.hello.server"></a>5.2.&nbsp;Build the WSEE port components</h2></div></div><div></div></div><p>In WSEE, a port component defines the server view of a web service. It services
+      the operation requests defined by a WSDL <tt class="literal">portType</tt>. In this step, we
+      will create one port component for each partner link that defines a process
+      role; that is, <tt class="literal">partnerLink</tt> elements having a <tt class="literal">myRole</tt> 
+      attribute.</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.server.wsdl"></a>5.2.1.&nbsp;WSDL implementation documents</h3></div></div><div></div></div><p>WSDL implementation documents for the process can be automatically generated
+        from the process definition and related WSDL interface documents. The BPEL extension
+        includes a tool just for that purpose, <tt class="literal">servicegen</tt>. This program reads
+        a process archive.</p><p>To execute the tool, call:</p><pre class="synopsis">ant generate-service</pre><p>Three WSDL files will appear:</p><div class="itemizedlist"><ul type="disc"><li><p><tt class="literal">hello.wsdl</tt> is an equivalent of the interface 
+          document we created in <a href="tutorial.hello.html#tutorial.hello.def.wsdl" title="5.1.2.&nbsp;Create/obtain the WSDL interface documents">Create/obtain the WSDL interface documents</a>. Because the location we specified in <a href="tutorial.hello.html#tutorial.hello.def.deploy" title="5.1.3.&nbsp;Deploy the process definition">Deploy the process definition</a> is relative,
+          the tool writes this file so that its definitions are available to the port component.
+          </p></li><li><p><tt class="literal">binding1.wsdl</tt> contains the SOAP binding for the 
+            <tt class="literal">Greeter</tt> port type we saw in <a href="tutorial.hello.html#tutorial.hello.def.wsdl" title="5.1.2.&nbsp;Create/obtain the WSDL interface documents">Create/obtain the WSDL interface documents</a>. Note that the target namespace of this document
+            is the same as that of the port type: <tt class="literal">http://jbpm.org/examples/hello</tt>.
+            The subsequent listing corresponds to the generated binding document, edited for 
+            clarity.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>If the process implemented other port types belonging to namespace
+            <tt class="literal">http://jbpm.org/examples/hello</tt> they would appear in the above 
+            document, too. Bindings for port types in other namespaces would be placed in a separate
+            <tt class="literal">binding&lt;n&gt;.wsdl</tt> file.</p></div><pre class="programlisting">&lt;definitions targetNamespace="http://jbpm.org/examples/hello" 
+  xmlns:tns="http://jbpm.org/examples/hello" 
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+  xmlns="http://schemas.xmlsoap.org/wsdl/"&gt;
+  
+  &lt;!-- makes WSDL interface elements available to binding elements --&gt;
+  &lt;import namespace="http://jbpm.org/examples/hello" location="hello.wsdl"/&gt;
+  
+  &lt;!-- provides SOAP 1.1 protocol details for the Greeter interface --&gt;
+  &lt;binding name="GreeterBinding" type="tns:Greeter"&gt;
+    &lt;soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/&gt;
+    &lt;operation name="sayHello"&gt;
+      &lt;soap:operation soapAction="http://jbpm.org/examples/sayHello"/&gt;
+      &lt;input&gt;
+        &lt;soap:body use="literal" namespace="http://jbpm.org/examples/hello"/&gt;
+      &lt;/input&gt;
+      &lt;output&gt;
+        &lt;soap:body use="literal" namespace="http://jbpm.org/examples/hello"/&gt;
+      &lt;/output&gt;
+    &lt;/operation&gt;
+  &lt;/binding&gt;
+&lt;/definitions&gt;</pre></li><li><p><tt class="literal">service.wsdl</tt> contains a service element in the same target 
+            namespace as the process. The <tt class="literal">GreeterPort</tt> subelement 
+            implements the <tt class="literal">Greeter</tt> port type using its SOAP binding. 
+            The generated service document is reproduced next.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The tool generates one port for each partner link having a <tt class="literal">
+            myRole</tt> attribute.</p></div><pre class="programlisting">&lt;definitions targetNamespace="http://jbpm.org/examples/hello" xmlns:tns="http://jbpm.org/examples/hello" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/"&gt;
+
+  &lt;import namespace="http://jbpm.org/examples/hello" location="binding1.wsdl"/&gt;
+
+  &lt;!-- groups all endpoints served by the process --&gt;
+  &lt;service name="HelloWorldService"&gt;
+    
+    &lt;!-- supplies access information for the Greeter interface --&gt;
+    &lt;port name="GreeterPort" binding="tns:GreeterBinding"&gt;
+      &lt;soap:address location="REPLACE_WITH_ACTUAL_URI"/&gt;
+    &lt;/port&gt;
+    
+  &lt;/service&gt;
+
+&lt;/definitions&gt;</pre><p>Notice that the actual access information is left unspecified, as WSEE will
+            replace this entry with the definitive location during deployment.</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.server.artifacts"></a>5.2.2.&nbsp;Java mapping artifacts</h3></div></div><div></div></div><p>The Java mapping artifacts required for a WSEE deployment can be automatically generated
+        from the WSDL implementation documents. Depending on your JBoss AS version, the build file
+        calls either <tt class="literal">wstools</tt> or <tt class="literal">wscompile</tt>. Both tools read a
+        (distinct) configuration file which points to a WSDL file, among other settings.</p><p>To execute the generation tool, call:</p><pre class="synopsis">ant generate-artifacts</pre><p>The subsequent snippet shows the input to <tt class="literal">wstools</tt>. Here, 
+        <tt class="literal">package-namespace</tt> elements associate Java packages with XML namespaces
+        occurring in the WSDL file.</p><pre class="programlisting">&lt;configuration xmlns="http://www.jboss.org/jbossws-tools"&gt;
+  &lt;global&gt;
+    &lt;package-namespace package="org.jbpm.bpel.tutorial.hello"
+      namespace="http://jbpm.org/examples/hello" /&gt;
+  &lt;/global&gt;
+  &lt;wsdl-java file="wsdl/service.wsdl"&gt;
+    &lt;mapping file="jaxrpc-mapping.xml" /&gt;
+  &lt;/wsdl-java&gt;
+&lt;/configuration&gt;</pre><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>The JBossWS <a href="http://tinyurl.com/r2jru" target="_top">user guide</a> gives a full
+        coverage of the available options.</p></div><p>The configuration for <tt class="literal">wscompile</tt> is quite similar. The 
+        <tt class="literal">packageName</tt> attribute associates the target namespace of the referenced 
+        WSDL definitions with the Java package <tt class="literal">org.jbpm.bpel.tutorial.hello</tt>.
+        </p><pre class="programlisting">&lt;configuration xmlns="http://java.sun.com/xml/ns/jax-rpc/ri/config"&gt;
+  &lt;wsdl location="src/main/resources/WEB-INF/wsdl/service.wsdl"
+    packageName="org.jbpm.bpel.tutorial.hello" /&gt;
+&lt;/configuration&gt;</pre><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>Refer to the JWSDP tools <a href="http://tinyurl.com/joocc" target="_top">documentation
+        </a> for a complete description of this file.</p></div><p>The generated Java sources contain the service endpoint interface <tt class="classname">Greeter
+        </tt> and the service interface <tt class="classname">HelloWorldService</tt>. The 
+        generation tool also writes a document that describes how the WSDL interface definitions
+        map to the produced Java types: <tt class="literal">jaxrpc-mapping.xml</tt>.</p><p>We will not analyze the Java mapping artifacts as jBPM BPEL is agnostic to them. Keep in
+        mind that variables in a BPEL process are defined in terms of XML types and WSDL messages. 
+        jBPM BPEL extracts XML content from SOAP messages and places it in the process variables 
+        directly.</p><p>Nevertheless, the Java mapping artifacts still must be present for the JSR-109 
+        deployment to be valid. Note that the supplied service implementation bean has empty methods
+        only. The BPEL process specifies the behavior instead.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.server.webapp"></a>5.2.3.&nbsp;Port components as servlets</h3></div></div><div></div></div><p>In WSEE, Java service endpoints are deployed as servlets in a web application.
+        Hence, a <tt class="literal">web.xml</tt> deployment descriptor must be supplied.</p><pre class="programlisting">&lt;web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"&gt;
+  
+  &lt;!-- Greeter Service Endpoint --&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;greeterServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;org.jboss.test.ws.samples.wsbpel.hello.Greeter_Impl&lt;/servlet-class&gt;
+  &lt;/servlet&gt;  
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;greeterServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/greeter&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+  ...
+&lt;/web-app&gt;</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>We refer to the service implementation bean in the <tt class="literal">servlet-class
+        </tt> element, even though it is not a servlet at all. This is a WSEE feature.</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.server.integra"></a>5.2.4.&nbsp;Partner integration</h3></div></div><div></div></div><p>In order for the process to take requests, inbound message activities (<tt class="literal">receive
+        </tt>, <tt class="literal">onMessage</tt> branch of <tt class="literal">pick</tt> and <tt class="literal">
+        onMessage</tt> event) must be enabled for reception. jBPM BPEL provides a servlet for 
+        this purpose.</p><p>An additional <tt class="literal">servlet</tt> element in <tt class="literal">web.xml</tt> sets up
+        the partner integration servlet. We indicate the container to load this servlet during 
+        startup, so that inbound activities are ready before requests begin arriving.</p><pre class="programlisting">&lt;web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"&gt;
+  ...
+  &lt;!-- jBPM BPEL Partner Integration --&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;integrationServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;org.jbpm.bpel.integration.jms.IntegrationServlet&lt;/servlet-class&gt;
+    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;integrationServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/integration&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+    
+&lt;/web-app&gt;</pre><p>The partner relationship manager reads a special descriptor to set itself up: 
+        <tt class="literal">bpel-application.xml</tt> in <tt class="literal">WEB-INF/classes</tt>. It specifies
+        the name and (optional) version of the process definition being enacted.</p><pre class="programlisting">&lt;bpelApplication name="HelloWorld" xmlns="http://jbpm.org/bpel" /&gt;</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.server.webservices"></a>5.2.5.&nbsp;Web services deployment descriptor</h3></div></div><div></div></div><p>The <tt class="literal">webservices.xml</tt> deployment descriptor lists the endpoints to be
+        deployed in a servlet container.</p><p>In the JAX-RPC specification, handlers define a means for an application to access the
+        raw SOAP message of a request or response. Class <tt class="classname">
+        org.jbpm.bpel.integration.server.SoapHandler</tt> is a handler that lets
+        jBPM BPEL manipulate SOAP messages sent to the enclosing port component. In the web services
+        descriptor presented subsequently, the <tt class="literal">GreeterSoapHandler</tt> injects BPEL
+        functionality to the <tt class="literal">GreeterPort</tt> component.</p><pre class="programlisting">&lt;webservices version="1.1" xmlns="http://java.sun.com/xml/ns/j2ee"&gt;
+
+  &lt;webservice-description&gt;
+
+    &lt;!-- descriptive name for the service --&gt;
+    &lt;webservice-description-name&gt;Hello World&lt;/webservice-description-name&gt;
+    &lt;!-- WSDL service file --&gt;
+    &lt;wsdl-file&gt;WEB-INF/wsdl/service.wsdl&lt;/wsdl-file&gt;
+    &lt;!-- Java&lt;-&gt;XML mapping file --&gt;
+    &lt;jaxrpc-mapping-file&gt;WEB-INF/jaxrpc-mapping.xml&lt;/jaxrpc-mapping-file&gt;
+
+    &lt;port-component&gt;
+
+      &lt;!-- logical name for the port (unique within the module) --&gt;
+      &lt;port-component-name&gt;GreeterPort&lt;/port-component-name&gt;
+      &lt;!-- WSDL port element (in service.wsdl) --&gt;
+      &lt;wsdl-port xmlns:portNS="http://jbpm.org/examples/hello"&gt;
+        portNS:GreeterPort
+      &lt;/wsdl-port&gt;
+      &lt;!-- service endpoint interface class --&gt;
+      &lt;service-endpoint-interface&gt;
+        org.jboss.test.ws.samples.wsbpel.hello.Greeter
+      &lt;/service-endpoint-interface&gt;
+      &lt;!-- associated servlet (in web.xml) --&gt;
+      &lt;service-impl-bean&gt;
+        &lt;servlet-link&gt;greeterServlet&lt;/servlet-link&gt;
+      &lt;/service-impl-bean&gt;
+
+      &lt;handler&gt;
+
+        &lt;!-- logical name for the handler (unique within the module) --&gt;
+        &lt;handler-name&gt;GreeterHandler&lt;/handler-name&gt;
+        &lt;!-- handler class (in jbpm-bpel.jar) --&gt;
+        &lt;handler-class&gt;
+          org.jbpm.bpel.integration.server.SoapHandler
+        &lt;/handler-class&gt;
+
+        &lt;init-param&gt;
+          &lt;description&gt;
+            name of the partner link served by this port
+          &lt;/description&gt;
+          &lt;param-name&gt;partnerLinkHandle&lt;/param-name&gt;
+          &lt;param-value&gt;caller&lt;/param-value&gt;
+        &lt;/init-param&gt;
+
+      &lt;/handler&gt;
+
+    &lt;/port-component&gt;
+
+  &lt;/webservice-description&gt;
+
+&lt;/webservices&gt;</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.server.deploy"></a>5.2.6.&nbsp;Web application deployment</h3></div></div><div></div></div><p>To deploy the web application to the app server, call:</p><pre class="synopsis">ant deploy-web</pre><p>This will build a web archive named <tt class="literal">hello.war</tt> and copy it to the
+        <tt class="literal">deploy</tt> directory of your JBoss AS configuration. The structure of this
+        module follows the rules in section 5.4 of the <a href="http://jcp.org/en/jsr/detail?id=921" target="_top">WSEE specification</a>.</p><p>On the server you should see messages similar to these:</p><pre class="screen">23:55:35,171 INFO  [TomcatDeployer] deploy, ctxPath=/hello, warUrl=.../tmp/deploy/tmp44831hello-exp.war/
+23:55:35,781 INFO  [[/hello]] integrationServlet: enabled message reception for process: HelloWorld
+23:55:35,796 INFO  [WSDLFilePublisher] WSDL published to: file:/.../data/wsdl/hello.war/service.wsdl
+23:55:35,812 INFO  [ServiceEndpointManager] WebService started: http://.../hello/greeter</pre><p>At this point, your BPEL process is fully accessible to external clients through its
+        web service interfaces. The remaining sections focus on testing the process using a J2EE
+        application client.</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.hello.client"></a>5.3.&nbsp;Build the WSEE application client</h2></div></div><div></div></div><p>Since we already generated the Java mapping artifacts, the WSEE client programming model
+      is the most comfortable choice for testing purposes. In this step, we will create the 
+      application client.</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.client.appclient"></a>5.3.1.&nbsp;Application client deployment descriptor
+        </h3></div></div><div></div></div><p>J2EE application clients use the <tt class="literal">application-client.xml</tt> 
+        deployment descriptor.</p><p>Clients must have access to the WSDL definitions as well as the Java mapping document.
+        We already produced these files in the <a href="tutorial.hello.html#tutorial.hello.server" title="5.2.&nbsp;Build the WSEE port components">Build the WSEE port components</a> section, so we just reference
+        them from the descriptor.</p><p>There is one caveat to the WSDL reference. Application clients assume the 
+        WSDL document describes a deployed web service. Therefore, the port elements
+        must point to actual locations. Recall the service document generated in <a href="tutorial.hello.html#tutorial.hello.server.wsdl" title="5.2.1.&nbsp;WSDL implementation documents">WSDL implementation documents</a>
+        leaves port locations unspecified.</p><p>The provided build script solves the problem by taking the WSDL file that JBoss AS
+        publishes after deploying the web application to the <tt class="literal">data/wsdl</tt> 
+        subdirectory of the server configuration.</p><pre class="programlisting">&lt;application-client version="1.4" xmlns="http://java.sun.com/xml/ns/j2ee"&gt;
+
+  &lt;display-name&gt;Hello World Service Client&lt;/display-name&gt;
+
+  &lt;service-ref&gt;
+
+    &lt;!-- JNDI name of service interface in client environment context --&gt;
+    &lt;service-ref-name&gt;service/Hello&lt;/service-ref-name&gt;
+    &lt;!-- service interface --&gt;
+    &lt;service-interface&gt;
+      org.jbpm.bpel.tutorial.hello.HelloWorldService
+    &lt;/service-interface&gt;
+    &lt;!-- published WSDL document --&gt;
+    &lt;wsdl-file&gt;META-INF/wsdl/service.wsdl&lt;/wsdl-file&gt;
+    &lt;!-- Java&lt;-&gt;XML mapping file --&gt;
+    &lt;jaxrpc-mapping-file&gt;META-INF/jaxrpc-mapping.xml&lt;/jaxrpc-mapping-file&gt;
+
+    &lt;port-component-ref&gt;
+      &lt;!-- service endpoint interface --&gt;
+      &lt;service-endpoint-interface&gt;
+        org.jbpm.bpel.tutorial.hello.Greeter
+      &lt;/service-endpoint-interface&gt;
+    &lt;/port-component-ref&gt;
+
+  &lt;/service-ref&gt;
+
+&lt;/application-client&gt;</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.client.env"></a>5.3.2.&nbsp;Environment context</h3></div></div><div></div></div><p>In order to provide an environment context for the application client, we must allocate
+        a name for it in the global JNDI context. This is done in <tt class="literal">jboss-client.xml
+        </tt>.Be aware that this descriptor is specific to JBoss AS.</p><pre class="programlisting">&lt;jboss-client&gt;
+  &lt;!-- JNDI name of client environment context --&gt;
+  &lt;jndi-name&gt;jbpmbpel-client&lt;/jndi-name&gt;
+&lt;/jboss-client&gt;</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.hello.test"></a>5.4.&nbsp;Test the process</h2></div></div><div></div></div><p>Once the process starts, we need to make sure it works as we expect. In this step,
+      we will create a JUnit test case named <tt class="classname">HelloTest</tt>.</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.test.remote"></a>5.4.1.&nbsp;Remote web service access</h3></div></div><div></div></div><p>Deploying the application client from <a href="tutorial.hello.html#tutorial.hello.client" title="5.3.&nbsp;Build the WSEE application client">Build the WSEE application client</a> causes the app server to bind an instance of the
+        service interface in the client environment context,using the logical name from the 
+        <tt class="literal">service-ref</tt> element. In our example, the logical name is 
+        <tt class="literal">service/Hello</tt>.</p><p>The test setup code looks up the service instance. This object is a factory that a
+        client uses to get a service endpoint proxy.</p><pre class="programlisting">private HelloWorldService service;
+
+protected void setUp() throws Exception {
+  InitialContext iniCtx = new InitialContext();
+  /*
+   * "service/Hello" is the JNDI name of the service interface instance
+   * relative to the client environment context. This name matches the
+   * &lt;service-ref-name&gt; in application-client.xml
+   */
+  service = (HelloWorldService) iniCtx.lookup("java:comp/env/service/Hello");
+}</pre><p>The test method uses the SEI proxy like a local java object.</p><pre class="programlisting">public void testSayHello_proxy() throws Exception {
+  // obtain dynamic proxy for web service port
+  Greeter proxy = service.getGreeterPort();
+  // use proxy as local java object
+  String greeting = proxy.sayHello("Popeye");
+  // check proper greeting
+  assertEquals("Hello, Popeye!", greeting);
+}</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.test.jndi"></a>5.4.2.&nbsp;Client JNDI properties</h3></div></div><div></div></div><p>The properties of the initial JNDI context are supplied in a separate <tt class="literal">
+        jndi.properties</tt> file. The property <tt class="literal">j2ee.clientName</tt>
+        indicates the JNDI name of the client environment context relative to the global context.
+        The value <tt class="literal">jbpmbpel-client</tt> matches the <tt class="literal">&lt;jndi-name&gt;
+        </tt> in <tt class="literal">jboss-client.xml</tt>.</p><pre class="programlisting">java.naming.provider.url=jnp://localhost:1099
+java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory
+java.naming.factory.url.pkgs=org.jboss.naming.client
+j2ee.clientName=jbpmbpel-client</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.test.run"></a>5.4.3.&nbsp;Test execution</h3></div></div><div></div></div><p>To execute the JUnit test, call:</p><pre class="synopsis">ant run-test</pre><p>If all goes well you should see the output below:</p><pre class="screen">run-test:
+    [junit] Running org.jbpm.bpel.tutorial.hello.HelloTest
+    ...
+    [junit] Tests run: 2, Failures: 0, Errors: 0, Time elapsed: 1.532 sec</pre><p>Other log entries will appear, including a printout of the SOAP messages exchanged with
+        the server.</p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tutorial.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="index.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="tutorial.atm.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;4.&nbsp;Tutorial&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;6.&nbsp;ATM Example</td></tr></table></div></body></html>

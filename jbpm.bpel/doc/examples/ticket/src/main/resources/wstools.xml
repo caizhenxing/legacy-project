@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<configuration xmlns="http://www.jboss.org/jbossws-tools">
+  <global>
+    <package-namespace package="org.jbpm.bpel.tutorial.ticket" namespace="urn:samples:ticket" />
+  </global>
+  <wsdl-java file="wsdl/ticket-impl.wsdl">
+    <mapping file="jaxrpc-mapping.xml" />
+  </wsdl-java>
+</configuration>

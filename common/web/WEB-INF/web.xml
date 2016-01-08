@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="GB2312"?>
+
+<!DOCTYPE web-app PUBLIC
+	"-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+	"http://java.sun.com/dtd/web-app_2_3.dtd">
+
+
+<web-app>
+	<display-name>公用资源</display-name>
+	
+	<context-param>
+		<param-name>publicResourceServer</param-name>
+		<param-value>/publicresource</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>serverInfo.beanFactoryName</param-name>
+		<param-value>common.components</param-value>
+	</context-param>
+	
+	<!-- Spring context file Define -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/conf/security/applicationContext.xml,/WEB-INF/classes/conf/security/applicationContext-aop.xml,/WEB-INF/remoting-servlet.xml</param-value>
+	</context-param>
+	
+	<filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>GBK</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>	
+	
+	<filter>
+        <filter-name>hibernate3OpenSessionInViewFilter</filter-name>
+        <filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+        <init-param>
+			<param-name>sessionFactoryBeanName</param-name>
+			<param-value>system.sessionFactory</param-value>
+		</init-param>
+    </filter>
+	
+	<filter>
+        <filter-name>cohegHibernate3OpenSessionInViewFilter</filter-name>
+        <filter-class>com.coheg.persistent.hibernate3.support.OpenSessionInViewFilter</filter-class>
+        <init-param>
+			<param-name>sessionFactoryBeanName</param-name>
+			<param-value>system.sessionFactory</param-value>
+		</init-param>
+    </filter>
+	
+    <filter>
+        <filter-name>populateConditionFilter</filter-name>
+        <filter-class>com.coheg.web.PopulateConditionFilter</filter-class>
+    </filter>	
+	
+	<!-- 
+		Note !!!
+		Please make sure the  securityChainFilter is the last filter in web.xml, 
+		because org.acegisecurity.util.FilterChainProxy will ignore all filters after it.	
+	 -->
+	<filter>
+        <filter-name>securityChainFilter</filter-name>
+        <filter-class>org.acegisecurity.util.FilterToBeanProxy</filter-class>
+        <init-param>
+            <param-name>targetClass</param-name>
+            <param-value>org.acegisecurity.util.FilterChainProxy</param-value>
+        </init-param>
+    </filter>	
+	
+	<filter-mapping>
+        <filter-name>hibernate3OpenSessionInViewFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping> 
+	
+	<filter-mapping>
+        <filter-name>cohegHibernate3OpenSessionInViewFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>	
+	
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+        <filter-name>populateConditionFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+
+	<filter-mapping>
+        <filter-name>securityChainFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+	
+	<!-- Open it when use Servlet2.4, Close it when use Servlet2.3 or lower !!! -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener> 
+	
+	<!-- Open it when use Servlet2.4, Close it when use Servlet2.3 or lower !!! -->
+	<listener>
+		<listener-class>com.coheg.security.client.loader.SecurityContextLoaderListener</listener-class>
+	</listener> 
+<!--
+	<listener>
+		<listener-class>com.coheg.ajax.dwr.startup.SetBeanFactory2SpringCreatorListener</listener-class>
+	</listener>  
+-->
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<display-name>ActionServlet</display-name>
+		<servlet-class>
+			org.apache.struts.action.ActionServlet
+		</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>
+				/WEB-INF/struts-config.xml
+			</param-value>
+		</init-param>
+		<load-on-startup>5</load-on-startup>
+	</servlet>
+<!--
+	<servlet>
+		<servlet-name>dwr-invoker</servlet-name>
+		<display-name>DWR Servlet</display-name>
+		<servlet-class>uk.ltd.getahead.dwr.DWRServlet</servlet-class>
+		<init-param>
+		   <param-name>debug</param-name>
+		   <param-value>true</param-value>
+		</init-param>
+	</servlet>
+-->
+	<servlet>
+		<servlet-name>remoting</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>3</load-on-startup>
+	</servlet> 
+	
+	<servlet>
+		<servlet-name>logoff</servlet-name>
+		<servlet-class>com.coheg.security.acegi.ui.servlet.LogoffServlet</servlet-class>
+		<load-on-startup>5</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+<!-- 
+	<servlet-mapping>
+		<servlet-name>dwr-invoker</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+-->	
+	<servlet-mapping>
+		<servlet-name>remoting</servlet-name>
+		<url-pattern>/remoting/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>logoff</servlet-name>
+		<url-pattern>/logoff</url-pattern>
+	</servlet-mapping>
+    
+    <resource-ref>
+        <res-ref-name>jdbc/OracleDS</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+    <!-- WebLogic communicates with AJAX-->
+	 <mime-mapping> 
+        <extension>xml</extension> 
+        <mime-type>text/xml</mime-type> 
+    </mime-mapping> 
+	
+</web-app>

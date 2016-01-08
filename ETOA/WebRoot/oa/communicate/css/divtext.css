@@ -1,0 +1,58 @@
+.notepaper{
+	position:relative;
+	left:0px;
+	top:0px;
+	width:500px;
+	height:250px;
+	background-color:#FFFF99;
+	border:1px none #000000;
+	font-family:ËÎÌו;
+	font-size:14px;
+	overflow:auto;
+}
+
+.normalpaper{
+	position:relative;
+	left:0px;
+	top:0px;
+	width:500px;
+	height:250px;
+	background-color:#FFFFFF;
+	border-top:1px solid gray;
+	border-left:1px solid gray;
+	border-right:thin solid black;
+	border-bottom:thin solid black;
+	font-family:ËÎÌו;
+	font-size:14px;
+	overflow:auto;
+}
+
+.text {
+	font-family:"ËÎÌו"; 
+	font-size: 12px;
+	text-decoration: none; 
+	line-height: 25px;
+}
+
+.spancss{
+	position:relative;
+	left:0px;
+	top:0px;
+	width:500px;
+	height:55px;
+	background-color:#F7F7F7;
+	border:1px solid gray;
+}
+
+.footspancss{
+	position:relative;
+	left:0px;
+	top:0px;
+	width:500px;
+	height:25px;
+	background-color:#F7F7F7;
+	border-top:1px none gray;
+	border-left:1px none black;
+	border-right:1px none black;
+	border-bottom:1px none black;
+}

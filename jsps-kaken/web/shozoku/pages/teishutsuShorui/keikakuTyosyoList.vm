@@ -1,0 +1,167 @@
+## ***********************************************
+## 研究計画調書一覧
+## ***********************************************
+## 2006/06/13 DIS.dyh 新規作成
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+#parse($commonSetting)
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+##スクリプト
+<script language="javascript">
+  <!--
+  // 研究計画調書ダウンロード
+  function onDownload(inSystemNo){
+      document.shinsei_form.action="$link.setAction("/shozoku/downloadPdf")";
+      document.shinsei_form.systemNo.value = inSystemNo;
+      document.shinsei_form.submit();
+  }
+  -->
+</script>
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/shozoku/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width="72" height="20" border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#CC6666" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/shozoku/showMainMenu')">所属研究機関担当者向けメニュー</a>＞提出確認（特定領域研究（新規領域）＞<b>研究計画調書一覧</b>）</font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width="61" height="49" alt=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont">
+       <br>$!escape.getText($result.get(0).RYOIKI_NAME)　研究計画調書一覧</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width="213" height="49" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+    <!-- 本文ここから -->
+	#errorMarkup()
+    <br>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+     <tr>
+      <td>
+       <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+        <tr>
+         <th>研究区分</th>
+         <th>計画研究代表者名</th>
+         <th>所属研究機関名・部局名・職名</th>
+         <th>研究者番号</th>
+         <th>研究課題名</th>
+         <th>版数</th>
+         <th>作成日</th>
+         <th>研究計画調書確認</th>
+        </tr>
+		#foreach($info in $result)
+          <tr>
+           <td>
+            ## ********************************************
+            ## 研究項目番号　　      調整班　　　　表示文字列
+            ## (KOMOKU_NO)　(CHOSEIHAN)
+            ## 
+            ## X00              0      総括班(X00)
+            ## Y00              0      支援班(Y00)
+            ## 上記以外（A01等）        1	   A01(調整班)
+            ## 上記以外（A01等）	    0      A01計画研究
+            ## ********************************************
+            #if($info.KOMOKU_NO == 'X00')
+              ##if($info.CHOSEIHAN == '0')
+                                総括班($!escape.getText($info.KOMOKU_NO))
+			  ##end
+            #elseif($info.KOMOKU_NO == 'Y00')
+              ##if($info.CHOSEIHAN == '0')
+                                支援班($!escape.getText($info.KOMOKU_NO))
+			  ##end
+            #else
+              #if($info.CHOSEIHAN == '1')
+                $!escape.getText($info.KOMOKU_NO)(調整班)
+              #else
+                $!escape.getText($info.KOMOKU_NO)計画研究
+			  #end
+            #end
+           </td>
+           <td>$!escape.getText($info.NAME_KANJI_SEI) $!escape.getText($info.NAME_KANJI_MEI)</td>
+           <td>$!escape.getText($info.SHOZOKU_NAME_RYAKU) $!escape.getText($info.BUKYOKU_NAME_RYAKU) $!escape.getText($info.SHOKUSHU_NAME_RYAKU)</td>
+           <td>$!escape.getText($info.KENKYU_NO)</td>
+           <td>$!escape.getText($info.KADAI_NAME_KANJI)</td>
+           <td>$!escape.getText($info.EDITION)版</td>
+           <td>$!escape.getText($!dateFormat.format($info.SAKUSEI_DATE))</td>
+           <td><a href="javascript:onDownload('$!info.SYSTEM_NO')"><img src="$path/images/bt_download.gif" border="0" alt="ダウンロード"></a></td>
+          </tr>
+        #end
+       </table>
+      </td>
+     </tr>
+    </table>
+    <!-- 一覧用テーブルここまで-->
+    <br>
+    <!-- 本文ここまで -->
+
+    <!-- ボタン用テーブルここから -->  
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+       <tr>
+        <td><a href="$link.setAction('/shozoku/teishutsuShorui/teisyutuList')"><img src="$path/images/bt_ok.gif" width="114" height="28" alt="OK" border="0"></a></td>
+       </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width="8" height="26" alt=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shozoku/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width="72" height="26" border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width="8" height="26" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+##隠しフォーム情報----------
+<form name="shinsei_form" method="post" action="">
+    <input type="hidden" name="systemNo" value="">
+    <input type="hidden" name="screenFlg" value="1">
+    <input type="hidden" name="shinseiDataInfo.systemNo" value="">
+</form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+1，修改短消息管理，添加滚动条，滚动条的jsp文件的名称是messagesMain.jsp，在webroot/messages文件夹下。
+2，修改expertLoad.jsp，在custinfo/phoneinfo/expertLoad.jsp，将姓名变为必添，其它都不是必添。
+专家 expertLoad.jsp
+政府 govLoad.jsp
+linkmanLoad.jsp
+媒体 mediaLoad.jsp
+projectLoad.jsp
+普通用户 commonLoad.jsp
+联络员用户 connectLoad.jsp
+3，服务记录添加滚动条，后台管理里面，question/questionList.jsp
+4，修改类CustinfoAction，座席员里边查不到相应的信息，有的是相关的管理员的信息。现在添加座席长。
+5，修改类IncommingInfoAction
+6，修改类TelQueryAction
+EffectCaseinfoAction
+FocusCaseinfoAction
+GeneralCaseinfoAction
+HZAction
+CorpinfoAction
+7、oper_focusinfo表里新增字段caserid varchar(50) 允许为空 注释：受理工号
+8、oper_markanainfo表里新增字段caserid varchar(50) 允许为空 注释：受理工号
+9、oper_inquiryinfo表里新增字段caserid varchar(50) 允许为空 注释：受理工号

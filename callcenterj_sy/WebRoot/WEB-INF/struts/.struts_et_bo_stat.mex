@@ -1,0 +1,1822 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/stat/telephone.do" location="1569,3047" dimension="358,84" />
+  <StrutsActivity path="/stat/ivr.do" location="2267,3047" dimension="358,84" />
+  <StrutsActivity path="/stat/medicinfoP.do" location="1069,1939" dimension="358,84" />
+  <StrutsActivity path="/stat/bookMedicinfoP.do" location="239,1662" dimension="358,84" />
+  <StrutsActivity path="/stat/corpinfoP.do" location="2699,1939" dimension="358,84" />
+  <StrutsActivity path="/stat/price.do" location="1659,2770" dimension="358,84" />
+  <StrutsActivity path="/stat/expert.do" location="925,2770" dimension="358,84" />
+  <StrutsActivity path="/stat/inquiry.do" location="1731,2493" dimension="358,84" />
+  <StrutsActivity path="/stat/use.do" location="2947,3047" dimension="358,84" />
+  <StrutsActivity path="/stat/smsStat.do" location="2495,2493" dimension="358,84" />
+  <StrutsActivity path="/stat/money.do" location="2384,2770" dimension="358,84" />
+  <StrutsActivity path="/stat/voiceLeave.do" location="155,3047" dimension="358,84" />
+  <StrutsActivity path="/stat/address.do" location="173,2770" dimension="358,84" />
+  <StrutsActivity path="/stat/appraise.do" location="1776,2216" dimension="358,84" />
+  <StrutsActivity path="/stat/agrprice.do" location="2555,2216" dimension="358,84" />
+  <StrutsActivity path="/stat/userdial.do" location="182,2493" dimension="358,84" />
+  <StrutsActivity path="/stat/usercase.do" location="961,2493" dimension="358,84" />
+  <StrutsActivity path="/stat/case.do" location="871,3047" dimension="358,84" />
+  <StrutsActivity path="/stat/statecase.do" location="191,2216" dimension="358,84" />
+  <StrutsActivity path="/stat/focusCaseInfo.do" location="2001,1662" dimension="358,84" />
+  <StrutsActivity path="/stat/focusCaseInfoStatistics.do" location="3350,150" dimension="308,88" />
+  <StrutsActivity path="/stat/HZCaseInfoStatisticsByState.do" location="3950,150" dimension="308,88" />
+  <StrutsActivity path="/stat/hzCaseInfo.do" location="1884,1939" dimension="358,84" />
+  <StrutsActivity path="/stat/hzCaseInfoSeat.do" location="1123,1662" dimension="358,84" />
+  <StrutsActivity path="/stat/effectCaseInfoSeat.do" location="272,831" dimension="358,84" />
+  <StrutsActivity path="/stat/effectCaseInfoProperty.do" location="2424,0" dimension="358,84" />
+  <StrutsActivity path="/stat/effectStat.do" location="3350,2450" dimension="358,84" />
+  <StrutsActivity path="/stat/productPriceForDate.do" location="1384,0" dimension="358,84" />
+  <StrutsActivity path="/stat/priceStatByProduct.do" location="1231,831" dimension="358,84" />
+  <StrutsActivity path="/stat/priceStatForProduct.do" location="2307,277" dimension="358,84" />
+  <StrutsActivity path="/stat/focusCaseInfoUser.do" location="2181,831" dimension="358,84" />
+  <StrutsActivity path="/stat/priceInfo.do" location="988,2216" dimension="358,84" />
+  <StrutsActivity path="/stat/priceInfoForType.do" location="1195,1385" dimension="358,84" />
+  <StrutsActivity path="/sate/caseinfoForExport.do" location="263,1108" dimension="358,84" />
+  <StrutsActivity path="/stat/callCountStat.do" location="227,1939" dimension="358,84" />
+  <StrutsActivity path="/stat/hzCaseInfoForExport.do" location="281,554" dimension="358,84" />
+  <StrutsActivity path="/stat/sadInfoForProduct.do" location="1204,1108" dimension="358,84" />
+  <StrutsActivity path="/stat/productPriceStatForServiceType.do" location="1258,554" dimension="358,84" />
+  <StrutsActivity path="/stat/medicInfoForService.do" location="2235,554" dimension="358,84" />
+  <StrutsActivity path="/stat/medicInfoForNavigator.do" location="299,277" dimension="358,84" />
+  <StrutsActivity path="/stat/medicInfoForVisit.do" location="2145,1108" dimension="358,84" />
+  <StrutsActivity path="/stat/inquiryStatisticsForType.do" location="326,0" dimension="358,84" />
+  <StrutsActivity path="/stat/medicInfoByUser.do" location="2109,1385" dimension="358,84" />
+  <StrutsActivity path="/stat/medicInfoByParter.do" location="272,1385" dimension="358,84" />
+  <StrutsActivity path="/stat/corpInfoByServiceType.do" location="1312,277" dimension="358,84" />
+  <StrutsActivity path="/stat/sadStatisticsByType.do" location="900,3405" dimension="150,100" />
+  <StrutsActivity path="/stat/priceAgentProCount.do" location="3050,350" dimension="358,84" />
+  <StrutsActivity path="/stat/focusInfoByEditor.do" location="3350,1450" dimension="358,84" />
+  <StrutsActivity path="/stat/commonStateCase.do" location="4250,350" dimension="358,84" />
+  <StrutsActivity path="/stat/focusInfoByType.do" location="3950,1550" dimension="358,84" />
+  <StrutsActivity path="/stat/focusInfoOneEditor.do" location="2750,1750" dimension="358,84" />
+  <StrutsActivity path="/stat/focusInfoAllEditor.do" location="3650,350" dimension="358,84" />
+  <StrutsActivity path="/stat/markanaInfoByEditor.do" location="3950,1850" dimension="358,84" />
+  <StrutsActivity path="/stat/markanaInfoByType.do" location="3350,2050" dimension="358,84" />
+  <StrutsActivity path="/stat/markanaInfoByProduct.do" location="3050,2250" dimension="358,84" />
+  <StrutsActivity path="/stat/markanaInfoByProductType.do" location="3050,550" dimension="358,84" />
+  <StrutsActivity path="/stat/productPriceStatisticsByState.do" location="3650,550" dimension="308,88" />
+  <StrutsActivity path="/stat/corpInfoBySeat.do" location="4250,550" dimension="308,88" />
+  <StrutsActivity path="/stat/corpInfoByState.do" location="3050,750" dimension="308,88" />
+  <StrutsActivity path="/stat/medicInfoBySeat.do" location="3650,750" dimension="308,88" />
+  <StrutsActivity path="/stat/medicInfoByExpert.do" location="4250,750" dimension="308,88" />
+  <StrutsActivity path="/stat/medicInfoByState.do" location="3050,950" dimension="308,88" />
+  <StrutsActivity path="/stat/inquiryInfoByOrganization.do" location="3650,950" dimension="308,88" />
+  <StrutsActivity path="/stat/inquiryStatisticsByOrganizers.do" location="4550,1850" dimension="308,88" />
+  <StrutsActivity path="/stat/inquiryStatisticsBySeat.do" location="4250,2850" dimension="308,88" />
+  <StrutsActivity path="/stat/inquiryStatisticsByQuestion.do" location="3950,3050" dimension="308,88" />
+  <StrutsActivity path="/stat/inquiryStatisticsByAnswer.do" location="4250,950" dimension="358,84" />
+  <StrutsActivity path="chartDisplay;6" location="265,3324" dimension="178,72" />
+  <StrutsActivity path="chartDisplayForShow;6" location="0,3324" dimension="220,72" />
+  <StrutsActivity path="/stat/telMain.jsp" location="1432,3231" dimension="142,48" />
+  <StrutsActivity path="/stat/telQuery.jsp" location="1674,3231" dimension="148,48" />
+  <StrutsActivity path="/stat/telReport.jsp" location="1922,3231" dimension="154,48" />
+  <StrutsActivity path="/stat/ivrQuery.jsp" location="2121,3231" dimension="148,48" />
+  <StrutsActivity path="/stat/ivrReport.jsp" location="2369,3231" dimension="154,48" />
+  <StrutsActivity path="/stat/ivrMain.jsp" location="2623,3231" dimension="142,48" />
+  <StrutsActivity path="/stat/medicinfoPMain.jsp" location="869,2123" dimension="184,48" />
+  <StrutsActivity path="/stat/medicinfoPQuery.jsp" location="1153,2123" dimension="190,48" />
+  <StrutsActivity path="/stat/medicinfoPReport.jsp" location="1443,2123" dimension="196,48" />
+  <StrutsActivity path="/stat/bookMedicinfoPQuery.jsp" location="0,1846" dimension="214,48" />
+  <StrutsActivity path="/stat/bookMedicinfoPMain.jsp" location="314,1846" dimension="208,48" />
+  <StrutsActivity path="/stat/bookMedicinfoPReport.jsp" location="622,1846" dimension="220,48" />
+  <StrutsActivity path="/stat/corpinfoPQuery.jsp" location="2499,2123" dimension="184,48" />
+  <StrutsActivity path="/stat/corpinfoPReport.jsp" location="2783,2123" dimension="190,48" />
+  <StrutsActivity path="/stat/corpinfoPMain.jsp" location="3073,2123" dimension="178,48" />
+  <StrutsActivity path="/stat/priceMain.jsp" location="1504,2954" dimension="154,48" />
+  <StrutsActivity path="/stat/priceQuery.jsp" location="1758,2954" dimension="160,48" />
+  <StrutsActivity path="/stat/priceReport.jsp" location="2018,2954" dimension="166,48" />
+  <StrutsActivity path="/stat/expertMain.jsp" location="761,2954" dimension="160,48" />
+  <StrutsActivity path="/stat/expertQuery.jsp" location="1021,2954" dimension="166,48" />
+  <StrutsActivity path="/stat/expertReport.jsp" location="1287,2954" dimension="172,48" />
+  <StrutsActivity path="/stat/inquiryMain.jsp" location="1558,2677" dimension="166,48" />
+  <StrutsActivity path="/stat/inquiryQuery.jsp" location="1824,2677" dimension="172,48" />
+  <StrutsActivity path="/stat/inquiryReport.jsp" location="2096,2677" dimension="178,48" />
+  <StrutsActivity path="/stat/useMain.jsp" location="2810,3231" dimension="142,48" />
+  <StrutsActivity path="/stat/useQuery.jsp" location="3052,3231" dimension="148,48" />
+  <StrutsActivity path="/stat/useReport.jsp" location="3300,3231" dimension="154,48" />
+  <StrutsActivity path="/stat/smsStatMain.jsp" location="2319,2677" dimension="166,48" />
+  <StrutsActivity path="/stat/smsStatReport.jsp" location="2585,2677" dimension="178,48" />
+  <StrutsActivity path="/stat/smsStatQuery.jsp" location="2863,2677" dimension="172,48" />
+  <StrutsActivity path="/stat/moneyMain.jsp" location="2229,2954" dimension="154,48" />
+  <StrutsActivity path="/stat/moneyQuery.jsp" location="2483,2954" dimension="160,48" />
+  <StrutsActivity path="/stat/moneyReport.jsp" location="2743,2954" dimension="166,48" />
+  <StrutsActivity path="/stat/voiceMain.jsp" location="0,3231" dimension="154,48" />
+  <StrutsActivity path="/stat/voiceQuery.jsp" location="254,3231" dimension="160,48" />
+  <StrutsActivity path="/stat/voiceReport.jsp" location="514,3231" dimension="166,48" />
+  <StrutsActivity path="/stat/addressMain.jsp" location="0,2954" dimension="166,48" />
+  <StrutsActivity path="/stat/addressQuery.jsp" location="266,2954" dimension="172,48" />
+  <StrutsActivity path="/stat/addressReport.jsp" location="538,2954" dimension="178,48" />
+  <StrutsActivity path="/stat/appraiseMain.jsp" location="1594,2400" dimension="172,48" />
+  <StrutsActivity path="/stat/appraiseQuery.jsp" location="1866,2400" dimension="178,48" />
+  <StrutsActivity path="/stat/appraiseReport.jsp" location="2144,2400" dimension="184,48" />
+  <StrutsActivity path="/stat/argPriceMain.jsp" location="2373,2400" dimension="172,48" />
+  <StrutsActivity path="/stat/argPriceQuery.jsp" location="2645,2400" dimension="178,48" />
+  <StrutsActivity path="/stat/argPriceReport.jsp" location="2923,2400" dimension="184,48" />
+  <StrutsActivity path="/stat/userDialMain.jsp" location="0,2677" dimension="172,48" />
+  <StrutsActivity path="/stat/userDialQuery.jsp" location="272,2677" dimension="178,48" />
+  <StrutsActivity path="/stat/userDialReport.jsp" location="550,2677" dimension="184,48" />
+  <StrutsActivity path="/stat/userCaseMain.jsp" location="779,2677" dimension="172,48" />
+  <StrutsActivity path="/stat/userCaseQuery.jsp" location="1051,2677" dimension="178,48" />
+  <StrutsActivity path="/stat/userCaseReport.jsp" location="1329,2677" dimension="184,48" />
+  <StrutsActivity path="/stat/caseMain.jsp" location="725,3231" dimension="148,48" />
+  <StrutsActivity path="/stat/caseQuery.jsp" location="973,3231" dimension="154,48" />
+  <StrutsActivity path="/stat/caseReport.jsp" location="1227,3231" dimension="160,48" />
+  <StrutsActivity path="/stat/stateCaseMain.jsp" location="0,2400" dimension="178,48" />
+  <StrutsActivity path="/stat/stateCaseQuery.jsp" location="278,2400" dimension="184,48" />
+  <StrutsActivity path="/stat/stateCaseReport.jsp" location="562,2400" dimension="190,48" />
+  <StrutsActivity path="/stat/focusCaseInfoMain.jsp" location="1774,1846" dimension="202,48" />
+  <StrutsActivity path="/stat/focusCaseInfoQuery.jsp" location="2076,1846" dimension="208,48" />
+  <StrutsActivity path="/stat/focusCaseInfoReport.jsp" location="2384,1846" dimension="214,48" />
+  <StrutsActivity path="/stat/focusCaseInfoStatisticsMain.jsp" location="4250,1350" dimension="209,49" />
+  <StrutsActivity path="/stat/focusCaseInfoStatisticsQuery.jsp" location="4550,1350" dimension="217,49" />
+  <StrutsActivity path="/stat/focusCaseInfoStatisticsReport.jsp" location="4550,1450" dimension="220,49" />
+  <StrutsActivity path="/stat/HZCaseInfoStatisticsByStateMain.jsp" location="4550,1550" dimension="234,49" />
+  <StrutsActivity path="/stat/HZCaseInfoStatisticsByStateQuery.jsp" location="4550,1650" dimension="242,49" />
+  <StrutsActivity path="/stat/HZCaseInfoStatisticsByStateReport.jsp" location="4550,1750" dimension="245,49" />
+  <StrutsActivity path="/stat/hzCaseInfoMain.jsp" location="1684,2123" dimension="184,48" />
+  <StrutsActivity path="/stat/hzCaseInfoQuery.jsp" location="1968,2123" dimension="190,48" />
+  <StrutsActivity path="/stat/hzCaseInfoReport.jsp" location="2258,2123" dimension="196,48" />
+  <StrutsActivity path="/stat/hzCaseInfoSeatMain.jsp" location="887,1846" dimension="208,48" />
+  <StrutsActivity path="/stat/hzCaseInfoSeatQuery.jsp" location="1195,1846" dimension="214,48" />
+  <StrutsActivity path="/stat/hzCaseInfoSeatReport.jsp" location="1509,1846" dimension="220,48" />
+  <StrutsActivity path="/stat/effectCaseInfoSeatMain.jsp" location="0,1015" dimension="232,48" />
+  <StrutsActivity path="/stat/effectCaseInfoSeatQuery.jsp" location="332,1015" dimension="238,48" />
+  <StrutsActivity path="/stat/effectCaseInfoSeatReport.jsp" location="670,1015" dimension="244,48" />
+  <StrutsActivity path="/stat/effectCaseInfoPropertyMain.jsp" location="2116,184" dimension="256,48" />
+  <StrutsActivity path="/stat/effectCaseInfoPropertyQuery.jsp" location="2472,184" dimension="262,48" />
+  <StrutsActivity path="/stat/effectCaseInfoPropertyReport.jsp" location="2834,184" dimension="268,48" />
+  <StrutsActivity path="/stat/effectStatMain.jsp" location="2450,1950" dimension="184,48" />
+  <StrutsActivity path="/stat/effectStatQuery.jsp" location="4250,2050" dimension="190,48" />
+  <StrutsActivity path="/stat/effectStatReport.jsp" location="3950,2450" dimension="196,48" />
+  <StrutsActivity path="/stat/productPriceStatForDateMain.jsp" location="1067,184" dimension="262,48" />
+  <StrutsActivity path="/stat/productPriceStatForDateQuery.jsp" location="1429,184" dimension="268,48" />
+  <StrutsActivity path="/stat/productPriceStatForDateReport.jsp" location="1797,184" dimension="274,48" />
+  <StrutsActivity path="/stat/priceStatByProductMain.jsp" location="959,1015" dimension="232,48" />
+  <StrutsActivity path="/stat/priceStatByProductQuery.jsp" location="1291,1015" dimension="238,48" />
+  <StrutsActivity path="/stat/priceStatByProductReport.jsp" location="1629,1015" dimension="244,48" />
+  <StrutsActivity path="/stat/priceStatForProductMain.jsp" location="2026,461" dimension="238,48" />
+  <StrutsActivity path="/stat/priceStatForProductQuery.jsp" location="2364,461" dimension="244,48" />
+  <StrutsActivity path="/stat/priceStatForProductReport.jsp" location="2708,461" dimension="250,48" />
+  <StrutsActivity path="/stat/focusCaseInfoUserMain.jsp" location="1918,1015" dimension="226,48" />
+  <StrutsActivity path="/stat/focusCaseInfoUserQuery.jsp" location="2244,1015" dimension="232,48" />
+  <StrutsActivity path="/stat/focusCaseInfoUserReport.jsp" location="2576,1015" dimension="238,48" />
+  <StrutsActivity path="/stat/priceInfoMain.jsp" location="797,2400" dimension="178,48" />
+  <StrutsActivity path="/stat/priceInfoQuery.jsp" location="1075,2400" dimension="184,48" />
+  <StrutsActivity path="/stat/priceInfoReport.jsp" location="1359,2400" dimension="190,48" />
+  <StrutsActivity path="/stat/priceInfoForTypeMain.jsp" location="941,1569" dimension="220,48" />
+  <StrutsActivity path="/stat/priceInfoForTypeQuery.jsp" location="1261,1569" dimension="226,48" />
+  <StrutsActivity path="/stat/priceInfoForTypeReport.jsp" location="1587,1569" dimension="232,48" />
+  <StrutsActivity path="/stat/caseInfoForExportMain.jsp" location="0,1292" dimension="226,48" />
+  <StrutsActivity path="/stat/caseInfoForExportQuery.jsp" location="326,1292" dimension="232,48" />
+  <StrutsActivity path="/stat/caseInfoForExportReport.jsp" location="658,1292" dimension="238,48" />
+  <StrutsActivity path="/stat/callCountStatMain.jsp" location="0,2123" dimension="202,48" />
+  <StrutsActivity path="/stat/callCountStatQuery.jsp" location="302,2123" dimension="208,48" />
+  <StrutsActivity path="/stat/callCountStatReport.jsp" location="610,2123" dimension="214,48" />
+  <StrutsActivity path="/stat/hzCaseInfoForExportMain.jsp" location="0,738" dimension="238,48" />
+  <StrutsActivity path="/stat/HZCaseInfoForExportQuery.jsp" location="338,738" dimension="244,48" />
+  <StrutsActivity path="/stat/HZCaseInfoForExportReport.jsp" location="682,738" dimension="250,48" />
+  <StrutsActivity path="/stat/sadInfoForProductMain.jsp" location="941,1292" dimension="226,48" />
+  <StrutsActivity path="/stat/sadInfoForProductQuery.jsp" location="1267,1292" dimension="232,48" />
+  <StrutsActivity path="/stat/sadInfoForProductReport.jsp" location="1599,1292" dimension="238,48" />
+  <StrutsActivity path="/stat/productPriceForTypeMain.jsp" location="977,738" dimension="238,48" />
+  <StrutsActivity path="/stat/productPriceForTypeQuery.jsp" location="1315,738" dimension="244,48" />
+  <StrutsActivity path="/stat/productPriceForTypeMain1.jsp" location="3650,1250" dimension="244,48" />
+  <StrutsActivity path="/stat/productPriceForTypeReport.jsp" location="1659,738" dimension="250,48" />
+  <StrutsActivity path="/stat/medicInfoForServiceMain.jsp" location="1954,738" dimension="238,48" />
+  <StrutsActivity path="/stat/medicInfoForServiceQuery.jsp" location="2292,738" dimension="244,48" />
+  <StrutsActivity path="/stat/medicInfoForServiceReport.jsp" location="2636,738" dimension="250,48" />
+  <StrutsActivity path="/stat/medicInfoForNavigatorMain.jsp" location="0,461" dimension="250,48" />
+  <StrutsActivity path="/stat/medicInfoForNavigatorQuery.jsp" location="350,461" dimension="256,48" />
+  <StrutsActivity path="/stat/medicInfoForNavigatorReport.jsp" location="706,461" dimension="262,48" />
+  <StrutsActivity path="/stat/medicInfoForVisitMain.jsp" location="1882,1292" dimension="226,48" />
+  <StrutsActivity path="/stat/medicInfoForVisitQuery.jsp" location="2208,1292" dimension="232,48" />
+  <StrutsActivity path="/stat/medicInfoForVisitReport.jsp" location="2540,1292" dimension="238,48" />
+  <StrutsActivity path="/stat/inquiryStatisticsForTypeMain.jsp" location="0,184" dimension="268,48" />
+  <StrutsActivity path="/stat/inquiryStatisticsForTypeQuery.jsp" location="368,184" dimension="274,48" />
+  <StrutsActivity path="/stat/inquiryStatisticsForTypeReport.jsp" location="742,184" dimension="280,48" />
+  <StrutsActivity path="/stat/medicInfoByUserMain.jsp" location="1864,1569" dimension="214,48" />
+  <StrutsActivity path="/stat/medicInfoByUserQuery.jsp" location="2178,1569" dimension="220,48" />
+  <StrutsActivity path="/stat/medicInfoByUserReport.jsp" location="2498,1569" dimension="226,48" />
+  <StrutsActivity path="/stat/medicInfoByParterMain.jsp" location="338,1569" dimension="226,48" />
+  <StrutsActivity path="/stat/medicInfoByParterQuery.jsp" location="664,1569" dimension="232,48" />
+  <StrutsActivity path="/stat/medicInfoByParterReport.jsp" location="0,1569" dimension="238,48" />
+  <StrutsActivity path="/stat/corpInfoByServiceTypeMain.jsp" location="1013,461" dimension="250,48" />
+  <StrutsActivity path="/stat/corpInfoByServiceTypeQuery.jsp" location="1363,461" dimension="256,48" />
+  <StrutsActivity path="/stat/corpInfoByServiceTypeReport.jsp" location="1719,461" dimension="262,48" />
+  <StrutsActivity path="/stat/sadStatisticsByTypeMain.jsp" location="810,3509" dimension="150,100" />
+  <StrutsActivity path="/stat/sadStatisticsByTypeQuery.jsp" location="1040,3520" dimension="150,100" />
+  <StrutsActivity path="/stat/sadStatisticsByTypeReport.jsp" location="1130,3459" dimension="150,100" />
+  <StrutsActivity path="/stat/priceAgentProCountMain.jsp" location="3650,1350" dimension="232,48" />
+  <StrutsActivity path="/stat/priceAgentProCountQuery.jsp" location="2750,1450" dimension="238,48" />
+  <StrutsActivity path="/stat/priceAgentProCountReport.jsp" location="3050,1450" dimension="244,48" />
+  <StrutsActivity path="/stat/focusInfoByEditorMain.jsp" location="3350,1350" dimension="226,48" />
+  <StrutsActivity path="/stat/focusInfoByEditorQuery.jsp" location="3950,1350" dimension="232,48" />
+  <StrutsActivity path="/stat/focusInfoByEditorReport.jsp" location="3950,1450" dimension="238,48" />
+  <StrutsActivity path="/stat/commonStateCaseMain.jsp" location="4250,1450" dimension="214,48" />
+  <StrutsActivity path="/stat/commonStateCaseQuery.jsp" location="4250,1750" dimension="220,48" />
+  <StrutsActivity path="/stat/commonStateCaseReport.jsp" location="3650,1950" dimension="226,48" />
+  <StrutsActivity path="/stat/focusInfoByTypeMain.jsp" location="3050,1650" dimension="214,48" />
+  <StrutsActivity path="/stat/focusInfoByTypeQuery.jsp" location="3350,1650" dimension="220,48" />
+  <StrutsActivity path="/stat/focusInfoByTypeReport.jsp" location="3650,1650" dimension="226,48" />
+  <StrutsActivity path="/stat/focusInfoOneEditorMain.jsp" location="3350,1750" dimension="232,48" />
+  <StrutsActivity path="/stat/focusInfoOneEditorQuery.jsp" location="3650,1750" dimension="238,48" />
+  <StrutsActivity path="/stat/focusInfoOneEditorReport.jsp" location="3950,1750" dimension="244,48" />
+  <StrutsActivity path="/stat/focusInfoAllEditorMain.jsp" location="3050,1550" dimension="232,48" />
+  <StrutsActivity path="/stat/focusInfoAllEditorQuery.jsp" location="3350,1850" dimension="238,48" />
+  <StrutsActivity path="/stat/focusInfoAllEditorReport.jsp" location="3650,1850" dimension="244,48" />
+  <StrutsActivity path="/stat/markanaInfoByEditorMain.jsp" location="650,1950" dimension="238,48" />
+  <StrutsActivity path="/stat/markanaInfoByEditorQuery.jsp" location="1550,1950" dimension="244,48" />
+  <StrutsActivity path="/stat/markanaInfoByEditorReport.jsp" location="3350,1950" dimension="250,48" />
+  <StrutsActivity path="/stat/markanaInfoByEditorUniteMain.jsp" location="3650,3350" dimension="268,48" />
+  <StrutsActivity path="/stat/markanaInfoByTypeMain.jsp" location="3950,2050" dimension="226,48" />
+  <StrutsActivity path="/stat/markanaInfoByTypeQuery.jsp" location="3950,2150" dimension="232,48" />
+  <StrutsActivity path="/stat/markanaInfoByTypeReport.jsp" location="650,2250" dimension="238,48" />
+  <StrutsActivity path="/stat/markanaInfoByProductMain.jsp" location="3650,2250" dimension="244,48" />
+  <StrutsActivity path="/stat/markanaInfoByProductQuery.jsp" location="3950,2250" dimension="250,48" />
+  <StrutsActivity path="/stat/markanaInfoByProductReport.jsp" location="3650,2350" dimension="256,48" />
+  <StrutsActivity path="/stat/markanaInfoByProductTypeMain.jsp" location="4250,2150" dimension="268,48" />
+  <StrutsActivity path="/stat/markanaInfoByProductTypeQuery.jsp" location="4250,2250" dimension="274,48" />
+  <StrutsActivity path="/stat/markanaInfoByProductTypeReport.jsp" location="4250,2350" dimension="280,48" />
+  <StrutsActivity path="/stat/productPriceStatisticsByStateMain.jsp" location="4250,2450" dimension="237,49" />
+  <StrutsActivity path="/stat/productPriceStatisticsByStateQuery.jsp" location="4550,2450" dimension="245,49" />
+  <StrutsActivity path="/stat/productPriceStatisticsByStateReport.jsp" location="650,2550" dimension="248,49" />
+  <StrutsActivity path="/stat/corpInfoBySeatMain.jsp" location="2150,2550" dimension="171,49" />
+  <StrutsActivity path="/stat/corpInfoBySeatQuery.jsp" location="3050,2550" dimension="179,49" />
+  <StrutsActivity path="/stat/corpInfoBySeatReport.jsp" location="3950,2550" dimension="182,49" />
+  <StrutsActivity path="/stat/corpInfoByStateMain.jsp" location="4250,2550" dimension="175,49" />
+  <StrutsActivity path="/stat/corpInfoByStateQuery.jsp" location="4550,2550" dimension="183,49" />
+  <StrutsActivity path="/stat/corpInfoByStateReport.jsp" location="3350,2650" dimension="186,49" />
+  <StrutsActivity path="/stat/medicInfoBySeatMain.jsp" location="3650,2650" dimension="177,49" />
+  <StrutsActivity path="/stat/medicInfoBySeatQuery.jsp" location="3950,2650" dimension="185,49" />
+  <StrutsActivity path="/stat/medicInfoBySeatReport.jsp" location="4250,2650" dimension="188,49" />
+  <StrutsActivity path="/stat/medicInfoByExpertMain.jsp" location="4550,2650" dimension="187,49" />
+  <StrutsActivity path="/stat/medicInfoByExpertQuery.jsp" location="3350,2750" dimension="195,49" />
+  <StrutsActivity path="/stat/medicInfoByExpertReport.jsp" location="3650,2750" dimension="198,49" />
+  <StrutsActivity path="/stat/medicInfoByStateMain.jsp" location="3950,2750" dimension="181,49" />
+  <StrutsActivity path="/stat/medicInfoByStateQuery.jsp" location="4250,2750" dimension="189,49" />
+  <StrutsActivity path="/stat/medicInfoByStateReport.jsp" location="4550,2750" dimension="192,49" />
+  <StrutsActivity path="/stat/inquiryInfoByOrganizationMain.jsp" location="650,2850" dimension="221,49" />
+  <StrutsActivity path="/stat/inquiryInfoByOrganizationQuery.jsp" location="3050,2850" dimension="229,49" />
+  <StrutsActivity path="/stat/inquiryInfoByOrganizationReport.jsp" location="3350,2850" dimension="232,49" />
+  <StrutsActivity path="/stat/inquiryStatisticsByOrganizersMain.jsp" location="4550,2050" dimension="235,49" />
+  <StrutsActivity path="/stat/inquiryStatisticsByOrganizersQuery.jsp" location="3650,2850" dimension="243,49" />
+  <StrutsActivity path="/stat/inquiryStatisticsByOrganizersReport.jsp" location="3950,2850" dimension="246,49" />
+  <StrutsActivity path="/stat/inquiryStatisticsBySeatMain.jsp" location="3650,2950" dimension="205,49" />
+  <StrutsActivity path="/stat/inquiryStatisticsBySeatQuery.jsp" location="3950,2950" dimension="213,49" />
+  <StrutsActivity path="/stat/inquiryStatisticsBySeatReport.jsp" location="3650,3050" dimension="216,49" />
+  <StrutsActivity path="/stat/inquiryStatisticsByQuestionMain.jsp" location="4550,3050" dimension="226,49" />
+  <StrutsActivity path="/stat/inquiryStatisticsByQuestionQuery.jsp" location="3650,3150" dimension="234,49" />
+  <StrutsActivity path="/stat/inquiryStatisticsByQuestionReport.jsp" location="4550,3150" dimension="237,49" />
+  <StrutsActivity path="/stat/inquiryStatisticsByAnswerMain.jsp" location="3050,3350" dimension="274,48" />
+  <StrutsActivity path="/stat/inquiryStatisticsByAnswerQuery.jsp" location="3650,3250" dimension="280,48" />
+  <StrutsActivity path="/stat/inquiryStatisticsByAnswerReport.jsp" location="4250,3250" dimension="286,48" />
+  <StrutsActivity path="/stat/chartDisplay.jsp" location="268,3496" dimension="172,48" />
+  <StrutsActivity path="/stat/chartDisplayForShow.jsp" location="3,3496" dimension="214,48" />
+  <StrutsActivity path="/stat/messageMain.jsp" location="1368,3324" dimension="166,48" />
+  <StrutsActivity path="/stat/messageQuery.jsp" location="934,3324" dimension="172,48" />
+  <StrutsActivity path="/stat/messageReport.jsp" location="488,3324" dimension="178,48" />
+  <StrutsActivity path="/stat/inqueryMain.jsp" location="1579,3324" dimension="166,48" />
+  <StrutsActivity path="/stat/inqueryQuery.jsp" location="1151,3324" dimension="172,48" />
+  <StrutsActivity path="/stat/inqueryReport.jsp" location="711,3324" dimension="178,48" />
+  <StrutsActivity path="/stat/Main.jsp" location="2737,3324" dimension="124,48" />
+  <StrutsActivity path="/stat/noteQuery.jsp" location="1995,3324" dimension="154,48" />
+  <StrutsActivity path="/stat/moteReport.jsp" location="1790,3324" dimension="160,48" />
+  <StrutsActivity path="/stat/moMain.jsp" location="2381,3324" dimension="136,48" />
+  <StrutsActivity path="/stat/mReport.jsp" location="2194,3324" dimension="142,48" />
+  <StrutsActivity path="/stat/Query.jsp" location="2562,3324" dimension="130,48" />
+  <StrutsTransition id="/stat/corpInfoByState.do,report,/stat/corpInfoByStateReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3358,794" />
+      <AbsolutePoint location="3415,794" />
+      <AbsolutePoint location="3415,1213" />
+      <AbsolutePoint location="3331,1213" />
+      <AbsolutePoint location="3331,2114" />
+      <AbsolutePoint location="-39,2114" />
+      <AbsolutePoint location="-39,2736" />
+      <AbsolutePoint location="3443,2736" />
+      <AbsolutePoint location="3443,2699" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoByParter.do,query,/stat/medicInfoByParterQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="630,1427" />
+      <AbsolutePoint location="780,1427" />
+      <AbsolutePoint location="780,1569" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/productPriceStatisticsByState.do,query,/stat/productPriceStatisticsByStateQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3958,594" />
+      <AbsolutePoint location="4093,594" />
+      <AbsolutePoint location="4093,930" />
+      <AbsolutePoint location="-105,930" />
+      <AbsolutePoint location="-105,3725" />
+      <AbsolutePoint location="4993,3725" />
+      <AbsolutePoint location="4993,2665" />
+      <AbsolutePoint location="4757,2665" />
+      <AbsolutePoint location="4757,2499" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusCaseInfo.do,query,/stat/focusCaseInfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2180,1746" />
+      <AbsolutePoint location="2180,1846" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiry.do,query,/stat/inquiryQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1910,2577" />
+      <AbsolutePoint location="1910,2677" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/productPriceStatForServiceType.do,report,/stat/productPriceForTypeReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1616,596" />
+      <AbsolutePoint location="1784,596" />
+      <AbsolutePoint location="1784,738" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/corpInfoBySeat.do,query,/stat/corpInfoBySeatQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4404,550" />
+      <AbsolutePoint location="4404,444" />
+      <AbsolutePoint location="646,444" />
+      <AbsolutePoint location="646,1785" />
+      <AbsolutePoint location="1434,1785" />
+      <AbsolutePoint location="1434,2387" />
+      <AbsolutePoint location="3139,2387" />
+      <AbsolutePoint location="3139,2550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/hzCaseInfoSeat.do,query,/stat/hzCaseInfoSeatQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1302,1746" />
+      <AbsolutePoint location="1302,1846" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/priceInfo.do,main,/stat/priceInfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="988,2265" />
+      <AbsolutePoint location="903,2265" />
+      <AbsolutePoint location="903,2400" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoByParter.do,main,/stat/medicInfoByParterMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="451,1469" />
+      <AbsolutePoint location="451,1569" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiryStatisticsForType.do,query,/stat/inquiryStatisticsForTypeQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="505,84" />
+      <AbsolutePoint location="505,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusInfoByEditor.do,query,/stat/focusInfoByEditorQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3708,1453" />
+      <AbsolutePoint location="3921,1453" />
+      <AbsolutePoint location="3921,1374" />
+      <AbsolutePoint location="3950,1374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/sadStatisticsByType.do,query,/stat/sadStatisticsByTypeQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="975,3505" />
+      <AbsolutePoint location="975,3570" />
+      <AbsolutePoint location="1040,3570" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/markanaInfoByEditor.do,report,/stat/markanaInfoByEditorReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4129,1934" />
+      <AbsolutePoint location="4129,2013" />
+      <AbsolutePoint location="3475,2013" />
+      <AbsolutePoint location="3475,1998" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/userdial.do,report,/stat/userDialReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="540,2535" />
+      <AbsolutePoint location="635,2535" />
+      <AbsolutePoint location="635,2677" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sate/caseinfoForExport.do,report,/stat/caseInfoForExportReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="621,1150" />
+      <AbsolutePoint location="777,1150" />
+      <AbsolutePoint location="777,1292" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoByState.do,report,/stat/medicInfoByStateReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3050,994" />
+      <AbsolutePoint location="1577,994" />
+      <AbsolutePoint location="1577,1813" />
+      <AbsolutePoint location="588,1813" />
+      <AbsolutePoint location="588,2365" />
+      <AbsolutePoint location="2092,2365" />
+      <AbsolutePoint location="2092,2941" />
+      <AbsolutePoint location="4646,2941" />
+      <AbsolutePoint location="4646,2799" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/effectCaseInfoProperty.do,query,/stat/effectCaseInfoPropertyQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2603,84" />
+      <AbsolutePoint location="2603,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoByState.do,query,/stat/medicInfoByStateQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3050,1000" />
+      <AbsolutePoint location="2518,1000" />
+      <AbsolutePoint location="2518,1513" />
+      <AbsolutePoint location="3285,1513" />
+      <AbsolutePoint location="3285,2211" />
+      <AbsolutePoint location="1552,2211" />
+      <AbsolutePoint location="1552,2746" />
+      <AbsolutePoint location="4344,2746" />
+      <AbsolutePoint location="4344,2750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicinfoP.do,tomedicinfoPMain,/stat/medicinfoPMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1069,1981" />
+      <AbsolutePoint location="961,1981" />
+      <AbsolutePoint location="961,2123" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/priceStatByProduct.do,query,/stat/priceStatByProductQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1410,915" />
+      <AbsolutePoint location="1410,1015" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/agrprice.do,main,/stat/argPriceMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2555,2258" />
+      <AbsolutePoint location="2439,2258" />
+      <AbsolutePoint location="2439,2400" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/priceInfoForType.do,main,/stat/priceInfoForTypeMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1195,1427" />
+      <AbsolutePoint location="1051,1427" />
+      <AbsolutePoint location="1051,1569" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sate/caseinfoForExport.do,main,/stat/caseInfoForExportMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="263,1150" />
+      <AbsolutePoint location="113,1150" />
+      <AbsolutePoint location="113,1292" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/effectStat.do,report,/stat/effectStatReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3708,2483" />
+      <AbsolutePoint location="3950,2483" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/corpInfoByState.do,query,/stat/corpInfoByStateQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3358,784" />
+      <AbsolutePoint location="3471,784" />
+      <AbsolutePoint location="3471,1123" />
+      <AbsolutePoint location="3947,1123" />
+      <AbsolutePoint location="3947,2543" />
+      <AbsolutePoint location="4641,2543" />
+      <AbsolutePoint location="4641,2550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/productPriceForDate.do,main,/stat/productPriceStatForDateMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1384,42" />
+      <AbsolutePoint location="1198,42" />
+      <AbsolutePoint location="1198,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/markanaInfoByType.do,report,/stat/markanaInfoByTypeReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3350,2092" />
+      <AbsolutePoint location="839,2092" />
+      <AbsolutePoint location="839,2250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusInfoByEditor.do,report,/stat/focusInfoByEditorReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3708,1483" />
+      <AbsolutePoint location="3950,1483" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/hzCaseInfoSeat.do,report,/stat/hzCaseInfoSeatReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1481,1704" />
+      <AbsolutePoint location="1619,1704" />
+      <AbsolutePoint location="1619,1846" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoForService.do,report,/stat/medicInfoForServiceReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2593,596" />
+      <AbsolutePoint location="2761,596" />
+      <AbsolutePoint location="2761,738" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoForNavigator.do,query,/stat/medicInfoForNavigatorQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="478,361" />
+      <AbsolutePoint location="478,461" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/sadStatisticsByType.do,main,/stat/sadStatisticsByTypeMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="945,3505" />
+      <AbsolutePoint location="945,3509" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/priceStatForProduct.do,query,/stat/priceStatForProductQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2486,361" />
+      <AbsolutePoint location="2486,461" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/markanaInfoByType.do,main,/stat/markanaInfoByTypeMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3708,2083" />
+      <AbsolutePoint location="3950,2083" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/expert.do,query,/stat/expertQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1104,2854" />
+      <AbsolutePoint location="1104,2954" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/voiceLeave.do,main,/stat/voiceMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="155,3089" />
+      <AbsolutePoint location="77,3089" />
+      <AbsolutePoint location="77,3231" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="chartDisplay;6,null,/stat/chartDisplay.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="354,3396" />
+      <AbsolutePoint location="354,3496" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/markanaInfoByProductType.do,main,/stat/markanaInfoByProductTypeMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3259,634" />
+      <AbsolutePoint location="3259,713" />
+      <AbsolutePoint location="-75,713" />
+      <AbsolutePoint location="-75,2614" />
+      <AbsolutePoint location="4993,2614" />
+      <AbsolutePoint location="4993,2174" />
+      <AbsolutePoint location="4518,2174" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/markanaInfoByEditor.do,uniteMain,/stat/markanaInfoByEditorUniteMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4159,1934" />
+      <AbsolutePoint location="4159,1965" />
+      <AbsolutePoint location="4933,1965" />
+      <AbsolutePoint location="4933,3374" />
+      <AbsolutePoint location="3918,3374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusInfoByEditor.do,main,/stat/focusInfoByEditorMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3529,1450" />
+      <AbsolutePoint location="3529,1398" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/effectStat.do,main,/stat/effectStatMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3529,2450" />
+      <AbsolutePoint location="3529,2365" />
+      <AbsolutePoint location="2484,2365" />
+      <AbsolutePoint location="2484,1998" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/hzCaseInfoSeat.do,main,/stat/hzCaseInfoSeatMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1123,1704" />
+      <AbsolutePoint location="991,1704" />
+      <AbsolutePoint location="991,1846" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusCaseInfoStatistics.do,query,/stat/focusCaseInfoStatisticsQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3534,238" />
+      <AbsolutePoint location="3534,683" />
+      <AbsolutePoint location="4658,683" />
+      <AbsolutePoint location="4658,1350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/priceStatForProduct.do,report,/stat/priceStatForProductReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2665,319" />
+      <AbsolutePoint location="2819,319" />
+      <AbsolutePoint location="2819,461" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoByState.do,main,/stat/medicInfoByStateMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3347,1038" />
+      <AbsolutePoint location="3347,2204" />
+      <AbsolutePoint location="3927,2204" />
+      <AbsolutePoint location="3927,2774" />
+      <AbsolutePoint location="3950,2774" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/priceInfo.do,report,/stat/priceInfoReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1346,2258" />
+      <AbsolutePoint location="1458,2258" />
+      <AbsolutePoint location="1458,2400" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoBySeat.do,main,/stat/medicInfoBySeatMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3958,800" />
+      <AbsolutePoint location="4045,800" />
+      <AbsolutePoint location="4045,1289" />
+      <AbsolutePoint location="3897,1289" />
+      <AbsolutePoint location="3897,2271" />
+      <AbsolutePoint location="3915,2271" />
+      <AbsolutePoint location="3915,2674" />
+      <AbsolutePoint location="3827,2674" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/markanaInfoByProductType.do,query,/stat/markanaInfoByProductTypeQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3229,634" />
+      <AbsolutePoint location="3229,683" />
+      <AbsolutePoint location="-45,683" />
+      <AbsolutePoint location="-45,2065" />
+      <AbsolutePoint location="3309,2065" />
+      <AbsolutePoint location="3309,2231" />
+      <AbsolutePoint location="4387,2231" />
+      <AbsolutePoint location="4387,2250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiryStatisticsForType.do,main,/stat/inquiryStatisticsForTypeMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="326,42" />
+      <AbsolutePoint location="134,42" />
+      <AbsolutePoint location="134,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoByExpert.do,report,/stat/medicInfoByExpertReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4250,794" />
+      <AbsolutePoint location="4159,794" />
+      <AbsolutePoint location="4159,1321" />
+      <AbsolutePoint location="4521,1321" />
+      <AbsolutePoint location="4521,2241" />
+      <AbsolutePoint location="3921,2241" />
+      <AbsolutePoint location="3921,2774" />
+      <AbsolutePoint location="3848,2774" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusCaseInfo.do,main,/stat/focusCaseInfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2001,1704" />
+      <AbsolutePoint location="1879,1704" />
+      <AbsolutePoint location="1879,1846" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/productPriceForDate.do,report,/stat/productPriceStatForDateReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1742,42" />
+      <AbsolutePoint location="1934,42" />
+      <AbsolutePoint location="1934,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicinfoP.do,medicinfoPreport,/stat/medicinfoPReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1427,1981" />
+      <AbsolutePoint location="1535,1981" />
+      <AbsolutePoint location="1535,2123" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/priceInfoForType.do,report,/stat/priceInfoForTypeReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1553,1427" />
+      <AbsolutePoint location="1703,1427" />
+      <AbsolutePoint location="1703,1569" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/appraise.do,query,/stat/appraiseQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1955,2300" />
+      <AbsolutePoint location="1955,2400" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/corpInfoByServiceType.do,report,/stat/corpInfoByServiceTypeReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1670,319" />
+      <AbsolutePoint location="1850,319" />
+      <AbsolutePoint location="1850,461" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/corpInfoByState.do,main,/stat/corpInfoByStateMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3358,800" />
+      <AbsolutePoint location="3385,800" />
+      <AbsolutePoint location="3385,1180" />
+      <AbsolutePoint location="4547,1180" />
+      <AbsolutePoint location="4547,2574" />
+      <AbsolutePoint location="4425,2574" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoForVisit.do,query,/stat/medicInfoForVisitQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2324,1192" />
+      <AbsolutePoint location="2324,1292" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/sadInfoForProduct.do,main,/stat/sadInfoForProductMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1204,1150" />
+      <AbsolutePoint location="1054,1150" />
+      <AbsolutePoint location="1054,1292" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/telephone.do,query,/stat/telQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1748,3131" />
+      <AbsolutePoint location="1748,3231" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiryStatisticsByQuestion.do,report,/stat/inquiryStatisticsByQuestionReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4258,3114" />
+      <AbsolutePoint location="4668,3114" />
+      <AbsolutePoint location="4668,3150" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiry.do,report,/stat/inquiryReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2033,2577" />
+      <AbsolutePoint location="2033,2701" />
+      <AbsolutePoint location="2096,2701" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoForNavigator.do,main,/stat/medicInfoForNavigatorMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="299,319" />
+      <AbsolutePoint location="125,319" />
+      <AbsolutePoint location="125,461" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiryStatisticsByQuestion.do,main,/stat/inquiryStatisticsByQuestionMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4258,3084" />
+      <AbsolutePoint location="4550,3084" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/commonStateCase.do,main,/stat/commonStateCaseMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4250,422" />
+      <AbsolutePoint location="4233,422" />
+      <AbsolutePoint location="4233,1474" />
+      <AbsolutePoint location="4250,1474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/userdial.do,query,/stat/userDialQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="361,2577" />
+      <AbsolutePoint location="361,2677" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/effectCaseInfoSeat.do,query,/stat/effectCaseInfoSeatQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="451,915" />
+      <AbsolutePoint location="451,1015" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/use.do,query,/stat/useQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3126,3131" />
+      <AbsolutePoint location="3126,3231" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/voiceLeave.do,report,/stat/voiceReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="513,3089" />
+      <AbsolutePoint location="597,3089" />
+      <AbsolutePoint location="597,3231" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/priceInfoForType.do,query,/stat/priceInfoForTypeQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1374,1469" />
+      <AbsolutePoint location="1374,1569" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusInfoByType.do,main,/stat/focusInfoByTypeMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3950,1613" />
+      <AbsolutePoint location="3157,1613" />
+      <AbsolutePoint location="3157,1650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusInfoAllEditor.do,query,/stat/focusInfoAllEditorQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3973,434" />
+      <AbsolutePoint location="3973,1078" />
+      <AbsolutePoint location="3309,1078" />
+      <AbsolutePoint location="3309,1874" />
+      <AbsolutePoint location="3350,1874" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoByExpert.do,main,/stat/medicInfoByExpertMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4558,804" />
+      <AbsolutePoint location="4777,804" />
+      <AbsolutePoint location="4777,1541" />
+      <AbsolutePoint location="617,1541" />
+      <AbsolutePoint location="617,2098" />
+      <AbsolutePoint location="-53,2098" />
+      <AbsolutePoint location="-53,3039" />
+      <AbsolutePoint location="4763,3039" />
+      <AbsolutePoint location="4763,2687" />
+      <AbsolutePoint location="4737,2687" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/productPriceStatisticsByState.do,report,/stat/productPriceStatisticsByStateReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3650,594" />
+      <AbsolutePoint location="3443,594" />
+      <AbsolutePoint location="3443,1319" />
+      <AbsolutePoint location="3937,1319" />
+      <AbsolutePoint location="3937,2341" />
+      <AbsolutePoint location="774,2341" />
+      <AbsolutePoint location="774,2550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/ivr.do,ivrreport,/stat/ivrReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2446,3131" />
+      <AbsolutePoint location="2446,3231" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/hzCaseInfoForExport.do,query,/stat/HZCaseInfoForExportQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="460,638" />
+      <AbsolutePoint location="460,738" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoForNavigator.do,report,/stat/medicInfoForNavigatorReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="657,319" />
+      <AbsolutePoint location="837,319" />
+      <AbsolutePoint location="837,461" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/bookMedicinfoP.do,tobookMedicinfoPMain,/stat/bookMedicinfoPMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="418,1746" />
+      <AbsolutePoint location="418,1846" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiryStatisticsByAnswer.do,report,/stat/inquiryStatisticsByAnswerReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4608,992" />
+      <AbsolutePoint location="4903,992" />
+      <AbsolutePoint location="4903,3274" />
+      <AbsolutePoint location="4536,3274" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiryInfoByOrganization.do,query,/stat/inquiryInfoByOrganizationQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3903,1038" />
+      <AbsolutePoint location="3903,1343" />
+      <AbsolutePoint location="2739,1343" />
+      <AbsolutePoint location="2739,1931" />
+      <AbsolutePoint location="2251,1931" />
+      <AbsolutePoint location="2251,2397" />
+      <AbsolutePoint location="3232,2397" />
+      <AbsolutePoint location="3232,2850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/expert.do,report,/stat/expertReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1283,2812" />
+      <AbsolutePoint location="1373,2812" />
+      <AbsolutePoint location="1373,2954" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiryStatisticsBySeat.do,report,/stat/inquiryStatisticsBySeatReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4434,2938" />
+      <AbsolutePoint location="4434,3017" />
+      <AbsolutePoint location="3758,3017" />
+      <AbsolutePoint location="3758,3050" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/price.do,query,/stat/priceQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1838,2854" />
+      <AbsolutePoint location="1838,2954" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/corpInfoByServiceType.do,main,/stat/corpInfoByServiceTypeMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1312,319" />
+      <AbsolutePoint location="1138,319" />
+      <AbsolutePoint location="1138,461" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/HZCaseInfoStatisticsByState.do,report,/stat/HZCaseInfoStatisticsByStateReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4258,164" />
+      <AbsolutePoint location="4933,164" />
+      <AbsolutePoint location="4933,1774" />
+      <AbsolutePoint location="4795,1774" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoForVisit.do,report,/stat/medicInfoForVisitReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2503,1150" />
+      <AbsolutePoint location="2659,1150" />
+      <AbsolutePoint location="2659,1292" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/markanaInfoByProduct.do,main,/stat/markanaInfoByProductMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3408,2253" />
+      <AbsolutePoint location="3650,2253" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/ivr.do,ivrquery,/stat/ivrQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2267,3089" />
+      <AbsolutePoint location="2199,3089" />
+      <AbsolutePoint location="2199,3231" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/markanaInfoByProductType.do,report,/stat/markanaInfoByProductTypeReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3199,634" />
+      <AbsolutePoint location="3199,653" />
+      <AbsolutePoint location="-135,653" />
+      <AbsolutePoint location="-135,2665" />
+      <AbsolutePoint location="3125,2665" />
+      <AbsolutePoint location="3125,2714" />
+      <AbsolutePoint location="4502,2714" />
+      <AbsolutePoint location="4502,2398" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/HZCaseInfoStatisticsByState.do,main,/stat/HZCaseInfoStatisticsByStateMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4258,194" />
+      <AbsolutePoint location="4840,194" />
+      <AbsolutePoint location="4840,1574" />
+      <AbsolutePoint location="4784,1574" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/money.do,main,/stat/moneyMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2384,2812" />
+      <AbsolutePoint location="2304,2812" />
+      <AbsolutePoint location="2304,2954" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/expert.do,main,/stat/expertMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1006,2854" />
+      <AbsolutePoint location="1006,2978" />
+      <AbsolutePoint location="921,2978" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/money.do,report,/stat/moneyReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2742,2814" />
+      <AbsolutePoint location="2826,2814" />
+      <AbsolutePoint location="2826,2954" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusInfoByType.do,query,/stat/focusInfoByTypeQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3950,1583" />
+      <AbsolutePoint location="3460,1583" />
+      <AbsolutePoint location="3460,1650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/markanaInfoByEditor.do,main,/stat/markanaInfoByEditorMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3950,1913" />
+      <AbsolutePoint location="769,1913" />
+      <AbsolutePoint location="769,1950" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/priceStatForProduct.do,main,/stat/priceStatForProductMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2307,319" />
+      <AbsolutePoint location="2145,319" />
+      <AbsolutePoint location="2145,461" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/effectCaseInfoSeat.do,main,/stat/effectCaseInfoSeatMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="272,873" />
+      <AbsolutePoint location="116,873" />
+      <AbsolutePoint location="116,1015" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/address.do,query,/stat/addressQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="352,2854" />
+      <AbsolutePoint location="352,2954" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoByUser.do,main,/stat/medicInfoByUserMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2109,1427" />
+      <AbsolutePoint location="1971,1427" />
+      <AbsolutePoint location="1971,1569" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusCaseInfoStatistics.do,report,/stat/focusCaseInfoStatisticsReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3591,238" />
+      <AbsolutePoint location="3591,1414" />
+      <AbsolutePoint location="4660,1414" />
+      <AbsolutePoint location="4660,1450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/markanaInfoByEditor.do,query,/stat/markanaInfoByEditorQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3950,1931" />
+      <AbsolutePoint location="3921,1931" />
+      <AbsolutePoint location="3921,2186" />
+      <AbsolutePoint location="1669,2186" />
+      <AbsolutePoint location="1669,1998" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiry.do,main,/stat/inquiryMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1731,2535" />
+      <AbsolutePoint location="1641,2535" />
+      <AbsolutePoint location="1641,2677" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/corpInfoBySeat.do,report,/stat/corpInfoBySeatReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4250,608" />
+      <AbsolutePoint location="4171,608" />
+      <AbsolutePoint location="4171,1156" />
+      <AbsolutePoint location="4507,1156" />
+      <AbsolutePoint location="4507,2005" />
+      <AbsolutePoint location="4237,2005" />
+      <AbsolutePoint location="4237,2574" />
+      <AbsolutePoint location="4132,2574" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/corpinfoP.do,tocorpinfoPMain,/stat/corpinfoPMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3057,1981" />
+      <AbsolutePoint location="3162,1981" />
+      <AbsolutePoint location="3162,2123" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/markanaInfoByType.do,query,/stat/markanaInfoByTypeQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3529,2134" />
+      <AbsolutePoint location="3529,2156" />
+      <AbsolutePoint location="3950,2156" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusInfoAllEditor.do,report,/stat/focusInfoAllEditorReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4003,434" />
+      <AbsolutePoint location="4003,1265" />
+      <AbsolutePoint location="4485,1265" />
+      <AbsolutePoint location="4485,1814" />
+      <AbsolutePoint location="3799,1814" />
+      <AbsolutePoint location="3799,1850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiryStatisticsBySeat.do,main,/stat/inquiryStatisticsBySeatMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4250,2914" />
+      <AbsolutePoint location="3752,2914" />
+      <AbsolutePoint location="3752,2950" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusInfoOneEditor.do,query,/stat/focusInfoOneEditorQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3108,1814" />
+      <AbsolutePoint location="3769,1814" />
+      <AbsolutePoint location="3769,1798" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/ivr.do,ivrmain,/stat/ivrMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2625,3089" />
+      <AbsolutePoint location="2694,3089" />
+      <AbsolutePoint location="2694,3231" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/productPriceForDate.do,query,/stat/productPriceStatForDateQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1563,84" />
+      <AbsolutePoint location="1563,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoForService.do,query,/stat/medicInfoForServiceQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2414,638" />
+      <AbsolutePoint location="2414,738" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/hzCaseInfo.do,main,/stat/hzCaseInfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1884,1981" />
+      <AbsolutePoint location="1809,1981" />
+      <AbsolutePoint location="1809,2123" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiryStatisticsBySeat.do,query,/stat/inquiryStatisticsBySeatQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4404,2938" />
+      <AbsolutePoint location="4404,2974" />
+      <AbsolutePoint location="4163,2974" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/priceAgentProCount.do,report,/stat/priceAgentProCountReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3050,422" />
+      <AbsolutePoint location="3033,422" />
+      <AbsolutePoint location="3033,1474" />
+      <AbsolutePoint location="3050,1474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/voiceLeave.do,query,/stat/voiceQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="334,3131" />
+      <AbsolutePoint location="334,3231" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/productPriceStatForServiceType.do,main,/stat/productPriceForTypeMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1258,596" />
+      <AbsolutePoint location="1096,596" />
+      <AbsolutePoint location="1096,738" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/hzCaseInfoForExport.do,report,/stat/HZCaseInfoForExportReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="639,596" />
+      <AbsolutePoint location="807,596" />
+      <AbsolutePoint location="807,738" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiryStatisticsByQuestion.do,query,/stat/inquiryStatisticsByQuestionQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4104,3138" />
+      <AbsolutePoint location="4104,3174" />
+      <AbsolutePoint location="3884,3174" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/statecase.do,main,/stat/stateCaseMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="191,2258" />
+      <AbsolutePoint location="89,2258" />
+      <AbsolutePoint location="89,2400" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/use.do,main,/stat/useMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2947,3089" />
+      <AbsolutePoint location="2881,3089" />
+      <AbsolutePoint location="2881,3231" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicinfoP.do,tomedicinfoPQuery,/stat/medicinfoPQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1248,2023" />
+      <AbsolutePoint location="1248,2123" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/hzCaseInfo.do,report,/stat/hzCaseInfoReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2242,1981" />
+      <AbsolutePoint location="2344,1981" />
+      <AbsolutePoint location="2344,2123" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/markanaInfoByProduct.do,report,/stat/markanaInfoByProductReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3408,2283" />
+      <AbsolutePoint location="3589,2283" />
+      <AbsolutePoint location="3589,2365" />
+      <AbsolutePoint location="3650,2365" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiryStatisticsByAnswer.do,query,/stat/inquiryStatisticsByAnswerQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4608,962" />
+      <AbsolutePoint location="4963,962" />
+      <AbsolutePoint location="4963,3214" />
+      <AbsolutePoint location="3790,3214" />
+      <AbsolutePoint location="3790,3250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/smsStat.do,toSmsStatMain,/stat/smsStatMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2495,2535" />
+      <AbsolutePoint location="2402,2535" />
+      <AbsolutePoint location="2402,2677" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/smsStat.do,toSmsStatQuery,/stat/smsStatQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2853,2549" />
+      <AbsolutePoint location="2949,2549" />
+      <AbsolutePoint location="2949,2677" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/sadStatisticsByType.do,report,/stat/sadStatisticsByTypeReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1050,3474" />
+      <AbsolutePoint location="1130,3474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiryStatisticsByOrganizers.do,report,/stat/inquiryStatisticsByOrganizersReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4840,1938" />
+      <AbsolutePoint location="4840,2415" />
+      <AbsolutePoint location="4161,2415" />
+      <AbsolutePoint location="4161,2850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/effectCaseInfoProperty.do,main,/stat/effectCaseInfoPropertyMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2424,42" />
+      <AbsolutePoint location="2244,42" />
+      <AbsolutePoint location="2244,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/HZCaseInfoStatisticsByState.do,query,/stat/HZCaseInfoStatisticsByStateQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4258,224" />
+      <AbsolutePoint location="4810,224" />
+      <AbsolutePoint location="4810,1674" />
+      <AbsolutePoint location="4792,1674" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/productPriceStatForServiceType.do,query,/stat/productPriceForTypeQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1437,638" />
+      <AbsolutePoint location="1437,738" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/appraise.do,report,/stat/appraiseReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2134,2258" />
+      <AbsolutePoint location="2227,2258" />
+      <AbsolutePoint location="2227,2400" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/agrprice.do,report,/stat/argPriceReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2913,2265" />
+      <AbsolutePoint location="3015,2265" />
+      <AbsolutePoint location="3015,2400" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/userdial.do,main,/stat/userDialMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="182,2535" />
+      <AbsolutePoint location="86,2535" />
+      <AbsolutePoint location="86,2677" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/usercase.do,query,/stat/userCaseQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1140,2577" />
+      <AbsolutePoint location="1140,2677" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/productPriceStatForServiceType.do,main1,/stat/productPriceForTypeMain1.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1614,638" />
+      <AbsolutePoint location="1614,1274" />
+      <AbsolutePoint location="3650,1274" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/case.do,report,/stat/caseReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1229,3089" />
+      <AbsolutePoint location="1307,3089" />
+      <AbsolutePoint location="1307,3231" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/productPriceStatisticsByState.do,main,/stat/productPriceStatisticsByStateMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3799,550" />
+      <AbsolutePoint location="3799,524" />
+      <AbsolutePoint location="-15,524" />
+      <AbsolutePoint location="-15,3635" />
+      <AbsolutePoint location="4840,3635" />
+      <AbsolutePoint location="4840,2514" />
+      <AbsolutePoint location="4368,2514" />
+      <AbsolutePoint location="4368,2499" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoByUser.do,report,/stat/medicInfoByUserReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2467,1414" />
+      <AbsolutePoint location="2611,1414" />
+      <AbsolutePoint location="2611,1569" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoForVisit.do,main,/stat/medicInfoForVisitMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2145,1150" />
+      <AbsolutePoint location="1995,1150" />
+      <AbsolutePoint location="1995,1292" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoByExpert.do,query,/stat/medicInfoByExpertQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4558,794" />
+      <AbsolutePoint location="4787,794" />
+      <AbsolutePoint location="4787,1643" />
+      <AbsolutePoint location="600,1643" />
+      <AbsolutePoint location="600,2315" />
+      <AbsolutePoint location="2856,2315" />
+      <AbsolutePoint location="2856,2774" />
+      <AbsolutePoint location="3350,2774" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/usercase.do,report,/stat/userCaseReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1319,2535" />
+      <AbsolutePoint location="1421,2535" />
+      <AbsolutePoint location="1421,2677" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/corpinfoP.do,tocorpinfoPQuery,/stat/corpinfoPQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2699,1981" />
+      <AbsolutePoint location="2649,1981" />
+      <AbsolutePoint location="2649,2123" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/markanaInfoByProduct.do,query,/stat/markanaInfoByProductQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3408,2313" />
+      <AbsolutePoint location="4075,2313" />
+      <AbsolutePoint location="4075,2298" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/money.do,query,/stat/moneyQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2563,2854" />
+      <AbsolutePoint location="2563,2954" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoByParter.do,report,/stat/medicInfoByParterReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="272,1427" />
+      <AbsolutePoint location="119,1427" />
+      <AbsolutePoint location="119,1569" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiryStatisticsByOrganizers.do,query,/stat/inquiryStatisticsByOrganizersQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4810,1938" />
+      <AbsolutePoint location="4810,2814" />
+      <AbsolutePoint location="3771,2814" />
+      <AbsolutePoint location="3771,2850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/effectCaseInfoProperty.do,report,/stat/effectCaseInfoPropertyReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2782,42" />
+      <AbsolutePoint location="2968,42" />
+      <AbsolutePoint location="2968,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiryStatisticsForType.do,report,/stat/inquiryStatisticsForTypeReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="684,42" />
+      <AbsolutePoint location="882,42" />
+      <AbsolutePoint location="882,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/telephone.do,main,/stat/telMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1569,3089" />
+      <AbsolutePoint location="1489,3089" />
+      <AbsolutePoint location="1489,3231" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/commonStateCase.do,query,/stat/commonStateCaseQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4250,392" />
+      <AbsolutePoint location="4203,392" />
+      <AbsolutePoint location="4203,1514" />
+      <AbsolutePoint location="4360,1514" />
+      <AbsolutePoint location="4360,1750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/callCountStat.do,main,/stat/callCountStatMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="227,1981" />
+      <AbsolutePoint location="101,1981" />
+      <AbsolutePoint location="101,2123" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/callCountStat.do,query,/stat/callCountStatQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="406,2023" />
+      <AbsolutePoint location="406,2123" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusCaseInfoUser.do,report,/stat/focusCaseInfoUserReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2539,873" />
+      <AbsolutePoint location="2695,873" />
+      <AbsolutePoint location="2695,1015" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/effectCaseInfoSeat.do,report,/stat/effectCaseInfoSeatReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="630,873" />
+      <AbsolutePoint location="792,873" />
+      <AbsolutePoint location="792,1015" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/priceStatByProduct.do,main,/stat/priceStatByProductMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1231,873" />
+      <AbsolutePoint location="1075,873" />
+      <AbsolutePoint location="1075,1015" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoBySeat.do,query,/stat/medicInfoBySeatQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3958,794" />
+      <AbsolutePoint location="4063,794" />
+      <AbsolutePoint location="4063,1078" />
+      <AbsolutePoint location="4527,1078" />
+      <AbsolutePoint location="4527,2313" />
+      <AbsolutePoint location="4185,2313" />
+      <AbsolutePoint location="4185,2674" />
+      <AbsolutePoint location="4135,2674" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/priceAgentProCount.do,query,/stat/priceAgentProCountQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3050,392" />
+      <AbsolutePoint location="2973,392" />
+      <AbsolutePoint location="2973,1450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/bookMedicinfoP.do,bookMedicinfoPreport,/stat/bookMedicinfoPReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="597,1704" />
+      <AbsolutePoint location="732,1704" />
+      <AbsolutePoint location="732,1846" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/smsStat.do,toSmsStatReport,/stat/smsStatReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2674,2577" />
+      <AbsolutePoint location="2674,2677" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/use.do,report,/stat/useReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3305,3084" />
+      <AbsolutePoint location="3377,3084" />
+      <AbsolutePoint location="3377,3231" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/address.do,report,/stat/addressReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="531,2812" />
+      <AbsolutePoint location="627,2812" />
+      <AbsolutePoint location="627,2954" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/priceAgentProCount.do,main,/stat/priceAgentProCountMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3408,392" />
+      <AbsolutePoint location="3621,392" />
+      <AbsolutePoint location="3621,1374" />
+      <AbsolutePoint location="3650,1374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusCaseInfoUser.do,main,/stat/focusCaseInfoUserMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2181,873" />
+      <AbsolutePoint location="2031,873" />
+      <AbsolutePoint location="2031,1015" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/effectStat.do,query,/stat/effectStatQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3708,2514" />
+      <AbsolutePoint location="4215,2514" />
+      <AbsolutePoint location="4215,2074" />
+      <AbsolutePoint location="4250,2074" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/corpInfoByServiceType.do,query,/stat/corpInfoByServiceTypeQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1491,361" />
+      <AbsolutePoint location="1491,461" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusInfoOneEditor.do,main,/stat/focusInfoOneEditorMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3108,1783" />
+      <AbsolutePoint location="3350,1783" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoForService.do,main,/stat/medicInfoForServiceMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2235,596" />
+      <AbsolutePoint location="2073,596" />
+      <AbsolutePoint location="2073,738" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusInfoByType.do,report,/stat/focusInfoByTypeReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4129,1634" />
+      <AbsolutePoint location="4129,1674" />
+      <AbsolutePoint location="3876,1674" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/statecase.do,query,/stat/stateCaseQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="370,2300" />
+      <AbsolutePoint location="370,2400" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiryStatisticsByAnswer.do,main,/stat/inquiryStatisticsByAnswerMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4608,1022" />
+      <AbsolutePoint location="4873,1022" />
+      <AbsolutePoint location="4873,3695" />
+      <AbsolutePoint location="3187,3695" />
+      <AbsolutePoint location="3187,3398" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiryStatisticsByOrganizers.do,main,/stat/inquiryStatisticsByOrganizersMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4704,1938" />
+      <AbsolutePoint location="4704,2050" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/priceInfo.do,query,/stat/priceInfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1167,2300" />
+      <AbsolutePoint location="1167,2400" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusCaseInfoUser.do,query,/stat/focusCaseInfoUserQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2360,915" />
+      <AbsolutePoint location="2360,1015" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/case.do,main,/stat/caseMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="871,3089" />
+      <AbsolutePoint location="799,3089" />
+      <AbsolutePoint location="799,3231" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/commonStateCase.do,report,/stat/commonStateCaseReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4608,392" />
+      <AbsolutePoint location="4993,392" />
+      <AbsolutePoint location="4993,2114" />
+      <AbsolutePoint location="3763,2114" />
+      <AbsolutePoint location="3763,1998" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/corpinfoP.do,corpinfoPreport,/stat/corpinfoPReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2878,2023" />
+      <AbsolutePoint location="2878,2123" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/appraise.do,main,/stat/appraiseMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1776,2258" />
+      <AbsolutePoint location="1669,2258" />
+      <AbsolutePoint location="1669,2400" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/statecase.do,report,/stat/stateCaseReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="477,2300" />
+      <AbsolutePoint location="477,2424" />
+      <AbsolutePoint location="562,2424" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoBySeat.do,report,/stat/medicInfoBySeatReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3958,788" />
+      <AbsolutePoint location="4123,788" />
+      <AbsolutePoint location="4123,1335" />
+      <AbsolutePoint location="3341,1335" />
+      <AbsolutePoint location="3341,2037" />
+      <AbsolutePoint location="4247,2037" />
+      <AbsolutePoint location="4247,2674" />
+      <AbsolutePoint location="4250,2674" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/telephone.do,report,/stat/telReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1927,3089" />
+      <AbsolutePoint location="1999,3089" />
+      <AbsolutePoint location="1999,3231" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusCaseInfo.do,report,/stat/focusCaseInfoReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2359,1714" />
+      <AbsolutePoint location="2483,1714" />
+      <AbsolutePoint location="2483,1846" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="chartDisplayForShow;6,null,/stat/chartDisplayForShow.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="110,3396" />
+      <AbsolutePoint location="110,3496" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiryInfoByOrganization.do,report,/stat/inquiryInfoByOrganizationReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3804,994" />
+      <AbsolutePoint location="3804,2874" />
+      <AbsolutePoint location="3466,2874" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/address.do,main,/stat/addressMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="173,2812" />
+      <AbsolutePoint location="83,2812" />
+      <AbsolutePoint location="83,2954" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sate/caseinfoForExport.do,query,/stat/caseInfoForExportQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="442,1192" />
+      <AbsolutePoint location="442,1292" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusInfoOneEditor.do,report,/stat/focusInfoOneEditorReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2929,1750" />
+      <AbsolutePoint location="2929,1714" />
+      <AbsolutePoint location="4072,1714" />
+      <AbsolutePoint location="4072,1750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/bookMedicinfoP.do,tobookMedicinfoPQuery,/stat/bookMedicinfoPQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="239,1704" />
+      <AbsolutePoint location="107,1704" />
+      <AbsolutePoint location="107,1846" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/agrprice.do,query,/stat/argPriceQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2734,2300" />
+      <AbsolutePoint location="2734,2400" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/inquiryInfoByOrganization.do,main,/stat/inquiryInfoByOrganizationMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3804,1038" />
+      <AbsolutePoint location="3804,1245" />
+      <AbsolutePoint location="1852,1245" />
+      <AbsolutePoint location="1852,1765" />
+      <AbsolutePoint location="594,1765" />
+      <AbsolutePoint location="594,2327" />
+      <AbsolutePoint location="1322,2327" />
+      <AbsolutePoint location="1322,2874" />
+      <AbsolutePoint location="871,2874" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/priceStatByProduct.do,report,/stat/priceStatByProductReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1589,873" />
+      <AbsolutePoint location="1751,873" />
+      <AbsolutePoint location="1751,1015" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusCaseInfoStatistics.do,main,/stat/focusCaseInfoStatisticsMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3504,238" />
+      <AbsolutePoint location="3504,1207" />
+      <AbsolutePoint location="4354,1207" />
+      <AbsolutePoint location="4354,1350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/corpInfoBySeat.do,main,/stat/corpInfoBySeatMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="4250,594" />
+      <AbsolutePoint location="4143,594" />
+      <AbsolutePoint location="4143,1229" />
+      <AbsolutePoint location="4537,1229" />
+      <AbsolutePoint location="4537,2636" />
+      <AbsolutePoint location="2235,2636" />
+      <AbsolutePoint location="2235,2599" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/price.do,report,/stat/priceReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2017,2812" />
+      <AbsolutePoint location="2111,2812" />
+      <AbsolutePoint location="2111,2954" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/price.do,main,/stat/priceMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1659,2812" />
+      <AbsolutePoint location="1581,2812" />
+      <AbsolutePoint location="1581,2954" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/callCountStat.do,report,/stat/callCountStatReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="585,1981" />
+      <AbsolutePoint location="635,1981" />
+      <AbsolutePoint location="635,2123" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/case.do,query,/stat/caseQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1050,3131" />
+      <AbsolutePoint location="1050,3231" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/focusInfoAllEditor.do,main,/stat/focusInfoAllEditorMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="3799,434" />
+      <AbsolutePoint location="3799,476" />
+      <AbsolutePoint location="3003,476" />
+      <AbsolutePoint location="3003,1584" />
+      <AbsolutePoint location="3050,1584" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/usercase.do,main,/stat/userCaseMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1036,2577" />
+      <AbsolutePoint location="1036,2701" />
+      <AbsolutePoint location="951,2701" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/sadInfoForProduct.do,query,/stat/sadInfoForProductQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1383,1192" />
+      <AbsolutePoint location="1383,1292" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/medicInfoByUser.do,query,/stat/medicInfoByUserQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2288,1469" />
+      <AbsolutePoint location="2288,1569" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/hzCaseInfoForExport.do,main,/stat/hzCaseInfoForExportMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="281,596" />
+      <AbsolutePoint location="119,596" />
+      <AbsolutePoint location="119,738" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/hzCaseInfo.do,query,/stat/hzCaseInfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2063,2023" />
+      <AbsolutePoint location="2063,2123" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/stat/sadInfoForProduct.do,report,/stat/sadInfoForProductReport.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1562,1150" />
+      <AbsolutePoint location="1718,1150" />
+      <AbsolutePoint location="1718,1292" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

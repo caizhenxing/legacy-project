@@ -1,0 +1,263 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<!-- 引入jquery -->
+<script type="text/javascript" src="../../../js/jquery/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="../../../js/jquery/plug/jquery[1].json-1.3.min.js"></script>
+<script type="text/javascript" src="../../../js/jquery/plug/jquery.blockUI.js"></script>
+<!-- 滚动页面 -->
+<script language="javascript" src="../../../js/MSClass.js" ></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+<!--		$.blockUI({message:'waiting......'});-->
+<!--		setTimeout($.unblockUI, 2000);-->
+		
+		loadData();
+		$("tr.templeteRow").hide();//确保隐藏
+		
+	}
+	);
+
+	function loadData(){
+		$.post(
+<!--			"../../../screen/expertGroupHL.do?method=groupHotLine",-->
+			"../../../screen/expertGroupHL.do?method=groupHotLineByType&type=政府",
+			function(data){
+				
+				var result = $.evalJSON(data);
+				
+				//解析数组
+				for(var key in result){
+					 var obj = result[key];
+
+					//根据解析得到问题的内容的值obj.casereply是得到问题答案的值
+					 var sImg = obj.ehExpertPic;
+		             if(sImg=='noImg')
+		             {
+		             	sImg = 'images/Market Analysis1.jpg';
+		             }
+					 var str = '';
+            		 str +='<tr >';
+            		 str +='<td width="126" height="213" align="left" valign="top" class="Even"><br>';
+            		 str +='<table border="0" cellspacing="3" cellpadding="0">';
+                     str +='<tr>';
+                     str +='<td align="center"><img src="'+sImg+'" width="70" height="69"></td>';
+                     str +='</tr>';
+                     str +='<tr>';
+                     str +='<td class="wenzi1">专家姓名：'+obj.ehCallName+'</td>';
+                     str +='</tr>';
+                     str +='</table></td>';
+                     
+                     str +='<td width="104" align="center" valign="top" class="Odd"><br>';
+                     str +='<span class="wenzi1">'+obj.ehType+obj.ehExpertZone+'</span><br></td>';
+                     
+                     str +='<td width="600" align="center" valign="top" class="Odd"><br>';
+                     str +='<table width="90%" height="173" border="0" cellpadding="0" cellspacing="0">';
+                     str +='<tr>';
+                     str +='<td valign="top"><span class="Title5">【分&nbsp;析&nbsp;师】 '+obj.ehCallName+'</span> ';
+                     str +='<span class="Title4"><br>【个人领域】 </span><span class="wenzi21">'+obj.ehExpertZone+'<br>';
+                     str +='<span class="Title4">【简&nbsp;&nbsp;&nbsp;&nbsp;介】 '+obj.ehExpertSummary+'<br></span><br></span></td>';
+                     str +='</tr>';
+                     str +='</table>';
+                     str +='<br></td>';
+                     
+                     str +='<td width="111" align="center" valign="top" class="Odd"><br>';
+                     str +='<span class="wenzi1">'+obj.ehAgreeLevel+'%支持率</span><br></td>';
+			       	 str +='</tr>';
+            		 $("#marqueeTableId").append(str);
+				}
+				go();
+			}
+		);
+	}
+	function getDoWithData(data)
+	{
+			var name = '&nbsp;';
+        	if(typeof(data)!='undefined')
+        	return data
+        	else if(data)
+        	{
+        		if(''==trim(data))
+        		return '&nbsp;';
+        		else
+        		{
+        			return data;
+        		}
+       		}
+        	else
+        	return '&nbsp;';
+	}
+	function ltrim(s){ 
+    return s.replace( /^\s*/,""); 
+} 
+//去右空格; 
+function rtrim(s){ 
+    return s.replace( /\s*$/,""); 
+} 
+//去左右空格; 
+function trim(s){ 
+    return ltrim(rtrim(s)); 
+}
+	
+</script>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+/*整个页面div的宽为100%*/
+#width{
+	width: 100%;
+}
+.color{
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	background-color: #FFFFFF;
+}
+/*数据标题文字，黑色12号字体*/
+.wenzi1{
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	text-align: center;
+}
+/*数据标题文字，黄色12号字体*/
+.wenzi2{
+	font-family: "宋体";
+	font-size: 14px;
+	font-weight: bolder;
+	color: #FFFF00;
+	text-align: center;
+}
+.Title {
+	font-family: "宋体";
+	font-size: 14px;
+	color: #000000;
+	text-align: center;
+	border: 1px solid #B5E38A;
+	font-weight: bolder;
+}
+.Even {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #000000;
+	background-color: #EBF8E0;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #B5E38A;
+	border-bottom-color: #B5E38A;
+	border-left-color: #B5E38A;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	text-align: center;
+	line-height: 24px;
+}
+.Odd {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #000000;
+	background-color: #FFFFFF;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #B5E389;
+	border-bottom-color: #B5E389;
+	border-left-color: #B5E389;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	text-align: center;
+	line-height: 24px;
+}
+.time {	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	text-align: center;
+	padding-top: 6px;
+}
+.Title4 {font-family: "宋体";
+	font-size: 12px;
+	color: #C00000;
+	text-align: left;
+	font-weight: bold;
+}
+.Title5 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #499B1F;
+	text-align: left;
+	font-weight: bold;
+}
+.wenzi21 {font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	line-height: 22px;
+}
+.STYLE2 {font-family: "宋体"; font-size: 12px; font-weight: bold; color: #000000; text-align: center; padding-top: 6px; }
+-->
+</style>
+</head>
+
+<body>
+
+                 
+                 <table width="900" height="20" border="0" cellpadding="0" cellspacing="0">
+                   <tr>
+                     <td width="126" height="28" background="images/Price Kanban30.jpg" class="Title"><img src="images/Price Kanban31.jpg" width="6" height="14" align="absmiddle">&nbsp;专家姓名</td>
+                     <td width="104" background="images/Price Kanban30.jpg" class="Title"><img src="images/Price Kanban31.jpg" width="6" height="14" align="absmiddle">&nbsp;专家领域</td>
+                     <td width="600" background="images/Price Kanban30.jpg" class="Title"><img src="images/Price Kanban31.jpg" width="6" height="14" align="absmiddle">&nbsp;专家介绍</td>
+                     <td width="111" background="images/Price Kanban30.jpg" class="Title"><span class="Title1"><img src="images/Price Kanban31.jpg" width="6" height="14" align="absmiddle">&nbsp;农民支持率</span></td>
+                   </tr>
+                   </table>
+                   <div id="marquees">
+                   <table id="marqueeTableId" width="900" height="561" border="0" align="center" cellpadding="0" cellspacing="0">
+                   <tr class="templeteRow">
+                     <td height="213" align="left" valign="top" class="Even"><br>
+                       <table border="0" cellspacing="3" cellpadding="0">
+                       <tr>
+                         <td align="center"><img src="images/Market Analysisu.jpg" width="70" height="69"></td>
+                       </tr>
+                       <tr>
+                         <td class="wenzi1">专家姓名：刘可</td>
+                       </tr>
+                     </table></td>
+                     <td align="center" valign="top" class="Odd"><br>                     
+                       <span class="wenzi1">农民各领域</span><br></td>
+                     <td align="center" valign="top" class="Odd"><br>
+                       <table width="90%" height="173" border="0" cellpadding="0" cellspacing="0">
+                         <tr>
+                           <td valign="top"><span class="Title5">【分&nbsp;析&nbsp;师】 孙主任</span> <span class="Title4"><br>
+                             【个人领域】</span><span class="wenzi21">苹果树下正在进行改版，希望养眼的界面、全新的栏目和有价值的内容会让新的树下重新焕发生机.同时也希望苹果精灵们把心里的想法说出来，你们希望新的苹果树下是什么样的。 希望有什么样的栏目，现有栏目如何改进，如何提高人气等。 苹果树下的新域名是 shuxia.cc，更好记并且还是CC后缀</span><span class="wenzi21">关于新版上线时间，估计最快也要8月份，我们会精雕细琢新网站，所有的元素都是。<br>
+                               <span class="Title4">【简&nbsp;&nbsp;&nbsp;&nbsp;介】</span>苹果树下正在进行改版，希望养眼的界面、全新的栏目和有价值的内容会让新的树下重新焕发生机.同时也希望苹果精灵们把心里的想法说出来，你们希望新的苹果树下是什么样的。 希望有什么样的栏目，现有栏目如何改进，如何提高人气等。 苹果树下的新域名是 shuxia.cc，更好记并且还是CC后缀。关于新版上线时间，估计最快也要8月份，我们会精雕细琢新网站，所有的元素都是handmade <br>
+                                 </span></td>
+                         </tr>
+                       </table>
+                       <br></td>
+                     <td align="center" valign="top" class="Odd"><br>
+                         <span class="wenzi1">90%支持率</span><br></td>
+                   </tr>
+                   
+                 </table>
+</div>
+</body>
+</html>
+<!-- 以下是javascript代码 -->
+<script type="text/javascript">
+function go()
+{
+	new Marquee("marquees","top",1,900,550,30,1000);
+}
+</script>

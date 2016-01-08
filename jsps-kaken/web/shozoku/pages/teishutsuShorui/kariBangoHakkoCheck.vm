@@ -1,0 +1,152 @@
+## ***********************************************
+## 仮領域番号発行確認画面
+## Author      : 劉毅
+## Date        : 2006/06/14
+## 新規作成
+## ***********************************************
+#parse( $commonSetting )
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+   ## スクリプト*************************************
+   <script language="javascript">
+   <!--
+    	/* 「OK」ボタンをクリック時、仮領域番号発行確認を実行 */
+    	function onSave(inRyoikiSystemNo){
+    		document.teisyutu_form.action="$link.setAction('/shozoku/teishutsuShorui/saveKariBangoHakko')";
+    		document.teisyutu_form.ryoikiSystemNo.value = inRyoikiSystemNo;
+    		document.teisyutu_form.submit();
+    	}
+  //-->
+  </script>
+  ## ***********************************************
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+   <table border="0" cellpadding="0" cellspacing="1">
+    <tr>
+     <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+    </tr>
+    <tr>
+     <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+     <td><a href="$link.setAction('/shozoku/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width="72" height="20" border="0"></a></td>
+    </tr>
+   </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#CC6666" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/shozoku/showMainMenu')">所属研究機関担当者向けメニュー</a>＞提出確認（特定領域研究（新規領域）＞<b>仮領域番号発行確認</b>）</font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width="61" height="49" alt=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont">
+       <br>仮領域番号発行確認</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width="213" height="49" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+	
+    <!-- 本文ここから -->
+    #set ($info= $userContainer.ryoikikeikakushoInfo)
+    <p align="left">以下の応募者の仮領域番号を発行します。</p>
+    <p align="left">よろしければ、[OK]ボタンをクリックしてください。</p>
+    #errorMarkup()
+
+    <!-- 一覧用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+     <tr>
+      <td>
+       <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+        <tr>
+         <th width="30%" align="left">研究種目名</th>
+         <td width="70%">平成$!escape.getText($!info.nendo)年度 #if($info.kaisu != '1') 第$!escape.getText($!info.kaisu)回 #end $!escape.getText($!info.jigyoName)</td>
+        </tr>
+        <tr>
+         <th align="left">応募者ID</th>
+         <td>$!escape.getText($!info.shinseishaId)</td>
+        </tr>
+        <tr>
+         <th align="left">研究者番号</th>
+         <td>$!escape.getText($!info.kenkyuNo)</td>
+        </tr>
+        <tr>
+         <th align="left">部局名・職名</th>
+         <td>$!escape.getText($!info.bukyokuName)&nbsp $!escape.getText($!info.shokushuNameKanji)</td>
+        </tr>
+        <tr>
+         <th align="left">応募者名</th>
+         <td>$!escape.getText($!info.nameKanjiSei)&nbsp $!escape.getText($!info.nameKanjiMei)</td>
+        </tr>
+       </table>
+      </td>
+     </tr>
+    </table>
+    <!-- 一覧用テーブルここまで-->
+
+    <p class="comment">＜注意事項＞
+     <ul>
+      <li class="comment">仮領域番号発行を却下すると仮領域番号は発行されません。</li>
+     </ul>
+    </p>
+    <!-- 本文ここまで -->
+
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="javascript:onSave('$!info.ryoikiSystemNo')"><img src="$path/images/bt_ok.gif" width="114" height="28" alt="OK" border="0"></a></td>
+       <td><a href="$link.setAction('/shozoku/teishutsuShorui/teisyutuList.do')"><img src="$path/images/bt_cancel.gif" width="114" height="28" alt="キャンセル" border="0"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width="8" height="26" alt=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shozoku/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width="72" height="26" border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width="8" height="26" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+
+ <form name="teisyutu_form" method="post" action="">
+  <input type="hidden" name="ryoikiSystemNo">
+  <input type="hidden" name="screenFlg" value="$shinseiDataForm.screenFlg">
+ </form>
+</div>
+</body>
+</html>

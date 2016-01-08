@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+
+	<bean name="/caseinfo/generalCaseinfo"
+		class="et.bo.caseinfo.generalCaseinfo.action.GeneralCaseinfoAction"
+		scope="singleton">
+		<property name="gcs">
+			<ref bean="GeneralCaseinfoService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+		<property name="cs">
+			<ref bean="CaseService" />
+		</property>
+	</bean>
+	<bean name="/generalUploadFile"
+		class="et.bo.caseinfo.generalCaseinfo.action.GeneraUploadAction"
+		scope="singleton">
+		<property name="gcs">
+			<ref bean="GeneralCaseinfoService" />
+		</property>
+	</bean>
+	<bean name="/generalUploadVideo"
+		class="et.bo.caseinfo.generalCaseinfo.action.GeneraUploadVideoAction"
+		scope="singleton">
+		<property name="gcs">
+			<ref bean="GeneralCaseinfoService" />
+		</property>
+	</bean>
+	<bean id="GeneralCaseinfoService"
+		class="et.bo.caseinfo.generalCaseinfo.service.impl.GeneralCaseinfoServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="flowService">
+			<ref bean="FlowService" />
+		</property>
+	</bean>
+
+
+	<bean name="/caseinfo/effectCaseinfo"
+		class="et.bo.caseinfo.effectCaseinfo.action.EffectCaseinfoAction"
+		scope="singleton">
+		<property name="ecs">
+			<ref bean="EffectCaseinfoService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+
+	<bean name="/effectUploadFile"
+		class="et.bo.caseinfo.effectCaseinfo.action.EffectUploadAction"
+		scope="singleton">
+		<property name="ecs">
+			<ref bean="EffectCaseinfoService" />
+		</property>
+	</bean>
+
+	<bean name="/effectUploadVideo"
+		class="et.bo.caseinfo.effectCaseinfo.action.EffectUploadVideoAction"
+		scope="singleton">
+		<property name="ecs">
+			<ref bean="EffectCaseinfoService" />
+		</property>
+	</bean>
+
+	<bean id="EffectCaseinfoService"
+		class="et.bo.caseinfo.effectCaseinfo.service.impl.EffectCaseinfoServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="flowService">
+			<ref bean="FlowService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+
+	<bean name="/caseinfo/focusCaseinfo"
+		class="et.bo.caseinfo.focusCaseinfo.action.FocusCaseinfoAction"
+		scope="singleton">
+		<property name="fcs">
+			<ref bean="FocusCaseinfoService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+	<bean name="/focusUploadFile"
+		class="et.bo.caseinfo.focusCaseinfo.action.FocusUploadAction"
+		scope="singleton">
+		<property name="fcs">
+			<ref bean="FocusCaseinfoService" />
+		</property>
+	</bean>
+	<bean name="/focusUploadVideo"
+		class="et.bo.caseinfo.focusCaseinfo.action.FocusUploadVideoAction"
+		scope="singleton">
+		<property name="fcs">
+			<ref bean="FocusCaseinfoService" />
+		</property>
+	</bean>
+	<bean id="FocusCaseinfoService"
+		class="et.bo.caseinfo.focusCaseinfo.service.impl.FocusCaseinfoServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="flowService">
+			<ref bean="FlowService" />
+		</property>
+	</bean>
+
+	<bean name="/caseinfo/hzinfo"
+		class="et.bo.caseinfo.hzinfo.action.HZAction" scope="singleton">
+		<property name="hzs">
+			<ref bean="HZService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+		<property name="cs">
+			<ref bean="CaseService" />
+		</property>
+	</bean>
+	<bean name="/hzUploadFile"
+		class="et.bo.caseinfo.hzinfo.action.HZUploadAction"
+		scope="singleton">
+		<property name="hzs">
+			<ref bean="HZService" />
+		</property>
+	</bean>
+	<bean name="/hzUploadVideo"
+		class="et.bo.caseinfo.hzinfo.action.HZUploadVideoAction"
+		scope="singleton">
+		<property name="hzs">
+			<ref bean="HZService" />
+		</property>
+	</bean>
+	<bean id="HZService"
+		class="et.bo.caseinfo.hzinfo.service.impl.HZServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="flowService">
+			<ref bean="FlowService" />
+		</property>
+	</bean>
+
+<!--案例类型-->
+
+	<bean name="/caseinfo/caseType"
+		class="et.bo.caseinfo.casetype.action.CaseTypeAction"
+		scope="singleton">
+		<property name="cs">
+			<ref bean="CaseService" />
+		</property>
+	</bean>
+	
+	<bean id="CaseService"
+		class="et.bo.caseinfo.casetype.service.impl.CaseTypeServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+
+</beans>

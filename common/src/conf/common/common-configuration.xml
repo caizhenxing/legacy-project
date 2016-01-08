@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "spring-beans.dtd" >
+<beans>
+<bean class="com.coheg.core.ServiceInfo">
+		<property name="name" value="common"/>
+		<property name="description" value="系统编码维护"/>
+	</bean>
+	
+	<bean id="common.CommonBasicCodeService" class="com.qware.common.dict.service.impl.CommonBasicCodeImpl">
+		<property name="ht">
+			<ref local="common.hibernateTemplate" />
+		</property>
+		<property name="root">
+			<bean class="com.qware.common.dict.domain.CommonBasicCode">
+				<property name="id" value="root"/>
+				<property name="displayName" value="系统代码管理"/>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="common.CommonCURD" class="com.qware.common.crud.service.impl.CommonServiceImpl">
+		<property name="hibernateTemplate">
+			<ref local="common.hibernateTemplate" />
+		</property>
+		<property name="bcs">
+			<ref local="common.CommonBasicCodeService" />
+		</property>
+		
+		<property name="ctvs">
+			<ref local="common.ViewRows" />
+		</property>
+	</bean>
+	<bean id="common.ViewRows" class="com.qware.common.crud.service.impl.CommonTableViewServiceImpl">
+		<property name="hibernateTemplate">
+			<ref local="common.hibernateTemplate" />
+		</property>
+		
+	</bean>
+	<bean id="common.CommonBasicCodeInitService" class="com.qware.common.basiccode.service.impl.CommonBasicCodeInitImpl">
+		<property name="ht">
+			<ref local="common.hibernateTemplate" />
+		</property>
+		
+	</bean>
+	<bean id="common.hibernateTemplate" class="com.qware.hibernate3.EnhancehibernateTemplatePlus">
+		<property name="sessionFactory"><ref bean="system.sessionFactory"/></property>
+	</bean>
+
+	<!--Jasper Report Start liudl 20071017-->
+	<bean id="common.JasperReportService" class="com.qware.common.report.service.impl.JasperReportServiceImpl">
+		<property name="hibernateTemplate">
+			<ref local="common.hibernateTemplate" />
+		</property>
+	</bean>
+	<!--Jasper Report End liudl-->
+	
+	
+	<bean id="common.FileLoadService" class="com.qware.common.fileload.service.impl.FileLoadServiceImpl">
+		
+	</bean>
+	
+	<bean id="common.autokey" class="com.qware.autokey.service.impl.AutoKeyServiceImpl">
+		<property name="hibernateTemplate">
+			<ref local="common.hibernateTemplate" />
+		</property>
+		
+	</bean>
+	
+</beans>

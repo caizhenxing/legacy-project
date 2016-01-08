@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="91"
+   name=""
+   committed-date="2009-03-13T17:36:55.069566Z"
+   url="http://jsonplugin.googlecode.com/svn/trunk/src/test/java/com/googlecode/jsonplugin"
+   last-author="jjlindal"
+   kind="dir"
+   uuid="a1c9066a-c626-0410-9e21-eb7f31747a87"
+   repos="http://jsonplugin.googlecode.com/svn"
+   revision="93"/>
+<entry
+   committed-rev="51"
+   name="TestAction2.java"
+   text-time="2009-06-08T02:47:41.656250Z"
+   committed-date="2007-11-02T13:29:58.975321Z"
+   checksum="9c0e599dd2f63d45adbe636eafc778e2"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.109375Z"/>
+<entry
+   committed-rev="85"
+   name="TestUtils.java"
+   text-time="2009-06-08T02:47:41.687500Z"
+   committed-date="2008-12-30T15:16:11.472067Z"
+   checksum="2347f2767f750aa7574fda03978e1e46"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.125000Z"/>
+<entry
+   committed-rev="30"
+   name="TestAction3.java"
+   text-time="2009-06-08T02:47:41.671875Z"
+   committed-date="2007-06-14T16:42:48.742192Z"
+   checksum="e052ea0210cea530fc9cdaa084b11c20"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.125000Z"/>
+<entry
+   committed-rev="31"
+   name="TestAction4.java"
+   text-time="2009-06-08T02:47:41.687500Z"
+   committed-date="2007-06-28T13:23:19.344959Z"
+   checksum="ce68b3f67f59e07e267a773881cb7040"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.140625Z"/>
+<entry
+   committed-rev="85"
+   name="StrutsMockHttpServletResponse.java"
+   text-time="2009-06-08T02:47:41.718750Z"
+   committed-date="2008-12-30T15:16:11.472067Z"
+   checksum="61852be797c8a52d2d76414549a7cd47"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.171875Z"/>
+<entry
+   committed-rev="85"
+   name="SMDActionTest1.java"
+   text-time="2009-06-08T02:47:41.703125Z"
+   committed-date="2008-12-30T15:16:11.472067Z"
+   checksum="b16173670ce2337595bfb8062f1e5c04"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.156250Z"/>
+<entry
+   committed-rev="51"
+   name="SMDActionTest2.java"
+   text-time="2009-06-08T02:47:41.718750Z"
+   committed-date="2007-11-02T13:29:58.975321Z"
+   checksum="be8fadddb750078e528674023b2f8861"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.187500Z"/>
+<entry
+   committed-rev="86"
+   name="Bean.java"
+   text-time="2009-06-08T02:47:41.750000Z"
+   committed-date="2008-12-30T15:38:24.521707Z"
+   checksum="463623201160a3c0963db4ae47a089a1"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.218750Z"/>
+<entry
+   committed-rev="85"
+   name="SMDMethodInterfaceTest.java"
+   text-time="2009-06-08T02:47:41.734375Z"
+   committed-date="2008-12-30T15:16:11.472067Z"
+   checksum="45515c60dbfeb5733fafb9ecaf8de04c"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.187500Z"/>
+<entry
+   committed-rev="85"
+   name="JSONUtilTest.java"
+   text-time="2009-06-08T02:47:41.796875Z"
+   committed-date="2008-12-30T15:16:11.472067Z"
+   checksum="096e72e49475e0cf152b8a89105f55c2"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.218750Z"/>
+<entry
+   committed-rev="90"
+   name="JSONResultTest.java"
+   text-time="2009-06-08T02:47:41.812500Z"
+   committed-date="2009-01-15T15:31:24.147441Z"
+   checksum="ac5e7858d27fc73f71fa473587168e50"
+   last-author="jholmes612"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.234375Z"/>
+<entry
+   committed-rev="85"
+   name="AnEnumBean.java"
+   text-time="2009-06-08T02:47:41.828125Z"
+   committed-date="2008-12-30T15:16:11.472067Z"
+   checksum="ae3eea138bcd45ecee7737161a2ee915"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.234375Z"/>
+<entry
+   committed-rev="20"
+   name="TestAction.java"
+   text-time="2009-06-08T02:47:41.828125Z"
+   committed-date="2007-05-18T13:46:02.446108Z"
+   checksum="c3558a152579272cc4e87e70f756f6d6"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.265625Z"/>
+<entry
+   committed-rev="91"
+   name="JSONPopulatorTest.java"
+   text-time="2009-06-08T02:47:41.843750Z"
+   committed-date="2009-03-13T17:36:55.069566Z"
+   checksum="63d8a559564921faf06ba6da4632f939"
+   last-author="jjlindal"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.265625Z"/>
+<entry
+   committed-rev="52"
+   name="AnEnum.java"
+   text-time="2009-06-08T02:47:41.859375Z"
+   committed-date="2007-12-09T06:48:06.953203Z"
+   checksum="7cd2ced1ba978c684e70fc426a78942d"
+   last-author="jeromyevans"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.281250Z"/>
+<entry
+   committed-rev="67"
+   name="SimpleValue.java"
+   text-time="2009-06-08T02:47:41.859375Z"
+   committed-date="2008-05-13T00:46:54.051887Z"
+   checksum="3ef56a1e998cb7f791da31329cf65ff3"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.281250Z"/>
+<entry
+   committed-rev="90"
+   name="JSONInterceptorTest.java"
+   text-time="2009-06-08T02:47:41.875000Z"
+   committed-date="2009-01-15T15:31:24.147441Z"
+   checksum="02d0f9420e9f1f535a05faee42712bc2"
+   last-author="jholmes612"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.312500Z"/>
+<entry
+   committed-rev="85"
+   name="StrutsMockServletContext.java"
+   text-time="2009-06-08T02:47:41.890625Z"
+   committed-date="2008-12-30T15:16:11.472067Z"
+   checksum="a70b700d4180e27498701bd102c84805"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.312500Z"/>
+<entry
+   committed-rev="85"
+   name="WrapperClassBean.java"
+   text-time="2009-06-08T02:47:41.906250Z"
+   committed-date="2008-12-30T15:16:11.472067Z"
+   checksum="a7239a4d02e1bf068d2a9bd7a2fbd477"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.328125Z"/>
+<entry
+   committed-rev="85"
+   name="StrutsMockHttpServletRequest.java"
+   text-time="2009-06-08T02:47:41.906250Z"
+   committed-date="2008-12-30T15:16:11.472067Z"
+   checksum="4922f465d2469be91934ac2e3e8ae1ec"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.593750Z"/>
+<entry
+   committed-rev="85"
+   name="JSONEnumTest.java"
+   text-time="2009-06-08T02:47:41.921875Z"
+   committed-date="2008-12-30T15:16:11.472067Z"
+   checksum="1f784e755652057a88223d934cf93d12"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:41.656250Z"/>
+</wc-entries>

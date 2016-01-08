@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+
+		<!-- 日至信息 -->
+		<form-bean name="logform" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="sysUser" type="java.lang.String" />
+			<form-property name="sysModule" type="java.lang.String" />
+			<form-property name="fdt" type="java.lang.String" />
+			<form-property name="ldt" type="java.lang.String" />
+			<form-property name="dt" type="java.lang.String" />
+			<form-property name="actorType" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />						
+			<form-property name="ip" type="java.lang.String" />
+		</form-bean>	
+		
+	</form-beans>
+	<global-exceptions />
+	
+	<action-mappings>
+
+		<!--  日至操作 -->
+		<action attribute="logform" 
+				name="logform" 
+				scope="request" 
+				path="/sys/log" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main" path="/sys/log/main.jsp"/>	
+			<forward name="tosearch" path="/sys/log/toSearch.jsp"/>
+			<forward name="searchresult" path="/sys/log/searchResult.jsp"/>		
+			<forward name="success" path="/sys/success.jsp" />
+			<forward name="error" path="/sys/error.jsp" />
+			
+			<forward name="popLog" path="/sys/log/popLog.jsp" />
+		</action>
+	</action-mappings>
+	
+
+	
+</struts-config>

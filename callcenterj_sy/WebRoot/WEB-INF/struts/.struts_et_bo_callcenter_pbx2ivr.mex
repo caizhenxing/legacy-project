@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/callcenter/pbx2ivr.do" location="477,0" dimension="358,84" />
+  <StrutsActivity path="/callcenter/pbx2ivr/pbx2ivrQuery.jsp" location="0,184" dimension="256,48" />
+  <StrutsActivity path="/callcenter/pbx2ivr/pbx2ivrList.jsp" location="356,184" dimension="250,48" />
+  <StrutsActivity path="/callcenter/pbx2ivr/pbx2ivrLoad.jsp" location="706,184" dimension="250,48" />
+  <StrutsActivity path="/callcenter/pbx2ivr/pbx2ivrMain.jsp" location="1056,184" dimension="250,48" />
+  <StrutsTransition id="/callcenter/pbx2ivr.do,main,/callcenter/pbx2ivr/pbx2ivrMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="790,84" />
+      <AbsolutePoint location="790,119" />
+      <AbsolutePoint location="1181,119" />
+      <AbsolutePoint location="1181,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/pbx2ivr.do,query,/callcenter/pbx2ivr/pbx2ivrQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="521,84" />
+      <AbsolutePoint location="521,119" />
+      <AbsolutePoint location="128,119" />
+      <AbsolutePoint location="128,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/pbx2ivr.do,list,/callcenter/pbx2ivr/pbx2ivrList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="611,84" />
+      <AbsolutePoint location="611,149" />
+      <AbsolutePoint location="481,149" />
+      <AbsolutePoint location="481,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/pbx2ivr.do,load,/callcenter/pbx2ivr/pbx2ivrLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="700,84" />
+      <AbsolutePoint location="700,149" />
+      <AbsolutePoint location="831,149" />
+      <AbsolutePoint location="831,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

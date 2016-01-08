@@ -1,0 +1,443 @@
+## ***********************************************
+## 領域計画書作成 → RyoikiGaiyoForm
+## 2006/06/19 新規作成　董
+## ***********************************************
+
+#parse($commonSetting)
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+##スクリプト
+<script language="javascript">
+<!--
+  // 領域計画書の研究種目名をクリック時、研究計画調書の一覧データを検索する。
+  function onLinkForList2(inRyoikiSystemNo,inKariryoikiNo){
+	  document.ryoiki_form.action="$link.setAction('/shinsei/ryoikiGaiyo')";
+	  document.ryoiki_form.ryoikiSystemNo.value = inRyoikiSystemNo;
+	  document.ryoiki_form.kariryoikiNo.value = inKariryoikiNo;
+	  document.ryoiki_form.submit();
+  }
+
+  // 「確定」、「確定解除」ボタンをクリック時
+  function onKakuteiOrCancelBtnClick(inUrl,inRyoikiSystemNo,inKariryoikiNo){
+	  document.ryoiki_form.action="$link.setAction('" + inUrl + "')";
+	  document.ryoiki_form.ryoikiSystemNo.value = inRyoikiSystemNo;
+	  document.ryoiki_form.kariryoikiNo.value = inKariryoikiNo;
+	  document.ryoiki_form.submit();
+  }
+
+  // 「領域計画書表紙」ボタンをクリック時
+  function onCoverBtnClick(inRyoikiSystemNo){
+	  document.ryoiki_form.action="$link.setAction('/shinsei/downloadGaiyoCover')";
+	  document.ryoiki_form.ryoikiSystemNo.value = inRyoikiSystemNo;
+	  document.ryoiki_form.submit();
+  }
+
+  // 領域計画書一覧の「ダウンロード」、「応募情報入力」、「再開」、「確認」、「修正」、「削除」ボタンをクリック時
+  function onList1BtnClick(inUrl,inRyoikiSystemNo,inKariryoikiNo,inJigyoId){
+	  document.ryoiki_form.action="$link.setAction('" + inUrl + "')";
+	  document.ryoiki_form.ryoikiSystemNo.value = inRyoikiSystemNo;
+	  document.ryoiki_form.kariryoikiNo.value = inKariryoikiNo;
+	  document.ryoiki_form.jigyoId.value = inJigyoId;
+	  document.ryoiki_form.submit();
+  }
+
+  // 研究計画調書一覧の「ダウンロード」、「却下」ボタンをクリック時
+  function onList2BtnClick(inUrl,inSystemNo){
+	  document.ryoiki_form.action="$link.setAction('" + inUrl + "')";
+	  document.ryoiki_form.systemNo.value = inSystemNo;
+	  document.ryoiki_form.submit();
+  }
+//-->
+</script>
+</head>
+
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/shinsei/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width="72" height="20" border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#6699CC" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/shinsei/showMainMenu')">応募者向けメニュー</a>＞<b>領域計画書作成</b></font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width="61" height="49" alt=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont">
+       <br>領域計画書作成</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width="213" height="49" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+    <!-- 注意事項ここから -->
+    <p class="comment">＜注意事項＞</p>
+    <ul>
+     <li class="comment">領域内研究計画調書を確定するまでは、領域計画書の作成を完了することができません。確定前に入力した領域計画書の応募情報は一時保存してください。</li>
+     <li class="comment">領域内研究計画調書を確定すると、計画研究代表者は研究計画調書の新規作成が出来なくなります。</li>
+     <li class="comment">領域計画書を確認完了すると、[領域計画書表紙出力]ボタンが表示されます。[領域計画書表紙出力]ボタンをクリックして表紙をダウンロードしてください。</li>
+     <li class="comment">応募状況の意味は<a href="$path/code/status6.html" target="_blank">こちら</a>を参照してください。</li>
+    </ul>
+    <!-- 注意事項ここまで -->
+	#errorMarkup()
+    <!-- 一覧用テーブルここから -->
+    ## ***************************************************************************************
+    ## $hasList1　　　　　　　　    : 領域計画書の一覧データ有無判断用変数
+    ## $hasList2　　　　　　　　    : 研究計画調書の一覧データ有無判断用変数
+    ## $list1　　　　　　　　          : 領域計画書の一覧データ
+    ## $list2　　　　　　　　          : 研究計画調書の一覧データ
+    ## $clickRyoikiSystemNo: 選択されている領域計画書のシステム受付番号(研究種目名のリンクが有無判断用変数)
+	## $clickKariryoikiNo  : 選択されている領域計画書の仮領域番号
+	## $clickJokyoId       : 選択されている領域計画書の状況ID
+	## $clickKakuteiFlg    : 選択されている領域計画書の確定フラグ
+	## $clickRyoikiEndFlg  : 選択されている領域計画書の領域代表者確定締切日以降フラグ
+	##                       'UNDER'領域代表者確定締切日前(JIGYOKANRI.RYOIKI_KAKUTEIKIKAN_END>システム日付)
+	##                       'OVER'領域代表者確定締切日以降(JIGYOKANRI.RYOIKI_KAKUTEIKIKAN_END<システム日付)
+	## $selectKariryoikiNo : 今回選択します領域計画書の仮領域番号
+    ## ***************************************************************************************
+    #set($hasList1 = "false")
+	#set($hasList2 = "false")
+    #set($clickRyoikiSystemNo = $ryoikiGaiyoForm.ryoikiSystemNo)
+    #set($clickKariryoikiNo = $ryoikiGaiyoForm.kariryoikiNo)
+	#set($clickJokyoId = 'none')
+	#set($clickKakuteiFlg = -1)
+	#set($clickRyoikiEndFlg = "")
+
+    #if($result && $result.size() > 0)
+      #set($list1 = $result.get(0))
+      #if($list1 && $result.size() > 0)
+        #set($hasList1 = "true")
+      #end
+      #if($result.size() > 1)
+        #set($list2 = $result.get(1))
+        #if($list2 && $list2.size() > 0)
+          #set($hasList2 = "true")
+        #end
+      #end
+    #end
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+     <tr>
+      <td>
+       <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+        <tr>
+         <th>研究種目名</th>
+         <th>仮領域番号</th>
+         <th>応募領域名</th>
+         <th>領域代表者名</th>
+         <th>領域代表者確定締切日</th>
+         <!-- 2006/07/19 dyh 削除 原因：仕様変更
+         <th>学振受付期限</th>
+         -->
+         <th>作成日</th>
+         <th>所属研究機関承認日</th>
+         <th>領域計画書確認</th>
+         <th>応募状況</th>
+        </tr>
+        #if($hasList1 == "false")
+          <tr>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+		   <td>&nbsp;</td>
+           <td>&nbsp;</td>
+          </tr>
+        #else
+          #foreach($info1 in $list1)
+            <tr>
+             #set($selectKariryoikiNo = "none")
+             #if($info1.KARIRYOIKI_NO)
+               #set($selectKariryoikiNo = $info1.KARIRYOIKI_NO)
+             #end
+             ## *********************************************************
+             ## 選択した領域計画書のリンクが無効となる。
+             ## *********************************************************
+             #if($clickRyoikiSystemNo == $info1.RYOIKI_SYSTEM_NO)
+               #set($clickJokyoId = $info1.RYOIKI_JOKYO_ID)
+               #set($clickKakuteiFlg = $info1.RYOIKIKEIKAKUSHO_KAKUTEI_FLG)
+               #set($clickRyoikiEndFlg = $info1.RYOIKI_END_FLAG)
+               <td>平成$!escape.getText($!info1.NENDO)年度 
+                 #if($info1.KAISU.toString() == '1')
+	     		   $!escape.getText($!info1.JIGYO_NAME)
+                 #else
+					第$!escape.getText($!info1.KAISU)回 $!escape.getText($!info1.JIGYO_NAME)
+                 #end
+               </td>
+             #else
+               <td><a href="javascript:onLinkForList2('$info1.RYOIKI_SYSTEM_NO','$selectKariryoikiNo');">平成$!escape.getText($!info1.NENDO)年度 
+                #if($info1.KAISU.toString() == '1')
+	     		  $!escape.getText($!info1.JIGYO_NAME)
+                #else
+					第$!escape.getText($!info1.KAISU)回 $!escape.getText($!info1.JIGYO_NAME)
+                #end
+               </a></td>
+             #end
+             <td>$!escape.getText($info1.KARIRYOIKI_NO)</td>
+             <td>$!escape.getText($info1.RYOIKI_NAME)</td>
+             <td>$!escape.getText($info1.NAME_KANJI_SEI) $!escape.getText($info1.NAME_KANJI_MEI)</td>
+             <td>$!escape.getText($!dateFormat.format($info1.RYOIKI_KAKUTEIKIKAN_END))</td>
+             <!-- 2006/07/19 dyh 削除 原因：仕様変更
+             <td>$!escape.getText($!dateFormat.format($info1.UKETUKEKIKAN_END))</td>
+             -->
+             <td>$!escape.getText($!dateFormat.format($info1.SAKUSEI_DATE))</td>
+             <td>$!escape.getText($!dateFormat.format($info1.SHONIN_DATE))</td>
+             ## *********************************************************************************************************************************
+             ## RYOIKIKEIKAKUSHOINFO の
+             ##   UKETUKE_END_FLAG             : 'FALSE'（学振受付期間外）、'TRUE'（学振受付期間->UKETUKEKIKAN_START<システム日付<UKETUKEKIKAN_END）
+             ##   RYOIKI_JOKYO_ID              : 01[作成中]、02[未確認]、05[所属研究機関却下]、31[仮領域番号発行却下]、32[仮領域番号確認待ち]、33[仮領域番号発行済み]
+             ##   RYOIKIKEIKAKUSHO_KAKUTEI_FLG : '1'（領域代表者確定済み）、'0'（学振受付期間）
+             ## *********************************************************************************************************************************
+             <td>
+              <!-- RYOIKI_JOKYO_ID=[02,03,04,05,06,07] -->
+              #set($validDown1JokyoIds = ['02','03','04','05','06','07'])
+              #if($validDown1JokyoIds.contains($info1.RYOIKI_JOKYO_ID))
+				<a href="javascript:onList1BtnClick('/shinsei/gaiyoDownload','$info1.RYOIKI_SYSTEM_NO','$selectKariryoikiNo','');">
+				<img src="$path/images/bt_download.gif" border="0" alt="ダウンロード"></a>
+			  #end
+             </td>
+             <td>$!escape.getText($info1.JOKYO_NAME)<br>
+              <!-- UKETUKE_END_FLAG == 'TRUE' -->
+              #if($info1.UKETUKE_END_FLAG == 'TRUE')
+                <!-- RYOIKI_JOKYO_ID = 33 -->
+                #if($info1.RYOIKI_JOKYO_ID == '33')
+                  <a href="javascript:onList1BtnClick('/shinsei/infoRyoikiGaiyo','$info1.RYOIKI_SYSTEM_NO','$selectKariryoikiNo','$info1.JIGYO_ID');">
+                  <img src="$path/images/bt_app_ryoikigaiyou.gif" width="120" height="24" border="0" alt="領域計画書入力"></a>
+                #end
+                <!-- RYOIKI_JOKYO_ID = 01 -->
+                #if($info1.RYOIKI_JOKYO_ID == '01')
+                  <a href="javascript:onList1BtnClick('/shinsei/updateRyoikiGaiyo','$info1.RYOIKI_SYSTEM_NO','$selectKariryoikiNo','$info1.JIGYO_ID');">
+                  <img src="$path/images/bt_reentry.gif" alt="再開" width="36" height="22" border="0"></a>
+                #end
+                <!-- RYOIKI_JOKYO_ID=02 -->
+                #if($info1.RYOIKI_JOKYO_ID == '02')
+                  <a href="javascript:onList1BtnClick('/shinsei/forwardGaiyoConfirmView','$info1.RYOIKI_SYSTEM_NO','$selectKariryoikiNo','$info1.JIGYO_ID');">
+                  <img src="$path/images/bt_check.gif" alt="確認" width="36" height="22" border="0"></a>
+                #end
+                <!-- RYOIKI_JOKYO_ID=[02,05] -->
+                #set($validUpdJokyoIds = ['02','05'])
+                #if($validUpdJokyoIds.contains($info1.RYOIKI_JOKYO_ID))
+                  <a href="javascript:onList1BtnClick('/shinsei/updateRyoikiGaiyo','$info1.RYOIKI_SYSTEM_NO','$selectKariryoikiNo','$info1.JIGYO_ID');">
+                  <img src="$path/images/bt_rep.gif" alt="修正" width="36" height="22" border="0"></a>
+                #end
+              #end
+              <!-- RYOIKIKEIKAKUSHO_KAKUTEI_FLG != '1' && RYOIKI_JOKYO_ID=[01,02,05,31,32,33] -->
+              #set($validDelJokyoIds = ['01','02','05','31','32','33'])
+              #if(!$info1.RYOIKIKEIKAKUSHO_KAKUTEI_FLG.equals(1) && $validDelJokyoIds.contains($info1.RYOIKI_JOKYO_ID))
+                <a href="javascript:onList1BtnClick('/shinsei/deleteGaiyoConfirm','$info1.RYOIKI_SYSTEM_NO','$selectKariryoikiNo','$info1.JIGYO_ID');">
+                <img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a><br>
+              #end
+             </td>
+            </tr>
+          #end
+        #end
+       </table>
+      </td>
+     </tr>
+    </table>
+    <!-- 一覧用テーブルここまで -->
+    <br>
+    <!-- 一覧用テーブルここから -->
+    ## *********************************************************
+    ## $isConfirm : 確定ボタン有無判断用変数
+    ## $isCancel  : 確定解除ボタン有無判断用変数
+    ## *********************************************************
+    #set($isConfirm = 'false')
+    #set($isCancel = 'false')
+    <!-- 【RYOIKI_JOKYO_ID=[01,33]&& RYOIKIKEIKAKUSHO_KAKUTEI_FLG=0 && JIGYOKANRI.RYOIKI_KAKUTEIKIKAN_END>=システム日付(日付までで丸める)】
+      || 【(RYOIKI_JOKYO_ID=[05]) && RYOIKIKEIKAKUSHO_KAKUTEI_FLG=0】
+    -->
+    #if($clickKakuteiFlg.intValue() == 0)
+      #set($validConfirmJokyoIds = ['01','33'])
+      #if(($validConfirmJokyoIds.contains($clickJokyoId) && $clickRyoikiEndFlg == "UNDER") || $clickJokyoId == '05')
+        #set($isConfirm = 'true')
+	  #end
+    #end
+	<!-- (RYOIKI_JOKYO_ID=[01,33,05]&& RYOIKIKEIKAKUSHO_KAKUTEI_FLG=1（領域計画書確定済み）) || RYOIKI_JOKYO_ID=[02] -->
+    #set($validCancelJokyoIds1 = ['01','33','05'])
+    #set($validCancelJokyoIds2 = ['02'])
+    #if(($validCancelJokyoIds1.contains($clickJokyoId) && $clickKakuteiFlg.intValue() == 1) || $validCancelJokyoIds2.contains($clickJokyoId))
+      #set($isCancel = 'true')
+	#end
+
+    #if($isConfirm == 'true')
+      <font color="#FF0000">領域内研究計画調書を確定する場合は［確定］ボタンをクリックしてください。</font>
+    #end
+    #if($isCancel == 'true')
+      <font color="#FF0000">領域内研究計画調書の確定を解除する場合は［確定解除］ボタンをクリックしてください。</font>
+	#end
+    #if($clickRyoikiEndFlg == "OVER")
+      <font color="#FF0000">領域代表者確定締切日を過ぎているため、領域内研究計画調書を確定することができません。</font>
+	#end
+	<br>
+    <br>
+    #if($isConfirm == 'true')
+      <a href="javascript:onKakuteiOrCancelBtnClick('/shinsei/kakutei','$clickRyoikiSystemNo','$clickKariryoikiNo');"><img src="$path/images/bt_decision.gif" width="114" height="28" border="0" alt="確定"></a>
+    #end
+    #if($isCancel == 'true')
+      <a href="javascript:onKakuteiOrCancelBtnClick('/shinsei/kakuteiCancel','$clickRyoikiSystemNo','$clickKariryoikiNo');"><img src="$path/images/bt_dec_cancel.gif" width="114" height="28" border="0" alt="確定解除"></a>
+    #end
+    <br>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+     <tr>
+      <td>
+       <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+        <tr>
+         <th>研究区分</th>
+         <th>計画研究代表者名</th>
+         <th>所属研究機関名・部局名・職名</th>
+         <th>研究課題名</th>
+         <th>版数</th>
+         <th>作成日</th>
+         <th>領域代表者確定日</th>
+         <th>研究計画調書確認</th>
+         <th>応募状況</th>
+        </tr>
+        #if($hasList2 == "false")
+          <tr>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+          </tr>
+        #else
+          #foreach($info2 in $list2)
+            <tr>
+             <td>
+              ## ********************************************
+              ## 研究項目番号　　      調整班　　　　表示文字列
+              ## (KOMOKU_NO)　(CHOSEIHAN)
+              ## 
+              ## X00              0      総括班(X00)
+              ## Y00              0      支援班(Y00)
+              ## 上記以外（A01等）        1      A01(調整班)
+              ## 上記以外（A01等）        0      A01計画研究
+              ## ********************************************
+              #if($info2.KOMOKU_NO == 'X00')
+                ##if($info2.CHOSEIHAN == '0')
+                                総括班($!escape.getText($info2.KOMOKU_NO))
+			    ##end
+              #elseif($info2.KOMOKU_NO == 'Y00')
+                ##if($info2.CHOSEIHAN == '0')
+                                支援班($!escape.getText($info2.KOMOKU_NO))
+			    ##end
+              #else
+                #if($info2.CHOSEIHAN == '1')
+                  $!escape.getText($info2.KOMOKU_NO)(調整班)
+                #else
+                  $!escape.getText($info2.KOMOKU_NO)計画研究
+			    #end
+              #end
+             </td>
+             <td>$!escape.getText($info2.NAME_KANJI_SEI) $!escape.getText($info2.NAME_KANJI_MEI)</td>
+             <td>$!escape.getText($info2.SHOZOKU_NAME_RYAKU) $!escape.getText($info2.BUKYOKU_NAME_RYAKU) $!escape.getText($info2.SHOKUSHU_NAME_RYAKU)</td>
+             <td>$!escape.getText($info2.KADAI_NAME_KANJI)</td>
+             <td>$!escape.getText($info2.EDITION)版</td>
+             <td>$!escape.getText($!dateFormat.format($info2.SAKUSEI_DATE))</td>
+             <td>$!escape.getText($!dateFormat.format($info2.RYOIKI_KAKUTEI_DATE))</td>
+             <td>
+              <!-- SHINSEIDATAKANRIのJOKYO_ID=[04,06,07,08,09,10,11,12,21,22,23,24] -->
+              #set($validDown2JokyoIds = ['04','06','07','08','09','10','11','12','21','22','23','24'])
+              #if($validDown2JokyoIds.contains($info2.JOKYO_ID))
+                <a href="javascript:onList2BtnClick('/shinsei/keikakusyoDownload','$info2.SYSTEM_NO')">
+                <img src="$path/images/bt_download.gif" border="0" alt="ダウンロード"></a>
+			  #end
+             </td>
+             <td>$!escape.getText($info2.RYOIKI_JOKYO_NAME)
+              <!-- JOKYO_ID(SHINSEIDATAKANRI) : 21（確認中） -->
+              #if($clickRyoikiEndFlg == "UNDER" && $info2.JOKYO_ID == '21')
+                <br><a href="javascript:onList2BtnClick('/shinsei/oubokyakka','$info2.SYSTEM_NO')">
+                <img src="$path/images/bt_reject.gif" width="36" height="22" border="0" alt="却下"></a>
+              #end
+             </td>
+            </tr>
+          #end
+        #end
+       </table>
+      </td>
+     </tr>
+    </table>
+    <!-- 一覧用テーブルここまで-->
+    <br>
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <!-- RYOIKIKEIKAKUSHOＩＮＦＯのRYOIKI_JOKYO_ID＝[03,04,05,06,07] -->
+       #set($validOutJokyoIds = ['03','04','05','06','07'])
+       #if($validOutJokyoIds.contains($clickJokyoId))
+         <td><a href="javascript:onCoverBtnClick('$clickRyoikiSystemNo');"><img src="$path/images/bt_cover.gif" width="150" height="28" border="0" alt="領域計画書表紙"></a></td>
+       #end
+       <td><a href="$link.setAction('/shinsei/showMainMenu')"><img src="$path/images/bt_bk_menu.gif" width="114" height="28" border="0" alt="メニューに戻る"></a></td>
+      </tr>
+     </table>
+    </div>
+
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width="8" height="26" alt=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shinsei/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width="72" height="26" border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width="8" height="26" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+  <!-- 左右の縦線用テーブルここまで -->
+</div>
+##隠しフォーム情報----------
+<form name="ryoiki_form" action="" method="post">
+  <input type="hidden" name="ryoikiSystemNo" value="$clickRyoikiSystemNo">
+  <input type="hidden" name="systemNo" value="">
+  <input type="hidden" name="jigyoId" value="$clickJokyoId">
+  <input type="hidden" name="kariryoikiNo" value="$clickKariryoikiNo">
+  <input type="hidden" name="screenFlg" value="back">
+</form>
+</body>
+</html>

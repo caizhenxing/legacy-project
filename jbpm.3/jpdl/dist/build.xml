@@ -1,0 +1,210 @@
+<project name="jbpm.jpdl.dist" basedir="." default="install">
+
+  <!-- project specific properties -->
+  <property name="artifact.name" value="jbpm-jpdl.zip" />
+  <property name="module.name" value="jpdl" />
+  <property name="jbpm.root" value="../.." />
+  <property file="../version.properties" />
+
+  <!-- properties files -->
+  <property file="${user.home}/jbpm/build.properties" />
+  <property file="build.properties" />
+  <property file="${jbpm.root}/build/build.properties" />
+
+  <!-- import base project build file -->
+  <import file="${jbpm.root}/build/base.project.build.xml"/>
+  
+  <target name="package">
+    <ant antfile="${jbpm.root}/console/build.xml" inheritall="false" />
+  	<ant antfile="${jbpm.root}/designer/jpdl/org.jbpm.gd.jpdl.build/build.xml" inheritall="false" />
+    <ant antfile="${jbpm.root}/identity/build.xml" target="jar" inheritall="false" />
+    <ant antfile="${jbpm.root}/identity/build.xml" target="javadoc" inheritall="false" />
+    <ant antfile="${jbpm.root}/jboss/configuration/build.xml" inheritall="false" />
+    <ant antfile="../db/build.xml" target="generate" inheritall="false" />
+    <ant antfile="../examples/build.xml" target="clean" inheritall="false" />
+    <ant antfile="../jar/build.xml" target="jar" inheritall="false" />
+    <ant antfile="../jar/build.xml" target="javadoc" inheritall="false" />
+    <ant antfile="../userguide/build.xml" target="generate" inheritall="false" />
+    
+    <delete dir="target/jbpm-jpdl" />
+    
+    <!-- BUILDING THE RUNTIME IN target/jbpm-jpdl -->
+
+    <mkdir dir="target/jbpm-jpdl" />
+    <copy todir="target/jbpm-jpdl">
+      <fileset dir="src/main/resources/runtime" />
+    </copy>
+    <copy file="${local.repository}/licenses/lgpl.txt" tofile="target/jbpm-jpdl/license.txt" />
+    <copy todir="target/jbpm-jpdl" file="../jar/target/jbpm-jpdl.jar" />
+    <copy todir="target/jbpm-jpdl" file="../../identity/target/jbpm-identity.jar" />
+
+    <mkdir dir="target/jbpm-jpdl/db" />
+    <copy todir="target/jbpm-jpdl/db">
+      <fileset dir="../db/target/ddl" />
+    </copy>
+
+    <copy todir="target/jbpm-jpdl">
+      <fileset dir="..">
+        <include name="examples/**" />
+        <exclude name="CVS/**" />
+      </fileset>
+    </copy>
+    <replace file="target/jbpm-jpdl/examples/example.base.build.xml">
+      <replacetoken><![CDATA[
+  <property file="../../../build/build.properties" />
+  <path id="classpath">
+    <fileset dir="${local.repository}">
+      <include name="${lib.antlr.path}" />
+      <include name="${lib.asm.path}" />
+      <include name="${lib.asm.attr.path}" />
+      <include name="${lib.bsh.path}"/>
+      <include name="${lib.cglib.path}"/>
+      <include name="${lib.commons.logging.path}"/>
+      <include name="${lib.commons.collections.path}" />
+      <include name="${lib.dom4j.path}"/>
+      <include name="${lib.ehcache.path}" />
+      <include name="${lib.hibernate.path}"/>
+      <include name="${lib.hsqldb.path}"/>
+      <include name="${lib.javamail.path}"/>
+      <include name="${lib.jboss.j2ee.path}"/>
+      <include name="${lib.junit.path}"/>
+      <include name="${lib.log4j.path}"/>
+      <include name="${lib.servlet.path}"/>
+    </fileset>
+    <pathelement location="../../jar/src/main/config"/>
+    <pathelement location="../../jar/target/classes"/>
+    <pathelement location="../../../identity/target/classes"/>
+  </path>
+
+  <!-- BEGIN DIST CLASSPATH]]></replacetoken>
+      <replacevalue></replacevalue>
+    </replace>
+    <replace file="target/jbpm-jpdl/examples/example.base.build.xml">
+      <replacetoken><![CDATA[END DIST CLASSPATH -->]]></replacetoken>
+      <replacevalue></replacevalue>
+    </replace>
+    
+    <mkdir dir="target/jbpm-jpdl/src/jpdl" />
+    <copy todir="target/jbpm-jpdl/src/jpdl">
+      <fileset dir="../jar/src/main/java">
+        <exclude name="CVS/**" />
+      </fileset>
+    </copy>
+    
+    <mkdir dir="target/jbpm-jpdl/src/identity" />
+    <copy todir="target/jbpm-jpdl/src/identity">
+      <fileset dir="../../identity/src/main/java">
+        <exclude name="CVS/**" />
+      </fileset>
+    </copy>
+  	
+  	<mkdir dir="target/jbpm-jpdl/src/resources/gpd"/>
+  	<copy tofile="target/jbpm-jpdl/src/resources/gpd/version.info.xml" file="src/main/resources/designer.version.info.xml" />
+    
+    <mkdir dir="target/jbpm-jpdl/config" />
+    <copy todir="target/jbpm-jpdl/config">
+      <fileset dir="../jar/src/main/config">
+        <exclude name="CVS/**" />
+      </fileset>
+      <fileset dir="../jar/src/test/resources">
+        <include name="log4j.properties" />
+      </fileset>
+    </copy>
+    
+    <replace file="target/jbpm-jpdl/config/hibernate.cfg.xml">
+      <replacetoken><![CDATA[identity mappings (begin) ===]]></replacetoken>
+      <replacevalue><![CDATA[identity mappings (begin) -->]]></replacevalue>
+    </replace>
+    <replace file="target/jbpm-jpdl/config/hibernate.cfg.xml">
+      <replacetoken><![CDATA[==== identity mappings (end)]]></replacetoken>
+      <replacevalue><![CDATA[<!-- identity mappings (end)]]></replacevalue>
+    </replace>
+
+    <mkdir dir="target/jbpm-jpdl/doc/userguide" />
+    <copy todir="target/jbpm-jpdl/doc/userguide">
+      <fileset dir="../userguide/target/userguide/en" />
+    </copy>
+
+    <mkdir dir="target/jbpm-jpdl/doc/javadoc-jpdl" />
+    <copy todir="target/jbpm-jpdl/doc/javadoc-jpdl">
+      <fileset dir="../jar/target/site/apidocs" />
+    </copy>
+    
+    <mkdir dir="target/jbpm-jpdl/doc/javadoc-identity" />
+    <copy todir="target/jbpm-jpdl/doc/javadoc-identity">
+      <fileset dir="../../identity/target/site/apidocs" />
+    </copy>
+
+    <mkdir dir="target/jbpm-jpdl/lib" />
+    <copy todir="target/jbpm-jpdl/lib">
+      <fileset dir="${local.repository}/${lib.antlr.dir}"><include name="${lib.antlr.name}*" /></fileset>
+      <fileset dir="${local.repository}/${lib.asm.dir}"><include name="${lib.asm.name}*" /></fileset>
+      <fileset dir="${local.repository}/${lib.bsh.dir}"><include name="${lib.bsh.name}*" /></fileset>
+      <fileset dir="${local.repository}/${lib.cglib.dir}"><include name="${lib.cglib.name}*" /></fileset>
+      <fileset dir="${local.repository}/${lib.commons.logging.dir}"><include name="${lib.commons.logging.name}*" /></fileset>
+      <fileset dir="${local.repository}/${lib.commons.collections.dir}"><include name="${lib.commons.collections.name}*" /></fileset>
+      <fileset dir="${local.repository}/${lib.dom4j.dir}"><include name="${lib.dom4j.name}*" /></fileset>
+      <fileset dir="${local.repository}/${lib.ehcache.dir}"><include name="${lib.ehcache.name}*" /></fileset>
+      <fileset dir="${local.repository}/${lib.hibernate.dir}"><include name="${lib.hibernate.name}*" /></fileset>
+      <fileset dir="${local.repository}/${lib.hsqldb.dir}"><include name="${lib.hsqldb.name}*" /></fileset>
+      <fileset dir="${local.repository}/${lib.javamail.dir}"><include name="${lib.javamail.name}*" /></fileset>
+      <fileset dir="${local.repository}/${lib.jboss.dir}"><include name="${lib.jboss.j2ee.name}*" /></fileset>
+      <fileset dir="${local.repository}/${lib.jcr.dir}"><include name="${lib.jcr.name}*" /></fileset>
+      <fileset dir="${local.repository}/${lib.junit.dir}"><include name="${lib.junit.name}*" /></fileset>
+      <fileset dir="${local.repository}/${lib.log4j.dir}"><include name="${lib.log4j.name}*" /></fileset>
+      <fileset dir="${local.repository}/${lib.servlet.dir}"><include name="${lib.servlet.name}*" /></fileset>
+    </copy>
+
+    <get src="http://wiki.jboss.org/wiki/Wiki.jsp?page=JbpmDbCompatibility" dest="target/jbpm-jpdl/db/compatibility.html" />
+    
+    <!-- ZIPPING THE RUNTIME -->
+    
+    <move file="target/jbpm-jpdl" tofile="target/jbpm-jpdl-${lib.jbpm.jpdl.version}" />
+    <zip destfile="target/jbpm-jpdl.zip">
+      <fileset dir="target">
+        <include name="jbpm-jpdl-${lib.jbpm.jpdl.version}/**" />
+      </fileset>
+    </zip>
+
+    <!-- UPDATING THE README -->
+
+    <replace file="target/jbpm-jpdl-${lib.jbpm.jpdl.version}/readme.html">
+      <replacetoken><![CDATA[<!-- Suite Only]]></replacetoken>
+      <replacevalue></replacevalue>
+    </replace>
+    <replace file="target/jbpm-jpdl-${lib.jbpm.jpdl.version}/readme.html">
+      <replacetoken><![CDATA[Suite Only -->]]></replacetoken>
+      <replacevalue></replacevalue>
+    </replace>
+
+    <!-- ADDING THE SERVER -->
+
+    <unzip src="${local.repository}/jbossas/${jboss.version}/lib/jboss.zip"  dest="target/jbpm-jpdl-${lib.jbpm.jpdl.version}" />
+    <move file="target/jbpm-jpdl-${lib.jbpm.jpdl.version}/jboss-${jboss.version}" tofile="target/jbpm-jpdl-${lib.jbpm.jpdl.version}/server" />
+    <delete dir="target/jbpm-jpdl-${lib.jbpm.jpdl.version}/server/server/minimal" />
+    <delete dir="target/jbpm-jpdl-${lib.jbpm.jpdl.version}/server/server/all" />
+    <move file="target/jbpm-jpdl-${lib.jbpm.jpdl.version}/server/server/default" tofile="target/jbpm-jpdl-${lib.jbpm.jpdl.version}/server/server/jbpm" />
+    <unzip src="${local.repository}/jbpm/jboss/${lib.jbpm.jboss.version}/lib/jbpm-jboss-configuration.zip" dest="target/jbpm-jpdl-${lib.jbpm.jpdl.version}/server/server/jbpm" />
+
+    <!-- ADDING THE DESIGNER -->
+
+    <mkdir dir="target/jbpm-jpdl-${lib.jbpm.jpdl.version}/designer"/>
+    <unzip src="${local.repository}/jbpm/designer/jpdl/${lib.jbpm.designer.version}/jbpm-gpd-feature-${lib.jbpm.designer.version}.zip" dest="target/jbpm-jpdl-${lib.jbpm.jpdl.version}/designer" />
+    
+    <!-- ADDING THE OTHER SUITE DECORATIONS -->
+
+    <copy todir="target/jbpm-jpdl-${lib.jbpm.jpdl.version}" overwrite="true">
+      <fileset dir="src/main/resources/suite"/>
+    </copy>
+
+    <!-- ZIPPING THE SUITE -->
+    
+    <zip destfile="target/jbpm-jpdl-suite.zip">
+      <fileset dir="target">
+        <include name="jbpm-jpdl-${lib.jbpm.jpdl.version}/**" />
+      </fileset>
+    </zip>
+
+  </target>
+  
+</project>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<!-- 定时备份，每天两次备份，每月运行一次程序，将一个月的备份文件打包拷贝到另一个目录 -->
+<beans>
+<!-- **********************************************定时备份******************************************************* -->
+	<!-- 定时备份 -->
+	<bean id="BakService"
+		class="et.bo.sys.bak.service.impl.BackupMysqlServiceImpl">
+		<property name="USER">
+		<value>sysmanage</value>
+		</property>
+		<property name="PASSWORD">
+		<value>sysmanage</value>
+		</property>
+		<property name="DATA_NAME"> <!-- 数据库名 -->
+		<value>sys_manage</value>
+		</property>
+		<property name="batName"> <!-- bat文件名 -->
+		<value>backupMysql.bat</value>
+		</property>
+		<property name="savePath"> <!--  数据库备份路径 -->
+		<value>D:/backupdatabase/</value>
+		</property>
+		<property name="dbType"> <!-- 数据库类型 -->
+		<value>mysql</value>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+	
+	<bean id="reportJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="BakService" />
+		</property>
+		<property name="targetMethod">
+			<value>backup</value>
+		</property>
+		
+	</bean>
+
+	<!-- 创建cron工作 -->
+	<bean id="cronReportTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="reportJob" />
+		</property>
+		<property name="cronExpression">
+		<value>0 * * * * ?"</value>
+<!--			<value>0 0 0 * * ?</value>-->
+		</property>
+	</bean>
+<!-- **********************************************定时备份结束******************************************************* -->
+	
+	
+	
+<!-- **********************************************语音生成******************************************************* -->
+
+<!--	<bean id="voicePrice"-->
+<!--		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">-->
+<!--		<property name="targetObject">-->
+<!--			<ref bean="OtherVoiceService" />-->
+<!--		</property>-->
+<!--		<property name="targetMethod">-->
+<!--			<value>buildVoice</value>-->
+<!--		</property>-->
+<!--	</bean>-->
+<!---->
+<!--	 //创建cron工作 -->
+<!--	<bean id="cronReportTriggerPrice"-->
+<!--		class="org.springframework.scheduling.quartz.CronTriggerBean">-->
+<!--		<property name="jobDetail">-->
+<!--			<ref bean="voicePrice" />-->
+<!--		</property>-->
+<!--		<property name="cronExpression">-->
+<!--			<value>0 0 0 * * ?</value>-->
+<!--		</property>-->
+<!--	</bean>-->
+<!--	-->
+
+<!-- **********************************************语音生成结束******************************************************* -->
+	
+	
+	
+<!-- **********************************************webservice******************************************************* -->
+
+	
+<!--	<bean id="reportKnow"-->
+<!--		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">-->
+<!--		<property name="targetObject">-->
+<!--			<ref bean="RemoteInvokeService" />-->
+<!--		</property>-->
+<!--		<property name="targetMethod">-->
+<!--			<value>uploadKnowledge</value>-->
+<!--		</property>-->
+<!--	</bean>-->
+<!---->
+<!---->
+<!--	<bean id="InvokeService" class="et.bo.webservice.invoke.InvokeImpl">-->
+<!---->
+<!--	</bean>-->
+<!--	-->
+<!--	<bean id="invokeJob"-->
+<!--		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">-->
+<!--		<property name="targetObject">-->
+<!--			<ref bean="InvokeService" />-->
+<!--		</property>-->
+<!--		<property name="targetMethod">-->
+<!--			<value>timeOnUse</value>-->
+<!--		</property>-->
+<!--	</bean>-->
+<!--	-->
+<!---->
+<!--	 //创建cron工作 -->
+<!--	<bean id="cronReportKnow"-->
+<!--		class="org.springframework.scheduling.quartz.CronTriggerBean">-->
+<!--		<property name="jobDetail">-->
+<!--			<ref bean="reportKnow" />-->
+<!--		</property>-->
+<!--		<property name="cronExpression">-->
+<!--			<value>0 10 6,12,19 * * ?</value>-->
+<!--		</property>-->
+<!--	</bean>-->
+<!--	-->
+<!--	-->
+<!---->
+<!--	-->
+<!--	<bean id="reportQuestion"-->
+<!--		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">-->
+<!--		<property name="targetObject">-->
+<!--			<ref bean="RemoteInvokeService" />-->
+<!--		</property>-->
+<!--		<property name="targetMethod">-->
+<!--			<value>uploadQuestion</value>-->
+<!--		</property>-->
+<!--	</bean>-->
+<!---->
+<!--	 //创建cron工作 -->
+<!--	<bean id="cronReportTriggerQuestion"-->
+<!--		class="org.springframework.scheduling.quartz.CronTriggerBean">-->
+<!--		<property name="jobDetail">-->
+<!--			<ref bean="reportQuestion" />-->
+<!--		</property>-->
+<!--		<property name="cronExpression">-->
+<!--			<value>0 12 6,12,19 * * ?</value>-->
+<!--		</property>-->
+<!--	</bean>-->
+	
+<!-- **********************************************webservice结束******************************************************* -->
+	
+	<!-- 启动定时器 -->
+	<bean
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+			
+				<!-- 定时备份 -->
+<!--				<ref bean="cronReportTrigger" />-->
+				<!-- 定时生成语音 -->
+<!--				<ref bean="cronReportTriggerPrice"/>-->
+				<!-- webservice定时上传 -->
+<!--				<ref bean="cronReportKnow"/>-->
+<!--				<ref bean="cronReportTriggerQuestion"/>-->
+			</list>
+		</property>
+	</bean>
+	
+	<!-- test -->
+	<bean id="constants" class="excellence.common.util.Constants">
+		<property name="resource" value="classpath:et/config/parameter/CTIparameter.property"/>
+	</bean>
+
+</beans>

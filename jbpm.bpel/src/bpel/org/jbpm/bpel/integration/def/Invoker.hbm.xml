@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+  <class name="org.jbpm.bpel.integration.def.Invoker" table="BPEL_INVOKER">
+    <cache usage="nonstrict-read-write" />
+    <id name="id">
+      <generator class="native" />
+    </id>
+
+    <many-to-one name="operation" class="org.jbpm.bpel.wsdl.impl.OperationImpl" column="OPERATION_"
+      foreign-key="FK_INVOKER_OPERATION" />
+    <many-to-one name="partnerLink" column="PARTNERLINKDEFINITION_" foreign-key="FK_INVOKER_PLINKDEF" />
+    <many-to-one name="inCorrelations" column="INCORRELATIONS_" cascade="all" foreign-key="FK_INVOKER_INCORRELATIONS" />
+    <many-to-one name="outCorrelations" column="OUTCORRELATIONS_" cascade="all"
+      foreign-key="FK_INVOKER_OUTCORRELATIONS" />
+    <many-to-one name="inputVariable" column="INPUTVARIABLEDEFINITION_" foreign-key="FK_INVOKER_INPUTVARDEF" />
+    <many-to-one name="outputVariable" column="OUTPUTVARIABLEDEFINITION_" foreign-key="FK_INVOKER_OUTPUTVARDEF" />
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+   <form-beans>
+  	   <!-- 来电信息bean -->
+    <form-bean name="incommingInfoBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+    		<form-property name="id" type="java.lang.String" />
+			<form-property name="questionId" type="java.lang.String" />
+			<form-property name="talkId" type="java.lang.String" />
+			<form-property name="mainId" type="java.lang.String" />
+			<form-property name="tel_num" type="java.lang.String" />
+			<form-property name="addtimeBegin" type="java.lang.String" />
+			<form-property name="addtimeEnd" type="java.lang.String" />
+			<form-property name="addtime" type="java.lang.String" />
+			<form-property name="dictQuestionType1" type="java.lang.String" />
+			<form-property name="respondent" type="java.lang.String" />
+			<form-property name="questionContent" type="java.lang.String" />
+			<form-property name="answerContent" type="java.lang.String" />
+			
+			
+			<form-property name="custTel" type="java.lang.String" />
+			<form-property name="rid" type="java.lang.String" />
+			<form-property name="billNum" type="java.lang.String" />
+			<form-property name="expertName" type="java.lang.String" />
+			<form-property name="dictQuestionType2" type="java.lang.String" />
+			<form-property name="dictQuestionType3" type="java.lang.String" />
+			<form-property name="dictQuestionType4" type="java.lang.String" />
+			<form-property name="dictIsAnswerSucceed" type="java.lang.String" />
+			<form-property name="answerMan" type="java.lang.String" />
+			<form-property name="dictIsCallback" type="java.lang.String" />
+			<form-property name="callbackTime" type="java.lang.String" />
+			<form-property name="callbackMan" type="java.lang.String" />
+			<form-property name="callbackPhone" type="java.lang.String" />
+			<form-property name="isCallbackSucc" type="java.lang.String" />
+			<form-property name="dictIsRepository" type="java.lang.String" />
+			<form-property name="dictQuestionScore" type="java.lang.String" />
+			<form-property name="isOut" type="java.lang.String" />
+			<form-property name="isDelete" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+			<form-property name="ringBegintime" type="java.lang.String" />
+			<form-property name="answerAgent" type="java.lang.String" />
+			
+  </form-bean>
+  
+</form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+  
+  
+<!-- 来电信息的action -->
+   <action
+      attribute="incommingInfoBean"
+      name="incommingInfoBean"
+      parameter="method"
+      path="/incomming/incommingInfo"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy"
+      validate="false">
+      <forward name="toIncommingInfoQuery" path="/incommingInfo/incommingInfoQuery.jsp" />
+      <forward name="toIncommingInfoMain" path="/incommingInfo/incommingInfoMain.jsp" />
+      <forward name="toIncommingInfoList" path="/incommingInfo/incommingInfoList.jsp" />
+      <forward name="toIncommingInfoLoad" path="/incommingInfo/incommingInfoLoad.jsp" />
+    </action>
+  </action-mappings>
+  
+</struts-config>

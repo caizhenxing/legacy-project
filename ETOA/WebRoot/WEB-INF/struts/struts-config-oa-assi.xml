@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="HRBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="id" type="java.lang.String" />
+    	<form-property name="name" type="java.lang.String" />
+    	<form-property name="age" type="java.lang.String" />
+    	<form-property name="sex" type="java.lang.String" />
+    	<form-property name="bebirth" type="java.lang.String" />
+    	<form-property name="enbirth" type="java.lang.String" />
+    	<form-property name="birth" type="java.lang.String" />
+    	<form-property name="nation" type="java.lang.String" />
+    	<form-property name="blighty" type="java.lang.String" />
+    	<form-property name="polity" type="java.lang.String" />
+    	<form-property name="marriage" type="java.lang.String" />
+    	<form-property name="lover" type="java.lang.String" />
+    	<form-property name="code" type="java.lang.String" />
+    	<form-property name="moblie" type="java.lang.String" />
+    	<form-property name="homePhone" type="java.lang.String" />
+    	<form-property name="companyPhone" type="java.lang.String" />
+    	<form-property name="homeAddr" type="java.lang.String" />
+    	<form-property name="companyAddr" type="java.lang.String" />
+    	<form-property name="postCode" type="java.lang.String" />
+    	<form-property name="studyLevel" type="java.lang.String" />
+    	<form-property name="almaMater" type="java.lang.String" />
+    	<form-property name="department" type="java.lang.String" />
+    	<form-property name="station" type="java.lang.String" />
+    	<form-property name="recode" type="java.lang.String" />
+    	<form-property name="delSign" type="java.lang.String" />
+    	<form-property name="remark" type="java.lang.String" />
+    	
+    	<form-property name="employeeId" type="java.lang.String" />
+    	<form-property name="employeePhoto" type="java.lang.String" />
+    	<form-property name="isLeave" type="java.lang.String" />
+    	<form-property name="beginWorkTime" type="java.lang.String" />
+    	<form-property name="endWorkTime" type="java.lang.String" />
+    	<form-property name="endWorkRemark" type="java.lang.String" />
+    	
+    	
+    	
+    	
+    	<!--  数组类型  	<form-property name="chk" type="java.lang.String[]" />-->
+	 </form-bean>
+	 <form-bean name="HRphoto" type="et.bo.oa.assissant.hr.form.HRForm" />
+	 <!-- hr info -->
+	 <form-bean name="DocumentBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO"> 
+	    <form-property name="id" type="java.lang.String" />
+    	<form-property name="folderId" type="java.lang.String" />
+    	<form-property name="folderType" type="java.lang.String" />
+    	<form-property name="folderName" type="java.lang.String" />
+    	<form-property name="folderCode" type="java.lang.String" />
+    	<form-property name="folderWord" type="java.lang.String" />
+	    <form-property name="createTime" type="java.lang.String" />
+    	<form-property name="updateTime" type="java.lang.String" />
+    	<form-property name="folderVersion" type="java.lang.String" />
+    	<form-property name="folderSign" type="java.lang.String" />
+    	<form-property name="remark" type="java.lang.String" />	 
+	 </form-bean>
+     <!--文档上传-->
+	 <form-bean name="docUploadFileForm" type="et.bo.oa.assissant.document.form.UploadFileForm" />
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+     <action
+      attribute="HRphoto"
+      name="HRphoto"
+      path="/oa/assissant/hrphoto"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+             
+           <forward name="upload"  path="/oa/assissant/hr/upload.jsp"/>
+     
+    </action>
+    <action
+      attribute="HRBean"
+      name="HRBean"
+      path="/oa/assissant/hr"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           
+           <forward name="main"  path="/oa/assissant/hr/hrManagerMain.jsp"/>
+           <forward name="query" path="/oa/assissant/hr/hrManagerQuery.jsp"/>
+           <forward name="load"  path="/oa/assissant/hr.do?method=toHrLoad"/>
+           <forward name="info"  path="/oa/assissant/hr/hrManagerLoad.jsp"/>
+           <forward name="list"  path="/oa/assissant/hr/hrManagerList.jsp"/>
+           <forward name="detail"  path="/oa/assissant/hr/hrManagerDetail.jsp"/>              
+    </action>
+    <!-- 文档管理 -->
+    <action
+      attribute="DocumentBean"
+      name="DocumentBean"
+      path="/oa/assissant/doc"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >                                      
+           <forward name="docUpload" path="/oa/assissant/document/docUpload.jsp"/>
+           <forward name="main"    path="/oa/assissant/document/docManagerMain.jsp"/>
+           <forward name="main2"    path="/oa/assissant/document/docManagerMain2.jsp"/>
+           <forward name="main3"    path="/oa/assissant/document/docManagerMain3.jsp"/>
+           <forward name="main4"    path="/oa/assissant/document/docManagerMain4.jsp"/>
+           <forward name="query"   path="/oa/assissant/document/docManagerQuery.jsp"/>
+           <forward name="query2"   path="/oa/assissant/document/docManagerQuery2.jsp"/>
+           <forward name="query3"   path="/oa/assissant/document/docManagerQuery3.jsp"/>
+           <forward name="query4"   path="/oa/assissant/document/docManagerQuery4.jsp"/>
+           <forward name="load"    path="/oa/assissant/document/docManagerLoad.jsp"/>
+           <forward name="conferenceDocLoad"    path="/oa/assissant/document/docManagerLoadConference.jsp"/>
+           <forward name="list"    path="/oa/assissant/document/docManagerList.jsp"/>
+           <forward name="list2"    path="/oa/assissant/document/docManagerList2.jsp"/>
+           <forward name="list3"    path="/oa/assissant/document/docManagerList3.jsp"/>
+           <forward name="list4"    path="/oa/assissant/document/docManagerList4.jsp"/>
+           <forward name="detail"  path="/oa/assissant/document/docManagerDetail.jsp"/>
+           <forward name="delete"  path="/oa/assissant/document/docManagerDelete.jsp"/>
+           <forward name="delete4"  path="/oa/assissant/document/docManagerDelete4.jsp"/>
+           <forward name="update"  path="/oa/assissant/document/docManagerUpdate.jsp"/>
+           <forward name="shenpi"  path="/oa/assissant/document/docManagerShenPi.jsp"/>
+           <forward name="shenpi4"  path="/oa/assissant/document/docManagerShenPi4.jsp"/>      
+    </action>
+    <!-- 上传文档文件 -->
+	<action attribute="docUploadFileForm" 
+	input="/oa/assissant/document/uploadFile.jsp" 
+	name="docUploadFileForm" 
+	path="/oa/assissant/docUploadFile" 
+	scope="request" 
+	type="org.springframework.web.struts.DelegatingActionProxy">
+		<forward name="success"    path="/oa/assissant/document/docUpload.jsp" />
+		<forward name="uploadfail" path="/oa/assissant/document/docUploadFail.jsp" />
+	</action>
+  </action-mappings>
+  
+</struts-config>
+

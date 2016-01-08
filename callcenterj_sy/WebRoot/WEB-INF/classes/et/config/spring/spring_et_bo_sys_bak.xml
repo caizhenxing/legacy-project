@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<beans>
+
+<!--  单位基本信息   -->	
+    <bean name="/bak"
+		class="et.bo.sys.bak.action.bakAction" scope="singleton">			
+		<property name="bs">
+			<ref bean="BakService" />
+		</property>			
+	</bean>
+
+
+<!--	<bean id="BakService"-->
+<!--		class="et.bo.sys.bak.service.impl.BackupMysqlServiceImpl"scope="singleton">-->
+<!--		<property name="ks">-->
+<!--			<ref bean="KeyService" />-->
+<!--		</property>-->
+<!--		<property name="dao">-->
+<!--			<ref bean="BaseDao" />-->
+<!--		</property>-->
+<!--	</bean>-->
+	
+</beans>

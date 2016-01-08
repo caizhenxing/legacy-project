@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/caseinfo/generalCaseinfo.do" location="1417,0" dimension="358,84" />
+  <StrutsActivity path="/caseinfo/effectCaseinfo.do" location="1132,297" dimension="358,84" />
+  <StrutsActivity path="/caseinfo/focusCaseinfo.do" location="1102,594" dimension="358,84" />
+  <StrutsActivity path="/caseinfo/hzinfo.do" location="890,891" dimension="358,84" />
+  <StrutsActivity path="/generalUploadFile.do" location="0,0" dimension="358,84" />
+  <StrutsActivity path="/effectUploadFile.do" location="2245,297" dimension="358,84" />
+  <StrutsActivity path="/focusUploadFile.do" location="2179,594" dimension="358,84" />
+  <StrutsActivity path="/hzUploadFile.do" location="1753,891" dimension="358,84" />
+  <StrutsActivity path="/generalUploadVideo.do" location="2796,0" dimension="358,84" />
+  <StrutsActivity path="/effectUploadVideo.do" location="0,297" dimension="358,84" />
+  <StrutsActivity path="/focusUploadVideo.do" location="0,594" dimension="358,84" />
+  <StrutsActivity path="/hzUploadVideo.do" location="0,891" dimension="358,84" />
+  <StrutsActivity path="/caseinfo/caseType.do" location="2450,950" dimension="358,84" />
+  <StrutsActivity path="/caseinfo/generalCaseinfo/generalCaseinfoQuery.jsp" location="1426,204" dimension="340,48" />
+  <StrutsActivity path="/sms/sendAndReceive/sendAndReceiveList.jsp" location="1305,135" dimension="150,100" />
+  <StrutsActivity path="/caseinfo/generalCaseinfo/generaUploadVideo.jsp" location="2734,204" dimension="322,48" />
+  <StrutsActivity path="/caseinfo/generalCaseinfo/generalCaseinfoMain1.jsp" location="1550,296" dimension="150,100" />
+  <StrutsActivity path="/caseinfo/generalCaseinfo/generalCaseinfoQuery1.jsp" location="1708,284" dimension="150,100" />
+  <StrutsActivity path="/sms/sendAndReceive/sendAndReceiveQuery.jsp" location="1751,146" dimension="150,100" />
+  <StrutsActivity path="/sms/sendAndReceive/sendAndReceiveMain.jsp" location="1545,150" dimension="150,100" />
+  <StrutsActivity path="/caseinfo/generalCaseinfo/generaUpload.jsp" location="106,204" dimension="292,48" />
+  <StrutsActivity path="/caseinfo/generalCaseinfo/generalCaseinfoLoad.jsp" location="992,204" dimension="334,48" />
+  <StrutsActivity path="/caseinfo/generalCaseinfo/generalCaseinfoStatisticQuery.jsp" location="498,204" dimension="394,48" />
+  <StrutsActivity path="/caseinfo/generalCaseinfo/generalCaseinfolist.jsp" location="2300,204" dimension="334,48" />
+  <StrutsActivity path="/caseinfo/generalCaseinfo/generalCaseinfoMain.jsp" location="1866,204" dimension="334,48" />
+  <StrutsActivity path="/caseinfo/effectCaseinfo/effectCaseinfoQuery.jsp" location="1360,501" dimension="328,48" />
+  <StrutsActivity path="/caseinfo/effectCaseinfo/effectCaseinfoLoad.jsp" location="1788,501" dimension="322,48" />
+  <StrutsActivity path="/caseinfo/effectCaseinfo/effectUploadVideo.jsp" location="100,501" dimension="316,48" />
+  <StrutsActivity path="/caseinfo/effectCaseinfo/effectCaseinfoStatisticQuery.jsp" location="650,350" dimension="382,48" />
+  <StrutsActivity path="/caseinfo/effectCaseinfo/effectUpload.jsp" location="2210,501" dimension="286,48" />
+  <StrutsActivity path="/caseinfo/effectCaseinfo/effectCaseinfolist.jsp" location="516,501" dimension="322,48" />
+  <StrutsActivity path="/caseinfo/effectCaseinfo/effectCaseinfoMain.jsp" location="938,501" dimension="322,48" />
+  <StrutsActivity path="/caseinfo/focusCaseinfo/focusUploadVideo.jsp" location="103,798" dimension="304,48" />
+  <StrutsActivity path="/caseinfo/focusCaseinfo/focusCaseinfoMain1.jsp" location="1211,718" dimension="150,100" />
+  <StrutsActivity path="/caseinfo/focusCaseinfo/focusCaseinfoQuery1.jsp" location="975,675" dimension="150,100" />
+  <StrutsActivity path="/caseinfo/focusCaseinfo/focusCaseinfoStatisticQuery.jsp" location="690,615" dimension="150,100" />
+  <StrutsActivity path="/caseinfo/focusCaseinfo/focusCaseinfoMain.jsp" location="1743,798" dimension="310,48" />
+  <StrutsActivity path="/caseinfo/focusCaseinfo/focusUpload.jsp" location="2153,798" dimension="274,48" />
+  <StrutsActivity path="/caseinfo/focusCaseinfo/focusCaseinfoLoad.jsp" location="1333,798" dimension="310,48" />
+  <StrutsActivity path="/caseinfo/focusCaseinfo/focusCaseinfolist.jsp" location="507,798" dimension="310,48" />
+  <StrutsActivity path="/caseinfo/focusCaseinfo/focusCaseinfoQuery.jsp" location="917,798" dimension="316,48" />
+  <StrutsActivity path="/caseinfo/hzinfo/hzinfoLoad.jsp" location="1120,1095" dimension="226,48" />
+  <StrutsActivity path="/caseinfo/hzinfo/hzUploadVideo.jsp" location="117,1095" dimension="244,48" />
+  <StrutsActivity path="/caseinfo/hzinfo/hzinfoQuery.jsp" location="461,1095" dimension="232,48" />
+  <StrutsActivity path="/caseinfo/hzinfo/hzinfoMain.jsp" location="1446,1095" dimension="226,48" />
+  <StrutsActivity path="/caseinfo/hzinfo/hzUpload.jsp" location="1772,1095" dimension="214,48" />
+  <StrutsActivity path="/caseinfo/hzinfo/hzInfoStatisticQuery.jsp" location="615,915" dimension="150,100" />
+  <StrutsActivity path="/caseinfo/hzinfo/hzinfolist.jsp" location="793,1095" dimension="226,48" />
+  <StrutsActivity path="/caseinfo/caseType/caseTypeLoad.jsp" location="2150,1050" dimension="250,48" />
+  <StrutsActivity path="/caseinfo/caseType/caseTypeQuery.jsp" location="2150,1150" dimension="256,48" />
+  <StrutsActivity path="/caseinfo/caseType/caseTypelist.jsp" location="1850,1250" dimension="250,48" />
+  <StrutsActivity path="/caseinfo/caseType/caseTypeMain.jsp" location="2150,1250" dimension="250,48" />
+  <StrutsActivity path="/caseinfo/caseType/caseType.jsp" location="1550,650" dimension="226,48" />
+  <StrutsActivity path="/caseinfo/consultationCaseinfo/consultationCaseinfoLoad.jsp" location="890,1188" dimension="394,48" />
+  <StrutsActivity path="/caseinfo/consultationCaseinfo/consultationCaseinfoQuery.jsp" location="0,1188" dimension="400,48" />
+  <StrutsActivity path="/caseinfo/consultationCaseinfo/consultationCaseinfolist.jsp" location="1329,1188" dimension="394,48" />
+  <StrutsActivity path="/caseinfo/consultationCaseinfo/consultationCaseinfoMain.jsp" location="0,1281" dimension="394,48" />
+  <StrutsActivity path="/Caseinfo/focusCaseinfo/focusCaseinfoQuery.jsp" location="1101,1560" dimension="316,48" />
+  <StrutsActivity path="/Caseinfo/focusCaseinfo/focusCaseinfoLoad.jsp" location="1462,1560" dimension="310,48" />
+  <StrutsActivity path="/Caseinfo/focusCaseinfo/focusCaseinfolist.jsp" location="0,1653" dimension="310,48" />
+  <StrutsActivity path="/Caseinfo/focusCaseinfo/focusCaseinfoMain.jsp" location="355,1653" dimension="310,48" />
+  <StrutsActivity path="/Caseinfo/generalCaseinfo/generalCaseinfoQuery.jsp" location="0,1374" dimension="340,48" />
+  <StrutsActivity path="/Caseinfo/generalCaseinfo/generalCaseinfoLoad.jsp" location="385,1374" dimension="334,48" />
+  <StrutsActivity path="/Caseinfo/generalCaseinfo/generalCaseinfolist.jsp" location="764,1374" dimension="334,48" />
+  <StrutsActivity path="/Caseinfo/generalCaseinfo/generalCaseinfoMain.jsp" location="1143,1374" dimension="334,48" />
+  <StrutsActivity path="/Caseinfo/consultationCaseinfo/consultationCaseinfoQuery.jsp" location="445,1188" dimension="400,48" />
+  <StrutsActivity path="/Caseinfo/consultationCaseinfo/consultationCaseinfoLoad.jsp" location="439,1281" dimension="394,48" />
+  <StrutsActivity path="/Caseinfo/consultationCaseinfo/consultationCaseinfolist.jsp" location="878,1281" dimension="394,48" />
+  <StrutsActivity path="/Caseinfo/consultationCaseinfo/consultationCaseinfoMain.jsp" location="1317,1281" dimension="394,48" />
+  <StrutsActivity path="/Caseinfo/effectCaseinfo/effectCaseinfoQuery.jsp" location="0,1467" dimension="328,48" />
+  <StrutsActivity path="/Caseinfo/effectCaseinfo/effectCaseinfoLoad.jsp" location="746,1467" dimension="322,48" />
+  <StrutsActivity path="/Caseinfo/effectCaseinfo/effectCaseinfolist.jsp" location="1113,1467" dimension="322,48" />
+  <StrutsActivity path="/Caseinfo/effectCaseinfo/effectCaseinfoMain.jsp" location="1480,1467" dimension="322,48" />
+  <StrutsActivity path="/hzinfo/generalCaseinfo/generalCaseinfoQuery.jsp" location="373,1467" dimension="328,48" />
+  <StrutsActivity path="/hzinfo/generalCaseinfo/generalCaseinfoLoad.jsp" location="0,1560" dimension="322,48" />
+  <StrutsActivity path="/hzinfo/generalCaseinfo/generalCaseinfolist.jsp" location="367,1560" dimension="322,48" />
+  <StrutsActivity path="/hzinfo/generalCaseinfo/generalCaseinfoMain.jsp" location="734,1560" dimension="322,48" />
+  <StrutsActivity path="/caseinfo/hzinfo/generalCaseinfoQuery.jsp" location="710,1653" dimension="286,48" />
+  <StrutsActivity path="/caseinfo/hzinfo/generalCaseinfoLoad.jsp" location="1041,1653" dimension="280,48" />
+  <StrutsActivity path="/caseinfo/hzinfo/generalCaseinfolist.jsp" location="1366,1653" dimension="280,48" />
+  <StrutsActivity path="/caseinfo/hzinfo/generalCaseinfoMain.jsp" location="0,1746" dimension="280,48" />
+  <StrutsActivity path="/stat/userCaseMain.jsp" location="1024,1746" dimension="172,48" />
+  <StrutsActivity path="../stat/userCaseMain.jsp" location="572,1746" dimension="184,48" />
+  <StrutsActivity path="../../stat/userCaseMain.jsp" location="325,1746" dimension="202,48" />
+  <StrutsActivity path="/stat/caseMain.jsp" location="1241,1746" dimension="148,48" />
+  <StrutsActivity path="../../stat/caseMain.jsp" location="801,1746" dimension="178,48" />
+  <StrutsTransition id="/caseinfo/generalCaseinfo.do,toGeneralCaseinfoMain,/caseinfo/generalCaseinfo/generalCaseinfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1775,72" />
+      <AbsolutePoint location="2033,72" />
+      <AbsolutePoint location="2033,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/generalCaseinfo.do,toGeneralCaseinfoQuery,/caseinfo/generalCaseinfo/generalCaseinfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1517,84" />
+      <AbsolutePoint location="1517,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/effectCaseinfo.do,toEffectCaseinfoStatisticQuery,/caseinfo/effectCaseinfo/effectCaseinfoStatisticQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1311,339" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/focusCaseinfo.do,upload,/caseinfo/focusCaseinfo/focusUpload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1430,678" />
+      <AbsolutePoint location="1430,708" />
+      <AbsolutePoint location="2221,708" />
+      <AbsolutePoint location="2221,798" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/caseType.do,toCaseTypeList,/caseinfo/caseType/caseTypelist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2629,1034" />
+      <AbsolutePoint location="2629,1213" />
+      <AbsolutePoint location="1971,1213" />
+      <AbsolutePoint location="1971,1250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/generalCaseinfo.do,toGeneralCaseinfoLoad,/caseinfo/generalCaseinfo/generalCaseinfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1566,0" />
+      <AbsolutePoint location="1566,-75" />
+      <AbsolutePoint location="1159,-75" />
+      <AbsolutePoint location="1159,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/caseType.do,toCaseTypeLoad,/caseinfo/caseType/caseTypeLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2450,1005" />
+      <AbsolutePoint location="2275,1005" />
+      <AbsolutePoint location="2275,1050" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/generalCaseinfo.do,toGeneralCaseinfoList,/caseinfo/generalCaseinfo/generalCaseinfolist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1698,84" />
+      <AbsolutePoint location="1698,144" />
+      <AbsolutePoint location="2467,144" />
+      <AbsolutePoint location="2467,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/effectCaseinfo.do,upload,/caseinfo/effectCaseinfo/effectUpload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1460,381" />
+      <AbsolutePoint location="1460,411" />
+      <AbsolutePoint location="2281,411" />
+      <AbsolutePoint location="2281,501" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/focusUploadVideo.do,uploadVideo,/caseinfo/focusCaseinfo/focusUploadVideo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="179,678" />
+      <AbsolutePoint location="179,798" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/hzinfo.do,tohzinfoQuery,/caseinfo/hzinfo/hzinfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="980,975" />
+      <AbsolutePoint location="980,1035" />
+      <AbsolutePoint location="577,1035" />
+      <AbsolutePoint location="577,1095" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/caseType.do,Main,/caseinfo/caseType/caseType.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2629,992" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/generalCaseinfo.do,main1,/caseinfo/generalCaseinfo/generalCaseinfoMain1.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1775,12" />
+      <AbsolutePoint location="2679,12" />
+      <AbsolutePoint location="2679,267" />
+      <AbsolutePoint location="1625,267" />
+      <AbsolutePoint location="1625,296" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/effectCaseinfo.do,toEffectCaseinfoLoad,/caseinfo/effectCaseinfo/effectCaseinfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1401,381" />
+      <AbsolutePoint location="1401,441" />
+      <AbsolutePoint location="1949,441" />
+      <AbsolutePoint location="1949,501" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/hzinfo.do,tohzinfoLoad,/caseinfo/hzinfo/hzinfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1099,975" />
+      <AbsolutePoint location="1099,1065" />
+      <AbsolutePoint location="1233,1065" />
+      <AbsolutePoint location="1233,1095" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/generalCaseinfo.do,upload,/caseinfo/generalCaseinfo/generaUpload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1417,12" />
+      <AbsolutePoint location="373,12" />
+      <AbsolutePoint location="373,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/focusCaseinfo.do,main1,/caseinfo/focusCaseinfo/focusCaseinfoMain1.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1281,678" />
+      <AbsolutePoint location="1281,718" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/focusUploadFile.do,upload,/caseinfo/focusCaseinfo/focusUpload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2358,678" />
+      <AbsolutePoint location="2358,798" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/hzinfo.do,uploadVideo,/caseinfo/hzinfo/hzUploadVideo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="890,912" />
+      <AbsolutePoint location="431,912" />
+      <AbsolutePoint location="431,1119" />
+      <AbsolutePoint location="361,1119" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/hzinfo.do,tohzinfoList,/caseinfo/hzinfo/hzinfolist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1040,975" />
+      <AbsolutePoint location="1040,1065" />
+      <AbsolutePoint location="906,1065" />
+      <AbsolutePoint location="906,1095" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/generalUploadFile.do,upload,/caseinfo/generalCaseinfo/generaUpload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="179,84" />
+      <AbsolutePoint location="179,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/effectCaseinfo.do,toEffectCaseinfoList,/caseinfo/effectCaseinfo/effectCaseinfolist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1222,381" />
+      <AbsolutePoint location="1222,441" />
+      <AbsolutePoint location="677,441" />
+      <AbsolutePoint location="677,501" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/caseType.do,toCaseTypeMain,/caseinfo/caseType/caseTypeMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2659,1034" />
+      <AbsolutePoint location="2659,1274" />
+      <AbsolutePoint location="2400,1274" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/hzinfo.do,upload,/caseinfo/hzinfo/hzUpload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1219,975" />
+      <AbsolutePoint location="1219,1005" />
+      <AbsolutePoint location="1825,1005" />
+      <AbsolutePoint location="1825,1095" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/generalCaseinfo.do,toSendAndReceiveMain,/sms/sendAndReceive/sendAndReceiveMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1596,84" />
+      <AbsolutePoint location="1596,150" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/generalCaseinfo.do,toSendAndReceiveQuery,/sms/sendAndReceive/sendAndReceiveQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1596,0" />
+      <AbsolutePoint location="1596,-150" />
+      <AbsolutePoint location="1826,-150" />
+      <AbsolutePoint location="1826,146" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/hzinfo.do,tohzinfoMain,/caseinfo/hzinfo/hzinfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1159,975" />
+      <AbsolutePoint location="1159,1035" />
+      <AbsolutePoint location="1559,1035" />
+      <AbsolutePoint location="1559,1095" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/generalCaseinfo.do,toGeneralCaseinfoStatisticQuery,/caseinfo/generalCaseinfo/generalCaseinfoStatisticQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1417,42" />
+      <AbsolutePoint location="695,42" />
+      <AbsolutePoint location="695,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/generalCaseinfo.do,uploadVideo,/caseinfo/generalCaseinfo/generaUploadVideo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1749,84" />
+      <AbsolutePoint location="1749,114" />
+      <AbsolutePoint location="2814,114" />
+      <AbsolutePoint location="2814,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/focusCaseinfo.do,toFocusCaseinfoMain,/caseinfo/focusCaseinfo/focusCaseinfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1371,678" />
+      <AbsolutePoint location="1371,738" />
+      <AbsolutePoint location="1898,738" />
+      <AbsolutePoint location="1898,798" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/effectUploadVideo.do,uploadVideo,/caseinfo/effectCaseinfo/effectUploadVideo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="179,381" />
+      <AbsolutePoint location="179,501" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/focusCaseinfo.do,toFocusCaseinfoQuery,/caseinfo/focusCaseinfo/focusCaseinfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1138,678" />
+      <AbsolutePoint location="1138,798" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/focusCaseinfo.do,toFocusCaseinfoList,/caseinfo/focusCaseinfo/focusCaseinfolist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1281,594" />
+      <AbsolutePoint location="1281,564" />
+      <AbsolutePoint location="662,564" />
+      <AbsolutePoint location="662,798" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/hzUploadFile.do,upload,/caseinfo/hzinfo/hzUpload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1932,975" />
+      <AbsolutePoint location="1932,1095" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/focusCaseinfo.do,toFocusCaseinfoLoad,/caseinfo/focusCaseinfo/focusCaseinfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1460,636" />
+      <AbsolutePoint location="1490,636" />
+      <AbsolutePoint location="1490,798" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/hzUploadVideo.do,uploadVideo,/caseinfo/hzinfo/hzUploadVideo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="179,975" />
+      <AbsolutePoint location="178,1095" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/generalUploadVideo.do,uploadVideo,/caseinfo/generalCaseinfo/generaUploadVideo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2975,84" />
+      <AbsolutePoint location="2975,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/generalCaseinfo.do,query1,/caseinfo/generalCaseinfo/generalCaseinfoQuery1.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1775,42" />
+      <AbsolutePoint location="2225,42" />
+      <AbsolutePoint location="2225,334" />
+      <AbsolutePoint location="1858,334" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/caseType.do,toCaseTypeQuery,/caseinfo/caseType/caseTypeQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2599,1034" />
+      <AbsolutePoint location="2599,1174" />
+      <AbsolutePoint location="2406,1174" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/focusCaseinfo.do,toFocusCaseinfoStatisticQuery,/caseinfo/focusCaseinfo/focusCaseinfoStatisticQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1102,645" />
+      <AbsolutePoint location="840,645" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/effectUploadFile.do,upload,/caseinfo/effectCaseinfo/effectUpload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2424,381" />
+      <AbsolutePoint location="2424,501" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/hzinfo.do,toHZInfoStatisticQuery,/caseinfo/hzinfo/hzInfoStatisticQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="890,942" />
+      <AbsolutePoint location="765,942" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/effectCaseinfo.do,toEffectCaseinfoQuery,/caseinfo/effectCaseinfo/effectCaseinfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1341,381" />
+      <AbsolutePoint location="1341,471" />
+      <AbsolutePoint location="1524,471" />
+      <AbsolutePoint location="1524,501" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/focusCaseinfo.do,uploadVideo,/caseinfo/focusCaseinfo/focusUploadVideo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1102,615" />
+      <AbsolutePoint location="373,615" />
+      <AbsolutePoint location="373,798" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/focusCaseinfo.do,query1,/caseinfo/focusCaseinfo/focusCaseinfoQuery1.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1251,678" />
+      <AbsolutePoint location="1251,703" />
+      <AbsolutePoint location="1125,703" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/generalCaseinfo.do,toSendAndReceiveList,/sms/sendAndReceive/sendAndReceiveList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1440,84" />
+      <AbsolutePoint location="1440,135" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/effectCaseinfo.do,toEffectCaseinfoMain,/caseinfo/effectCaseinfo/effectCaseinfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1281,381" />
+      <AbsolutePoint location="1281,471" />
+      <AbsolutePoint location="1099,471" />
+      <AbsolutePoint location="1099,501" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/caseinfo/effectCaseinfo.do,uploadVideo,/caseinfo/effectCaseinfo/effectUploadVideo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1162,381" />
+      <AbsolutePoint location="1162,411" />
+      <AbsolutePoint location="337,411" />
+      <AbsolutePoint location="337,501" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

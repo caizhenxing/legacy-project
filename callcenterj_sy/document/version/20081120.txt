@@ -1,0 +1,2 @@
+1，修改数据库配置连接，在config下的parameter中的staticparameter.propertiey文件，使用的是jdbc连接数据源。
+2，连接CTI服务器的ip地址，在js文件中packAgentouter.js文件中。

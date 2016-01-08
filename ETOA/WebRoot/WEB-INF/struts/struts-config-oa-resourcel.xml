@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+	<form-beans>
+		<!-- 资源管理 Bean -->
+		<form-bean name="resourceBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="resourceType" type="java.lang.String" /><!-- 资源类型 -->
+			<form-property name="resourceThing" type="java.lang.String" /><!-- 资源自然状况 -->
+			<form-property name="resourcePrincipal" type="java.lang.String" /><!-- 资源负责人 -->
+			<form-property name="resourceRemark" type="java.lang.String" /><!-- 资源备注 -->
+			<form-property name="useStart" type="java.lang.String" /><!-- 申请开始时间 -->
+			<form-property name="useEnd" type="java.lang.String" /><!-- 申请结束时间 -->
+			<form-property name="userId" type="java.lang.String" /><!-- 申请人 -->
+			<form-property name="useRemark" type="java.lang.String" /><!-- 申请事由 -->
+		</form-bean>
+
+		<!-- 车辆管理 -->
+		<form-bean name="carOperBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+
+			<form-property name="type" type="java.lang.String" />
+			<!-- 车辆添加 -->
+			<form-property name="carId" type="java.lang.String" />
+			<form-property name="carCode" type="java.lang.String" /><!-- 车辆牌照 -->
+			<form-property name="carName" type="java.lang.String" /><!-- 车辆名称 -->
+			<form-property name="carThing" type="java.lang.String" /><!-- 车辆自然状况 -->
+			<form-property name="carDriver" type="java.lang.String" /><!-- 司机 -->
+			<form-property name="carRemark" type="java.lang.String" /><!-- 车辆备注 -->
+
+			<!-- 车辆申请 -->
+			<form-property name="applyUser" type="java.lang.String" /><!-- 用车人 -->
+			<form-property name="applyReason" type="java.lang.String" /><!-- 用车事由 -->
+			<form-property name="startDate" type="java.lang.String" /><!-- 开始时间 -->
+			<form-property name="endDate" type="java.lang.String" /><!-- 结束时间 -->
+			<form-property name="operUser" type="java.lang.String" /><!-- 派车人 -->
+			<form-property name="code" type="java.lang.String" /><!-- 车牌号 -->
+			<form-property name="carInfo" type="java.lang.String" /><!-- 车辆基本信息 -->
+			<form-property name="state" type="java.lang.String" /><!-- 申请状态 -->
+			
+			<!-- 审批 -->
+			<form-property name="id" type="java.lang.String"/>
+			<form-property name="approveType" type="java.lang.String"/><!-- 审批类型 -->
+			<form-property name="principalUser" type="java.lang.String"/><!-- 审批人 -->
+		</form-bean>
+
+		<!-- 会议室管理 Bean -->
+		<form-bean name="meetingBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+
+			<form-property name="type" type="java.lang.String" />
+			<form-property name="meetingNames" type="java.lang.String" /><!-- 会议室名称 -->
+			<form-property name="meetingThing" type="java.lang.String" /><!-- 会议室自然状况 -->
+			<form-property name="meetingPrincipal" type="java.lang.String" /><!-- 会议室负责人 -->
+			<form-property name="meetingRemark" type="java.lang.String" /><!-- 会议室备注 -->
+
+			<!-- 人员选择 -->
+			<form-property name="departList" type="java.lang.String" />
+			<form-property name="userFirst" type="java.lang.String" />
+			<form-property name="userTwo" type="java.lang.String" />
+
+			<!-- 会议室申请 -->
+			<form-property name="meetingId" type="java.lang.String" />
+			<form-property name="meetingName" type="java.lang.String" />
+			<form-property name="useDate" type="java.lang.String" />
+			<form-property name="startDate" type="java.lang.String" />
+			<form-property name="endDate" type="java.lang.String" />
+			<form-property name="startHour" type="java.lang.String" />
+			<form-property name="endHour" type="java.lang.String" />
+			<form-property name="applyReason" type="java.lang.String" />
+			<form-property name="applyUser" type="java.lang.String" />
+			
+		</form-bean>
+	</form-beans>
+
+	<action-mappings>
+		<!-- 资源管理 Action -->
+		<action path="/oa/resourceManager" attribute="resourceBean" type="org.springframework.web.struts.DelegatingActionProxy" name="resourceBean" parameter="method" scope="request">
+			<!-- 资源信息 -->
+			<forward name="mainPage" path="/oa/resource/searchMain.jsp" />
+			<forward name="addResource" path="/oa/resource/addResource.jsp" />
+			<forward name="resourceQuery" path="/oa/resource/resourceSearch.jsp" />
+			<forward name="resourceList" path="/oa/resource/resourceList.jsp" />
+			<forward name="success" path="/sys/success.jsp" />
+		</action>
+
+		<!-- 会议室管理 -->
+		<action path="/oa/meetingManager" attribute="meetingBean" type="org.springframework.web.struts.DelegatingActionProxy"  parameter="method" name="meetingBean" scope="request">
+			<!-- 会议室信息 -->
+			<forward name="addPage" path="/oa/resource/meeting/addmeetRoom.jsp" />
+			<forward name="delPage" path="/oa/resource/meeting/delmeetRoom.jsp" />
+			<forward name="selectEmployee" path="/oa/resource/meeting/selectEmployee.jsp" />
+			<forward name="selectPeople" path="/oa/resource/meeting/selectPeople.jsp" />
+			<forward name="meetInfoList" path="/oa/resource/meeting/meetingOperList.jsp" />
+			<!-- 会议室申请 -->
+			<forward name="applyPage" path="/oa/resource/meeting/ApplyRoom.jsp" />
+			<!-- 会议室查询 -->
+			<forward name="mainPage" path="/oa/resource/meeting/selectMain.jsp" />
+			<forward name="queryPage" path="/oa/resource/meeting/meetingSreach.jsp" />
+			<forward name="listPage" path="/oa/resource/meeting/RoomUseList.jsp" />
+			<forward name="deleteOver" path="/oa/meetingManager.do?method=roomList" />
+			<forward name="roomLstPage" path="/oa/resource/meeting/RoomInfo.jsp" />
+		</action>
+
+		<!-- 车辆管理 Action -->
+		<action path="/oa/carManager" attribute="carOperBean" type="org.springframework.web.struts.DelegatingActionProxy" name="carOperBean" parameter="method" scope="request">
+			<!-- 申请信息 -->
+			<forward name="applyPage" path="/oa/resource/car/carApply.jsp" />
+			<forward name="addPage" path="/oa/resource/car/carAdd.jsp" />
+			<forward name="delPage" path="/oa/resource/car/delCar.jsp" />
+			<forward name="selectEmployee" path="/oa/resource/car/selectEmployee.jsp" />
+			<forward name="deleteOver" path="/oa/carManager.do?method=toCarList" />
+			<!-- 车辆查询 -->
+			<forward name="carList" path="/oa/resource/car/carList.jsp" />
+		</action>
+		
+		<action path="/oa/carApprove" attribute="carOperBean" type="org.springframework.web.struts.DelegatingActionProxy" name="carOperBean" parameter="method" scope="request" validate="true">
+			<!-- 用车审批 -->
+			<forward name="applyPage" path="/oa/resource/car/carApply.jsp" />
+			<forward name="approvceList" path="/oa/resource/car/carApprove.jsp" />
+			<forward name="approveOver" path="/oa/carApprove.do?method=toApprovePage" />
+			<forward name="toApproveList" path="/oa/carApprove.do?method=toApprovePage"/>
+		</action>
+	</action-mappings>
+
+	<message-resources parameter="et.config.struts.ApplicationResources_ch" />
+</struts-config>

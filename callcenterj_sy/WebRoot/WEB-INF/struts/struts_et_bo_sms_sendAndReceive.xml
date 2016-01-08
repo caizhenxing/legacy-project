@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+		<!-- 短信发送信息form -->
+		<form-bean name="sendBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			 <form-property name="id" type="java.lang.String" />
+			 <form-property name="handsetNoteInfoId" type="java.lang.String" />
+			 <form-property name="receiveNum" type="java.lang.String" />
+			 <form-property name="content" type="java.lang.String" />
+			 <form-property name="operTime" type="java.lang.String" />
+			 <form-property name="operCount" type="java.lang.String" />
+			 <form-property name="schedularTime" type="java.lang.String" />
+			 <form-property name="management" type="java.lang.String" />
+			 <form-property name="businessId" type="java.lang.String" />
+			 <form-property name="delSign" type="java.lang.String" />
+			 <form-property name="remark" type="java.lang.String" />
+			 <form-property name="columnInfo" type="java.lang.String" />
+			 <form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+	
+		</form-bean>
+		
+		<form-bean name="sendNotBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			 <form-property name="id" type="java.lang.String" />
+			 <form-property name="handsetNoteInfoId" type="java.lang.String" />
+			 <form-property name="receiveNum" type="java.lang.String" />
+			 <form-property name="operCount" type="java.lang.String" />
+			 <form-property name="schedularTime" type="java.lang.String" />
+			 <form-property name="management" type="java.lang.String" />
+			 <form-property name="businessId" type="java.lang.String" />
+			 <form-property name="delSign" type="java.lang.String" />
+			 <form-property name="remark" type="java.lang.String" />
+			 <form-property name="sendState" type="java.lang.String" />
+			 <form-property name="content" type="java.lang.String" />
+			 <form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			 <form-property name="columnInfo" type="java.lang.String" />
+		</form-bean>
+		
+		
+		<form-bean name="receiveBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			 <form-property name="id" type="java.lang.String" />
+			 <form-property name="receiveNum" type="java.lang.String" />
+			 <form-property name="contents" type="java.lang.String" />
+			 <form-property name="ReceiveState" type="java.lang.String" />
+			 <form-property name="sendDateTime" type="java.lang.String" />
+			 <form-property name="content" type="java.lang.String" />
+			  <form-property name="columnInfo" type="java.lang.String" />
+			 <form-property name="readMessage" type="java.lang.String" />
+			 <form-property name="notReadMessage" type="java.lang.String" />
+			 <form-property name="allMessage" type="java.lang.String" />
+			 <form-property name="num" type="java.lang.String" />	 	 
+			 
+			 <form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+		</form-bean>
+
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<!-- 短信发送信息action -->
+		<action attribute="sendBean" 
+				name="sendBean" 
+				scope="request" 
+				path="/sms/sendAndReceive/send" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="toSendList" path="/sms/sendAndReceive/send/sendlist.jsp"/>
+			<forward name="toSendLoad" path="/sms/sendAndReceive/send/sendLoad.jsp"/>
+			<forward name="toSendMain" path="/sms/sendAndReceive/send/sendMain.jsp"/>
+			<forward name="toSendQuery" path="/sms/sendAndReceive/send/sendQuery.jsp"/>
+      <forward name="toQueryQuery" path="/sms/sendAndReceive/send/queryQuery.jsp" />
+      <forward name="toQueryMain" path="/sms/sendAndReceive/send/queryMain.jsp" />
+		</action>
+		
+		<action attribute="sendNotBean" 
+				name="sendNotBean" 
+				scope="request" 
+				path="/sms/sendAndReceive/sendNot" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="toSendNotList" path="/sms/sendAndReceive/sendNot/sendNotlist.jsp"/>
+			<forward name="toSendNotLoad" path="/sms/sendAndReceive/sendNot/sendNotLoad.jsp"/>
+			<forward name="toSendNotMain" path="/sms/sendAndReceive/sendNot/sendNotMain.jsp"/>
+			<forward name="toSendNotQuery" path="/sms/sendAndReceive/sendNot/sendNotQuery.jsp"/>
+		</action>
+		<action attribute="receiveBean" 
+				name="receiveBean" 
+				scope="request" 
+				path="/sms/sendAndReceive/receive" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="toReceiveList" path="/sms/sendAndReceive/receive/receivelist.jsp"/>
+			<forward name="toReceiveLoad" path="/sms/sendAndReceive/receive/receiveLoad.jsp"/>
+			<forward name="toReceiveMain" path="/sms/sendAndReceive/receive/receiveMain.jsp"/>
+			<forward name="toReceiveQuery" path="/sms/sendAndReceive/receive/receiveQuery.jsp"/>
+		</action>
+	</action-mappings>
+	
+</struts-config>
+

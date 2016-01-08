@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="85"
+   name=""
+   committed-date="2008-12-30T15:16:11.472067Z"
+   url="http://jsonplugin.googlecode.com/svn/trunk/src/main/java/com/googlecode/jsonplugin/rpc"
+   last-author="musachy"
+   kind="dir"
+   uuid="a1c9066a-c626-0410-9e21-eb7f31747a87"
+   repos="http://jsonplugin.googlecode.com/svn"
+   revision="93"/>
+<entry
+   committed-rev="85"
+   name="RPCResponse.java"
+   text-time="2009-06-08T02:47:44.640625Z"
+   committed-date="2008-12-30T15:16:11.472067Z"
+   checksum="41ab26a030a1a206c0a74a9dbc1816b5"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:44.593750Z"/>
+<entry
+   committed-rev="85"
+   name="RPCErrorCode.java"
+   text-time="2009-06-08T02:47:44.671875Z"
+   committed-date="2008-12-30T15:16:11.472067Z"
+   checksum="ae2d4420b625fa68b50c394fbf3cc985"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:44.625000Z"/>
+<entry
+   committed-rev="85"
+   name="RPCError.java"
+   text-time="2009-06-08T02:47:44.687500Z"
+   committed-date="2008-12-30T15:16:11.472067Z"
+   checksum="7d26a679755bd07337d55c235de2b9f6"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:44.625000Z"/>
+</wc-entries>

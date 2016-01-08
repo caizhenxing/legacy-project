@@ -1,0 +1,372 @@
+<chapter id="getstarted">
+
+  <title id="getstarted.title">Getting started</title>
+  
+  <section id="getstarted.jbpmbpel">
+
+    <title>Getting JBoss jBPM BPEL</title>
+    
+    <para>The releases of the jBPM BPEL extension can be found in the 
+      <ulink url="http://www.jboss.com/products/jbpm/downloads">jBPM download page</ulink>. The 
+      package JBoss jBPM BPEL contains the jBPM BPEL software (sources and binaries) plus the 
+      thirdparty libraries it depends on.</para>
+      
+    <para>The BPEL extension is based on jBPM 3. Downloading the jBPM distribution separately is
+      strongly recommended but strictly optional, as the BPEL package already contains the required
+      jBPM binaries.</para>
+      
+    <para>Once you download the package, unzip it to a suitable location in your machine.
+      It should all unzip into a single directory named <literal>jbpm-bpel-&lt;version&gt;</literal>.
+      Make sure you don't use a directory which has any spaces in the path (such as
+      the <literal>Program Files</literal> directory on Windows) as this may cause problems.</para>
+      
+    <para>Alternatively, you can get the software from CVS with the following parameters.
+      Once you have access, look for module <literal>jbpm.bpel</literal>.</para>
+      
+    <table>
+    
+      <title>CVS parameters</title>
+      
+      <tgroup cols='2' align='left' colsep='1' rowsep='1'>
+
+        <thead>
+        
+          <row>
+            <entry>Parameter</entry>
+            <entry>Value</entry>
+          </row>
+
+        </thead>
+        
+        <tbody>
+
+          <row>
+            <entry>Connection type</entry>
+            <entry>pserver</entry>
+          </row>
+          
+          <row>
+            <entry>User</entry>
+            <entry>anonymous</entry>
+          </row>
+          
+          <row>
+            <entry>Password</entry>
+            <entry>(when prompted for a password, just press enter)</entry>
+          </row>
+          
+          <row>
+            <entry>Host</entry>
+            <entry>anoncvs.forge.jboss.com</entry>
+          </row>
+          
+          <row>
+            <entry>Port</entry>
+            <entry>2401 (the default)</entry>
+          </row>
+          
+          <row>
+            <entry>Repository path</entry>
+            <entry>/cvsroot/jbpm</entry>
+          </row>
+        
+        </tbody>
+      
+      </tgroup>
+      
+    </table>
+    
+  </section>
+  
+  <section id="getstarted.jbossas">
+  
+    <title>Getting JBoss Application Server</title>
+  
+    <para>The jBPM BPEL software builds on J2EE 1.4 APIs and a number of open source projects. 
+      While it is not tied to JBoss AS, the guide provides deployment instructions for JBoss AS 
+      only. Even if you use a different application server in production, we still encourage you
+      to try this software in development along with JBoss AS. If you like it and decide to take
+      it to production, we can help you through the <ulink url="http://tinyurl.com/kjru7">forum
+      </ulink> or our <ulink url="http://www.jboss.com/services/index">support services</ulink>.
+      </para>
+      
+    <para>For instructions on getting JBoss AS, see <ulink url="http://tinyurl.com/kl9wl">
+      Downloading and Installing JBoss</ulink>.</para>
+    
+    <note><para>Please make sure you select a JBoss AS version and server profile compatible with
+      J2EE 1.4. Specifically, jBPM BPEL has been tested with versions 4.0.3SP1 and 4.0.4.GA in the
+      <literal>default</literal> profile.</para></note>
+      
+  </section>
+   
+  <section id="getstarted.ant">
+   
+    <title>Getting Apache Ant</title>
+       
+    <para>Ant scripts dramatically simplify the development and deployment of BPEL proceses.
+      The tutorial chapter assumes you have installed Ant and are able to execute targets. 
+      Furthermore, you need Ant to build the jBPM BPEL service archive.</para>
+      
+    <para>For directions on getting Ant, see <ulink url="http://ant.apache.org/manual/install.html">
+      Installing Ant</ulink>.</para>
+    
+    <note><para>In order to run <literal>junit</literal> tasks, Ant requires the JUnit library.
+      You will find this library in the <literal>lib/junit</literal> directory of the jBPM BPEL
+      distribution. Remember to copy it to Ant's <literal>lib</literal> directory.</para></note>
+   
+  </section>
+  
+  <section id="getstarted.eclipse">
+  
+    <title>Getting the Eclipse BPEL designer</title>
+    
+    <para>The Eclipse community has begun a <ulink url="http://www.eclipse.org/bpel/">BPEL
+      project</ulink>. The goal of this project is "to add comprehensive support to 
+      Eclipse for the definition, authoring, editing, deploying, testing and debugging of 
+      WS-BPEL 2.0 processes".</para>
+      
+    <para>The JBoss jBPM team has been in touch with the comitters of this project. Expect
+      tighter integration between the Eclipse Designer and jBPM BPEL shortly after key pieces
+      of functionality such as Runtime Framework and Debug become available.</para>
+      
+    <para>You do not have to wait, tough. You can get started with the Eclipse BPEL designer
+      and jBPM BPEL <emphasis role="bold">today</emphasis>! Please visit our <ulink 
+      url="http://wiki.jboss.org/wiki/Wiki.jsp?page=JbpmBpelDesigner">Wiki</ulink> knowledge
+      base for a Quick Start guide.</para>
+  
+  </section>
+  
+  <section id="getstarted.setup">
+  
+    <title>Service setup</title>
+
+    <para>The jBPM BPEL service archive (<literal>.sar</literal>) contains the libraries and 
+      configuration files required to execute BPEL processes. The following sections describe
+      how to configure, package and deploy the jBPM BPEL service to JBoss AS.</para>
+      
+    <section id="getstarted.setup.config">
+      
+      <title>Service configuration</title>
+      
+      <para>The configuration files reside in <literal>src/resources/jbpm-bpel.sar</literal>.
+        These files provide settings to Hibernate and to jBPM itself.</para>
+    
+      <section id="getstarted.setup.config.hibernate">
+      
+        <title>Hibernate configuration</title>
+        
+        <para>Starting from version 1.0 alpha 3, the BPEL extension incorporates the jBPM
+          persistence model, described in the chapter on <ulink 
+          url="http://docs.jboss.com/jbpm/v3/userguide/persistence.html">persistence</ulink> of 
+          the jBPM user guide. jBPM uses Hibernate as its object-relational mapper.
+          The next table describes the Hibernate configuration files.</para>
+          
+        <table>
+        
+          <title>Hibernate configuration files</title>
+      
+          <tgroup cols='2' align='left' colsep='1' rowsep='1'>
+          
+            <thead>
+        
+              <row>
+                <entry>File</entry>
+                <entry>Notes</entry>
+              </row>
+              
+              </thead>
+              
+            <tbody>
+              
+              <row>
+                <entry><literal>hibernate.properties</literal></entry>
+                <entry><para>Contains database connection properties and miscellaneus values. 
+                  Since the service runs inside the application server, you should configure 
+                  Hibernate to obtain connections from a data source registered in JNDI.</para>
+                  <para>Refer to the <ulink url="http://tinyurl.com/e4mp3">Configuration</ulink>
+                  chapter of the Hibernate manual for instructions.</para></entry>
+              </row>
+
+              <row>
+                <entry><literal>ehcache.xml</literal></entry>
+                <entry><para>Supplies parameters for the default second-level cache provider.</para>
+                  <para>The chapter on <ulink url="http://tinyurl.com/pv6w9">Performance</ulink> in
+                  the Hibernate manual describes the use of caches to improve performance.</para>
+                  </entry>
+              </row>
+              
+            </tbody>
+            
+          </tgroup>
+          
+        </table>
+        
+        <para>Apart from the above files, jBPM BPEL service includes a data source deployment 
+          descriptor: <literal>jbpm-bpel-ds.xml</literal>. In addition to the preconfigured data
+          source, this file also describes a <literal>HypersonicDatabase</literal> MBean. Upon
+          deployment, this MBean creates a database in the same VM the server is running. This
+          database is written to disk when the server shuts down, but no other process has access
+          to it.</para>
+          
+        <para>Administrators often prefer to separate data sources from services and applications.
+          The data source described in the previous paragraph is intended for evaluation and 
+          development purposes. It should not be regarded as a production arrangement.</para>
+          
+      </section>
+      
+      <section id="getstarted.setup.config.jbpm">
+      
+        <title>jBPM settings</title>
+
+        <para>The file <literal>jbpm.cfg.xml</literal> contains the jBPM configuration. The 
+          following table summarizes the relevant information items in the context of BPEL.</para>
+
+        <table>
+        
+          <title>Relevant jBPM information items for BPEL</title>
+        
+          <tgroup cols='2' align='left' colsep='1' rowsep='1'>
+        
+          <thead>
+        
+            <row>
+              <entry>Setting</entry>
+              <entry>Notes</entry>
+            </row>
+          
+          </thead>
+          
+          <tbody>
+
+            <row>
+              <entry><literal>&lt;jbpm-context&gt;</literal></entry>
+              <entry>Configures the jBPM context with a set of services. The persistence
+                and relation services are mandatory; other services may be disabled at will.</entry>
+            </row>
+            
+            <row>
+              <entry><literal>&lt;string name="resource.hibernate.cfg.xml"&gt;</literal></entry>
+              <entry>References an alternate XML resource listing the Hibernate mapping files.
+                </entry>
+            </row>
+            
+            <row>
+              <entry><literal>&lt;string name="resource.hibernate.properties"&gt;</literal></entry>
+              <entry>References an alternate properties resource containing the JDBC connection 
+                parameters.</entry>
+            </row>
+          
+          </tbody>
+          
+          </tgroup>
+          
+        </table>
+        
+      </section>
+      
+    </section>
+      
+    <section id="getstarted.setup.pack">
+    
+      <title>Packaging</title>
+      
+      <para>Once you have set the configuration, building the service archive is easy.
+        Copy or rename file <literal>ant.example.properties</literal> in your jBPM BPEL 
+        base directory to <literal>ant.properties</literal>. Edit the values therein to
+        match the directory where you installed JBoss AS and your preferred server configuration.
+        </para>
+
+      <programlisting><![CDATA[# JBoss AS installation directory
+jboss.home=/jboss/home
+# JBoss server configuration
+jboss.server=default
+
+# jBPM library versions
+jbpm.version=3.1.2
+jbpm.bpel.version=1.1.Beta2]]></programlisting>
+
+      <para>To build the service archive, locate <literal>build.xml</literal> in the base
+        directory and run the target that corresponds to your JBoss AS version.</para>
+
+      <table>
+      
+        <title>Ant targets for building the service archive</title>
+        
+        <tgroup cols='2' align='left' colsep='1' rowsep='1'>
+      
+          <thead>
+          
+            <row>
+              <entry>Target</entry>
+              <entry>Version</entry>
+            </row>
+        
+          </thead>
+          
+          <tbody>
+        
+            <row>
+              <entry><literal>build.service.402</literal></entry>
+              <entry>4.0.2</entry>
+            </row>
+            
+            <row>
+              <entry><literal>build.service.403</literal></entry>
+              <entry>4.0.3 SP1</entry>
+            </row>
+
+            <row>
+              <entry><literal>build.service.404</literal></entry>
+              <entry>4.0.4 GA</entry>
+            </row>
+        
+          </tbody>
+        
+        </tgroup>
+        
+      </table>
+
+      <para>If all goes well you should see messages much like the following:</para>
+
+      <screen><![CDATA[build.service.404:
+      [jar] Building jar: .../jbpm-bpel.sar]]></screen>
+      
+      <para>JBoss AS 4.0.4 and later versions ship with the new web services stack,
+        <emphasis>JBossWS</emphasis>. Like its predecessor in earlier JBoss AS versions, this
+        stack implements the Web Services for J2EE specification, version 1.1. However, some
+        idiosyncrasies of the Axis-based stack result in slight incompatibilities with the new
+        implementation. Specifically, a number of SAAJ methods do not behave as expected. 
+        JBossWS exhibits results that match the reference implementation.</para>
+        
+      <para>Starting from version 1.1.Beta2, jBPM BPEL has been revised to work with both stacks.
+        The workarounds used to maintain compatibility with the old stack might fail when parsing
+        or formatting certain SOAP envelopes. If you encounter a SOAP-related problem, please try 
+        upgrading to JBoss AS 4.0.4 or later to determine whether the old stack is causing the
+        problem. Should the issue remain, let us know via the <ulink url="http://tinyurl.com/kjru7">
+        forum</ulink>.</para>
+
+    </section>
+      
+    <section id="getstarted.setup.deploy">
+    
+      <title>Deployment</title>
+      
+      <para>Before deploying the service, start JBoss in the server configuration of your choice
+        (see <ulink url="http://tinyurl.com/rjqkb">Server Configurations</ulink>). Afterwards,
+        run the <literal>deploy-service</literal> target of <literal>build.xml</literal> in the
+        jBPM BPEL installation directory.</para>
+        
+      <para>The following log entries confirm the deployment of the jBPM BPEL data source, service
+        and web application, respectively.</para>
+  
+      <screen><![CDATA[00:39:45,390 INFO  [ConnectionFactoryBindingService] Bound ConnectionManager 'jboss.jca:name=jbpmBpelDS,service=DataSourceBinding' to JNDI name 'java:jbpmBpelDS'
+00:39:45,406 INFO  [JbpmConfiguration] using jbpm configuration resource 'jbpm.cfg.xml'
+00:39:45,437 INFO  [TomcatDeployer] deploy, ctxPath=/jbpm-bpel, warUrl=.../tmp/deploy/tmp30743jbpm-bpel-exp.war/]]></screen>  
+
+      <para>JBoss is now ready to deploy process definitions and BPEL-powered web services.</para>
+      
+    </section>
+    
+  </section>
+
+</chapter>

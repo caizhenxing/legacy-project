@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/sys/leaf/leafRight/leafRightMain.jsp" location="720,450" dimension="262,48" />
+  <StrutsActivity path="/sys/leaf/leafRight/leafRightDtl.jsp" location="390,480" dimension="256,48" />
+  <StrutsActivity path="/sys/leaf/leafRight/moduleTree.jsp" location="45,300" dimension="244,48" />
+  <StrutsTransition id="/sys/leafRight/leafRight.do,toLeafRightDtl,/sys/leaf/leafRight/leafRightDtl.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="599,339" />
+      <AbsolutePoint location="599,480" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/leafRight/leafRight.do,toLeafRightMain,/sys/leaf/leafRight/leafRightMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="735,339" />
+      <AbsolutePoint location="735,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/sys/leafRight/leafRight.do,showLeafRightTree,/sys/leaf/leafRight/moduleTree.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="420,315" />
+      <AbsolutePoint location="289,315" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

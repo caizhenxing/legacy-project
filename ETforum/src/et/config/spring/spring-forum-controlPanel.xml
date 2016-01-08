@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean name="/forum/controlPanel"
+		class="et.bo.forum.controlPanel.action.ControlPanelAction" singleton="false">			
+		<property name="controlPanelService">
+			<ref bean="ControlPanelService" />
+		</property>
+		<property name="pointService">
+		    <ref bean="PointService"/>
+		</property>
+		<property name="userInfoService">
+		    <ref bean="UserInfoService"/>
+		</property>			
+	</bean>
+	
+	<!--  service begin -->	
+	<bean id="ControlPanelService"
+		class="et.bo.forum.controlPanel.service.impl.ControlPanelServiceImpl" singleton="true">
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="ForumDao" />
+		</property>
+	</bean>	
+</beans>

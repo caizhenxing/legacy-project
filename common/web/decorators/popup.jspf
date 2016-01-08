@@ -1,0 +1,12 @@
+<%
+//弹出页面设置
+if (org.apache.commons.lang.StringUtils.isNotEmpty(request.getParameter("operType"))){
+	String qwareTToperType = request.getParameter("operType");
+	int oper = Integer.parseInt(qwareTToperType);
+	System.out.println("获取的OperType:"+oper);
+	com.qware.context.BusinessContext.setOperType(com.qware.context.OperType.VIEW);
+	com.coheg.web.MessageUtils.clearMessages(request);
+	request.setAttribute("oid",request.getParameter("oid"));
+	request.setAttribute("operType",request.getParameter("operType")); 
+}
+%>

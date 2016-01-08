@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="urn:samples:atm" 
+  xsi:schemaLocation="http://schemas.xmlsoap.org/wsdl/ http://schemas.xmlsoap.org/wsdl/"
+  xmlns:tns="urn:samples:atm" xmlns:typ="urn:samples:atm:types"
+  xmlns:tic="urn:samples:ticket" xmlns:acc="urn:samples:account"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+  <import namespace="urn:samples:ticket" location="ticket.wsdl" />
+  <import namespace="urn:samples:account" location="account.wsdl" />
+
+  <types>
+
+    <schema targetNamespace="urn:samples:atm:types" xmlns="http://www.w3.org/2001/XMLSchema">
+    
+      <!-- status string enumeration -->
+      <simpleType name="tStatus">
+        <restriction base="xsd:string">
+          <enumeration value="connected" />
+          <enumeration value="logged" />
+          <enumeration value="disconnected" />
+        </restriction>
+      </simpleType>
+      
+      <!-- error code enumeration -->
+      <simpleType name="tErrorCode">
+        <restriction base="xsd:string">
+          <enumeration value="no_such_customer" />
+          <enumeration value="not_enough_funds" />
+        </restriction>
+      </simpleType>
+      
+      <!-- front end error abstract type -->
+      <complexType name="tOperationError">
+        <attribute name="code" type="typ:tErrorCode" use="required" />
+      </complexType>
+
+      <!-- front end error information item -->
+      <element name="operationError" type="typ:tOperationError" />      
+
+    </schema>
+
+  </types>
+
+  <!-- ATM connection request -->
+  <message name="connectRequest" />
+
+  <!-- customer log on request -->
+  <message name="logOnRequest">
+    <part name="ticketNo" type="xsd:int" />
+    <part name="customerName" type="xsd:string" />
+  </message>
+
+  <!-- customer log on response -->
+  <message name="logOnResponse" />
+
+  <!-- connection status response -->
+  <message name="statusResponse">
+    <part name="status" type="typ:tStatus" />
+  </message>
+  
+  <!-- customer operation request -->
+  <message name="operationRequest">
+    <part name="customerName" type="xsd:string" />
+    <part name="amount" type="xsd:double" />
+  </message>
+  
+  <!-- customer operation fault -->
+  <message name="operationFault">
+    <part name="detail" element="typ:operationError" />
+  </message>
+  
+  <!-- bank functions available to ATMs -->
+  <portType name="atmFrontEnd">
+  
+    <!-- initiate bank connection -->
+    <operation name="connect">
+      <input message="tns:connectRequest" />
+      <output message="tic:ticketMessage" />
+    </operation>
+    
+    <!-- terminate bank connection -->
+    <operation name="disconnect">
+      <input message="tic:ticketMessage" />
+    </operation>
+    
+    <!-- retrieve bank connection status -->
+    <operation name="status">
+      <input message="tic:ticketMessage" />
+      <output message="tns:statusResponse" />
+    </operation>
+    
+    <!-- initiate customer session -->
+    <operation name="logOn">
+      <input message="tns:logOnRequest" />
+      <output message="tns:logOnResponse" />
+      <fault name="logOnFault" message="tns:operationFault" />
+    </operation>
+    
+    <!-- terminate customer session -->
+    <operation name="logOff">
+      <input message="acc:customerMessage" />
+    </operation>
+    
+    <!-- retrieve account balance -->
+    <operation name="getBalance">
+      <input message="acc:customerMessage" />
+      <output message="acc:balanceMessage" />
+    </operation>
+    
+    <!-- increase account balance -->
+    <operation name="deposit">
+      <input message="tns:operationRequest" />
+      <output message="acc:balanceMessage" />
+    </operation>
+    
+    <!-- decrease account balance -->
+    <operation name="withdraw">
+      <input message="tns:operationRequest" />
+      <output message="acc:balanceMessage" />
+      <fault name="withdrawFault" message="tns:operationFault" />
+    </operation>
+
+  </portType>
+
+</definitions>

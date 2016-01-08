@@ -1,0 +1,108 @@
+SHOZOKU_CD 12601
+JIGYO_CD 15
+BUNKASAIMOKU_CD 1234
+BUNKATSU_NO A
+UKETUKE_NO 1234
+JIGYO_NAME 特別研究促進費（年複数回応募の試行）研究計画調書
+
+NENDO 平成19年度
+NENDO_SEIREKI (2007年度)
+SAKUSEI_DATE_Y 19
+SAKUSEI_DATE_M 1
+SAKUSEI_DATE_D 25
+EDITION 1
+SHINSEI_KUBUN 新規
+SYUMOKU 基盤研究(C)相当
+SHINSARYOIKI_CD 2
+SHINSARYOIKI_NAME 工学
+atextframe: BUNYA_NAME 0 0 EOF
+文字枠データ５０文字○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※
+EOF
+atextframe: BUNKA_NAME 0 0 EOF
+文字枠データ５０文字○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※
+EOF
+atextframe: SAIMOKU_NAME 0 0 EOF
+文字枠データ５０文字○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※
+EOF
+atextframe: KEYWORD 0 0 EOF
+文字枠データ６０文字○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※
+EOF
+atextframe: KEYWORD_IGAI 0 0 EOF
+文字枠データ６０文字○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※
+EOF
+atextframe: NAME_KANA 0 0 EOF
+フリガナ姓１６文字○○○○○○※ フリガナ名１６文字○○○○○○※
+EOF
+NAME_KANJI 漢字姓１６文字○○○○○○○○※ 漢字名１６文字○○○○○○○○※
+NENREI_KIKAN (H19.4.1現在)
+NENREI 28
+BIRTHDAY （Ｓ. 53年10月8日）
+atextframe: SHOZOKU_NAME 0 0 EOF
+文字枠データ４０文字○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※
+EOF
+atextframe: BUKYOKU_NAME 0 0 EOF
+文字枠データ５０文字○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※
+EOF
+atextframe: SHOKU_NAME_KANJI 0 0 EOF
+文字枠データ２０文字○○○○○○○○○※
+EOF
+atextframe: GAKUI 0 0 EOF
+文字枠データ５０文字○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※
+EOF
+SENMON 文字枠データ２０文字○○○○○○○○○※
+EFFORT 90%
+SAIYO_DATE_Y 18
+SAIYO_DATE_M 8
+SAIYO_DATE_D 12
+KINMU_HOUR 40
+atextframe: KADAI_NAME_KANJI 0 0 EOF
+文字枠データ４０文字○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※
+EOF
+
+NENDO1 平成19年度
+KEIHI1 5678901
+BIHINHI1 1234567
+SHOMOHINHI1 5678901
+RYOHI1 9012345
+SHAKIN1 3456789
+SONOTA1 7890123
+NENDO2 平成20年度
+KEIHI2 2345678
+BIHINHI2 8901234
+SHOMOHINHI2 2345678
+RYOHI2 6789012
+SHAKIN2 0123456
+SONOTA2 4567890
+NENDO3 平成21年度
+KEIHI3 2345678
+BIHINHI3 8901234
+SHOMOHINHI3 2345678
+RYOHI3 6789012
+SHAKIN3 0123456
+SONOTA3 4567890
+NENDO4 平成22年度
+KEIHI4 2345678
+BIHINHI4 8901234
+SHOMOHINHI4 2345678
+RYOHI4 6789012
+SHAKIN4 0123456
+SONOTA4 4567890
+KEIHI_TOTAL 9012345
+BIHINHI_TOTAL 6789012
+SHOMOHINHI_TOTAL 3456789
+RYOHI_TOTAL 0123456
+SHAKIN_TOTAL 7890123
+SONOTA_TOTAL 4567890
+
+BUNTANKIN_FLG 有
+KAIJIKIBO_FLG 審査結果の開示を希望する
+atextframe: OUBOSIKAKU 0 0 EOF
+(2)研究者名簿の登録最終締切日(平成XX年XX月XX日)以降に、再び科学研究費補助金の応募資格を得た者
+EOF
+atextframe: SIKAKU_TITLE 0 0 EOF
+再び科研費の応募資格を得た年月日及び応募資格を得る前の所属研究機関等
+EOF
+atextframe:  0 0 EOF
+SIKAKUSYUTOKU 平成17年5月16日 所属研究機関４０文字○○○○○○○○○※○○○○○○○○○※○○○○○○○○○※
+EOF
+

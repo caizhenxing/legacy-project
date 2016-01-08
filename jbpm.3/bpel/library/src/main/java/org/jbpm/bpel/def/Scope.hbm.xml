@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+
+  <typedef class="org.jbpm.bpel.db.type.EnumType" name="handlerType">
+    <param name="class">org.jbpm.bpel.def.Scope$HandlerType</param>
+  </typedef>
+
+  <subclass name="org.jbpm.bpel.def.Scope" extends="org.jbpm.bpel.def.CompositeActivity" discriminator-value="n">
+
+    <property name="implicit" column="IMPLICIT_" />
+    <property name="isolated" column="ISOLATED_" />
+
+    <many-to-one name="root" column="ACTIVITY_" foreign-key="FK_SCOPE_ACTIVITY" cascade="all" />
+
+    <map name="handlers" cascade="all" where="CLASS_ = 'B'">
+      <key column="SCOPE" />
+      <map-key type="handlerType" column="HANDLERTYPE_" />
+      <one-to-many class="org.jbpm.bpel.def.ScopeHandler" />
+    </map>
+
+    <list name="faultHandlers" cascade="all" where="CLASS_ = 'V'">
+      <key column="SCOPE_" />
+      <list-index column="NODECOLLECTIONINDEX_" />
+      <one-to-many class="org.jbpm.bpel.def.Catch" />
+    </list>
+
+    <set name="onEvents" cascade="all" where="CLASS_ = 'X'">
+      <key column="SCOPE_" />
+      <one-to-many class="org.jbpm.bpel.def.OnEvent" />
+    </set>
+
+    <set name="onAlarms" cascade="all" where="CLASS_ = 'W'">
+      <key column="SCOPE_" />
+      <one-to-many class="org.jbpm.bpel.def.OnAlarm" />
+    </set>
+
+    <map name="partnerLinks" cascade="all">
+      <key column="SCOPE_" />
+      <index column="NAME_" type="string" />
+      <one-to-many class="org.jbpm.bpel.integration.def.PartnerLinkDefinition" />
+    </map>
+
+    <map name="variables" cascade="all">
+      <key column="SCOPE_" />
+      <index column="NAME_" type="string" />
+      <one-to-many class="org.jbpm.bpel.variable.def.VariableDefinition" />
+    </map>
+
+    <map name="correlationSets" cascade="all">
+      <key column="SCOPE_" />
+      <index column="NAME_" type="string" />
+      <one-to-many class="org.jbpm.bpel.integration.def.CorrelationSetDefinition" />
+    </map>
+
+    <subclass name="org.jbpm.bpel.def.BpelDefinition$GlobalScope" discriminator-value="O"/>
+
+  </subclass>
+
+</hibernate-mapping>

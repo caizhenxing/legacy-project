@@ -1,0 +1,4 @@
+project_name=callcenter
+web_server_ip=localhost
+web_server_port=8080
+web_html_css=styleA.css

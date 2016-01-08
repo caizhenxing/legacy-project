@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+	<!-- 语音留言 -->
+	<bean name="/sys/voiceLeave" class="et.bo.sys.voiceLeave.action.VoiceLeaveAction" scope="singleton">
+		<property name="voiceLeaveService">
+			<ref bean="VoiceLeaveService"/>
+		</property>
+	</bean>
+	<!-- 座席模块导航 -->
+	<bean name="/sys/agentNav" class="et.bo.sys.agentControl.AgentContolAction" scope="singleton">
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	<bean id="VoiceLeaveService" class="et.bo.sys.voiceLeave.service.impl.VoiceLeaveServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="MyDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	<bean id="MyDao" class="et.bo.sys.voiceLeave.service.MyDao" scope="singleton">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+</beans>

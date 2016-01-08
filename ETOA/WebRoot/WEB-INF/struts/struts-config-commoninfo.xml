@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+
+	 <!-- 图书信息表 -->
+	 <form-bean name="BookInfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="id" type="java.lang.String" />
+    	<form-property name="bookName" type="java.lang.String" />
+    	<form-property name="bookAuthor" type="java.lang.String" />
+    	<form-property name="bookConcern" type="java.lang.String" />
+    	<form-property name="bookNum" type="java.lang.String" />
+    	<form-property name="introduce" type="java.lang.String" />
+    	<form-property name="bookPrice" type="java.lang.String" />
+    	<form-property name="buyTime" type="java.lang.String" />
+    	<form-property name="noteTime" type="java.lang.String" />
+    	<form-property name="borrowState" type="java.lang.String" />
+    	<form-property name="bookType" type="java.lang.String" />
+    	<form-property name="remark" type="java.lang.String" />
+    	<form-property name="bookInfo" type="java.lang.String" />
+    	<form-property name="returnTime" type="java.lang.String" />
+    	<form-property name="borrowTime" type="java.lang.String" />
+    	<form-property name="bookUser" type="java.lang.String" />
+	 </form-bean>
+
+	 <!-- 图书信息表 -->
+	 <form-bean name="BookBorrowInfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="id" type="java.lang.String" />
+      	<form-property name="bookName" type="java.lang.String" />
+    	<form-property name="bookInfo" type="java.lang.String" />
+    	<form-property name="returnTime" type="java.lang.String" />
+    	<form-property name="borrowTime" type="java.lang.String" />
+    	<form-property name="bookUser" type="java.lang.String" />
+	 </form-bean>
+	 
+	 <!-- 留言板表 -->
+	 <form-bean name="LeaveWordBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="id" type="java.lang.String" />
+    	<form-property name="userId" type="java.lang.String" />
+    	<form-property name="name" type="java.lang.String" />
+    	<form-property name="leaveDate" type="java.lang.String" />
+    	<form-property name="leaveDateBegin" type="java.lang.String" />
+		<form-property name="leaveDateEnd" type="java.lang.String" />
+    	<form-property name="title" type="java.lang.String" />
+    	<form-property name="content" type="java.lang.String" />
+	 </form-bean>
+	 
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+    
+    <!-- 图书管理 -->
+    <action
+      attribute="BookInfoBean"
+      name="BookInfoBean"
+      path="/oa/commoninfo/book"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="main" path="/oa/commoninfo/book/bookMain.jsp"/>
+      <forward name="query" path="/oa/commoninfo/book/bookQuery.jsp"/>
+      <forward name="load" path="/oa/commoninfo/book/bookLoad.jsp"/>
+      <forward name="list" path="/oa/commoninfo/book/bookList.jsp"/>
+      <forward name="see" path="/oa/commoninfo/book/seeBook.jsp"/>
+      <forward name="borrow" path="/oa/commoninfo/book/bookborrowLoad.jsp"/>
+    </action>
+    <!-- 图书借阅读情况 -->
+    <action
+      attribute="BookBorrowInfoBean"
+      name="BookBorrowInfoBean"
+      path="/oa/commoninfo/bookborrow"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="main" path="/oa/commoninfo/bookborrow/bookborrowMain.jsp"/>
+      <forward name="query" path="/oa/commoninfo/bookborrow/bookborrowQuery.jsp"/>
+      <forward name="load" path="/oa/commoninfo/bookborrow/bookborrowLoad.jsp"/>
+      <forward name="list" path="/oa/commoninfo/bookborrow/bookborrowList.jsp"/>
+    </action>
+    
+    <!-- 留言板 -->
+    <action
+      attribute="LeaveWordBean"
+      name="LeaveWordBean"
+      path="/oa/commoninfo/leaveWord"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="main" path="/oa/commoninfo/leaveWord/leaveWordMain.jsp"/>
+      <forward name="seeMain" path="/oa/commoninfo/leaveWord/seeLeaveWordMain.jsp"/>
+      <forward name="seeLoad" path="/oa/commoninfo/leaveWord/seeLeaveWordLoad.jsp"/>
+      <forward name="query" path="/oa/commoninfo/leaveWord/leaveWordQuery.jsp"/>
+      <forward name="load" path="/oa/commoninfo/leaveWord/leaveWordLoad.jsp"/>
+      <forward name="list" path="/oa/commoninfo/leaveWord/leaveWordList.jsp"/>
+      <forward name="seeList" path="/oa/commoninfo/leaveWord/seeLeaveWordList.jsp"/>
+      <forward name="ok" path="/oa/commoninfo/leaveWord/test1.jsp"/>         
+    </action>
+    
+  </action-mappings>
+ 
+</struts-config>
+

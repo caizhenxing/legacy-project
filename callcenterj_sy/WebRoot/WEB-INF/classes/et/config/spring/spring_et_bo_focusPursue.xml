@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+	
+	<bean name="/focusPursue" class="et.bo.focusPursue.action.FocusPursueAction" scope="singleton">
+		<property name="fps">
+			<ref bean="FocusPursueService"/>
+		</property>
+	</bean>
+	<bean id="FocusPursueService" class="et.bo.focusPursue.service.impl.FocusPursueServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="flowService">
+			<ref bean="FlowService"/>
+		</property>
+	</bean>
+	
+	<!-- 焦点追踪大屏幕bean信息 -->
+	
+	<bean name="/focusTracking" class="et.bo.focusTracking.action.FocusTrackingAction" scope="singleton">
+		<property name="fts">
+			<ref bean="FocusTrackingService"/>
+		</property>
+	</bean>
+	<bean id="FocusTrackingService" class="et.bo.focusTracking.service.impl.FocusTrackingServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>		
+	</bean>
+	
+</beans>

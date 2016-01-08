@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<beans>
+	<bean name="/callcenter/pbx2ivr"
+		class="et.bo.callcenter.pbx2ivr.action.Pbx2IvrAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="pbx2ivrService" />
+		</property>
+	</bean>
+	<bean id="pbx2ivrService"
+		class="et.bo.callcenter.pbx2ivr.service.impl.Pbx2IvrServiceImpl">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+	</bean>
+	<!--  service end   -->
+</beans>

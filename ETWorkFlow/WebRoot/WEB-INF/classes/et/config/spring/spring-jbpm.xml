@@ -1,0 +1,84 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+<beans>
+	<bean id="FlowMsgService"
+		class="excellence.flow.msg.impl.FlowMsgServiceFileImpl" singleton="true">
+	</bean>
+
+	<bean id="WorkFlowService"
+		class="et.workflow.jbpm.impl.WorkFlowServiceImpl" singleton="true">
+		<property name="fms">
+			<ref bean="FlowMsgService" />
+		</property>
+		<property name="wfos">
+			<ref bean="WorkFlowOperService" />
+		</property>
+	</bean>
+
+	<bean id="WorkFlowOperService"
+		class="et.workflow.jbpm.impl.WorkFlowOperServiceJbpmImpl" singleton="true">
+		<property name="fms">
+			<ref bean="FlowMsgService" />
+		</property>
+	</bean>
+	<bean id="mtiTask"
+		class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+		<property name="targetObject">
+			<ref bean="WorkFlowService" />
+		</property>
+		<property name="targetMethod">
+			<value>ListenMsg</value>
+		</property>
+	</bean>
+
+	<bean id="stTask"
+		class="org.springframework.scheduling.timer.ScheduledTimerTask">
+		<property name="delay">
+			<value>50000</value>
+		</property>
+		<property name="period">
+			<value>6000</value>
+		</property>
+		<property name="timerTask">
+			<ref local="mtiTask" />
+		</property>
+	</bean>
+	<bean id="timerFactory"
+		class="org.springframework.scheduling.timer.TimerFactoryBean">
+		<property name="scheduledTimerTasks">
+			<list>
+				<ref local="stTask" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="jobdetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	<property name="targetObject">
+			<ref bean="WorkFlowService" />
+		</property>
+		<property name="targetMethod">
+			<value>ListenMsg</value>
+		</property>
+	</bean>
+	
+	<bean id="trigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+	<property name="jobDetail">
+	<ref local="jobdetail"/>
+	</property>
+	<property name="startDelay">
+	<value>5000</value>
+	</property>
+	<property name="repeatInterval">
+	<value>5000</value>
+	</property>
+	<property name="repeatCount">
+	<value>5</value>
+	</property>
+	</bean>
+	<bean id="quartz" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+	<property name="triggers">
+	<list>
+	<ref local="trigger"/>
+	</list>
+	</property>
+	</bean>
+</beans>

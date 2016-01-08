@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+		<!-- 回访form -->
+		<form-bean name="callback" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="qid" 					type="java.lang.String" />
+			<form-property name="id" 					type="java.lang.String" />
+			<form-property name="question_id" 			type="java.lang.String" />
+			<form-property name="question_content" 		type="java.lang.String" />
+			<form-property name="callback_time" 		type="java.lang.String" />
+			<form-property name="callback_man" 			type="java.lang.String" />
+			<form-property name="callback_phone" 		type="java.lang.String" />
+			<form-property name="is_callback_succ" 		type="java.lang.String" />
+			<form-property name="callback_content" 	type="java.lang.String" />
+			<form-property name="remark" 				type="java.lang.String" />
+		</form-bean>
+
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<!-- 回访action -->
+		<action attribute="callback" 
+				name="callback" 
+				scope="request" 
+				path="/callback/callback" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main" path="/callback/callbackMain.jsp"/>
+			<forward name="list" path="/callback/callbackList.jsp"/>
+			<forward name="load" path="/callback/callbackLoad.jsp"/>
+			<forward name="query" path="/callback/callbackQuery.jsp"/>
+		</action>
+		
+		
+
+	</action-mappings>
+	
+</struts-config>
+

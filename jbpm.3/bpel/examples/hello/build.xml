@@ -1,0 +1,78 @@
+<project name="jbpm.bpel.examples.hello" basedir="." default="install">
+
+  <!-- project specific properties -->
+  <property name="artifact.name" value="hello" />
+  <property name="module.name" value="bpel" />
+  <property name="jbpm.root" value="../../.." />
+  <property file="../version.properties" />
+  <property name="build.dir" value="target" />
+  <property name="definition.dir" value="src/main/bpel" />
+  <property name="web.dir" value="src/main/resources/WEB-INF" />
+  
+
+  <!-- properties files -->
+  <property file="${user.home}/jbpm/build.properties" />
+  <property file="build.properties" />
+  <property file="${jbpm.root}/build/build.properties" />
+
+  <!-- import base project build file -->
+  <import file="${jbpm.root}/build/base.project.build.xml"/>
+  
+  <target name="package" depends="generate-artifacts">
+    <mkdir dir="${build.dir}" />
+    <war warfile="${build.dir}/${app.name}.war" webxml="${web.dir}/web.xml">
+      <classes dir="${web.dir}/classes" />
+      <webinf dir="${web.dir}">
+        <exclude name="web.xml" />
+        <exclude name="src/**"/>
+        <exclude name="classes/**"/>
+        <exclude name="wscompile.xml"/>
+      </webinf>
+    </war>
+  </target>
+  
+  <target name="package-definition">
+    <mkdir dir="${build.dir}" />
+    <zip destfile="${build.dir}/${artifact.name}.process">
+      <fileset dir="${definition.dir}" excludes="bpel-definition.xml" />
+      <zipfileset dir="${definition.dir}" prefix="META-INF" includes="bpel-definition.xml" />
+    </zip>
+  </target>
+  
+  <target name="generate-service" depends="package-definition" 
+    description="generate wsdl documents describing the service">
+    <!-- generate wsdl binding and service documents -->
+    <servicegen processfile="${build.dir}/${artifact.name}.process" outputdir="${web.dir}/wsdl" />
+    <!-- copy xml schema documents -->
+    <copy todir="${web.dir}/wsdl">
+      <fileset dir="${definition.dir}">
+        <include name="**/*.xsd"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="generate-artifacts" depends="generate-service"
+    description="generate WSEE server artifacts">
+    <mkdir dir="${web.dir}/src" />
+    <mkdir dir="${web.dir}/classes" />
+    <java classname="LauncherBootstrap" dir="${web.dir}" fork="yes">
+      <classpath>
+        <pathelement path="${wsdp.home}/jwsdp-shared/bin" />
+      </classpath>
+      <arg line="wscompile" />
+      <arg line="-import" />
+      <arg line="-keep" />
+      <arg line="-d classes" />
+      <arg line="-s src" />
+      <arg line="-mapping jaxrpc-mapping.xml" />
+      <arg line="-f:norpcstructures,wsi,strict" />
+      <arg line="wscompile.xml" />
+    </java>
+  </target>
+  
+  <target name="install" depends="package">
+    <webdeploy par="${build.dir}/${artifact.name}.process" />
+    <copy todir="${jboss.home}/server/default/deploy" />
+  </target>
+    
+</project>

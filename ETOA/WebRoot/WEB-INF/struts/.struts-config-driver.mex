@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/DriverOper.do" location="0,0" dimension="358,84" />
+  <StrutsActivity path="/govDrivOperManage/GovDriverOper.do" location="723,0" dimension="358,84" />
+  <StrutsActivity path="/govmanage/govDrivMain.jsp" location="305,184" dimension="196,48" />
+  <StrutsActivity path="/operMyAlbum.jsp" location="45,184" dimension="136,48" />
+  <StrutsActivity path="/govDrivOperManage/message/main.jsp" location="601,184" dimension="250,48" />
+  <StrutsActivity path="/govDrivOperManage/message/error.jsp" location="951,184" dimension="256,48" />
+  <StrutsActivity path="/govDrivOperManage/message/success.jsp" location="1307,184" dimension="268,48" />
+  <StrutsTransition id="/DriverOper.do,error,/operMyAlbum.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="59,84" />
+      <AbsolutePoint location="59,119" />
+      <AbsolutePoint location="79,119" />
+      <AbsolutePoint location="79,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/govDrivOperManage/GovDriverOper.do,error,/govDrivOperManage/message/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="947,84" />
+      <AbsolutePoint location="947,149" />
+      <AbsolutePoint location="1079,149" />
+      <AbsolutePoint location="1079,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/DriverOper.do,success,/operMyAlbum.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="179,84" />
+      <AbsolutePoint location="179,119" />
+      <AbsolutePoint location="147,119" />
+      <AbsolutePoint location="147,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/DriverOper.do,govdrivermain,/govmanage/govDrivMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="298,84" />
+      <AbsolutePoint location="298,119" />
+      <AbsolutePoint location="354,119" />
+      <AbsolutePoint location="354,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/govDrivOperManage/GovDriverOper.do,govdrivermain,/govmanage/govDrivMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="768,84" />
+      <AbsolutePoint location="768,119" />
+      <AbsolutePoint location="452,119" />
+      <AbsolutePoint location="452,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/govDrivOperManage/GovDriverOper.do,main,/govDrivOperManage/message/main.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="857,84" />
+      <AbsolutePoint location="857,149" />
+      <AbsolutePoint location="726,149" />
+      <AbsolutePoint location="726,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/govDrivOperManage/GovDriverOper.do,success,/govDrivOperManage/message/success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1036,84" />
+      <AbsolutePoint location="1036,119" />
+      <AbsolutePoint location="1441,119" />
+      <AbsolutePoint location="1441,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

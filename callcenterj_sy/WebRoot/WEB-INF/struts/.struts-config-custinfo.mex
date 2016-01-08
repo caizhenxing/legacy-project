@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/custinfo/custinfo.do" location="298,0" dimension="308,88" />
+  <StrutsActivity path="/custinfo/custinfoList.jsp" location="0,188" dimension="147,49" />
+  <StrutsActivity path="/custinfo/custinfoMain.jsp" location="247,188" dimension="153,49" />
+  <StrutsActivity path="/custinfo/custinfoQuery.jsp" location="500,188" dimension="161,49" />
+  <StrutsActivity path="/custinfo/custinfoLoad.jsp" location="761,188" dimension="154,49" />
+  <StrutsTransition id="/custinfo/custinfo.do,query,/custinfo/custinfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="490,88" />
+      <AbsolutePoint location="490,153" />
+      <AbsolutePoint location="580,153" />
+      <AbsolutePoint location="580,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/custinfo/custinfo.do,main,/custinfo/custinfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="413,88" />
+      <AbsolutePoint location="413,153" />
+      <AbsolutePoint location="323,153" />
+      <AbsolutePoint location="323,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/custinfo/custinfo.do,list,/custinfo/custinfoList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="336,88" />
+      <AbsolutePoint location="336,123" />
+      <AbsolutePoint location="73,123" />
+      <AbsolutePoint location="73,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/custinfo/custinfo.do,load,/custinfo/custinfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="567,88" />
+      <AbsolutePoint location="567,123" />
+      <AbsolutePoint location="838,123" />
+      <AbsolutePoint location="838,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

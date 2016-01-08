@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+## ************************************************
+#parse( $commonSetting )
+## ***********************************************
+
+## ***********************************************
+##スクリプト
+<SCRIPT LANGUAGE=javascript>
+<!--
+	/* 応募データCSV */
+	function onShinseiCsvOutClick(){
+		document.csvout_form.action="$link.setAction('/gyomu/shinseiKanri/csvOut')";
+	    document.csvout_form.submit();
+	}
+	
+	/* 研究組織CSV */
+	function onKenkyuCsvOutClick(){
+		document.csvout_form.action="$link.setAction('/gyomu/shinseiKanri/kenkyuSoshikiCsvOut')";
+	    document.csvout_form.submit();
+	}
+//-->
+</SCRIPT>
+## ***********************************************
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="javascript:fncWindowOpen('$path/docs/manual3.pdf','help');"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><IMG SRC="$path/images/subtitle_img1.gif" WIDTH=61 HEIGHT=49 ALT=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+       CSV出力</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <IMG SRC="$path/images/subtitle_img3.gif" WIDTH=213 HEIGHT=49 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+    
+    <br>
+    <br>
+    
+    <!-- 本文 ここから -->
+    #errorMarkup()
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+      	<td><a href="javascript:onShinseiCsvOutClick();">応募情報CSV出力</a></td>
+      </tr>
+      <tr>
+      	<td><a href="javascript:onKenkyuCsvOutClick();">研究組織情報CSV出力</a></td>
+      </tr>
+     </table>
+    </div>   
+    <!-- 本文 ここまで -->    
+    
+    <br>
+    
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+      <td><a href="javascript:window.close()"><img src="$path/images/bt_close.gif" width=114 height=28 border="0" alt="閉じる"></a></td>
+      </tr>
+     </table>
+    </div>
+
+    <!-- ログイン画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="4" background="$path/images/footer_login2.gif"> <IMG SRC="$path/images/footer_login1.gif" width=4 height=11 ALT=""></td>
+      <td background="$path/images/footer_login2.gif"><IMG SRC="$path/images/footer_login2.gif" width=4 height=11 ALT=""></td>
+      <td width="4" align="right" background="$path/images/footer_login2.gif"> <IMG SRC="$path/images/footer_login3.gif" width=4 height=11 ALT=""></td>
+     </tr>
+    </table>
+    <!-- ログイン画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+
+##隠しフォーム情報----------
+<form name="csvout_form" action="" method="post">
+</form>
+##----------
+
+</body>
+</html>

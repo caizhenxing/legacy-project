@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="urn:samples:account" xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:tns="urn:samples:account" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://schemas.xmlsoap.org/wsdl/ http://schemas.xmlsoap.org/wsdl/">
+
+  <import namespace="urn:samples:account" location="account.wsdl" />
+
+  <binding name="accountBinding" type="tns:accountSystem">
+
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+
+    <operation name="checkAccess">
+      <soap:operation soapAction="urn:samples:account:action:verifyAccess" />
+      <input>
+        <soap:body use="literal" namespace="urn:samples:account" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="urn:samples:account" />
+      </output>
+    </operation>
+    
+    <operation name="queryBalance">
+      <soap:operation soapAction="urn:samples:account:action:queryBalance" />
+      <input>
+        <soap:body use="literal" namespace="urn:samples:account" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="urn:samples:account" />
+      </output>
+    </operation>
+    
+    <operation name="updateBalance">
+      <soap:operation soapAction="urn:samples:account:action:updateBalance" />
+      <input>
+        <soap:body use="literal" namespace="urn:samples:account" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="urn:samples:account" />
+      </output>
+    </operation>    
+    
+  </binding>
+
+  <service name="accountService">
+
+    <port name="accountPort" binding="tns:accountBinding">
+      <soap:address location="REPLACE_WITH_ACTUAL_URI" />
+    </port>
+
+  </service>
+
+</definitions>

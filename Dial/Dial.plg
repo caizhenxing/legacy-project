@@ -1,0 +1,39 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Dial - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"WinDebug/DIAL.res" /d "_DEBUG" "C:\TC08A32\C\Dial\DIAL.RC"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9DD.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /Fp"WinDebug/Dial.pch" /YX /Fo"WinDebug/" /Fd"WinDebug/" /FD /c 
+"C:\TC08A32\C\Dial\d.cpp"
+"C:\TC08A32\C\Dial\dial.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9DD.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9DE.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:yes /pdb:"WinDebug/Dial.pdb" /debug /machine:I386 /out:"WinDebug/Dial.exe" 
+.\WinDebug\d.obj
+.\WinDebug\dial.obj
+.\WinDebug\DIAL.res
+..\Tc08a32.lib
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9DE.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+d.cpp
+dial.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+Dial.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

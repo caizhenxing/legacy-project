@@ -1,0 +1,70 @@
+<script type="text/javascript">
+workflowSelectActionCallback = function(actionId,stepId, pointType, specialObj) {	
+															 
+}
+</script>
+<input type="hidden" value="" name="nextStepSpecialObj" />
+<input type="hidden" name = "workflowStatus" value = "${requestScope['workflow.objectName'].workflowStatus}" />
+<c:if test="${requestScope['workflow.workflowInfo'].workflowCanBeInitialized}">
+	<div class="update_subhead"><span class="switch_open"
+		onClick="StyleControl.switchDiv(this,$('tabId_initWorkFlow'))"
+		title="点击伸缩节点">初始化工作流：</span></div>
+	<%
+		String workflowName = (String) request.getAttribute("workflowName");
+		//调用一个根据workflowName查到一个xml部署描述文件的方法.
+		com.qware.wf.util.WfUtils wfutils = new com.qware.wf.util.WfUtils();
+		java.util.List resultList = new java.util.ArrayList();
+		if(workflowName == null || "".equals(workflowName)){
+			resultList = new java.util.ArrayList();
+		}else{
+			resultList = wfutils.getWfInitSplit(workflowName);
+		}
+										
+	%>
+	<table border="0" cellpadding="0" cellspacing="0" class="Update"
+		id="tabId_initWorkFlow">
+		<tr>
+			<td class="text">当前状态</td>
+			<td colspan="3" class="font_master">草稿状态</td>
+		</tr>
+		<%
+		if (resultList.size() > 0) {
+		%>
+		<tr>
+			<td class="text">请选择操作</td>
+			<td colspan="3">
+				<%				   
+					for(int i=0; i<resultList.size(); i++){
+						com.qware.wf.entry.WorkflowStep step = (com.qware.wf.entry.WorkflowStep) resultList.get(i); 
+		 		%>
+				
+					<input type="radio" name="<c:out value = "${requestScope['workflow.objectName']}" />.initSplitActionId" value="<%= (step.getActionId() + "," + step.getName()) %>" onClick="workflowSelectActionCallback('<%= step.getActionId() %>','<%= step.getId() %>','<%= step.getPointType() %>','<%=step.getSpecialObject()%>')">
+					提交审批流程 [ 下一步 ] --> <%= step.getName() %>
+				<br>
+				<div style="display:none" id="divId_selectedSigners_<%= step.getActionId() %>_msg">已选择的待办人:
+				<table border="0" cellpadding="0" cellspacing="0" class="Listing" id="divId_selectedSigners_<%= step.getActionId() %>">
+				<thead>
+					<tr>
+					<td>姓名</td>
+					<td>职务</td>
+					<td>所属部门</td>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+				</table>
+				</div>
+				<%
+					}
+				%>				
+			</td>
+		</tr>
+		<%
+		} else {
+			throw new Exception("流程没有被开启");
+		}
+		%>
+		
+
+	</table>
+</c:if>

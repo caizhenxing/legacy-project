@@ -1,0 +1,264 @@
+## ***********************************************
+##   仮領域番号発行情報登録画面
+## ***********************************************
+## 2007/07/12 BIS 趙一非 新規作成　
+
+#parse($commonSetting)
+#set($info=$result)
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpenClose.js"></script>
+
+## スクリプト*************************************
+<script language="javascript">
+<!--
+  /* キャンセル */
+  function onCancelClick(inJigyoCds){
+      document.ryoiki_form.action = "$link.setAction('/shinsei/registKariBangoHakko')";
+      document.ryoiki_form.jigyoCds.value = inJigyoCds;
+      
+      document.ryoiki_form.submit();
+  }
+  
+  
+
+  function fncAlertWindowOpen(msg){
+  
+  document.ryoiki_form.target="_self";
+  if(windowObj.closed == false){
+  	alert(msg);
+  	return false;
+  }else{
+  	return true;
+  }
+}
+
+function fncAlertWindowOpen2(msg){
+  
+  document.ryoiki_form.target="_self";
+  if(windowObj2.closed == false){
+    alert(msg);
+    return false;
+  }else{
+    return true;
+  }
+}
+    //保存
+    function onTransientSave(){
+        document.ryoiki_form.action="$link.setAction("/shinsei/registKariBangoHakkoSave")";
+        
+        document.ryoiki_form.submit();
+    }
+     //
+    function onTransientSaveWithUpload(){
+        
+        if(fncAlertWindowOpen("「研究組織表」画面の[OK]をクリックしてから再度実行してください。")){
+            isClosed1 = true;
+            
+        }
+        if(fncAlertWindowOpen2("「研究経費表」画面の[OK]をクリックしてから再度実行してください。")){
+            isClosed2 = true;
+            
+        }
+        if(isClosed1 && isClosed2){
+            
+           
+            setTimeout("onTransientSave();", 0);
+        }
+        
+    }
+  
+
+  
+//-->
+</script>
+## ***********************************************
+</head>
+
+<body class="bodyStyle">
+<form name="ryoiki_form" action="$link.setAction("/shinsei/registKariBangoHakkoSave")" method="post">
+<div align="center">
+<!-- ヘッダー 用テーブルここから-->
+<table width="95%" border="0" cellpadding="0" cellspacing="0">
+ <tbody>
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif"><!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tbody>
+      <tr>
+       <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+      </tr>
+      <tr>
+       <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+       <td><a href="$link.setAction('/shinsei/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width="72" height="20" border="0"></a></td>
+      </tr>
+     </tbody>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで --> </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </tbody>
+</table>
+<!--  ヘッダー 用テーブルここまで-->
+<!-- 左右の縦線用テーブルここから -->
+<table width="95%" border="0" cellpadding="0" cellspacing="0">
+ <tbody>
+  <tr>
+   <td width="1" bgcolor="#cccccc"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td><!-- コンテンツエリアここから --><!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tbody>
+      <tr>
+       <td bgcolor="#6699CC" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/shinsei/showMainMenu')">応募者向けメニュー</a>＞仮領域番号発行（受付中研究種目一覧＞仮領域番号発行情報登録＞<b>仮領域番号発行情報登録確認</b><font size="1">＞仮領域番号発行情報登録完了</font>）</font></td>
+      </tr>
+     </tbody>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　--><!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tbody>
+      <tr valign="bottom">
+       <td width="1%" background="$path/images/subtitle_img2.gif"><img src="../images/subtitle_img1.gif" width="61" height="49" alt=""></td>
+       <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>仮領域番号発行情報登録確認</td>
+       <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width="213" height="49" alt=""></td>
+      </tr>
+     </tbody>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+    <!-- 本文ここから -->
+    
+    
+
+
+
+    <p align="left">以下の内容で登録します。よろしければ、[OK]ボタンをクリックしてください。</p>
+    <div align="left">
+    #errorExistMsgKiban()
+#errorMarkupForGlobalError()
+     <center>
+     	
+      <table border="0" cellpadding="0" cellspacing="0" width="800">
+       <tr>
+        <td>
+         <div align="center">
+          <table border="0" cellpadding="0" cellspacing="0" width="800">
+           <tr>
+            <td align="center">
+             <p align="center"><b><font size="4">
+               #if($info.kaisu.toString()=="1")
+				平成$!escape.getText($!info.nendo)年度($!escape.getText($!info.nendoSeireki)年度) $!escape.getText($!info.jigyoName) 仮領域番号発行情報登録
+               #else
+				平成$!escape.getText($!info.nendo)年度($!escape.getText($!info.nendoSeireki)年度) 第$!escape.getText($!info.kaisu)回 $!escape.getText($!info.jigyoName) 仮領域番号発行情報登録
+               #end
+             </font></b></p>
+            </td>
+           </tr>
+          </table>
+         </div>
+        </td>
+       </tr>
+      </table>
+      <br>
+      #set($userInfo=$userContainer.userInfo)
+      #set($shinseishaInfo=$userInfo.shinseishaInfo)
+      <table border="1" cellpadding="0" cellspacing="0" width="800" bgcolor="#ffffff">
+       <tr>
+        <th rowspan="2">領域代表者氏名</th>
+        <td colspan="2" valign="middle">（フリガナ）$!escape.getText($!shinseishaInfo.nameKanaSei)　$!escape.getText($!shinseishaInfo.nameKanaMei)</td>
+       </tr>
+       <tr>
+        <td colspan="2" valign="middle">（漢字等）$!escape.getText($!shinseishaInfo.nameKanjiSei)　$!escape.getText($!shinseishaInfo.nameKanjiMei)</td>
+       </tr>
+       <tr>
+        <th>所属研究機関</th>
+        <td valign="middle">（番号）$!escape.getText($!shinseishaInfo.shozokuCd)</td>
+        <td valign="middle">$!escape.getText($!shinseishaInfo.shozokuName)</td>
+       </tr>
+      </table>
+      <br>
+      #set($rinfo=$ryoikiGaiyoForm.ryoikikeikakushoInfo)
+       <input type="hidden" name="jigyoId" value="$!escape.getText($!ryoikiGaiyoForm.jigyoId)">
+        <input type="hidden" name="ryoikikeikakushoInfo.zennendoOuboFlg" value="$!escape.getText($!rinfo.zennendoOuboFlg)">
+         <input type="hidden" name="ryoikikeikakushoInfo.zennendoOuboNo" value="$!escape.getText($!rinfo.zennendoOuboNo)">
+          <input type="hidden" name="ryoikikeikakushoInfo.zennendoOuboRyoikiRyaku" value="$!escape.getText($!rinfo.zennendoOuboRyoikiRyaku)">
+           <input type="hidden" name="ryoikikeikakushoInfo.zennendoOuboSettei" value="$!escape.getText($!rinfo.zennendoOuboSettei)">
+      <table border="1" cellpadding="0" cellspacing="0" width="800" bgcolor="#ffffff">
+        <tr>
+            <th rowspan="5" width="200">研究領域最終年度前年度の応募</th>
+          </tr>
+          <tr>
+         <th width="140">該当の有無</th>
+         <td colspan="2" >
+          #if($ryoikiGaiyoForm.ryoikikeikakushoInfo.zennendoOuboFlg=="1")
+				有
+               #else
+				無
+               #end
+         </td>
+        </tr>
+        <tr>
+         <th rowspan="3" width="140">対象領域</th>
+         <th width="155">領域番号</th>
+         <td >$!escape.getText($!rinfo.zennendoOuboNo)&nbsp;</td>
+        </tr>
+        <tr>
+         <th width="155">領域略称名</th>
+         <td >$!escape.getText($!rinfo.zennendoOuboRyoikiRyaku)&nbsp;</td>
+        </tr>
+        <tr>
+         <th width="155">設定期間</th>
+         <td >$!escape.getText($!rinfo.zennendoOuboSettei)&nbsp;</td>
+        </tr>
+       </table>
+    
+      
+     </center>
+    </div>
+    <br>
+    <!-- 本文ここまで -->
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tbody>
+       <tr>
+       
+        ##<td><a href="$link.setAction('/shinsei/registKariBangoHakkoSave')"><img src="$path/images/bt_ok.gif" width="114" height="28" alt="OK" border="0"></a></td>
+        <td><a href="javascript:onTransientSave()"><img src="$path/images/bt_ok.gif" width="114" height="28" alt="OK" border="0"></a></td>
+      
+      
+        <td><a href="javascript:onCancelClick('00022')"><img src="$path/images/bt_cancel.gif" width="114" height="28" alt="キャンセル" border="0"></a></td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tbody>
+      <tr bgcolor="#336699">
+       <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width="8" height="26" alt=""></td>
+       <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shinsei/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width="72" height="26" border="0"></a></td>
+       <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width="8" height="26" alt=""></td>
+      </tr>
+     </tbody>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで --> 
+   </td>
+   <td width="1" bgcolor="#cccccc"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </tbody>
+</table>
+<!-- 左右の縦線用テーブルここまで -->
+</div>
+##隠しフォーム情報----------
+
+  <input type="hidden" name="jigyoCds" value="">
+</form>
+</body>
+</html>

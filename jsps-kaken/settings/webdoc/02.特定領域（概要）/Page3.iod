@@ -1,0 +1,1557 @@
+
+#V4.8 IOTHE-Printerfile
+#
+#
+
+cd=ÇxÇìÇì
+it=n
+doc={
+t=
+st=
+c=
+ap=
+ss=e487av1Tav1Tav1Tav1Tav1Tav+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+Ccl+#
+}
+pagesize=a4 v 595 842
+pr=0 a4 v 595 842 0 0 100 n
+opt=255 255 255
+addole={
+}
+page
+ptype=overlay
+pagesize=a4 v 595 842
+sheet=1 0 0 0 0 4 0 0 |
+figs={
+}
+page
+ptype=normal
+figs={
+pf=1
+pw=2
+pk=0
+pc=0 0 0
+ff=-1
+fc=255 255 255
+fb=0
+jo=2
+ml=10
+PL={
+p={
+30 44
+560 44
+}
+}
+pw=0
+PL={
+p={
+30 80
+560 80
+}
+}
+pw=2
+PL={
+p={
+30 44
+30 805
+}
+}
+PL={
+p={
+560 44
+560 805
+}
+}
+tvp=1
+tuf=1
+ts=12
+tw=1
+td=0
+tr=0
+ti=0
+tb=1
+twh=ÇlÇr ÉSÉVÉbÉN
+twz=ÇlÇr ÉSÉVÉbÉN
+twk=ÇlÇr ÉSÉVÉbÉN
+tc=0 0 0
+tov=1
+FT={
+xy=37 65.5
+str=å§ãÜãÊï™
+}
+pw=0
+PL={
+p={
+535 805
+535 805
+}
+}
+tvp=0
+ts=9
+tb=0
+tov=0
+pf=0
+TF={
+name=KENKYU_KUBUN#1
+xywh=47 107 89 15
+}
+pf=1
+PL={
+p={
+30 675
+560 675
+}
+}
+pw=2
+PL={
+p={
+30 785
+560 785
+}
+}
+PL={
+p={
+30 805
+560 805
+}
+}
+tvp=1
+ts=12
+FT={
+xy=35 40
+str=å§ãÜåoîÔÅyíPà ÅFêÁâ~Åz
+}
+pw=0
+PL={
+p={
+490 100
+490 695
+}
+}
+PL={
+p={
+430 695
+430 100
+}
+}
+PL={
+p={
+370 100
+370 695
+}
+}
+PL={
+p={
+130 695
+130 100
+}
+}
+PL={
+p={
+310 100
+310 695
+}
+}
+PL={
+p={
+250 695
+250 100
+}
+}
+PL={
+p={
+190 100
+190 695
+}
+}
+ts=10.5
+tov=1
+FT={
+xy=523 75.5
+str=ÅmêÁâ~Ån
+}
+tb=1
+FT={
+xy=508 60.5
+str=çáÅ@åv
+}
+PL={
+p={
+40 100
+560 100
+}
+}
+PL={
+p={
+40 150
+560 150
+}
+}
+PL={
+p={
+40 125
+560 125
+}
+}
+PL={
+p={
+40 200
+560 200
+}
+}
+PL={
+p={
+40 175
+560 175
+}
+}
+PL={
+p={
+40 250
+560 250
+}
+}
+PL={
+p={
+40 225
+560 225
+}
+}
+PL={
+p={
+40 275
+560 275
+}
+}
+PL={
+p={
+40 350
+560 350
+}
+}
+PL={
+p={
+40 325
+560 325
+}
+}
+PL={
+p={
+40 400
+560 400
+}
+}
+PL={
+p={
+40 375
+560 375
+}
+}
+PL={
+p={
+40 450
+560 450
+}
+}
+PL={
+p={
+40 425
+560 425
+}
+}
+PL={
+p={
+40 500
+560 500
+}
+}
+PL={
+p={
+40 475
+560 475
+}
+}
+PL={
+p={
+40 550
+560 550
+}
+}
+PL={
+p={
+40 525
+560 525
+}
+}
+PL={
+p={
+40 600
+560 600
+}
+}
+PL={
+p={
+40 575
+560 575
+}
+}
+PL={
+p={
+40 650
+560 650
+}
+}
+PL={
+p={
+40 625
+560 625
+}
+}
+tvp=0
+ts=9
+tb=0
+tov=0
+pf=0
+TF={
+name=KENKYU_KUBUN#3
+xywh=47 155 89 15
+}
+TF={
+name=KENKYU_KUBUN#2
+xywh=47 130 89 15
+}
+TF={
+name=KENKYU_KUBUN#4
+xywh=47 180 89 15
+}
+TF={
+name=KENKYU_KUBUN#5
+xywh=47 205 89 15
+}
+TF={
+name=KENKYU_KUBUN#6
+xywh=47 230 89 15
+}
+TF={
+name=KENKYU_KUBUN#7
+xywh=47 255 89 15
+}
+pw=1
+TF={
+name=KENKYU_KUBUN#8
+xywh=47 280 89 15
+}
+pw=0
+TF={
+name=KENKYU_KUBUN#9
+xywh=47 305 89 15
+}
+TF={
+name=KENKYU_KUBUN#10
+xywh=47 330 89 15
+}
+TF={
+name=KENKYU_KUBUN#11
+xywh=47 355 89 15
+}
+TF={
+name=KENKYU_KUBUN#12
+xywh=47 380 89 15
+}
+TF={
+name=KENKYU_KUBUN#13
+xywh=47 405 89 15
+}
+TF={
+name=KENKYU_KUBUN#14
+xywh=47 430 89 15
+}
+TF={
+name=KENKYU_KUBUN#15
+xywh=47 455 89 15
+}
+TF={
+name=KENKYU_KUBUN#16
+xywh=47 480 89 15
+}
+TF={
+name=KENKYU_KUBUN#17
+xywh=47 505 89 15
+}
+TF={
+name=KENKYU_KUBUN#18
+xywh=47 530 89 15
+}
+TF={
+name=KENKYU_KUBUN#19
+xywh=47 555 89 15
+}
+TF={
+name=KENKYU_KUBUN#20
+xywh=47 580 89 15
+}
+pf=1
+PL={
+p={
+40 735
+490 735
+}
+}
+pw=2
+PL={
+p={
+30 695
+560 695
+}
+}
+pw=0
+PL={
+p={
+40 715
+40 785
+}
+}
+tvp=1
+ts=12
+tb=1
+twh=
+twz=
+twk=
+FT={
+xy=60 800
+str=çáÅ@åv
+}
+FT={
+xy=35 710
+str=åˆïÂå§ãÜ
+}
+FT={
+xy=60 690
+str=è¨Å@åv
+}
+tvp=0
+ts=9
+tb=0
+twh=ÇlÇr ÉSÉVÉbÉN
+twz=ÇlÇr ÉSÉVÉbÉN
+twk=ÇlÇr ÉSÉVÉbÉN
+pf=0
+TF={
+name=KENKYU_KUBUN#21
+xywh=47 605 89 15
+}
+TF={
+name=KENKYU_KUBUN#22
+xywh=47 630 89 15
+}
+TF={
+name=KENKYU_KUBUN#23
+xywh=47 655 89 15
+}
+pf=1
+PL={
+p={
+40 300
+560 300
+}
+}
+tvp=1
+ts=10
+twh=
+twz=
+twk=
+RT={
+xy=135 120
+id=KEIHI1#1
+fm=Z,ZZZ,ZZ9
+}
+tvp=0
+ts=9
+twh=ÇlÇr ÉSÉVÉbÉN
+twz=ÇlÇr ÉSÉVÉbÉN
+twk=ÇlÇr ÉSÉVÉbÉN
+pf=0
+TF={
+name=KENKYU_UTIWAKE2
+xywh=197 740 44 45
+}
+TF={
+name=KENKYU_UTIWAKE3
+xywh=257 740 44 45
+}
+TF={
+name=KENKYU_UTIWAKE4
+xywh=317 740 44 45
+}
+TF={
+name=KENKYU_UTIWAKE5
+xywh=377 740 44 45
+}
+TF={
+name=KENKYU_UTIWAKE6
+xywh=437 740 44 45
+}
+tb=1
+TF={
+name=NENDO1
+xywh=132 55 59 15
+}
+TF={
+name=NENDO2
+xywh=192 55 59 15
+}
+TF={
+name=NENDO3
+xywh=252 55 59 15
+}
+TF={
+name=NENDO4
+xywh=312 55 59 15
+}
+TF={
+name=NENDO5
+xywh=372 55 59 15
+}
+TF={
+name=NENDO6
+xywh=432 55 59 15
+}
+ts=12
+tb=0
+TF={
+name=PAGENUM
+xywh=282 815 39 15
+}
+tvp=1
+ts=10
+twh=
+twz=
+twk=
+RT={
+xy=135 145
+id=KEIHI1#2
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 170
+id=KEIHI1#3
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 195
+id=KEIHI1#4
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 220
+id=KEIHI1#5
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 245
+id=KEIHI1#6
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 270
+id=KEIHI1#7
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 295
+id=KEIHI1#8
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 320
+id=KEIHI1#9
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 345
+id=KEIHI1#10
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 370
+id=KEIHI1#11
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 395
+id=KEIHI1#12
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 420
+id=KEIHI1#13
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 445
+id=KEIHI1#14
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 470
+id=KEIHI1#15
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 495
+id=KEIHI1#16
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 520
+id=KEIHI1#17
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 545
+id=KEIHI1#18
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 570
+id=KEIHI1#19
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 595
+id=KEIHI1#20
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 620
+id=KEIHI1#21
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 645
+id=KEIHI1#22
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 670
+id=KEIHI1#23
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 120
+id=KEIHI2#1
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 145
+id=KEIHI2#2
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 170
+id=KEIHI2#3
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 195
+id=KEIHI2#4
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 220
+id=KEIHI2#5
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 245
+id=KEIHI2#6
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 270
+id=KEIHI2#7
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 295
+id=KEIHI2#8
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 320
+id=KEIHI2#9
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 345
+id=KEIHI2#10
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 370
+id=KEIHI2#11
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 395
+id=KEIHI2#12
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 420
+id=KEIHI2#13
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 445
+id=KEIHI2#14
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 470
+id=KEIHI2#15
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 495
+id=KEIHI2#16
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 520
+id=KEIHI2#17
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 545
+id=KEIHI2#18
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 570
+id=KEIHI2#19
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 595
+id=KEIHI2#20
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 620
+id=KEIHI2#21
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 645
+id=KEIHI2#22
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 670
+id=KEIHI2#23
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 120
+id=KEIHI3#1
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 145
+id=KEIHI3#2
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 170
+id=KEIHI3#3
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 195
+id=KEIHI3#4
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 220
+id=KEIHI3#5
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 245
+id=KEIHI3#6
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 270
+id=KEIHI3#7
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 295
+id=KEIHI3#8
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 320
+id=KEIHI3#9
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 345
+id=KEIHI3#10
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 370
+id=KEIHI3#11
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 395
+id=KEIHI3#12
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 420
+id=KEIHI3#13
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 445
+id=KEIHI3#14
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 470
+id=KEIHI3#15
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 495
+id=KEIHI3#16
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 520
+id=KEIHI3#17
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 545
+id=KEIHI3#18
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 570
+id=KEIHI3#19
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 595
+id=KEIHI3#20
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 620
+id=KEIHI3#21
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 645
+id=KEIHI3#22
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 670
+id=KEIHI3#23
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 120
+id=KEIHI4#1
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 145
+id=KEIHI4#2
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 170
+id=KEIHI4#3
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 195
+id=KEIHI4#4
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 220
+id=KEIHI4#5
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 245
+id=KEIHI4#6
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 270
+id=KEIHI4#7
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 295
+id=KEIHI4#8
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 320
+id=KEIHI4#9
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 345
+id=KEIHI4#10
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 370
+id=KEIHI4#11
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 395
+id=KEIHI4#12
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 420
+id=KEIHI4#13
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 445
+id=KEIHI4#14
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 470
+id=KEIHI4#15
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 495
+id=KEIHI4#16
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 520
+id=KEIHI4#17
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 545
+id=KEIHI4#18
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 570
+id=KEIHI4#19
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 595
+id=KEIHI4#20
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 620
+id=KEIHI4#21
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 645
+id=KEIHI4#22
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 120
+id=KEIHI5#1
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 145
+id=KEIHI5#2
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 170
+id=KEIHI5#3
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 195
+id=KEIHI5#4
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 220
+id=KEIHI5#5
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 245
+id=KEIHI5#6
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 270
+id=KEIHI5#7
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 295
+id=KEIHI5#8
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 320
+id=KEIHI5#9
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 345
+id=KEIHI5#10
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 370
+id=KEIHI5#11
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 395
+id=KEIHI5#12
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 420
+id=KEIHI5#13
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 445
+id=KEIHI5#14
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 470
+id=KEIHI5#15
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 495
+id=KEIHI5#16
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 520
+id=KEIHI5#17
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 545
+id=KEIHI5#18
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 570
+id=KEIHI5#19
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 595
+id=KEIHI5#20
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 620
+id=KEIHI5#21
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 645
+id=KEIHI5#22
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 670
+id=KEIHI5#23
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 120
+id=KEIHI6#1
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 145
+id=KEIHI6#2
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 170
+id=KEIHI6#3
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 195
+id=KEIHI6#4
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 220
+id=KEIHI6#5
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 245
+id=KEIHI6#6
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 270
+id=KEIHI6#7
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 295
+id=KEIHI6#8
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 320
+id=KEIHI6#9
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 345
+id=KEIHI6#10
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 370
+id=KEIHI6#11
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 395
+id=KEIHI6#12
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 420
+id=KEIHI6#13
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 445
+id=KEIHI6#14
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 470
+id=KEIHI6#15
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 495
+id=KEIHI6#16
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 520
+id=KEIHI6#17
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 545
+id=KEIHI6#18
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 570
+id=KEIHI6#19
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 595
+id=KEIHI6#20
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 620
+id=KEIHI6#21
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 645
+id=KEIHI6#22
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 670
+id=KEIHI6#23
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 690
+id=SYOKEI1
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 690
+id=SYOKEI2
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 690
+id=SYOKEI3
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=320 690
+id=SYOKEI4
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 690
+id=SYOKEI5
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 690
+id=SYOKEI6
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 120
+id=KEIHI_GOUKEI#1
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 145
+id=KEIHI_GOUKEI#2
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 170
+id=KEIHI_GOUKEI#3
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 195
+id=KEIHI_GOUKEI#4
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 220
+id=KEIHI_GOUKEI#5
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 245
+id=KEIHI_GOUKEI#6
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 270
+id=KEIHI_GOUKEI#7
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 295
+id=KEIHI_GOUKEI#8
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 320
+id=KEIHI_GOUKEI#9
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 345
+id=KEIHI_GOUKEI#10
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 370
+id=KEIHI_GOUKEI#11
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 395
+id=KEIHI_GOUKEI#12
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 420
+id=KEIHI_GOUKEI#13
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 445
+id=KEIHI_GOUKEI#14
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 470
+id=KEIHI_GOUKEI#15
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 495
+id=KEIHI_GOUKEI#16
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 520
+id=KEIHI_GOUKEI#17
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 545
+id=KEIHI_GOUKEI#18
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 570
+id=KEIHI_GOUKEI#19
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 595
+id=KEIHI_GOUKEI#20
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 620
+id=KEIHI_GOUKEI#21
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 645
+id=KEIHI_GOUKEI#22
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 670
+id=KEIHI_GOUKEI#23
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 690
+id=SYOKEI_GOUKEI
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=135 800
+id=GOUKEI1
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 730
+id=KENKYU_SYOKEI2
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 730
+id=KENKYU_SYOKEI3
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 730
+id=KENKYU_SYOKEI4
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 730
+id=KENKYU_SYOKEI5
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 730
+id=KENKYU_SYOKEI6
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=495 755
+id=KOUBO_GOUKEI
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=195 800
+id=GOUKEI2
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=255 800
+id=GOUKEI3
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=315 800
+id=GOUKEI4
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=375 800
+id=GOUKEI5
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=435 800
+id=GOUKEI6
+fm=Z,ZZZ,ZZ9
+}
+RT={
+xy=500 800
+id=GOUKEI
+fm=Z,ZZZ,ZZ9
+}
+pf=1
+PL={
+p={
+130 80
+130 45
+}
+}
+PL={
+p={
+190 80
+190 45
+}
+}
+PL={
+p={
+250 80
+250 45
+}
+}
+PL={
+p={
+310 80
+310 45
+}
+}
+PL={
+p={
+370 80
+370 45
+}
+}
+PL={
+p={
+430 80
+430 45
+}
+}
+PL={
+p={
+490 80
+490 45
+}
+}
+RT={
+xy=315 670
+id=KEIHI4#23
+fm=Z,ZZZ,ZZ9
+}
+ts=12
+tb=1
+FT={
+xy=35 95
+str=åvâÊå§ãÜ
+}
+PL={
+p={
+40 675
+40 100
+}
+}
+PL={
+p={
+40 715
+560 715
+}
+}
+PL={
+p={
+130 715
+130 805
+}
+}
+PL={
+p={
+190 715
+190 805
+}
+}
+PL={
+p={
+250 715
+250 805
+}
+}
+PL={
+p={
+310 715
+310 805
+}
+}
+PL={
+p={
+370 715
+370 805
+}
+}
+PL={
+p={
+430 715
+430 805
+}
+}
+PL={
+p={
+490 715
+490 805
+}
+}
+FT={
+xy=65 730
+str=è¨Å@åv
+}
+FT={
+xy=65 765
+str=ì‡Å@ñÛ
+}
+B={
+xywh=170 390 0 0
+}
+ts=10.5
+tb=0
+twh=ÇlÇr ÉSÉVÉbÉN
+twz=ÇlÇr ÉSÉVÉbÉN
+twk=ÇlÇr ÉSÉVÉbÉN
+tov=1
+FT={
+xy=158 730.5
+str=-
+}
+FT={
+xy=158 765.5
+str=-
+}
+}

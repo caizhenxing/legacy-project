@@ -1,0 +1,690 @@
+## ***********************************************
+## 研究組織表画面(研究計画調書作成)
+## ***********************************************
+#parse($commonSetting)
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+## スクリプト*************************************
+<script language="javascript">
+<!--
+//UPDATE　START 2007/07/10 BIS 金京浩     
+    /*
+    function onAdd(addBuntanFlg){
+        document.shinsei_form.action="$link.setAction("/shinsei/addKenkyuSoshiki")#lastRow";
+        document.shinsei_form.addBuntanFlg.value=addBuntanFlg;
+        document.shinsei_form.submit();
+    }
+    */
+    function onAdd(){
+        document.shinsei_form.action="$link.setAction("/shinsei/addKenkyuSoshiki")#lastRow";
+        //document.shinsei_form.addBuntanFlg.value=document.shinsei_form.addBuntanFlg_radio.value;
+        document.shinsei_form.submit();
+    }
+    
+//UPDATE　END　 2007/07/10 BIS 金京浩
+    
+    function onDel(listIndex){
+        document.shinsei_form.action="$link.setAction("/shinsei/delKenkyuSoshiki")";
+        document.shinsei_form.listIndex.value=listIndex;
+        document.shinsei_form.submit();
+    }        
+    function onReg(){
+        document.shinsei_form.action="$link.setAction("/shinsei/regKenkyuSoshiki")";
+        document.shinsei_form.submit();
+    }        
+//-->
+</script>
+## ***********************************************
+</head>
+
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+   <tr>
+    <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+    <td align="right" background="$path/images/header_bg2.gif">
+     <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+     <table border="0" cellpadding="0" cellspacing="1">
+      <tbody>
+       <tr>
+        <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+       </tr>
+       <tr>
+        <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+        <td><br></td>
+       </tr>
+      </tbody>
+     </table>
+     <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+    </td>
+    <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+   </tr>
+  </tbody>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+   <tr>
+    <td width="1" bgcolor="#cccccc"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+    <td>
+     <!-- コンテンツエリアここから -->
+     <!-- サブ画面タイトル用テーブルここから -->
+     <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tbody>
+       <tr valign="bottom">
+        <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width="61" height="49" alt=""></td>
+        <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont">
+         <br>研究組織表
+        </td>
+        <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width="213" height="49" alt=""></td>
+       </tr>
+      </tbody>
+     </table>
+     <!-- サブ画面タイトル用テーブルここまで -->
+     <!-- 本文ここから -->
+     <form name="shinsei_form" method="post" action="">
+     <input type="hidden" name="listIndex" value="-1">
+     <p align="left">[追加]ボタンをクリックして研究分担者を登録してください。</p>
+##DEL　START 2007/07/19 BIS 金京浩    //2007-07-19 (【科研費】残課題一覧_20070713_NEXS回答.xls )について   
+     ##<p class="comment">研究分担者も、本研究計画に常時参加するものです。</p>
+##DEL　END　 2007/07/19 BIS 金京浩     
+     <p class="comment"><font color="#ff0000">*</font>のついた項目は必須項目です。</p>
+## 20050810 削除
+##        <p class="comment">エフォートについては<!--、研究代表者と分担金の配分がある研究分担者は-->必須項目です。</p>
+## Horikoshi
+     <p class="comment">研究組織の入力欄は、入力画面左側の[追加]ボタンを必要な回数押すことでデータ入力枠が設定されます。使用しない欄（入力したが使用しない場合や全く入力しなかった場合）については、当該欄の左側の[削除]ボタンを押してデータ入力枠を削除してください。</p>
+##   <p class="comment">
+##           画面最下部に表示される「研究代表者及び研究分担者人数」
+##20050628
+##            及び「研究協力者人数」
+## Horikoshi
+##           欄は、データ入力枠の数により自動入力されます。
+##          「研究代表者及び研究分担者人数」
+## 20050628
+##            または「研究協力者人数」
+## Horikoshi
+##          欄の数字と実際に入力したデータの合計人数が合わない場合は、入力後の確認画面においてエラーが出ますので、入力しなかった欄は必ず削除してください。
+##      </p>
+
+## 20050628 研究分担者の「99999999」入力はエラーとするため
+##        <p class="comment">
+##            研究分担者が「研究者番号」を持たない者である場合は、研究者番号欄には「99999999」を入力してください。
+##        </p>
+## Horikoshi
+
+##UPDATE　START 2007/07/10 BIS 金京浩
+##     <font color="#003366"><b>研究組織（研究代表者及び研究分担者）</b></font>
+##UPDATE　START 2007/07/19 BIS 金京浩   //2007-07-19 (【科研費】残課題一覧_20070713_NEXS回答.xls )について  
+     ##<font color="#003366"><b>研究組織（研究代表者及び研究分担者及び連携研究者）</b></font>
+     <font color="#003366"><b>研究組織（研究代表者、研究分担者及び連携研究者）</b></font>
+##UPDATE　END　 2007/07/19 BIS 金京浩      
+#errorMarkupForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.NameKanaSeiORNameKanaMei.Bunfan")
+#errorMarkupForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.NameKanaSeiORNameKanaMei.Renkei")
+##UPDATE　END　 2007/07/10 BIS 金京浩      
+     <!-- 一覧用テーブルここから -->
+     <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+      <tbody>
+       <tr>
+        <td>
+         <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+          <tbody>
+           <tr>
+            <th><br></th>
+##UPDATE　START 2007/07/19 BIS 金京浩            
+            ##<th><br></th>
+            <th>区分</th>
+##UPDATE　END　 2007/07/19 BIS 金京浩            
+            <th width="250">氏名（年齢）</th>
+            <th>所属研究機関　<a href="$link.setAction('/kikanList')" target="_blank"><img src="$path/images/bt_list2.gif" alt="一覧" width="41" height="22" border="0"></a>
+             <br>部局　<a href="$link.setAction('/bukyokuList')" target="_blank"><img src="$path/images/bt_list2.gif" alt="一覧" width="41" height="22" border="0"></a>
+             <br>職　</th>
+            <th>１．現在の専門<br>２．学位<br>３．役割分担</th>
+            <th>平成$!escape.getText($!shinseiForm.shinseiDataInfo.nendo)年度<br>研究経費<br>(千円)</th>
+            <th>エフォート(%)</th>
+           </tr>
+## 2005/03/08 追加 ここから-------------------------------------
+## 理由 研究組織（研究協力者）追加のため「研究代表者及び研究分担者人数」の取得法変更
+           #set($counter1 = 0)
+## 追加 ここまで------------------------------------------------
+           #foreach($info in $shinseiForm.shinseiDataInfo.kenkyuSoshikiInfoList)
+             #set($count = $velocityCount - 1)
+## 2005/03/08 追加 ここから-------------------------------------
+## 理由 研究組織（研究協力者）追加のため「研究代表者及び研究分担者人数」の取得法変更
+##      また、$shinseiForm.shinseiDataInfo.kenkyuSoshikiInfoListに協力者の情報がセットされるので、表示しないように修正
+             #if($info.buntanFlag != "3")
+               #set($counter1 = $counter1 + 1 )
+## 追加 ここまで------------------------------------------------
+               <tr>
+                <td rowspan="3">
+                 #if($info.buntanFlag == "1")
+                   &nbsp
+                 #else
+                   <a href="javascript:onDel('$count')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+                 #end
+                </td>
+                <td rowspan="3">
+##UPDATE　START 2007/07/19 BIS 金京浩   //2007-07-19 (【科研費】残課題一覧_20070713_NEXS回答.xls )について                   
+#*
+                 #if($info.buntanFlag == "1")
+					研究代表者
+##ADD　START 2007/07/10 BIS 金京浩
+				 #elseif($info.buntanFlag == "4")
+					連携研究者 	
+##ADD　START 2007/07/10 BIS 金京浩					
+                 #else
+					研究分担者
+## 2005/03/24 削除 ここから----------------------------
+## 理由 分担フラグをActionにてセットするように修正したため
+##                            <input type="hidden" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].buntanFlag" value="2">
+## 削除 ここまで----------------------------------------
+
+                 #end
+*#
+				#if($info.buntanFlag == "1")
+					研究代表者
+				#else
+				<font color="#ff0000">*</font> 	<select name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].buntanFlag"
+##ADD　START 2007/07/24 BIS 金京浩 //空白の場合はエラーとする
+                      #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList[$count].buntanFlag")
+##ADD　END　 2007/07/24 BIS 金京浩	       							
+				>
+##ADD　START 2007/07/21 BIS 金京浩
+						<option value = "5" 
+						 #if($info.buntanFlag == "5")
+						  selected
+						 #end
+						  ></option>
+##ADD　END　 2007/07/21 BIS 金京浩						
+						<option value = "2" 
+						 #if($info.buntanFlag == "2")
+						  selected
+						 #end
+						  >研究分担者</option>
+						<option value = "4" 
+						 #if($info.buntanFlag == "4")
+						  selected
+						 #end
+						  >連携研究者</option>
+					</select> 
+				#end
+                 
+##UPDATE　END　 2007/07/19 BIS 金京浩                       
+                </td>
+                <td rowspan="3">
+                 #if($info.buntanFlag == "1")
+					（研究者番号）$!escape.getText($!info.kenkyuNo)
+## 2005/03/24 削除 ここから----------------------------
+## 理由 表示順序入れ替えのため
+##                            （漢字等）$!escape.getText($!info.nameKanjiSei)　$!escape.getText($!info.nameKanjiMei)<br>
+##                            （フリガナ）$!escape.getText($!info.nameKanaSei)　$!escape.getText($!info.nameKanaMei)<br>
+## 削除 ここまで----------------------------------------
+
+## 2005/03/24 追加 ここから----------------------------
+## 理由 表示順序入れ替えのため
+                   <br>（フリガナ）$!escape.getText($!info.nameKanaSei)　$!escape.getText($!info.nameKanaMei)
+                   <br>（漢字等）$!escape.getText($!info.nameKanjiSei)　$!escape.getText($!info.nameKanjiMei)
+## 追加 ここまで----------------------------------------
+
+                   <br>$!escape.getText($!info.nenrei)才
+                 #else
+                   <font color="#ff0000">*</font>（研究者番号）
+                   <input tabindex="${count}01" size="10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].kenkyuNo" value="$!escape.getText($!info.kenkyuNo)" 
+                                    ##<!-- ADD　START 2007/07/06 BIS 張楠 -->
+                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList[$count].kenkyuNo")
+	       							##<!-- ADD　START 2007/07/06 BIS 張楠 -->
+	       							
+	       							##<!-- ADD　START 2007/07/13 BIS 金京浩 -->
+                                    #errorColorForProperty("shinseiDataInfo.kenkyuSoshikiInfoList[$count].kenkyuNo")
+	       							##<!-- ADD　END　 2007/07/13 BIS 金京浩 -->
+	       							
+	       						>
+## 2005/03/24 削除 ここから----------------------------
+## 理由 表示順序入れ替えのため
+##                            （漢字等）<br>
+##                            （姓）<font color="#ff0000">*</font>
+##                                <input tabindex="${count}02" size="10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanjiSei" value="$!escape.getText($!info.nameKanjiSei)">
+##                            （名）<font color="#ff0000">*</font>
+##                                <input tabindex="${count}03" size="10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanjiMei" value="$!escape.getText($!info.nameKanjiMei)"><br>
+##                            （フリガナ）<br>
+##                            （姓）<font color="#ff0000">*</font>
+##                                <input tabindex="${count}04" size="10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanaSei" value="$!escape.getText($!info.nameKanaSei)">
+##                            （名）<font color="#ff0000">*</font>
+##                                <input tabindex="${count}05" size="10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanaMei" value="$!escape.getText($!info.nameKanaMei)"><br>
+## 削除 ここまで----------------------------------------
+
+## 2005/03/24 追加 ここから----------------------------
+## 理由 表示順序入れ替えのため
+                   <br>（フリガナ）
+                   <br>（姓）<font color="#ff0000">*</font>
+                   <input tabindex="${count}02" size="10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanaSei" value="$!escape.getText($!info.nameKanaSei)"
+                                    ##<!-- ADD　START 2007/07/06 BIS 張楠 -->
+                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanaSei")
+                                    
+                                    ##<!-- ADD　START 2007/07/13 BIS 金京浩 -->
+                                    #errorColorForProperty("shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanaSei")
+	       							##<!-- ADD　END　 2007/07/13 BIS 金京浩 -->
+	       							
+	       							##<!-- ADD　END　 2007/07/06 BIS 張楠 -->
+					>
+					（名）
+                   <input tabindex="${count}03" size="10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanaMei" value="$!escape.getText($!info.nameKanaMei)"
+                                    ##<!-- ADD　START 2007/07/06 BIS 張楠 -->
+                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanaMei")
+                                    
+                                    ##<!-- ADD　START 2007/07/13 BIS 金京浩 -->
+                                    #errorColorForProperty("shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanaMei")
+	       							##<!-- ADD　END　 2007/07/13 BIS 金京浩 -->
+	       							
+	       							##<!-- ADD　END　 2007/07/06 BIS 張楠 -->
+					>                   
+				   <br>（漢字等）
+				   <br>（姓）<font color="#ff0000">*</font>
+                   <input tabindex="${count}04" size="10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanjiSei" value="$!escape.getText($!info.nameKanjiSei)"
+                                    ##<!-- ADD　START 2007/07/06 BIS 張楠 -->
+                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanjiSei")
+	       							##<!-- ADD　END　 2007/07/06 BIS 張楠 -->
+					>                                      
+					（名）
+                   <input tabindex="${count}05" size="10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanjiMei" value="$!escape.getText($!info.nameKanjiMei)"
+                                    ##<!-- ADD　START 2007/07/06 BIS 張楠 -->
+                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanjiMei")
+	       							##<!-- ADD　END　 2007/07/06 BIS 張楠 -->
+					>                   
+## 追加 ここまで----------------------------------------
+
+                   <br><font color="#ff0000">*</font>
+                   <input tabindex="${count}06" size="2" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].nenrei" value="$!escape.getText($!info.nenrei)"
+                                    ##<!-- ADD　START 2007/07/06 BIS 張楠 -->
+                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList[$count].nenrei")
+	       							##<!-- ADD　END　 2007/07/06 BIS 張楠 -->
+					>才
+				 #end
+				</td>
+
+                <td>
+                 #if($info.buntanFlag == "1")
+					（番号）$!escape.getText($!info.shozokuCd)　$!escape.getText($!info.shozokuName)
+                 #else
+                   <font color="#ff0000">*</font>（番号）
+                   <input tabindex="${count}07" size="10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].shozokuCd" value="$!escape.getText($!info.shozokuCd)"
+                                    ##<!-- ADD　START 2007/07/06 BIS 張楠 -->
+                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList[$count].shozokuCd")
+	       							##<!-- ADD　END　 2007/07/06 BIS 張楠 -->
+					>                   
+                   $!escape.getText($!info.shozokuName)
+                 #end
+                </td>
+                <td rowspan="3">1．<font color="#ff0000">*</font>
+                <input tabindex="${count}12" size="20" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].senmon" value="$!escape.getText($!info.senmon)"
+                                    ##<!-- ADD　START 2007/07/06 BIS 張楠 -->
+                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList[$count].senmon")
+	       							##<!-- ADD　END　 2007/07/06 BIS 張楠 -->
+				 >
+                 <br>2．<font color="#ff0000">*</font>
+                 <input tabindex="${count}13" size="20" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].gakui" value="$!escape.getText($!info.gakui)"
+                                    ##<!-- ADD　START 2007/07/06 BIS 張楠 -->
+                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList[$count].gakui")
+	       							##<!-- ADD　END　 2007/07/06 BIS 張楠 -->
+				 >                 
+                 <br>3．<font color="#ff0000">*</font>
+                 <input tabindex="${count}14" size="20" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].buntan" value="$!escape.getText($!info.buntan)"
+                                    ##<!-- ADD　START 2007/07/06 BIS 張楠 -->
+                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList[$count].buntan")
+	       							##<!-- ADD　END　 2007/07/06 BIS 張楠 -->
+				 >
+                </td>
+                <td rowspan="3" align="center" >
+
+##UPDATE　START 2007/07/10 BIS 金京浩 
+				 #*
+				 <font color="#ff0000">*</font>
+                 <input tabindex="${count}15" size="9" style="text-align:right" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].keihi" value="$!escape.getText($!info.keihi)">
+				 *#
+##UPDATE　START 2007/07/20 BIS 金京浩   //2007-07-19 (【科研費】残課題一覧_20070713_NEXS回答.xls )について     
+			#*
+				 #if($info.buntanFlag == "4")
+					－
+                 #else
+                   <font color="#ff0000">*</font>
+	                 <input tabindex="${count}15" size="9" style="text-align:right" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].keihi" value="$!escape.getText($!info.keihi)"
+	                                    ##<!-- ADD　START 2007/07/06 BIS 張楠 -->
+	                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList[$count].keihi")
+	                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList.keihi")
+	                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi")
+		       							##<!-- ADD　END　 2007/07/06 BIS 張楠 -->
+					 >
+                 #end
+            *#
+            		 #if($info.buntanFlag == "1")
+            			 <font color="#ff0000">*</font> 
+            		 #end
+	                 <input tabindex="${count}15" size="9" style="text-align:right" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].keihi" value="$!escape.getText($!info.keihi)"
+	                                    ##<!-- ADD　START 2007/07/06 BIS 張楠 -->
+	                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList[$count].keihi")
+	                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList.keihi")
+	                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi")
+		       							##<!-- ADD　END　 2007/07/06 BIS 張楠 -->
+		       							#errorColorForProperty("shinseiDataInfo.kenkyuSoshikiInfoList[$count].keihi")
+					 >
+##UPDATE　END　 2007/07/20 BIS 金京浩 
+##UPDATE　END　 2007/07/10 BIS 金京浩                  
+                          
+
+                </td>
+                <td rowspan="3">
+## 20050707 必須項目とする
+##                          #if($info.buntanFlag == "1")
+##                            <font color="#ff0000">*</font>
+##                          #else
+##                              &nbsp
+##                        #end
+                 <font color="#ff0000">*</font>
+## Horikoshi
+                 <input tabindex="${count}16" size="3" style="text-align:right" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].effort" value="$!escape.getText($!info.effort)"
+                                    ##<!-- ADD　START 2007/07/06 BIS 張楠 -->
+                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList[$count].effort")
+	       							##<!-- ADD　END　 2007/07/06 BIS 張楠 -->
+				 >                  
+                </td>
+               </tr>
+               <tr>
+                <td>
+                 #if($info.buntanFlag == "1")
+##2005/8/27 代表者の部局名が入力できるので、申請書画面の値と一致する為、代表者の情報が表示とする
+##                            （番号）$!escape.getText($!info.bukyokuCd)　$!escape.getText($!info.bukyokuName)
+                                      （番号）$!escape.getText($!info.bukyokuCd)　$!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.bukyokuName)
+                 #else
+                   <font color="#ff0000">*</font>
+				      （番号）<input tabindex="${count}08" size="10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].bukyokuCd" value="$!escape.getText($!info.bukyokuCd)"
+                                    ##<!-- ADD　START 2007/07/06 BIS 張楠 -->
+                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList[$count].bukyokuCd")
+	       							##<!-- ADD　END　 2007/07/06 BIS 張楠 -->
+				 ><br>
+                                      （和文）<input tabindex="${count}09" size="20" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].bukyokuName" value="$!escape.getText($!info.bukyokuName)"
+                                    ##<!-- ADD　START 2007/07/06 BIS 張楠 -->
+                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList[$count].bukyokuName")
+	       							##<!-- ADD　END　 2007/07/06 BIS 張楠 -->
+	       				>
+                   <font size="1">（その他等の番号を使用した場合に記入）</font>
+                 #end
+                </td>
+               </tr>
+               <tr>
+                <td>
+                 #if($info.buntanFlag == "1")
+##2005/8/27 代表者の職名が入力できるので、申請書画面の値と一致する為、代表者の情報が表示とする
+##                            （番号）$!escape.getText($!info.shokushuCd)　$!escape.getText($!info.shokushuNameKanji)
+                                      （番号）$!escape.getText($!info.shokushuCd)　$!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.shokushuNameKanji)
+                 #else
+                   <font color="#ff0000">*</font>
+                   <select tabindex="${count}10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].shokushuCd" size="1"
+                                    ##<!-- ADD　START 2007/07/06 BIS 張楠 -->
+                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList[$count].shokushuCd")
+	       							##<!-- ADD　END　 2007/07/06 BIS 張楠 -->
+				 >                   
+                    #showOptionsWithEmpty($shinseiForm.shokushuList $!escape.getText($!info.shokushuCd))
+                   </select>
+
+## 20050721 ※入力されていた場合には表示させるよう変更
+##                            ##職種番号が研究員[24]またはその他[25]のときのみ、入力フィールドに値を表示させる
+##                            #if($info.shokushuCd == "24" || $info.shokushuCd == "25")
+##                            　<input tabindex="${count}11" size="20" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].shokushuNameKanji" value="$!escape.getText($!info.shokushuNameKanji)">
+##                            #else
+##                              <input tabindex="${count}11" size="20" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].shokushuNameKanji" value="">
+##                            #end
+                   <input tabindex="${count}11" size="20" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].shokushuNameKanji" value="$!escape.getText($!info.shokushuNameKanji)"
+                                    ##<!-- ADD　START 2007/07/06 BIS 張楠 -->
+                                    #BackColor($shinseiForm.shinseiDataInfo.errorsMap "shinseiDataInfo.kenkyuSoshikiInfoList[$count].shokushuNameKanji")
+	       							##<!-- ADD　END　 2007/07/06 BIS 張楠 -->
+	       			>
+## Horikoshi
+                   <font size="1">（「研究員」、「その他」を選択した場合に記入）</font>
+                 #end
+                </td>
+               </tr>
+             #end
+## 2005/03/08 追加 ここから-------------------------------------
+## 理由 $shinseiForm.shinseiDataInfo.kenkyuSoshikiInfoListに協力者の情報がセットされるので、表示しないように修正
+           #end
+## 追加 ここまで------------------------------------------------
+                 
+           <tr>
+## 2005/03/08 追加 ここから-------------------------------------
+## 修正 区分に研究協力者が追加されたため
+##            <td><a href="javascript:onAdd()"><img src="$path/images/bt_add_small.gif" alt="追加" width="36" height="22" border="0"></a></td>
+##UPDATE　START 2007/06/28 BIS 金京浩
+            ##<td><a href="javascript:onAdd(2)"><img src="$path/images/bt_add_small.gif" alt="追加" width="36" height="22" border="0"></a></td>
+##UPDATE　START 2007/07/19 BIS 金京浩   //2007-07-19 (【科研費】残課題一覧_20070713_NEXS回答.xls )について  
+#*            <td><input type="radio" name="addBuntanFlg" value="2" checked >研究分担者<br>
+                <input type="radio" name="addBuntanFlg" value="4">連携研究者<br>
+                <a href="javascript:onAdd()"><img src="$path/images/bt_add_small.gif" alt="追加" width="36" height="22" border="0"></a>
+            </td>
+*#
+            <td><input type="hidden" name="addBuntanFlg" value = "5">
+                <a href="javascript:onAdd()"><img src="$path/images/bt_add_small.gif" alt="追加" width="36" height="22" border="0"></a>
+            </td>
+
+##UPDATE　END　 2007/07/19 BIS 金京浩            
+##UPDATE　END　 2007/07/10 BIS 金京浩 
+## 修正 ここまで------------------------------------------------
+            <td>　</td>
+            <td>　</td>
+            <td>　</td>
+            <td>　</td>
+            <td>　</td>
+            <td>　</td>
+           </tr>
+          </tbody>
+         </table>
+        </td>
+       </tr>
+      </tbody>
+     </table>
+     #errorMarkupForProperty("addKenkyuSoshiki")
+## 2005/03/08 削除 ここから-------------------------------------
+## 削除 研究組織（研究協力者）追加のため「研究代表者及び研究分担者人数」の取得法変更
+##      <p align="center">研究代表者及び研究分担者人数　$shinseiForm.shinseiDataInfo.kenkyuSoshikiInfoList.size()名</a></p>
+##      <br>
+##    </form>
+## 削除 ここまで------------------------------------------------
+## 2005/03/08 追加 ここから-------------------------------------
+## 理由 研究組織（研究協力者）追加のため
+
+## 20050628 研究協力者の削除のため
+##        <font color="#003366"><b>研究組織（研究協力者）</b></font>
+##<!-- 一覧用テーブルここから -->
+##        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+##          <tbody>
+##            <tr>
+##              <td>
+##              <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+##                <tbody>
+##                  <tr>
+##                    <th><br>
+##                    </th>
+##                    <th><br>
+##                    </th>
+##                    <th width="250">氏名（年齢）</th>
+##                    <th>
+##                        所属研究機関　<a href="$link.setAction('/kikanList')" target="_blank"><img src="$path/images/bt_list2.gif" alt="一覧" width="41" height="22" border="0"></a><br>
+##                        部局　<a href="$link.setAction('/bukyokuList')" target="_blank"><img src="$path/images/bt_list2.gif" alt="一覧" width="41" height="22" border="0"></a><br>
+##                        職　
+##                    </th>
+##                    <th>現在の専門<br>
+##                        学位<br>
+##                        役割分担
+##                    </th>
+##                  </tr>
+##                  #set($counter2 = 0)
+##                  #foreach($info in $shinseiForm.shinseiDataInfo.kenkyuSoshikiInfoList)
+##                  #set($count = $velocityCount - 1)
+##                  #if($info.buntanFlag == "3")
+##                  #set($counter2 = $counter2 + 1)
+##                  <tr>
+##                    <td rowspan="3">
+##                        <a href="javascript:onDel('$count')"><img src="$path/images/bt_delete.gif" alt="削除" width="36" height="22" border="0"></a>
+##                    </td>
+##                    <td rowspan="3">
+##                        研究協力者
+##                    </td>
+##                    <td rowspan="3">
+##                         <font color="#ff0000">*</font>
+#### 2005/03/24 削除 ここから----------------------------
+#### 理由 表示順序入れ替えのため
+####                        （漢字等）<br>
+####                        （姓）<font color="#ff0000">*</font>
+####                            <input tabindex="1${count}01" size="10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanjiSei" value="$!escape.getText($!info.nameKanjiSei)">
+####                        （名）<font color="#ff0000">*</font>
+####                            <input tabindex="1${count}02" size="10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanjiMei" value="$!escape.getText($!info.nameKanjiMei)"><br>
+####                        （フリガナ）<br>
+####                        （姓）<font color="#ff0000">*</font>
+####                            <input tabindex="1${count}03" size="10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanaSei" value="$!escape.getText($!info.nameKanaSei)">
+####                        （名）<font color="#ff0000">*</font>
+####                            <input tabindex="1${count}04" size="10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanaMei" value="$!escape.getText($!info.nameKanaMei)"><br>
+#### 削除 ここまで----------------------------------------
+##
+#### 2005/03/24 追加 ここから----------------------------
+#### 理由 表示順序入れ替えのため
+##                        （フリガナ）<br>
+##                        （姓）<font color="#ff0000">*</font>
+##                            <input tabindex="1${count}01" size="10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanaSei" value="$!escape.getText($!info.nameKanaSei)">
+##                        （名）<font color="#ff0000">*</font>
+##                            <input tabindex="1${count}02" size="10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanaMei" value="$!escape.getText($!info.nameKanaMei)"><br>
+##                        （漢字等）<br>
+##                        （姓）<font color="#ff0000">*</font>
+##                            <input tabindex="1${count}03" size="10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanjiSei" value="$!escape.getText($!info.nameKanjiSei)">
+##                        （名）<font color="#ff0000">*</font>
+##                            <input tabindex="1${count}04" size="10" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].nameKanjiMei" value="$!escape.getText($!info.nameKanjiMei)"><br>
+#### 追加 ここまで----------------------------------------
+##
+##                        <font color="#ff0000">*</font>
+##                        <input tabindex="1${count}05" size="2" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].nenrei" value="$!escape.getText($!info.nenrei)">才</td>
+##                    <td>
+##                         <font color="#ff0000">*</font>
+##                        （和文）<input tabindex="1${count}06" size="20" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].shozokuName" value="$!escape.getText($!info.shozokuName)">
+##                    </td>
+##                    <td rowspan="3">
+##                        <input tabindex="1${count}10" size="20" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].senmon" value="$!escape.getText($!info.senmon)">
+##                        <br>
+##                        <input tabindex="1${count}11" size="20" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].gakui" value="$!escape.getText($!info.gakui)">
+##                        <br>
+##                        <input tabindex="1${count}12" size="20" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].buntan" value="$!escape.getText($!info.buntan)">
+##                    </td>
+##                  </tr>
+##                  <tr>
+##                    <td>
+##                         <font color="#ff0000">*</font>
+##                        （和文）<input tabindex="1${count}07" size="20" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].bukyokuName" value="$!escape.getText($!info.bukyokuName)">
+##                    </td>
+##                  </tr>
+##                  <tr>
+##                    <td>
+##                         <font color="#ff0000">*</font>
+##                          <select tabindex="1${count}08" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].shokushuCd" size="1">#showOptionsWithEmpty($shinseiForm.shokushuList $!escape.getText($!info.shokushuCd))</select>
+##                        ##職種番号が研究員[24]またはその他[25]のときのみ、入力フィールドに値を表示させる
+##                        #if($info.shokushuCd == "24" || $info.shokushuCd == "25")
+##                        　<input tabindex="1${count}09" size="20" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].shokushuNameKanji" value="$!escape.getText($!info.shokushuNameKanji)">
+##                        #else
+##                          <input tabindex="1${count}09" size="20" name="shinseiDataInfo.kenkyuSoshikiInfoList[$count].shokushuNameKanji" value="">
+##                        #end
+##                        <font size="1">（「その他」を選択した場合に記入）</font>
+##
+##                    </td>
+##                  </tr>
+##                  #end
+##                  #end
+##                  <tr>
+##                    <td><a href="javascript:onAdd(3)"><img src="$path/images/bt_add_small.gif" alt="追加" width="36" height="22" border="0"></a></td>
+##                    <td>　</td>
+##                    <td>　</td>
+##                    <td>　</td>
+##                    <td>　</td>
+##                  </tr>
+##                </tbody>
+##              </table>
+##              </td>
+##            </tr>
+##          </tbody>
+##        </table>
+## Horikoshi
+     
+	 <!-- 20060726 dyh delete
+     <p align="center">研究代表者及び研究分担者人数　$counter1名</a></p>
+
+## 20050628 研究協力者の削除
+##        <p align="center">研究協力者人数　$counter2名</a></p>
+## Horikoshi
+
+     <br>
+     <input type="hidden" name="addBuntanFlg">
+## 追加 ここまで------------------------------------------------
+
+     <br>
+	 20060726 dyh delete -->
+     <div align="center">
+      <table border="0" cellpadding="0" cellspacing="4">
+       <tr>
+
+##UPDATE　START 2007/07/10 BIS 金京浩
+##        <td>研究代表者及び研究分担者人数</td>
+##UPDATE　START 2007/07/19 BIS 金京浩   //2007-07-19 (【科研費】残課題一覧_20070713_NEXS回答.xls )について  
+     ##<td>研究代表者及び研究分担者及び連携研究者人数</td>
+     <td>研究組織人数</td>
+##UPDATE　END　 2007/07/19 BIS 金京浩  	      
+##UPDATE　END　 2007/07/10 BIS 金京浩 
+
+        
+        <td>　$counter1</td>
+        <td>名</td>
+       </tr>
+      </table>
+     </div>
+     <br>
+     <a name="lastRow"></a>
+##DEL　START 2007/06/28 BIS 金京浩  
+##     <input type="hidden" name="addBuntanFlg">
+##DEL　END　 2007/06/28 BIS 金京浩
+     </form>
+     <!-- 本文ここまで -->
+
+     <!-- ボタン用テーブルここから -->
+     <div align="center">
+      <table border="0" cellpadding="0" cellspacing="4">
+       <tr>
+        <td><a href="javascript:onReg()"><img src="$path/images/bt_ok.gif" width="114" height="28" border="0" alt="OK"></a></td>
+       </tr>
+      </table>
+     </div>
+     <!-- ボタン用テーブルここまで -->
+
+     <!-- フッター用テーブルここから -->
+     <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tbody>
+       <tr bgcolor="#336699">
+        <td width="4" background="$path/images/footer_login2.gif"> <img src="$path/images/footer_login1.gif" width="4" height="11" alt=""></td>
+        <td background="$path/images/footer_login2.gif"><img src="$path/images/footer_login2.gif" width="4" height="11" alt=""></td>
+        <td width="4" align="right" background="$path/images/footer_login2.gif"> <img src="$path/images/footer_login3.gif" width="4" height="11" alt=""></td>
+       </tr>
+      </tbody>
+     </table>
+     <!-- フッター用テーブルここまで -->
+     <!-- コンテンツエリアここまで -->
+    </td>
+    <td width="1" bgcolor="#cccccc"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   </tr>
+  </tbody>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+</body>
+</html>

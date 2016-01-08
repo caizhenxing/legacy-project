@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean name="/forum/postOper/oper"
+		class="et.bo.forum.postOper.action.PostOperAction" singleton="false">			
+		<property name="postOper">
+			<ref bean="PostOperService" />
+		</property>			
+	</bean>
+	
+	<!--  service begin -->	
+	<bean id="PostOperService"
+		class="et.bo.forum.postOper.service.impl.PostOperServiceImpl" singleton="true">
+		<property name="moduleManagerService">
+			<ref bean="ModuleManagerService" />
+		</property>
+		<property name="pointService">
+			<ref bean="PointService" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="ForumDao" />
+		</property>
+	</bean>	
+</beans>

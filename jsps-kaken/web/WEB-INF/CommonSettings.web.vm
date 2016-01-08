@@ -1,0 +1,13 @@
+## ************************************************
+##
+## ************************************************
+
+## 画像、スタイルシート、JavaScriptリンクパス
+#set ($path = $link.getContextURL())
+
+## WEBサーバ用(httpをhttpsにする。)
+##set ($path = $escape.replace($path,"http","https"))
+
+## WEBサーバ用(ポート番号を削除する)
+##set ($path = $escape.replace($path,":83",""))
+##set ($path = $escape.replace($path,":84",""))

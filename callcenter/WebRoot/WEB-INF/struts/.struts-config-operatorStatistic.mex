@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/pcc/operatorStatistic.do" location="1987,0" dimension="358,84" />
+  <StrutsActivity path="/pcc/operatorStatistic/operatorStatisticList.jsp" location="0,264" dimension="328,48" />
+  <StrutsActivity path="/pcc/operatorStatistic/chuxiInfoMain.jsp" location="428,264" dimension="280,48" />
+  <StrutsActivity path="/pcc/operatorStatistic/workTimeQuery.jsp" location="808,264" dimension="280,48" />
+  <StrutsActivity path="/pcc/operatorStatistic/chuxiInfoQuery.jsp" location="1188,264" dimension="286,48" />
+  <StrutsActivity path="/pcc/operatorStatistic/operatorStatisticMain.jsp" location="1574,264" dimension="328,48" />
+  <StrutsActivity path="/pcc/operatorStatistic/operatorStatisticLoad.jsp" location="2002,264" dimension="328,48" />
+  <StrutsActivity path="/pcc/operatorStatistic/operatorStatisticQuery.jsp" location="2430,264" dimension="334,48" />
+  <StrutsActivity path="/pcc/operatorStatistic/workTimeMain.jsp" location="2864,264" dimension="274,48" />
+  <StrutsActivity path="/pcc/operatorStatistic/operatorStatisticDetail.jsp" location="3238,264" dimension="340,48" />
+  <StrutsActivity path="/pcc/operatorStatistic/workTimeList.jsp" location="3678,264" dimension="274,48" />
+  <StrutsActivity path="/pcc/operatorStatistic/chuxiInfoList.jsp" location="4052,264" dimension="280,48" />
+  <StrutsTransition id="/pcc/operatorStatistic.do,workTimeQuery,/pcc/operatorStatistic/workTimeQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2068,84" />
+      <AbsolutePoint location="2068,174" />
+      <AbsolutePoint location="948,174" />
+      <AbsolutePoint location="948,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/operatorStatistic.do,chuxiMain,/pcc/operatorStatistic/chuxiInfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2035,84" />
+      <AbsolutePoint location="2035,144" />
+      <AbsolutePoint location="568,144" />
+      <AbsolutePoint location="568,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/operatorStatistic.do,chuxiList,/pcc/operatorStatistic/chuxiInfoList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2328,84" />
+      <AbsolutePoint location="2328,114" />
+      <AbsolutePoint location="4192,114" />
+      <AbsolutePoint location="4192,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/operatorStatistic.do,query,/pcc/operatorStatistic/operatorStatisticQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2198,84" />
+      <AbsolutePoint location="2198,234" />
+      <AbsolutePoint location="2597,234" />
+      <AbsolutePoint location="2597,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/operatorStatistic.do,chuxiQuery,/pcc/operatorStatistic/chuxiInfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2100,84" />
+      <AbsolutePoint location="2100,204" />
+      <AbsolutePoint location="1331,204" />
+      <AbsolutePoint location="1331,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/operatorStatistic.do,list,/pcc/operatorStatistic/operatorStatisticList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2003,84" />
+      <AbsolutePoint location="2003,114" />
+      <AbsolutePoint location="164,114" />
+      <AbsolutePoint location="164,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/operatorStatistic.do,load,/pcc/operatorStatistic/operatorStatisticLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2166,84" />
+      <AbsolutePoint location="2166,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/operatorStatistic.do,workTimeMain,/pcc/operatorStatistic/workTimeMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2231,84" />
+      <AbsolutePoint location="2231,204" />
+      <AbsolutePoint location="3001,204" />
+      <AbsolutePoint location="3001,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/operatorStatistic.do,detail,/pcc/operatorStatistic/operatorStatisticDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2263,84" />
+      <AbsolutePoint location="2263,174" />
+      <AbsolutePoint location="3408,174" />
+      <AbsolutePoint location="3408,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/operatorStatistic.do,main,/pcc/operatorStatistic/operatorStatisticMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2133,84" />
+      <AbsolutePoint location="2133,234" />
+      <AbsolutePoint location="1738,234" />
+      <AbsolutePoint location="1738,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/operatorStatistic.do,workTimeList,/pcc/operatorStatistic/workTimeList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="2296,84" />
+      <AbsolutePoint location="2296,144" />
+      <AbsolutePoint location="3815,144" />
+      <AbsolutePoint location="3815,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

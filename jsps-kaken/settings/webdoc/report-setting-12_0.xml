@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<contents>
+##ファイルパスの設定
+#set($path = "D:/shinsei/settings/webdoc/12.若手S")
+
+ <!-- ********** ページ１ ここから ********** -->
+ <page templateFilePath="$path/Page1.iod">
+  
+  <!-- ******* タイトル ******* -->
+  <field name="SHOZOKU_CD"      value="$!escape.getText($!shinseiDataInfo.daihyouInfo.shozokuCd)"/>
+  <field name="JIGYO_CD"        value="$!escape.getText($!shinseiDataInfo.jigyoCd.substring(2,4))"/>
+  <field name="BUNKASAIMOKU_CD" value="$!escape.getText($!shinseiDataInfo.kadaiInfo.bunkaSaimokuCd)"/>
+  <field name="BUNKATSU_NO"     value="$!escape.getText($!shinseiDataInfo.kadaiInfo.bunkatsuNo)"/>
+  <field name="UKETUKE_NO"      value="$!escape.getText($!shinseiDataInfo.uketukeNo.substring(6))"/>
+  <field name="NENDO_SEIREKI"   value="(20$!escape.getText($!shinseiDataInfo.nendoSeireki)年度)"/>
+  <field name="NENDO"           value="平成$!escape.getIntValue($shinseiDataInfo.nendo)年度"/>
+  $!dateUtil.setCal($!escape.getText($!shinseiDataInfo.sakuseiDate.toString()).substring(0,4),"4","1")
+     #set($nendo = $!dateUtil.getNendo())
+  <field name="SAKUSEI_DATE_Y"  value="$!escape.getText($nendo)"/>
+  <field name="SAKUSEI_DATE_M"  value="$!escape.getText($dateFormat.getMonth($!shinseiDataInfo.sakuseiDate))"/>
+  <field name="SAKUSEI_DATE_D"  value="$!escape.getText($dateFormat.getDay($!shinseiDataInfo.sakuseiDate))"/>
+  <field name="EDITION"         value="$!escape.getText($!shinseiDataInfo.kadaiInfo.edition)"/>
+   #set($shinseiKubun = ["", "新規",     "継続（研究計画の大幅な変更を行うとする課題）"])
+  <field name="SHINSEI_KUBUN"   value="$!escape.getText($shinseiFormat.getTextFromList($!shinseiDataInfo.shinseiKubun, $shinseiKubun))"/>
+  <field name="SYUMOKU"         value="若手研究(S)"/>
+  <field name="BUNYA_NAME"      value="$!escape.getText($!shinseiDataInfo.kadaiInfo.bunya)"/>
+  <field name="BUNKA_NAME"      value="$!escape.getText($!shinseiDataInfo.kadaiInfo.bunka)"/>
+  <field name="SAIMOKU_NAME"    value="$!escape.getText($!shinseiDataInfo.kadaiInfo.saimokuName)"/>
+  <field name="KEYWORD"         value="$!escape.getText($!shinseiDataInfo.keyName)"/>
+  <field name="KEYWORD_IGAI"    value="$!escape.getText($!shinseiDataInfo.keyOtherName)"/>
+   
+  <!-- ******* 申請区分 ******* -->
+
+ #set($kadaiNo = ["", "", $shinseiFormat.concat( $shinseiFormat.concat( "(" , $!escape.getText($!shinseiDataInfo.kadaiNoKeizoku)) , ")")])
+ #set($shinseiFlgNo = ["", "応募する", "応募しない"])
+ #set($kadaiNoSaisyu = ["", $shinseiFormat.concat( $shinseiFormat.concat( "(" , $!escape.getText($!shinseiDataInfo.kadaiNoSaisyu)) , ")"), ""])
+ #set($buntankinFlg = ["", "有",       "無"])
+
+  <field name="KADAI_NO"       value="$!escape.getText($shinseiFormat.getTextFromList($!shinseiDataInfo.shinseiKubun, $kadaiNo))"/>
+  <field name="SHINSEI_FLG_NO"     value="$!escape.getText($shinseiFormat.getTextFromList($!shinseiDataInfo.shinseiFlgNo, $shinseiFlgNo))"/>
+  <field name="KADAI_NO_SAISYU"     value="$!escape.getText($shinseiFormat.getTextFromList($!shinseiDataInfo.shinseiFlgNo, $kadaiNoSaisyu))"/>
+
+  <field name="BUNTANKIN_FLG"      value="$!escape.getText($shinseiFormat.getTextFromList($!shinseiDataInfo.buntankinFlg, $buntankinFlg))"/>
+
+
+  <!-- ******* 研究代表者 ******* -->
+   #set($info = $shinseiDataInfo.kenkyuSoshikiInfoList.get(0))
+<!--2007/03/20 劉長宇　修正　ここから　-->
+  <field name="NAME_KANJI"      value="$!escape.getText($!shinseiDataInfo.daihyouInfo.nameKanjiSei) $!escape.getText($!shinseiDataInfo.daihyouInfo.nameKanjiMei)"/>
+  <field name="NAME_KANA"       value="$!escape.getText($!shinseiDataInfo.daihyouInfo.nameKanaSei) $!escape.getText($!shinseiDataInfo.daihyouInfo.nameKanaMei)"/>
+<!--2007/02/20 劉長宇　修正　ここまで　--> 
+  <field name="NENREI_KIKAN"      value="(H$!escape.getIntValue($shinseiDataInfo.nendo).4.1現在)"/>
+  <field name="NENREI"       value="$!escape.getText($info.nenrei)"/>
+  <field name="BIRTHDAY"       value="（${dateUtil.getJpyString($!shinseiDataInfo.birthDay)}生まれ）"/>
+  <field name="SHOZOKU_NAME"      value="$!escape.getText($!shinseiDataInfo.daihyouInfo.shozokuName)"/>
+  <field name="BUKYOKU_NAME"      value="$!escape.getText($!shinseiDataInfo.daihyouInfo.bukyokuName)"/>
+  <field name="SHOKU_NAME_KANJI"     value="$!escape.getText($!shinseiDataInfo.daihyouInfo.shokushuNameKanji)"/>
+  <field name="GAKUI"        value="$!escape.getText($info.gakui)"/>
+  <field name="SENMON"       value="$!escape.getText($info.senmon)"/>
+  <field name="EFFORT"       value="$!escape.getText($info.effort)％"/>
+  <field name="KADAI_NAME_KANJI"     value="$!escape.getText($!shinseiDataInfo.kadaiInfo.kadaiNameKanji)"/>
+  
+  <!-- ******* 研究経費 ******* -->
+ #set($soukeiInfo = $shinseiDataInfo.kenkyuKeihiSoukeiInfo)
+ #foreach($keihiInfo in $soukeiInfo.kenkyuKeihi)
+ #set($count = $velocityCount - 1)
+ #set($nendo = $!escape.getIntValue($shinseiDataInfo.nendo) + $count)
+  <field name="NENDO${velocityCount}"    value="平成${nendo}年度"/>
+  <field name="KEIHI${velocityCount}"    value="$!escape.getText($shinseiFormat.numericFormat($!keihiInfo.keihi))"/>
+  #if(${velocityCount} == 1)
+   #set($keihi1 = $!escape.getText($shinseiFormat.numericFormat($!keihiInfo.keihi)))
+  #end
+  <field name="BIHINHI${velocityCount}"   value="$!escape.getText($shinseiFormat.numericFormat($!keihiInfo.bihinhi))"/>
+  <field name="SHOMOHINHI${velocityCount}"  value="$!escape.getText($shinseiFormat.numericFormat($!keihiInfo.shomohinhi))"/>
+  <field name="RYOHI${velocityCount}"    value="$!escape.getText($shinseiFormat.numericFormat($!keihiInfo.ryohi))"/>
+  <field name="SHAKIN${velocityCount}"   value="$!escape.getText($shinseiFormat.numericFormat($!keihiInfo.shakin))"/>
+  <field name="SONOTA${velocityCount}"   value="$!escape.getText($shinseiFormat.numericFormat($!keihiInfo.sonota))"/>
+ #end
+  <field name="KEIHI_TOTAL"      value="$!escape.getText($shinseiFormat.numericFormat($!soukeiInfo.keihiTotal))"/>
+  <field name="BIHINHI_TOTAL"      value="$!escape.getText($shinseiFormat.numericFormat($!soukeiInfo.bihinhiTotal))"/>
+  <field name="SHOMOHINHI_TOTAL"     value="$!escape.getText($shinseiFormat.numericFormat($!soukeiInfo.shomohinhiTotal))"/>
+  <field name="RYOHI_TOTAL"      value="$!escape.getText($shinseiFormat.numericFormat($!soukeiInfo.ryohiTotal))"/>
+  <field name="SHAKIN_TOTAL"      value="$!escape.getText($shinseiFormat.numericFormat($!soukeiInfo.shakinTotal))"/>
+  <field name="SONOTA_TOTAL"      value="$!escape.getText($shinseiFormat.numericFormat($!soukeiInfo.sonotaTotal))"/>
+  
+  <!-- ******* その他 ******* -->
+  <field name="KAIJIKIBO_FLG"      value="$!escape.getText($!shinseiDataInfo.kaijiKiboFlg)"/>
+
+ </page>
+ <!-- ********** ページ１ ここまで ********** -->
+</contents> 

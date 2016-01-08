@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="90%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#669966" class="rootFont"><font color="#FFFFFF"><b>【審査員向け】日本学術振興会電子申請システムを利用した審査に関するアンケート</b></font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr>
+      <td width="92" valign="bottom"><IMG SRC="$path/images/title_img1.gif" WIDTH=92 HEIGHT=53 ALT=""></td>
+      <td width="98%" valign="bottom" class="menuTitle">アンケート入力完了</td>
+      <td width="214" valign="bottom"><IMG SRC="$path/images/title_img5.gif" WIDTH=214 HEIGHT=38 ALT=""></td>
+     </tr>
+     <tr>
+      <td width="92"><IMG SRC="$path/images/title_img2.gif" WIDTH=92 HEIGHT=29 ALT=""></td>
+      <td background="$path/images/title_img3.gif"><IMG SRC="$path/images/title_img3.gif" WIDTH=8 HEIGHT=29 ALT=""></td>
+      <td width="214"><IMG SRC="$path/images/title_img6.gif" WIDTH=214 HEIGHT=29 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+    
+<!-- 本文ここから -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+ <tr>
+  <td width="92" valign="top"><IMG SRC="$path/images/title_img7.gif" WIDTH=92 HEIGHT=38 ALT=""></td>
+  <td width="52" class="menuLine"><img src="$path/images/spacer.gif" width="52" height="1"></td>
+  <td width="90%" align="left"> <br>
+       <!-- メニュー用テーブルここから -->
+       <table border="0" cellspacing="6">
+        <tr>
+         <td width="50">&nbsp;</td>
+         <td>アンケート内容を登録しました。<br>
+             アンケートは今後の参考とさせていただきます。<br>
+             ご協力ありがとうございました。</td>
+        </tr>
+        </tr>
+       </table>
+       <!-- メニュー用テーブルここまで -->
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+      </td>
+     </tr>
+</table>
+<!-- 本文ここまで -->    
+    
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="javascript:window.parent.close()"><img src="$path/images/bt_close.gif" width=114 height=28 border="0" alt="閉じる"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- ログイン画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="4" background="$path/images/footer_login2.gif"> <IMG SRC="$path/images/footer_login1.gif" width=4 height=11 ALT=""></td>
+      <td background="$path/images/footer_login2.gif"><IMG SRC="$path/images/footer_login2.gif" width=4 height=11 ALT=""></td>
+      <td width="4" align="right" background="$path/images/footer_login2.gif"> <IMG SRC="$path/images/footer_login3.gif" width=4 height=11 ALT=""></td>
+     </tr>
+    </table>
+    <!-- ログイン画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+</body>
+</html>

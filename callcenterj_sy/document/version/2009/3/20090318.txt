@@ -1,0 +1,1 @@
+1、表cc_ivr_voiceinfo里新增字段 voicetype varchar(50) 允许为空 注释：file(语音文件)、tts（文本语音合成）

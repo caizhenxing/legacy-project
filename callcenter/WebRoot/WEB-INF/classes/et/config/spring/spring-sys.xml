@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+<!--  key -->
+	
+	<bean id="KeyService" class="excellence.common.key.impl.KeyServiceImpl">
+		<property name="sequenceService">
+			<ref bean="SequenceService" />
+		</property>
+	</bean>
+	
+	<bean id="SequenceService" class="et.bo.common.impl.SequenceServiceImpl">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+<!--  key -->	
+<!-- department -->
+	<bean name="/sys/dep"
+		class="et.bo.sys.department.action.DepartmentAction" singleton="false">
+			
+		<property name="ds">
+			<ref bean="DepService" />
+		</property>	
+		
+	</bean>
+
+
+	<bean id="DepService" class="et.bo.sys.department.service.impl.DepartmentServiceImpl" singleton="true">
+		<property name="cts">
+			<ref bean="DepTreeService" />
+		</property>
+		
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+	<bean id="DepTreeService" class="excellence.common.classtree.impl.ClassTreeServiceImpl" singleton="true">
+		<property name="ctls">
+			<ref bean="DepLoadService" />
+		</property>
+	</bean>
+	<bean id="DepLoadService" class="et.bo.sys.department.service.impl.ClassTreeLoadServiceDepImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+<!-- /department-->
+<!-- module -->
+	<bean name="/sys/module"
+		class="et.bo.sys.module.action.ModuleAction" singleton="false">
+			
+		<property name="ms">
+			<ref bean="ModuleService" />
+		</property>	
+		
+	</bean>
+
+
+	<bean id="ModuleService" class="et.bo.sys.module.service.impl.ModuleServiceImpl" singleton="true">
+		<property name="cts">
+			<ref bean="ModuleTreeService" />
+		</property>
+		<property name="rs">
+			<ref bean="RightService" />
+		</property>
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+	<bean id="ModuleTreeService" class="excellence.common.classtree.impl.ClassTreeServiceImpl" singleton="true">
+		<property name="ctls">
+			<ref bean="ModuleLoadService" />
+		</property>
+	</bean>
+	<bean id="ModuleLoadService" class="et.bo.sys.module.service.impl.ClassTreeLoadServiceImplModule" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+<!-- /module-->
+
+<!--  tree -->
+<bean name="/sys/tree"
+		class="et.bo.sys.tree.action.TreeAction" singleton="false">
+			
+		<property name="ts">
+			<ref bean="TreeService" />
+		</property>	
+		
+	</bean>
+
+
+	<bean id="TreeService" class="et.bo.sys.tree.service.impl.TreeServiceImpl" singleton="true">
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+		
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	<bean id="ClassTreeService" class="excellence.common.classtree.impl.ClassTreeServiceImpl" >
+		<property name="ctls">
+			<ref bean="ClassTreeLoadService" />
+		</property>
+	</bean>
+	<bean id="ClassTreeLoadService" class="et.bo.sys.common.ClassTreeLoadServiceImpl">
+	<property name="baseDao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+
+<!--  /tree-->
+
+<!-- right-->
+
+	<bean name="/sys/right" class="et.bo.sys.right.action.RightAction" >
+		<property name="rs">
+			<ref bean="RightService" />
+		</property>
+		
+	</bean>
+	<bean id="RightService" class="et.bo.sys.right.service.impl.RightServiceImpl" >
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+<!-- /right-->
+
+
+<!-- login-->
+
+	<bean name="/login"
+		class="et.bo.sys.login.action.LoginAction"
+		singleton="false">
+		<property name="ls">
+			<ref local="LoginService" />
+		</property>
+	</bean>
+	<bean id="LoginService" class="et.bo.sys.login.service.impl.LoginServiceImplDB"
+		singleton="false">
+		<property name="us">
+			<ref bean="userService" />
+		</property>
+		<property name="ms">
+			<ref bean="ModuleService" />
+		</property>
+	</bean>
+<!-- /login-->
+
+
+
+
+
+<!--  service begin -->
+	<bean id="groupService"
+		class="et.bo.sys.group.service.impl.GroupServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="listValueService">
+			<ref bean="listValueService" />
+		</property>	
+	</bean>
+	
+	
+	<bean id="userService"
+		class="et.bo.sys.user.service.impl.UserServiceImpl" singleton="true">
+		<property name="groupService">
+			<ref bean="groupService" />
+		</property>
+		<property name="roleService">
+			<ref bean="roleService" />
+		</property>	
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+	<bean id="logService"
+		class="et.bo.sys.log.service.impl.LogServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+		
+	<bean id="roleService"
+		class="et.bo.sys.role.service.impl.RoleServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+<!-- service end -->	
+<!--  action begin -->
+<!-- group -->
+	<bean name="/sys/group/GroupOper"
+		class="et.bo.sys.group.action.GroupAction" singleton="false">
+		<property name="listValueService">
+			<ref bean="listValueService" />
+		</property>	
+		<property name="groupService">
+			<ref bean="groupService" />
+		</property>	
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>	
+	</bean>
+<!-- user -->	
+	<bean name="/sys/user/UserOper"
+		class="et.bo.sys.user.action.UserAction" singleton="false">
+		<property name="userService">
+			<ref bean="userService" />
+		</property>	
+		<property name="listValueService">
+			<ref bean="listValueService" />
+		</property>			
+		<property name="classTree">
+			<ref bean="ClassTreeService" />
+		</property>	
+		<property name="depTree">
+			<ref bean="DepTreeService" />
+		</property>	
+	</bean>
+	  <!-- 角色管理	-->
+	<bean name="/sys/role/Role"
+		class="et.bo.sys.role.action.RoleAction" singleton="false">
+		<property name="roleService">
+			<ref bean="roleService" />
+		</property>	
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	<!-- log -->
+	<bean name="/sys/log/LogOper"
+		class="et.bo.sys.log.action.LogAction" singleton="false">
+		<property name="listValueService">
+			<ref bean="listValueService" />
+		</property>	
+		<property name="logService">
+			<ref bean="logService" />
+		</property>
+		<property name="ctree">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	<bean id="listValueService"
+		class="et.bo.common.impl.ListValueServiceImpl" singleton="true">		
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		
+	</bean>
+<!-- action end -->
+	<!-- 岗位信息管理 
+	<bean id="StationService"
+		class="et.bo.sys.station.service.impl.StationServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="cts">
+			<ref bean="StationTreeService"/>
+		</property>
+	</bean>
+	-->
+	
+</beans>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config SYSTEM "struts-config_1_2.dtd" >
+<struts-config id="idvalue0">
+  
+  <form-beans>
+    <form-bean name="WorkPlanBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="id" type="java.lang.String" />
+      	
+      	
+      	<form-property name="append" type="java.lang.String" />
+      	<form-property name="auditingType" type="java.lang.String" />
+      	
+    	<form-property name="planClasses" type="java.lang.String" />
+    	<form-property name="planType" type="java.lang.String" />
+    	<form-property name="selectdelsign" type="java.lang.String" />
+    	
+    	<form-property name="parentId" type="java.lang.String" />
+    	<form-property name="createUser" type="java.lang.String" />
+    	<form-property name="createTime" type="java.lang.String" />
+    	<form-property name="planBeignTime" type="java.lang.String" />
+    	<form-property name="planEndTime" type="java.lang.String" />
+    	<form-property name="planTitle" type="java.lang.String" />
+    	<form-property name="planDomainType" type="java.lang.String" />
+    	<form-property name="planTimeType" type="java.lang.String" />
+    	<form-property name="planViewType" type="java.lang.String" />
+    	<form-property name="planSubhead" type="java.lang.String" />
+    	<form-property name="planInfo" type="java.lang.String" />
+    	<form-property name="remark" type="java.lang.String" />
+    	<form-property name="type" type="java.lang.String" />
+    	<form-property name="user" type="java.lang.String" />
+    	<form-property name="checkId" type="java.lang.String" />
+    	<form-property name="keyword" type="java.lang.String" />
+    	<form-property name="missionType" type="java.lang.String" />
+    	<form-property name="missionSign" type="java.lang.String" />
+    	<form-property name="missionInfo" type="java.lang.String" />
+    	<form-property name="missionComplete" type="java.lang.String" />
+    	<form-property name="planBeignTime1" type="java.lang.String" />
+    	<form-property name="planEndTime1" type="java.lang.String" />
+    	<form-property name="check" type="java.lang.String" />
+    	<form-property name="checkName" type="java.lang.String" />
+	 </form-bean>
+	 <form-bean name="WorkMissionBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="id" type="java.lang.String" />
+    	<form-property name="name" type="java.lang.String" />
+    	<form-property name="workPlanInfoByPlanId" type="java.lang.String" />
+    	<form-property name="workPlanInfoByCreatePlanId" type="java.lang.String" />
+    	<form-property name="planId" type="java.lang.String" />
+    	<form-property name="missionClasses" type="java.lang.String" />
+    	
+    	
+    	<form-property name="planSubhead" type="java.lang.String" />
+    	<form-property name="planTitle" type="java.lang.String" />
+    	<form-property name="planBeignTime" type="java.lang.String" />
+    	<form-property name="planEndTime" type="java.lang.String" />
+    	
+    	
+    	<form-property name="beginTime" type="java.lang.String" />
+    	<form-property name="endTime" type="java.lang.String" />
+    	<form-property name="missionPri" type="java.lang.String" />
+    	<form-property name="missionPriType" type="java.lang.String" />
+    	<form-property name="missionInfo" type="java.lang.String" />
+    	<form-property name="missionSign" type="java.lang.String" />
+    	<form-property name="missionComplete" type="java.lang.String" />
+    	<form-property name="completeTime" type="java.lang.String" />
+    	<form-property name="remark" type="java.lang.String" />
+    	<form-property name="type" type="java.lang.String" />
+    	<form-property name="target" type="java.lang.String" />
+    	<form-property name="user" type="java.lang.String" />
+    	<form-property name="checkId" type="java.lang.String" />
+    	<form-property name="keyword" type="java.lang.String" />
+    	<form-property name="createTime" type="java.lang.String" />
+    	<form-property name="missionType" type="java.lang.String" />
+    	<form-property name="createUser" type="java.lang.String" />
+    	</form-bean>
+  </form-beans>
+ 
+  <action-mappings>
+   <action
+      attribute="WorkPlanBean"
+      name="WorkPlanBean"
+      path="/workplan"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="add" path="/plan/addPlan.jsp"/>
+      <forward name="addMission" path="/plan/addMission.jsp"/>
+      <forward name="addMissionOnly" path="/plan/addMissionOnly.jsp"/>
+      <forward name="planframe" path="/plan/planframe.jsp"/>
+      
+      <forward name="newplaninfo" path="/plan/newplanInfo.jsp"/>
+      <forward name="planinfo" path="/plan/planInfo.jsp"/>
+      
+      
+      
+      <forward name="myplanlist" path="/plan/myplanlist.jsp"/>
+      <forward name="plan" path="/plan/planlist.jsp"/>
+      <forward name="mission" path="/plan/missionlist.jsp"/>
+      <forward name="queryphase" path="/plan/plan.jsp"/>
+      <forward name="queryday" path="/plan/planday.jsp"/>
+      <forward name="pphase" path="/plan/query.jsp"/>
+      <forward name="pday" path="/plan/queryday.jsp"/>
+      <forward name="content" path="/sys/content.jsp"/>
+      <forward name="checkquery" path="/plan/plancheckquery.jsp"/>
+      <forward name="plancheck" path="/plan/planchecklist.jsp"/>
+      <forward name="plancheckinfo" path="/plan/plancheckinfo.jsp"/>
+    </action>
+    <action
+      attribute="WorkMissionBean"
+      name="WorkMissionBean"
+      path="/workmission"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="main" path="/plan/planinfo.jsp"/>
+      <forward name="planinfo" path="/plan/planInfo.jsp"/>
+      <forward name="updateMission" path="/plan/updateMission.jsp"/>
+      <forward name="mymissionlist" path="/plan/mymissionlist.jsp"/>
+    </action>
+  </action-mappings>
+  
+</struts-config>

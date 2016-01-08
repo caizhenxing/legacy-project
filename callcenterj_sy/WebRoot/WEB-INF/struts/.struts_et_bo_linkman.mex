@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/linkman/linkman.do" location="195,60" dimension="150,100" />
+  <StrutsActivity path="/linkman/linkmanlist.jsp" location="60,195" dimension="150,100" />
+  <StrutsActivity path="/linkman/linkmanQuery.jsp" location="271,222" dimension="150,100" />
+  <StrutsActivity path="/linkman/linkmanMain.jsp" location="412,154" dimension="150,100" />
+  <StrutsTransition id="/linkman/linkman.do,toLinkmanQuery,/linkman/linkmanQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="286,160" />
+      <AbsolutePoint location="286,222" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/linkman/linkman.do,toLinkmanList,/linkman/linkmanlist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="256,160" />
+      <AbsolutePoint location="256,245" />
+      <AbsolutePoint location="210,245" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/linkman/linkman.do,toLinkmanMain,/linkman/linkmanMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="345,110" />
+      <AbsolutePoint location="487,110" />
+      <AbsolutePoint location="487,154" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

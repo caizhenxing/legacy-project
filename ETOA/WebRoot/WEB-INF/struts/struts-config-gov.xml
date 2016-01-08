@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	<!-- 贴子信息 -->
+	<form-beans>
+		<form-bean name="govform" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="motorId" type="java.lang.String" />
+			<form-property name="driverId" type="java.lang.String" />
+			<form-property name="motorType" type="java.lang.String" />
+			<form-property name="motorCode" type="java.lang.String" />
+			<form-property name="motorPlate" type="java.lang.String" />
+			<form-property name="motorDate" type="java.lang.String" />
+			<form-property name="motorYear" type="java.lang.String" />
+			<form-property name="motorColor" type="java.lang.String" />
+			<form-property name="motorHome" type="java.lang.String" />
+			<form-property name="motorSign" type="java.lang.String" />
+			<form-property name="motorReject" type="java.lang.String" />
+			<form-property name="motorImage" type="java.lang.String" />
+			<form-property name="motorRemark" type="java.lang.String" />
+			<form-property name="motorCheck" type="java.lang.String" />
+			
+		</form-bean>		
+	</form-beans>
+	<global-exceptions />
+	<global-forwards>
+		<forward name="tologin" path="/message/tologin.jsp"/>
+		<forward name="operfail" path="/fail.jsp" />
+		<forward name="nologin" path="/cueLogin.jsp" />
+		<forward name="operSuccess" path="/collection/collectionSuccess.jsp" />
+		<forward name="success" path="/message/success.jsp" />
+		<forward name="error" path="/message/error.jsp" />
+	</global-forwards>
+	<action-mappings>
+		<!-- 相册操作 -->
+		<action attribute="govform" 
+				name="govform" 
+				scope="request" 
+				path="/GovOper" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="govmain" path="/manage/govMain.jsp"/>
+		</action>		
+	</action-mappings>
+
+</struts-config>
+

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+	<data-sources />
+	<form-beans>
+		<!-- hr add -->
+		<form-bean name="cclogMainBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="filename" type="java.lang.String" />
+			
+			<form-property name="talkid" type="java.lang.String" />
+			<form-property name="questionId" type="java.lang.String" />
+		
+			<form-property name="ringBegintime" type="java.lang.String" />
+			<form-property name="processEndtime" type="java.lang.String" />
+			<form-property name="processKeeptime" type="java.lang.String" />
+			
+			<form-property name="telNum" type="java.lang.String" />
+			<form-property name="recordPath" type="java.lang.String" />
+			<form-property name="idcard" type="java.lang.String" />
+			<form-property name="department" type="java.lang.String" />
+			<form-property name="question" type="java.lang.String" />
+			<form-property name="answer" type="java.lang.String" />
+			<form-property name="tagAllInfo" type="java.lang.String" />
+			<form-property name="tagBigInfo" type="java.lang.String" />
+			<form-property name="tagSmallInfo" type="java.lang.String" />
+			<form-property name="isrevert" type="java.lang.String" />
+			<form-property name="billNum" type="java.lang.String" />
+			<form-property name="questionKey" type="java.lang.String" />
+			<form-property name="answerMan" type="java.lang.String" />
+			
+			<form-property name="answerman" type="java.lang.String" />
+			<form-property name="ifNeedRevert" type="java.lang.String" />
+			
+			<form-property name="moduleName" type="java.lang.String" />
+			<form-property name="enterTime" type="java.lang.String" />
+			<form-property name="leaveTime" type="java.lang.String" />
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="agentName" type="java.lang.String" />
+			
+<!--	人员管理		-->
+			<form-property name="name" type="java.lang.String" />
+			<form-property name="sex" type="java.lang.String" />		
+			<form-property name="tel" type="java.lang.String" />
+			<form-property name="mobile" type="java.lang.String" />
+			<form-property name="contactAddress" type="java.lang.String" />
+			<form-property name="email" type="java.lang.String" />
+			
+            <!--	问题类型		-->
+<!--            <form-property name="tagallinfo" type="java.lang.String"/>-->
+<!--	        <form-property name="tagbiginfo" type="java.lang.String"/>-->
+<!--	        <form-property name="tagsmallinfo" type="java.lang.String"/>-->
+<!--	        <form-property name="quinfo" type="java.lang.String" />-->
+			<!--      	  -->
+
+			
+			
+			<form-property name="tagbiginfo" type="java.lang.String" />
+			<form-property name="tagsmallinfo" type="java.lang.String" />
+
+<!--			<form-property name="answerman" type="java.lang.String" />-->
+            <form-property name="ifAnswerSucceed" type="java.lang.String" />
+			<form-property name="clientIp" type="java.lang.String" />
+			<form-property name="inPort" type="java.lang.String" />
+			<form-property name="operatorPort" type="java.lang.String" />
+			<form-property name="phoneNum" type="java.lang.String" />
+			<form-property name="fuzzNo" type="java.lang.String" />		
+			<form-property name="recFile" type="java.lang.String" />
+			<form-property name="isvalidin" type="java.lang.String" />
+			<form-property name="cmd" type="java.lang.String" />
+			<form-property name="taginfo" type="java.lang.String" />
+			<form-property name="quinfo" type="java.lang.String" />
+			<form-property name="content" type="java.lang.String" />
+			<form-property name="issuccess" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+			
+			<form-property name="userName" type="java.lang.String" />
+			<form-property name="questionTime" type="java.lang.String" />
+			
+			<form-property name="beginHour" type="java.lang.String" />
+      		<form-property name="beginMinute" type="java.lang.String" />
+      		<form-property name="endHour" type="java.lang.String" />
+      		<form-property name="endMinute" type="java.lang.String" />
+      		<form-property name="caseId" type="java.lang.String" />
+		</form-bean>
+
+
+
+		<form-bean name="CclogOperBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<!--     -->
+			<form-property name="name" type="java.lang.String" />
+			<form-property name="address" type="java.lang.String" />
+			<form-property name="idcard" type="java.lang.String" />
+			<!--      	  -->
+
+			<form-property name="clientIp" type="java.lang.String" />
+			<form-property name="inPort" type="java.lang.String" />
+			<form-property name="operatorPort" type="java.lang.String" />
+			<form-property name="phoneNum" type="java.lang.String" />
+			<form-property name="fuzzNo" type="java.lang.String" />
+			<form-property name="department" type="java.lang.String" />
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="beginhour" type="java.lang.String" />
+			
+			<form-property name="operateTime" type="java.lang.String" />
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="endhour" type="java.lang.String" />
+			
+			
+			<form-property name="recFile" type="java.lang.String" />
+			<form-property name="isvalidin" type="java.lang.String" />
+			<form-property name="cmd" type="java.lang.String" />
+			<form-property name="taginfo" type="java.lang.String" />
+			<form-property name="quinfo" type="java.lang.String" />
+			<form-property name="content" type="java.lang.String" />
+			<form-property name="issuccess" type="java.lang.String" />
+
+			<form-property name="deleteMark" type="java.lang.String" />
+
+			<form-property name="remark" type="java.lang.String" />
+		</form-bean>
+
+
+
+		<!-- 添加cclog信息，增添数据库内的数据 -->
+		<form-bean name="addcclogBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<!--    农民信息  小白加	  -->
+			<form-property name="name" type="java.lang.String" />
+			<form-property name="address" type="java.lang.String" />
+			<form-property name="idcard" type="java.lang.String" />
+			<!--      	  -->
+
+			<form-property name="tagallinfo" type="java.lang.String" />
+			<form-property name="tagbiginfo" type="java.lang.String" />
+			<form-property name="tagsmallinfo" type="java.lang.String" />
+			<form-property name="isrevert" type="java.lang.String" />
+
+			<form-property name="clientIp" type="java.lang.String" />
+			<form-property name="inPort" type="java.lang.String" />
+			<form-property name="operatorPort" type="java.lang.String" />
+			<form-property name="phonenum" type="java.lang.String" />
+			<form-property name="fuzzNo" type="java.lang.String" />
+			<form-property name="department" type="java.lang.String" />
+			<form-property name="beginTime" type="java.lang.String" />
+			<form-property name="operatetime" type="java.lang.String" />
+			<form-property name="beginhour" type="java.lang.String"/>
+			<form-property name="operatorhour" type="java.lang.String"/>
+			<form-property name="endhour" type="java.lang.String"/>
+			
+			
+			<form-property name="endTime" type="java.lang.String" />
+			<form-property name="recfile" type="java.lang.String" />
+			<form-property name="passvalidnum" type="java.lang.String" />
+			<form-property name="operator" type="java.lang.String" />
+			<form-property name="isvalidin" type="java.lang.String" />
+			<form-property name="cmd" type="java.lang.String" />
+			<form-property name="taginfo" type="java.lang.String" />
+			<form-property name="quinfo" type="java.lang.String" />
+			<form-property name="content" type="java.lang.String" />
+			<form-property name="issuccess" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+		</form-bean>
+		<!-- 电话查询 -->
+    <form-bean name="TelForm" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      <form-property name="telNum" type="java.lang.String" />
+      <form-property name="beginTime" type="java.lang.String" />
+      <form-property name="beginHour" type="java.lang.String" />
+      <form-property name="beginMinute" type="java.lang.String" />
+      <form-property name="betweetTime" type="java.lang.String" />
+      <form-property name="endHour" type="java.lang.String" />
+      <form-property name="endMinute" type="java.lang.String" />
+      <form-property name="caseId" type="java.lang.String" />
+      <form-property name="endTime" type="java.lang.String" />
+    </form-bean>
+    <form-bean name="AwardForm" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      <form-property name="endNum" type="java.lang.String" />
+      <form-property name="beginNum" type="java.lang.String" />
+      <form-property name="spaceNum" type="java.lang.String" />
+      <form-property name="dict_cust_type" type="java.lang.String" />
+      <form-property name="orderNum" type="java.lang.String" />
+      <form-property name="phoneNum" type="java.lang.String" />
+      <form-property name="id" type="java.lang.String" />
+      <form-property name="ringBegintime" type="java.util.Date" />
+    </form-bean>
+
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<action attribute="cclogMainBean" name="cclogMainBean" path="/callcenter/cclog"
+			parameter="method" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="main" path="/callcenter/cclog/cclogMain.jsp" />
+			<forward name="query" path="/callcenter/cclog/cclogQuery.jsp" />
+			<forward name="recordmain" path="/callcenter/cclog/recordMain.jsp" />
+			<forward name="recordquery" path="/callcenter/cclog/recordQuery.jsp" />
+			<forward name="load" path="/callcenter/cclog/cclogLoadFrame.jsp" />
+			<forward name="Load" path="/callcenter/cclog/cclogLoad.jsp" />
+			<forward name="list" path="/callcenter/cclog/cclogList.jsp" />
+			<forward name="recordList" path="/callcenter/cclog/recordList.jsp" />
+			<forward name="detail" path="/callcenter/cclog/cclogDetail.jsp" />
+			<forward name="slist" path="/callcenter/cclog/operList.jsp" />
+			<forward name="addload" path="/callcenter/cclog/addInfoLoad.jsp" />
+			<forward name="depmain"
+				path="/callcenter/cclog/departmentMain.jsp" />
+			<forward name="quesInfo"
+				path="/callcenter/cclog/QuesInfoList.jsp" />
+			<forward name="ivrInfo"
+				path="/callcenter/cclog/IVRInfoList.jsp" />
+			<forward name="manload"
+				path="/callcenter/cclog/answerManLoad.jsp" />
+				<forward name="quesLoad"
+				path="/callcenter/cclog/questionLoad.jsp" />
+		</action>
+    <action
+      attribute="TelForm"
+      name="TelForm"
+      path="/callcenter/cclog/telQuery"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy">   
+      <forward name="list" path="/callcenter/cclog/telList.jsp" />
+      <forward name="query" path="/callcenter/cclog/telQuery.jsp" />
+      <forward name="main" path="/callcenter/cclog/telMain.jsp" />
+    </action>
+    <action
+      attribute="AwardForm"
+      name="AwardForm"
+      parameter="method"
+      path="/callcenter/award"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="list" path="/callcenter/cclog/awardList.jsp" />
+      <forward name="main" path="/callcenter/cclog/awardMain.jsp" />
+      <forward name="query" path="/callcenter/cclog/awardQuery.jsp" />
+    </action>
+
+
+
+
+<!--		<action attribute="CclogOperBean" name="CclogOperBean"-->
+<!--			path="/pcc/cclogOper" parameter="method" scope="request"-->
+<!--			type="org.springframework.web.struts.DelegatingActionProxy">-->
+<!--			<forward name="main"-->
+<!--				path="/pcc/cclogOper/cclogOperMain.jsp" />-->
+<!--			<forward name="query"-->
+<!--				path="/pcc/cclogOper/cclogOperQuery.jsp" />-->
+<!--			<forward name="load"-->
+<!--				path="/pcc/cclogOper/cclogOperLoad.jsp" />-->
+<!--			<forward name="list"-->
+<!--				path="/pcc/cclogOper/cclogOperList.jsp" />-->
+<!--			            <forward name="toOperList"  path="/pcc/cclogOper.do?method=toCclogOperList&pagestate=now"/>-->
+<!--			<forward name="detail"-->
+<!--				path="/pcc/cclogOper/cclogOperDetail.jsp" />-->
+<!--			<forward name="slist" path="/pcc/cclogOper/operList.jsp" />-->
+<!--			<forward name="addload"-->
+<!--				path="/pcc/cclogOper/addInfoLoad.jsp" />-->
+<!--			<forward name="depmain"-->
+<!--				path="/pcc/cclogOper/departmentMain.jsp" />-->
+<!--			<forward name="depquery"-->
+<!--				path="/pcc/cclogOper/departmentQuery.jsp" />-->
+<!--			<forward name="deplist"-->
+<!--				path="/pcc/cclogOper/departmentList.jsp" />-->
+<!--		</action>-->
+<!---->
+<!---->
+<!---->
+<!--		 添加cclog信息，增添数据库内的数据 -->
+<!--		<action attribute="addcclogBean" name="addcclogBean"-->
+<!--			path="/pcc/addcclog" parameter="method" scope="request"-->
+<!--			type="org.springframework.web.struts.DelegatingActionProxy">-->
+<!--			<forward name="main"-->
+<!--				path="/pcc/addcclog/addCclogMain.jsp" />-->
+<!--			<forward name="query"-->
+<!--				path="/pcc/addcclog/addCclogQuery.jsp" />-->
+<!--			<forward name="load"-->
+<!--				path="/pcc/addcclog/addCclogLoad.jsp" />-->
+<!--			<forward name="list"-->
+<!--				path="/pcc/addcclog/addCclogList.jsp" />-->
+<!--		</action>-->
+	</action-mappings>
+
+</struts-config>
+

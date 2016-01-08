@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+<beans>
+<!-- action -->
+	<!-- 农用机器车主基本信息 -->
+	<bean name="/news/opernews" class="et.bo.news.action.ArticleAction" singleton="false">
+		<property name="articleService">
+			<ref local="ArticleService"/>
+		</property>
+		<property name="ctree">
+			<ref bean="ClassTreeService"/>
+		</property>
+		<property name="newsAreaService">
+			<ref bean="NewsAreaService" />
+		</property>
+	</bean>
+	
+	<bean name="/editor/uploadFile"
+		class="et.bo.news.action.UploadFileAction"
+		singleton="false">
+		<property name="ls">
+			<ref bean="LoadService" />
+		</property>
+	</bean>
+	
+<!-- action end -->
+
+<!-- service -->
+
+	<!-- 机动车管理 -->
+	<bean id="ArticleService"
+		class="et.bo.news.service.impl.ArticleServiceImpl"
+		singleton="false">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+<!-- service end -->
+	
+</beans>

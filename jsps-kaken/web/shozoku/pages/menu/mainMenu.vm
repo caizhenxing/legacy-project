@@ -1,0 +1,290 @@
+## ***********************************************
+## 所属研究機関向けメニュー
+## ***********************************************
+## 2005/03/09 新規作成
+## 2006/06/02 修正（仕様変更）
+## 2007/02/03 修正（仕様変更）
+#parse( $commonSetting )
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <title>JSPS 電子申請システム</title>
+  <link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+  <script language="javascript">
+    <!--
+	/* 承認（確認）・却下部分リックをクッリク時 */
+    function onShinoikyakkaLink(inUrl,inJigyoKbn,inJigyoCd){
+        document.checkList_form.action="$link.setAction('" + inUrl + "')";
+        document.checkList_form.jigyoKbn.value=inJigyoKbn;
+        document.checkList_form.jigyoCd.value=inJigyoCd;
+        document.checkList_form.submit();
+    }
+     
+    /* チェックリスト・表紙出力部分リックをクッリク時 */
+    function onCheckListLink(inJigyoKbn,inJigyoCd){
+        document.checkList_form.action="$link.setAction('/shozoku/checkList/searchList')";
+        document.checkList_form.jigyoKbn.value=inJigyoKbn;
+        document.checkList_form.jigyoCd.value=inJigyoCd;
+        document.checkList_form.submit();
+    }
+    //-->
+  </script>
+ </head>
+ <body class="bodyStyle">
+  <div align="center">
+  <!-- ヘッダー 用テーブルここから-->
+  <table width="95%" border="0" cellpadding="0" cellspacing="0">
+   <tr>
+    <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+    <td align="right" background="$path/images/header_bg2.gif">
+     <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+     <table border="0" cellpadding="0" cellspacing="1">
+      <tr>
+       <td colspan="2"><img src="$path/images/spacer.gif"  width="1" height="15"></td>
+      </tr>
+      <tr>
+       <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+       <td><a href="$link.setAction('/shozoku/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width="72" height="20" border="0"></a></td>
+      </tr>
+     </table>
+     <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+     </td>
+     <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif"  width="6" height="58"></td>
+    </tr>
+   </table>
+   <!--  ヘッダー 用テーブルここまで-->
+   <!-- 左右の縦線用テーブルここから -->
+   <table width="95%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+     <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif"  width="1" height="1"></td>
+     <td>
+     <!-- ログインユーザ、ルート情報用テーブルここから　-->
+     <table width="100%" border="0" cellpadding="4" cellspacing="0">
+      <tr>
+       <td bgcolor="#CC6666" class="rootFont"><font color="#FFFFFF"><b>所属研究機関担当者向けメニュー</b></font></td>
+      </tr>
+     </table>
+     <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+     <!-- ログイン、メニュー画面タイトル用テーブルここから -->
+     <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+       <td width="92" valign="bottom"><img src="$path/images/title_img1.gif" width="92" height="53" ></td>
+       <td width="98%" valign="bottom" class="menuTitle">所属研究機関担当者向けメニュー</td>
+       <td width="214" valign="bottom"><img src="$path/images/title_img5.gif" width="214" height="38" ></td>
+      </tr>
+      <tr>
+       <td width="92"><img src="$path/images/title_img2.gif" width="92" height="29" ></td>
+       <td background="$path/images/title_img3.gif"><img src="$path/images/title_img3.gif" width="8" height="29" ></td>
+       <td width="214"><img src="$path/images/title_img6.gif" width="214" height="29" ></td>
+      </tr>
+     </table>
+     <!-- ログイン、メニュー画面タイトル用テーブルここまで -->
+     #errorMarkup()
+     <!-- ログイン入力フォーム、メニュー項目用テーブルここから -->
+     <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+       <td width="92" valign="top"><img src="$path/images/title_img7.gif" width="92" height="38" ></td>
+       <td width="52" class="menuLine"><img src="$path/images/spacer.gif"  width="52" height="1"></td>
+       <td width="90%" align="left">
+        <!-- メニュー用テーブルここから -->
+        <table border="0" cellspacing="6">
+         <tr>
+          <td><img src="$path/images/mark_red.gif"  width="16" height="16"></td>
+          <td class="menu"><a href="$link.setAction('/shozoku/shinseishaKanri/showMenu')">応募者管理</a>・・【応募者へのID・パスワードの発行はこちらから】</td>
+          <td><img src="$path/images/mark_red.gif"  width="16" height="16"></td>
+          <td class="menu"><a href="$link.setAction('/shozoku/shinseiJohoKanri/search')">応募情報管理</a></td>
+         </tr>
+         <tr>
+          <td><img src="$path/images/mark_red.gif"  width="16" height="16"></td>
+          <td class="menu">承認（確認）・却下・・・・・・・【提出はこちらから】</td>
+          <td><img src="$path/images/mark_red.gif"  width="16" height="16"></td>
+          <td class="menu"><a href="$link.setAction('/shozoku/shoruiShutoku/searchList')">書類取得</a></td>
+         </tr>
+         <tr>
+          <td>&nbsp;</td>
+          <td class="menu"><a href="javascript:onShinoikyakkaLink('/shozoku/shinseiJohoKanri/shoninKyakaList','1', '')">学術創成研究費</a></td>
+          <td><img src="$path/images/mark_red.gif"  width="16" height="16"></td>
+          <td class="menu"><a href="$link.setAction('/shozoku/bukyokuKanri/showMenu')">部局担当者管理</a></td>
+         </tr>
+         <tr>
+          <td>&nbsp;</td>
+          <td class="menu"><a href="javascript:onShinoikyakkaLink('/shozoku/shinseiJohoKanri/shoninKyakaList','3', '')">特別推進研究</a></td>
+          <td><img src="$path/images/mark_red.gif"  width="16" height="16"></td>
+          <td class="menu"><a href="$link.setAction('/shozoku/shozokuKanri/edit')">登録済み所属研究機関情報変更</a></td>
+         </tr>
+         <tr>
+          <td>&nbsp;</td>
+          <td class="menu"><a href="javascript:onShinoikyakkaLink('/shozoku/shinseiJohoKanri/shoninKyakaList','4', '00031')">基盤研究（S）</a></td>
+          <td><img src="$path/images/mark_red.gif"  width="16" height="16"></td>
+          <td class="menu"><a href="$link.setAction('/shozoku/passwordChange')">パスワード変更</a></td>
+         </tr>
+         <tr>
+          <td>&nbsp;</td>
+          <td class="menu"><a href="javascript:onShinoikyakkaLink('/shozoku/shinseiJohoKanri/shoninKyakaList','4', '00041')">基盤研究（A）（一般）</a></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+         </tr>
+         <tr>
+          <td>&nbsp;</td>
+          <td class="menu"><a href="javascript:onShinoikyakkaLink('/shozoku/shinseiJohoKanri/shoninKyakaList','4', '00043')">基盤研究（A）（海外学術調査）</a></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+         </tr>
+         <tr>
+          <td>&nbsp;</td>
+          <td class="menu"><a href="javascript:onShinoikyakkaLink('/shozoku/shinseiJohoKanri/shoninKyakaList','4', '00051')">基盤研究（B）（一般）</a></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+         </tr>
+         <tr>
+          <td>&nbsp;</td>
+          <td class="menu"><a href="javascript:onShinoikyakkaLink('/shozoku/shinseiJohoKanri/shoninKyakaList','4', '00053')">基盤研究（B）（海外学術調査）</a></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+         </tr>
+         
+         <!-- ADD　START 2007/06/28 BIS 金京浩 -->
+         <tr>
+          <td>&nbsp;</td>
+          <td class="menu"><a href="javascript:onShinoikyakkaLink('/shozoku/shinseiJohoKanri/shoninKyakaList','4', '00111')">萌芽研究 </a></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+         </tr>         
+         <!-- ADD　END　 2007/06/28 BIS 金京浩 -->
+         
+		         <tr>
+          <td>&nbsp;</td>
+          <td class="menu"><a href="javascript:onShinoikyakkaLink('/shozoku/shinseiJohoKanri/shoninKyakaList','4', '00120')">若手研究（S）</a></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+         </tr>
+         
+         <!-- ADD　START 2007/06/28 BIS 金京浩 -->
+         <tr>
+          <td>&nbsp;</td>
+          <td class="menu"><a href="javascript:onShinoikyakkaLink('/shozoku/shinseiJohoKanri/shoninKyakaList','5', '00021')">特定領域研究（継続領域）</a></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+         </tr>         
+         <!-- ADD　END　 2007/06/28 BIS 金京浩 -->
+         
+         <tr>
+          <td>&nbsp;</td>
+          <td class="menu"><a href="javascript:onShinoikyakkaLink('/shozoku/shinseiJohoKanri/shoninKyakaSinkiList','', '00022')">特定領域研究（新規領域）-研究計画調書</a></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+         </tr>
+		         <tr>
+          <td>&nbsp;</td>
+          <td class="menu"><a href="javascript:onShinoikyakkaLink('/shozoku/shinseiJohoKanri/shoninKyakaList','6', '00141')">若手研究（スタートアップ）</a></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+         </tr>
+         <tr>
+          <td>&nbsp;</td>
+          <td class="menu"><a href="javascript:onShinoikyakkaLink('/shozoku/shinseiJohoKanri/shoninKyakaList','7', '')">特別研究促進費（年複数回応募の試行）</a></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+         </tr>
+         <tr>
+          <td><img src="$path/images/mark_red.gif"  width="16" height="16"></td>
+          <td class="menu">チェックリスト・表紙出力・・【提出はこちらから】</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+         </tr>
+         
+         <!-- DEL　START 2007/06/28 BIS 金京浩 -->　 
+         #* 
+         <tr>
+          <td>&nbsp;</td>
+          <td class="menu"><a href="$link.setAction('/shozoku/checkList/searchListTokutei')">特定領域研究（継続領域）</a></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+         </tr>
+         *#
+         <!-- DEL　END　 2007/06/28 BIS 金京浩 -->　
+         
+         <tr>
+          <td>&nbsp;</td>
+          
+          <!-- UPDATE　START 2007/06/28 BIS 金京浩 -->　
+          #*
+          <td class="menu"><a href="javascript:onCheckListLink('4', '00061')">基盤研究（C）・萌芽研究・若手研究</a></td>
+          *#
+          <td class="menu"><a href="javascript:onCheckListLink('4', '00061')">基盤研究（C）・若手研究</a></td>
+          <!-- UPDATE　END　 2007/06/28 BIS 金京浩 -->
+          　
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+         </tr>
+         #*<tr>
+          <td>&nbsp;</td>
+          <td class="menu"><a href="javascript:onCheckListLink('6', '')">若手研究(スタートアップ)</a></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+         </tr>
+         <tr>
+          <td>&nbsp;</td>
+          <td class="menu"><a href="javascript:onCheckListLink('7', '')">特別研究促進費（年複数回応募の試行）</a></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+         </tr>*#
+         <tr>
+          <td><img src="$path/images/mark_red.gif"  width="16" height="16"></td>
+          <td class="menu">仮領域番号発行、応募書類承認・却下・・【提出はこちらから】</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+         </tr>
+         <tr>
+          <td>&nbsp;</td>
+          <td class="menu"><a href="$link.setAction('/shozoku/teishutsuShorui/teisyutuList')">特定領域研究（新規領域）</a></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+         </tr>
+        </table>
+        <!-- メニュー用テーブルここまで -->
+       
+       </td>
+      </tr>
+     </table>
+     <p class="comment"><font color="#FF0000"><b>※所属研究機関担当者は学振提出期限までに、提出された課題の「応募状況」が「学振受付中」（所属研究機関から提出済）または「学振受理」となっているかどうか最終確認してください。</b></font></p>
+##2007/03/01 劉長宇　更新　ここから
+##     <p class="comment"><font color="#FF0000"><b>※特定領域研究（継続領域）、基盤研究(C)・萌芽研究・若手研究(A・B)、若手研究（スタートアップ）・特別研究促進費の応募情報の検索及び却下処理は、「応募情報管理」より行ってください。 </b></font></p>
+	   
+	   <!-- UPDATE　START 2007/07/02 BIS 金京浩 -->
+	   ##<p class="comment"><font color="#FF0000"><b>※特定領域研究（継続領域）、基盤研究（C）・萌芽研究・若手研究（A・B）の応募情報の検索及び却下処理は、「応募情報管理」より行ってください。 </b></font></p>
+	   <p class="comment"><font color="#FF0000"><b>※基盤研究（C）・若手研究（A・B）の応募情報の検索及び却下処理は、「応募情報管理」より行ってください。 </b></font></p>
+	   <!-- UPDATE　END　 2007/07/02 BIS 金京浩 -->
+	   
+##2007/03/01 劉長宇　更新　ここまで
+     <br>
+## 2005/05/23 追加
+     <div align="right">
+      <p class="comment">電子申請に関するご意見、ご要望は<a href="$link.setAction('/shozoku/iken')">こちら</a></p>
+     </div>
+## 2005/05/23 追加完了
+     <!-- サブ画面フッター用テーブルここから -->
+     <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr bgcolor="#336699">
+       <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width="8" height="26" ></td>
+       <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shozoku/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width="72" height="26" border="0"></a></td>
+       <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width="8" height="26" ></td>
+      </tr>
+     </table>
+     <!-- サブ画面フッター用テーブルここまで -->
+     <!-- コンテンツエリアここまで -->
+    </td>
+    <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif"  width="1" height="1"></td>
+   </tr>
+  </table>
+  <!-- 左右の縦線用テーブルここまで -->
+  ##隠しフォーム情報----------
+  <form name="checkList_form" method="post" action="">
+    <input type="hidden" name="jigyoKbn" value="">
+    <input type="hidden" name="jigyoCd" value="">
+  </form>
+  </div>
+ </body>
+</html>

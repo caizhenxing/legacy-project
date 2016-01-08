@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+
+  <subclass name="org.jbpm.bpel.alarm.Alarm" extends="org.jbpm.graph.def.Action"
+    discriminator-value="L">
+
+    <many-to-one name="forExpr" column="FOR_" foreign-key="FK_ALARM_FOR" cascade="all" />
+    <many-to-one name="until" column="UNTIL_" foreign-key="FK_ALARM_UNTIL" cascade="all" />
+    <many-to-one name="repeatEvery" column="REPEATEVERY_" foreign-key="FK_ALARM_REPEAT" cascade="all" />
+
+    <any name="timeDrivenActivity" id-type="long" meta-type="char">
+      <meta-value value="W" class="org.jbpm.bpel.def.Wait" />
+      <meta-value value="A" class="org.jbpm.bpel.def.OnAlarm" />
+      <meta-value value="P" class="org.jbpm.bpel.def.Pick" />
+      <column name="TIMEACTIVITYCLASS_" />
+      <column name="TIMEACTIVITY_" />
+    </any>
+    
+  </subclass>
+  
+</hibernate-mapping>

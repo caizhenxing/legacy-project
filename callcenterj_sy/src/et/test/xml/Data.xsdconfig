@@ -1,0 +1,6 @@
+<xb:config xmlns:xb="http://xml.apache.org/xmlbeans/2004/02/xbean/config" xmlns:NS1="http://site.bean.com">
+<xb:namespace>
+<xb:package>et.xmlbean</xb:package>
+</xb:namespace>
+<xb:qname name="NS1:chart" javaname="DataXmlBean"/>
+</xb:config>

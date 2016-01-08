@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+
+<toolbox>
+  <tool>
+     <key>toolLoader</key>
+     <class>org.apache.velocity.tools.generic.ToolLoader</class>
+  </tool>
+  <tool>
+     <key>link</key>
+     <class>org.apache.velocity.tools.struts.StrutsLinkTool</class>
+  </tool>
+  <tool>
+     <key>msg</key>
+     <class>org.apache.velocity.tools.struts.MessageTool</class>
+  </tool>
+  <tool>
+     <key>errors</key>
+     <class>org.apache.velocity.tools.struts.ErrorsTool</class>
+  </tool>
+  <tool>
+     <key>form</key>
+     <class>org.apache.velocity.tools.struts.FormTool</class>
+  </tool>
+  <!-- エスケープ用オブジクト -->
+  <tool>
+     <key>escape</key>
+     <class>jp.go.jsps.kaken.web.util.Escape</class>
+  </tool>
+  <!-- 日付フォーマット用オブジクト -->
+  <tool>
+     <key>dateFormat</key>
+     <class>jp.go.jsps.kaken.web.util.DateFormat</class>
+  </tool>
+  <!-- 申請データのフォーマット用オブジェクト -->
+  <tool>
+     <key>shinseiFormat</key>
+     <class>jp.go.jsps.kaken.web.util.ShinseiFormat</class>
+  </tool>
+  <!-- 浮動少数点数演算用オブジクト -->
+  <tool>
+     <key>math</key>
+     <class>org.apache.velocity.tools.generic.MathTool</class>
+  </tool>
+  <tool>
+     <key>dateUtil</key>
+     <class>jp.go.jsps.kaken.util.DateUtil</class>
+  </tool>
+
+
+  <!-- 共通ファイル -->
+  <data type="string">
+     <key>commonSetting</key>
+     <value>/WEB-INF/CommonSettings.vm</value>
+  </data>
+  
+  <!-- 申請情報入力 -->
+  	<!-- 基盤一般 -->
+  <data type="string">
+     <key>inputApplication04_1</key>
+     <value>../shinsei/pages/edit/kibanA_ippan/inputApplication04_1.vm</value>
+  </data>
+  	<!-- 基盤海外 -->
+  <data type="string">
+     <key>inputApplication04_3</key>
+     <value>../shinsei/pages/edit/kibanA_kaigai/inputApplication04_3.vm</value>
+  </data>
+	<!-- 若手研究 -->
+  <data type="string">
+     <key>inputApplication12</key>
+     <value>../shinsei/pages/edit/kiban_wakateA/inputApplication12.vm</value>
+  </data>
+<!-- 20050523 Start -->
+	<!-- 特定領域 -->
+  <data type="string">
+     <key>inputApplication02</key>
+     <value>../shinsei/pages/edit/tokutei/inputApplication02.vm</value>
+  </data>
+<!-- Horikoshi End -->
+</toolbox>

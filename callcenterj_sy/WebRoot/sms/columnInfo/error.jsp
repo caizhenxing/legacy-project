@@ -1,0 +1,59 @@
+
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=GBK" pageEncoding="GBK"%>
+
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-html" prefix="html" %>
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-tiles" prefix="tiles" %>
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html:html locale="true">
+  <head>
+    <html:base />
+    
+    <title>ERROR</title>
+    
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">    
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<style type="text/css">
+    <!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style>
+<link href="/ETStu/images/css/styleA.css" rel="stylesheet" type="text/css" />
+    <script>
+    	function c()
+    	{
+			window.close();
+    	}
+    </script>
+  </head>
+  
+  <body>
+  <table width="80%" border="0" align="center" cellpadding="0" cellspacing="0" class="tablebgcolor">
+  <tr>
+    <td align="center">ERROR</td>
+  </tr>
+</table>
+<table width="80%" border="0" align="center" cellpadding="1" cellspacing="1" class="tablebgcolor">
+  <tr>
+    <td width="100%" align="center" class="tdbgcolorloadright"><div align="center"><%=request.getAttribute("errMsg")%></div></td>
+  </tr>
+  <tr>
+    <td class="tdbgcolorloadbuttom"><div align="center">
+      <html:button property="aaa"styleClass="bottom" onclick="history.back()">返回 </html:button>
+    </div></td>
+  </tr>
+</table>
+  </body>
+</html:html>

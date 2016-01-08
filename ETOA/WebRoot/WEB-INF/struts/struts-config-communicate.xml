@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+   <!-- 即时消息表 -->
+	 <form-bean name="ImBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="receivers" type="java.lang.String" />
+    	<form-property name="contents" type="java.lang.String" />
+    	<form-property name="sender" type="java.lang.String" />
+    	<form-property name="sendTime" type="java.lang.String" />
+	 </form-bean>
+	 <!-- 公告信息表 -->
+	 <form-bean name="AficheInfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="id" type="java.lang.String" />
+    	<form-property name="aficheTitle" type="java.lang.String" />
+    	<form-property name="aficheUser" type="java.lang.String" />
+    	<form-property name="aficheType" type="java.lang.String" />
+    	<form-property name="aficheInfo" type="java.lang.String" />
+    	<form-property name="aficheSendto" type="java.lang.String" />
+    	<form-property name="createTime" type="java.lang.String" />
+    	<form-property name="beginTime" type="java.lang.String" />
+    	<form-property name="endTime" type="java.lang.String" />
+    	<form-property name="delSign" type="java.lang.String" />
+    	<form-property name="remark" type="java.lang.String" />
+    	<form-property name="chk" type="java.lang.String[]" />
+    	<form-property name="chkall" type="java.lang.String" />
+	 </form-bean>
+	 <!-- 发收邮件信息表 -->
+	 <form-bean name="InEmailInfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="id" type="java.lang.String" />
+    	<form-property name="sendUser" type="java.lang.String" />
+    	<form-property name="takeUser" type="java.lang.String" />
+    	<form-property name="takeList" type="java.lang.String" />
+    	<form-property name="copyList" type="java.lang.String" />
+    	<form-property name="secretList" type="java.lang.String" />
+    	<form-property name="emailTitle" type="java.lang.String" />
+    	<form-property name="emailInfo" type="java.lang.String" />
+    	<form-property name="adjunctInfo" type="java.lang.String"/>
+    	<form-property name="createTime" type="java.lang.String" />
+    	<form-property name="sendTime" type="java.lang.String" />
+    	<form-property name="sendType" type="java.lang.String" />
+    	<form-property name="emailType" type="java.lang.String" />
+    	<form-property name="emailSign" type="java.lang.String" />
+    	<form-property name="openSign" type="java.lang.String" />
+    	<form-property name="emailboxid" type="java.lang.String" />
+    	<form-property name="issend" type="java.lang.String" />
+    	<form-property name="delSign" type="java.lang.String" />
+    	<form-property name="remark" type="java.lang.String" />
+    	<form-property name="selectbox" type="java.lang.String"/>
+    	<form-property name="chk" type="java.lang.String"/>
+    	<form-property name="select" type="java.lang.String"/>
+    	<form-property name="cchk" type="java.lang.String[]"/>
+    	<form-property name="chkall" type="java.lang.String"/>
+	 </form-bean>
+	 <!-- 附件信息表 -->
+	 <form-bean name="InAdjunctInfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="id" type="java.lang.String" />
+    	<form-property name="emailId" type="java.lang.String" />
+    	<form-property name="adjunctAddress" type="java.lang.String" />
+    	<form-property name="adjunctType" type="java.lang.String" />
+    	<form-property name="adjunctName" type="java.lang.String" />
+    	<form-property name="adjunctKey" type="java.lang.String" />
+    	<form-property name="delTime" type="java.lang.String" />
+    	<form-property name="createTime" type="java.lang.String" />
+    	<form-property name="openUser" type="java.lang.String" />
+    	<form-property name="remark" type="java.lang.String" />
+	 </form-bean>
+	 <!-- 邮箱信息表 -->
+	 <form-bean name="EmailBoxBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+	 	<form-property name="id" type="java.lang.String" />
+    	<form-property name="userid" type="java.lang.String" />
+    	<form-property name="name" type="java.lang.String" />
+    	<form-property name="smtp" type="java.lang.String" />
+    	<form-property name="pop3" type="java.lang.String" />
+    	<form-property name="pop3user" type="java.lang.String" />
+    	<form-property name="poppassword" type="java.lang.String" />
+    	<form-property name="smtpuser" type="java.lang.String" />
+    	<form-property name="smtppassword" type="java.lang.String" />
+    	<form-property name="smtpport" type="java.lang.String" />
+    	<form-property name="smtpssl" type="java.lang.String" />
+    	<form-property name="pop3port" type="java.lang.String" />
+    	<form-property name="pop3ssl" type="java.lang.String" />
+    	<form-property name="emailaddress" type="java.lang.String" />
+    	<form-property name="returnadress" type="java.lang.String" />
+    	<form-property name="tagsmtpssl" type="java.lang.String" />
+    	<form-property name="tagpop3ssl" type="java.lang.String" />
+    	<form-property name="remark" type="java.lang.String" />
+	 </form-bean>
+	 <!-- 手机短信信息 -->
+	 <form-bean name="HandsetNoteBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+	 	<form-property name="id" type="java.lang.String" />
+    	<form-property name="handsetnum" type="java.lang.String" />
+    	<form-property name="handsetinfo" type="java.lang.String" />
+    	<form-property name="sendstate" type="java.lang.String" />
+    	<form-property name="sendtime" type="java.lang.String" />
+    	<form-property name="appointsendtime" type="java.lang.String" />
+    	<form-property name="delsign" type="java.lang.String" />
+    	<form-property name="chk" type="java.lang.String[]"/>
+    	<form-property name="chkall" type="java.lang.String"/>
+    	<form-property name="remark" type="java.lang.String" />
+	 </form-bean>
+	 
+	 <form-bean name="uploadFileForm" type="et.bo.oa.communicate.email.form.UploadFileForm" />
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+  <!-- 即时消息 -->
+  	<action
+      attribute="ImBean"
+      name="ImBean"
+      path="/oa/communicate/im"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="detail" path="/oa/communicate/im/detail.jsp"/>
+      <forward name="new" path="/oa/communicate/im/newIm.jsp"/>
+      <forward name="top" path="/oa/communicate/im/top.jsp"/>
+      <forward name="success" path="/sys/success.jsp"/>
+      <forward name="selectUser" path="/oa/communicate/im/selectEmployee.jsp"/>
+      <forward name="error" path="/sys/error.jsp"/>
+    </action>
+    <!-- 公告信息表 -->
+  	<action
+      attribute="AficheInfoBean"
+      name="AficheInfoBean"
+      path="/oa/operaffiche"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="main" path="/oa/afiche/aficheMain.jsp"/>
+      <forward name="query" path="/oa/afiche/aficheQuery.jsp"/>
+      <forward name="load" path="/oa/afiche/aficheLoad.jsp"/>
+      <forward name="list" path="/oa/afiche/aficheList.jsp"/>
+      <forward name="error" path="/oa/afiche/error.jsp"/>
+      <forward name="aficheInfo" path="/oa/main/aficheInfo.jsp"/>
+    </action>
+    <!-- 收发邮件表 -->
+  	<action
+      attribute="InEmailInfoBean"
+      name="InEmailInfoBean"
+      path="/oa/communicate/email"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="main" path="/oa/communicate/email/emailMain.jsp"/>
+      <forward name="query" path="/oa/communicate/email/emailQuery.jsp"/>
+      <forward name="load" path="/oa/communicate/email/emailLoad.jsp"/>
+      <forward name="list" path="/oa/communicate/email/emailList.jsp"/>
+      <forward name="error" path="/oa/communicate/email/error.jsp"/>
+      <forward name="selectUser" path="/oa/communicate/email/selectUser.jsp"/>
+      <forward name="selectList" path="/oa/communicate/email/selectList.jsp"/>
+      <forward name="upload" path="/oa/communicate/email/upload.jsp"/>
+      <forward name="see" path="/oa/communicate/email/seeEmail.jsp"/>
+      <forward name="answer" path="/oa/communicate/email/answerEmail.jsp"/>
+      <forward name="selectUserOne" path="/oa/communicate/email/selectEmployeeOne.jsp"/>
+      <forward name="selectUserTwo" path="/oa/communicate/email/selectEmployeeTwo.jsp"/>
+    </action>
+    
+    <!-- 邮箱管理 -->
+    <action
+      attribute="EmailBoxBean"
+      name="EmailBoxBean"
+      path="/oa/communicate/emailbox"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="main" path="/oa/communicate/emailbox/emailBoxMain.jsp"/>
+      <forward name="query" path="/oa/communicate/emailbox/emailBoxQuery.jsp"/>
+      <forward name="load" path="/oa/communicate/emailbox/emailBoxLoad.jsp"/>
+      <forward name="list" path="/oa/communicate/emailbox/emailBoxList.jsp"/>
+      <forward name="see" path="/oa/communicate/emailbox/seeEmailbox.jsp"/>
+    </action>
+    <!-- 外部邮件管理 -->
+    <action
+      attribute="InEmailInfoBean"
+      name="InEmailInfoBean"
+      path="/oa/communicate/outemail"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="main" path="/oa/communicate/outerEmail/outerEmailMain.jsp"/>
+      <forward name="query" path="/oa/communicate/outerEmail/outerEmailQuery.jsp"/>
+      <forward name="list" path="/oa/communicate/outerEmail/outerEmailList.jsp"/>
+      <forward name="load" path="/oa/communicate/outerEmail/outerEmailLoad.jsp"/>
+      <forward name="see" path="/oa/communicate/outerEmail/seeOuterEmail.jsp"/>
+      <forward name="answer" path="/oa/communicate/outerEmail/answerOuterEmail.jsp"/>
+      <forward name="upload" path="/oa/communicate/outerEmail/upload.jsp"/>
+    </action>
+    <!-- 手机短信管理 -->
+    <action
+      attribute="HandsetNoteBean"
+      name="HandsetNoteBean"
+      path="/oa/communicate/handsetnote"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="main" path="/oa/communicate/handsetnote/handsetnoteMain.jsp"/>
+      <forward name="query" path="/oa/communicate/handsetnote/handsetnoteQuery.jsp"/>
+      <forward name="list" path="/oa/communicate/handsetnote/handsetnoteList.jsp"/>
+      <forward name="load" path="/oa/communicate/handsetnote/handsetnoteLoad.jsp"/>
+      <forward name="error" path="/oa/communicate/email/error.jsp"/>
+    </action>
+    
+    <!-- 内网上传 -->
+    <action attribute="uploadFileForm" input="/oa/communicate/email/upload.jsp" name="uploadFileForm" path="/oa/communicate/inUploadFile" scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
+		<forward name="success" path="/oa/communicate/email/upload.jsp" />
+		<forward name="uploadfail" path="/news/editor/uploadFail.jsp" />
+	</action>
+	
+	<!-- 外网上传 -->
+	<action attribute="uploadFileForm" input="/oa/communicate/outerEmail/upload.jsp" name="uploadFileForm" path="/oa/communicate/outUploadFile" scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
+		<forward name="success" path="/oa/communicate/outerEmail/upload.jsp" />
+		<forward name="uploadfail" path="/news/editor/uploadFail.jsp" />
+	</action>
+  </action-mappings>
+ 
+</struts-config>
+

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+		<form-bean name="marAnalysisBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="typeTitle" type="java.lang.String" />
+			<form-property name="subTitle" type="java.lang.String" />
+			<form-property name="overview" type="java.lang.String" />
+			<form-property name="leaderboard" type="java.lang.String" />
+			<form-property name="quotes" type="java.lang.String" />
+			<form-property name="outlook" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+			<form-property name="analysisPerson" type="java.lang.String" />
+			<form-property name="analysisPersonInfo" type="java.lang.String" />
+			<form-property name="recordTime" type="java.lang.String" />
+			<form-property name="recordPerson" type="java.lang.String" />
+			<form-property name="operType" type="java.lang.String" />
+<!--			添加为维护大屏幕金农市场分析-->
+			<form-property name="analysisType" type="java.lang.String" />
+			<form-property name="analysisContent" type="java.lang.String" />
+			<form-property name="analysiserPhoto" type="java.lang.String" />			
+			<form-property name="analysiserPhoto2" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="customMadeBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="serviceType" type="java.lang.String" />
+			<form-property name="columnName" type="java.lang.String" />
+			<form-property name="columnDetail" type="java.lang.String" />
+			<form-property name="madeMethod" type="java.lang.String" />
+			<form-property name="priceInfo" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+			<form-property name="operType" type="java.lang.String" />		
+		</form-bean>
+		<form-bean name="sssFormBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="sssId" type="java.lang.String" />
+			<form-property name="sssDelegeteDep" type="java.lang.String" />
+			<form-property name="sssKeywords" type="java.lang.String" />
+			<form-property name="sssSummary" type="java.lang.String" />
+			<form-property name="sssEmaple" type="java.lang.String" />
+			<form-property name="sssCreateTime" type="java.lang.String" />
+			<form-property name="sssBeginTime" type="java.lang.String" />
+			<form-property name="sssEndTime" type="java.lang.String" />
+			<form-property name="sssTitle" type="java.lang.String" />
+			<form-property name="sssWritter" type="java.lang.String" />
+			<form-property name="sssUpdateTime" type="java.lang.String" />
+			
+		</form-bean>
+		<form-bean name="hotlineFormBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="hotlineContent" type="java.lang.String" />
+		</form-bean>
+		<form-bean name="doctorFormBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="docContent" type="java.lang.String" />
+			<form-property name="docContent1" type="java.lang.String" />
+			<form-property name="docType" type="java.lang.String" />
+			<form-property name="addtime" type="java.lang.String" />
+		</form-bean>
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+       <action
+	      parameter="method"
+	      path="/screen/screen"
+	      type="org.springframework.web.struts.DelegatingActionProxy">
+	      <forward name="huwuList" path="/screen/HuaWuList.jsp" />
+	      <forward name="caseInfo" path="/screen/OperCaseInfoList.jsp" />
+	      <forward name="priceInfoday" path="/screen/priceInfoDay.jsp" />
+	      <forward name="sadInfo" path="/screen/sadInfoDay.jsp" />
+	      <forward name="jiaoDianList" path="/screen/jiaoDianAnliList.jsp" />
+	      <forward name="zixunSumList" path="/screen/zixunSumList.jsp" />
+	      <forward name="quickMsgList" path="/screen/screenQuickMessageList.jsp" />
+       </action>
+
+	   <!-- 大屏幕金农市场分析信息维护 -->
+	   <action path="/screen/marAnalysis"
+	       	   attribute="marAnalysisBean"
+	           name="marAnalysisBean"
+	           scope="request"
+	           type="org.springframework.web.struts.DelegatingActionProxy" 
+		       parameter="method">
+		   <forward name="main"  path="/screen/marAnalysis/marAnalysisMain.jsp"/>
+		   <forward name="query"  path="/screen/marAnalysis/marAnalysisQuery.jsp"/>
+		   <forward name="list"  path="/screen/marAnalysis/marAnalysisList.jsp"/>
+		   <forward name="list2"  path="/screen/marAnalysis/jnscfx2.jsp"/>
+		   <forward name="load"  path="/screen/marAnalysis/marAnalysisLoad.jsp"/>
+		   <forward name="error"  path=""/>
+	   </action>
+	   
+	    <!-- 大屏幕定制服务信息维护 -->
+	   <action path="/screen/customMade"
+	       	   attribute="customMadeBean"
+	           name="customMadeBean"
+	           scope="request"
+	           type="org.springframework.web.struts.DelegatingActionProxy" 
+		       parameter="method">
+		   <forward name="main"  path="/screen/customMade/customMadeMain.jsp"/>
+		   <forward name="query"  path="/screen/customMade/customMadeQuery.jsp"/>
+		   <forward name="list"  path="/screen/customMade/customMadeList.jsp"/>
+		   <forward name="list2"  path="/screen/customMade/dzfw7.jsp"/>
+		   <forward name="load"  path="/screen/customMade/customMadeLoad.jsp"/>
+		   <forward name="error"  path=""/>
+	   </action>
+	   
+	 <!-- 大屏幕调查信息维护 -->
+   	 <action
+     	attribute="sssFormBean"
+       	name="sssFormBean"
+    	parameter="method"
+     	path="/screen/scrspesur"
+     	scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+		
+		  <forward name="main"  path="/screen/scrspesur/sssMain.jsp"/>
+		  <forward name="query"  path="/screen/scrspesur/sssQuery.jsp"/>
+		  <forward name="list"  path="/screen/scrspesur/sssList.jsp"/>
+		  <forward name="load"  path="/screen/scrspesur/sssLoad.jsp"/> 
+	 </action>
+	 
+	  <!-- 大屏幕金农热线维护 -->
+   	 <action
+     	attribute="hotlineFormBean"
+       	name="hotlineFormBean"
+    	parameter="method"
+     	path="/screen/hotline"
+     	scope="request"
+        type="org.springframework.web.struts.DelegatingActionProxy" >
+		
+		  <forward name="main"  path="/screen/hotline/hotlineMain.jsp"/>
+		  <forward name="load"  path="/screen/hotline/hotlineLoad.jsp"/>
+		  <forward name="list"  path="/screen/hotline/hotlineList.jsp"/> 
+	 </action>
+	 
+	 	  <!-- 大屏幕金农热线维护 -->
+   	 <action
+     	attribute="doctorFormBean"
+       	name="doctorFormBean"
+    	parameter="method"
+     	path="/screen/screenDoctor"
+     	scope="request"
+        type="org.springframework.web.struts.DelegatingActionProxy" >
+		
+		  <forward name="main"  path="/screen/agroDoctor/doctorMain.jsp"/>
+		  <forward name="load"  path="/screen/agroDoctor/doctorLoad.jsp"/>
+		  <forward name="list"  path="/screen/agroDoctor/doctorList.jsp"/> 
+	 </action>
+	</action-mappings>
+	
+	
+</struts-config>
+

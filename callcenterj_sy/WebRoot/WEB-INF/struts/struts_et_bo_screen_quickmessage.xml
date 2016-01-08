@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+		<!-- 客户模块表单bean信息 -->
+		<form-bean name="quickMessage" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id"       type="java.lang.String" />
+			<form-property name="inputMan"     type="java.lang.String" />
+			<form-property name="msgContent"      type="java.lang.String" />
+			<form-property name="msgTitle"      type="java.lang.String" />
+			<form-property name="remark"    type="java.lang.String" />
+			<form-property name="createDate"     type="java.lang.String" />
+			<form-property name="beginTime"     type="java.lang.String" />
+			<form-property name="endTime"     type="java.lang.String" />
+		</form-bean>
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<!-- 客户action -->
+		<action attribute="quickMessage" 
+				name="quickMessage" 
+				scope="request" 
+				path="/screen/quickMessage" 
+				type="org.springframework.web.struts.DelegatingActionProxy" 
+				parameter="method">
+			<forward name="main"  path="/screen/quickMessage/quickMessageMain.jsp"/>
+			
+			<forward name="load"  path="/screen/quickMessage/quickMessageLoad.jsp"/>
+			<forward name="query" path="/screen/quickMessage/quickMessageQuery.jsp"/>
+			<forward name="alllist"  path="/screen/quickMessage/quickMessageAll.jsp"/>
+		</action>
+		
+		
+		<!-- 通讯录action -->
+		
+		
+		<!-- 来电弹出窗口action -->
+		
+
+
+	</action-mappings>
+	
+</struts-config>
+

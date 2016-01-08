@@ -1,0 +1,9 @@
+修改人：王文权
+修改日期：2008-11-28
+修改内容：农委三方通话问题 1外线打入 座席呼三方 三方在但未接听座席无法控制三方， 2三方呼叫未成功(座席呼专家失败)座席无法与外线继续通话 无法挂断专家呼叫其他专家
+修改prepThreeCall.jsp
+1 js修改
+function goCallThree()
+function expertHoldUserGoon()
+2 加一个恢复按钮 座席呼专家失败 无法和外线通话 这个按钮可使座席和外线继续通话 <input type="button"  value="恢复" style="display:inline;" onclick="opener.atUnHold()"/>
+3 专家挂始终可用，防止座席呼专家出现意外情况 座席我法挂断专家

@@ -1,0 +1,84 @@
+修改人：王文权
+修改日期：2009-02-24
+
+需求：热线服务信息统计->专家统计:要求安天统计每天ivr模块量
+修改说明:增加存储过程proc_ivrdataByDate 修改前台页面及java类cvs同步
+1增加存储过程
+
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+go
+--proc_ivrdata是以模块为横坐标，这个以日期为横坐标显示所有模块当天选择次数
+CREATE procedure [dbo].[proc_ivrdataByDate] (@begintime varchar(20),@endtime varchar(20),@qtype varchar(50))
+as 
+BEGIN
+	declare @ivr varchar(50)
+	create table #temp_ivr_X (X varchar(200))
+	insert into #temp_ivr_X select ymd from ymd_tbl where ymd between @begintime and @endtime
+
+
+	--创建Y表并插值，Y表为查询类型，次数或时长
+	create table #temp_ivr_Y (Y varchar(50))
+	insert into #temp_ivr_Y values (@qtype)
+	--创建总表
+	create table #temp_ivr_sum (Sum1 varchar(50),X varchar(50),Y varchar(50))
+	declare @sum1 varchar(50)
+	--向总表插值
+	if @qtype = '统计日期次数'
+		begin
+			--联合查询
+declare temp_ivr_X cursor for 
+	select sum(case isnull(b.module_id,'') when '' then 0 else 1 end),a.col
+	from
+	(select ymd col from ymd_tbl where ymd between @begintime and @endtime )a 
+	left join 
+	(select * from cc_ivr_date where ISNULL( module_id,'' ) NOT IN ('','#','*')) b
+	on a.col = convert(varchar(10),module_begintime,120)
+	group by a.col
+	order by a.col desc
+		end
+	else
+		begin
+declare temp_ivr_X cursor for 
+select ISNULL(sum(datediff(ss,module_begintime,module_endtime)),0),a.col
+from
+(select ymd col from ymd_tbl where ymd between @begintime and @endtime )a 
+left join 
+(select * from cc_ivr_date where ISNULL( module_id,'' ) NOT IN ('','#','*')) b
+on a.col = convert(varchar(10),module_begintime,120)
+group by a.col
+order by a.col desc
+
+		end
+		--向总表插入数据
+	open temp_ivr_X
+	Fetch Next From temp_ivr_X Into @sum1,@ivr
+	While ( @@Fetch_Status=0 )
+	begin
+		if @qtype = '统计次数'
+			begin
+				insert into #temp_ivr_sum (Sum1,X,Y) values (@sum1,@ivr,@qtype)
+			end
+		else
+			begin
+				insert into #temp_ivr_sum (Sum1,X,Y) values (@sum1,@ivr,@qtype)
+			end
+		Fetch Next From temp_ivr_X Into @sum1,@ivr
+	end
+		
+	close temp_ivr_X
+	Deallocate temp_ivr_X
+
+	--得到横坐标标签结果集（所有表中记录过的IVR模块）
+	select distinct X from #temp_ivr_X order by X
+	--得到纵坐标标签结果集
+	select distinct Y from #temp_ivr_Y order by Y
+	--得到统计结果集
+	select Sum1,X,Y from #temp_ivr_sum order by X,Y
+
+END
+
+
+
+
+

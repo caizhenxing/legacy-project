@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/focusPursue.do" location="439,0" dimension="358,84" />
+  <StrutsActivity path="/focusPursue/focusPursuelist.jsp" location="0,184" dimension="232,48" />
+  <StrutsActivity path="/focusPursue/focusPursueQuery.jsp" location="332,184" dimension="238,48" />
+  <StrutsActivity path="/focusPursue/focusPursueMain.jsp" location="670,184" dimension="232,48" />
+  <StrutsActivity path="/focusPursue/focusPursueLoad.jsp" location="1002,184" dimension="232,48" />
+  <StrutsActivity path="/focusPursue/focusinfoStatisticQuery.jsp" location="50,350" dimension="280,48" />
+  <StrutsActivity path="/focusTracking.do" location="650,350" dimension="358,84" />
+  <StrutsActivity path="/focusTracking/focusTrackingLoad.jsp" location="50,450" dimension="256,48" />
+  <StrutsActivity path="/focusTracking/focusTrackingMain.jsp" location="50,550" dimension="256,48" />
+  <StrutsActivity path="/focusTracking/focusTrackinglist.jsp" location="650,550" dimension="256,48" />
+  <StrutsActivity path="/focusTracking/focusTrackingQuery.jsp" location="50,650" dimension="262,48" />
+  <StrutsTransition id="/focusTracking.do,toFocusTrackingList,/focusTracking/focusTrackinglist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="859,434" />
+      <AbsolutePoint location="859,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/focusPursue.do,tofocusinfoStatisticQuery,/focusPursue/focusinfoStatisticQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="618,84" />
+      <AbsolutePoint location="618,374" />
+      <AbsolutePoint location="330,374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/focusTracking.do,toFocusTrackingQuery,/focusTracking/focusTrackingQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="921,434" />
+      <AbsolutePoint location="921,674" />
+      <AbsolutePoint location="312,674" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/focusPursue.do,toFocusPursueMain,/focusPursue/focusPursueMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="663,84" />
+      <AbsolutePoint location="663,149" />
+      <AbsolutePoint location="786,149" />
+      <AbsolutePoint location="786,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/focusTracking.do,toFocusTrackingMain,/focusTracking/focusTrackingMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="829,434" />
+      <AbsolutePoint location="829,513" />
+      <AbsolutePoint location="178,513" />
+      <AbsolutePoint location="178,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/focusPursue.do,toFocusPursueList,/focusPursue/focusPursuelist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="451,84" />
+      <AbsolutePoint location="451,119" />
+      <AbsolutePoint location="116,119" />
+      <AbsolutePoint location="116,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/focusPursue.do,toFocusPursueLoad,/focusPursue/focusPursueLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="752,84" />
+      <AbsolutePoint location="752,119" />
+      <AbsolutePoint location="1118,119" />
+      <AbsolutePoint location="1118,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/focusPursue.do,toFocusPursueQuery,/focusPursue/focusPursueQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="484,84" />
+      <AbsolutePoint location="484,149" />
+      <AbsolutePoint location="451,149" />
+      <AbsolutePoint location="451,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/focusTracking.do,toFocusTrackingLoad,/focusTracking/focusTrackingLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="799,434" />
+      <AbsolutePoint location="799,474" />
+      <AbsolutePoint location="306,474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

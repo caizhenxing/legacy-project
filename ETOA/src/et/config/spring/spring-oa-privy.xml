@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+<beans>
+	<bean name="/oa/privy/plan"
+		class="et.bo.oa.privy.plan.action.PlanAction" singleton="false">
+			
+		<property name="ps">
+			<ref bean="PlanService" />
+		</property>	
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+		<property name="wfs">
+			<ref bean="WorkFlowService" />
+		</property>
+		<property name="oawfs">
+			<ref bean="OaWorkFlowService" />
+		</property>
+	</bean>
+	<bean name="/oa/privy/planDetail"
+		class="et.bo.oa.privy.plan.action.PlanDetailAction" singleton="false">
+			
+		<property name="ps">
+			<ref bean="PlanService" />
+		</property>	
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+	<bean id="PlanService" class="et.bo.oa.privy.plan.service.impl.PlanServiceImpl" singleton="false">		
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="oawfs">
+			<ref bean="OaWorkFlowService" />
+		</property>
+		<property name="wfs">
+			<ref bean="WorkFlowService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+</beans>

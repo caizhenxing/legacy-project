@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/oa/mainOper.do" location="738,357" dimension="358,84" />
+  <StrutsActivity path="/oa/assissant/conference/conferOper.do" location="165,0" dimension="358,84" />
+  <StrutsActivity path="/oa/assissant/asset/assetsOperAction.do" location="623,0" dimension="358,84" />
+  <StrutsActivity path="/oa/addrList.do" location="1453,0" dimension="358,84" />
+  <StrutsActivity path="/oa/checkWork.do" location="272,951" dimension="358,84" />
+  <StrutsActivity path="/oa/absenceWork.do" location="714,654" dimension="358,84" />
+  <StrutsActivity path="tologin;6" location="935,951" dimension="166,72" />
+  <StrutsActivity path="/oa/main/outStateInfo.jsp" location="350,150" dimension="190,48" />
+  <StrutsActivity path="/plan/myplanlist.jsp" location="1250,750" dimension="160,48" />
+  <StrutsActivity path="/oa/main/aficheMore.jsp" location="278,561" dimension="178,48" />
+  <StrutsActivity path="/oa/main/nowMessage.jsp" location="556,561" dimension="178,48" />
+  <StrutsActivity path="/oa/main/OperMain.jsp" location="834,561" dimension="166,48" />
+  <StrutsActivity path="/oa/main/newsMore.jsp" location="1100,561" dimension="166,48" />
+  <StrutsActivity path="/oa/main/emailInfo.jsp" location="50,450" dimension="172,48" />
+  <StrutsActivity path="/oa/main/outStateMore.jsp" location="350,450" dimension="190,48" />
+  <StrutsActivity path="/oa/main/newsInfo.jsp" location="1366,561" dimension="166,48" />
+  <StrutsActivity path="/oa/main/emailMore.jsp" location="1632,561" dimension="172,48" />
+  <StrutsActivity path="/sys/right/grantUser.jsp" location="0,264" dimension="184,48" />
+  <StrutsActivity path="/sys/right/grantGroup.jsp" location="284,264" dimension="190,48" />
+  <StrutsActivity path="/sys/success.jsp" location="50,750" dimension="136,48" />
+  <StrutsActivity path="/sys/error.jsp" location="350,750" dimension="124,48" />
+  <StrutsActivity path="/oa/message/addressList/addressList.jsp" location="1311,264" dimension="274,48" />
+  <StrutsActivity path="/oa/message/addressList/addrMain.jsp" location="1685,264" dimension="256,48" />
+  <StrutsActivity path="/oa/message/addressList/addressQuery.jsp" location="2041,264" dimension="280,48" />
+  <StrutsActivity path="/oa/message/addressList/messageInfo.jsp" location="2421,264" dimension="274,48" />
+  <StrutsActivity path="/oa/checkwork/workCheckSelect.jsp" location="0,1135" dimension="238,48" />
+  <StrutsActivity path="/oa/checkwork/workCheckLaterOrEarlyList.jsp" location="1250,1050" dimension="298,48" />
+  <StrutsActivity path="/oa/checkwork/workCheckMain.jsp" location="338,1135" dimension="226,48" />
+  <StrutsActivity path="/oa/checkwork/workCheckList.jsp" location="664,1135" dimension="226,48" />
+  <StrutsActivity path="/oa/checkwork/checkworkError.jsp" location="1250,1150" dimension="232,48" />
+  <StrutsActivity path="/oa/checkwork/re-sign.jsp" location="0,858" dimension="190,48" />
+  <StrutsActivity path="/oa/checkwork/waichuMain.jsp" location="50,1250" dimension="208,48" />
+  <StrutsActivity path="/oa/checkwork/absenceSelect.jsp" location="290,858" dimension="226,48" />
+  <StrutsActivity path="/oa/checkwork/selectEmployee.jsp" location="616,858" dimension="232,48" />
+  <StrutsActivity path="/oa/checkwork/absenceMain.jsp" location="948,858" dimension="214,48" />
+  <StrutsActivity path="/oa/checkwork/absenceList.jsp" location="1262,858" dimension="214,48" />
+  <StrutsActivity path="/oa/checkwork/qingjiaMain.jsp" location="1550,1250" dimension="214,48" />
+  <StrutsActivity path="/oa/checkwork/chuchaiMain.jsp" location="50,1350" dimension="214,48" />
+  <StrutsActivity path="/oa/checkwork/add-absence.jsp" location="1576,858" dimension="214,48" />
+  <StrutsActivity path="/message/tologin.jsp" location="938,1123" dimension="160,48" />
+  <StrutsActivity path="/oa/privy/plan/list.jsp" location="0,561" dimension="178,48" />
+  <StrutsActivity path="/sys/module/success.html" location="755,264" dimension="184,48" />
+  <StrutsActivity path="/sys/module/error.html" location="1039,264" dimension="172,48" />
+  <StrutsActivity path="/plan/list.jsp" />
+  <StrutsTransition id="/oa/absenceWork.do,qingjiaMain,/oa/checkwork/qingjiaMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="875,738" />
+      <AbsolutePoint location="875,921" />
+      <AbsolutePoint location="1657,921" />
+      <AbsolutePoint location="1657,1250" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/conference/conferOper.do,user,/sys/right/grantUser.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="169,84" />
+      <AbsolutePoint location="169,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/absenceWork.do,waichuMain,/oa/checkwork/waichuMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="905,738" />
+      <AbsolutePoint location="905,1274" />
+      <AbsolutePoint location="258,1274" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/mainOper.do,newsList,/oa/main/newsMore.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1096,429" />
+      <AbsolutePoint location="1183,429" />
+      <AbsolutePoint location="1183,561" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/absenceWork.do,mainPage,/oa/checkwork/absenceMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="963,738" />
+      <AbsolutePoint location="963,858" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/addrList.do,error,/sys/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1647,84" />
+      <AbsolutePoint location="1647,513" />
+      <AbsolutePoint location="531,513" />
+      <AbsolutePoint location="531,774" />
+      <AbsolutePoint location="474,774" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/checkWork.do,checkWrokQuery,/oa/checkwork/workCheckSelect.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="272,993" />
+      <AbsolutePoint location="119,993" />
+      <AbsolutePoint location="119,1135" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/mainOper.do,aficheList,/oa/main/aficheMore.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="738,429" />
+      <AbsolutePoint location="335,429" />
+      <AbsolutePoint location="335,561" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/addrList.do,list,/oa/message/addressList/addressList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1570,84" />
+      <AbsolutePoint location="1570,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/mainOper.do,toGetOutStateList,/oa/main/outStateInfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="738,369" />
+      <AbsolutePoint location="489,369" />
+      <AbsolutePoint location="489,198" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/absenceWork.do,addAbsence,/oa/checkwork/add-absence.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1072,666" />
+      <AbsolutePoint location="1683,666" />
+      <AbsolutePoint location="1683,858" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/mainOper.do,messagePage,/oa/main/nowMessage.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="819,441" />
+      <AbsolutePoint location="819,585" />
+      <AbsolutePoint location="734,585" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/absenceWork.do,absenceList,/oa/checkwork/absenceList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1072,696" />
+      <AbsolutePoint location="1425,696" />
+      <AbsolutePoint location="1425,858" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/mainOper.do,emailList,/oa/main/emailMore.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1096,369" />
+      <AbsolutePoint location="1718,369" />
+      <AbsolutePoint location="1718,561" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/addrList.do,success,/sys/success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1617,84" />
+      <AbsolutePoint location="1617,624" />
+      <AbsolutePoint location="118,624" />
+      <AbsolutePoint location="118,750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/absenceWork.do,addResign,/oa/checkwork/re-sign.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="714,696" />
+      <AbsolutePoint location="35,696" />
+      <AbsolutePoint location="35,858" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/checkWork.do,checkWorkList,/oa/checkwork/workCheckList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="630,993" />
+      <AbsolutePoint location="777,993" />
+      <AbsolutePoint location="777,1135" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/addrList.do,main,/oa/message/addressList/addrMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1700,84" />
+      <AbsolutePoint location="1700,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/asset/assetsOperAction.do,user,/sys/right/grantUser.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="802,0" />
+      <AbsolutePoint location="802,-75" />
+      <AbsolutePoint location="92,-75" />
+      <AbsolutePoint location="92,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/mainOper.do,newsInfo,/oa/main/newsInfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1096,399" />
+      <AbsolutePoint location="1449,399" />
+      <AbsolutePoint location="1449,561" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/conference/conferOper.do,error,/sys/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="165,42" />
+      <AbsolutePoint location="-45,42" />
+      <AbsolutePoint location="-45,813" />
+      <AbsolutePoint location="412,813" />
+      <AbsolutePoint location="412,798" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/asset/assetsOperAction.do,success,/sys/success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="832,84" />
+      <AbsolutePoint location="832,243" />
+      <AbsolutePoint location="-135,243" />
+      <AbsolutePoint location="-135,774" />
+      <AbsolutePoint location="50,774" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/checkWork.do,mainPage,/oa/checkwork/workCheckMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="451,1035" />
+      <AbsolutePoint location="451,1135" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/absenceWork.do,chuchaiMain,/oa/checkwork/chuchaiMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="714,666" />
+      <AbsolutePoint location="-75,666" />
+      <AbsolutePoint location="-75,1374" />
+      <AbsolutePoint location="50,1374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/conference/conferOper.do,success,/sys/success.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="243,84" />
+      <AbsolutePoint location="243,774" />
+      <AbsolutePoint location="186,774" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/mainOper.do,mainPage,/oa/main/OperMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="947,441" />
+      <AbsolutePoint location="947,561" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/addrList.do,addrListInfo,/oa/message/addressList/messageInfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1811,42" />
+      <AbsolutePoint location="2558,42" />
+      <AbsolutePoint location="2558,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/mainOper.do,planMore,/plan/myplanlist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="917,357" />
+      <AbsolutePoint location="917,327" />
+      <AbsolutePoint location="1330,327" />
+      <AbsolutePoint location="1330,750" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/asset/assetsOperAction.do,error,/sys/error.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="802,84" />
+      <AbsolutePoint location="802,132" />
+      <AbsolutePoint location="-15,132" />
+      <AbsolutePoint location="-15,843" />
+      <AbsolutePoint location="442,843" />
+      <AbsolutePoint location="442,798" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/mainOper.do,toGetAllOutStateList,/oa/main/outStateMore.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="887,441" />
+      <AbsolutePoint location="887,474" />
+      <AbsolutePoint location="540,474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/mainOper.do,emailInfo,/oa/main/emailInfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="917,441" />
+      <AbsolutePoint location="917,543" />
+      <AbsolutePoint location="136,543" />
+      <AbsolutePoint location="136,498" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/checkWork.do,error,/oa/checkwork/checkworkError.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="323,1035" />
+      <AbsolutePoint location="323,1473" />
+      <AbsolutePoint location="1366,1473" />
+      <AbsolutePoint location="1366,1198" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="tologin;6,null,/message/tologin.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1018,1023" />
+      <AbsolutePoint location="1018,1123" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/checkWork.do,checkLaterOrEarlyList,/oa/checkwork/workCheckLaterOrEarlyList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="481,1035" />
+      <AbsolutePoint location="481,1074" />
+      <AbsolutePoint location="1250,1074" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/asset/assetsOperAction.do,group,/sys/right/grantGroup.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="719,84" />
+      <AbsolutePoint location="719,288" />
+      <AbsolutePoint location="474,288" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/absenceWork.do,selectEmployee,/oa/checkwork/selectEmployee.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="833,738" />
+      <AbsolutePoint location="833,858" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/absenceWork.do,absenceQuery,/oa/checkwork/absenceSelect.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="714,726" />
+      <AbsolutePoint location="489,726" />
+      <AbsolutePoint location="489,858" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/mainOper.do,planMore,/plan/list.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="917,399" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/addrList.do,query,/oa/message/addressList/addressQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1811,72" />
+      <AbsolutePoint location="2181,72" />
+      <AbsolutePoint location="2181,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/assissant/conference/conferOper.do,group,/sys/right/grantGroup.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="335,84" />
+      <AbsolutePoint location="335,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema version="1.0" targetNamespace="http://jbpm.org/bpel" 
+  elementFormDefault="qualified" attributeFormDefault="unqualified"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:jbpm="http://jbpm.org/bpel"
+  xmlns:bpel="http://schemas.xmlsoap.org/ws/2004/03/business-process/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.w3.org/2001/XMLSchema http://www.w3.org/2001/XMLSchema.xsd">
+  
+  <simpleType name="tJndiName">
+    <restriction base="token" />
+  </simpleType>
+  
+  <complexType name="tScope">
+    <sequence>
+      <element name="partnerLinks" type="jbpm:tPartnerLinks" minOccurs="0" />
+      <element name="scopes" type="jbpm:tScopes" minOccurs="0" />
+    </sequence>
+    <attribute name="name" type="NCName" />
+		<attribute name="destination" type="jbpm:tJndiName"/>
+  </complexType>
+  
+  <complexType name="tScopes">
+    <sequence>
+      <element name="scope" type="jbpm:tScope" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>      
+  
+  <complexType name="tPartnerLinks">
+    <sequence>
+      <element name="partnerLink" type="jbpm:tPartnerLink" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+  
+  <complexType name="tPartnerLink">
+    <sequence>
+      <element name="partnerRole" minOccurs="0">
+        <complexType>
+          <sequence>
+            <any namespace="##other" minOccurs="0" processContents="lax" />
+          </sequence>
+          <attribute name="initiate" default="static">
+            <simpleType>
+              <restriction base="string">
+                <enumeration value="static" />
+                <enumeration value="push" />
+                <enumeration value="pull" />
+              </restriction>
+            </simpleType>
+          </attribute>
+        </complexType>
+      </element>
+      <element name="myRole" minOccurs="0">
+        <complexType>
+          <attribute name="destination" type="jbpm:tJndiName" />
+          <attribute name="portInfo" type="jbpm:tJndiName" />
+        </complexType>        
+      </element>
+    </sequence>
+    <attribute name="name" type="NCName" use="required"/>
+  </complexType>
+  
+  <complexType name="tBpelApplication">
+    <complexContent>
+      <extension base="jbpm:tScope">
+        <sequence>
+          <element name="serviceCatalogs" type="jbpm:tServiceCatalogs" minOccurs="0" />
+        </sequence>
+        <attribute name="version" type="xsd:integer" />
+      </extension>
+    </complexContent>
+  </complexType>
+  
+  <complexType name="tServiceCatalogs">
+    <sequence>
+      <any namespace="##targetNamespace" maxOccurs="unbounded"
+        processContents="lax" />
+    </sequence>
+  </complexType>
+  
+  <complexType name="tUrlCatalog">
+    <sequence>
+      <element name="wsdl" maxOccurs="unbounded">
+        <complexType>
+          <attribute name="location" type="anyURI" />
+        </complexType>        
+      </element>
+    </sequence>
+    <attribute name="contextUrl" type="anyURI" />
+  </complexType>
+  
+  <element name="urlCatalog" type="jbpm:tUrlCatalog"/>
+  
+  <element name="bpelApplication" type="jbpm:tBpelApplication"/>
+  
+</schema>

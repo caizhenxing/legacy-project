@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+	<data-sources />
+	<form-beans>
+		<!-- hr add -->
+		<form-bean name="loginBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="userId" type="java.lang.String" />
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="sysRole" type="java.lang.String" />
+			<form-property name="sysGroup" type="java.lang.String" />
+			<form-property name="password" type="java.lang.String" />
+			<form-property name="repassword" type="java.lang.String" />
+			<form-property name="repasswordAffirm"
+				type="java.lang.String" />
+			<form-property name="userName" type="java.lang.String" />
+			<form-property name="departmentId" type="java.lang.String" />
+			<form-property name="deleteMark" type="java.lang.String" />
+			<form-property name="freezeMark" type="java.lang.String" />
+			<form-property name="val" type="java.lang.String" />
+			<form-property name="isFreeze" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+			<form-property name="select" type="java.lang.String" />
+		</form-bean>
+
+	</form-beans>
+	<global-exceptions />
+	<global-forwards>
+		<forward name="tologin" path="/message/tologin.jsp" />
+		<forward name="operfail" path="/fail.jsp" />
+		<forward name="nologin" path="/cueLogin.jsp" />
+		<forward name="operSuccess"
+			path="/collection/collectionSuccess.jsp" />
+		<forward name="success" path="/group/message/success.jsp" />
+		<forward name="error" path="/sys/error.jsp" />
+	</global-forwards>
+
+	<action-mappings>
+
+		<!-- 公司基本信息的action -->
+		<action attribute="loginBean" name="loginBean"
+			parameter="method" path="/sys/login" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/sys/main.jsp" />
+			<forward name="login" path="/index.jsp" />
+			<forward name="login2" path="/index2.jsp" />
+			<forward name="agentSuccess" path="/sys/agentMain.jsp" />
+			<forward name="TelConferenceSuccess" path="/sys/telConferenceMain.jsp" />
+		</action>
+	</action-mappings>
+
+</struts-config>
+

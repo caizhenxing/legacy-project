@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/priceinfo/priceinfoStatisticQuery.jsp" location="0,204" dimension="268,48" />
+  <StrutsActivity path="/priceinfo/priceinfolist.jsp" location="368,204" dimension="208,48" />
+  <StrutsActivity path="/priceinfo/priceinfoQuery.jsp" location="676,204" dimension="214,48" />
+  <StrutsActivity path="/priceinfo/priceinfoLoadList.jsp" location="990,204" dimension="232,48" />
+  <StrutsActivity path="/priceinfo/priceinfoLoad.jsp" location="1322,204" dimension="208,48" />
+  <StrutsActivity path="/priceinfo/priceinfoMain.jsp" location="1630,204" dimension="208,48" />
+  <StrutsActivity path="/linkmanpriceinfo.do" location="50,350" dimension="358,84" />
+  <StrutsActivity path="/linkmanPriceinfo/priceinfoQuery.jsp" location="650,350" dimension="256,48" />
+  <StrutsActivity path="/linkmanPriceinfo/priceinfoLoad.jsp" location="650,450" dimension="250,48" />
+  <StrutsActivity path="/linkmanPriceinfo/priceinfoMain.jsp" location="950,450" dimension="250,48" />
+  <StrutsActivity path="/linkmanPriceinfo/priceinfolist.jsp" location="50,550" dimension="250,48" />
+  <StrutsActivity path="/linkmanPriceinfo/priceinfoLoadList.jsp" location="350,550" dimension="274,48" />
+  <StrutsActivity path="/linkmanPriceinfo/select.jsp" />
+  <StrutsActivity path="/linkmanPriceinfo/selectUser.jsp" />
+  <StrutsTransition id="/operpriceinfo.do,topriceinfoStatisticQuery,/priceinfo/priceinfoStatisticQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="795,84" />
+      <AbsolutePoint location="795,114" />
+      <AbsolutePoint location="134,114" />
+      <AbsolutePoint location="134,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/linkmanpriceinfo.do,toQuery,/linkmanPriceinfo/priceinfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,383" />
+      <AbsolutePoint location="650,383" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/linkmanpriceinfo.do,toOperPriceinfoLoad,/priceinfo/priceinfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,422" />
+      <AbsolutePoint location="1426,422" />
+      <AbsolutePoint location="1426,252" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/linkmanpriceinfo.do,selectFrame,/linkmanPriceinfo/select.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/linkmanpriceinfo.do,toList,/linkmanPriceinfo/priceinfolist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,434" />
+      <AbsolutePoint location="229,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/linkmanpriceinfo.do,toOperPriceinfoLoadList,/priceinfo/priceinfoLoadList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,413" />
+      <AbsolutePoint location="1106,413" />
+      <AbsolutePoint location="1106,252" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/linkmanpriceinfo.do,select,/linkmanPriceinfo/selectUser.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/linkmanpriceinfo.do,toOperPriceinfoList,/priceinfo/priceinfolist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="383,350" />
+      <AbsolutePoint location="383,252" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/linkmanpriceinfo.do,toOperPriceinfoLoadList,/linkmanPriceinfo/priceinfoLoadList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="365,434" />
+      <AbsolutePoint location="365,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/linkmanpriceinfo.do,toMain,/linkmanPriceinfo/priceinfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,350" />
+      <AbsolutePoint location="229,297" />
+      <AbsolutePoint location="1075,297" />
+      <AbsolutePoint location="1075,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operpriceinfo.do,toOperPriceinfoLoad,/priceinfo/priceinfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1034,84" />
+      <AbsolutePoint location="1034,144" />
+      <AbsolutePoint location="1426,144" />
+      <AbsolutePoint location="1426,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operpriceinfo.do,toOperPriceinfoMain,/priceinfo/priceinfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1093,84" />
+      <AbsolutePoint location="1093,114" />
+      <AbsolutePoint location="1734,114" />
+      <AbsolutePoint location="1734,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operpriceinfo.do,toOperPriceinfoList,/priceinfo/priceinfolist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="855,84" />
+      <AbsolutePoint location="855,144" />
+      <AbsolutePoint location="472,144" />
+      <AbsolutePoint location="472,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/linkmanpriceinfo.do,toOperPriceinfoQuery,/priceinfo/priceinfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,362" />
+      <AbsolutePoint location="783,362" />
+      <AbsolutePoint location="783,252" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/linkmanpriceinfo.do,toOperPriceinfoMain,/priceinfo/priceinfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="259,350" />
+      <AbsolutePoint location="259,297" />
+      <AbsolutePoint location="1734,297" />
+      <AbsolutePoint location="1734,252" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/linkmanpriceinfo.do,topriceinfoStatisticQuery,/priceinfo/priceinfoStatisticQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="199,350" />
+      <AbsolutePoint location="199,252" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/linkmanpriceinfo.do,toLoad,/linkmanPriceinfo/priceinfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="259,434" />
+      <AbsolutePoint location="259,474" />
+      <AbsolutePoint location="650,474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operpriceinfo.do,toOperPriceinfoQuery,/priceinfo/priceinfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="914,84" />
+      <AbsolutePoint location="914,174" />
+      <AbsolutePoint location="783,174" />
+      <AbsolutePoint location="783,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operpriceinfo.do,toOperPriceinfoLoadList,/priceinfo/priceinfoLoadList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="974,84" />
+      <AbsolutePoint location="974,174" />
+      <AbsolutePoint location="1106,174" />
+      <AbsolutePoint location="1106,204" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+   <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="paramTreeBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			
+		  <!--类型树信息-->
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="selectName" type="java.lang.String"/>
+      	  <form-property name="nickName" type="java.lang.String"/>
+      	  <form-property name="label" type="java.lang.String"/>
+      	  <form-property name="parentId" type="java.lang.String"/>
+      	  <form-property name="parentName" type="java.lang.String"/>
+      	  <form-property name="action" type="java.lang.String"/>
+      	  <form-property name="icon" type="java.lang.String"/>
+      	  <form-property name="type" type="java.lang.String"/>
+      	  <form-property name="isShow" type="java.lang.String"/>
+      	  <form-property name="remark" type="java.lang.String"/>
+      	  <form-property name="operType" type="java.lang.String"/>
+      	  <form-property name="target" type="java.lang.String"/>
+      	  <form-property name="deleteMark" type="java.lang.String"/>
+      	  <form-property name="createTime" type="java.lang.String"/>
+      	  <form-property name="modifyTime" type="java.lang.String"/>
+      	  <form-property name="layerOrder" type="java.lang.String"/>
+  </form-bean>
+  
+</form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+  
+  
+<!-- 公司基本信息的action -->
+     <action
+      attribute="paramTreeBean"
+      name="paramTreeBean"
+      parameter="method"
+      path="/sys/department/deptTree"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy">
+      <forward name="selectDep" path="/sys/dep/selectDep.jsp" />
+      <forward name="toParamMain" path="/sys/department/departmentTreeMain.jsp" />
+      <forward name="showParamTree" path="/sys/department/departmentTree.jsp" />
+      <forward name="selecttree" path="/sys/selecttree.jsp" />
+      <forward name="toDeptPersonMain" path="/sys/department/deptPersonMain.jsp" />
+      <forward name="showParamOperTree" path="/sys/department/departmentOperTree.jsp" />
+      <forward name="toParamDtl" path="/sys/department/departmentTreeDtl.jsp" />
+      <forward name="select" path="/sys/dep/select.jsp" />
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

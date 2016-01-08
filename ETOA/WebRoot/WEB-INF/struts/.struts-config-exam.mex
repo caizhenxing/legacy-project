@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/oa/examOper.do" location="1124,30" dimension="358,84" />
+  <StrutsActivity path="/oa/classOper.do" location="0,357" dimension="358,84" />
+  <StrutsActivity path="/driver/exam/driverInfo.jsp" location="0,264" dimension="202,48" />
+  <StrutsActivity path="/driver/exam/applyMain.jsp" location="302,264" dimension="196,48" />
+  <StrutsActivity path="/driver/exam/driverInfoList.jsp" location="598,264" dimension="226,48" />
+  <StrutsActivity path="/driver/exam/seccuss.jsp" location="924,264" dimension="184,48" />
+  <StrutsActivity path="/driver/exam/TaskList.jsp" location="1208,264" dimension="190,48" />
+  <StrutsActivity path="/driver/exam/deleteInfoPage.jsp" location="1498,264" dimension="226,48" />
+  <StrutsActivity path="/driver/exam/ExamApply.jsp" location="1824,264" dimension="196,48" />
+  <StrutsActivity path="/driver/exam/updatInfoPage.jsp" location="2120,264" dimension="220,48" />
+  <StrutsActivity path="/driver/exam/applyOperList.jsp" location="2440,264" dimension="220,48" />
+  <StrutsActivity path="/driver/exam/classSet.jsp" location="84,541" dimension="190,48" />
+  <StrutsTransition id="/oa/classOper.do,classSet,/driver/exam/classSet.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="179,441" />
+      <AbsolutePoint location="179,541" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/examOper.do,toOperList,/oa/examOper.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1303,30" />
+      <AbsolutePoint location="1303,0" />
+      <AbsolutePoint location="1094,0" />
+      <AbsolutePoint location="1094,72" />
+      <AbsolutePoint location="1124,72" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/examOper.do,applyDriverInfo,/driver/exam/driverInfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1143,114" />
+      <AbsolutePoint location="1143,144" />
+      <AbsolutePoint location="101,144" />
+      <AbsolutePoint location="101,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/examOper.do,toDeletPage,/driver/exam/deleteInfoPage.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1342,114" />
+      <AbsolutePoint location="1342,234" />
+      <AbsolutePoint location="1611,234" />
+      <AbsolutePoint location="1611,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/examOper.do,taskList,/driver/exam/TaskList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1303,114" />
+      <AbsolutePoint location="1303,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/examOper.do,selectApply,/driver/exam/applyMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1183,114" />
+      <AbsolutePoint location="1183,174" />
+      <AbsolutePoint location="400,174" />
+      <AbsolutePoint location="400,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/examOper.do,applyExam,/driver/exam/ExamApply.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1382,114" />
+      <AbsolutePoint location="1382,204" />
+      <AbsolutePoint location="1922,204" />
+      <AbsolutePoint location="1922,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/examOper.do,seccuss,/driver/exam/seccuss.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1263,114" />
+      <AbsolutePoint location="1263,234" />
+      <AbsolutePoint location="1016,234" />
+      <AbsolutePoint location="1016,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/examOper.do,applyOperList,/driver/exam/applyOperList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1462,114" />
+      <AbsolutePoint location="1462,144" />
+      <AbsolutePoint location="2550,144" />
+      <AbsolutePoint location="2550,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/examOper.do,toUpdatePage,/driver/exam/updatInfoPage.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1422,114" />
+      <AbsolutePoint location="1422,174" />
+      <AbsolutePoint location="2230,174" />
+      <AbsolutePoint location="2230,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/oa/examOper.do,applyDriverList,/driver/exam/driverInfoList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1223,114" />
+      <AbsolutePoint location="1223,204" />
+      <AbsolutePoint location="711,204" />
+      <AbsolutePoint location="711,264" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

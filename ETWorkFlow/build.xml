@@ -1,0 +1,32 @@
+<project name="WARDeploy" default="deploy" basedir=".">
+
+	<property file="build.properties" />
+
+	
+	<property name="copyfromsource.dir" value="${source.dir}/${source.war.folder}" />
+	
+
+	<!--目标位置-->
+	<property name="copyto.dir" value="${tomcat.dir}/${war.folder}" />
+
+	<!--清理-->
+	<target name="clean">
+		<delete dir="${copyto.dir}" />
+	</target>
+
+	
+	<target name="deploy" depends="">
+
+		<copy todir="${copyto.dir}">
+					<fileset dir="${copyfromsource.dir}">
+					</fileset>
+				</copy>
+		
+	</target>
+
+
+			
+
+		
+
+</project>

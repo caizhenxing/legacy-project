@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+		<form-bean name="ivrBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="s_ivrtype" type="java.lang.String"/>
+		</form-bean>	
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+	<!-- 语音转换action -->
+	<action
+	  attribute="ivrBean"
+      name="ivrBean"
+      parameter="method"
+      path="/sys/playVoice"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy">
+      <forward name="changeFileSuccess" path="/sys/playVoice/changeVoiceSuccess.jsp" />
+      <forward name="toSelectIvrFile" path="/sys/selectIvr.jsp" />
+    </action>
+    </action-mappings>
+</struts-config>
+

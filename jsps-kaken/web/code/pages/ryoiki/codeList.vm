@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--saved from url=(0040)-->
+<HTML><HEAD><TITLE>研究領域一覧</TITLE>
+
+#parse( $commonSetting )
+
+<META http-equiv=Content-Type content="text/html; charset=Shift_JIS">
+<STYLE type=text/css>BODY {
+	MARGIN-TOP: 20px; FONT-SIZE: 10pt; MARGIN-LEFT: 20px; LINE-HEIGHT: 14pt; MARGIN-RIGHT: 20px
+}
+H1 {
+	FONT-SIZE: 16pt; LINE-HEIGHT: 20pt
+}
+.text_01 {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; LINE-HEIGHT: 16pt
+}
+.table_01 {
+	FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: #000000; LINE-HEIGHT: 110%; BORDER-COLLAPSE: collapse
+}
+A:link {
+	COLOR: #3359cc; TEXT-DECORATION: underline
+}
+A:visited {
+	COLOR: #3359cc; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: #ff6666; TEXT-DECORATION: none
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1400" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff><A name=top></A>
+<CENTER>
+<H1>研究領域一覧</H1>
+
+<!--索引ここから-->
+<TABLE class=table_01 cellSpacing=3 width=600 border=0>
+  <TBODY>
+	#foreach($user in $index)
+	<TR bgColor=#eeffbb>
+     	<TD bgColor=#eeffbb><A	href="#$!escape.getText($user.get("KUBUN"))">$!escape.getText($user.get("NAME"))</A></TD>
+	</TR>
+	#end
+  </TBODY>
+</TABLE>
+<!--索引ここまで-->
+
+</CENTER><BR>
+<HR noShade SIZE=1>
+<BR>
+<CENTER>
+
+<!--一覧表示ここから-->
+#foreach($user in $search)
+	<!--テーブルここから-->
+	##索引からのリンク
+	<A name=$escape.getText($user.get("KUBUN"))></A>
+	##カテゴリごとの繰り返し ---ここから
+	<TABLE class=table_01 borderColor=#666666 cellSpacing=0 cellPadding=3 width=600 border=1>
+	  <TBODY>
+	  <TR>
+	    <TD class=text_01 bgColor=#eeffbb colSpan=2>
+			$!escape.getText($user.get("NAME"))
+	    </TD>
+	  </TR>
+	  <TR bgColor=#888888>
+	    <TD align=middle width=200><FONT color=#ffffff>領域番号</FONT></TD>
+	    <TD align=middle width=400><FONT color=#ffffff>領域略称名</FONT></TD></TR>
+		##領域番号ごとの繰り返し ---ここから
+		#set ($bukyokuList= $user.get("RYOIKI_LIST"))
+		#foreach($userList in $bukyokuList)
+		  <TR>
+		    <TD vAlign=center align=middle>$!escape.getText($userList.get("RYOIKI_NO"))</TD>
+		    <TD vAlign=center align=left>$!escape.getText($userList.get("RYOIKI_RYAKU"))</TD>
+		  </TR>
+		#end
+		##領域番号ごとの繰り返し ---ここまで
+	  </TBODY>
+	</TABLE>
+	##カテゴリごとの繰り返し ---ここまで
+	<!--テーブルここまで-->	
+	<DIV align=left><A 
+	href="#top">このページのトップへ</A></DIV><BR>
+#end
+<!--一覧表示ここまで-->
+
+    <!--ボタン用テーブルここから--> 
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="javascript:window.close()"><img src="$path/images/bt_close.gif" width=114 height=28 border="0" alt="閉じる"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!--ボタン用テーブルここまで-->
+</BODY></HTML>

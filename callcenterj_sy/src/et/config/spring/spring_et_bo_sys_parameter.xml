@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<beans>
+
+<!--  单位基本信息   -->	
+    <bean name="/sys/parameter/paramTree"
+		class="et.bo.sys.parameter.action.ParameterTreeAction" scope="singleton">			
+		<property name="pts">
+			<ref bean="ParameterTreeService" />
+		</property>	
+		<property name="classTreeService">
+			<ref bean="ClassTreeService" />
+		</property>			
+	</bean>
+
+
+	<bean id="ParameterTreeService"
+		class="et.bo.sys.parameter.service.impl.ParameterTreeServiceImpl" scope="singleton">
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="classTreeService">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+
+</beans>

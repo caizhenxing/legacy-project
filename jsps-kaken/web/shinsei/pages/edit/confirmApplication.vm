@@ -1,0 +1,205 @@
+## ***********************************************
+## 応募情報又は研究計画調書確認
+## ***********************************************
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+#parse($commonSetting)
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+## スクリプト*************************************
+<script language="javascript">
+<!--
+
+	/* ボタン連打制御フラグ */
+	var lockButton = 0;
+	var sleepButton = 5000;
+
+	/* PDFダウンロード */
+	function onDownload(systemNo){
+		if(lockButton == 0) {
+			document.shinsei_form.action="$link.setAction("/shinsei/downloadPdf")";
+			document.shinsei_form.systemNo.value=systemNo;
+			document.shinsei_form.submit();
+			lockButton = 1;
+			setTimeout("lockButton = 0", sleepButton);
+		}
+	}
+	
+	/* 応募書確認完了 */
+	function onConfirm(systemNo){
+//2006/06/01 追加ここから
+//		document.shinsei_form.action="$link.setAction("/shinsei/confirmApplication")";
+		document.shinsei_form.action="$link.setAction("/shinsei/confirmApplicationKakunin")";
+//苗　追加ここまで		
+		document.shinsei_form.systemNo.value=systemNo;
+		document.shinsei_form.submit();
+	}	
+
+	/* 応募書修正 */
+	function onUpdate(systemNo){
+		document.shinsei_form.action="$link.setAction("/shinsei/updateApplication")";
+		document.shinsei_form["shinseiDataInfo.systemNo"].value=systemNo;
+		document.shinsei_form.submit();
+	}
+	
+	/* 応募書削除確認 */
+	function onDeleteConfirm(systemNo){
+		document.shinsei_form.action="$link.setAction("/shinsei/deleteConfirm")";
+		document.shinsei_form.systemNo.value=systemNo;
+		document.shinsei_form.submit();
+	}
+//-->
+</script>
+## ***********************************************
+</head>
+
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/shinsei/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width="72" height="20" border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#6699CC" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/shinsei/showMainMenu')">応募者向けメニュー</a>＞<b>応募情報又は研究計画調書確認</b><font size="1">＞応募情報又は研究計画調書確認完了確認</font><font size="1">＞応募情報又は研究計画調書確認完了</font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr>
+      <td width="92" valign="bottom"><img src="$path/images/title_img1.gif" width="92" height="53" alt=""></td>
+      <td width="98%" valign="bottom" class="menuTitle">応募情報又は研究計画調書確認</td>
+      <td width="214" valign="bottom"><img src="$path/images/title_img5.gif" width="214" height="38" alt=""></td>
+     </tr>
+     <tr>
+      <td width="92"><img src="$path/images/title_img2.gif" width="92" height="29" alt=""></td>
+      <td background="$path/images/title_img3.gif"><img src="$path/images/title_img3.gif" width="8" height="29" alt=""></td>
+      <td width="214"><img src="$path/images/title_img6.gif" width="214" height="29" alt=""></td>
+     </tr>
+    </table>
+    
+    <!-- サブ画面タイトル用テーブルここまで -->
+    
+    #set( $simpleShinseiForm=$result)
+    <!-- ログイン入力フォーム、メニュー項目用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr>
+      <td width="92" valign="top"><img src="$path/images/title_img7.gif" width="92" height="38" alt=""></td>
+      <td width="52" class="menuLine"><img src="$path/images/spacer.gif" width="52" height="1"></td>
+      <td width="90%" align="left"> <br>
+       <!-- メニュー用テーブルここから -->
+       <table border="0" cellspacing="6">
+        <tr>
+         <td width="50">&nbsp;</td>
+         <td>送信した応募情報又は研究計画調書はPDFファイルに変換されました。</td>
+        </tr>
+        <tr>
+         <td width="50">&nbsp;</td>
+         <td>あなたの応募情報又は研究計画調書は今後このPDFファイルで処理されます。</td>
+        </tr>
+        <tr>
+         <td width="50">&nbsp;</td>
+        </tr>
+        <tr>
+         <td width="50">&nbsp;</td>
+         <td><b><font color="red">(1)[応募情報又は研究計画調書の確認]ボタンをクリックしてPDFファイルをダウンロードし、内容を確認してください。</font></b></td>
+        </tr>
+        <tr>
+         <td width="50">&nbsp;</td>
+         <td><center><a href="javascript:onDownload('$!simpleShinseiForm.systemNo')"><img src="$path/images/bt_app_check.gif" width="280" height="28" border="0" alt="研究計画調書の確認"></a></center></td>
+        </tr>
+        <tr>
+         <td width="50">&nbsp;</td>
+         <td>(2)ダウンロードしたPDFファイルの内容に不備がなければ[確認完了・提出]ボタンをクリックしてください。応募情報又は研究計画調書は所属研究機関担当者に提出されます。</td>
+        </tr>
+        <tr>
+         <td width="50">&nbsp;</td>
+         <td>　不備があった場合には、[応募情報修正]ボタンから修正するか、[応募情報削除]ボタンから削除してください。</td>
+        </tr>
+        <tr>
+         <td width="50">&nbsp;</td>
+         <td><center><a href="javascript:onConfirm('$!simpleShinseiForm.systemNo')"><img src="$path/images/bt_teishutsu.gif" width="140" height="28" border="0" alt="確認完了・提出"></a>
+         <a href="javascript:onUpdate('$!simpleShinseiForm.systemNo')"><img src="$path/images/bt_app_rep.gif" width="114" height="28" border="0" alt="研究計画調書修正"></a>
+         <a href="javascript:onDeleteConfirm('$!simpleShinseiForm.systemNo')"><img src="$path/images/bt_app_del.gif" width="114" height="28" border="0" alt="研究計画調書削除"></a></center></td>
+        </tr>
+       </table>
+       <!-- メニュー用テーブルここまで -->
+      </td>
+     </tr>
+    </table>
+
+    <!-- 注意事項ここから -->
+    <p class="comment">＜注意事項＞</p>
+    <ul>
+     <li class="comment">記入内容の確認を行い、[確認完了・提出]ボタンをクリックしないと所属研究機関担当者が承認・確認できません。所属研究機関担当者が承認しないと日本学術振興会に受付されません。なお、特定領域研究（新規領域）については、所属研究機関担当者が確認することで領域代表者に提出されます。</li>
+     <li class="comment">PDFファイルの内容を確認するには、Adobe Acrobat Readerが必要です。まだインストールしていない方は下のボタンをクリックしてインストールしてください。
+      <br><a target="_blank" href="http://www.adobe.co.jp/products/acrobat/readstep2.html"><img src="$path/images/getreader.gif" border="0" height="31" width="88" alt="Get Adobe Reader"></a>
+     </li>
+    </ul>
+    <!-- 注意事項ここまで -->
+
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+      <!-- TODO takano 処理状況一覧取得アクションに置き換え。 -->
+       <td><a href="$link.setAction('/shinsei/processStatusList')"><img src="$path/images/bt_bk_statelist.gif" width="219" height="28" border="0" alt="処理状況一覧に戻る（後で確認する）"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width="8" height="26" alt=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shinsei/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width="72" height="26" border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width="8" height="26" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+  <!-- 左右の縦線用テーブルここまで -->
+</div>
+
+<form name="shinsei_form" method="post" action="">
+<input type="hidden" name="systemNo" value="">
+<input type="hidden" name="shinseiDataInfo.systemNo" value="">
+</form>
+
+</body>
+</html>

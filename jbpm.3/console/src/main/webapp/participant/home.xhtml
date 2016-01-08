@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<body>
+
+<ui:composition template="/common/template.xhtml">
+
+  <ui:define name="title">
+    Process Participant Home
+  </ui:define>
+
+  <ui:define name="body">
+
+    <table class="content">
+      <tr>
+        <th class="title" colspan="5">Personal Task List</th>
+      </tr>
+      <tr>
+        <th>Task</th>
+        <th>Process</th>
+        <th>Duedate</th>
+        <th>Priority</th>
+        <th>Go</th>
+      </tr>
+      <c:forEach var="taskInstance" items="#{participantBean.personalTaskInstances}">
+      <f:param name="taskInstanceId" value="#{taskInstance.id}"/>
+      <tr class="normal" onmouseover="this.className='hovered';" onmouseout="this.className='normal';" onclick="document.all['personalTask#{taskInstance.id}'].click()">
+        <td class="selectable"><h:outputText value="#{taskInstance.name}" /></td>
+        <td class="selectable"><h:outputText value="#{taskInstance.taskMgmtInstance.taskMgmtDefinition.processDefinition.name}" /></td>
+        <td class="selectable"><h:outputText value="#{taskInstance.dueDate}" /></td>
+        <td class="selectable"><h:outputText value="#{taskInstance.priority}" /></td>
+        <td class="selectable"><h:form>
+          <h:commandLink action="#{taskBean.showTaskForm}" id="personalTask#{taskInstance.id}">
+            <f:param name="taskInstanceId" value="#{taskInstance.id}"/>
+            Do it!
+          </h:commandLink>
+        </h:form></td>
+      </tr>
+      </c:forEach>
+    </table>
+    
+    <table class="content">
+      <tr>
+        <th class="title" colspan="6">Group Task List</th>
+      </tr>
+      <tr>
+        <th>Candidates</th>
+        <th>Task</th>
+        <th>Process</th>
+        <th>Duedate</th>
+        <th>Priority</th>
+        <th>Go</th>
+      </tr>
+      <c:forEach var="taskInstance" items="#{participantBean.pooledTaskInstances}">
+      <tr class="normal" onmouseover="this.className='hovered';" onmouseout="this.className='normal';" onclick="document.all['groupTask#{taskInstance.id}'].click()">
+        <td class="selectable">
+          <h:outputText value="#{taskInstance.pooledActors}">
+            <f:converter converterId="pooledActorsConverter" />
+          </h:outputText>
+        </td>
+        <td class="selectable"><h:outputText value="#{taskInstance.name}" /></td>
+        <td class="selectable"><h:outputText value="#{taskInstance.taskMgmtInstance.taskMgmtDefinition.processDefinition.name}" /></td>
+        <td class="selectable"><h:outputText value="#{taskInstance.dueDate}" /></td>
+        <td class="selectable"><h:outputText value="#{taskInstance.priority}" /></td>
+        <td class="selectable"><h:form>
+          <h:commandLink action="#{participantBean.takeTaskInstance}" id="groupTask#{taskInstance.id}">
+            <f:param name="taskInstanceId" value="#{taskInstance.id}"/>
+            Take it!
+          </h:commandLink>
+        </h:form></td>
+      </tr>
+      </c:forEach>
+    </table>
+
+    <table class="content">
+      <tr>
+        <th class="title" colspan="2">Start new process execution</th>
+      </tr>
+      <tr>
+        <th>Process</th>
+        <th>Go</th>
+      </tr>
+      <c:forEach var="processDefinition" items="#{participantBean.availableProcessDefinitions}">
+      <tr  class="normal" onmouseover="this.className='hovered';" onmouseout="this.className='normal';" onclick="document.all['newExe#{processDefinition.id}'].click()">
+        <td class="selectable"><h:outputText value="#{processDefinition.name}" /></td>
+        <td class="selectable"><h:form>
+          <h:commandLink action="#{participantBean.startNewProcessInstance}" id="newExe#{processDefinition.id}">
+            <f:param name="processDefinitionId" value="#{processDefinition.id}"/>
+            Start It!
+          </h:commandLink>
+        </h:form></td>
+      </tr>
+      </c:forEach>
+    </table>
+
+  </ui:define>
+
+</ui:composition>
+
+</body>
+</html>

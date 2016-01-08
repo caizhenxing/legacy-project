@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<configuration xmlns="http://java.sun.com/xml/ns/jax-rpc/ri/config">
+
+  <wsdl location="wsdl/account.impl.wsdl" packageName="org.jbpm.bpel.tutorial.account">
+    <namespaceMappingRegistry>
+      <namespaceMapping namespace="urn:samples:account:types" packageName="org.jbpm.bpel.tutorial.account.types" />
+    </namespaceMappingRegistry>  
+  </wsdl>
+  
+</configuration>

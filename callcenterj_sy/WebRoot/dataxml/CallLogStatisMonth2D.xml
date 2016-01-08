@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="GBK"?>
+<chart palette="2" caption="12316呼叫中心最近一月各咨询栏目分布统计" xAxisName="类别" yAxisName="接听次数" showValues="0" decimals="0" formatNumberScale="0" useRoundEdges="1">
+
+<set label="供求查询" value="55"/>
+<set label="供求发布" value="115"/>
+<set label="环保咨询" value="0"/>
+<set label="价格报送" value="662"/>
+<set label="价格行情" value="2328"/>
+<set label="金农通" value="615"/>
+<set label="企业服务" value="0"/>
+<set label="热线调查" value="4"/>
+<set label="万事通" value="2903"/>
+<set label="项目咨询" value="1"/>
+<set label="信息定制" value="5"/>
+<set label="养殖咨询" value="1233"/>
+<set label="医疗服务" value="301"/>
+<set label="政策咨询" value="1050"/>
+<set label="种植咨询" value="648"/>
+<set label="重大事件上报" value="0"/>
+</chart>

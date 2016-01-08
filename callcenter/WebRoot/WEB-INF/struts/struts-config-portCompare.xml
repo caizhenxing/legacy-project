@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="portCompareBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="physicsPort" type="java.lang.String" />
+      	  <form-property name="logicPort" type="java.lang.String" />
+      	  <form-property name="ip" type="java.lang.String" />
+	   </form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+     <action
+      attribute="portCompareBean"
+      name="portCompareBean"
+      path="/pcc/portCompare"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="main"  path="/pcc/portCompare/portCompareMain.jsp"/>
+           <forward name="query" path="/pcc/portCompare/portCompareQuery.jsp"/>
+           <forward name="load"  path="/pcc/portCompare/portCompareLoad.jsp"/>
+           <forward name="list"  path="/pcc/portCompare/portCompareList.jsp"/>
+           <forward name="detail"  path="/pcc/portCompare/portCompareDetail.jsp"/>            
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

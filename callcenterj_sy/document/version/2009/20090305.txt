@@ -1,0 +1,17 @@
+修改人：李春生
+修改日期：2009-03-05
+
+需求：将案例类型改为dwr
+
+数据库改动：
+将oper_type中id设为主键
+
+程序设置：
+在"模块管理"中添加一节点，放在哪儿随意，参数名、别名随意 但
+动作必须为：/callcenterj_sy/caseinfo/caseType.do?method=toCaseTypeMain
+
+==============================================
+
+修改人：王文权
+需求：市乡村信息维护
+链接:callcenterj_sy/addressMaintenance/addressMain.jsp

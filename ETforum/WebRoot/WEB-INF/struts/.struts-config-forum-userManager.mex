@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/forum/userManager.do" location="50,350" dimension="358,84" />
+  <StrutsActivity path="/forum/userManager/userManagerMain.jsp" location="650,350" dimension="268,48" />
+  <StrutsActivity path="/forum/postQuery/pointRankList.jsp" location="0,234" dimension="244,48" />
+  <StrutsActivity path="/forum/postQuery/netfriendGroomList.jsp" location="344,234" dimension="274,48" />
+  <StrutsActivity path="/forum/postQuery/myAnswerPostList.jsp" location="718,234" dimension="262,48" />
+  <StrutsActivity path="/forum/postQuery/forumHostGroomList.jsp" location="1080,234" dimension="274,48" />
+  <StrutsActivity path="/forum/postQuery/sendPostRankList.jsp" location="1804,234" dimension="262,48" />
+  <StrutsActivity path="/forum/postQuery/answerTopTenList.jsp" location="2166,234" dimension="262,48" />
+  <StrutsActivity path="/forum/postQuery/mySavePostList.jsp" location="2528,234" dimension="250,48" />
+  <StrutsActivity path="/forum/postQuery/bestNewPostList.jsp" location="2878,234" dimension="256,48" />
+  <StrutsActivity path="/forum/postQuery/mySendPostList.jsp" location="1454,234" dimension="250,48" />
+  <StrutsActivity path="/forum/userManager/userDetail.jsp" />
+  <StrutsTransition id="/forum/userManager.do,main,/forum/userManager/userManagerMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,383" />
+      <AbsolutePoint location="650,383" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/userManager.do,toMain,/forum/userManager.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="229,392" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/userManager.do,toDetail,/forum/userManager/userDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

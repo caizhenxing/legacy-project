@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/bak.do" location="368,0" dimension="308,88" />
+  <StrutsActivity path="/sys/bak/bakList.jsp" location="0,188" dimension="125,49" />
+  <StrutsActivity path="/sys/bak/bakMain.jsp" location="225,188" dimension="131,49" />
+  <StrutsActivity path="/sys/bak/bakLoad.jsp" location="456,188" dimension="132,49" />
+  <StrutsActivity path="/sys/bak/bakQuery.jsp" location="688,188" dimension="139,49" />
+  <StrutsActivity path="/sys/bak/popQuery.jsp" location="927,188" dimension="140,49" />
+  <StrutsTransition id="/bak.do,list,/sys/bak/bakList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="398,88" />
+      <AbsolutePoint location="398,123" />
+      <AbsolutePoint location="62,123" />
+      <AbsolutePoint location="62,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/bak.do,query,/sys/bak/bakQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="583,88" />
+      <AbsolutePoint location="583,153" />
+      <AbsolutePoint location="757,153" />
+      <AbsolutePoint location="757,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/bak.do,main,/sys/bak/bakMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="460,88" />
+      <AbsolutePoint location="460,153" />
+      <AbsolutePoint location="290,153" />
+      <AbsolutePoint location="290,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/bak.do,pop,/sys/bak/popQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="645,88" />
+      <AbsolutePoint location="645,123" />
+      <AbsolutePoint location="997,123" />
+      <AbsolutePoint location="997,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/bak.do,load,/sys/bak/bakLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="522,88" />
+      <AbsolutePoint location="522,188" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

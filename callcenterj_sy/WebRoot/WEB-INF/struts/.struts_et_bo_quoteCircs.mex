@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/quoteCircs/quoteCircs.do" location="50,350" dimension="358,84" />
+  <StrutsActivity path="/quoteCircs/quoteCircsList.jsp" location="650,350" dimension="220,48" />
+  <StrutsActivity path="/quoteCircs/quoteCircsMain.jsp" location="950,350" dimension="220,48" />
+  <StrutsActivity path="/quoteCircs/quoteCircsQuery.jsp" location="650,450" dimension="226,48" />
+  <StrutsActivity path="/quoteCircs/quoteCircsLoad.jsp" location="950,450" dimension="220,48" />
+  <StrutsActivity path="/callback/callbackList.jsp" location="0,184" dimension="196,48" />
+  <StrutsActivity path="/callback/callbackMain.jsp" location="296,184" dimension="196,48" />
+  <StrutsActivity path="/callback/callbackQuery.jsp" location="592,184" dimension="202,48" />
+  <StrutsActivity path="/callback/callbackLoad.jsp" location="894,184" dimension="196,48" />
+  <StrutsTransition id="/quoteCircs/quoteCircs.do,load,/quoteCircs/quoteCircsLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,434" />
+      <AbsolutePoint location="229,573" />
+      <AbsolutePoint location="1060,573" />
+      <AbsolutePoint location="1060,498" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/quoteCircs/quoteCircs.do,main,/quoteCircs/quoteCircsMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,413" />
+      <AbsolutePoint location="1060,413" />
+      <AbsolutePoint location="1060,398" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/quoteCircs/quoteCircs.do,query,/quoteCircs/quoteCircsQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="259,434" />
+      <AbsolutePoint location="259,474" />
+      <AbsolutePoint location="650,474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/quoteCircs/quoteCircs.do,list,/quoteCircs/quoteCircsList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,383" />
+      <AbsolutePoint location="650,383" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

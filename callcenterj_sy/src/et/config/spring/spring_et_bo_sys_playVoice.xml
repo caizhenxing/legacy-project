@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+	<!-- 语音播放 -->
+	<bean name="/sys/playVoice" class="et.bo.sys.playVoice.action.PlayVoiceAction" scope="singleton">
+		<property name="classTreeService">
+			<ref bean="ClassTreeService" />
+		</property>
+	</bean>
+</beans>

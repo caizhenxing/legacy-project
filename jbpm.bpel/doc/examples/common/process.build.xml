@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<project>
+
+  <!-- =============== -->
+  <!-- === IMPORTS === -->
+  <!-- =============== -->
+
+  <import file="webservice.build.xml" />
+
+  <!-- ================== -->
+  <!-- === PROPERTIES === -->
+  <!-- ================== -->
+
+  <property name="bpel.dir" value="${project.dir}/src/main/bpel" />
+
+  <!-- ================== -->
+  <!-- === CLASSPATHS === -->
+  <!-- ================== -->
+
+  <path id="jbpm.bpel.path">
+    <pathelement location="${template.dir}/config" />
+    <pathelement location="${jbpm.bpel.home}/src/config" />
+    <pathelement location="${jbpm.bpel.home}/output/jbpm-bpel-${jbpm.bpel.version}.jar" />
+    <fileset dir="${jbpm.bpel.home}/lib" includes="**/*.jar" />
+  </path>
+
+  <!-- ======================= -->
+  <!-- === ANT DEFINITIONS === -->
+  <!-- ======================= -->
+
+  <taskdef name="deployprocess"
+           classname="org.jbpm.bpel.ant.DeployProcessTask"
+           classpathref="jbpm.bpel.path" />
+  
+  <taskdef name="servicegen"
+           classname="org.jbpm.bpel.ant.ServiceGeneratorTask"
+           classpathref="jbpm.bpel.path" />
+  
+  <!-- ================================== -->
+  <!-- === PROCESS DEFINITION DEPLOYMENT === -->
+  <!-- ================================== -->
+
+  <target name="pack-definition">
+    <mkdir dir="${output.dir}" />
+    <zip destfile="${output.dir}/${app.name}-process.zip">
+      <fileset dir="${bpel.dir}" />
+    </zip>
+  </target>
+
+  <target name="deploy-definition"
+          depends="pack-definition"
+          description="deploy the process definition to jbpm">
+    <deployprocess processfile="${output.dir}/${app.name}-process.zip" />
+  </target>
+
+  <!-- =============================== -->
+  <!-- === WSDL SERVICE GENERATION === -->
+  <!-- =============================== -->
+
+  <target name="generate-service"
+          depends="pack-definition"
+          description="generate wsdl binding and service elements">
+    <!-- generate binding and service elements -->
+    <servicegen processfile="${output.dir}/${app.name}-process.zip"
+                outputdir="${output.web.dir}/wsdl" />
+    <!-- copy xml schema documents -->
+    <copy todir="${output.web.dir}/wsdl">
+      <fileset dir="${bpel.dir}">
+        <include name="**/*.xsd" />
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- ================================== -->
+  <!-- === WEB APPLICATION DEPLOYMENT === -->
+  <!-- ================================== -->  
+  
+  <target name="redeploy-web"
+          depends="deploy-definition, generate-service, generate-artifacts, deploy-web"
+          description="deploy definition, regenerate artifacts and deploy webservice" />
+
+</project>

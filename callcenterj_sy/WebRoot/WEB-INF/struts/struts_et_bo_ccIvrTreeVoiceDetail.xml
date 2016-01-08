@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+   <form-beans>
+  	   <!-- hr add -->
+    <form-bean name="ccIvrTreeVDtlBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="id" type="java.lang.String" />
+			<form-property name="layerOrder" type="java.lang.String" />
+			<form-property name="voicePath" type="java.lang.String" />
+			<form-property name="isUse" type="java.lang.String" />
+			<form-property name="remark" type="java.lang.String" />
+			<form-property name="languageType" type="java.lang.String" />
+			<form-property name="treeId" type="java.lang.String" />
+			<form-property name="playcontent" type="java.lang.String" />
+			<form-property name="ivrtype" type="java.lang.String" />
+			<form-property name="name" type="java.lang.String" />
+			<form-property name="createType" type="java.lang.String" />
+  </form-bean>
+  
+</form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+  
+  
+<!-- 公司基本信息的action -->
+   <action
+      attribute="ccIvrTreeVDtlBean"
+      name="ccIvrTreeVDtlBean"
+      parameter="method"
+      path="/sys/ccIvrTreevoiceDetail"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy"
+      validate="false">
+      <forward name="toCcIvrTreeinfoList" path="/sys/ccIvrTreevoiceDetail/ccIvrTreeVDtllist.jsp" />
+      <forward name="toCcIvrTreeinfoMain" path="/sys/ccIvrTreevoiceDetail/ccIvrTreeVDtlMain.jsp" />
+      <forward name="toCcIvrTreeinfoQuery" path="/sys/ccIvrTreevoiceDetail/ccIvrTreeVDtlQuery.jsp" />
+      <forward name="toCcIvrTreeinfoLoad" path="/sys/ccIvrTreevoiceDetail/ccIvrTreeVDtlLoad.jsp" />
+      <forward name="toCcIvrTreeinfoLoadText" path="/sys/ccIvrTreevoiceDetail/ccIvrTreeVDtlLoadText.jsp" />
+    </action>
+  </action-mappings>
+  
+</struts-config>

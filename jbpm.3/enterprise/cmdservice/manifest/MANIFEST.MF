@@ -1,0 +1,17 @@
+
+ClassPath: jbpm-jpdl.jar, jbpm-identity.jar, ehcache.jar
+
+ClassPath: jbpm-jpdl.jar, jbpm-identity.jar, ehcache.jar
+
+ClassPath: jbpm-jpdl.jar, jbpm-identity.jar, ehcache.jar
+
+ClassPath: jbpm-jpdl.jar, jbpm-identity.jar, ehcache.jar
+
+ClassPath: jbpm-jpdl.jar, jbpm-identity.jar, ehcache.jar
+
+ClassPath: jbpm-jpdl.jar, jbpm-identity.jar, ehcache.jar
+
+ClassPath: jbpm-jpdl.jar, jbpm-identity.jar, ehcache.jar
+
+ClassPath: jbpm-jpdl.jar, jbpm-identity.jar, ehcache.jar
+ClassPath: jbpm-jpdl.jar, jbpm-identity.jar, ehcache.jarClass-Path: jbpm-jpdl.jar, jbpm-identity.jar, ehcache.jar

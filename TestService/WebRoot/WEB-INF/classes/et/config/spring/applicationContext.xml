@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+
+<beans>
+	<import
+		resource="classpath:excellence/framework/base/ws/spring-webservices-excellence.xml" />
+	<bean name="TestSer" parent="WebServiceBean">
+		<property name="name" value="TestSer" />
+		<property name="serviceBean" ref="TestSerI" />
+		<property name="serviceClass" value="test.ITestSer" />
+	</bean>
+	<bean id="TestSerI" class="test.TestSerImpl" />
+</beans>

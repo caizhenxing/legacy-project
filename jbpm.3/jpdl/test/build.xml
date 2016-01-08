@@ -1,0 +1,33 @@
+<project name="jbpm.jpdl.test" basedir="." default="package">
+
+  <!-- project specific properties -->
+  <property name="artifact.name" value="jbpm-jpdl-test.war" />
+  <property name="module.name" value="jpdl" />
+  <property name="jbpm.root" value="../.." />
+  <property file="../version.properties" />
+
+  <!-- properties files -->
+  <property file="${user.home}/jbpm/build.properties" />
+  <property file="build.properties" />
+  <property file="${jbpm.root}/build/build.properties" />
+
+  <!-- import base project build file -->
+  <import file="${jbpm.root}/build/base.project.build.xml"/>
+  
+  <!-- project specific targets -->
+  <target name="package" 
+          depends="compile.test">
+    <war destfile="target/${artifact.name}"
+         webxml="src/test/resources/webapp/web.xml">
+      <lib file="${lib.aspectjrt.local}" />
+      <lib file="${lib.junit.local}" />
+      <lib file="${lib.cactus.local}" />
+      <classes dir="target/test.classes" />
+    </war>
+  </target>
+
+  <target name="deploy" depends="package" description="deploys the test webapp through the jmx console">
+    <get dest="target/deployresult.html" src="http://localhost:8080/jmx-console/HtmlAdaptor?action=invokeOpByName&amp;name=jboss.system:service%3DMainDeployer&amp;methodName=redeploy&amp;argType=java.net.URL&amp;arg0=file://${basedir}/target/${artifact.name}" /> 
+  </target>
+
+</project>

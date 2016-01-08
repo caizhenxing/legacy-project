@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+	
+	<bean name="/output" class="et.bo.output.action.OutputAction" scope="singleton">
+		<property name="outputService">
+			<ref bean="OutputService"/>
+		</property>
+	</bean>
+	<bean id="OutputService" class="et.bo.output.service.impl.OutputServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	
+</beans>

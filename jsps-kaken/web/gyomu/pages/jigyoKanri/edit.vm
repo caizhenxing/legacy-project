@@ -1,0 +1,319 @@
+## 事業管理修正フォーム情報→jigyoKanriForm
+## 事業管理修正情報→$userContainer.jigyoKanriInfo
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+## ************************************************
+#parse( $commonSetting )
+## 変数の置き換え
+#set ($info= $userContainer.jigyoKanriInfo)
+## ダウンロード用ファイルフラグ
+#set ($FILE_FLG_TENPU_WIN= "0")
+#set ($FILE_FLG_TENPU_MAC= "1")
+#set ($FILE_FLG_HYOKA= "2")
+#set ($jigyoId= $info.jigyoId)
+## ***********************************************
+
+## ***********************************************
+##スクリプト
+<SCRIPT LANGUAGE=javascript>
+<!--
+function onRegDownloadFile(jigyoId, downloadFileFlg){
+	document.download_form.action="$link.setAction('/gyomu/jigyoKanri/regDownloadFile')";
+	document.download_form.downloadFileFlg.value = downloadFileFlg;
+	document.download_form.jigyoId.value = jigyoId;
+	document.download_form.submit();
+}
+//-->
+</SCRIPT>
+## ***********************************************
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+	
+<form method="post" action="$link.setAction('/gyomu/jigyoKanri/editCheck')" enctype="multipart/form-data" name="myform">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="javascript:fncWindowOpen('$path/docs/manual3.pdf','help');"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/gyomu/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width=72 height=20 border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#999966" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/gyomu/showMainMenu')">業務担当者向けメニュー</a>＞<a href="$link.setAction('/gyomu/jigyoKanri/showMenu')">事業管理</a>（事業管理メニュー＞事業一覧＞<b>事業修正</b><font size="1">＞事業修正確認＞事業修正完了</font>）</font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width=61 height=49 alt=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+       事業修正</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width=213 height=49 alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+<!-- 本文ここから -->
+#errorMarkup()
+<p class="comment"><font color="#FF0000">*</font>のついた項目は必須項目です。</p>
+
+<!-- 一覧用テーブルここから -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+	    <tr>
+	     <th width="179" colspan="2" align="left">研究種目名</th>
+	     <td >$!escape.getText($!info.jigyoName)</td>
+	    </tr>
+	    <tr>
+	     <th colspan="2" align="left">年度</th>
+	     <td>平成$!escape.getText($!info.nendo)年度</td>                    
+	    </tr>
+	    <tr>
+	     <th colspan="2" align="left">回数</th>
+	     <td>$!escape.getText($!info.kaisu)回</td>
+	    </tr>
+	    <tr>
+	     <th colspan="2" align="left">業務担当課名</th>
+	     <td><input size="40" name="tantokaName" value="$!escape.getText($!jigyoKanriForm.tantokaName)"></td>
+	    </tr>
+	    <tr>
+	     <th colspan="2" align="left">問い合わせ先担当者名</th>
+	     <td><input size="40" name="toiawaseName" value="$!escape.getText($!jigyoKanriForm.toiawaseName)"></td>
+	    </tr>
+	    <tr>
+	     <th colspan="2" align="left">問い合わせ先電話番号</th>
+	     <td><input size="40" name="toiawaseTel" value="$!escape.getText($!jigyoKanriForm.toiawaseTel)"></td>
+	    </tr>
+	    <tr>
+	     <th colspan="2" align="left">学振受付期間</th>
+	     <td><font color="#FF0000">*</font><input size="5" name="uketukekikanStartYear" value="$!escape.getText($!jigyoKanriForm.uketukekikanStartYear)">年
+	        <select size="1" name="uketukekikanStartMonth">
+			#monthOptions($!jigyoKanriForm.uketukekikanStartMonth)
+	        </select>月<select size="1" name="uketukekikanStartDay">
+			#dayOptions($!jigyoKanriForm.uketukekikanStartDay)
+	       </select>日～<input size="5" name="uketukekikanEndYear" value="$!escape.getText($!jigyoKanriForm.uketukekikanEndYear)">年
+		   <select size="1" name="uketukekikanEndMonth">
+			#monthOptions($!jigyoKanriForm.uketukekikanEndMonth)
+		    </select>月<select size="1" name="uketukekikanEndDay">
+			#dayOptions($!jigyoKanriForm.uketukekikanEndDay)
+			</select>日
+	     </td>
+	    </tr>
+		<tr>
+	     <th colspan="2" align="left">研究者名簿登録最終締切日</th>
+		 <td><input size="5" name="meiboDateYear" value="$!escape.getText($!jigyoKanriForm.meiboDateYear)">年
+		    <select size="1" name="meiboDateMonth">
+			#monthOptions($!jigyoKanriForm.meiboDateMonth)
+	        </select>月<select size="1" name="meiboDateDay">
+			#dayOptions($!jigyoKanriForm.meiboDateDay)
+	       </select>日
+		   <br><font color="#FF0000">※特別研究促進費で使用します。</font>
+		 </td>
+		</tr>
+		<!-- 2006/06/14 追加　李義華　ここから -->
+		<tr>
+	     <th colspan="2" align="left">仮領域番号発行締切日</th>
+		 <td><input size="5" name="kariryoikiNoEndDateYear" value="$!escape.getText($!jigyoKanriForm.kariryoikiNoEndDateYear)">年
+		    <select size="1" name="kariryoikiNoEndDateMonth">
+			#monthOptions($!jigyoKanriForm.kariryoikiNoEndDateMonth)
+	        </select>月<select size="1" name="kariryoikiNoEndDateDay">
+			#dayOptions($!jigyoKanriForm.kariryoikiNoEndDateDay)
+	       </select>日
+		   <br><font color="#FF0000">※特定領域（新規領域）で使用します。</font>
+		 </td>
+		</tr>
+		<!-- 2006/06/14 追加　李義華　ここまで -->
+		<!-- 2006/07/10 追加　李義華　ここから -->
+		<tr>
+	     <th colspan="2" align="left">領域代表者確定締切日</th>
+		 <td><input size="5" name="ryoikiEndDateYear" value="$!escape.getText($!jigyoKanriForm.ryoikiEndDateYear)">年
+		    <select size="1" name="ryoikiEndDateMonth">
+			#monthOptions($!jigyoKanriForm.ryoikiEndDateMonth)
+	        </select>月<select size="1" name="ryoikiEndDateDay">
+			#dayOptions($!jigyoKanriForm.ryoikiEndDateDay)
+	       </select>日
+		   <br><font color="#FF0000">※特定領域（新規領域）で使用します。</font>
+		 </td>
+		</tr>
+		<!-- 2006/07/10 追加　李義華　ここまで -->
+		
+		<!-- 2006/10/23 追加　易旭　ここから -->
+		<tr>
+	     <th colspan="2" align="left">利害関係入力締切日</th>
+		 <td><input size="5" name="rigaiEndDateYear" value="$!escape.getText($!jigyoKanriForm.rigaiEndDateYear)">年
+		    <select size="1" name="rigaiEndDateMonth">
+			#monthOptions($!jigyoKanriForm.rigaiEndDateMonth)
+	        </select>月<select size="1" name="rigaiEndDateDay">
+			#dayOptions($!jigyoKanriForm.rigaiEndDateDay)
+	       </select>日
+		   <br><font color="#FF0000">※基盤研究等で使用します。</font>
+		 </td>
+		</tr>
+		<!-- 2006/10/23 追加　易旭　ここまで -->		
+		
+	    <tr>
+	     <th colspan="2" align="left">審査期限</th>
+	     <td><input size="5" name="shinsaKigenYear" value="$!escape.getText($!jigyoKanriForm.shinsaKigenYear)">年
+		   <select size="1" name="shinsaKigenMonth">
+			#monthOptions($!jigyoKanriForm.shinsaKigenMonth)
+		    </select>月<select size="1" name="shinsaKigenDay">
+			#dayOptions($!jigyoKanriForm.shinsaKigenDay)
+		    </select>日
+	     </td>
+	    </tr>
+	    
+## 2005/03/11 追加 ここから ----------------------------------------
+## 理由 項目「URL」の追加
+        <tr>
+         <th colspan="2" align="left">URL</th>
+         <td>
+           タイトル <input size="40" name="urlTitle" value="$!escape.getText($!jigyoKanriForm.urlTitle)"><br>
+           アドレス <input size="40" name="urlAddress" value="$!escape.getText($!jigyoKanriForm.urlAddress)"></td>
+        </tr>
+## 2005/03/11 追加 ここまで  ----------------------------------------
+
+## 2005/03/11 削除 ここから ----------------------------------------
+## 理由 URL用のテキストボックス追加と、それに伴う修正のため
+##	    <tr>
+##	     <th valign="middle" colspan="2" align="left">応募内容ファイル</th>
+##	     <td>Win <font color="#FF0000">*</font><input type="file" size="45" name="tenpuWinUploadFile">
+##	      ## ファイルパスがnullではない場合はリンク表示
+##	     #if(!$info.tenpuWin)
+##	     	<br>
+##	     #else
+##	     	&nbsp;&nbsp;<a href="javascript:onRegDownloadFile('$jigyoId', '$FILE_FLG_TENPU_WIN');"><img src="$path/images/bt_regdownload.gif" width=150 height=24 alt="登録済みファイルダウンロード" border="0"></a><br>
+##	     #end
+##	     Mac <input type="file" size="45" name="tenpuMacUploadFile">
+##	      ## ファイルパスがnullではない場合はリンク表示
+##	     #if($info.tenpuMac)
+##	     	&nbsp;&nbsp;<a href="javascript:onRegDownloadFile('$jigyoId' ,'$FILE_FLG_TENPU_MAC');"><img src="$path/images/bt_regdownload.gif" width=150 height=24 alt="登録済みファイルダウンロード" border="0"></a></td> 
+##	     #end
+##	    </tr>
+## 2005/03/11 削除 ここまで  ----------------------------------------
+
+## 2005/03/11 追加 ここから ----------------------------------------
+## 理由 URL用のテキストボックス追加と、それに伴う修正のため
+	    <tr>
+	     <th valign="middle" colspan="2" align="left">応募内容ファイル</th>
+	     <td>
+	     Win <input type="file" size="45" name="tenpuWinUploadFile">
+	      ## ファイルパスがnullではない場合はリンク表示
+	     #if($info.tenpuWin)
+	     	&nbsp;&nbsp;<a href="javascript:onRegDownloadFile('$jigyoId', '$FILE_FLG_TENPU_WIN');"><img src="$path/images/bt_regdownload.gif" width=150 height=24 alt="登録済みファイルダウンロード" border="0"></a><br>
+	     #else
+	     	<br>
+	     #end
+	     Mac <input type="file" size="45" name="tenpuMacUploadFile">
+	      ## ファイルパスがnullではない場合はリンク表示
+	     #if($info.tenpuMac)
+	     	&nbsp;&nbsp;<a href="javascript:onRegDownloadFile('$jigyoId' ,'$FILE_FLG_TENPU_MAC');"><img src="$path/images/bt_regdownload.gif" width=150 height=24 alt="登録済みファイルダウンロード" border="0"></a><br>
+	     #else
+	     	<br>
+	     #end
+	     URL <input size="40" name="dlUrl" value="$!escape.getText($!jigyoKanriForm.dlUrl)"><br>
+	     <font color="#FF0000">
+	     ※ファイルを指定しない場合、URLは必須項目です。ファイルを指定した場合はURLは無視されます。<br>
+	     ※応募内容ファイル（Win・Mac）に変更がない場合、[登録済みファイルダウンロード]ボタンからファイルをダウンロードして選択しなおしてください。
+	     </font>
+	     </td> 
+	    </tr>
+## 2005/03/11 追加 ここまで  ----------------------------------------
+## 2007/02/08 張志男　追加ここから
+		<tr>
+           <th colspan="2" align="left">応募内容ファイルページ数範囲</th>
+           <td>
+				<input size="3" name="pageFrom" value="$!escape.getText($!jigyoKanriForm.pageFrom)">ページ以上 　　<input size="3" name="pageTo" value="$!escape.getText($!jigyoKanriForm.pageTo)">ページ以下
+		   </td>
+        </tr>
+## 2007/02/08　張志男　追加ここまで
+	    <tr>
+	     <th colspan="2" align="left">評価用ファイル</th>
+	     <td><font color="#FF0000">*</font>
+	     	#set ($name= "hyokaFileFlg")
+			#showRadios($name $jigyoKanriForm.flgList $jigyoKanriForm.hyokaFileFlg)
+	       <br>
+	      <input type="file" size="45" name="hyokaUploadFile">
+			## ファイルパスがnullではない場合はリンク表示 
+	        #if($info.hyokaFile)
+			  	&nbsp;&nbsp;<a href="javascript:onRegDownloadFile('$jigyoId' ,'$FILE_FLG_HYOKA');"><img src="$path/images/bt_regdownload.gif" width=150 height=24 alt="登録済みファイルダウンロード" border="0"></a> 
+	        #end
+	     </td>
+	    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+##ファイル削除用
+<input type="hidden" name="downloadFileFlg">
+<!-- 一覧用テーブルここまで-->
+<br>
+<!-- 本文ここまで -->
+
+    <!-- ボタン用テーブルここから -->   
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><input type="image" src="$path/images/bt_ok.gif" alt="OK" width="114" height="28" border="0"></td>
+       <td><a href="$link.setAction('/gyomu/jigyoKanri/searchList')"><img src="$path/images/bt_cancel.gif" width=114 height=28 border="0" alt="キャンセル"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width=8 height=26 alt=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/gyomu/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width=72 height=26 border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width=8 height=26 alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+</form>
+##隠しフォーム情報----------
+<form name="download_form" action="" method="post">
+	<input type="hidden" name="downloadFileFlg">
+	<input type="hidden" name="jigyoId">
+</form>
+##----------
+</body>
+</html>

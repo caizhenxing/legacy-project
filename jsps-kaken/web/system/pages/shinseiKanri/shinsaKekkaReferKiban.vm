@@ -1,0 +1,510 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+## ************************************************
+#parse( $commonSetting )
+#set ($info= $result)
+#set ($HYOKA_FILE_FLG= '1')
+## ***********************************************
+<SCRIPT LANGUAGE=javascript>
+<!--
+function onRegDownloadFile(systemNo, shinsainNo, jigyoKubun){
+    document.regdownload_form.action="$link.setAction('/shinsa/shinsaJigyo/regHyokaFileDownload')";
+    document.regdownload_form.systemNo.value = systemNo;
+    document.regdownload_form.shinsainNo.value = shinsainNo;
+    document.regdownload_form.jigyoKubun.value = jigyoKubun;
+    document.regdownload_form.submit();
+}
+//-->
+</SCRIPT>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="javascript:fncWindowOpen('$path/docs/manual5.pdf','help');"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><IMG SRC="$path/images/subtitle_img1.gif" WIDTH=61 HEIGHT=49 ALT=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+       審査結果参照</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <IMG SRC="$path/images/subtitle_img3.gif" WIDTH=213 HEIGHT=49 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+<!-- 本文ここから -->
+<!-- 一覧用テーブルここから -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th width="20%" align="left">研究種目名</th>
+     <td colspan="2">
+        #if($info.kaisu.equals("0") || $info.kaisu.equals("1"))
+            平成$!escape.getText($!info.nendo)年度 $!escape.getText($!info.jigyoName)
+        #else
+            平成$!escape.getText($!info.nendo)年度 第$!escape.getText($!info.kaisu)回 $!escape.getText($!info.jigyoName)
+        #end
+     </td>
+    </tr>
+    ##----「基盤研究(A)海外学術調査」「基盤研究(B)海外学術調査」だったら
+    #if($info.jigyoCd == '00043' || $info.jigyoCd == '00053')
+    <tr>
+      <th width="20%" align="left">海外分野番号・海外分野名</th>
+      <td>（番号）$!escape.getText($!info.kaigaibunyaCd)</td>
+      <td>$!escape.getText($!info.kaigaibunyaName)</td>
+    </tr>
+    <tr>
+     <th align="left">関連細目番号・関連細目名</th>
+     <td>（番号）$!escape.getText($!info.bunkaSaimokuCd)$!escape.getText($!info.bunkatsuNo)
+     </td>
+     <td>$!escape.getText($!info.saimokuName)</td>
+    </tr>
+    ##それ以外
+    #else
+    <tr>
+     <th align="left">細目番号・細目名</th>
+     <td>（番号）$!escape.getText($!info.bunkaSaimokuCd)$!escape.getText($!info.bunkatsuNo)
+     </td>
+     <td>$!escape.getText($!info.saimokuName)</td>
+    </tr>
+    #end
+    ##----研究種目が「若手研究(A)」「若手研究(B)」ではなかったら
+    #if($info.jigyoCd != '00121' && $info.jigyoCd != '00131')
+    <tr>
+     <th align="left">分担金配分</th>
+     <td colspan="2">
+        #if($info.buntankinFlg == '1')
+            有
+        #end
+    </td>
+    </tr>
+    #end
+    ##----研究種目が「若手研究(A)」「若手研究(B)」「基盤研究(C)企画調査」「萌芽研究」ではなかったら
+    #if($info.jigyoCd != '00121' && $info.jigyoCd != '00131' && $info.jigyoCd != '00062' && $info.jigyoCd != '00111')
+    <tr>
+     <th align="left">最終年度前年度応募課題</th>
+     <td colspan="2">
+        #if($info.shinseiFlgNo == '1')
+            前年度応募
+        #end
+     </td>
+    </tr>
+    #end
+    <tr>
+     <th align="left">所属研究機関名</th>
+     <td colspan="2">$!escape.getText($!info.shozokuName)</td>
+    </tr>
+    <tr>
+     <th align="left">部局名・職名</th>
+     <td colspan="2">$!escape.getText($!info.bukyokuName) $!escape.getText($!info.shokushuName)</td>
+    </tr>
+    <tr>
+     <th align="left">応募者名</th>
+     <td colspan="2">$!escape.getText($!info.nameKanjiSei) $!escape.getText($!info.nameKanjiMei)</td>
+    </tr>
+    <tr>
+     <th align="left">機関-整理番号</th>
+     <td colspan="2">$!escape.getText($!info.uketukeNo)</td>
+    </tr>
+    <tr>
+     <th align="left">研究課題名</th>
+     <td colspan="2">$!escape.getText($!info.kadaiNameKanji)</td>
+    </tr>
+   </table>
+   </td>
+  </tr>
+</table>
+
+ <br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th width="20%" align="left">利害関係</th>
+     <td>
+        $!escape.getText($!info.rigaiLabel)
+     </td>
+    </tr>
+   </table>
+   </td>
+  </tr>
+</table>
+ <br>
+#*##################################################################################################
+ここからは、
+研究種目ごとに場合分け。
+【注意！】共通の項目の修正をする場合は、研究種目ごとに確認すること。
+##################################################################################################*#
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+
+    ###################################################################################################
+    ##１．研究種目が「基盤研究(S)」「基盤研究(A)一般」「基盤研究(B)一般」「基盤研究(C)一般」「基盤研究(C)企画調査」
+    ##  「若手研究(S)」「若手研究(A)」「若手研究(B)」「特別研究促進費」の場合
+    ###################################################################################################
+    #if($info.jigyoCd == '00031' || $info.jigyoCd == '00041' || $info.jigyoCd == '00051' || $info.jigyoCd == '00061'|| $info.jigyoCd == '00062'|| $info.jigyoCd == '00120' || $info.jigyoCd == '00121' || $info.jigyoCd == '00131'|| $info.jigyoCd == '00152' || $info.jigyoCd == '00153'  || $info.jigyoCd == '00154' || $info.jigyoCd == '00155' || $info.jigyoCd == '00156')
+
+#set($orderName = ["（１）", "（２）", "（３）", "（４）", "（５）"])
+#set($orderNo = 0)
+
+    <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th align="left" rowspan="5">評定要素</th>
+   #if($info.jigyoCd == '00120')	   ##若手研究Sの場合
+     <th align="left" colspan="2">$orderName.get($orderNo)若手研究（Ｓ）としての妥当性及び研究環境の適切性</th>
+     <td>$!escape.getText($!info.wakatesLabel)</td>
+    </tr>
+    <tr>
+    #set($orderNo = $orderNo + 1)
+   #end
+     <th align="left" colspan="2">$orderName.get($orderNo)研究課題の学術的重要性・妥当性</th>
+     <td>
+        $!escape.getText($!info.juyoseiLabel)
+    </td>
+    </tr>
+    #set($orderNo = $orderNo + 1)
+    <tr>
+     <th align="left" colspan="2">$orderName.get($orderNo)研究計画・方法の妥当性</th>
+     <td>
+        $!escape.getText($!info.kenkyuKeikakuLabel)
+       </td>
+    </tr>
+    #set($orderNo = $orderNo + 1)
+    <tr>
+     <th align="left" colspan="2">$orderName.get($orderNo)研究課題の独創性及び革新性</th>
+     <td>
+        $!escape.getText($!info.dokusoseiLabel)
+       </td>
+    </tr>
+    #set($orderNo = $orderNo + 1)
+    <tr>
+     <th align="left" colspan="2">$orderName.get($orderNo)研究課題の波及効果及び普遍性</th>
+     <td>
+        $!escape.getText($!info.hakyukokaLabel)
+       </td>
+    </tr>
+    #set($orderNo = $orderNo + 1)
+    #if($info.jigyoCd != '00120')	   ##若手研究S以外の場合
+    <tr>
+     <th align="left" colspan="2">$orderName.get($orderNo)研究遂行能力及び研究環境の適切性</th>
+     <td>
+        $!escape.getText($!info.suikonoryokuLabel)
+       </td>
+    </tr>
+    #end
+    <tr>
+     <th width="20%" align="left" colspan="3">総合評点</th>
+     <td>
+        $!escape.getText($!info.kekkaTenLabel)
+     </td>
+    </tr>
+    <tr>
+     <th align="left" colspan="3">審査意見</th>
+     <td style="word-break:break-all">
+        $!escape.getText($!info.comments)
+     </td>
+    </tr>
+    <tr>
+     <th align="left" rowspan="3">その他の評価項目</th>
+     <th align="left" rowspan="2">（１）適切性</th>
+     <th align="left">（１）人権の保護及び法令等の遵守を必要とする研究課題の適切性</th>
+     <td>
+        $!escape.getText($!info.jinkenLabel)
+    </td>
+    </tr>
+    <tr>
+     <th align="left">（２）分担金配分の適切性</th>
+     <td>
+        $!escape.getText($!info.buntankinLabel)
+    </td>
+    </tr>
+    <tr>
+     <th align="left" colspan="2">（２）研究経費の妥当性</th>
+     <td>
+        $!escape.getText($!info.datoLabel)
+     </td>
+    </tr>
+    <tr>
+     <th align="left" colspan="3">コメント</th>
+     <td>
+        $!escape.getText($!info.otherComment)
+     </td>
+    </tr>
+    ##添付ファイル有りの場合のみ表示
+    #if($info.hyokaFileFlg.equals($HYOKA_FILE_FLG))
+    <tr>
+     <th align="left" colspan="3">添付ファイル</th>
+     <td>
+      #if($info.HyokaFileRes)
+        <a href="$link.setAction('/shinsa/shinsaJigyo/chkHyokaFileDownload')">$!escape.getText($!info.HyokaFileRes.path)</a><br>
+      #elseif($info.tenpuFlg == 'TRUE')
+        <a href="javascript:onRegDownloadFile('$info.systemNo', '$info.shinsainNo', '$info.jigyoKubun');">$!escape.getText($info.tenpuName)</a><br>
+      #end
+     </td>
+    </tr>
+    #end
+
+   </table>
+
+    ###################################################################################################
+    ##２．「基盤研究(A)海外学術調査」「基盤研究(B)海外学術調査」の場合
+    ###################################################################################################
+    #elseif($info.jigyoCd == '00043' || $info.jigyoCd == '00053')
+
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th align="left" rowspan="6">評定要素</th>
+     <th align="left" colspan="2">（１）研究課題の学術的重要性・妥当性</th>
+     <td>
+        $!escape.getText($!info.juyoseiLabel)
+    </td>
+    </tr>
+    <tr>
+     <th align="left" colspan="2">（２）海外学術調査としての妥当性</th>
+     <td>
+        $!escape.getText($!info.tekisetsuKaigaiLabel)
+    </td>
+    </tr>
+    <tr>
+     <th align="left" colspan="2">（３）研究計画・方法の妥当性</th>
+     <td>
+        $!escape.getText($!info.kenkyuKeikakuLabel)
+    </td>
+    </tr>
+    <tr>
+     <th align="left" colspan="2">（４）研究課題の独創性及び革新性</th>
+     <td>
+        $!escape.getText($!info.dokusoseiLabel)
+    </td>
+    </tr>
+    <tr>
+     <th align="left" colspan="2">（５）研究課題の波及効果及び普遍性</th>
+     <td>
+        $!escape.getText($!info.hakyukokaLabel)
+    </td>
+    </tr>
+    <tr>
+     <th align="left" colspan="2">（６）研究遂行能力及び研究環境の適切性</th>
+     <td>
+        $!escape.getText($!info.suikonoryokuLabel)
+    </td>
+    </tr>
+    <tr>
+     <th width="20%" align="left" colspan="3">総合評点</th>
+     <td>
+        $!escape.getText($!info.kekkaTenLabel)
+     </td>
+    </tr>
+    <tr>
+     <th align="left" colspan="3">審査意見</th>
+     <td style="word-break:break-all">
+        $!escape.getText($!info.comments)
+     </td>
+    </tr>
+    <tr>
+     <th align="left" rowspan="3">その他の評価項目</th>
+     <th align="left" rowspan="2">（１）適切性</th>
+     <th align="left">（１）人権の保護及び法令等の遵守を必要とする研究課題の適切性</th>
+     <td>
+        $!escape.getText($!info.jinkenLabel)
+    </td>
+    </tr>
+    <tr>
+     <th align="left">（２）分担金配分の適切性</th>
+     <td>
+        $!escape.getText($!info.buntankinLabel)
+    </td>
+    </tr>
+    <tr>
+     <th align="left" colspan="2">（２）研究経費の妥当性</th>
+     <td>
+        $!escape.getText($!info.datoLabel)
+     </td>
+    </tr>
+
+    <tr>
+     <th align="left" colspan="3">コメント</th>
+     <td>
+        $!escape.getText($!info.otherComment)
+     </td>
+    </tr>
+    ##添付ファイル有りの場合のみ表示
+    #if($info.hyokaFileFlg.equals($HYOKA_FILE_FLG))
+    <tr>
+     <th align="left" colspan="3">添付ファイル</th>
+     <td>
+      #if($info.HyokaFileRes)
+        <a href="$link.setAction('/shinsa/shinsaJigyo/chkHyokaFileDownload')">$!escape.getText($!info.HyokaFileRes.path)</a><br>
+      #elseif($info.tenpuFlg == 'TRUE')
+        <a href="javascript:onRegDownloadFile('$info.systemNo', '$info.shinsainNo', '$info.jigyoKubun');">$!escape.getText($info.tenpuName)</a><br>
+      #end
+     </td>
+    </tr>
+    #end
+   </table>
+
+   ###################################################################################################
+   ##４．研究種目が「萌芽研究」だったら
+   ###################################################################################################
+   #elseif($info.jigyoCd == '00111')
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th align="left" rowspan="5">評定要素</th>
+     <th align="left" colspan="2">（１）研究課題の学術的重要性・妥当性</th>
+     <td>
+        $!escape.getText($!info.juyoseiLabel)
+    </td>
+    </tr>
+    <tr>
+     <th align="left" colspan="2">（２）萌芽研究としての妥当性</th>
+     <td>
+        $!escape.getText($!info.tekisetsuKaigaiLabel)
+    </td>
+    </tr>
+    <tr>
+     <th align="left" colspan="2">（３）研究計画・方法の妥当性</th>
+     <td>
+        $!escape.getText($!info.kenkyuKeikakuLabel)
+    </td>
+    </tr>
+    <tr>
+     <th align="left" colspan="2">（４）研究課題の独創性及び革新性</th>
+     <td>
+        $!escape.getText($!info.dokusoseiLabel)
+    </td>
+    </tr>
+    <tr>
+     <th align="left" colspan="2">（５）研究課題の波及効果及び普遍性</th>
+     <td>
+        $!escape.getText($!info.hakyukokaLabel)
+    </td>
+    </tr>
+    <tr>
+     <th width="20%" align="left" colspan="3">総合評点</th>
+     <td>
+        $!escape.getText($!info.kekkaTenHogaLabel)
+     </td>
+    </tr>
+    <tr>
+     <th align="left" colspan="3">審査意見</th>
+     <td style="word-break:break-all">
+        $!escape.getText($!info.comments)
+     </td>
+    </tr>
+    <tr>
+     <th align="left" rowspan="3">その他の評価項目</th>
+     <th align="left" rowspan="2">（１）適切性</th>
+     <th align="left">（１）人権の保護及び法令等の遵守を必要とする研究課題の適切性</th>
+     <td>
+        $!escape.getText($!info.jinkenLabel)
+    </td>
+    </tr>
+    <tr>
+     <th align="left">（２）分担金配分の適切性</th>
+     <td>
+        $!escape.getText($!info.buntankinLabel)
+    </td>
+    </tr>
+    <tr>
+     <th align="left" colspan="2">（２）研究経費の妥当性</th>
+     <td>
+        $!escape.getText($!info.datoLabel)
+     </td>
+    </tr>
+
+    <tr>
+     <th align="left" colspan="3">コメント</th>
+     <td>
+        $!escape.getText($!info.otherComment)
+     </td>
+    </tr>
+    ##添付ファイル有りの場合のみ表示
+    #if($info.hyokaFileFlg.equals($HYOKA_FILE_FLG))
+    <tr>
+     <th align="left" colspan="3">添付ファイル</th>
+     <td>
+      #if($info.HyokaFileRes)
+        <a href="$link.setAction('/shinsa/shinsaJigyo/chkHyokaFileDownload')">$!escape.getText($!info.HyokaFileRes.path)</a><br>
+      #elseif($info.tenpuFlg == 'TRUE')
+        <a href="javascript:onRegDownloadFile('$info.systemNo', '$info.shinsainNo', '$info.jigyoKubun');">$!escape.getText($info.tenpuName)</a><br>
+      #end
+     </td>
+    </tr>
+    #end
+   </table>
+   #end
+  </td>
+ </tr>
+</table>
+#*##################################################################################################
+ここまで
+研究種目ごとに場合分け。
+【注意！】共通の項目の修正をする場合は、研究種目ごとに確認すること。
+##################################################################################################*#
+<!-- 一覧用テーブルここまで-->
+ <br>
+<!-- 本文ここまで -->
+
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="javascript:window.close()"><img src="$path/images/bt_close.gif" width=114 height=28 border="0" alt="閉じる"></a></td>
+      </tr>
+     </table>
+    </div>
+
+    <!-- ログイン画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="4" background="$path/images/footer_login2.gif"> <IMG SRC="$path/images/footer_login1.gif" width=4 height=11 ALT=""></td>
+      <td background="$path/images/footer_login2.gif"><IMG SRC="$path/images/footer_login2.gif" width=4 height=11 ALT=""></td>
+      <td width="4" align="right" background="$path/images/footer_login2.gif"> <IMG SRC="$path/images/footer_login3.gif" width=4 height=11 ALT=""></td>
+     </tr>
+    </table>
+    <!-- ログイン画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+</body>
+</html>

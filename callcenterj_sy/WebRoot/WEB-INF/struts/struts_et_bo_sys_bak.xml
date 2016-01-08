@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources/>
+  <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="bakBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="dbtype" type="java.lang.String" />
+      	  <form-property name="begindate" type="java.lang.String" />
+      	  <form-property name="enddate" type="java.lang.String" />
+      	  <form-property name="begintime" type="java.lang.String" />
+      	  <form-property name="endtime" type="java.lang.String" />
+      	  <form-property name="remark" type="java.lang.String" />
+	   </form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+     <action
+      attribute="bakBean"
+      name="bakBean"
+      path="/bak"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="main"  path="/sys/bak/bakMain.jsp"/>
+           <forward name="query" path="/sys/bak/bakQuery.jsp"/>
+           <forward name="load"  path="/sys/bak/bakLoad.jsp"/>
+           <forward name="list"  path="/sys/bak/bakList.jsp"/>
+           <forward name="pop"  path="/sys/bak/popQuery.jsp"/>            
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

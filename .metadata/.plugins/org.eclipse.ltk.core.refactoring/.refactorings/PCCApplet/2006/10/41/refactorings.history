@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource '/PCCApplet/src/et/bo/cc/applet/netn.gif' to 'netn-.gif'&#13;&#10;- Original element: 'netn.gif'" description="Rename resource 'netn.gif'" flags="7" id="org.eclipse.jdt.ui.rename.resource" input="src/et/bo/cc/applet/netn.gif" name="netn-.gif" stamp="1160443354109" version="1.0"/>
+<refactoring comment="Rename resource '/PCCApplet/src/et/bo/cc/applet/top_dot01.jpg' to 'netn.gif'&#13;&#10;- Original element: 'top_dot01.jpg'" description="Rename resource 'top_dot01.jpg'" flags="7" id="org.eclipse.jdt.ui.rename.resource" input="src/et/bo/cc/applet/top_dot01.jpg" name="netn.gif" stamp="1160443364031" version="1.0"/>
+</session>

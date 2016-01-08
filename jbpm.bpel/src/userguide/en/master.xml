@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3CR3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3b2/docbookx.dtd" [
+<!ENTITY overview SYSTEM "modules/overview.xml">
+<!ENTITY introduction SYSTEM "modules/introduction.xml">
+<!ENTITY gettingStarted SYSTEM "modules/gettingStarted.xml">
+<!ENTITY tutorial SYSTEM "modules/tutorial.xml">
+<!ENTITY helloExample SYSTEM "modules/helloExample.xml">
+<!ENTITY atmExample SYSTEM "modules/atmExample.xml">
+]>
+
+<book lang="en">
+
+  <bookinfo>
+    <title>JBoss jBPM BPEL User Guide</title>
+    <subtitle>Orchestration made practical</subtitle>
+    <releaseinfo>Version: 1.1.Beta2</releaseinfo>
+  </bookinfo>
+
+  <toc/>
+
+  &overview;
+  
+  &introduction;
+
+  &gettingStarted;
+
+  &tutorial;
+  
+  &helloExample;
+  
+  &atmExample;  
+
+</book>

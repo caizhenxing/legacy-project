@@ -1,0 +1,135 @@
+修改人：王文权
+修改日期：2009-02-28
+
+需求：座席按钮授权 主要对座席业务授权 修改删除按钮
+1 供求价格信息管理-》农产品供求库  
+callcenterj_sy/sad/sadQuery.jsp
+callcenterj_sy/sad/sadList.jsp
+sad_update 
+sad_delete
+<leafRight:bodyImg alt="修改" nickName="sad_update"  src="../style/${styleLocation}/images/update.gif"  border="0"  styleId="addBtn" name="addBtn" width="16px;" style="height:16px;" scopeName="userRoleLeafRightInsession">
+						onclick="popUp('2<bean:write name='c' property='sadId'/>','sad.do?method=toSadLoad&type=update&id=<bean:write name='c' property='sadId'/>',1020,307)"
+						</leafRight:bodyImg>
+						<leafRight:bodyImg alt="删除" nickName="sad_delete"  src="../style/${styleLocation}/images/del.gif"  border="0"  styleId="addBtn" name="addBtn" width="16px;" style="height:16px;" scopeName="userRoleLeafRightInsession">
+						onclick="popUp('3<bean:write name='c' property='sadId'/>','sad.do?method=toSadLoad&type=delete&id=<bean:write name='c' property='sadId'/>',757,290)"
+						</leafRight:bodyImg>
+						
+2 供求价格信息管理-》农产品价格库
+callcenterj_sy/priceinfo/priceinfolist.jsp
+operpriceinfo_update
+operpriceinfo_delete
+<leafRight:bodyImg alt="修改" nickName="operpriceinfo_update"  src="../style/${styleLocation}/images/update.gif"  border="0"  styleId="addBtn" name="addBtn" width="16px;" style="height:16px;" scopeName="userRoleLeafRightInsession">
+						onclick="popUp('2<bean:write name='c' property='priceId'/>','operpriceinfo.do?method=toOperPriceinfoLoad&type=update&id=<bean:write name='c' property='priceId'/>',720,260)"
+						</leafRight:bodyImg>
+						<leafRight:bodyImg alt="删除" nickName="operpriceinfo_delete"  src="../style/${styleLocation}/images/del.gif"  border="0"  styleId="addBtn" name="addBtn" width="16px;" style="height:16px;" scopeName="userRoleLeafRightInsession">
+						onclick="popUp('3<bean:write name='c' property='priceId'/>','operpriceinfo.do?method=toOperPriceinfoLoad&type=delete&id=<bean:write name='c' property='priceId'/>',720,260)"
+						</leafRight:bodyImg>
+
+3 金农信息产品编发-》焦点追踪库
+callcenterj_sy/focusPursue/focusPursuelist.jsp
+focuspursue_update
+focuspursue_delete
+					<leafRight:bodyImg alt="修改" nickName="focuspursue_update"  src="../style/${styleLocation}/images/update.gif"  border="0"  styleId="addBtn" name="addBtn" width="16px;" style="height:16px;" scopeName="userRoleLeafRightInsession">
+						onclick="popUp('2<bean:write name='c' property='focusId'/>','focusPursue.do?method=toFocusPursueLoad&type=update&id=<bean:write name='c' property='focusId'/>',1010,700)"
+						</leafRight:bodyImg>
+						<leafRight:bodyImg alt="删除" nickName="focuspursue_delete"  src="../style/${styleLocation}/images/del.gif"  border="0"  styleId="addBtn" name="addBtn" width="16px;" style="height:16px;" scopeName="userRoleLeafRightInsession">
+						onclick="popUp('3<bean:write name='c' property='focusId'/>','focusPursue.do?method=toFocusPursueLoad&type=delete&id=<bean:write name='c' property='focusId'/>',1010,585)"
+						</leafRight:bodyImg>
+						
+4 金农信息产品编发-》市场分析库
+callcenterj_sy/markanainfo/markanainfolist.jsp
+markanainfo_update
+markanainfo_delete
+<leafRight:bodyImg alt="修改" nickName="markanainfo_update"  src="../style/${styleLocation}/images/update.gif"  border="0"  styleId="addBtn" name="addBtn" width="16px;" style="height:16px;" scopeName="userRoleLeafRightInsession">
+						onclick="popUp('2<bean:write name='c' property='markanaId'/>','markanainfo.do?method=toMarkanainfoLoad&type=update&id=<bean:write name='c' property='markanaId'/>',1010,700)"
+						</leafRight:bodyImg>
+						<leafRight:bodyImg alt="删除" nickName="markanainfo_delete"  src="../style/${styleLocation}/images/del.gif"  border="0"  styleId="addBtn" name="addBtn" width="16px;" style="height:16px;" scopeName="userRoleLeafRightInsession">
+						onclick="popUp('3<bean:write name='c' property='markanaId'/>','markanainfo.do?method=toMarkanainfoLoad&type=delete&id=<bean:write name='c' property='markanaId'/>',1010,585)"
+						</leafRight:bodyImg>
+5  企业服务信息管理系统-》企业信息库
+callcenterj_sy/corpinfo/corpinfolist.jsp
+operCorpinfo_update
+operCorpinfo_delete
+  <leafRight:bodyImg alt="修改" nickName="operCorpinfo_update"  src="../style/${styleLocation}/images/update.gif"  border="0"  styleId="addBtn" name="addBtn" width="16px;" style="height:16px;" scopeName="userRoleLeafRightInsession">
+						onclick="popUp('2<bean:write name='c' property='id'/>','operCorpinfo.do?method=toOperCorpinfoLoad&type=update&id=<bean:write name='c' property='id'/>',1000,450)"
+						</leafRight:bodyImg>
+						<leafRight:bodyImg alt="删除" nickName="operCorpinfo_delete"  src="../style/${styleLocation}/images/del.gif"  border="0"  styleId="addBtn" name="addBtn" width="16px;" style="height:16px;" scopeName="userRoleLeafRightInsession">
+						 onclick="popUp('3<bean:write name='c' property='id'/>','operCorpinfo.do?method=toOperCorpinfoLoad&type=delete&id=<bean:write name='c' property='id'/>',780,410)"
+						</leafRight:bodyImg>
+
+6   医疗服务信息管理系统-》普通医疗服务信息库
+callcenterj_sy/medical/medicinfo/medicinfolist.jsp
+medicinfo_update
+medicinfo_delete
+<leafRight:bodyImg alt="修改" nickName="operCorpinfo_update"  src="../../style/${styleLocation}/images/update.gif"  border="0"  styleId="addBtn" name="addBtn" width="16px;" style="height:16px;" scopeName="userRoleLeafRightInsession">
+						onclick="popUp('2<bean:write name='c' property='id'/>','medicinfo.do?method=toMedicinfoLoad&type=update&id=<bean:write name='c' property='id'/>',900,480)"
+						</leafRight:bodyImg>
+						<leafRight:bodyImg alt="删除" nickName="operCorpinfo_delete"  src="../../style/${styleLocation}/images/del.gif"  border="0"  styleId="addBtn" name="addBtn" width="16px;" style="height:16px;" scopeName="userRoleLeafRightInsession">
+						 onclick="popUp('3<bean:write name='c' property='id'/>','medicinfo.do?method=toMedicinfoLoad&type=delete&id=<bean:write name='c' property='id'/>',610,485)"
+						</leafRight:bodyImg>
+
+7  医疗服务信息管理系统-》预约医疗服务信息库
+callcenterj_sy/medical/bookMedicinfo/bookMedicinfolist.jsp
+bookMedicinfo_update
+bookMedicinfo_delete
+						<leafRight:bodyImg alt="修改" nickName="bookMedicinfo_update"  src="../../style/${styleLocation}/images/update.gif"  border="0"  styleId="addBtn" name="addBtn" width="16px;" style="height:16px;" scopeName="userRoleLeafRightInsession">
+						onclick="popUp('2<bean:write name='c' property='id'/>','bookMedicinfo.do?method=toBookMedicinfoLoad&type=update&id=<bean:write name='c' property='id'/>',1000,680)"
+						</leafRight:bodyImg>
+						<leafRight:bodyImg alt="删除" nickName="bookMedicinfo_delete"  src="../../style/${styleLocation}/images/del.gif"  border="0"  styleId="addBtn" name="addBtn" width="16px;" style="height:16px;" scopeName="userRoleLeafRightInsession">
+						 onclick="popUp('3<bean:write name='c' property='id'/>','bookMedicinfo.do?method=toBookMedicinfoLoad&type=delete&id=<bean:write name='c' property='id'/>',750,680)"
+						</leafRight:bodyImg>
+8 专题调查信息分析系统-》调查问卷设计库
+callcenterj_sy/inquiry/inquiryList.jsp
+inquiry_update
+inquiry_delete
+		<leafRight:bodyImg alt="修改" nickName="inquiry_update"  src="../style/${styleLocation}/images/update.gif"  border="0"  styleId="addBtn" name="addBtn" width="16px;" style="height:16px;" scopeName="userRoleLeafRightInsession">
+						onclick="popUp('2<bean:write name='c' property='id'/>','inquiry.do?method=toLoad&type=update&id=<bean:write name='c' property='id'/>',900,300)"
+						</leafRight:bodyImg>
+						<leafRight:bodyImg alt="删除" nickName="inquiry_delete"  src="../style/${styleLocation}/images/del.gif"  border="0"  styleId="addBtn" name="addBtn" width="16px;" style="height:16px;" scopeName="userRoleLeafRightInsession">
+						 onclick="popUp('3<bean:write name='c' property='id'/>','inquiry.do?method=toLoad&type=delete&id=<bean:write name='c' property='id'/>',900,300)"
+						</leafRight:bodyImg>
+
+
+9 用户管理->电话本 
+   callcenterj_sy/custinfo/phoneinfo/custPhoneList.jsp 改回来
+   callcenterj_sy/custinfo/phoneinfo/custPhoneQuery.jsp
+10 用户管理->联络员信息管理
+  callcenterj_sy/custinfo/phoneinfo/custLinkManQuery.jsp
+  callcenterj_sy/custinfo/phoneinfo/custLinkManList.jsp 
+ 
+ 10 用户管理->普通用户管理
+  callcenterj_sy/custinfo/custinfoQuery.jsp
+  callcenterj_sy/custinfo/custinfoList.jsp
+<%-- --%>
+
+*****************************************************
+修改时间：2009-2-28
+修改人：李春生
+应 初军 要求将“农产品价格库”中的“用户姓名”验证取消。
+
+修改程序：
+priceinfoLoad.jsp
+priceinfoLoadList.jsp
+
+*******************************************************
+
+修改人：陈岗
+修改日期：2009-02-28
+
+需求：为了联络员录入 对oper_custinfo 表进行了修改，增加几个字段以及改变几个字段大小
+
+修改字段：
+dict_cust_scale  现在用来记录联络员 从事项目及生产规模(手动录入) 把大小改为 varchar(500)
+remark           因为备注页面要求录入400字 把大小改为 varchar(2000)
+cust_way_by      现在用来记录联络员用户类别 把大小修改为 varchar(100)
+cust_job         现在用来记录联络员报价栏目 把大小改为 varchar(800)
+
+新增字段：
+cust_work_way    联络员工作方式   varchar(50)
+is_eliminate     联络员是否淘汰   varchar(10)
+eliminate_reson  联络员淘汰原因   varchar(200)
+
+发现oper_product表中产品名称字段有部分左右有空格，可能通不过jQuery验证
+建议运行以下sql语句，去掉该字段左右的空格
+update oper_product set name3 = rtrim(name3)
+update oper_product set name3 = ltrim(name3)

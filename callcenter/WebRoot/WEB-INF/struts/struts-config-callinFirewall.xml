@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="callinFirewallBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="callinNumBegin" type="java.lang.String" />
+      	  <form-property name="callinNumEnd" type="java.lang.String" />
+      	  <form-property name="beginTime" type="java.lang.String" />
+    	  <form-property name="endTime" type="java.lang.String" />
+          <form-property name="isPass" type="java.lang.String" />
+	      <form-property name="isAvailable" type="java.lang.String" />
+	      <form-property name="remark" type="java.lang.String"/>
+	   </form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+     <action
+      attribute="callinFirewallBean"
+      name="callinFirewallBean"
+      path="/pcc/callinFirewall"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="main"  path="/pcc/callinFirewall/callinFirewallMain.jsp"/>
+           <forward name="query" path="/pcc/callinFirewall/callinFirewallQuery.jsp"/>
+           <forward name="load"  path="/pcc/callinFirewall/callinFirewallLoad.jsp"/>
+           <forward name="list"  path="/pcc/callinFirewall/callinFirewallList.jsp"/>
+           <forward name="detail"  path="/pcc/callinFirewall/callinFirewallDetail.jsp"/>            
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

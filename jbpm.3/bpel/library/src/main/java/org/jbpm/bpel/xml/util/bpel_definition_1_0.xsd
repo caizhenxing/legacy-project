@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema version="1.0" xmlns="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="http://jbpm.org/bpel"
+  elementFormDefault="qualified" attributeFormDefault="unqualified"
+  xmlns:jbpm="http://jbpm.org/bpel"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.w3.org/2001/XMLSchema 
+                      http://www.w3.org/2001/XMLSchema.xsd">
+  
+  <element name="bpelDefinition" type="jbpm:tBpelDefinition"/>
+  
+  <complexType name="tBpelDefinition">
+    <sequence>
+      <element name="imports" type="jbpm:tImports" minOccurs="0" />
+    </sequence>
+    <attribute name="location" type="anyURI" use="required"/>
+  </complexType>
+
+  <complexType name="tImports">
+    <sequence>
+      <group ref="jbpm:importGroup" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+  
+  <group name="importGroup">
+    <choice>
+      <element name="wsdl" type="jbpm:tImport"/>
+      <element name="schema" type="jbpm:tImport"/>
+    </choice>
+  </group>
+
+  <complexType name="tImport">
+    <attribute name="namespace" type="anyURI" use="required"/>
+    <attribute name="location" type="anyURI" use="required"/>
+  </complexType>
+  
+</schema>

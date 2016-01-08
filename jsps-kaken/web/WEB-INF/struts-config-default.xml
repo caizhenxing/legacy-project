@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="WINDOWS-31J"?>
+
+
+<!DOCTYPE struts-config PUBLIC 
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <form-beans>
+  </form-beans>
+
+  <global-exceptions>
+    <exception handler="jp.go.jsps.kaken.web.struts.ApplicationExceptionHandler"
+               key="errors.application" path="/code/pages/common/appError.vm"
+               scope="request"
+               type="jp.go.jsps.kaken.model.exceptions.ApplicationException"/>
+    <exception handler="jp.go.jsps.kaken.web.struts.SystemExceptionHandler"
+               key="errors.system" path="/code/pages/common/sysError.vm"
+               type="jp.go.jsps.kaken.model.exceptions.SystemException"/>
+    <exception handler="jp.go.jsps.kaken.web.struts.ApplicationExceptionHandler" 
+               key="errors.fileio" path="/code/pages/common/downloadError.vm"
+               scope="request"
+               type="jp.go.jsps.kaken.model.exceptions.FileIOException"/>
+  </global-exceptions>
+
+  <global-forwards>
+  </global-forwards>
+
+  <action-mappings type="jp.go.jsps.kaken.web.struts.ActionMapping">
+    <action path="/index" scope="request"
+            type="jp.go.jsps.kaken.web.struts.ForwardAction" unknown="true"
+            validate="false">
+      <set-property property="logonCheck" value="false"/>      
+      <forward name="success" path="/index.html" redirect="false"/>
+    </action>
+
+    <!-- 所属機関コード表 -->
+    <action path="/kikanList" scope="session"
+            type="jp.go.jsps.kaken.web.code.kikan.SearchListAction"
+            unknown="false" validate="false" >
+      <set-property property="logonCheck" value="false"/>
+      <set-property property="errorClose" value="true"/>
+      <set-property property="description" value="所属機関番号一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/code/pages/kikan/codeList.vm" redirect="false"/>
+    </action>
+
+    <!-- 分科細目コード表 -->
+    <action path="/saimokuList" scope="session"
+            type="jp.go.jsps.kaken.web.code.saimoku.SearchListAction"
+            unknown="false" validate="false" >
+      <set-property property="logonCheck" value="false"/>
+      <set-property property="errorClose" value="true"/>
+      <set-property property="description" value="分科細目番号一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/code/pages/saimoku/codeList.vm" redirect="false"/>
+    </action>
+
+    <!-- 部局コード表 -->
+    <action path="/bukyokuList" scope="session"
+            type="jp.go.jsps.kaken.web.code.bukyoku.SearchListAction"
+            unknown="false" validate="false" >
+      <set-property property="logonCheck" value="false"/>
+      <set-property property="errorClose" value="true"/>
+      <set-property property="description" value="部局番号一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/code/pages/bukyoku/codeList.vm" redirect="false"/>
+    </action>
+
+    <!-- 職名コード表 -->
+    <action path="/shokushuList" scope="session"
+            type="jp.go.jsps.kaken.web.code.shokushu.SearchListAction"
+            unknown="false" validate="false" >
+      <set-property property="logonCheck" value="false"/>
+      <set-property property="errorClose" value="true"/>
+      <set-property property="description" value="職名番号一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/code/pages/shokushu/codeList.vm" redirect="false"/>
+    </action>
+
+    <!-- 国名コード表 -->
+    <action path="/kuniList" scope="session"
+            type="jp.go.jsps.kaken.web.code.kuni.SearchListAction"
+            unknown="false" validate="false" >
+      <set-property property="logonCheck" value="false"/>
+      <set-property property="errorClose" value="true"/>
+      <set-property property="description" value="国名番号一覧"/>
+      <forward contextRelative="false" name="success"
+               path="/code/pages/kuni/codeList.vm" redirect="false"/>
+    </action>
+
+    <!-- キーワード一覧表 -->
+    <action path="/keywordList" scope="session"
+            type="jp.go.jsps.kaken.web.code.keyword.SearchListAction"
+            unknown="false" validate="false" >
+      <set-property property="logonCheck" value="false"/>
+      <set-property property="errorClose" value="true"/>
+      <set-property property="description" value="キーワード表"/>
+      <forward contextRelative="false" name="success"
+               path="/code/pages/keyword/codeList.vm" redirect="false"/>
+    </action>
+
+    <!-- 研究領域一覧表 -->
+    <action path="/ryoikiList" scope="session"
+            type="jp.go.jsps.kaken.web.code.ryoiki.SearchListAction"
+            unknown="false" validate="false" >
+      <set-property property="logonCheck" value="false"/>
+      <set-property property="errorClose" value="true"/>
+      <set-property property="description" value="研究領域一覧表"/>
+      <forward contextRelative="false" name="success"
+               path="/code/pages/ryoiki/codeList.vm" redirect="false"/>
+    </action>
+
+<!-- 2006/07/24 苗 追加ここから -->    
+    <!-- 研究領域一覧表 -->
+    <action path="/ryoikiSinnkiList" scope="session"
+            type="jp.go.jsps.kaken.web.code.ryoiki.SearchSinnkiListAction"
+            unknown="false" validate="false" >
+      <set-property property="logonCheck" value="false"/>
+      <set-property property="errorClose" value="true"/>
+      <set-property property="description" value="研究領域一覧表"/>
+      <forward contextRelative="false" name="success"
+               path="/code/pages/ryoiki/codeList2.vm" redirect="false"/>
+    </action>
+<!-- 2006/07/24 苗 追加ここまで -->
+  </action-mappings>
+
+  <controller processorClass="jp.go.jsps.kaken.web.struts.RequestProcessor"/>
+  
+  <message-resources null="false"
+                     parameter="jp.go.jsps.kaken.web.resources.Application"/>
+
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property property="pathnames"
+                  value="/WEB-INF/validation-default.xml,/WEB-INF/validator-rules.xml"/>
+  </plug-in>
+                    
+</struts-config>

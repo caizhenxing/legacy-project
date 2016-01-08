@@ -1,0 +1,20 @@
+#
+#Fri Dec 08 14:29:54 CST 2006
+genBasicCompId=true
+sessionFactoryName=et.config.hibernate.HibernateSessionFactory
+profile=
+daoSFId=
+version=3.0
+jndiPath=
+springDaoFile=
+useJavaTypes=true
+keyGenerator=assigned
+libInstallFolder=/WebRoot/WEB-INF/lib
+addLibs2Project=true
+genVersionTag=true
+sessionFactoryId=
+basePersistenceClass=
+reSettingsFile=
+configFile=/ETforum/src/et/config/hibernate/hibernate.cfg.xml
+createConfigFile=true
+addLibs2Classpath=true

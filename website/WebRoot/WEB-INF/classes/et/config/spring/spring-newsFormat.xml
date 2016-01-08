@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean name="/news/format"
+		class="et.bo.format.action.FormatAction" singleton="false">			
+		<property name="formatService">
+			<ref bean="FormatService" />
+		</property>			
+	</bean>
+	
+	<!--  service begin -->	
+	<bean id="FormatService"
+		class="et.bo.format.service.impl.FormatServiceImpl" singleton="true">
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>	
+</beans>

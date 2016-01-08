@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans >
+  
+  	<!-- 警务人员询问问题查询Bean -->
+  	<form-bean name="QuestionBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="id" type="java.lang.String" />
+    	<form-property name="fuzzno" type="java.lang.String" />
+    	<form-property name="fuzztype" type="java.lang.String" />
+	   	<form-property name="pid" type="java.lang.String" />
+	   	<form-property name="begintime" type="java.lang.String" />
+	   	<form-property name="endtime" type="java.lang.String" />
+	   	<form-property name="taginfo" type="java.lang.String" />
+	   	<form-property name="quinfo" type="java.lang.String" />
+	   	<form-property name="content" type="java.lang.String" />
+	   	<form-property name="remark" type="java.lang.String" />
+	</form-bean>
+	<!-- 电话信息 -->
+	<form-bean name="PhoneBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="id" type="java.lang.String" />
+    	<form-property name="fuzzno" type="java.lang.String" />
+	   	<form-property name="clientip" type="java.lang.String" />
+	   	<form-property name="inport" type="java.lang.String" />
+	   	<form-property name="operatorport" type="java.lang.String" />
+	   	<form-property name="phonenum" type="java.lang.String" />
+	   	<form-property name="begintime" type="java.lang.String" />
+	   	<form-property name="operatetime" type="java.lang.String" />
+	   	<form-property name="endtime" type="java.lang.String" />
+	   	<form-property name="recfile" type="java.lang.String" />
+	   	<form-property name="command" type="java.lang.String" />
+	   	<form-property name="passvalidnum" type="java.lang.String" />
+	   	<form-property name="isvalidin" type="java.lang.String" />
+	   	<form-property name="operator" type="java.lang.String" />
+	   	<form-property name="remark" type="java.lang.String" />
+	</form-bean>
+	
+	<!-- 电话查询信息 -->
+	<form-bean name="PhoneSearchBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="id" type="java.lang.String" />
+      	<form-property name="num" type="java.lang.String" />
+      	<form-property name="deprtment" type="java.lang.String" />
+      	<form-property name="unit" type="java.lang.String" />
+	   	<form-property name="remark" type="java.lang.String" />
+	</form-bean>
+	
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings >
+  
+    <!-- 警务人员询问问题查询 -->
+    <action
+      attribute="QuestionBean"
+      name="QuestionBean"
+      path="/pcc/assay/question"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="main" path="/pcc/assay/question/questionMain.jsp"/>
+	  <forward name="query" path="/pcc/assay/question/questionQuery.jsp"/>
+	  <forward name="list" path="/pcc/assay/question/questionList.jsp"/>
+	  <forward name="see" path="/pcc/assay/question/seeQuestion.jsp"/>
+    </action>
+    <!-- 电话信息 -->
+    <action
+      attribute="PhoneBean"
+      name="PhoneBean"
+      path="/pcc/assay/phone"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="main" path="/pcc/assay/phone/phoneMain.jsp"/>
+	  <forward name="query" path="/pcc/assay/phone/phoneQuery.jsp"/>
+	  <forward name="list" path="/pcc/assay/phone/phoneList.jsp"/>
+	  <forward name="see" path="/pcc/assay/phone/seePhone.jsp"/>
+    </action>
+    
+    <!-- 电话查询信息 -->
+    <action
+      attribute="PhoneSearchBean"
+      name="PhoneSearchBean"
+      path="/pcc/phonesearch/search"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="main" path="/pcc/phonesearch/searchMain.jsp"/>
+      <forward name="load" path="/pcc/phonesearch/searchLoad.jsp"/>
+	  <forward name="query" path="/pcc/phonesearch/searchQuery.jsp"/>
+	  <forward name="list" path="/pcc/phonesearch/searchList.jsp"/>
+	  <forward name="see" path="/pcc/phonesearch/seeSearch.jsp"/>
+    </action>
+	
+  </action-mappings>
+  
+
+	
+</struts-config>
+

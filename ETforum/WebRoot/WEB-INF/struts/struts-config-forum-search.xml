@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="searchBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="userkey" type="java.lang.String" />
+      	  <form-property name="title" type="java.lang.String" />
+      	  <form-property name="itemId" type="java.lang.String" />
+      	  <form-property name="dateType" type="java.lang.String" />
+	   </form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+     <action
+      attribute="searchBean"
+      name="searchBean"
+      path="/forum/search"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="toSearch"      path="/forum/search/search.jsp"/>
+           <forward name="toList"    path="/forum/search/searchList.jsp"/>      
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

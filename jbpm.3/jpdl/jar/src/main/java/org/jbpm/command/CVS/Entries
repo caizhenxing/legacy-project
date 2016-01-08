@@ -1,0 +1,11 @@
+/AsynchronousCommand.java/1.2/Fri Sep  1 14:48:31 2006/-kk/
+/Command.java/1.3/Wed Aug 23 15:37:37 2006/-kk/
+/CommandService.java/1.1/Wed Aug 23 15:37:37 2006/-kk/
+/CompositeCommand.java/1.1/Wed Aug 23 15:37:37 2006/-kk/
+/NewProcessInstanceCommand.java/1.2/Thu Aug 24 16:03:45 2006/-kk/
+/SignalCommand.java/1.3/Wed Aug 23 15:37:37 2006/-kk/
+/TaskInstanceEndCommand.java/1.3/Wed Aug 23 15:37:37 2006/-kk/
+/VariablesCommand.java/1.1/Wed Aug 23 15:37:37 2006/-kk/
+D/impl////
+D/query////
+D/service////

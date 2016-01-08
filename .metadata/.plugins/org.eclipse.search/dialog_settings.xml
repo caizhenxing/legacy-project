@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="">
+		<item key="org.eclipse.search.resultpage.limit" value="1000"/>
+	</section>
+	<section name="SearchDialog.ScopePart">
+		<item key="scope" value="0"/>
+		<list key="lastUsedWorkingSetNames">
+			<item value="ETOA"/>
+		</list>
+	</section>
+	<section name="DialogBounds_SearchDialog">
+		<item key="DIALOG_X_ORIGIN" value="358"/>
+		<item key="DIALOG_FONT_NAME" value="1|Tahoma|8.25|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma"/>
+		<item key="DIALOG_HEIGHT" value="390"/>
+		<item key="DIALOG_Y_ORIGIN" value="171"/>
+		<item key="DIALOG_WIDTH" value="622"/>
+	</section>
+	<section name="Search">
+		<list key="Search.enabledPageIds">
+			<item value="org.eclipse.search.internal.ui.text.TextSearchPage"/>
+			<item value="ca.ubc.bugzilla.search.bugzillaSearchPage"/>
+			<item value="org.eclipse.jdt.ui.JavaSearchPage"/>
+			<item value="org.eclipse.pde.internal.ui.search.SearchPage"/>
+			<item value="org.springframework.ide.eclipse.beans.ui.search.searchPage"/>
+			<item value="org.springframework.ide.eclipse.aop.ui.matcher.matcherPage"/>
+		</list>
+		<list key="Search.processedPageIds">
+			<item value="org.eclipse.search.internal.ui.text.TextSearchPage"/>
+			<item value="ca.ubc.bugzilla.search.bugzillaSearchPage"/>
+			<item value="org.eclipse.jdt.ui.JavaSearchPage"/>
+			<item value="org.eclipse.pde.internal.ui.search.SearchPage"/>
+			<item value="org.springframework.ide.eclipse.beans.ui.search.searchPage"/>
+			<item value="org.springframework.ide.eclipse.aop.ui.matcher.matcherPage"/>
+		</list>
+	</section>
+	<section name="ReplaceDialog2">
+		<list key="replace_with">
+			<item value=""/>
+			<item value="卓越科技"/>
+			<item value="沈阳卓越科技有限公司"/>
+			<item value="&lt;bean:message bundle=&apos;sys&apos; key=&apos;sys.role"/>
+			<item value="&lt;bean:message bundle=&quot;sys&quot; key=&quot;sys.role"/>
+			<item value="&lt;bean:message bundle=&apos;sys&apos; key=&apos;sys."/>
+		</list>
+	</section>
+	<section name="DialogBounds_ReplaceDialog2">
+		<item key="DIALOG_X_ORIGIN" value="437"/>
+		<item key="DIALOG_FONT_NAME" value="1|Tahoma|8.25|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma"/>
+		<item key="DIALOG_HEIGHT" value="225"/>
+		<item key="DIALOG_Y_ORIGIN" value="303"/>
+		<item key="DIALOG_WIDTH" value="346"/>
+	</section>
+	<section name="TextSearchPage">
+		<item key="HISTORY_SIZE" value="12"/>
+		<item key="SEARCH_DERIVED" value="false"/>
+		<item key="CASE_SENSITIVE" value="false"/>
+		<item key="REG_EX_SEARCH" value="false"/>
+		<section name="HISTORY4">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="true"/>
+			<item key="textPattern" value="卓越科技"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+		</section>
+		<section name="HISTORY9">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="2"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="et"/>
+			<list key="workingSets">
+				<item value="etbase"/>
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+		</section>
+		<section name="HISTORY0">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="true"/>
+			<item key="textPattern" value="保留一切权利"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+		</section>
+		<section name="HISTORY5">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="true"/>
+			<item key="textPattern" value="沈阳市卓越科技有限公司"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+		</section>
+		<section name="HISTORY10">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="2"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="excellence"/>
+			<list key="workingSets">
+				<item value="etbase"/>
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+		</section>
+		<section name="HISTORY2">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="true"/>
+			<item key="textPattern" value="沈阳"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+		</section>
+		<section name="HISTORY7">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="true"/>
+			<item key="textPattern" value="沈阳卓越科技有限公司版权所有"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+		</section>
+		<section name="HISTORY3">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="true"/>
+			<item key="textPattern" value="沈阳*公司"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+		</section>
+		<section name="HISTORY6">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="true"/>
+			<item key="textPattern" value="沈阳卓越科技有限公司"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+		</section>
+		<section name="HISTORY1">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="true"/>
+			<item key="textPattern" value="版权所有"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+		</section>
+		<section name="HISTORY11">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="2"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="approveType"/>
+			<list key="workingSets">
+				<item value="ETOA"/>
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+		</section>
+		<section name="HISTORY8">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="2"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value=" catalog=&quot;etoa&quot;"/>
+			<list key="workingSets">
+				<item value="ETOA"/>
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.xml"/>
+			</list>
+		</section>
+	</section>
+	<section name="org.eclipse.search.text.FileSearchResultPage">
+		<item key="org.eclipse.search.resultpage.limit" value="1000"/>
+	</section>
+	<section name="org.eclipse.jdt.ui.JavaSearchResultPage">
+	</section>
+</section>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+<beans>
+<bean id="timerFactory"
+		class="org.springframework.scheduling.timer.TimerFactoryBean">
+		<property name="scheduledTimerTasks">
+			<list>
+				<ref local="dbbakWeekTask" />
+			</list>
+		</property>
+	</bean>
+	<bean id="dbbakWeekTask"
+		class="org.springframework.scheduling.timer.ScheduledTimerTask">
+		<property name="delay">
+			<value>37000000</value>
+		</property>
+		<property name="period">
+			<value>86400000</value>
+		</property>
+		<property name="timerTask">
+			<ref local="dbbakWeek" />
+		</property>
+	</bean>
+	<bean id="dbbakWeek"
+		class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+		<property name="targetObject">
+			<ref bean="DBBak" />
+		</property>
+		<property name="targetMethod">
+			<value>dayExecute</value>
+		</property>
+	</bean>
+	<bean id="DBBak"
+		class="et.bo.sys.db.impl.DBBakImpl" singleton="true">
+	</bean>
+</beans>

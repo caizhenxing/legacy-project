@@ -1,0 +1,44 @@
+/affiche文件夹里全是公告所用的图片
+/css中为主样式表
+/email文件夹中用的是邮件所用到的图片
+/main为登陆后首页显示所用的图片
+/news主新闻部分所用的图片
+/sysoper为增删改查等操作所调用的图片
+/grantNav为座席登陆成功后其所拥有模块权限调用的图片
+/seasonsBrows为top页四季眉头
+******************sysoper************************************
+	accredit.gif	授权
+	add.gif			添加
+	answer.gif		回复
+	borrowbook.gif	借书
+	confirm.gif		审批
+	del.gif			删除
+	delforever.gif	永久删除
+	embody.gif		具体
+	execute.gif		执行
+	look.gif		查看
+	lose.gif		丢失
+	moveall.gif		移除所有
+	operator.gif	操作
+	particular.gif	详细信息
+	putgroom.gif	设为推荐
+	puttop.gif		置顶
+	reborrow.gif	续借
+	returnbook.gif	还书
+	rev.gif			恢复，复原
+	unputgroom.gif	取消推荐
+	unputtop.gif	取消置顶
+	update.gif		修改
+**********************************************************
+
+bgpt.GIF	显示首页主柜架部分
+tcdl.gif	退出登录
+top_toolbar.gif 首页顶部横条背景图片
+index_bg.jpg	登陆页背景
+button_main_title.gif	登陆后首页按钮在头处显示
+minimize.gif	最小化图片
+most.gif		最大化图片
+button_main_title_front.gif	登陆首页后前面那个图片
+index_top_image.jpg	首页顶部图片
+index_left_image.jpg首页左部图片
+index_buttom_image.jpg首页底部灰色图片

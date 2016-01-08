@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://schemas.xmlsoap.org/ws/2004/03/business-process/property"
+			xmlns:vprop="http://schemas.xmlsoap.org/ws/2004/03/business-process/property"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			elementFormDefault="qualified"
+			blockDefault="#all">
+	
+	<!-- SCHEMA TODO:
+	       the namespace of this schema needs to be finalized;
+	       this xsd needs to be renamed to wsbpel_varprop.xsd to reflect the updated name in the spec
+	       -->
+	
+	<xsd:annotation>
+		<xsd:documentation>
+			Message Properties Schema
+			2004-03-24: YIU-OSS: Alex Yiu: Extracted from wsbpel-specification-draft.doc (Rev 1.22 - Modified on 24 March, 2004)
+			2004-03-24: YIU-OSS: Alex Yiu: Updated targetNamespace with "2004/03"
+			2004-03-24: YIU-OSS: Alex Yiu: Adding minOccurs="0" to query element; fix the syntax typo in "propertyAlias" definition (e.g remove complexContent)
+			2004-04-07: YIU-OSS: Alex Yiu: removed unnecessary wsbp xmlns
+			2005-07-25: YIU-OSS: Alex Yiu: Apply Issue 196 by adding anyAttribute to query
+			2005-08-30: YIU-OSS: Alex Yiu: This XSD becomes merged into wsbpel_main.xsd, as a result of Issue 192. This XSD becomes obsolete.
+			2006-07-28: Rev 1.7: YIU-OSS: Alex Yiu:
+				Apply Issue a portion of Issue 294.1:
+				Create a schema of a separate namespace for "property" and "propertyAlias"
+			2006-08-02: Rev 1.8: Thomas Schulze:
+				Applied Issue 305, some formatting changes.
+			2006-08-03: Rev 1.9: Alex Yiu:
+				Update one comment.
+				Additional note: 
+				  -- Thomas Schulze has made a normative change 
+				     in Rev 1.8 by adding blockDefault="#all".
+				  -- We may need to evaluate this blockDefault change comprehensively
+			2006-08-07: Rev 1.10: Thomas Schulze
+				Removed the default namespace.
+				Moved minOccurs="0" maxOccurs="unbounded" in element documentation from sequence to any.
+				Changed prefix "prop:" to "vprop:".
+		</xsd:documentation>
+	</xsd:annotation>
+	
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/xml.xsd"/>
+	
+	<xsd:element name="property">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="vprop:tExtensibleElements">
+					<xsd:attribute name="name" type="xsd:NCName" use="required"/>
+					<xsd:attribute name="type" type="xsd:QName"/>
+					<xsd:attribute name="element" type="xsd:QName"/>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="tExtensibleElements">
+		<xsd:annotation>
+			<xsd:documentation>
+				This type is extended by other component types to allow elements and attributes from
+				other namespaces to be added at the modeled places.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="vprop:documentation" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:anyAttribute namespace="##other" processContents="lax"/>
+	</xsd:complexType>
+	
+	<xsd:element name="documentation">
+		<xsd:complexType mixed="true">
+			<xsd:sequence>
+				<xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="source" type="xsd:anyURI"/>
+			<xsd:attribute ref="xml:lang"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="propertyAlias">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="vprop:tExtensibleElements">
+					<xsd:sequence>
+						<xsd:element ref="vprop:query" minOccurs="0"/>
+					</xsd:sequence>
+					<xsd:attribute name="propertyName" type="xsd:QName" use="required"/>
+					<xsd:attribute name="messageType" type="xsd:QName"/>
+					<xsd:attribute name="part" type="xsd:NCName"/>
+					<xsd:attribute name="type" type="xsd:QName"/>
+					<xsd:attribute name="element" type="xsd:QName"/>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="query" type="vprop:tQuery"/>
+	<xsd:complexType name="tQuery" mixed="true">
+		<xsd:sequence>
+			<xsd:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="queryLanguage" type="xsd:anyURI" default="urn:oasis:names:tc:ws2.0:sublang:xpath1.0"/>
+		<xsd:anyAttribute namespace="##other" processContents="lax"/>
+	</xsd:complexType>
+	
+</xsd:schema>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!--  action begin -->
+
+	<!--通讯录类别-->
+
+	<!-- action end -->
+	<!--  service begin -->
+	<bean id="BusinessObjectService" class="et.bo.callcenter.business.impl.BoImpl" singleton="true">
+		<property name="callinFirewallService">
+		    <ref bean="CallinFirewallService"/>
+		</property>
+		<property name="policeInfoService">
+			<ref bean="PoliceInfoService"/>
+		</property>
+		<property name="userService">
+			<ref bean="userService"/>
+		</property>
+		<property name="policeCallInService">
+			<ref bean="PoliceCallInService"/>
+		</property>
+		<property name="portCompareService">
+		    <ref bean="PortCompareService"/>
+		</property>
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+		<property name="cclogService">
+				<ref bean="CclogService" />
+		</property>
+		<property name="us">
+				<ref bean="userService" />
+		</property>
+		<property name="operatorStatisticService">
+			<ref bean="OperatorStatisticService" />
+		</property>
+	</bean>
+	<!--  service end   -->
+</beans>

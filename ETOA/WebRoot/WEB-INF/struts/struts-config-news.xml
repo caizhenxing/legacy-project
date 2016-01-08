@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	   <!-- new add -->
+       <form-bean name="NewsArticleInfoBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="articleid" type="java.lang.String" />
+    	<form-property name="classid" type="java.lang.String" />
+    	<form-property name="title" type="java.lang.String" />
+    	<form-property name="author" type="java.lang.String" />
+    	<form-property name="copyfrom" type="java.lang.String" />
+    	<form-property name="editor" type="java.lang.String" />
+    	<form-property name="key" type="java.lang.String" />
+    	<form-property name="hits" type="java.lang.String" />
+    	<form-property name="updatetime" type="java.lang.String" />
+    	<form-property name="hot" type="java.lang.String" />
+    	<form-property name="ontop" type="java.lang.String" />
+    	<form-property name="elite" type="java.lang.String" />
+    	<form-property name="passed" type="java.lang.String" />
+    	<form-property name="content" type="java.lang.String" />
+    	<form-property name="includepic" type="java.lang.String" />
+    	<form-property name="defaultpicurl" type="java.lang.String" />
+    	<form-property name="uploadfiles" type="java.lang.String" />
+    	<form-property name="deleted" type="java.lang.String" />
+    	<form-property name="chk" type="java.lang.String[]" />
+    	<form-property name="chkall" type="java.lang.String" />
+    	<form-property name="operator" type="java.lang.String" />
+	 </form-bean>
+	 <!-- format info -->
+	 <form-bean name="FormatBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="typeId" type="java.lang.String" />
+			<form-property name="formatId" type="java.lang.String" />
+			<form-property name="typeName" type="java.lang.String" />
+			<form-property name="classId" type="java.lang.String" />
+			<form-property name="articleNum" type="java.lang.String" />
+			<form-property name="showType" type="java.lang.String" />
+			<form-property name="showProperty" type="java.lang.String" />
+			<form-property name="showTile" type="java.lang.String" />
+			<form-property name="author" type="java.lang.String" />
+			<form-property name="clickNum" type="java.lang.String" />
+			<form-property name="showDate" type="java.lang.String" />
+			<form-property name="showMore" type="java.lang.String" />
+			<form-property name="showTileMax" type="java.lang.String" />
+			<form-property name="titleFontColor" type="java.lang.String" />
+			<form-property name="titleFontType" type="java.lang.String" />
+			<form-property name="titleFontSize" type="java.lang.String" />
+			<form-property name="contextNum" type="java.lang.String" />
+			<form-property name="orderDate" type="java.lang.String" />
+			<form-property name="showOrderColumn" type="java.lang.String" />
+			<form-property name="showOrderType" type="java.lang.String" />
+    </form-bean>
+    
+    <form-bean name="uploadForm" type="et.bo.news.form.UploadFileForm" />
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+     <action
+      attribute="NewsArticleInfoBean"
+      name="NewsArticleInfoBean"
+      path="/news/opernews"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+      <forward name="main" path="/news/article/articleMain.jsp"/>
+      <forward name="query" path="/news/article/articleQuery.jsp"/>
+      <forward name="load" path="/news/article/articleLoad.jsp"/>
+      <forward name="list" path="/news/article/articleList.jsp"/>
+      <forward name="error" path="/news/article/error.jsp"/>
+      <forward name="recyclelist" path="/news/article/recycleList.jsp"/>
+      <forward name="upload" path="/news/editor/upload.jsp"/>
+      <forward name="newsInfo" path="/oa/main/newsInfo.jsp"/>
+    </action>
+    <action attribute="uploadForm" input="/editor/uploadFile.jsp" name="uploadForm" path="/editor/uploadFile" scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
+		<forward name="success" path="/news/editor/upload.jsp" />
+		<forward name="uploadfail" path="/news/editor/uploadFail.jsp" />
+	</action>
+  </action-mappings>
+ 
+</struts-config>
+

@@ -1,0 +1,19 @@
+#
+#Tue Sep 19 14:48:01 CST 2006
+springDaoFile=
+genVersionTag=true
+daoSFId=
+configFile=/ETWorkFlow/src/hl/config/hibernate/hibernate.cfg.xml
+sessionFactoryId=
+profile=
+libInstallFolder=/WebRoot/WEB-INF/lib
+addLibs2Classpath=true
+jndiPath=
+genBasicCompId=true
+addLibs2Project=true
+keyGenerator=assigned
+createConfigFile=true
+basePersistenceClass=
+version=3.0
+useJavaTypes=false
+reSettingsFile=/TopgloryWorkFlow/src/hl/config/hibernate/hibernate.reveng.xml

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/flow/flowList.jsp" location="0,184" dimension="148,48" />
+  <StrutsActivity path="/flow/flowMain.jsp" location="248,184" dimension="148,48" />
+  <StrutsActivity path="/flow/flowQuery.jsp" location="496,184" dimension="154,48" />
+  <StrutsActivity path="/flow/flowLoad.jsp" location="750,184" dimension="148,48" />
+  <StrutsActivity path="/event/eventList.jsp" location="50,350" dimension="160,48" />
+  <StrutsActivity path="/event/eventMain.jsp" location="350,350" dimension="160,48" />
+  <StrutsActivity path="/event/eventQuery.jsp" location="650,350" dimension="166,48" />
+  <StrutsActivity path="/event/eventLoad.jsp" location="950,350" dimension="160,48" />
+  <StrutsActivity path="/event/event.do" location="950,150" dimension="358,84" />
+  <StrutsTransition id="/flow/flow.do,load,/flow/flowLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="626,42" />
+      <AbsolutePoint location="824,42" />
+      <AbsolutePoint location="824,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/event/event.do,query,/event/eventQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,199" />
+      <AbsolutePoint location="913,199" />
+      <AbsolutePoint location="913,374" />
+      <AbsolutePoint location="816,374" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/event/event.do,load,/event/eventLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1095,234" />
+      <AbsolutePoint location="1095,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/flow/flow.do,main,/flow/flowMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="381,84" />
+      <AbsolutePoint location="381,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/flow/flow.do,list,/flow/flowList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="268,42" />
+      <AbsolutePoint location="74,42" />
+      <AbsolutePoint location="74,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/event/event.do,list,/event/eventList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1129,234" />
+      <AbsolutePoint location="1129,279" />
+      <AbsolutePoint location="130,279" />
+      <AbsolutePoint location="130,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/flow/flow.do,query,/flow/flowQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="511,84" />
+      <AbsolutePoint location="511,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/event/event.do,main,/event/eventMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,169" />
+      <AbsolutePoint location="430,169" />
+      <AbsolutePoint location="430,350" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

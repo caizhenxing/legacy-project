@@ -1,0 +1,132 @@
+## ***********************************************
+## 未登録応募者検索画面(所属研究機関担当者向け)
+## 未登録応募者検索フォーム情報 → shinseishaSearchForm
+## ***********************************************
+
+## 2005/03/09 新規作成
+
+#parse( $commonSetting )
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/shozoku/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width="72" height="20" border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#CC6666" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/shozoku/showMainMenu')">所属研究機関担当者向けメニュー</a>＞<a href="$link.setAction('/shozoku/shinseishaKanri/showMenu')">応募者管理</a>（応募者管理メニュー＞<b>未登録応募者情報検索</b><font size="1">＞未登録応募者情報一覧</font>）</font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width="61" height="49" alt=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont">
+       <br>未登録応募者情報検索</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width="213" height="49" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+    <!-- 本文ここから -->
+    #*<p align="left">一括登録を行う未登録の応募者情報の検索を行います。</p>*#
+	<p align="left">ID・パスワードを発行していない応募者の検索を行います。</p>
+    <p align="left">検索条件を入力して[検索実行]ボタンをクリックしてください。</p>
+    #errorMarkup()
+    <form method="POST" action="$link.setAction('/shozoku/shinseishaKanri/unregisteredSearchList')">
+     <input type="hidden" name="startPosition" value="0">
+
+          <!--webbot bot="SaveResults"
+          U-File="fpweb:///_private/form_results.txt" S-Format="TEXT/CSV"
+          S-Label-Fields="TRUE" -->
+
+    <!-- 一覧用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+     <tr>
+      <td>
+       <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+        <tr>
+         <th align="left" rowspan="2">応募者名</th>
+         <td>（漢字等）（姓）<input size="20" name="nameKanjiSei" value="$!escape.getText($!shinseishaSearchForm.nameKanjiSei)">　（名）<input size="20" name="nameKanjiMei" value="$!escape.getText($!shinseishaSearchForm.nameKanjiMei)">　[部分一致]</td>
+        </tr>
+        <tr>
+         <td>（フリガナ）（姓）<input size="20" name="nameKanaSei" value="$!escape.getText($!shinseishaSearchForm.nameKanaSei)">　（名）<INPUT size="20" name="nameKanaMei" value="$!escape.getText($!shinseishaSearchForm.nameKanaMei)">　[部分一致]</td>
+        </tr>
+        <tr>
+         <th align="left">部局番号</th>
+         <td><input size="4" name="bukyokuCd" value="$!escape.getText($!shinseishaSearchForm.bukyokuCd)">　<a href="$link.setAction('/bukyokuList')" target="_blank"><img src="$path/images/bt_list.gif" width="41" height="22" alt="一覧" border="0"></a>　[完全一致]</td>
+        </tr>
+        <tr>
+         <th align="left">研究者番号</th>
+         <td><input size="16" name="kenkyuNo" value="$!escape.getText($!shinseishaSearchForm.kenkyuNo)">　[完全一致]</td>
+        </tr>
+       </table>
+      </td>
+     </tr>
+    </table>
+    <!-- 一覧用テーブルここまで-->
+    <br>
+    <!-- 本文ここまで -->
+
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><input type="image" src="$path/images/bt_search.gif" name="submit" width="114" height="28" border="0" alt="検索実行"></td>
+       <td><a href="$link.setAction('/shozoku/shinseishaKanri/showMenu')"><img src="$path/images/bt_bk_1menu.gif" width="219" height="28" alt="応募者管理メニューに戻る" border="0"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width="8" height="26" alt=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shozoku/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width="72" height="26" border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width="8" height="26" alt=""></td>
+     </tr>
+    </form>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+</body>
+</html>

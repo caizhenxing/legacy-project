@@ -1,0 +1,77 @@
+Manifest-Version: 1.0
+
+Name: com/jacob/com/ComException.class
+Digest-Algorithms: SHA MD5 
+SHA-Digest: SHf1cbmThFXoDxJcoxH/xnpuP2E=
+MD5-Digest: MALnqEN2rEQc7ci/zY29OQ==
+
+Name: com/jacob/com/ComFailException.class
+Digest-Algorithms: SHA MD5 
+SHA-Digest: UclrGp0baJkTJ+rsYRoh0JrNoCc=
+MD5-Digest: 8DPF8C9MbUdjhQxxRInrOg==
+
+Name: com/jacob/com/ComThread.class
+Digest-Algorithms: SHA MD5 
+SHA-Digest: fM8wz3ePRMGFCmyxOdW6D6vJuPg=
+MD5-Digest: RE5BqAGeq0ecafnGc5O99g==
+
+Name: com/jacob/com/Dispatch.class
+Digest-Algorithms: SHA MD5 
+SHA-Digest: CLQ77CKUf9T+pi2chH03aHilCkI=
+MD5-Digest: hOGBeYIvW67idDdc4q+xtw==
+
+Name: com/jacob/com/DispatchEvents.class
+Digest-Algorithms: SHA MD5 
+SHA-Digest: ioT02gFxuYfp8DG4HhXl9N+o2PM=
+MD5-Digest: D9ZiVJtg9s6m0arv2A9HGg==
+
+Name: com/jacob/com/DispatchProxy.class
+Digest-Algorithms: SHA MD5 
+SHA-Digest: IG/PDUYBTG8Xd9mZ0KXsOCeh5EY=
+MD5-Digest: BC6o9H1MMnH9ujsnDyzIRA==
+
+Name: com/jacob/com/EnumVariant.class
+Digest-Algorithms: SHA MD5 
+SHA-Digest: dH44qZpG1FHyOGnQ3Mo+3JcJMlM=
+MD5-Digest: KLa2eG2uBRd7udop2hyQjQ==
+
+Name: com/jacob/com/JacobObject.class
+Digest-Algorithms: SHA MD5 
+SHA-Digest: quW7hxZVdtAvhsKSx7bwrbaT6YI=
+MD5-Digest: xa5Is/H+zIkMU2O5J4R9Hw==
+
+Name: com/jacob/com/MainSTA.class
+Digest-Algorithms: SHA MD5 
+SHA-Digest: oE4+dOw7+wdBqUF/CUmD0b0wQMI=
+MD5-Digest: gUJ9HhXTiWvS5NuoHW79LA==
+
+Name: com/jacob/com/ROT.class
+Digest-Algorithms: SHA MD5 
+SHA-Digest: ZeOZ5HomgpTpRRh4Iehli6N7E4s=
+MD5-Digest: bRbPtH9p4YB2ohdWsYzRTQ==
+
+Name: com/jacob/com/SafeArray.class
+Digest-Algorithms: SHA MD5 
+SHA-Digest: d1FBrb9JQacdj3+5A+PTP4Dg340=
+MD5-Digest: CcpadLVE6oU73DGlPT1qvg==
+
+Name: com/jacob/com/STA.class
+Digest-Algorithms: SHA MD5 
+SHA-Digest: yHJc6/GpzcSlt/tMpDX7qh/XgsE=
+MD5-Digest: eDfzdfAJQJbtjcn7anIwnA==
+
+Name: com/jacob/com/Variant.class
+Digest-Algorithms: SHA MD5 
+SHA-Digest: 3O1WMkVmGm7+oPBQOBx5SHNuNsY=
+MD5-Digest: /7Gn/ynWS7rWrNd83kucBA==
+
+Name: com/jacob/com/WrongThreadException.class
+Digest-Algorithms: SHA MD5 
+SHA-Digest: Fqh7/1u62hmZqbCP3LBKfPZ1ZRM=
+MD5-Digest: QRWNE0QSeySc7B+gNAd2fg==
+
+Name: com/jacob/activeX/ActiveXComponent.class
+Digest-Algorithms: SHA MD5 
+SHA-Digest: WBWhQyxiz35WALUe9OFnUjT/mXE=
+MD5-Digest: 4pzyX9Tvn/UfrcIkvZsg3g==
+

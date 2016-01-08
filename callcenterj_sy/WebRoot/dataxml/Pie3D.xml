@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="GBK"?>
+<chart caption="12316呼叫中心年话务量统计" palette='4' decimals='0' enableSmartLabels='1' enableRotation='0'
+	bgColor='99CCFF,FFFFFF' bgAlpha='40,100' bgRatio='0,100' bgAngle='360'
+	showBorder='1' startingAngle='70'>
+	<set label="2008-04" value="2087" />
+	<set label="2008-05" value="4892" />
+	<set label="2008-06" value="4386" />
+	<set label="2008-07" value="7052" />
+	<set label="2008-08" value="5549" />
+	<set label="2008-09" value="5778" />
+	<set label="2008-10" value="5719" />
+	<set label="2008-11" value="4236" />
+	<set label="2008-12" value="7594" />
+	<set label="2009-01" value="10240" />
+	<set label="2009-02" value="7608" />
+	<set label="2009-03" value="1940" />
+</chart>

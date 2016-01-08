@@ -1,0 +1,21 @@
+/.cvsignore/1.1/Sat Jan  7 02:13:47 2006//
+/.struts-config.mex/1.1/Wed Jan  4 05:53:06 2006/-kb/
+D/lib////
+/log4j.xml/1.1/Thu Oct 20 09:42:25 2005//
+/newtree.tld/1.1/Sat Aug 19 05:32:51 2006//
+/page.tld/1.1/Sat Aug 19 05:33:08 2006//
+D/spring////
+/spring.tld/1.1/Wed Jan  4 05:54:50 2006//
+/struts-bean.tld/1.1/Mon Nov  6 05:17:05 2006//
+/struts-config.xml/1.1/Wed Jan  4 05:53:06 2006//
+/struts-config_1_2.dtd/1.1/Tue Nov  7 03:16:10 2006//
+/struts-html.tld/1.1/Mon Nov  6 05:17:05 2006//
+/struts-logic.tld/1.1/Mon Nov  6 05:17:05 2006//
+/struts-nested.tld/1.1/Mon Nov  6 05:17:06 2006//
+/struts-template.tld/1.1/Wed Jan  4 05:53:13 2006//
+/struts-tiles.tld/1.1/Mon Nov  6 05:17:06 2006//
+/tiles-config_1_1.dtd/1.1/Tue Nov  7 03:16:10 2006//
+/validator-rules.xml/1.1/Tue Nov  7 03:16:10 2006//
+/web-app_2_2.dtd/1.1/Mon Nov  6 05:17:06 2006//
+/web-app_2_3.dtd/1.1/Mon Nov  6 05:17:05 2006//
+/web.xml/1.1/Sat Aug 19 01:58:42 2006//

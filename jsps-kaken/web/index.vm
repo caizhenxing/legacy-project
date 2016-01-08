@@ -1,0 +1,29 @@
+<html>
+
+<head>
+## ************************************************
+#parse( $commonSetting )
+## ************************************************
+ <meta http-equiv="Content-Language" content="ja">
+ <meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+ <title>開発用メニュー（科研費）</title>
+  <script type="text/javascript" language="javascript" src="./js/fncWindowOpen.js"></script>
+</head>
+
+<body>
+
+<p>開発用メニュー（科研費）</p>
+<p><a href="#" onClick="javascript:fncWindowOpen('$path/shinsei/');return false;">１．応募者機能</a></p>
+<p><a href="#" onClick="javascript:fncWindowOpen('$path/shozoku/');return false;">２．所属研究機関担当者機能</a></p>
+<p><a href="#" onClick="javascript:fncWindowOpen('$path/gyomu/');return false;">３．業務担当者機能</a></p>
+<p><a href="#" onClick="javascript:fncWindowOpen('$path/shinsa/');return false;">４．審査者機能</a></p>
+<p><a href="#" onClick="javascript:fncWindowOpen('$path/system/');return false;">５．システム管理者機能</a></p>
+<p><a href="#" onClick="javascript:fncWindowOpen('$path/bukyoku/');return false;">６．部局担当者機能</a></p>
+<p><a href="#" onClick="javascript:fncWindowOpen('$path/question/');return false;">７．アンケート機能</a></p>
+
+
+
+
+</body>
+
+</html>

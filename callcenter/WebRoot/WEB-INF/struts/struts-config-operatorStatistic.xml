@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="operatorStatisticBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	  <form-property name="id" type="java.lang.String" />
+      	  <form-property name="operator" type="java.lang.String" />
+      	  <form-property name="beginTime" type="java.lang.String" />
+    	  <form-property name="endTime" type="java.lang.String" />
+          
+	      <form-property name="operatorState" type="java.lang.String"/>
+	   </form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+     <action
+      attribute="operatorStatisticBean"
+      name="operatorStatisticBean"
+      path="/pcc/operatorStatistic"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="main"  path="/pcc/operatorStatistic/operatorStatisticMain.jsp"/>
+           <forward name="chuxiMain"  path="/pcc/operatorStatistic/chuxiInfoMain.jsp"/>
+           <forward name="workTimeMain"  path="/pcc/operatorStatistic/workTimeMain.jsp"/>
+           <forward name="query" path="/pcc/operatorStatistic/operatorStatisticQuery.jsp"/>
+           <forward name="chuxiQuery" path="/pcc/operatorStatistic/chuxiInfoQuery.jsp"/>
+           <forward name="workTimeQuery" path="/pcc/operatorStatistic/workTimeQuery.jsp"/>
+           <forward name="load"  path="/pcc/operatorStatistic/operatorStatisticLoad.jsp"/>
+           <forward name="list"  path="/pcc/operatorStatistic/operatorStatisticList.jsp"/>
+           <forward name="chuxiList"  path="/pcc/operatorStatistic/chuxiInfoList.jsp"/>
+           <forward name="workTimeList"  path="/pcc/operatorStatistic/workTimeList.jsp"/>
+           <forward name="detail"  path="/pcc/operatorStatistic/operatorStatisticDetail.jsp"/>            
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

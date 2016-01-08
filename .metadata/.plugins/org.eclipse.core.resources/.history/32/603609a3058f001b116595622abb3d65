@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/forum/moduleManager.do" location="50,350" dimension="358,84" />
+  <StrutsActivity path="/forum/moduleManagerList.jsp" location="350,50" dimension="208,48" />
+  <StrutsActivity path="/forum/moduleManagerMain.jsp" location="650,50" dimension="208,48" />
+  <StrutsActivity path="/forum/moduleManagerLoad.jsp" location="950,50" dimension="208,48" />
+  <StrutsActivity path="/forum/moduleManagerQuery.jsp" location="650,350" dimension="214,48" />
+  <StrutsActivity path="/forum/moduleManagerDetail.jsp" location="950,350" dimension="220,48" />
+  <StrutsActivity path="/user/userList.jsp" location="0,184" dimension="148,48" />
+  <StrutsActivity path="/user/userMain.jsp" location="248,184" dimension="148,48" />
+  <StrutsActivity path="/user/userLoad.jsp" location="496,184" dimension="148,48" />
+  <StrutsActivity path="/user/userQuery.jsp" location="744,184" dimension="154,48" />
+  <StrutsActivity path="/user/userDetail.jsp" location="998,184" dimension="160,48" />
+  <StrutsActivity path="/forum/moduleManager/moduleManagerList.jsp" />
+  <StrutsActivity path="/forum/moduleManager/moduleManagerMain.jsp" />
+  <StrutsActivity path="/forum/moduleManager/moduleManagerLoad.jsp" />
+  <StrutsActivity path="/forum/moduleManager/moduleManagerQuery.jsp" />
+  <StrutsActivity path="/forum/moduleManager/moduleManagerDetail.jsp" />
+  <StrutsTransition id="/forum/moduleManager.do,list,/forum/moduleManager/moduleManagerList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/moduleManager.do,load,/forum/moduleManager/moduleManagerLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/moduleManager.do,query,/forum/moduleManager/moduleManagerQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/moduleManager.do,load,/forum/moduleManagerLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/moduleManager.do,main,/forum/moduleManager/moduleManagerMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/moduleManager.do,main,/forum/moduleManagerMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/moduleManager.do,detail,/forum/moduleManager/moduleManagerDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/moduleManager.do,detail,/forum/moduleManagerDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/moduleManager.do,query,/forum/moduleManagerQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/moduleManager.do,list,/forum/moduleManagerList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

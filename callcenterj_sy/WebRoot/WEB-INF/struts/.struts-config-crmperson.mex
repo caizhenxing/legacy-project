@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/creperson/LMComp.do" location="650,350" dimension="308,88" />
+  <StrutsActivity path="/creperson/LM.do" location="650,550" dimension="308,88" />
+  <StrutsActivity path="/crmperson/compLoad.jsp" location="1250,550" dimension="153,49" />
+  <StrutsActivity path="/crmperson/compList.jsp" location="1250,650" dimension="146,49" />
+  <StrutsActivity path="/crmperson/compQuery.jsp" location="1250,750" dimension="160,49" />
+  <StrutsActivity path="/crmperson/linkmanlist.jsp" location="650,1050" dimension="153,49" />
+  <StrutsActivity path="/crmperson/linkmanQuery.jsp" location="950,950" dimension="170,49" />
+  <StrutsActivity path="/crmperson/LMNewquery.jsp" location="50,1150" dimension="167,49" />
+  <StrutsActivity path="/crm/customer/sel.jsp" location="50,350" dimension="133,49" />
+  <StrutsActivity path="/crmperson/linkmanload.jsp" location="650,950" dimension="160,49" />
+  <StrutsActivity path="/crmperson/linkMain.jsp" location="1250,450" dimension="142,49" />
+  <StrutsActivity path="/crmperson/Peraddtel.jsp" location="1250,1050" dimension="151,49" />
+  <StrutsActivity path="/crm/customer/addtel.jsp" location="350,350" dimension="150,49" />
+  <StrutsActivity path="/crmperson/compMain.jsp" location="1250,850" dimension="152,49" />
+  <StrutsActivity path="/crmperson/customerLoad.jsp" location="650,750" dimension="172,49" />
+  <StrutsActivity path="/crmperson/customerList.jsp" location="50,650" dimension="165,49" />
+  <StrutsActivity path="/crmperson/customerQuery.jsp" location="950,750" dimension="179,49" />
+  <StrutsActivity path="/crmperson/customerMain.jsp" location="350,650" dimension="171,49" />
+  <StrutsActivity path="/crm/customer/customerList.jsp" location="0,188" dimension="180,49" />
+  <StrutsActivity path="/crm/customer/customerMain.jsp" location="280,188" dimension="186,49" />
+  <StrutsActivity path="/crm/customer/customerLoad.jsp" location="566,188" dimension="187,49" />
+  <StrutsActivity path="/crm/customer/customerQuery.jsp" location="853,188" dimension="194,49" />
+  <StrutsActivity path="/crm/customer/linkMain.jsp" location="1147,188" dimension="157,49" />
+  <StrutsActivity path="/crm/customer/linkman.jsp" location="0,1316" dimension="155,49" />
+  <StrutsActivity path="/crm/customer/showlinkman.jsp" location="255,1316" dimension="180,49" />
+  <StrutsActivity path="/crm/customer/showproduce.jsp" location="0,752" dimension="184,49" />
+  <StrutsActivity path="/crm/customer/produce.jsp" location="284,752" dimension="159,49" />
+  <StrutsActivity path="/crm/customer/showlinknote.jsp" location="0,1034" dimension="182,49" />
+  <StrutsActivity path="/crm/customer/linknote.jsp" location="282,1034" dimension="157,49" />
+  <StrutsActivity path="/crm/customer/UserCommentsList.jsp" location="0,470" dimension="208,49" />
+  <StrutsActivity path="/crm/customer/UserCommentsLoad.jsp" location="308,470" dimension="215,49" />
+  <StrutsActivity path="/crmperson/linkman.jsp" location="650,850" dimension="140,49" />
+  <StrutsActivity path="/crmperson/showlinkman.jsp" location="950,850" dimension="165,49" />
+  <StrutsActivity path="/crm/customer/Peraddtel.jsp" location="1250,950" dimension="166,49" />
+  <StrutsActivity path="/crm/crmperson/Peraddtel.jsp" location="950,1050" dimension="172,49" />
+  <StrutsActivity path="/crmperson/compquery.jsp" location="1550,550" dimension="184,48" />
+  <StrutsActivity path="/crmperson/successPage.jsp" />
+  <StrutsTransition id="/creperson/LM.do,LMNewquery,/crmperson/LMNewquery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="867,638" />
+      <AbsolutePoint location="867,1174" />
+      <AbsolutePoint location="217,1174" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/creperson/LM.do,LMquery,/crmperson/linkmanQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="897,638" />
+      <AbsolutePoint location="897,974" />
+      <AbsolutePoint location="950,974" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/creperson/LM.do,toPeraddTel,/crmperson/Peraddtel.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="958,584" />
+      <AbsolutePoint location="1222,584" />
+      <AbsolutePoint location="1222,1074" />
+      <AbsolutePoint location="1250,1074" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/creperson/LMComp.do,compquery,/crmperson/compList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,384" />
+      <AbsolutePoint location="538,384" />
+      <AbsolutePoint location="538,714" />
+      <AbsolutePoint location="1323,714" />
+      <AbsolutePoint location="1323,699" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/creperson/LM.do,LMload,/crmperson/linkmanload.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,594" />
+      <AbsolutePoint location="611,594" />
+      <AbsolutePoint location="611,974" />
+      <AbsolutePoint location="650,974" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/creperson/LMComp.do,compMain,/crmperson/compMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="958,424" />
+      <AbsolutePoint location="1162,424" />
+      <AbsolutePoint location="1162,874" />
+      <AbsolutePoint location="1250,874" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/creperson/LMComp.do,Complist,/crmperson/compList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="958,364" />
+      <AbsolutePoint location="1485,364" />
+      <AbsolutePoint location="1485,674" />
+      <AbsolutePoint location="1396,674" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/creperson/LM.do,sel,/crm/customer/sel.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="804,550" />
+      <AbsolutePoint location="804,465" />
+      <AbsolutePoint location="116,465" />
+      <AbsolutePoint location="116,399" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/creperson/LMComp.do,compMain,/crmperson/compList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="958,424" />
+      <AbsolutePoint location="1092,424" />
+      <AbsolutePoint location="1092,674" />
+      <AbsolutePoint location="1250,674" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/creperson/LMComp.do,Compload,/crmperson/compLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="774,438" />
+      <AbsolutePoint location="774,534" />
+      <AbsolutePoint location="1326,534" />
+      <AbsolutePoint location="1326,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/creperson/LMComp.do,compquery,/crmperson/compquery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="774,350" />
+      <AbsolutePoint location="774,113" />
+      <AbsolutePoint location="1642,113" />
+      <AbsolutePoint location="1642,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/creperson/LMComp.do,Compquery,/crmperson/compQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="958,394" />
+      <AbsolutePoint location="1192,394" />
+      <AbsolutePoint location="1192,774" />
+      <AbsolutePoint location="1250,774" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/creperson/LMComp.do,SuccessPage,/crmperson/successPage.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="804,394" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/creperson/LMComp.do,SuccessPage,/crmperson/compquery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="804,350" />
+      <AbsolutePoint location="804,282" />
+      <AbsolutePoint location="1612,282" />
+      <AbsolutePoint location="1612,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/creperson/LM.do,LMlist,/crmperson/linkmanlist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="837,638" />
+      <AbsolutePoint location="837,1074" />
+      <AbsolutePoint location="803,1074" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/creperson/LM.do,LMMain,/crmperson/linkMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="834,550" />
+      <AbsolutePoint location="834,485" />
+      <AbsolutePoint location="1250,485" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

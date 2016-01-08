@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+  <form-beans>
+    <form-bean name="com.qware.common.dict.web.CommonBasicCodeForm" type="com.qware.common.dict.web.CommonBasicCodeForm"/>
+    <form-bean name="com.qware.common.basiccode.web.CommonBasicCodeInitForm" type="com.qware.common.basiccode.web.CommonBasicCodeInitForm"/>    
+  </form-beans>
+  
+  <global-exceptions >
+  <exception
+      key="all"
+      path="/jsp/common/error.jsp"
+      type="java.lang.Exception" /></global-exceptions>
+	<global-forwards >
+	<forward name="globalMessage" path="/jsp/common/message.jsp" />
+	</global-forwards>
+	
+	
+  <action-mappings>
+  	<action path="/common/basiccodemanager"
+  			name="com.qware.common.dict.web.CommonBasicCodeForm"
+  			type="com.qware.common.dict.web.CommonBasicCodeAction"
+  			attribute="theForm"
+  			parameter="step"
+  			scope="request"
+  			validate="true"
+  	>
+  		<forward name="entry" path="/jsp/basiccode/code/entry.jsp"/>
+  		<forward name="list" path="/jsp/basiccode/code/list.jsp"/>
+  		<forward name="edit" path="/jsp/basiccode/code/edit.jsp"/>
+  		<forward name="detail" path="/jsp/basiccode/code/detail.jsp"/>
+  	</action>
+	<action path="/common/basiccodeinit"
+  			name="com.qware.common.basiccode.web.CommonBasicCodeInitForm"
+  			type="com.qware.common.basiccode.web.CommonBasicCodeInitAction"
+  			attribute="theForm"
+  			parameter="step"
+  			scope="request"
+  			validate="true"
+  	>  		
+  		<forward name="init" path="/jsp/basiccode/init/init.jsp"/>
+  	</action>
+  	<action path="/common/fileLoad"
+  			name=""
+  			type="com.qware.common.fileload.web.FileLoadAction"
+  			attribute="theForm"
+  			parameter="step"
+  			scope="request"
+  			validate="true"
+  	>  	
+  	</action>
+  </action-mappings>
+</struts-config>

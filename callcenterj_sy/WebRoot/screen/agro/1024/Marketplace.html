@@ -1,0 +1,213 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<!-- 引入jquery -->
+<script type="text/javascript" src="../../../js/jquery/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="../../../js/jquery/plug/jquery[1].json-1.3.min.js"></script>
+<script type="text/javascript" src="../../../js/jquery/plug/jquery.blockUI.js"></script>
+<!-- 滚动页面 -->
+<script language="javascript" src="../../../js/MSClass.js" ></script>
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+	
+		//$.blockUI({message:'waiting......'});
+		//setTimeout($.unblockUI, 2000);
+	
+		loadData();
+		$("tr.templeteRow").hide();//确保隐藏
+	}
+	);
+
+	function loadData(){
+		$.post(
+			"../../../sad.do?method=toBigMarketLine",
+			function(data){
+				
+				var result = $.evalJSON(data);
+				
+				//解析数组
+				for(var key in result){
+						var obj = result[key];
+						//根据解析得到问题的内容的值obj.casereply是得到问题答案的值
+						var tc = '';
+						if(key%2==0){
+							tc = 'class="Odd"';
+						}else{
+							tc = 'class="Even"';
+						}
+            			var str = '<tr>';
+            			str = str + '<td '+tc+' width="300">';
+            			str = str + obj.productName;
+            			str = str + '</td>';
+            			str = str + '<td '+tc+' width="150">';
+            			str = str + obj.dictSadType;
+            			str = str + '</td>';
+            			str = str + '<td '+tc+' width="150">';
+            			str = str + obj.productCount;
+            			str = str + '</td>';
+            			str = str + '<td '+tc+' width="300">';
+            			str = str + obj.custTel;
+            			str = str + '</td>';
+            			str = str + '</tr>';
+       
+            			$("#marqueeTableId").append(str);
+            			
+				}
+				new Marquee("marquees","top",1,975,900,30,1000);
+			}
+			
+		);
+	}
+	
+</script>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+/*整个页面div的宽为100%*/
+#width{
+	width: 100%;
+}
+.color{
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	background-color: #FFFFFF;
+}
+/*数据标题文字，黑色12号字体*/
+.wenzi1{
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	text-align: center;
+}
+/*数据标题文字，黄色12号字体*/
+.wenzi2{
+	font-family: "宋体";
+	font-size: 14px;
+	font-weight: bolder;
+	color: #FFFF00;
+	text-align: center;
+}
+.Title {
+	font-family: "宋体";
+	font-size: 14px;
+	color: #000000;
+	text-align: center;
+	border: 1px solid #B5E38A;
+	font-weight: bolder;
+}
+.Even {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #000000;
+	background-color: #EBF8E0;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #B5E38A;
+	border-bottom-color: #B5E38A;
+	border-left-color: #B5E38A;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	text-align: center;
+	line-height: 24px;
+}
+.Odd {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #000000;
+	background-color: #FFFFFF;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #B5E389;
+	border-bottom-color: #B5E389;
+	border-left-color: #B5E389;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	text-align: center;
+	line-height: 24px;
+}
+.time {	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	text-align: center;
+	padding-top: 6px;
+}
+.Title4 {font-family: "宋体";
+	font-size: 12px;
+	color: #C00000;
+	text-align: left;
+	font-weight: bold;
+}
+.Title5 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #499B1F;
+	text-align: left;
+	font-weight: bold;
+}
+.wenzi21 {font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	line-height: 22px;
+}
+.STYLE2 {font-family: "宋体"; font-size: 12px; font-weight: bold; color: #000000; text-align: center; padding-top: 6px; }
+
+-->
+</style>
+</head>
+
+<body>
+<table width="900" height="28" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="300" height="28" background="images/Price Kanban30.jpg" class="Title"><img src="images/Price Kanban31.jpg" width="6" height="14" align="absmiddle">&nbsp;产品</td>
+      <td width="150" background="images/Price Kanban30.jpg" class="Title"><img src="images/Price Kanban31.jpg" width="6" height="14" align="absmiddle">&nbsp;供/求</td>
+      <td width="150" background="images/Price Kanban30.jpg" class="Title"><img src="images/Price Kanban31.jpg" width="6" height="14" align="absmiddle">&nbsp;数量</td>
+      <td width="300" background="images/Price Kanban30.jpg" class="Title"><img src="images/Price Kanban31.jpg" width="6" height="14" align="absmiddle">&nbsp;联系电话</td>
+    </tr>
+    </table>
+    <div id="marquees">
+    <table id="marqueeTableId" width="900" height="561" border="0"  cellpadding="0" cellspacing="0">
+    <tr class="templeteRow">
+      <td width="300" valign="middle" class="Odd">大笨鸡</td>
+      <td width="150" valign="middle" class="Odd">供应<br></td>
+      <td width="150" valign="middle" class="Odd">20斤</td>
+      <td width="300" valign="middle" class="Odd">024-854627852</td>
+    </tr>
+    <tr class="templeteRow">
+      <td valign="middle" class="Even">小笨鸡</td>
+      <td valign="middle" class="Even">供应</td>
+      <td valign="middle" class="Even">20斤</td>
+      <td valign="middle" class="Even">024-78946582</td>
+    </tr>
+        <tr >
+      <td valign="middle" class="Even">小笨鸡</td>
+      <td valign="middle" class="Even">供应</td>
+      <td valign="middle" class="Even">20斤</td>
+      <td valign="middle" class="Even">024-78946582</td>
+    </tr>
+        <tr >
+      <td valign="middle" class="Even">小笨鸡</td>
+      <td valign="middle" class="Even">供应</td>
+      <td valign="middle" class="Even">20斤</td>
+      <td valign="middle" class="Even">024-78946582</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

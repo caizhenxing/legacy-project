@@ -1,0 +1,146 @@
+.12huibai {
+	font-size: 12px;
+	color: #9bceff;
+	line-height: 18px;
+}
+.topdiwen {
+	background-attachment: fixed;
+	background-color: #182841;
+	background-image: url(../images/diwen-serrch.jpg);
+	background-repeat: repeat-x;
+	background-position: left top;
+}
+.liebiao {
+	background-color: #4874b0;
+	height: 18px;
+	width: 80px;
+	font-size: 12px;
+	color: #adcef5;
+	border: 1px solid #4874b0;
+}
+.liebiao2 {
+	background-color: #4874b0;
+	height: 18px;
+	font-size: 12px;
+	color: #adcef5;
+	border: 1px solid #4874b0;
+}
+.dh-diwen {
+	background-attachment: fixed;
+	background-image: url(../images/zdi-dl.jpg);
+	background-repeat: repeat-y;
+	background-position: center top;
+}
+A.12bai-a:link {
+	font-size: 12px;
+	line-height: 18px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+A.12bai-a:visited {
+	font-size: 12px;
+	line-height: 18px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+A.12bai-a:active {
+	font-size: 12px;
+	line-height: 18px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+A.12bai-a:hover {
+	font-size: 12px;
+	line-height: 18px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.12baise {
+	font-size: 12px;
+	color: #FFFFFF;
+	line-height: 18px;
+}
+.dl-di {
+	background-attachment: fixed;
+	background-image: url(../images/di-dl.jpg);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}
+A.12lan-a:link {
+	font-size: 12px;
+	line-height: 18px;
+	color: #9bceff;
+	text-decoration: none;
+}
+A.12lan-a:visited {
+	font-size: 12px;
+	line-height: 18px;
+	color: #9bceff;
+	text-decoration: none;
+}
+A.12lan-a:active {
+	font-size: 12px;
+	line-height: 18px;
+	color: #0075ea;
+	text-decoration: none;
+}
+A.12lan-a:hover {
+	font-size: 12px;
+	line-height: 18px;
+	color: #0075EA;
+	text-decoration: none;
+}
+.photo-kuang {
+	border: 1px solid #9BCEFF;
+}
+.kuang2 {
+	font-size: 12px;
+	color: #132c4a;
+	background-color: #4874b0;
+	height: 18px;
+	width: 25px;
+}
+.kuang {
+	font-size: 12px;
+	color: #01befe;
+	background-color: #FFFFFF;
+	height: 18px;
+	width: 25px;
+}
+A.12hong-a:link {
+	font-size: 12px;
+	line-height: 18px;
+	color: #FF0000;
+	text-decoration: none;
+}
+A.12hong-a:visited {
+	font-size: 12px;
+	line-height: 18px;
+	color: #FF0000;
+	text-decoration: none;
+}
+A.12hong-a:active {
+	font-size: 12px;
+	line-height: 18px;
+	color: #FF0000;
+	text-decoration: none;
+}
+A.12hong-a:hover {
+	font-size: 12px;
+	line-height: 18px;
+	color: #FF0000;
+	text-decoration: none;
+}.show-yptop {
+	background-attachment: fixed;
+	background-color: #194069;
+	background-image: url(../ny/images/jiaopian.jpg);
+	background-repeat: repeat-x;
+	background-position: center bottom;
+}
+}.show-ypdi {
+	background-attachment: fixed;
+	background-color: #194069;
+	background-image: url(../ny/images/jiaopian.jpg);
+	background-repeat: repeat-x;
+	background-position: center top;
+}

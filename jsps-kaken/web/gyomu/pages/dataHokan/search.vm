@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+#parse( $commonSetting )
+
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+
+## ***********************************************
+##スクリプト
+<SCRIPT LANGUAGE=javascript>
+<!--
+function onSearchClick(){
+	document.dataHokan_form.action="$link.setAction('/gyomu/dataHokan/searchList')";
+	document.dataHokan_form.submit();
+}
+//-->
+</SCRIPT>
+## ***********************************************
+
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="javascript:fncWindowOpen('$path/docs/manual3.pdf','help');"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/gyomu/logoff')"><IMG SRC="$path/images/header_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=20 border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#999966" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/gyomu/showMainMenu')">業務担当者向けメニュー</a>＞<a href="$link.setAction('/gyomu/dataHokan/showMenu')">データ保管</a>（データ保管・管理メニュー＞<b>保管データ検索</b>＞<font size="1">保管データ一覧</font>）</font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><IMG SRC="$path/images/subtitle_img1.gif" WIDTH=61 HEIGHT=49 ALT=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+       保管データ検索</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <IMG SRC="$path/images/subtitle_img3.gif" WIDTH=213 HEIGHT=49 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+<!-- 本文ここから -->
+<p align="left">保管した応募情報の検索を行います。</p>
+<p align="left">検索条件を入力して[検索実行]ボタンをクリックしてください。</p>
+
+#errorMarkup()
+
+<form name="dataHokan_form" method="post">
+<!-- 一覧用テーブルここから -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th width="23%" align="left">研究種目名</th>
+     <td width="77%"><select size="1" name="jigyoCd">
+       <option value="">　</option>
+       #showOptions($dataHokanForm.jigyoList $dataHokanForm.jigyoCd)
+     </select></td>
+    </tr>
+    <tr>
+     <th align="left">年度・回数</th>
+     <td>平成<select size="1" name="nendo">
+       <option value="">　</option>
+       #nendoOptions($dataHokanForm.nendo)
+      </select>年度　<select size="1" name="kaisu">
+       <option value="">　</option>
+       #kaisuOptions($dataHokanForm.kaisu)
+     </select>回</td>
+    </tr>
+    
+## 2005/03/28 削除 ここから---------------------------------
+## 理由 「応募者名・ローマ字」項目削除
+##    <tr>
+##     <th align="left" rowspan="3">応募者名</th>
+##     <td>（漢字等）
+##     （姓）<INPUT size="20" name="shinseishaNameKanjiSei" value="$!escape.getText($!dataHokanForm.shinseishaNameKanjiSei)">　
+##     （名）<INPUT size="20" name="shinseishaNameKanjiMei" value="$!escape.getText($!dataHokanForm.shinseishaNameKanjiMei)">　
+##      [部分一致]</td>  
+##    </tr>
+##    <tr>
+##     <td>（フリガナ）
+##     （姓）<INPUT size="20" name="shinseishaNameKanaSei" value="$!escape.getText($!dataHokanForm.shinseishaNameKanaSei)">　
+##     （名）<INPUT size="20" name="shinseishaNameKanaMei" value="$!escape.getText($!dataHokanForm.shinseishaNameKanaMei)"> 
+##      [部分一致]</td>  
+##    </tr>
+##    <tr>
+##     <td>（ローマ字）
+##     （姓）<INPUT size="20" name="shinseishaNameRoSei" value="$!escape.getText($!dataHokanForm.shinseishaNameRoSei)">　
+##     （名）<INPUT size="20" name="shinseishaNameRoMei" value="$!escape.getText($!dataHokanForm.shinseishaNameRoMei)">　
+##      [部分一致]</td>  
+##    </tr>
+## 削除 ここまで---------------------------------------------
+
+## 2005/03/28 追加 ここから---------------------------------
+## 理由 「応募者名・ローマ字」項目削除
+    <tr>
+     <th align="left" rowspan="2">応募者名</th>
+     <td>（漢字等）
+     （姓）<INPUT size="20" name="shinseishaNameKanjiSei" value="$!escape.getText($!dataHokanForm.shinseishaNameKanjiSei)">　
+     （名）<INPUT size="20" name="shinseishaNameKanjiMei" value="$!escape.getText($!dataHokanForm.shinseishaNameKanjiMei)">　
+      [部分一致]</td>  
+    </tr>
+    <tr>
+     <td>（フリガナ）
+     （姓）<INPUT size="20" name="shinseishaNameKanaSei" value="$!escape.getText($!dataHokanForm.shinseishaNameKanaSei)">　
+     （名）<INPUT size="20" name="shinseishaNameKanaMei" value="$!escape.getText($!dataHokanForm.shinseishaNameKanaMei)"> 
+      [部分一致]</td>  
+    </tr>
+## 追加 ここまで---------------------------------------------
+
+    <tr>
+     <th align="left">所属研究機関番号</th>
+     <td><input size="8" name="shozokuCd" value="$!escape.getText($!dataHokanForm.shozokuCd)">　
+         <a href="$link.setAction('/kikanList')" target="_blank"><img src="$path/images/bt_list.gif" width=41 height=22 alt="一覧" border="0"></a> 
+     [完全一致]</td>  
+    </tr>
+    <tr>
+     <th align="left">研究者番号</th>
+     <td><input size="20" name="kenkyuNo" value="$!escape.getText($!dataHokanForm.kenkyuNo)">
+     [完全一致]</td>  
+    </tr>
+    <tr>
+     <th align="left">応募番号</th>
+     <td><INPUT size="20" name="uketukeNo" value="$!escape.getText($!dataHokanForm.uketukeNo)">　
+     [完全一致]</td>
+    </tr>
+    <tr>
+     <th align="left">細目番号</th>
+     <td><input size="8" name="bunkaSaimokuCd" value="$!escape.getText($!dataHokanForm.bunkaSaimokuCd)">　
+         <a href="$link.setAction('/saimokuList')" target="_blank"><img src="$path/images/bt_list.gif" alt="一覧" width="41" height="22" border="0"></a> 
+     [完全一致]</td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+<!-- 一覧用テーブルここまで-->
+</form>
+<br>
+<!-- 本文ここまで -->
+
+    <!-- ボタン用テーブルここから --> 
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="javascript:onSearchClick()"><img src="$path/images/bt_search.gif" width=114 height=28 alt="検索実行" border="0"></a></td>
+       <td><a href="$link.setAction('/gyomu/dataHokan/showMenu')"><img src="$path/images/bt_bk_custodymenu.gif" width=219 height=28 alt="データ保管・管理メニューに戻る" border="0"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img1.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/gyomu/logoff')"><IMG SRC="$path/images/footer_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=26 border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img3.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+</body>
+</html>

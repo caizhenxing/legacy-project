@@ -1,0 +1,135 @@
+修改人：王文权
+修改日期：2009-02-17
+说明：在农委修改程序 没有cvs 只能把所有修改都写在这个文件里
+修改内容：
+1 用户拨打统计 建个表 ymd_tbl 注意一定要加上
+  说明 存储过程有问题内存溢出应优化 
+  1) jsp 日期默认当月
+  stat/userDialQuery.jsp
+	1增加js函数
+		function goQueryOutLine()
+		{
+			window.open('../callcenter/userInfo.do?method=toCustinfoMain','','width=800,height=380,status=yes,resizable=yes,scrollbars=yes,top=200,left=200');
+		}
+	2 电话号码输入项替换
+	<html:text styleId="handInputOutLine" property="telnum" styleClass="writeTextStyle2" /><font color="red">*</font><input type="button" value="..." onclick="goQueryOutLine()" class="buttonStyle"/>
+建立一张表 做统计时间比对
+CREATE TABLE [dbo].[ymd_tbl](
+	[ymd] [varchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+ CONSTRAINT [PK_ymd_tbl] PRIMARY KEY CLUSTERED 
+(
+	[ymd] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+--插入50年的数据够用了
+insert ymd_tbl(ymd)
+select * from dbo.uf_dateBtnTable('2003-01-01','2050-10-01' ) a 
+新存储过程
+--1
+--用户拨打统计
+
+CREATE PROCEDURE [dbo].[proc_userPhoneStatisticsNew](
+@beginTime varchar(20),
+@endTime varchar(20),
+@phoneNumber varchar(20)
+)
+AS
+BEGIN
+	if ltrim(rtrim(@phoneNumber))=''
+		exec [proc_userPhoneStatisticsByAllNumberNew] @beginTime, @endTime
+	else
+		exec [proc_userPhoneStatisticsByOneNumberNew] @beginTime, @endTime, @phoneNumber
+END
+
+--2
+--用户拨打统计 按天找时间和次数
+--只统计某个电话号码
+CREATE PROCEDURE [dbo].[proc_userPhoneStatisticsByOneNumberNew](
+@beginTime varchar(20),
+@endTime varchar(20),
+@phoneNumber varchar(20)
+)
+AS
+BEGIN
+	select sum(phone_num)  telCount  ,SUM(ISNULL(b.keeptime,0)) sumLen,a.col xcol
+	from
+	--dbo.uf_dateBtnTable(@beginTime,@endTime) a
+	(select ymd col from ymd_tbl where ymd between @beginTime and @endTime   ) a
+	left join
+	(
+		select  case when phone_num IS NULL then 0 else 1 end as phone_num ,convert(float,isnull(touch_keeptime,0))/1000 keeptime,convert(varchar(10),touch_begintime,120) cTime
+		from cc_talk 
+		where 
+		convert(varchar(10),touch_begintime,120) between @beginTime and @endTime 
+		and phone_num = @phoneNumber 
+	) b
+	on a.col = b.cTime
+	group by a.col
+	order by a.col desc
+END
+
+--3
+--用户拨打统计 这段时间内电话号码打了多少次 多长时间
+
+CREATE PROCEDURE [dbo].[proc_userPhoneStatisticsByAllNumberNew](
+@beginTime varchar(20),
+@endTime varchar(20)
+)
+AS
+BEGIN
+	select  count(*) telCount ,sum(convert(float,isnull(touch_keeptime,0))/1000) sumLen,phone_num xcol
+	from cc_talk 
+	where 
+	convert(varchar(10),touch_begintime,120) between @beginTime and @endTime 
+	and ISNULL(phone_num,'') <> ''
+	group by phone_num
+END
+
+2 座席服务统计
+	1）jsp stat/telQuery.jsp
+	js替换
+	
+	function setTime(){
+				var time = new Date();
+				document.forms[0].endTime.value = time.format('yyyy-MM-dd');//time.getYear()+"-"+(time.getMonth()+1)+"-"+time.getDate();
+				//time.setYear(time.getYear()-1);
+				var timeStr = time.format('yyyy-MM-dd');
+				timeStr=timeStr.substring(0,7)+'-01';
+				document.forms[0].beginTime.value=timeStr;
+				//document.forms[0].beginTime.value = time.format('yyyy-MM-dd');//time.getYear()+"-"+(time.getMonth()+1)+"-"+time.getDate();			
+	}
+
+
+3 专家服务统计
+	1） jsp stat/expertQuery.jsp
+		js替换
+	
+	function setTime(){
+				var time = new Date();
+				document.forms[0].endTime.value = time.format('yyyy-MM-dd');//time.getYear()+"-"+(time.getMonth()+1)+"-"+time.getDate();
+				//time.setYear(time.getYear()-1);
+				var timeStr = time.format('yyyy-MM-dd');
+				timeStr=timeStr.substring(0,7)+'-01';
+				document.forms[0].beginTime.value=timeStr;
+				//document.forms[0].beginTime.value = time.format('yyyy-MM-dd');//time.getYear()+"-"+(time.getMonth()+1)+"-"+time.getDate();			
+	}
+
+3 短信收发统计
+ 1）jsp stat/smsStatQuery.jsp
+ 		function setTime(){
+				var time = new Date();
+				document.forms[0].endTime.value = time.format('yyyy-MM-dd');//time.getYear()+"-"+(time.getMonth()+1)+"-"+time.getDate();
+				//time.setYear(time.getYear()-1);
+				var timeStr = time.format('yyyy-MM-dd');
+				timeStr=timeStr.substring(0,7)+'-01';
+				document.forms[0].beginTime.value=timeStr;
+				//document.forms[0].beginTime.value = time.format('yyyy-MM-dd');//time.getYear()+"-"+(time.getMonth()+1)+"-"+time.getDate();			
+	}
+	
+	
+
+	
+	
+ 
+	
+

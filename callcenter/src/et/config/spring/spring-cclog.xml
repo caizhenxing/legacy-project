@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+<!--  action begin -->
+
+<!--呼叫中心日志-->
+<bean name="/pcc/cclog"
+		class="et.bo.pcc.cclog.action.CclogAction" singleton="false">			
+		<property name="cclogService">
+			<ref bean="CclogService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>
+		<property name="depTree">
+			<ref bean="DepTreeService" />
+		</property>				
+	</bean>
+<!-- action end -->
+<!--  service begin -->	
+<bean id="CclogService"
+		class="et.bo.pcc.cclog.service.impl.CclogServiceImpl" singleton="true">
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>	
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="info">
+			<ref bean="PoliceInfoService"/>
+		</property>
+		<property name="depTree">
+			<ref bean="DepTreeService" />
+		</property>
+	</bean>	
+<!--  service end   -->
+</beans>

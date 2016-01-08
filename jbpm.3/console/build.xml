@@ -1,0 +1,129 @@
+<project name="jbpm.console" basedir="." default="install">
+
+  <!-- project specific properties -->
+  <property name="artifact.name" value="jbpm-console.war" />
+  <property name="module.name" value="console" />
+  <property name="jbpm.root" value=".." />
+  <property file="version.properties" />
+
+  <!-- properties files -->
+  <property file="${user.home}/jbpm/build.properties" />
+  <property file="build.properties" />
+  <property file="${jbpm.root}/build/build.properties" />
+
+  <!-- import base project build file -->
+  <import file="${jbpm.root}/build/base.project.build.xml"/>
+  
+  <!-- project specific targets -->
+  <target name="compile.dependencies">
+    <ant antfile="../jpdl/jar/build.xml" inheritall="false" />
+    <ant antfile="../identity/build.xml" inheritall="false" />
+  </target>
+  
+  <target name="package" 
+          depends="compile, create.manifest, create.customized.config.files"
+          description="creates the jbpm console a web application">
+    
+    <war destfile="target/${artifact.name}"
+         webxml="src/main/webapp/WEB-INF/web.xml"
+         manifest="target/manifest/MANIFEST.MF">
+      
+      <!-- web app resource files -->
+      <fileset dir="src/main/webapp">
+        <exclude name="WEB-INF/web.xml" />
+      </fileset>
+      
+      <!-- jbpm libs -->
+      <lib file="${local.repository}/${lib.jbpm.jpdl.dir}/jbpm-jpdl.jar" />
+      <lib file="${local.repository}/${lib.jbpm.identity.dir}/jbpm-identity.jar" />
+
+      <!-- jbpm configurations -->
+      <classes dir="target/config.files" />
+
+      <!-- third party libs -->
+      <!-- hibernate + other hibernate dependencies are already available on jboss -->
+      <lib file="${lib.commons.beanutils.local}" />
+      <lib file="${lib.commons.digester.local}" />
+      <lib file="${lib.commons.el.local}" />
+      <lib file="${lib.el.api.local}" />
+      <lib file="${lib.el.impl.local}" />
+      <lib file="${lib.commons.fileupload.local}" />
+      <lib file="${lib.jsf.impl.local}" />
+      <lib file="${lib.jsf.api.local}" />
+      <lib file="${lib.facelets.local}" />
+
+      <!-- jbpm web application classes -->
+      <classes dir="target/classes" />
+    </war>
+  </target>
+
+  <target name="create.customized.config.files">
+    <mkdir dir="target/config.files" />
+    <copy todir="target/config.files">
+      <fileset dir="../jpdl/jar/src/main/config" />
+    </copy>
+
+    <!-- comment the JDBC connection properties -->
+    <replace file="target/config.files/hibernate.cfg.xml">
+      <replacetoken><![CDATA[<!-- JDBC connection properties (begin) -->]]></replacetoken>
+      <replacevalue><![CDATA[<!-- JDBC connection properties (begin) ===]]></replacevalue>
+    </replace>
+    <replace file="target/config.files/hibernate.cfg.xml">
+      <replacetoken><![CDATA[<!-- JDBC connection properties (end) -->]]></replacetoken>
+      <replacevalue><![CDATA[==== JDBC connection properties (end) -->]]></replacevalue>
+    </replace>
+
+    <!-- uncomment the DataSource property -->
+    <replace file="target/config.files/hibernate.cfg.xml">
+      <replacetoken><![CDATA[<!-- DataSource properties (begin) ===]]></replacetoken>
+      <replacevalue><![CDATA[<!-- DataSource properties (begin) -->]]></replacevalue>
+    </replace>
+    <replace file="target/config.files/hibernate.cfg.xml">
+      <replacetoken><![CDATA[==== DataSource properties (end) -->]]></replacetoken>
+      <replacevalue><![CDATA[<!-- DataSource properties (end) -->]]></replacevalue>
+    </replace>
+
+    <!-- uncomment the identity mappings -->
+    <replace file="target/config.files/hibernate.cfg.xml">
+      <replacetoken><![CDATA[<!-- identity mappings (begin) ===]]></replacetoken>
+      <replacevalue><![CDATA[<!-- identity mappings (begin) -->]]></replacevalue>
+    </replace>
+    <replace file="target/config.files/hibernate.cfg.xml">
+      <replacetoken><![CDATA[==== identity mappings (end) -->]]></replacetoken>
+      <replacevalue><![CDATA[<!-- identity mappings (end) -->]]></replacevalue>
+    </replace>
+
+  </target>
+
+  <target name="deploy" depends="package" description="deploys the webapp through the jmx console">
+    <get dest="target/deployresult.html" src="http://localhost:8080/jmx-console/HtmlAdaptor?action=invokeOpByName&amp;name=jboss.system:service%3DMainDeployer&amp;methodName=redeploy&amp;argType=java.net.URL&amp;arg0=file://${basedir}/target/${artifact.name}" /> 
+  </target>
+  
+  <target name="deploy.example.process" description="deploy the example websale process into a running hypersonic DB with TCP/IP enabled on localhost">
+
+    <!-- create custom hibernate configuration for deployment -->
+
+    <mkdir dir="target/example-deployment/dbconfig"/>
+    <copy todir="target/example-deployment/dbconfig">
+      <fileset dir="${jbpm.root}/jpdl/jar/src/main/config">
+        <include name="hibernate.cfg.xml" />
+      </fileset>
+    </copy>
+    <replace file="target/example-deployment/dbconfig/hibernate.cfg.xml"
+             token="jdbc:hsqldb:mem:jbpm"
+             value="jdbc:hsqldb:hsql://localhost:1701" />
+
+    <!-- define the jbpm tasks with the hiberante configurations in the classpath -->
+    <taskdef resource="org/jbpm/ant/jbpm.ant.tasks.properties">
+      <classpath>
+        <pathelement path="target/example-deployment/dbconfig" />
+        <pathelement path="../jpdl/jar/src/test/resources" />
+        <path refid="task.classpath.base"/>
+      </classpath>
+    </taskdef>
+    <!-- create and deploy the websale example -->
+    <deployprocess process="${jbpm.root}/jpdl/examples/websale/target/websale.jpdl" />
+
+  </target>
+
+</project>

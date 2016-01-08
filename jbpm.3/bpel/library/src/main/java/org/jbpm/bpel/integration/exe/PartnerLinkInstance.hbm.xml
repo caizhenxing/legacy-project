@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+  <class name="org.jbpm.bpel.integration.exe.PartnerLinkInstance" table="BPEL_PARTNERLINKINSTANCE">
+    <cache usage="nonstrict-read-write" />
+
+    <id name="id" column="ID_">
+      <generator class="native" />
+    </id>
+
+    <many-to-one name="definition" column="DEFINITION_" foreign-key="FK_PLINKINST_PLINKDEF" />
+    <many-to-one name="partnerReference" column="PARTNERREFERENCE_" foreign-key="FK_PLINKINST_PARTNERREF"
+      cascade="all" />
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/pcc/portCompare.do" location="661,0" dimension="358,84" />
+  <StrutsActivity path="/pcc/portCompare/portCompareList.jsp" location="0,184" dimension="256,48" />
+  <StrutsActivity path="/pcc/portCompare/portCompareMain.jsp" location="356,184" dimension="256,48" />
+  <StrutsActivity path="/pcc/portCompare/portCompareLoad.jsp" location="712,184" dimension="256,48" />
+  <StrutsActivity path="/pcc/portCompare/portCompareQuery.jsp" location="1068,184" dimension="262,48" />
+  <StrutsActivity path="/pcc/portCompare/portCompareDetail.jsp" location="1430,184" dimension="268,48" />
+  <StrutsTransition id="/pcc/portCompare.do,load,/pcc/portCompare/portCompareLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="840,84" />
+      <AbsolutePoint location="840,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/portCompare.do,list,/pcc/portCompare/portCompareList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="696,84" />
+      <AbsolutePoint location="696,119" />
+      <AbsolutePoint location="128,119" />
+      <AbsolutePoint location="128,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/portCompare.do,main,/pcc/portCompare/portCompareMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="768,84" />
+      <AbsolutePoint location="768,149" />
+      <AbsolutePoint location="484,149" />
+      <AbsolutePoint location="484,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/portCompare.do,query,/pcc/portCompare/portCompareQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="911,84" />
+      <AbsolutePoint location="911,149" />
+      <AbsolutePoint location="1199,149" />
+      <AbsolutePoint location="1199,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/pcc/portCompare.do,detail,/pcc/portCompare/portCompareDetail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="983,84" />
+      <AbsolutePoint location="983,119" />
+      <AbsolutePoint location="1564,119" />
+      <AbsolutePoint location="1564,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

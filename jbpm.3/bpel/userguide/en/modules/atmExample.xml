@@ -1,0 +1,1731 @@
+<section id="tutorial.atm">
+
+  <title>ATM Example</title>
+
+  <para>In this tutorial, we'll develop a process that manages the interaction between automated
+    teller machines and the information systems of a bank. The process guides ATMs in 
+    orderly performing the operations listed below.</para>
+    
+  <orderedlist>
+    <listitem><para>Connect to the server</para></listitem>
+    <listitem><para>Log a customer on</para></listitem>
+    <listitem><para>Query the state of the session</para></listitem>
+    <listitem><para>Obtain the acount balance</para></listitem>
+    <listitem><para>Withdraw and deposit funds</para></listitem>
+    <listitem><para>Log the customer off</para></listitem>
+    <listitem><para>Disconnect from the server</para></listitem>
+  </orderedlist>
+  
+  <para>Not all of the above operations are available at the same time. Most require
+    another operation to complete for becoming available.</para>
+    
+  <para>Four different modules participate in this orchestration. The picture below shows
+    the relationships between modules plus the deployment configuration.</para>
+    
+  <figure id="tutorial.atm.participants">
+    <title>Top level graphical representation of the ATM process</title>
+    <mediaobject>
+      <imageobject><imagedata align="center" fileref="images/atm.gif"/></imageobject>
+    </mediaobject>
+  </figure>
+  
+  <para>On startup, the teller machine connects to the front end service. Inside the bank, 
+    the front end contacts the ticket issuer module to generate a number that uniquely
+    identifies the teller. Posterior exchanges with the bank indicate the ticket number.</para>
+    
+  <para>When an account holder comes and provides proof of identity, the teller asks the 
+    front end to initiate a customer session. The front end resorts to the account system for
+    checking access rights.</para>
+    
+  <para>Once access is granted, the account holder looks at the account balance, deposits/withdraws 
+    funds or terminates the session. Because a given customer must not use more than one ATM at any
+    given time, these exchanges carry the customer credentials instead of the ticket.</para>
+    
+  <para>The front end contacts the account system as required to ensure the balance is accurate.
+    Even tough the account system allows negative balances for the sake of other credit operations,
+    ATMs do not dispense cash on credit. The front end must ensure enough funds exist and prevent
+    withdrawings that would result in a negative balance.</para>      
+
+  <section id="tutorial.atm.bpel">
+  
+    <title>Create the BPEL document</title>
+  
+    <para>We'll start with the process-level definitions. The <varname>atmRelation</varname> 
+      partner link represents the relationship between a teller machine and the process.
+      The process assumes the <emphasis>frontEnd</emphasis> role; the ATM has no explicit role.
+      The <varname>ticketRelation</varname> definition links the process to the ticket issuer service.
+      The ticket issuer plays the <emphasis>ticketIssuer</emphasis> role, while the
+      process assumes no functions. Account system operations are available to the process through the
+      <varname>accountRelation</varname> partner link. No burden is placed on the process.</para>
+      
+    <para>The variables <varname>connectReq</varname>, <varname>ticketReq</varname> and <varname>ticketMsg</varname>
+      hold messages exchanged with partners. In turn, <varname>connected</varname> and
+      <varname>logged</varname> are status flags. The <varname>atmInteraction</varname> correlation set
+      distinguishes ATMs from each other through the ticket number property.</para>
+
+    <programlisting>&lt;process name=&quot;atm&quot; targetNamespace=&quot;urn:samples:atm&quot;
+  xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+  xmlns:tns="urn:samples:atm" xmlns:atm="urn:samples:atm" xmlns:typ="urn:samples:atm:types"
+  xmlns:tic="urn:samples:ticket" xmlns:acc="urn:samples:account" 
+  xmlns:bpel="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://schemas.xmlsoap.org/ws/2003/03/business-process/
+   http://schemas.xmlsoap.org/ws/2003/03/business-process/"&gt;
+
+  &lt;partnerLinks&gt;
+    &lt;!-- <emphasis role="bold">relationship with the ATM</emphasis> --&gt;
+    &lt;partnerLink name=&quot;atmRelation&quot; partnerLinkType=&quot;tns:atm-front&quot; 
+     myRole=&quot;frontEnd&quot; /&gt;
+    &lt;!-- <emphasis role="bold">relationship with the ticket issuer</emphasis> --&gt;
+    &lt;partnerLink name=&quot;ticketRelation&quot; partnerLinkType=&quot;tns:front-ticket&quot;
+     partnerRole=&quot;ticketIssuer&quot; /&gt;
+    &lt;!-- <emphasis role="bold">relationship with the account system</emphasis> --&gt;
+    &lt;partnerLink name=&quot;accountRelation&quot; partnerLinkType=&quot;tns:front-account&quot;
+     partnerRole=&quot;accountSystem&quot; /&gt; 
+  &lt;/partnerLinks&gt;
+
+  &lt;variables&gt;
+    &lt;!-- <emphasis role="bold">ATM connection request</emphasis> --&gt;
+    &lt;variable name=&quot;connectReq&quot; messageType=&quot;atm:connectRequest&quot;/&gt;
+    &lt;!-- <emphasis role="bold">ticket creation request</emphasis> --&gt;
+    &lt;variable name=&quot;ticketReq&quot; messageType=&quot;tic:ticketRequest&quot;/&gt;
+    &lt;!-- <emphasis role="bold">ticket number wrapper</emphasis> --&gt;
+    &lt;variable name=&quot;ticketMsg&quot; messageType=&quot;tic:ticketMessage&quot;/&gt;
+    &lt;!-- <emphasis role="bold">ATM connection flag</emphasis> --&gt;
+    &lt;variable name=&quot;connected&quot; type=&quot;xsd:boolean&quot;/&gt;
+    &lt;!-- <emphasis role="bold">customer session flag</emphasis> --&gt;
+    &lt;variable name=&quot;logged&quot; type=&quot;xsd:boolean&quot;/&gt;
+  &lt;/variables&gt;
+
+  &lt;correlationSets&gt;
+    &lt;!-- <emphasis role="bold">conversation with a connected ATM</emphasis> --&gt;
+    &lt;correlationSet name=&quot;atmInteraction&quot; properties=&quot;tns:ticketId&quot;/&gt;
+  &lt;/correlationSets&gt;</programlisting>
+  
+    <para>Let's move on to the control flow. The next figure is the bird eye view of the ATM front
+      end process.</para>
+    
+    <figure id="tutorial.atm.flow.main">
+      <title>ATM main sequence</title>
+      <mediaobject>
+        <imageobject><imagedata align="center" fileref="images/atmMain.png"/></imageobject>
+      </mediaobject>
+    </figure>
+  
+    <para>We define a main sequence for handling the lifecycle of an ATM connection. It consists 
+      of these activities: receive a connection request, invoke the ticket issuer service, 
+      initialize the status flags, send the ticket back to the teller and handle the connection.</para>
+  
+    <programlisting>&lt;process ...&gt;
+  ...
+  &lt;sequence name=&quot;mainSequence&quot;&gt;
+  
+    &lt;!-- <emphasis role="bold">receive a connection request</emphasis> --&gt;
+    &lt;receive operation=&quot;connect&quot; partnerLink=&quot;atmRelation&quot; portType=&quot;atm:atmFrontEnd&quot;
+     variable=&quot;connectReq&quot; createInstance=&quot;yes&quot;/&gt;
+     
+    &lt;!-- <emphasis role="bold">generate a ticket number</emphasis> --&gt;
+    &lt;invoke operation=&quot;createTicket&quot; partnerLink=&quot;ticketRelation&quot; portType=&quot;tic:ticketIssuer&quot;
+     inputVariable=&quot;ticketReq&quot; outputVariable=&quot;ticketMsg&quot;&gt;
+      &lt;correlations&gt;
+        &lt;correlation set=&quot;atmInteraction&quot; pattern=&quot;in&quot; initiate=&quot;yes&quot;/&gt;
+      &lt;/correlations&gt;
+    &lt;/invoke&gt;
+    
+    &lt;!-- <emphasis role="bold">initialize the status flags</emphasis> --&gt;
+    &lt;assign name=&quot;initStatus&quot;&gt;
+      &lt;copy&gt;
+        &lt;from expression=&quot;true()&quot;/&gt;
+        &lt;to variable=&quot;connected&quot;/&gt;
+      &lt;/copy&gt;
+      &lt;copy&gt;
+        &lt;from expression=&quot;false()&quot;/&gt;
+        &lt;to variable=&quot;loggedon&quot;/&gt;
+      &lt;/copy&gt;
+    &lt;/assign&gt;    
+    
+    &lt;!-- <emphasis role="bold">send the ticket number back to the ATM</emphasis> --&gt;
+    &lt;reply operation=&quot;connect&quot; partnerLink=&quot;atmRelation&quot; portType=&quot;atm:atmFrontEnd&quot;
+     variable=&quot;ticketMsg&quot;&gt;
+      &lt;correlations&gt;
+        &lt;correlation set=&quot;atmInteraction&quot;/&gt;
+      &lt;/correlations&gt;
+    &lt;/reply&gt;
+    
+    &lt;!-- <emphasis role="bold">handle the ATM connection</emphasis> --&gt;
+    &lt;scope name=&quot;connectionUnit&quot;&gt;
+     ...
+    &lt;/scope&gt;
+    
+  &lt;/sequence&gt;
+&lt;/process&gt;</programlisting>
+
+    <para>The <literal>scope</literal> element at the end of the sequence encapsulates
+      the connection handling logic. This activity allows specifying a nested execution
+      flow and local definitions of variables, correlation sets and fault/event handling
+      behavior. The following diagram shows the control flow of the <literal>connectionUnit</literal>:</para>
+
+    <figure id="tutorial.atm.flow.connection">
+      <title>ATM connection handling logic</title>
+      <mediaobject>
+        <imageobject><imagedata align="center" fileref="images/atmConnection.png"/></imageobject>
+      </mediaobject>
+    </figure>      
+      
+    <para>The connection handling logic consists of listening for requests from the ATM and 
+      processing them one at a time. This is an iterative behavior. The 
+      <literal>connectionLoop</literal> activity causes the front end to keep taking
+      requests as long as the <varname>connected</varname> flag stays on.</para>
+      
+    <para>At this point, the front end accepts one of two requests: initiate a customer session or
+      terminate the connection. The <literal>connectionMenu</literal> performs the activity 
+      associated with the first request to arrive.</para>
+      
+    <itemizedlist>
+      
+      <listitem><para><literal>logOn</literal>: the <literal>customerUnit</literal> scope
+        encapsulates the customer session logic.</para></listitem>
+        
+      <listitem><para><literal>disconnect</literal>: the <literal>setDisconnected</literal> assign
+        turns off the <varname>connected</varname> flag, causing the <literal>connectionLoop</literal>
+        to break shortly afterwards.</para></listitem>
+       
+    </itemizedlist>
+    
+    <para>The local variables <varname>logOnReq</varname> and <varname>statusRsp</varname>
+      are placeholders for message exchanges. One additional correlation set, 
+      <varname>customerInteraction</varname>, distinguishes logged account holders from 
+      each other through the customer name property. One feature of correlation sets 
+      opens a potential pitfall. In order to ensure consistency constraints, correlation 
+      sets are immutable. However, the ATM most likely will serve a different customer at
+      each iteration. For this reason, the <varname>customerInteraction</varname> declaration
+      appears inside the loop rather than outside. In this way, the set can assume different
+      values at each customer session.</para>
+
+    <programlisting>&lt;scope name=&quot;connectionUnit&quot;&gt;
+
+  &lt;variables&gt;
+    &lt;!-- <emphasis role="bold">customer log on request</emphasis> --&gt;
+    &lt;variable name=&quot;logOnReq&quot; messageType=&quot;atm:logOnRequest&quot;/&gt;
+    &lt;!-- <emphasis role="bold">connection status response</emphasis> --&gt;
+    &lt;variable name=&quot;statusRsp&quot; messageType=&quot;atm:statusResponse&quot;/&gt;
+  &lt;/variables&gt;
+
+  &lt;!-- <emphasis role="bold">process ATM requests one at a time</emphasis> --&gt;
+  &lt;while name=&quot;connectionLoop&quot; condition=&quot;bpel:getVariableData('connected')&quot;&gt;
+
+    &lt;!-- <emphasis role="bold">listen for either disconnect or log on request</emphasis> --&gt;
+    &lt;pick name=&quot;connectionMenu&quot;&gt;
+    
+      &lt;onMessage operation=&quot;disconnect&quot; partnerLink=&quot;atmRelation&quot; portType=&quot;atm:atmFrontEnd&quot;
+       variable=&quot;ticketMsg&quot;&gt;
+        
+        &lt;correlations&gt;
+          &lt;correlation set=&quot;atmInteraction&quot;/&gt;
+        &lt;/correlations&gt;
+        
+        &lt;!-- <emphasis role="bold">turn off connected flag to break the connection loop</emphasis> --&gt;
+        &lt;assign name=&quot;setDisconnected&quot;&gt;
+          &lt;copy&gt;
+            &lt;from expression=&quot;false()&quot;/&gt;
+            &lt;to variable=&quot;connected&quot;/&gt;
+          &lt;/copy&gt;
+        &lt;/assign&gt;
+      &lt;/onMessage&gt;
+      
+      &lt;onMessage operation=&quot;logOn&quot; partnerLink=&quot;atmRelation&quot; portType=&quot;atm:atmFrontEnd&quot;
+       variable=&quot;logOnReq&quot;&gt;
+       
+        &lt;correlations&gt;
+          &lt;correlation set=&quot;atmInteraction&quot;/&gt;
+        &lt;/correlations&gt;
+        
+        <emphasis role="bold">&lt;!-- handle the customer session --&gt;</emphasis>
+        &lt;scope name=&quot;customerUnit&quot;&gt;
+          ...
+        &lt;/scope&gt;
+        
+      &lt;/onMessage&gt;
+      
+    &lt;/pick&gt;
+      
+  &lt;/while&gt;
+  
+&lt;/scope&gt;</programlisting>
+
+    <para>To spice up the example the scope defines an event for handling status requests
+      on par with the primary activity. The <literal>status</literal> event lets the ATM query 
+      the connection status anytime as long as the scope is active:</para>
+      
+    <figure id="tutorial.atm.flow.status">
+      <title>ATM connection status event</title>
+      <mediaobject>
+        <imageobject><imagedata align="center" fileref="images/atmStatus.png"/></imageobject>
+      </mediaobject>
+    </figure>
+
+    <para>The following snippet shows the scope's event handling code:</para>
+    
+    <programlisting>&lt;scope name=&quot;connectionUnit&quot;&gt;
+  ...
+  &lt;eventHandlers&gt;
+  
+    &lt;!-- <emphasis role="bold">listen for connection status requests</emphasis>--&gt;
+    &lt;onMessage operation=&quot;status&quot; partnerLink=&quot;atmRelation&quot; portType=&quot;atm:atmFrontEnd&quot;
+      variable=&quot;ticketMsg&quot;&gt;
+       
+       &lt;correlations&gt;
+         &lt;correlation set=&quot;atmInteraction&quot;/&gt;
+       &lt;/correlations&gt;
+       
+       &lt;!-- <emphasis role="bold">report the connection status</emphasis>--&gt;
+       &lt;sequence name=&quot;statusSequence&quot;&gt;
+       
+         &lt;!-- <emphasis role="bold">set a status string depending on the flag values</emphasis> --&gt;
+         &lt;switch name=&quot;statusSwitch&quot;&gt;
+         
+           &lt;case condition=&quot;bpel:getVariableData('logged')&quot;&gt;
+           
+             &lt;assign name=&quot;setStatusLogged&quot;&gt;
+               &lt;copy&gt;
+                 &lt;from expression=&quot;'logged'&quot;/&gt;
+                 &lt;to variable=&quot;statusRsp&quot; part=&quot;status&quot;/&gt;
+               &lt;/copy&gt;
+             &lt;/assign&gt;
+             
+           &lt;/case&gt;
+           
+           &lt;case condition=&quot;bpel:getVariableData('connected')&quot;&gt;
+             &lt;assign name=&quot;setStatusConnected&quot;&gt;
+               &lt;copy&gt;
+                 &lt;from expression=&quot;'connected'&quot;/&gt;
+                 &lt;to variable=&quot;statusRsp&quot; part=&quot;status&quot;/&gt;
+               &lt;/copy&gt;
+             &lt;/assign&gt;
+           &lt;/case&gt;
+           
+           &lt;otherwise&gt;
+           
+             &lt;assign name=&quot;setStatusDisconnected&quot;&gt;
+               &lt;copy&gt;
+                 &lt;from expression=&quot;'disconnected'&quot;/&gt;
+                 &lt;to variable=&quot;statusRsp&quot; part=&quot;status&quot;/&gt;
+               &lt;/copy&gt;
+             &lt;/assign&gt;
+             
+           &lt;/otherwise&gt;
+           
+         &lt;/switch&gt;
+         
+         &lt;!-- <emphasis role="bold">send the status back to the ATM</emphasis> --&gt;
+         &lt;reply operation=&quot;status&quot; partnerLink=&quot;atmRelation&quot; portType=&quot;atm:atmFrontEnd&quot;
+          variable=&quot;statusRsp&quot;/&gt;
+          
+       &lt;/sequence&gt;
+       
+     &lt;/onMessage&gt;
+     
+   &lt;eventHandlers/&gt;
+   ...
+&lt;/scope&gt;</programlisting>
+
+    <para>The <literal>customerUnit</literal> scope lies at the core of the ATM front end
+      process. It encapsulates the logic to serve account holder requests. The following 
+      picture summarizes its flow control:</para>
+      
+    <figure id="tutorial.atm.flow.customersession">
+      <title>ATM customer session handling logic</title>
+      <mediaobject>
+        <imageobject><imagedata align="center" fileref="images/atmCustomerSession.png"/></imageobject>
+      </mediaobject>
+    </figure>
+ 
+    <para>The scope declares a number of local variables for incoming and outgoing messages.
+      Apart from them, one variable of simple type, <varname>newBalance</varname>, stores the
+      result of a computation that determines the remaining amount after withdrawing.</para>
+      
+    <para>One correlation set, <varname>customerInteraction</varname>, distinguishes logged 
+      account holders from each other through the customer name property. One feature of correlation sets 
+      opens a potential pitfall. In order to ensure consistency constraints, correlation 
+      sets are immutable. However, the ATM most likely will serve a different customer at
+      each iteration. For this reason, the <varname>customerInteraction</varname> declaration
+      appears inside the loop rather than outside. In this way, the set can assume different
+      values every new session.</para>
+      
+    <para>Customer session handling works as follows. The front end must verify the customer
+      holds an active account. Verification is outside the responsibilities of the process;
+      it is a function of the bank account system. Therefore, the front end invokes the
+      account system to check the customer access privilege. If the system grants
+      access, the front end replies the log on request with an acknowledgement and
+      turns on the <varname>logged</varname> flag. Conversely, when the system denies access,
+      the front end sends a <literal>logOnFault</literal> back to the ATM. It leaves
+      the <varname>logged</varname> flag turned off so that the customer session ends 
+      immediately.</para>
+      
+    <para>Note that the aforementioned fault appears in the WSDL definition of the operation. 
+      If it were not, jBPM BPEL would report an error at deployment time.</para>
+      
+   <programlisting>&lt;portType name="atmFrontEnd"&gt;
+   
+  &lt;operation name="logOn"&gt;
+    &lt;input message="tns:logOnRequest" /&gt;
+    &lt;output message="tns:logOnResponse" /&gt;
+    &lt;fault name="<emphasis role="bold">logOnFault</emphasis>" message="tns:operationFault" /&gt;
+  &lt;/operation&gt;</programlisting>
+  
+    <para>After completing the <methodname>logOn</methodname> operation either way, 
+      the process enters a loop that processes customer requests one at a time.
+      The next section will describe the logic inside that <literal>customerLoop</literal>.</para>
+      
+<programlisting>&lt;scope name=&quot;customerUnit&quot;&gt;
+
+  &lt;variables&gt;
+    &lt;!-- <emphasis role="bold">customer name wrapper</emphasis> --&gt;
+    &lt;variable name=&quot;customerMsg&quot; type=&quot;acc:customerMessage&quot;/&gt;
+    &lt;!-- <emphasis role="bold">access check response</emphasis> --&gt;
+    &lt;variable name=&quot;accessMsg&quot; messageType=&quot;acc:accessMessage&quot;/&gt;
+    &lt;!-- <emphasis role="bold">customer log on response</emphasis> --&gt;
+    &lt;variable name=&quot;logOnRsp&quot; messageType=&quot;atm:logOnResponse&quot;/&gt;
+    &lt;!-- <emphasis role="bold">customer operation fault</emphasis> --&gt;
+    &lt;variable name=&quot;operationFlt&quot; messageType=&quot;atm:operationFault&quot;/&gt;
+    &lt;!-- <emphasis role="bold">account balance wrapper</emphasis> --&gt;
+    &lt;variable name=&quot;balanceMsg&quot; messageType=&quot;acc:balanceMessage&quot;/&gt;
+    &lt;!-- <emphasis role="bold">customer operation request</emphasis> --&gt;
+    &lt;variable name=&quot;operationReq&quot; messageType=&quot;atm:operationRequest&quot;/&gt;
+    &lt;!-- <emphasis role="bold">account system operation</emphasis> --&gt;
+    &lt;variable name=&quot;accountOperation&quot; messageType=&quot;acc:accountOperation&quot;/&gt;
+    &lt;!-- <emphasis role="bold">resulting balance after withdraw</emphasis> --&gt;
+    &lt;variable name=&quot;newBalance&quot; messageType=&quot;xsd:double&quot;/&gt;
+  &lt;/variables&gt;
+   
+  &lt;correlationSets&gt;
+    &lt;!-- <emphasis role="bold">conversation with a logged customer</emphasis> --&gt;
+    &lt;correlationSet name=&quot;customerInteraction&quot; properties=&quot;tns:customerId&quot;/&gt;   
+  &lt;/correlationSets&gt;
+
+  &lt;sequence name="customerSequence"&gt;
+  
+    &lt;!-- <emphasis role="bold">populate access check request</emphasis> --&gt;
+    &lt;assign name="fillAccessCheck"&gt;
+      &lt;copy&gt;
+        &lt;from variable="logOnReq" part="customerName" /&gt;
+        &lt;to variable="customerMsg" part="customerName" /&gt;
+      &lt;/copy&gt;
+    &lt;/assign&gt;
+    
+    &lt;!-- <emphasis role="bold">check account access privilege</emphasis> --&gt;
+    &lt;invoke operation="checkAccess" partnerLink="accountRelation" portType="acc:accountSystem"
+      inputVariable="customerMsg" outputVariable="accessMsg"&gt;
+      &lt;correlations&gt;
+        &lt;correlation set="customerInteraction" pattern="out" initiate="yes"/&gt;
+      &lt;/correlations&gt;
+    &lt;/invoke&gt;
+    
+    &lt;!-- <emphasis role="bold">decide outcome of customer session request</emphasis> --&gt;
+    &lt;switch name="accessDecision"&gt;
+
+      &lt;case condition="bpel:getVariableData('accessMsg', 'granted')"&gt;
+      
+        &lt;!-- <emphasis role="bold">accept log on request</emphasis> --&gt;
+        &lt;sequence name="accessGrantedSequence"&gt;
+
+          &lt;!-- <emphasis role="bold">turn on logged flag for starting session loop</emphasis> --&gt;
+          &lt;assign name="setLoggedOn"&gt;
+            &lt;copy&gt;
+              &lt;from expression="true()" /&gt;
+              &lt;to variable="logged" /&gt;
+            &lt;/copy&gt;
+          &lt;/assign&gt;
+
+          &lt;!-- <emphasis role="bold">send acknowledgement back to ATM</emphasis> --&gt;
+          &lt;reply operation="logOn" partnerLink="atmRelation" portType="atm:atmFrontEnd" 
+            variable="logOnRsp" /&gt;
+        
+        &lt;/sequence&gt;
+
+      &lt;/case&gt;
+
+      &lt;otherwise&gt;
+      
+        &lt;!-- <emphasis role="bold">reject log on request</emphasis> --&gt;
+        &lt;sequence name="accessDeniedSequence"&gt;
+        
+          &lt;!-- <emphasis role="bold">populate the log on fault</emphasis> --&gt;
+          &lt;assign name="fillAccessDenial"&gt;
+            &lt;copy&gt;
+              &lt;from&gt;
+                &lt;typ:operationError code="access_denied" /&gt;
+              &lt;/from&gt;
+              &lt;to variable="operationFlt" part="detail" /&gt;
+            &lt;/copy&gt;
+          &lt;/assign&gt;
+          
+          &lt;!-- <emphasis role="bold">send fault back to the ATM</emphasis> --&gt;
+          &lt;reply operation="logOn" partnerLink="atmRelation" portType="atm:atmFrontEnd"
+            variable="operationFlt" faultName="atm:logOnFault" /&gt;
+
+        &lt;/sequence&gt;
+
+      &lt;/otherwise&gt;
+
+    &lt;/switch&gt;
+
+    &lt;!-- <emphasis role="bold">process customer requests, one at a time</emphasis> --&gt;
+    &lt;while name="customerLoop" condition="bpel:getVariableData('logged')"&gt;
+      ...
+    &lt;/while&gt;
+    
+  &lt;/sequence&gt;
+  
+&lt;/scope&gt;</programlisting>
+
+    <para>Inside <literal>customerLoop</literal>, the process listens for one of four
+      possible requests. These requests appear as &lt;onMessage&gt; child elements
+      of the <literal>customerMenu</literal> activity.</para>
+      
+    <itemizedlist>
+    
+      <listitem><para><emphasis>logOff</emphasis>: the <literal>setLoggedOff</literal> 
+        assign turns off the <varname>logged</varname> flag to break the 
+        <literal>customerLoop</literal> and terminate the customer session.</para></listitem>    
+      
+      <listitem><para><emphasis>getBalance</emphasis>: the <literal>balanceSequence</literal>
+        queries the account system for the current balance and hands that back to 
+        the ATM.</para></listitem>
+        
+      <listitem><para><emphasis>deposit</emphasis>: the <literal>depositSequence</literal>
+        posts the positive update to the account system. The front end process gets the 
+        new balance in return and makes it available to the ATM.</para></listitem>
+        
+      <listitem><para><emphasis>withdraw</emphasis>: the <literal>withdrawSequence</literal>
+        first queries the account system for the current balance. Later, it computes the amount
+        that would remain in the account after the negative update.</para>
+        
+        <itemizedlist>
+        
+          <listitem><para>If there are enough funds, the <literal>positiveBalanceSequence</literal>
+            posts the negative update to the account system, gets the new balance and returns
+            that to the ATM.</para></listitem>
+            
+          <listitem><para>Otherwise, the <literal>negativeBalanceSequence</literal>
+            rejects the withdraw by returning a fault to the ATM. The update is not posted.
+            </para></listitem>
+        
+        </itemizedlist></listitem>
+      
+    </itemizedlist>
+    
+    <programlisting>&lt;!-- <emphasis role="bold">process customer requests, one at a time</emphasis> --&gt;
+&lt;while name="customerLoop" condition="bpel:getVariableData('logged')"&gt;
+
+  &lt;pick name="customerMenu"&gt;
+
+    &lt;onMessage operation="logOff" partnerLink="atmRelation" portType="atm:atmFrontEnd"
+      variable="customerMsg"&gt;
+
+      &lt;correlations&gt;
+        &lt;correlation set="customerInteraction" /&gt;
+      &lt;/correlations&gt;
+      
+      &lt;!-- <emphasis role="bold">turn off logged flag for breaking the customer loop</emphasis> --&gt;
+      &lt;assign name="setLoggedOff"&gt;
+        &lt;copy&gt;
+          &lt;from expression="false()" /&gt;
+          &lt;to variable="logged" /&gt;
+        &lt;/copy&gt;
+      &lt;/assign&gt;
+
+    &lt;/onMessage&gt;
+
+    &lt;onMessage operation="getBalance" partnerLink="atmRelation" portType="atm:atmFrontEnd"
+      variable="customerMsg"&gt;
+
+      &lt;correlations&gt;
+        &lt;correlation set="customerInteraction" /&gt;
+      &lt;/correlations&gt;
+
+      &lt;sequence name="balanceSequence"&gt;
+      
+        &lt;!-- <emphasis role="bold">get current account balance</emphasis> --&gt;
+        &lt;invoke operation="queryBalance" partnerLink="accountRelation" portType="acc:accountSystem"
+          inputVariable="customerMsg" outputVariable="balanceMsg"&gt;
+          &lt;correlations&gt;
+            &lt;correlation set="customerInteraction" pattern="out" /&gt;
+          &lt;/correlations&gt;
+        &lt;/invoke&gt;
+        
+        &lt;!-- <emphasis role="bold">hand the balance back to the ATM</emphasis> --&gt;
+        &lt;reply operation="getBalance" partnerLink="atmRelation" portType="atm:atmFrontEnd"
+          variable="balanceMsg" /&gt;
+
+      &lt;/sequence&gt;
+
+    &lt;/onMessage&gt;
+
+    &lt;onMessage operation="deposit" partnerLink="atmRelation" portType="atm:atmFrontEnd"
+      variable="operationReq"&gt;
+
+      &lt;correlations&gt;
+        &lt;correlation set="customerInteraction" /&gt;
+      &lt;/correlations&gt;
+
+      &lt;sequence name="depositSequence"&gt;
+      
+        &lt;!-- <emphasis role="bold">populate balance update request</emphasis> --&gt;
+        &lt;assign name="fillDepositUpdate"&gt;
+          &lt;copy&gt;
+            &lt;from variable="operationReq" part="customerName" /&gt;
+            &lt;to variable="accountOperation" part="body" query="/body/@customerName" /&gt;
+          &lt;/copy&gt;
+          &lt;copy&gt;
+            &lt;from variable="operationReq" part="amount" /&gt;
+            &lt;to variable="accountOperation" part="body" query="/body/@amount" /&gt;
+          &lt;/copy&gt;
+        &lt;/assign&gt;
+        
+        &lt;!-- <emphasis role="bold">post positive balance update</emphasis> --&gt;
+        &lt;invoke operation="updateBalance" partnerLink="accountRelation" portType="acc:accountSystem"
+          inputVariable="accountOperation" outputVariable="balanceMsg"&gt;
+          &lt;correlations&gt;
+            &lt;correlation set="customerInteraction" pattern="out" /&gt;
+          &lt;/correlations&gt;
+        &lt;/invoke&gt;
+        
+        &lt;!-- <emphasis role="bold">make new balance available to ATM</emphasis> --&gt;
+        &lt;reply operation="deposit" partnerLink="atmRelation" portType="atm:atmFrontEnd"
+          variable="balanceMsg" /&gt;
+
+      &lt;/sequence&gt;
+
+    &lt;/onMessage&gt;
+
+    &lt;onMessage operation="withdraw" partnerLink="atmRelation" portType="atm:atmFrontEnd"
+      variable="operationReq"&gt;
+
+      &lt;correlations&gt;
+        &lt;correlation set="customerInteraction" /&gt;
+      &lt;/correlations&gt;
+
+      &lt;sequence name="withdrawSequence"&gt;
+      
+        &lt;!-- <emphasis role="bold">populate balance query request</emphasis> --&gt;
+        &lt;assign name="fillWithdrawQuery"&gt;
+          &lt;copy&gt;
+            &lt;from variable="operationReq" part="customerName" /&gt;
+            &lt;to variable="customerMsg" part="customerName" /&gt;
+          &lt;/copy&gt;
+        &lt;/assign&gt;
+        
+        &lt;!-- <emphasis role="bold">get current account balance</emphasis> --&gt;
+        &lt;invoke operation="queryBalance" partnerLink="accountRelation" portType="acc:accountSystem"
+          inputVariable="customerMsg" outputVariable="balanceMsg"&gt;
+          &lt;correlations&gt;
+            &lt;correlation set="customerInteraction" pattern="out" /&gt;
+          &lt;/correlations&gt;
+        &lt;/invoke&gt;
+        
+        &lt;!-- <emphasis role="bold">compute amount that would remain in the account</emphasis> --&gt;
+        &lt;assign name="decreaseBalance"&gt;
+          &lt;copy&gt;
+            &lt;from expression="bpel:getVariableData('balanceMsg', 'balance') -
+                              bpel:getVariableData('operationReq', 'amount')" /&gt;
+            &lt;to variable="newBalance" /&gt;
+          &lt;/copy&gt;
+        &lt;/assign&gt;
+        
+        &lt;!-- <emphasis role="bold">decide outcome of withdraw request</emphasis> --&gt;
+        &lt;switch name="balanceDecision"&gt;
+
+          &lt;case condition="bpel:getVariableData('newBalance') &gt;= 0.0"&gt;
+          
+            &lt;!-- <emphasis role="bold">accept withdrawing</emphasis> --&gt;
+            &lt;sequence name="positiveBalanceSequence"&gt;
+            
+              &lt;!-- <emphasis role="bold">populate balance update request</emphasis> --&gt;
+              &lt;assign name="fillWithdrawUpdate"&gt;
+                &lt;copy&gt;
+                  &lt;from variable="operationReq" part="customerName" /&gt;
+                  &lt;to variable="accountOperation" part="body" query="/body/@customerName" /&gt;
+                &lt;/copy&gt;
+                &lt;copy&gt;
+                  &lt;from expression="-bpel:getVariableData('operationReq', 'amount')" /&gt;
+                  &lt;to variable="accountOperation" part="body" query="/body/@amount" /&gt;
+                &lt;/copy&gt;
+              &lt;/assign&gt;
+              
+              &lt;!-- <emphasis role="bold">post negative balance update</emphasis> --&gt;
+              &lt;invoke operation="updateBalance" partnerLink="accountRelation"
+                portType="acc:accountSystem" inputVariable="accountOperation"
+                outputVariable="balanceMsg"&gt;
+                &lt;correlations&gt;
+                  &lt;correlation set="customerInteraction" pattern="out" /&gt;
+                &lt;/correlations&gt;
+              &lt;/invoke&gt;
+              
+              &lt;!-- <emphasis role="bold">return new balance to ATM</emphasis> --&gt;
+              &lt;reply operation="withdraw" partnerLink="atmRelation" portType="atm:atmFrontEnd"
+                variable="balanceMsg" /&gt;
+
+            &lt;/sequence&gt;
+
+          &lt;/case&gt;
+
+          &lt;otherwise&gt;
+          
+            &lt;!-- <emphasis role="bold">reject withdrawing</emphasis> --&gt;
+            &lt;sequence name="negativeBalanceSequence"&gt;
+            
+              &lt;!-- <emphasis role="bold">populate withdraw fault</emphasis> --&gt;
+              &lt;assign name="fillNoFunds"&gt;
+                &lt;copy&gt;
+                  &lt;from&gt;
+                    &lt;typ:operationError code="not_enough_funds" /&gt;
+                  &lt;/from&gt;
+                  &lt;to variable="operationFlt" part="detail" /&gt;
+                &lt;/copy&gt;
+              &lt;/assign&gt;
+              
+              &lt;!-- <emphasis role="bold">return fault to ATM</emphasis> --&gt;
+              &lt;reply operation="withdraw" partnerLink="atmRelation" portType="atm:atmFrontEnd"
+                variable="operationFlt" faultName="atm:withdrawFault" /&gt;
+
+            &lt;/sequence&gt;
+
+          &lt;/otherwise&gt;
+
+        &lt;/switch&gt;
+
+      &lt;/sequence&gt;
+
+    &lt;/onMessage&gt;
+
+  &lt;/pick&gt;
+
+&lt;/while&gt;</programlisting>
+ 
+  </section>
+  
+  <section id="tutorial.atm.wsdl">
+
+    <title id="tutorial.atm.wsdl.title">Create/obtain the WSDL interface documents</title>
+    
+    <para>To better organize WSDL definitions, the process uses four interface documents for
+      the ATM service. They reside in the <literal>definition</literal> subdirectory.</para>
+      
+    <para>The first document, <literal>interface/ticket.wsdl</literal> contains the interface
+      of the ticket issuer service. Supposedly, someone has already deployed this
+      service somewhere and the WSDL definitions came from there.</para>
+  
+    <programlisting>&lt;definitions targetNamespace=&quot;urn:samples:ticket&quot;
+  xmlns=&quot;http://schemas.xmlsoap.org/wsdl/&quot;
+  xmlns:tns=&quot;urn:samples:ticket&quot;
+  xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
+  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://schemas.xmlsoap.org/wsdl/
+   http://schemas.xmlsoap.org/wsdl/&quot;&gt;
+
+  &lt;!-- <emphasis role="bold">ticket creation request</emphasis> --&gt;
+  &lt;message name=&quot;ticketRequest&quot;/&gt;
+  
+  &lt;!-- <emphasis role="bold">ticket number wrapper</emphasis> --&gt;
+  &lt;message name=&quot;ticketMessage&quot;&gt;
+    &lt;part name=&quot;ticketNo&quot; type=&quot;xsd:int&quot;/&gt;
+  &lt;/message&gt;
+
+  &lt;!-- <emphasis role="bold">interface to the ticket issuer service</emphasis> --&gt;
+  &lt;portType name=&quot;ticketIssuer&quot;&gt;
+  
+    &lt;!-- <emphasis role="bold">generate a ticket number, distinct from previous calls</emphasis> --&gt;
+    &lt;operation name=&quot;createTicket&quot;&gt;
+      &lt;input message=&quot;tns:ticketRequest&quot;/&gt;
+      &lt;output message=&quot;tns:ticketMessage&quot;/&gt;
+    &lt;/operation&gt;
+    
+  &lt;/portType&gt;
+
+&lt;/definitions&gt;</programlisting>
+
+    <para>Another document, <literal>interface/account.wsdl</literal> describes the
+      published functions of the account system. One custom XML schema definition, 
+      <literal>tAccountOperation</literal>, introduces a data transfer type for
+      account operations.</para>
+      
+    <programlisting>&lt;definitions targetNamespace="urn:samples:account" 
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:tns="urn:samples:account" xmlns:typ="urn:samples:account:types"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://schemas.xmlsoap.org/wsdl/ http://schemas.xmlsoap.org/wsdl/"&gt;
+
+  &lt;types&gt;
+
+    &lt;schema targetNamespace="urn:samples:account:types" xmlns="http://www.w3.org/2001/XMLSchema"&gt;
+
+      &lt;!-- <emphasis role="bold">account operation doctype</emphasis> --&gt;
+      &lt;complexType name="tAccountOperation"&gt;
+        &lt;attribute name="customerName" type="xsd:string" use="required" /&gt;
+        &lt;attribute name="amount" type="xsd:double" use="required" /&gt;
+      &lt;/complexType&gt;
+
+    &lt;/schema&gt;
+
+  &lt;/types&gt;
+
+  &lt;!-- <emphasis role="bold">customer name wrapper</emphasis> --&gt;
+  &lt;message name="customerMessage"&gt;
+    &lt;part name="customerName" type="xsd:string" /&gt;
+  &lt;/message&gt;
+
+  &lt;!-- <emphasis role="bold">access check response</emphasis> --&gt;
+  &lt;message name="accessMessage"&gt;
+    &lt;part name="granted" type="xsd:boolean" /&gt;
+  &lt;/message&gt;
+
+  &lt;!-- <emphasis role="bold">account balance wrapper</emphasis> --&gt;
+  &lt;message name="balanceMessage"&gt;
+    &lt;part name="balance" type="xsd:double" /&gt;
+  &lt;/message&gt;
+
+  &lt;!-- <emphasis role="bold">account operation request</emphasis> --&gt;
+  &lt;message name="accountOperation"&gt;
+    &lt;part name="body" type="typ:tAccountOperation" /&gt;
+  &lt;/message&gt;
+
+  &lt;!-- <emphasis role="bold">published account system functions</emphasis> --&gt;
+  &lt;portType name="accountSystem"&gt;
+  
+    &lt;!-- <emphasis role="bold">tell whether a customer has an active account</emphasis> --&gt;
+    &lt;operation name="checkAccess"&gt;
+      &lt;input message="tns:customerMessage" /&gt;
+      &lt;output message="tns:accessMessage" /&gt;
+    &lt;/operation&gt;
+    
+    &lt;!-- <emphasis role="bold">retrieve the balance of an account holder</emphasis> --&gt;
+    &lt;operation name="queryBalance"&gt;
+      &lt;input message="tns:customerMessage" /&gt;
+      &lt;output message="tns:balanceMessage" /&gt;
+    &lt;/operation&gt;
+    
+    &lt;!-- <emphasis role="bold">increase/decrease the balance of an account holder</emphasis> --&gt;
+    &lt;operation name="updateBalance"&gt;
+      &lt;input message="tns:accountOperation" /&gt;
+      &lt;output message="tns:balanceMessage" /&gt;
+    &lt;/operation&gt;
+
+  &lt;/portType&gt;
+
+&lt;/definitions&gt;</programlisting>
+
+    <para>The third document, <literal>interface/frontend.wsdl</literal>, contains the interface
+      the process presents to ATMs. Because it reuses a number of messages from the ticket issuer
+      and the account system, it imports the WSDL documents that describe these services.</para>
+      
+    <para>Some custom XML schema definitions appear in the <literal>types</literal> section.  
+      Two simple types, <literal>tStatus</literal> and <literal>tErrorCode</literal> restrict
+      the range of values for connection status strings and operation error codes, respectively.
+      The other two definitions describe the information item that the front end
+      interface uses to inform ATMs of business logic errors (<literal>operationError</literal>)
+      and the abstract type which characterizes the item (<literal>tOperationError</literal>).</para>
+      
+    <para>WSDL messages, in terms of the foregoing definitions and predefined schema types,
+      shape the exchange format between the ATM and the bank front end. Finally, 
+      the <literal>atmFrontEnd</literal> port type lists the bank functions available to ATMs.</para>
+      
+    <programlisting>&lt;definitions targetNamespace="urn:samples:atm" 
+  xsi:schemaLocation="http://schemas.xmlsoap.org/wsdl/ http://schemas.xmlsoap.org/wsdl/"
+  xmlns:tns="urn:samples:atm" xmlns:typ="urn:samples:atm:types"
+  xmlns:tic="urn:samples:ticket" xmlns:acc="urn:samples:account"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"&gt;
+
+  &lt;import namespace="urn:samples:ticket" location="ticket.wsdl" /&gt;
+  &lt;import namespace="urn:samples:account" location="account.wsdl" /&gt;
+
+  &lt;types&gt;
+
+    &lt;schema targetNamespace="urn:samples:atm:types" xmlns="http://www.w3.org/2001/XMLSchema"&gt;
+    
+      &lt;!-- <emphasis role="bold">status string enumeration</emphasis> --&gt;
+      &lt;simpleType name="tStatus"&gt;
+        &lt;restriction base="xsd:string"&gt;
+          &lt;enumeration value="connected" /&gt;
+          &lt;enumeration value="logged" /&gt;
+          &lt;enumeration value="disconnected" /&gt;
+        &lt;/restriction&gt;
+      &lt;/simpleType&gt;
+      
+      &lt;!-- <emphasis role="bold">error code enumeration</emphasis> --&gt;
+      &lt;simpleType name="tErrorCode"&gt;
+        &lt;restriction base="xsd:string"&gt;
+          &lt;enumeration value="no_such_customer" /&gt;
+          &lt;enumeration value="not_enough_funds" /&gt;
+        &lt;/restriction&gt;
+      &lt;/simpleType&gt;
+      
+      &lt;!-- <emphasis role="bold">front end error abstract type</emphasis> --&gt;
+      &lt;complexType name="tOperationError"&gt;
+        &lt;attribute name="code" type="typ:tErrorCode" use="required" /&gt;
+      &lt;/complexType&gt;
+
+      &lt;!-- <emphasis role="bold">front end error information item</emphasis> --&gt;
+      &lt;element name="operationError" type="typ:tOperationError" /&gt;      
+
+    &lt;/schema&gt;
+
+  &lt;/types&gt;
+  
+  &lt;!-- <emphasis role="bold">ATM connection request</emphasis> --&gt;
+  &lt;message name="connectRequest" /&gt;
+
+  &lt;!-- <emphasis role="bold">customer log on request</emphasis> --&gt;
+  &lt;message name="logOnRequest"&gt;
+    &lt;part name="ticketNo" type="xsd:int" /&gt;
+    &lt;part name="customerName" type="xsd:string" /&gt;
+  &lt;/message&gt;
+
+  &lt;!-- <emphasis role="bold">customer log on response</emphasis> --&gt;
+  &lt;message name="logOnResponse" /&gt;
+
+  &lt;!-- <emphasis role="bold">connection status response</emphasis> --&gt;
+  &lt;message name="statusResponse"&gt;
+    &lt;part name="status" type="typ:tStatus" /&gt;
+  &lt;/message&gt;
+  
+  &lt;!-- <emphasis role="bold">customer operation request</emphasis> --&gt;
+  &lt;message name="operationRequest"&gt;
+    &lt;part name="customerName" type="xsd:string" /&gt;
+    &lt;part name="amount" type="xsd:double" /&gt;
+  &lt;/message&gt;
+  
+  &lt;!-- <emphasis role="bold">customer operation fault</emphasis> --&gt;
+  &lt;message name="operationFault"&gt;
+    &lt;part name="detail" element="typ:operationError" /&gt;
+  &lt;/message&gt;  
+  
+  &lt;!-- <emphasis role="bold">bank functions available to ATMs</emphasis> --&gt;
+  &lt;portType name="atmFrontEnd"&gt;
+  
+    &lt;!-- <emphasis role="bold">initiate bank connection</emphasis> --&gt;
+    &lt;operation name="connect"&gt;
+      &lt;input message="tns:connectRequest" /&gt;
+      &lt;output message="tic:ticketMessage" /&gt;
+    &lt;/operation&gt;
+    
+    &lt;!-- <emphasis role="bold">terminate bank connection</emphasis> --&gt;
+    &lt;operation name="disconnect"&gt;
+      &lt;input message="tic:ticketMessage" /&gt;
+    &lt;/operation&gt;
+    
+    &lt;!-- <emphasis role="bold">retrieve bank connection status</emphasis> --&gt;
+    &lt;operation name="status"&gt;
+      &lt;input message="tic:ticketMessage" /&gt;
+      &lt;output message="tns:statusResponse" /&gt;
+    &lt;/operation&gt;
+    
+    &lt;!-- <emphasis role="bold">initiate customer session</emphasis> --&gt;
+    &lt;operation name="logOn"&gt;
+      &lt;input message="tns:logOnRequest" /&gt;
+      &lt;output message="tns:logOnResponse" /&gt;
+      &lt;fault name="logOnFault" message="tns:operationFault" /&gt;
+    &lt;/operation&gt;
+    
+    &lt;!-- <emphasis role="bold">terminate customer session</emphasis> --&gt;
+    &lt;operation name="logOff"&gt;
+      &lt;input message="acc:customerMessage" /&gt;
+    &lt;/operation&gt;
+    
+    &lt;!-- <emphasis role="bold">retrieve account balance</emphasis> --&gt;
+    &lt;operation name="getBalance"&gt;
+      &lt;input message="acc:customerMessage" /&gt;
+      &lt;output message="acc:balanceMessage" /&gt;
+    &lt;/operation&gt;
+    
+    &lt;!-- <emphasis role="bold">increase account balance</emphasis> --&gt;
+    &lt;operation name="deposit"&gt;
+      &lt;input message="tns:operationRequest" /&gt;
+      &lt;output message="acc:balanceMessage" /&gt;
+    &lt;/operation&gt;
+    
+    &lt;!-- <emphasis role="bold">decrease account balance</emphasis> --&gt;
+    &lt;operation name="withdraw"&gt;
+      &lt;input message="tns:operationRequest" /&gt;
+      &lt;output message="acc:balanceMessage" /&gt;
+      &lt;fault name="withdrawFault" message="tns:operationFault" /&gt;
+    &lt;/operation&gt;
+
+  &lt;/portType&gt;  
+  
+&lt;/definitions&gt;</programlisting>
+
+  <para>The last document, <literal>atm.wsdl</literal>, contains extensibility elements that
+    glue together the BPEL process and the WSDL definitions. Initially, the document 
+    imports the previous three documents to reference their definitions. Later,
+    it defines some properties for correlation purposes. <varname>ticketId</varname> 
+    distinguishes ticket numbers in messages exchanged within an ATM connection, 
+    while <literal>customerId</literal> represents customer names in messages
+    exchanged during a customer session. The property aliases adjacent to these 
+    property definitions map these properties to key information items inside messages.</para>
+  
+  <para>Partner link types characterize the relationship between ATMs and the process
+    (<varname>atm-front</varname>), the process and the ticket issuer 
+    (<varname>front-ticket</varname>) as well as the process and the account system 
+    (<varname>front-account</varname>). They define the roles these services play and
+    specify the interface they present to each other. The coordinator does not call back the
+    ATM. The ticket issuer or the account system do not call back the coordinator either.
+    Therefore, all partner link types have a single role.</para>
+  
+<programlisting>&lt;definitions targetNamespace="urn:samples:atm"
+  xmlns="http://schemas.xmlsoap.org/wsdl/" 
+  xmlns:tns="urn:samples:atm" xmlns:atm="urn:samples:atm" 
+  xmlns:tic="urn:samples:ticket" xmlns:acc="urn:samples:account"
+  xmlns:bpel="http://schemas.xmlsoap.org/ws/2003/03/business-process/" 
+  xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+
+  &lt;import namespace="urn:samples:atm" location="interface/frontend.wsdl" /&gt;
+  &lt;import namespace="urn:samples:ticket" location="interface/ticket.wsdl" /&gt;
+  &lt;import namespace="urn:samples:account" location="interface/account.wsdl" /&gt;
+  
+  &lt;!-- <emphasis role="bold">customer name token</emphasis> --&gt;
+  &lt;bpel:property name="customerId" type="xsd:string" /&gt;
+  
+  &lt;!-- <emphasis role="bold">location of costumerId inside messages</emphasis> --&gt;
+  &lt;bpel:propertyAlias propertyName="tns:customerId" messageType="atm:logOnRequest" part="customerName" /&gt;
+  &lt;bpel:propertyAlias propertyName="tns:customerId" messageType="atm:operationRequest" part="customerName" /&gt;
+  &lt;bpel:propertyAlias propertyName="tns:customerId" messageType="acc:customerMessage" part="customerName" /&gt;
+  &lt;bpel:propertyAlias propertyName="tns:customerId" messageType="acc:accountOperation" part="body"
+    query="/body/@customerName" /&gt;
+    
+  &lt;!-- <emphasis role="bold">ticket number token</emphasis> --&gt;
+  &lt;bpel:property name="ticketId" type="xsd:int" /&gt;
+  
+  &lt;!-- <emphasis role="bold">location of ticketId inside messages</emphasis> --&gt;
+  &lt;bpel:propertyAlias propertyName="tns:ticketId" messageType="tic:ticketMessage" part="ticketNo" /&gt;
+  &lt;bpel:propertyAlias propertyName="tns:ticketId" messageType="atm:logOnRequest" part="ticketNo" /&gt;
+  
+  &lt;!-- <emphasis role="bold">relationship between the ATM and the process</emphasis> --&gt;
+  &lt;plt:partnerLinkType name="atm-front"&gt;
+    &lt;plt:role name="frontEnd"&gt;
+      &lt;plt:portType name="atm:atmFrontEnd" /&gt;
+    &lt;/plt:role&gt;
+  &lt;/plt:partnerLinkType&gt;
+  
+  &lt;!-- <emphasis role="bold">relationship between the process and the ticket issuer</emphasis> --&gt;
+  &lt;plt:partnerLinkType name="front-ticket"&gt;
+    &lt;plt:role name="ticketIssuer"&gt;
+      &lt;plt:portType name="tic:ticketIssuer" /&gt;
+    &lt;/plt:role&gt;
+  &lt;/plt:partnerLinkType&gt;
+  
+  &lt;!-- <emphasis role="bold">relationship between the process and the account system</emphasis> --&gt;
+  &lt;plt:partnerLinkType name="front-account"&gt;
+    &lt;plt:role name="accountSystem"&gt;
+      &lt;plt:portType name="acc:accountSystem" /&gt;
+    &lt;/plt:role&gt;
+  &lt;/plt:partnerLinkType&gt;  
+
+&lt;/definitions&gt;</programlisting>
+
+  </section>
+  
+  <section id="tutorial.atm.def">
+  
+    <title>Deploy the process definition</title>
+    
+    <section id="tutorial.atm.def.pack">    
+  
+      <title>Process definition package</title>
+      
+      <para>Build the process archive by calling:</para>
+      
+      <synopsis>ant pack-definition</synopsis>
+
+      <para>The result is an archive named <literal>atm.par</literal> (in directory <literal>build</literal>);
+        its contents are:</para>
+  
+      <programlisting>+ interface
+  - account.wsdl
+  - frontend.wsdl
+  - ticket.wsdl
++ META-INF
+  - bpel-definition.xml
+- atm.bpel
+- atm.wsdl</programlisting>
+
+    </section>
+    
+    <section id="tutorial.atm.def.deploy">
+
+      <title>Process archive deployment</title>
+      
+      <para>Now deploy the process archive to the database:</para>
+
+      <synopsis>ant deploy-definition</synopsis>
+
+      <para>The server console should read:</para>
+
+      <screen>14:33:42,015 INFO  [[/jbpm-bpel]] DeployServlet: deploying process archive: file:/.../atm.par
+14:33:42,812 INFO  [BpelReader] read wsdl definitions: atm.wsdl
+14:33:43,171 INFO  [BpelReader] read bpel process: atm.bpel
+14:33:55,484 INFO  [[/jbpm-bpel]] DeployServlet: deployed process archive: file:/.../atm.par</screen>
+
+    </section>
+    
+  </section>
+  
+  <section id="tutorial.atm.server">
+  
+    <title>Build the WSEE port components</title>
+    
+    <section id="tutorial.atm.server.wsdl">
+    
+      <title>WSDL implementation documents</title>
+      
+      <para>Generate the WSDL implementation definitions with:</para>
+        
+      <synopsis>ant generate-service</synopsis>
+
+	    <para>The <literal>servicegen</literal> tool creates a <literal>web/wsdl</literal> directory.
+         It writes the interface documents from <link linkend="tutorial.atm.wsdl" 
+         endterm="tutorial.atm.wsdl.title" />, a <literal>binding1.wsdl</literal> document for the 
+         SOAP binding of the <literal>atmFrontEnd</literal> port type, and the 
+         <literal>service.wsdl</literal> document for the service that represents the process. 
+         The service contains a <literal>atmRelationPort</literal> associated to the 
+         <varname>atmRelation</varname> partner link.</para>
+         
+    </section>
+    
+    <section id="tutorial.atm.server.artifacts">
+  
+      <title>Server artifacts</title>
+      
+      <para>Generate the WSEE server artifacts with this command:</para>
+
+      <synopsis>ant wscompile</synopsis>
+
+      <para>The path to the configuration file fed to <literal>wscompile</literal> is
+        <literal>web/wscompile.xml</literal>.</para>
+  
+<programlisting>&lt;configuration xmlns=&quot;http://java.sun.com/xml/ns/jax-rpc/ri/config&quot;&gt;
+  &lt;wsdl location=&quot;wsdl/service.wsdl&quot; packageName=&quot;org.jbpm.bpel.tutorial.atm&quot;/&gt;
+  &lt;!-- <emphasis role="bold">map namespaces (other than the target namespace) to package names</emphasis> --&gt;
+  &lt;namespaceMappingRegistry&gt;
+    &lt;namespaceMapping namespace=&quot;urn:samples:atm:types&quot;
+     packageName=&quot;org.jbpm.bpel.tutorial.atm.types&quot;/&gt;
+  &lt;/namespaceMappingRegistry&gt;
+&lt;/configuration&gt;</programlisting>
+
+    </section>
+    
+    <section id="tutorial.atm.server.webapp">
+
+      <title>Port components as servlets</title>
+      
+    	<para>The subsequent listing presents the web app deployment descriptor used for
+        this example. You can find it in <literal>web/web.xml</literal>. Bear in mind that
+        it is not generated automatically.</para>
+  
+      <programlisting>&lt;web-app version=&quot;2.4&quot; 
+  xmlns=&quot;http://java.sun.com/xml/ns/j2ee&quot;
+  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/j2ee
+   http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd&quot;&gt;
+
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;frontEndServlet&lt;/servlet-name&gt;
+    &lt;!-- <emphasis role="bold">service implementation bean class</emphasis> --&gt;
+    &lt;servlet-class&gt;org.jbpm.bpel.tutorial.atm.AtmFrontEnd_Impl&lt;/servlet-class&gt;
+  &lt;/servlet&gt;
+
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;frontEndServlet&lt;/servlet-name&gt;
+    &lt;!-- <emphasis role="bold">endpoint location</emphasis> --&gt;
+    &lt;url-pattern&gt;/frontEnd&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;</programlisting>
+
+    </section>
+    
+    <section id="tutorial.atm.server.webservices">
+    
+      <title>Web services deployment descriptor</title>
+      
+      <para>The hand-written web services descriptor, <literal>web/webservices.xml</literal>, 
+        appears next. Notice the <literal>frontEndHandler</literal>, which injects
+        BPEL functionality to the <literal>frontEndPort</literal>.</para>
+  
+      <programlisting>&lt;webservices version=&quot;1.1&quot; 
+  xmlns=&quot;http://java.sun.com/xml/ns/j2ee&quot;
+  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/j2ee
+  http://java.sun.com/xml/ns/j2ee/j2ee_web_services_1_1.xsd&quot;&gt;
+
+  &lt;webservice-description&gt;
+
+    &lt;!-- <emphasis role="bold">descriptive name for the service</emphasis> --&gt;
+    &lt;webservice-description-name&gt;ATM Front End&lt;/webservice-description-name&gt;
+    &lt;!-- <emphasis role="bold">WSDL implementation file</emphasis> --&gt;
+    &lt;wsdl-file&gt;WEB-INF/wsdl/service.wsdl&lt;/wsdl-file&gt;
+    &lt;!-- <emphasis role="bold">Java&lt;-&gt;XML mapping file</emphasis> --&gt;
+    &lt;jaxrpc-mapping-file&gt;WEB-INF/jaxrpc-mapping.xml&lt;/jaxrpc-mapping-file&gt;
+
+    &lt;port-component&gt;
+
+      &lt;!-- <emphasis role="bold">logical name for the port (unique within the module)</emphasis> --&gt;
+      &lt;port-component-name&gt;frontEndPort&lt;/port-component-name&gt;
+      &lt;!-- <emphasis role="bold">WSDL port element (in WSDL implementation file)</emphasis> --&gt;
+      &lt;wsdl-port&gt;impl:frontEndPort&lt;/wsdl-port&gt;
+      &lt;!-- <emphasis role="bold">service endpoint interface class</emphasis> --&gt;
+      &lt;service-endpoint-interface&gt;org.jbpm.bpel.tutorial.atm.Atm&lt;/service-endpoint-interface&gt;
+      &lt;service-impl-bean&gt;
+      &lt;!-- <emphasis role="bold">associated servlet (in web-app descriptor)</emphasis> --&gt;
+        &lt;servlet-link&gt;frontEndServlet&lt;/servlet-link&gt;
+      &lt;/service-impl-bean&gt;
+
+      &lt;handler&gt;
+      
+        &lt;!-- <emphasis role="bold">logical name for the handler (unique within the module)</emphasis> --&gt;
+        &lt;handler-name&gt;frontEndHandler&lt;/handler-name&gt;
+        &lt;!-- <emphasis role="bold">handler class (in jBPM BPEL library)</emphasis> --&gt;
+        &lt;handler-class&gt;org.jbpm.bpel.integration.provider.PortProvider&lt;/handler-class&gt;
+        
+        &lt;init-param&gt;
+          &lt;description&gt;<emphasis role="bold">name of the associated partner link</emphasis>&lt;/description&gt;
+          &lt;param-name&gt;portName&lt;/param-name&gt;
+          &lt;param-value&gt;atmRelation&lt;/param-value&gt;
+        &lt;/init-param&gt;
+        &lt;init-param&gt;
+          &lt;description&gt;<emphasis role="bold">time to wait for response messages, in milliseconds</emphasis>&lt;/description&gt;
+          &lt;param-name&gt;responseTimeout&lt;/param-name&gt;
+          &lt;param-value&gt;45000&lt;/param-value&gt;
+        &lt;/init-param&gt;
+        &lt;init-param&gt;
+          &lt;description&gt;<emphasis role="bold">time to expire one-way messages, in milliseconds</emphasis>&lt;/description&gt;
+          &lt;param-name&gt;oneWayTimeout&lt;/param-name&gt;
+          &lt;param-value&gt;300000&lt;/param-value&gt;
+        &lt;/init-param&gt;
+        
+     &lt;/handler&gt;
+
+    &lt;/port-component&gt;
+
+  &lt;/webservice-description&gt;
+
+&lt;/webservices&gt;</programlisting>
+
+    </section>
+    
+    <section id="tutorial.atm.server.pack">
+
+      <title>Web application package</title>
+
+      <para>To build the web archive, call:</para>
+      
+      <synopsis>ant pack-web</synopsis>
+
+      <para>The result is an archive named <literal>atm.war</literal> (in directory 
+        <literal>build</literal>); it contains the files listed below:</para>
+  
+      <programlisting>+ WEB-INF
+  + classes
+    + org
+      + jbpm
+        + bpel
+          + tutorial
+            + atm
+              - AtmFrontEnd.class
+              - AtmFrontEnd_Impl.class
+              - AtmFrontEndService.class
+              + types
+                - TErrorCode.class
+                - TOperationError.class
+                - TStatus.class
+    - bpel-application.xml
+  + wsdl
+    + interface
+      - account.wsdl
+      - frontend.wsdl
+      - ticket.wsdl    
+    - atm.wsdl
+    - binding1.wsdl
+    - service.wsdl
+  - jaxrpc-mapping.xml
+  - jboss-web.xml
+  - web.xml
+  - webservices.xml</programlisting>
+    
+    </section>
+    
+  </section>
+  
+  <section id="tutorial.atm.client">
+
+    <title>Build the WSEE application client</title>
+    
+    <section id="tutorial.atm.client.appclient">
+
+      <title>Application client deployment descriptor</title>
+      
+      <para>Create the <literal>aplication-client.xml</literal> descriptor in the <literal>client</literal>
+        directory:</para>
+  
+      <programlisting>&lt;application-client version=&quot;1.4&quot; 
+  xmlns=&quot;http://java.sun.com/xml/ns/j2ee&quot;
+  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/j2ee
+   http://java.sun.com/xml/ns/j2ee/application-client_1_4.xsd&quot;&gt;
+
+  &lt;display-name&gt;ATM Front End Client&lt;/display-name&gt;
+
+  &lt;service-ref&gt;
+
+    &lt;!-- <emphasis role="bold">JNDI name of service interface in client environment context</emphasis> --&gt;
+    &lt;service-ref-name&gt;service/ATM&lt;/service-ref-name&gt;
+    &lt;!-- <emphasis role="bold">service interface class</emphasis> --&gt;
+    &lt;service-interface&gt;org.jbpm.bpel.tutorial.atm.AtmFrontEndService&lt;/service-interface&gt;
+    &lt;!-- <emphasis role="bold">placeholder for published WSDL document</emphasis> --&gt;
+    &lt;wsdl-file&gt;USE_JBOSS_CLIENT_XML_OVERRIDE&lt;/wsdl-file&gt;
+    &lt;!-- <emphasis role="bold">Java&lt;-&gt;XML mapping file</emphasis> --&gt;
+    &lt;jaxrpc-mapping-file&gt;META-INF/jaxrpc-mapping.xml&lt;/jaxrpc-mapping-file&gt;
+
+    &lt;port-component-ref&gt;
+      <emphasis role="bold">&lt;!-- service endpoint interface class --&gt;</emphasis>
+      &lt;service-endpoint-interface&gt;org.jbpm.bpel.tutorial.atm.AtmFrontEnd&lt;/service-endpoint-interface&gt;
+    &lt;/port-component-ref&gt;
+
+  &lt;/service-ref&gt;
+
+&lt;/application-client&gt;</programlisting>
+    
+    </section>
+    
+    <section id="tutorial.atm.client.env">
+
+      <title>Environment context</title>
+
+      <para>Create the <literal>jboss-client.xml</literal> descriptor in the 
+        <literal>client</literal> directory:</para>
+      
+      <programlisting>&lt;jboss-client&gt;
+
+  &lt;!-- <emphasis role="bold">JNDI name of client environment context</emphasis> --&gt;
+  &lt;jndi-name&gt;atm-client&lt;/jndi-name&gt;
+
+  &lt;service-ref&gt;
+    &lt;!-- <emphasis role="bold">service-ref element to configure</emphasis> --&gt;
+    &lt;service-ref-name&gt;service/ATM&lt;/service-ref-name&gt;
+    &lt;!-- <emphasis role="bold">published WSDL document</emphasis> --&gt;
+    &lt;wsdl-override&gt;http://localhost:8080/atm/frontEnd?wsdl&lt;/wsdl-override&gt;
+  &lt;/service-ref&gt;
+
+&lt;/jboss-client&gt;</programlisting>
+
+    </section>
+    
+    <section id="tutorial.atm.client.pack">
+      
+      <title>Application client package</title>
+      
+      <para>To build the application client package, call:</para>
+      
+      <synopsis>ant pack-client</synopsis>
+      
+      <para>The result is an archive named <literal>atm.jar</literal> (in directory 
+        <literal>build</literal>). It packs the files listed below:</para>
+        
+      <programlisting>+ META-INF
+  - application-client.xml
+  - jaxrpc-mapping.xml
+  - jboss-client.xml</programlisting>
+  
+    </section>
+    
+  </section>
+  
+  <section id="tutorial.atm.app">
+  
+    <title>Deploy the BPEL application</title>
+    
+    <section id="tutorial.atm.app.relation">
+  
+      <title>Partner relationships manager servlet</title>
+    
+      <para>Modify the <literal>web.xml</literal> descriptor to include the partner
+        relationship manager in the same way as in the <link linkend="tutorial.hello.app.relation"
+        endterm="tutorial.hello.app.relation.title" /> section of the <emphasis>Hello
+        World</emphasis> example.</para>
+        
+    </section>
+    
+    <section id="tutorial.atm.app.bpelapp">
+        
+      <title>BPEL application descriptor</title>
+
+      <para>Make a start indicating the name of the process in the <literal>bpel-application.xml</literal>
+        descriptor.</para>
+
+      <programlisting>&lt;bpelApplication name=&quot;atmFrontEnd&quot; 
+  xmlns=&quot;http://jbpm.org/bpel&quot;
+  xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://jbpm.org/bpel
+   http://jbpm.org/bpel/bpel_application_1_0.xsd&quot;&gt;</programlisting>
+
+      <para>This time the process not only produces a service but also consumes two services.
+        In this case the BPEL application descriptor must also supply one or more catalogs
+        from which the process retrieves the WSDL definitions of deployed partner services.</para>
+        
+      <para>jBPM BPEL comes with support for a variety of catalogs. The simplest kind is the
+        URL catalog. As its name implies, it is just a collection of URLs, either absolute or
+        relative to a given context, pointing to implementation WSDL documents. This catalog
+        should be enough for most applications.</para>
+        
+      <para>For more sophisticated web service networks, the design of the service catalog 
+        feature considered UDDI registries. A UDDI catalog will become available soon.</para>
+        
+      <programlisting>&lt;bpelApplication...&gt;
+  ...
+  &lt;serviceCatalogs&gt;
+    &lt;urlCatalog contextUrl="http://localhost:8080/"&gt;
+      &lt;!-- <emphasis role="bold">published WSDL document of ticket issuer</emphasis> --&gt;
+      &lt;wsdl location=&quot;ticket/ticketIssuer?wsdl&quot; /&gt;
+      &lt;!-- <emphasis role="bold">published WSDL document of account system</emphasis> --&gt;
+      &lt;wsdl location=&quot;account/accountSystem?wsdl&quot; /&gt;
+    &lt;/urlCatalog&gt;
+  &lt;/serviceCatalogs&gt;
+
+&lt;/bpelApplication&gt;</programlisting>
+
+    <para>The BPEL application descriptor is also the place for static assignment of partner 
+      endpoint references. If the reference of some partner link is not assigned here, the 
+      process definition must explicitly initialize the reference through the 
+      <literal>&lt;assign&gt;</literal> activity. As a third alternative, you can set the 
+      <literal>initiate</literal> attribute of the <literal>partnerRole</literal> element
+      to <literal>pull</literal>. Under this approach, when invoking an operation through 
+      the affected partner link, jBPM BPEL will try to locate a service having a port that 
+      implements the port type associated with the partner role.</para>
+      
+    <para>Partner services are known before deployment. Hard endpoint references in the 
+      process document are bad style; static assignment is preferable. The references 
+      appearing in the subsequent fragment conform to the XML infoset representation defined
+      in section 2.2 of the <ulink url="http://www.w3.org/Submission/ws-addressing/#_Toc77464319">
+      WS-Addressing</ulink> document dated August 10, 2004.</para>
+      
+    <para>Specifying the service name makes the search for the service definition more
+      concise across the WSDL document catalog. The port name does not have to appear, unless
+      the service contains several ports that implement the partner port type.</para>
+      
+    <para>Port definitions provide the actual access information, so the exact location 
+      needs not appear in this descriptor. That is why you see placeholders in the address 
+      properties.</para>
+  
+    <programlisting>&lt;bpelApplication...&gt;
+
+  &lt;partnerLinks&gt;
+    
+    &lt;partnerLink name=&quot;ticketRelation&quot;&gt;
+      &lt;partnerRole&gt;
+        &lt;!-- <emphasis role="bold">ticket issuer service reference</emphasis> --&gt;
+        &lt;wsa:EndpointReference&gt;
+          &lt;wsa:Address&gt;USE_ACTUAL_URI_FROM_CATALOG&lt;/wsa:Address&gt;
+          &lt;wsa:ServiceName xmlns:serviceNS=&quot;urn:samples:ticket&quot;&gt;serviceNS:ticketService&lt;/wsa:ServiceName&gt;
+        &lt;/wsa:EndpointReference&gt;
+      &lt;/partnerRole&gt;
+    &lt;/partnerLink&gt;
+    
+    &lt;partnerLink name=&quot;accountRelation&quot;&gt;
+      &lt;partnerRole&gt;
+        &lt;!-- <emphasis role="bold">account system service reference</emphasis> --&gt;
+        &lt;wsa:EndpointReference&gt;
+          &lt;wsa:Address&gt;USE_ACTUAL_URI_FROM_CATALOG&lt;/wsa:Address&gt;
+          &lt;wsa:ServiceName xmlns:serviceNS=&quot;urn:samples:account&quot;&gt;serviceNS:accountService&lt;/wsa:ServiceName&gt;
+        &lt;/wsa:EndpointReference&gt;
+      &lt;/partnerRole&gt;
+    &lt;/partnerLink&gt;    
+
+  &lt;/partnerLinks&gt;
+  ...
+&lt;/bpelApplication&gt;</programlisting>
+
+    </section>
+    
+    <section id="tutorial.atm.app.resourceref">
+
+      <title>Destination and connection factory references</title>
+      
+      <para>Add a destination reference in the <literal>web.xml</literal> descriptor
+        for the <literal>atmRelation</literal> partner link:</para>
+        
+      <programlisting>&lt;web-app...&gt;
+  ...
+  &lt;message-destination-ref&gt;
+    &lt;!-- <emphasis role="bold">queue assigned to atmRelation partner link</emphasis> --&gt;
+    &lt;message-destination-ref-name&gt;jms/atmRelation&lt;/message-destination-ref-name&gt;
+    &lt;message-destination-type&gt;javax.jms.Queue&lt;/message-destination-type&gt;
+    &lt;message-destination-usage&gt;ConsumesProduces&lt;/message-destination-usage&gt;
+  &lt;/message-destination-ref&gt;
+
+&lt;/web-app&gt;</programlisting>
+
+      <para>Afterwards, add a resource reference to a JMS connection factory in the same way
+        as in the <link linkend="tutorial.hello.app.resourceref" 
+        endterm="tutorial.hello.app.resourceref.title" /> section of the <emphasis>Hello
+        World</emphasis> example.</para>
+        
+    </section>
+    
+    <section id="tutorial.atm.app.resourcebind">
+  
+      <title>Binding references to actual resources</title>
+
+      <para>Bind the destination and connection factory references to resources that
+        exist in the operational environment in the <literal>jboss-web.xml</literal>
+        descriptor.</para>
+  
+      <programlisting>&lt;jboss-web&gt;
+
+  &lt;resource-ref&gt;
+    &lt;!-- <emphasis role="bold">JMS connection factory reference (in web.xml)</emphasis> --&gt;
+    &lt;res-ref-name&gt;jms/ConnectionFactory&lt;/res-ref-name&gt;
+    &lt;!-- <emphasis role="bold">actual resource in java JNDI context</emphasis> --&gt;
+    &lt;jndi-name&gt;java:ConnectionFactory&lt;/jndi-name&gt;
+  &lt;/resource-ref&gt;
+
+  &lt;message-destination-ref&gt;
+    &lt;!-- <emphasis role="bold">atmRelation queue reference (in web.xml)</emphasis> --&gt;
+    &lt;message-destination-ref-name&gt;jms/atmRelation&lt;/message-destination-ref-name&gt;
+    &lt;!-- <emphasis role="bold">actual resource in global JNDI context</emphasis> --&gt;
+    &lt;jndi-name&gt;queue/testQueue&lt;/jndi-name&gt;
+  &lt;/message-destination-ref&gt;
+
+&lt;/jboss-web&gt;</programlisting>
+
+    </section>
+    
+    <section id="tutorial.atm.app.enterpriseapp">
+
+      <title>Enterprise application deployment descriptor</title>
+    
+      <para>The <literal>application.xml</literal> descriptor references the web module and
+        the application client package.</para>
+  
+      <programlisting>&lt;application version=&quot;1.4&quot; 
+  xmlns=&quot;http://java.sun.com/xml/ns/j2ee&quot;
+  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+  xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/j2ee
+   http://java.sun.com/xml/ns/j2ee/application_1_4.xsd&quot;&gt;
+
+  &lt;description&gt;ATM Front End Business Process&lt;/description&gt;
+  &lt;display-name&gt;atmFrontEndProcess&lt;/display-name&gt;
+
+  &lt;!-- <emphasis role="bold">front end service</emphasis> --&gt;
+  &lt;module&gt;
+    &lt;web&gt;
+      &lt;web-uri&gt;atm.war&lt;/web-uri&gt;
+      &lt;context-root&gt;/atm&lt;/context-root&gt;
+    &lt;/web&gt;
+  &lt;/module&gt;
+
+  &lt;!-- <emphasis role="bold">atm client</emphasis> --&gt;
+  &lt;module&gt;
+    &lt;java&gt;atm.jar&lt;/java&gt;
+  &lt;/module&gt;
+
+&lt;/application&gt;</programlisting>
+
+    </section>
+    
+    <section id="tutorial.atm.app.pack">
+
+      <title>Enterprise application package</title>
+    
+      <para>To build the enterprise application archive, call:</para>
+      
+      <synopsis>ant pack-application</synopsis>
+
+      <para>This will rebuild the web archive and create an <literal>atm.ear</literal>
+        archive in directory <literal>build</literal>. Its contents are:</para>
+  
+      <programlisting>+ META-INF
+  - application.xml
+- atm.jar
+- atm.war</programlisting>
+
+    </section>
+    
+    <section id="tutorial.atm.app.deploy">
+
+      <title>Enterprise application deployment</title>
+
+      <para>Back in <link linkend="tutorial.atm.wsdl" endterm="tutorial.atm.wsdl.title" /> 
+        the discussion assumed the partner services were already deployed somewhere.
+        At this point, the assumption no longer suffices. Before any process instance 
+        takes off, participants must be up and running.</para>
+        
+      <para>The partner service resources reside in the <literal>partners</literal>
+        directory. To ease things, the Java mapping artifacts were prefabricated,
+        yet some tasks remain: compile the sources, build the modules and deploy
+        the archives to JBoss. A single target does it all:</para>
+        
+      <synopsis>ant deploy-partners</synopsis>
+      
+      <para>As the partners come to life, you will receive the following messages:</para>
+      
+      <screen>18:18:25,875 INFO  [TomcatDeployer] deploy, ctxPath=/account, warUrl=.../tmp1449account-exp.war/
+18:18:26,187 INFO  [WSDLFilePublisher] WSDL published to: file:/.../account.impl.wsdl
+18:18:26,390 INFO  [ServiceEndpointManager] WebService started: http://.../account/accountSystem
+18:18:26,578 INFO  [TomcatDeployer] deploy, ctxPath=/ticket, warUrl=.../tmp1452ticket-exp.war/
+18:18:26,828 INFO  [WSDLFilePublisher] WSDL published to: file:/.../ticket.impl.wsdl
+18:18:26,859 INFO  [ServiceEndpointManager] WebService started: http://.../ticket/ticketIssuer</screen>
+      
+      <para>Time has come to deploy the enterprise application. At last, call:</para>
+        
+      <synopsis>ant deploy-application</synopsis>
+
+      <para>If the application was correctly deployed, you should see logs on the server
+        much like these:</para>
+        
+      <programlisting>18:20:23,937 INFO  [EARDeployer] Init J2EE application: file:/.../atm.ear
+18:20:25,031 INFO  [ClientDeployer] Client ENC bound under: atm-client
+18:20:25,046 INFO  [TomcatDeployer] deploy, ctxPath=/atm, warUrl=.../atm-exp.war/
+18:20:26,375 INFO  [[/atm]] relationServlet: bpel application started
+18:20:26,484 INFO  [WSDLFilePublisher] WSDL published to: file:/.../service.wsdl
+18:20:26,765 INFO  [ServiceEndpointManager] WebService started: http://.../atm/frontEnd
+18:20:26,765 INFO  [EARDeployer] Started J2EE application: file:/.../atm.ear</programlisting>
+
+    </section>
+    
+  </section>
+  
+  <section id="tutorial.atm.test">
+
+    <title>Test the process</title>
+
+    <para>Once our process is up and running, we need to make sure that it is working
+      as expected. Here we create a JUnit test case called <classname>ClientTest</classname>
+      and put it in the <literal>org.jbpm.bpel.tutorial.atm</literal> package.
+      The sources are inside the <literal>test</literal> directory.</para>
+      
+    <section id="tutorial.atm.test.remote">
+  
+      <title>Remote web service access</title>
+
+      <para>This is the setup code for establishing a connection with the ATM service:</para>
+
+      <programlisting>private AtmFrontEnd atmFrontEnd;
+
+protected void setUp() throws Exception {
+  Context initialContext = getInitialContext();
+  // <emphasis role="bold">JNDI name of service interface (in application-client.xml)</emphasis>
+  String serviceRefName = "service/ATM";  
+  // <emphasis role="bold">lookup service interface in environment context</emphasis>
+  AtmFrontEndService service = (AtmFrontEndService) initialContext.lookup(&quot;java:comp/env/&quot; + serviceRefName);
+  // <emphasis role="bold">obtain dynamic proxy for web service port</emphasis>
+  atmFrontEnd = service.getAtmRelationPort();
+}</programlisting>
+
+      <para>In this scenario, the ATM connects to the server, logs on a customer,
+  deposits and withdraws funds, logs out and finally disconnects:</para>
+  
+      <programlisting>public void testTypicalSession() throws Exception {
+  // <emphasis role="bold">connect to server</emphasis>
+  int ticketNumber = atmFrontEnd.connect();
+  assertTrue(ticketNumber > 0);
+
+  // <emphasis role="bold">check atm is connected</emphasis>
+  TStatus status = atmFrontEnd.status(ticketNumber);
+  assertSame(TStatus.connected, status);
+
+  // <emphasis role="bold">log on customer</emphasis>
+  final String customerName = "ernie";
+  atmFrontEnd.logOn(ticketNumber, customerName);
+
+  // <emphasis role="bold">check customer is logged on</emphasis>
+  status = atmFrontEnd.status(ticketNumber);
+  assertSame(TStatus.logged, status);
+
+  // <emphasis role="bold">get current balance</emphasis>
+  double previousBalance = atmFrontEnd.getBalance(customerName);
+
+  // <emphasis role="bold">deposit some funds</emphasis>
+  double newBalance = atmFrontEnd.deposit(customerName, 300);
+  // <emphasis role="bold">check the new balance is correct</emphasis>
+  assertEquals(previousBalance += 300, newBalance, 0);
+
+  // <emphasis role="bold">withdraw some funds</emphasis>
+  newBalance = atmFrontEnd.withdraw(customerName, 100);
+  // <emphasis role="bold">check new balance is correct</emphasis>
+  assertEquals(previousBalance -= 100, newBalance, 0);
+  
+  // <emphasis role="bold">try to withdraw an amount greater than new balance</emphasis>
+  try {
+    atmFrontEnd.withdraw(customerName, newBalance + 1);
+    fail("excessive withdraw should be rejected");
+  }
+  catch (TOperationError e) {
+    assertEquals(TErrorCode.not_enough_funds, e.getCode());
+    // <emphasis role="bold">check account balance has not changed</emphasis>
+    assertEquals(newBalance, atmFrontEnd.getBalance(customerName), 0);
+  }
+
+  // <emphasis role="bold">log off customer</emphasis>
+  atmFrontEnd.logOff(customerName);
+
+  // <emphasis role="bold">disconnect from server</emphasis>
+  atmFrontEnd.disconnect(ticketNumber);
+}</programlisting>
+
+    </section>
+    
+    <section id="tutorial.atm.test.jndi">
+
+      <title>Client JNDI properties</title>
+
+      <para>Set the property <literal>j2ee.clientName</literal> in the JNDI context:</para>
+
+      <programlisting>protected InitialContext getInitialContext() throws NamingException {
+  // <emphasis role="bold">prepare environment</emphasis>
+  Properties env = new Properties();
+  // <emphasis role="bold">JNDI name of client environment context (in jboss-client.xml)</emphasis>
+  env.setProperty(&quot;j2ee.clientName&quot;, &quot;atm-client&quot;);
+  // <emphasis role="bold">initial context contains property above, plus those in jndi.properties</emphasis>
+  return new InitialContext(env);
+}</programlisting>
+
+    </section>
+    
+    <section id="tutorial.atm.test.run">
+
+      <title>Test execution</title>
+
+      <para>The following target executes the junit test case:</para>
+
+      <synopsis>ant run-test</synopsis>
+
+      <para>If everything goes right the target output should look like this:</para>
+      
+      <screen>run-test:
+    [junit] Testsuite: org.jbpm.bpel.tutorial.atm.ClientTest
+    [junit] Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 8.859 sec</screen>
+  
+      <para>As of version 1.1 beta 1, jBPM BPEL abandoned pessimistic locking in favor of optimistic 
+        concurrency control with automatic versioning. This approach allows for better concurrency and
+        scalability but relies on exception to prevent lost updates. For this reason, you might sometimes
+        see the following exception popping up on the server console.</para>
+        
+      <screen>18:25:40,484 ERROR [AbstractFlushingEventListener] Could not synchronize database state with session
+org.hibernate.StaleObjectStateException: Row was updated or deleted by another transaction 
+(or unsaved-value mapping was incorrect): [org.jbpm.graph.exe.Token#303]
+  at <emphasis>ugly stack trace here</emphasis></screen>
+  
+      <para>As stated earlier, this exception is a normal consequence of the concurrency model. If you prefer
+        not to see it on the console, adjust your server log settings. For more information, refer to 
+        <ulink url="http://docs.jboss.org/jbossas/jboss4guide/r5/html/ch10.html#ch10.log4j">section 10.2</ulink>
+        of the JBoss AS guide.</para>
+    
+    </section>
+    
+  </section>
+  
+</section>

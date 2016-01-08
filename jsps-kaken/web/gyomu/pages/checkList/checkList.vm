@@ -1,0 +1,227 @@
+## ***********************************************
+## チェックリスト画面
+##
+## ページ情報 → result
+## ***********************************************
+
+## 2005/03/11 新規作成
+
+#parse( $commonSetting )
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+##スクリプト
+<script language="javascript">
+<!--
+function onShinseishaInfoClick(shinseishaId){
+	document.shinsei_form.action="$link.setAction('/shozoku/checkList/shinseishaInfo')";
+	document.shinsei_form.shinseishaId.value = shinseishaId;
+	document.shinsei_form.submit();
+}
+
+/* ダウンロード */
+function onDownload(systemNo){
+	document.shinsei_form.action="$link.setAction('/gyomu/downloadPdf')";
+	document.shinsei_form.systemNo.value=systemNo;
+	document.shinsei_form.submit();
+}
+
+/* csvダウンロード */
+function onCsvOutClick(jigyoId,shozokuCd){
+	document.csvout_form.action="$link.setAction('/gyomu/checkList/csvOut')";
+	document.csvout_form.jigyoId.value = jigyoId;
+	document.csvout_form.shozokuCd.value = shozokuCd;
+    document.csvout_form.submit();
+}
+//-->
+</script>
+</head>
+
+<body class="bodyStyle">
+## 変数の置き換え
+#set ($list= $result.list)
+#set($titleData= $title.list)
+#if($titleData.size() != 0)
+#set ($shinseidata = $titleData.get(0))
+#set ($nendo = $!shinseidata.NENDO)
+#set ($kaisu = $!shinseidata.KAISU)
+#set ($jigyoName = $!shinseidata.JIGYO_NAME)
+#set ($jigyoId = $!shinseidata.JIGYO_ID)
+#set ($shozokuCd = $!shinseidata.SHOZOKU_CD)
+#set ($kakuteiDate = $!shinseidata.KAKUTEI_DATE)
+#set ($edition = $!shinseidata.ALLEDITION)
+#end
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="javascript:fncWindowOpen('$path/docs/manual3.pdf','help');"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/gyomu/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width="72" height="20" border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#999966" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/gyomu/showMainMenu')">業務担当者向けメニュー</a>＞チェックリスト検索＞チェックリスト一覧＞<b>チェックリスト</b></font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width="61" height="49" alt=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+	       平成$!escape.getText($nendo)年度 
+	       
+	       #if($kaisu.toString() != '1')
+		       第$!escape.getText($kaisu)回 
+		   #end
+		   
+	       $!escape.getText($!jigyoName)チェックリスト
+	       #if(!$edition || $edition.toString() == '0')
+	         (-版：$!escape.getText($!list.size())件）
+	       #else 
+	       	（$!dateFormat.format($!escape.getText($kakuteiDate)) $!escape.getText($edition)版：$!escape.getText($!list.size())件）
+	       #end
+	  </td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width="213" height="49" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+<!-- 本文ここから -->
+<!-- 一覧用テーブルここから -->
+#errorMarkup()
+#if($list.size() != 0)
+<p align="left"><a href="javascript:onCsvOutClick($jigyoId,$shozokuCd);"><img src="$path/images/bt_csv.gif" width="114" height="28" alt="CSV出力" border="0"></a></p>
+#end
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td>
+   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+## 20050721
+     <th>新規・継続区分</th>
+     <th>細目番号</th>
+     <th>分割番号</th>
+     <th>整理番号</th>
+     <th>版</th>
+     <th>部局名・職名</th>
+     <th>応募者名</th>
+     <th>研究課題名</th>
+     <th>作成日</th>
+     <th>応募情報確認</th>
+    </tr>
+    #if(!$result || $list.size() == 0)
+	##該当件数が０件だった場合
+	<tr>
+   		<td>　</td>
+   		<td>　</td>
+     	<td>　</td>
+     	<td>　</td>
+     	<td>　</td>
+     	<td>　</td>
+    	<td>　</td>
+     	<td>　</td>
+     	<td>　</td>
+     	<td>　</td>
+    </tr>
+	#else  
+	    #foreach($shinsei in $list)
+	     #set ($systemNo =$!shinsei.SYSTEM_NO)
+	     <tr>
+## 20050721
+	     	<td>
+		     	#if($shinsei.SHINSEI_KUBUN == '1')		新規
+		     	#elseif($shinsei.SHINSEI_KUBUN == '2')	継続
+		     	#end
+	     	</td>
+	     	<td>$!escape.getText($!shinsei.BUNKASAIMOKU_CD)</td>
+	     	<td>$!escape.getText($!shinsei.BUNKATSU_NO)</td>
+
+	     	<td>$!escape.getText($!shinsei.UKETUKE_NO.substring(6,10))</td>
+	     	<td>#if($shinsei.EDITION && $shinsei.EDITION.toString() != '0')
+	     			$!escape.getText($!shinsei.EDITION)版
+	     		#else
+	     			-版
+	     		#end
+	     	</td>
+	     	<td>$!escape.getText($!shinsei.BUKYOKU_NAME_RYAKU)&nbsp$!escape.getText($!shinsei.SHOKUSHU_NAME_RYAKU)</td>
+	     	<td>$!escape.getText($!shinsei.NAME_KANJI_SEI)&nbsp$!escape.getText($!shinsei.NAME_KANJI_MEI)</td>
+	     	<td>$!escape.getText($!shinsei.KADAI_NAME_KANJI)</td>
+	     	<td>$!dateFormat.format($!escape.getText($!shinsei.SAKUSEI_DATE))</td>
+	     	<td><a href="javascript:onDownload('$systemNo')"><img src="$path/images/bt_download.gif" border="0" alt="ダウンロード"></a></td>
+	    </tr>
+	   #end
+	#end
+   </table>
+  </td>
+ </tr>
+</table>
+
+<!-- 一覧用テーブルここまで-->
+<br>
+<br>
+<!-- 本文ここまで -->
+
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="$link.setAction('/gyomu/checkList/searchList')"><img src="$path/images/bt_bk_checklist.gif" width="219" height="28" alt="チェックリスト一覧に戻る" border="0"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width="8" height="26" alt=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/gyomu/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width="72" height="26" border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width="8" height="26" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+##隠しフォーム情報----------
+<form name="shinsei_form" action="" method="post">
+	<input type="hidden" name="shinseishaId" >
+	<input type="hidden" name="systemNo" value="">
+</form>
+<form name="csvout_form" action="" method="post">
+  <input type="hidden" name="jigyoId">
+  <input type="hidden" name="shozokuCd">
+</form>
+</body>
+</html>

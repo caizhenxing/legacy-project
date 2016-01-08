@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "spring-beans.dtd" >
+<beans>
+<import resource="classpath:org/codehaus/xfire/spring/xfire.xml"/> 
+	<bean id="WebServiceBean" class="org.codehaus.xfire.spring.ServiceBean" abstract="true" >
+    
+    <property name="serviceFactory" ref="xfire.serviceFactory"/>
+    <property name="xfire" ref="xfire"/>
+    
+    <property name="inHandlers">
+      <list>
+        <ref bean="addressingHandler"/>
+      </list>
+    </property>
+	
+    
+</bean>
+
+
+<bean id="addressingHandler" class="org.codehaus.xfire.addressing.AddressingInHandler"/>
+
+</beans>

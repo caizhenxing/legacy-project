@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+<!--  action begin -->
+    <!--来电防火墙action-->
+    <bean name="/pcc/callinFirewall"
+		class="et.bo.pcc.callinFirewall.action.CallinFirewallAction" singleton="false">			
+		<property name="callinFirewallService">
+			<ref bean="CallinFirewallService" />
+		</property>			
+	</bean>
+<!-- action end -->
+<!--  service begin -->
+     <!--  来电防火墙service	-->
+     <bean id="CallinFirewallService"
+		class="et.bo.pcc.callinFirewall.service.impl.CallinFirewallServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>	
+	<bean id="PortCompareService"
+		class="et.bo.pcc.portCompare.service.impl.PortCompareServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+<!--  service end   -->
+</beans>

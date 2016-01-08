@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+	<bean name="/screen/screen" class="et.bo.screen.action.ScreenAction">
+		<property name="ss">
+			<ref bean="ScreenService"/>
+		</property>
+	</bean>
+	
+	<bean id="ScreenService"
+		class="et.bo.screen.service.impl.ScreenServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	
+	<!-- 大屏幕金农市场分析信息维护 -->
+	<bean name="/screen/marAnalysis" class="et.bo.screen.action.MarAnalysisAction">
+		<property name="mas">
+			<ref bean="marAnalysisService" />
+		</property>
+	</bean>
+	<bean id="marAnalysisService"
+		class="et.bo.screen.service.impl.MarAnalysisImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+	<bean id="quickMessageService" class="et.bo.screen.service.impl.QuickMessageServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+	</bean>
+	<bean name="/screen/quickMessage" class="et.bo.screen.action.QuickMessageAction">
+		<property name="quickMessageService">
+			<ref bean="quickMessageService"/>
+		</property>
+	</bean>
+	
+	<!-- 大屏幕定制服务信息维护 -->
+	<bean name="/screen/customMade" class="et.bo.screen.action.CustomMadeAction">
+		<property name="cms">
+			<ref bean="customMadeService" />
+		</property>
+	</bean>
+	<bean id="customMadeService"
+		class="et.bo.screen.service.impl.CustomMadeImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+	<!-- 大屏幕调查信息维护 -->
+	
+	<bean id="SSSService"
+		class="et.bo.screen.service.impl.SpecialSurveyServiceImpl"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default">
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+	<bean name="/screen/scrspesur"
+		class="et.bo.screen.action.ScrspesurAction" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sss">
+			<ref bean="SSSService" />
+		</property>
+	</bean>
+	
+	<!-- 大屏幕金农热线信息维护 -->
+	<bean name="/screen/hotline" class="et.bo.screen.action.HotlineAction">
+		<property name="mas">
+			<ref bean="hotlineService" />
+		</property>
+	</bean>
+	<!-- 大屏幕家庭医生 -->
+	<bean name="/screen/screenDoctor" class="et.bo.screen.action.ScreenDoctorAction">
+		<property name="mas">
+			<ref bean="screenDoctorService" />
+		</property>
+	</bean>
+	<bean id="screenDoctorService"
+		class="et.bo.screen.service.impl.ScreenDoctorImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	<bean id="hotlineService"
+		class="et.bo.screen.service.impl.HotlineImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+	
+</beans>

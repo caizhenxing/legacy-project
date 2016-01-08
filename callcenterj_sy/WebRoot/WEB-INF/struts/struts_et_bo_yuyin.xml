@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	
+	<form-beans>
+		<!-- 问题模块表单bean信息 -->
+		<form-bean name="yuyinBean" type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+			<form-property name="play" type="java.lang.String"/>
+			<form-property name="reportTxt" type="java.lang.String"/>
+			<form-property name="affixType" type="java.lang.String"/>
+			<form-property name="tree" type="java.lang.String"/>
+			
+		</form-bean>
+
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<!-- 问题action -->
+		<action
+      attribute="yuyinBean"
+      name="yuyinBean"
+      parameter="method"
+      path="/yuyin"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy">
+      <forward name="toyuyinTreeSelected" path="/yuyin/yuyinTreeSelect.jsp" />
+      <forward name="toyuyinTreeLoad" path="/yuyin/yuyin.jsp" />
+    </action>
+		
+		
+
+	</action-mappings>
+	
+</struts-config>
+

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/callcenter/conf.do" location="50,550" dimension="358,84" />
+  <StrutsActivity path="/callcenter/conf/confList.jsp" location="950,650" dimension="214,48" />
+  <StrutsActivity path="/callcenter/conf/confOper.jsp" location="1250,550" dimension="214,48" />
+  <StrutsActivity path="/callcenter/conf/confMain.jsp" location="1250,450" dimension="214,48" />
+  <StrutsActivity path="/callcenter/conf/telConfList.jsp" location="50,150" dimension="232,48" />
+  <StrutsActivity path="/callcenter/conf/confQuery.jsp" location="1250,50" dimension="220,48" />
+  <StrutsActivity path="/callcenter/cclog/cclogList.jsp" location="0,324" dimension="226,48" />
+  <StrutsActivity path="/callcenter/cclog/recordList.jsp" location="325,324" dimension="232,48" />
+  <StrutsActivity path="/callcenter/cclog/cclogDetail.jsp" location="657,324" dimension="238,48" />
+  <StrutsActivity path="/callcenter/cclog/cclogLoad.jsp" location="995,324" dimension="226,48" />
+  <StrutsActivity path="/callcenter/cclog/questionLoad.jsp" location="1321,324" dimension="244,48" />
+  <StrutsActivity path="/callcenter/cclog/cclogMain.jsp" location="1665,324" dimension="226,48" />
+  <StrutsActivity path="/callcenter/cclog/addInfoLoad.jsp" location="1991,324" dimension="238,48" />
+  <StrutsActivity path="/callcenter/cclog/cclogQuery.jsp" location="2330,324" dimension="232,48" />
+  <StrutsActivity path="/callcenter/cclog/cclogLoadFrame.jsp" location="2662,324" dimension="256,48" />
+  <StrutsActivity path="/callcenter/cclog/IVRInfoList.jsp" location="3018,324" dimension="238,48" />
+  <StrutsActivity path="/callcenter/cclog/departmentMain.jsp" location="3356,324" dimension="256,48" />
+  <StrutsActivity path="/callcenter/cclog/operList.jsp" location="3712,324" dimension="220,48" />
+  <StrutsActivity path="/callcenter/cclog/QuesInfoList.jsp" location="4032,324" dimension="244,48" />
+  <StrutsActivity path="/callcenter/cclog/answerManLoad.jsp" location="4376,324" dimension="250,48" />
+  <StrutsActivity path="/pcc/addcclog/addCclogList.jsp" location="650,450" dimension="220,48" />
+  <StrutsActivity path="/pcc/addcclog/addCclogMain.jsp" location="950,450" dimension="220,48" />
+  <StrutsActivity path="/pcc/addcclog/addCclogLoad.jsp" location="650,550" dimension="220,48" />
+  <StrutsActivity path="/pcc/addcclog/addCclogQuery.jsp" location="950,550" dimension="226,48" />
+  <StrutsActivity path="/callcenter/conf/cclogList.jsp" location="650,650" dimension="220,48" />
+  <StrutsActivity path="" location="50,750" dimension="40,48" />
+  <StrutsActivity path="/callcenter/conf" location="350,750" dimension="136,48" />
+  <StrutsActivity path="/callcenter/conf/" location="650,750" dimension="142,48" />
+  <StrutsTransition id="/callcenter/conf.do,main,/callcenter/conf/confMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="211,550" />
+      <AbsolutePoint location="211,417" />
+      <AbsolutePoint location="1357,417" />
+      <AbsolutePoint location="1357,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/conf.do,query,/callcenter/conf/confQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,592" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/conf.do,TelConferenceList,/callcenter/conf/telConfList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,592" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/conf.do,oper,/callcenter/conf/confOper.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="241,550" />
+      <AbsolutePoint location="241,513" />
+      <AbsolutePoint location="1357,513" />
+      <AbsolutePoint location="1357,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/callcenter/conf.do,list,/callcenter/conf/confList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,613" />
+      <AbsolutePoint location="1057,613" />
+      <AbsolutePoint location="1057,650" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

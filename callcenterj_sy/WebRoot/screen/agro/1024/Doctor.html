@@ -1,0 +1,234 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<!-- 引入jquery -->
+<script type="text/javascript" src="../../../js/jquery/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="../../../js/jquery/plug/jquery[1].json-1.3.min.js"></script>
+<script type="text/javascript" src="../../../js/jquery/plug/jquery.blockUI.js"></script>
+<!-- 滚动页面 -->
+<script language="javascript" src="../../../js/MSClass.js" ></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+<!--		$.blockUI({message:'waiting......'});-->
+<!--		setTimeout($.unblockUI, 2000);-->
+		
+		loadData();
+		$("tr.templeteRow").hide();//确保隐藏
+		
+	}
+	);
+
+	function loadData(){
+		$.post(
+<!--			"../../../screen/expertGroupHL.do?method=groupHotLine",-->
+			"../../../screen/screenDoctor.do?method=toScreenList",
+			function(data){
+				
+				var result = $.evalJSON(data);
+				var count=0;
+				//解析数组
+				for(var key in result){
+					 var obj = result[key];
+					 var sClass = 'Odd';
+					 if(count%2==0)
+					 	sClass = 'Even';
+
+		var str = '			<tr >'
+        str +=' <td height="140" width="450" valign="middle" class="'+sClass+'"><table width="90%" border="0" cellpadding="0" cellspacing="0">';
+          str +=' <tr> ';
+            str +=' <td > ';
+           str +=getDoWithData(obj.docContent)+'  </td> ';
+         str +='  </tr> ';
+        str +=' </table> ';
+       str +='  <td valign="middle" class="Odd"><table width="90%" border="0" cellpadding="0" cellspacing="0"> ';
+        str +='     <tr> ';
+       str +='        <td> ';
+       str += getDoWithData(obj.docContent1)+'</td> ';
+        str +='     </tr> ';
+        str +='   </table> ';
+      str +='       <br></td> ';
+      str +=' </tr> ';
+            		 $("#marqueeTableId").append(str);
+				}
+				go();
+			}
+		);
+	}
+	function getDoWithData(data)
+	{
+			var name = '&nbsp;';
+        	if(typeof(data)!='undefined')
+        	return data
+        	else if(data)
+        	{
+        		if(''==trim(data))
+        		return '&nbsp;';
+        		else
+        		{
+        			return data;
+        		}
+       		}
+        	else
+        	return '&nbsp;';
+	}
+	function ltrim(s){ 
+    return s.replace( /^\s*/,""); 
+} 
+//去右空格; 
+function rtrim(s){ 
+    return s.replace( /\s*$/,""); 
+} 
+//去左右空格; 
+function trim(s){ 
+    return ltrim(rtrim(s)); 
+}
+	
+</script>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+/*整个页面div的宽为100%*/
+#width{
+	width: 100%;
+}
+.color{
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	background-color: #FFFFFF;
+}
+/*数据标题文字，黑色12号字体*/
+.wenzi1{
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	text-align: center;
+}
+/*数据标题文字，黄色12号字体*/
+.wenzi2{
+	font-family: "宋体";
+	font-size: 14px;
+	font-weight: bolder;
+	color: #FFFF00;
+	text-align: center;
+}
+.Title {
+	font-family: "宋体";
+	font-size: 14px;
+	color: #000000;
+	text-align: center;
+	border: 1px solid #B5E38A;
+	font-weight: bolder;
+}
+.Even {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #000000;
+	background-color: #EBF8E0;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #B5E38A;
+	border-bottom-color: #B5E38A;
+	border-left-color: #B5E38A;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	text-align: center;
+	line-height: 24px;
+}
+.Odd {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #000000;
+	background-color: #FFFFFF;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #B5E389;
+	border-bottom-color: #B5E389;
+	border-left-color: #B5E389;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	text-align: center;
+	line-height: 24px;
+}
+.time {	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	text-align: center;
+	padding-top: 6px;
+}
+.Title4 {font-family: "宋体";
+	font-size: 12px;
+	color: #C00000;
+	text-align: left;
+	font-weight: bold;
+}
+.Title5 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #499B1F;
+	text-align: left;
+	font-weight: bold;
+}
+.Title51 {font-family: "宋体";
+	font-size: 12px;
+	color: #2270A9;
+	text-align: left;
+	font-weight: bold;
+}
+.wenzi21 {font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	line-height: 22px;
+}
+.STYLE2 {font-family: "宋体"; font-size: 12px; font-weight: bold; color: #000000; text-align: center; padding-top: 6px; }
+-->
+</style>
+<link href="../../../fckeditor/_samples/default.css" rel="stylesheet" type="text/css" >
+</head>
+
+<body>
+  <table width="900" height="28" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="28" width="450" background="images/Price Kanban30.jpg" class="Title"><img src="images/Price Kanban31.jpg" width="6" height="14" align="absmiddle">&nbsp;合作医院推介</td>
+        <td width="450" background="images/Price Kanban30.jpg" class="Title"><img src="images/Price Kanban31.jpg" width="6" height="14" align="absmiddle">&nbsp;医疗保健信息</td>
+      </tr>
+  </table>
+  <div id="marquees">
+  <table id="marqueeTableId" width="900" height="561" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr class="templeteRow">
+        <td height="140" valign="middle" class="Odd">
+        aa
+        </td>
+        <td valign="middle" class="Odd">
+        aa
+        </td>
+      </tr>
+      
+    </table>
+    </div>
+</body>
+</html>
+<!-- 以下是javascript代码 -->
+<script type="text/javascript">
+function go()
+{
+	new Marquee("marquees","top",1,900,550,30,1000);
+}
+
+</script>

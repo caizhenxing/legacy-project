@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="PooledThreadServer" class="et.bo.callcenter.socket.impl.PooledThreadServerImpl">
+	<!-- 
+			<property name="sequenceService">
+				<ref bean="SequenceService" />
+			</property>
+	 -->
+	 <property name="cts">
+		<ref bean="ClassTreeService" />
+	</property>
+	</bean>
+</beans>

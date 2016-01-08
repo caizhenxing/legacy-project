@@ -1,0 +1,50 @@
+<Beans>
+    <Bean Class="com.genuitec.eclipse.sqlexplorer.utils.ConnectionProfile">
+        <activate>false</activate>
+        <driverIdentifier Class="net.sourceforge.squirrel_sql.fw.id.UidIdentifier">
+            <string>-2833af82:112f0d12897:-7fdc</string>
+        </driverIdentifier>
+        <identifier Class="net.sourceforge.squirrel_sql.fw.id.UidIdentifier">
+            <string>-2833af82:112f0d12897:-7fdb</string>
+        </identifier>
+        <name>MyEclipse Derby</name>
+        <password encryption="true">gFOjO/OmrJ8m4/rtM2cMIw==</password>
+        <promptForPassword>false</promptForPassword>
+        <schema Indexed="true"/>
+        <schemaDisplayPolicy>0</schemaDisplayPolicy>
+        <url>jdbc:derby://localhost:1527/myeclipse;create=true</url>
+        <userName>classiccars</userName>
+    </Bean>
+    <Bean Class="com.genuitec.eclipse.sqlexplorer.utils.ConnectionProfile">
+        <activate>false</activate>
+        <driverIdentifier Class="net.sourceforge.squirrel_sql.fw.id.UidIdentifier">
+            <string>-659a6831:10da0f660a5:-7fbc</string>
+        </driverIdentifier>
+        <identifier Class="net.sourceforge.squirrel_sql.fw.id.UidIdentifier">
+            <string>-659a6831:10da0f660a5:-7fde</string>
+        </identifier>
+        <name>oa</name>
+        <password encryption="true">U6gh0GaqlQc=</password>
+        <promptForPassword>false</promptForPassword>
+        <schema Indexed="true">
+            <Bean Class="net.sourceforge.squirrel_sql.fw.util.beanwrapper.StringWrapper">
+                <string>callcenter</string>
+            </Bean>
+            <Bean Class="net.sourceforge.squirrel_sql.fw.util.beanwrapper.StringWrapper">
+                <string>etcallcenter</string>
+            </Bean>
+            <Bean Class="net.sourceforge.squirrel_sql.fw.util.beanwrapper.StringWrapper">
+                <string>etoa</string>
+            </Bean>
+            <Bean Class="net.sourceforge.squirrel_sql.fw.util.beanwrapper.StringWrapper">
+                <string>oa</string>
+            </Bean>
+            <Bean Class="net.sourceforge.squirrel_sql.fw.util.beanwrapper.StringWrapper">
+                <string>police_callcenter</string>
+            </Bean>
+        </schema>
+        <schemaDisplayPolicy>2</schemaDisplayPolicy>
+        <url>jdbc:mysql://localhost:3306/etoa</url>
+        <userName>root</userName>
+    </Bean>
+</Beans>

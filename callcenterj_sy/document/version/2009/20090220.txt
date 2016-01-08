@@ -1,0 +1,159 @@
+修改人：王文权
+修改日期：2009-02-20
+
+修改内容：
+1服务记录统计不准
+说明：2009-02-12座席服务统计不准那时未作修改今天把存储过程改了
+存储过程修改
+ALTER PROCEDURE [dbo].[proc_telephone](@beginTime varchar(20),@endTime varchar(20),@condition varchar(20))
+AS
+BEGIN
+	--创建存储统计结果数据的临时表
+	--其中coun是电话数量、svm是电话时长、respondent对应的坐席员、teltype是电话量类型（呼入和呼出）
+	create table #tmp_telephone_value 
+		(coun int, svm int,respondent varchar(20), teltype varchar(20))
+	--创建横坐标标签临时表
+	create table #tmp_telephone_xaxis
+		(xaxis varchar(20))
+	declare @respondent varchar(20)
+	--向横坐标标签临时表添加数据	
+	declare respondent_cur cursor for
+		select distinct [user_name] from sys_user
+			where delete_mark<>'1'
+	open respondent_cur
+	fetch next from respondent_cur into @respondent	
+	while(@@fetch_status=0)
+	begin
+	insert into #tmp_telephone_xaxis values(@respondent)
+	fetch next from respondent_cur into @respondent
+	end
+	close respondent_cur
+	deallocate respondent_cur	
+	--创建纵坐标标签临时表
+	create table #tmp_telephone_yaxis
+		(yaxis varchar(20))
+	--向纵坐标标签临时表添加数据
+	insert into #tmp_telephone_yaxis values('呼入')
+	insert into #tmp_telephone_yaxis values('呼出')
+	declare @coun int
+	declare @svm int	
+	declare @resp varchar(20)
+	--呼入电话总数、时长统计
+	declare talk_in_cur cursor for 
+	select b.countNum coun,a.svm,a.respondent
+	from
+	(
+		select count(*) as coun, sum(convert(int,isnull(touch_keeptime,0)))/1000 
+		as svm,respondent from cc_talk 
+		where respondent_type='AGENT' 
+		and respondent is not null 
+		and convert(varchar(10),touch_begintime,120) between @beginTime and @endTime 
+		group by respondent
+	) a,
+	(
+		select answer_agent,count(*) countNum from oper_question 
+		where convert(varchar(10),addtime,120) between @beginTime and @endTime 
+		group by answer_agent
+	) b
+	where a.respondent=b.answer_agent
+ 
+	open talk_in_cur
+	fetch next from talk_in_cur into @coun,@svm,@resp
+	while(@@fetch_status=0)
+	begin
+	insert into #tmp_telephone_value values(@coun,@svm,@resp,'呼入')
+	fetch next from talk_in_cur into @coun,@svm,@resp
+	end
+	close talk_in_cur
+	deallocate talk_in_cur
+	--呼出电话总数、时长统计
+	declare talk_out_cur cursor for 
+		select count(*) as coun, sum(convert(int,isnull(touch_keeptime,0)))/1000 
+		as svm,respondent from cc_talk 
+		where respondent_type='OUTINGAGENT' 
+			and respondent is not null 
+			and touch_begintime>=@beginTime
+			and touch_begintime<@endTime
+	
+		group by respondent
+	open talk_out_cur
+	fetch next from talk_out_cur into @coun,@svm,@resp
+	while(@@fetch_status=0)
+	begin
+	insert into #tmp_telephone_value values(@coun,@svm,@resp,'呼出')
+	fetch next from talk_out_cur into @coun,@svm,@resp
+	end
+	close talk_out_cur
+	deallocate talk_out_cur	
+
+
+
+
+	--临时使用
+	select distinct respondent as xaxis from cc_talk where respondent is not null and is_delete='0' order by respondent
+	--得到横坐标标签结果集（全体坐席人员）	
+	--select xaxis from #tmp_telephone_xaxis
+	--得到纵坐标标签结果集	
+	select yaxis from #tmp_telephone_yaxis
+	--得到统计结果集
+	if(@condition='count')
+		select coun as statValue,respondent, teltype from #tmp_telephone_value
+	else 
+		select svm as statValue, respondent, teltype from #tmp_telephone_value
+END
+
+2IVR拨打统计修改完
+3用户评价统计
+问题 查询页座席不全 改完
+et.bo.stat.service.impl.AppraiseServiceImpl 
+userQuery() 
+方法修改 String sql = "select user_id from sys_user where group_id = 'SYS_GROUP_0000000001' or group_id = 'SYS_GROUP_0000000141'";
+4地区咨询统计
+问题 查询条件日期失效 
+改的et.bo.stat.service.impl.AddressServiceImpl类
+
+4热线服务信息统计系统下所有查询结果页面默认显示当月信息
+1座席服务统计
+1.1座席服务统计 [proc_telephone]
+state/telQuery.jsp修改
+body onload="setLoad()"
+1.2专家服务统计
+state/expertQuery.jsp
+body onload="setLoad()"
+1.3栏目咨询统计 proc_use
+state/use.jsp
+body onload="setLoad()"
+1.4地区咨询统计 [proc_address]
+state/addressQuery.jsp
+body onload="setLoad()"
+1.5自动拨打统计 proc_ivrdataByDate proc_ivrdata
+state/ivrQuery.jsp
+body onload="setLoad()"
+1.6短信收发统计 proc_msgStat
+state/smsStatQuery.jsp
+body onload="setLoad()"	
+1.7外呼计费统计 用的是sql语句
+state/moneyQuery.jsp
+body onload="setLoad()"	
+1.8语音留言统计 proc_voiceLeaveNew
+state/moneyQuery.jsp
+body onload="setLoad()"	
+1.9用户评价统计
+state/appraiseQuery.jsp
+body onload="setLoad()"	
+1.10 
+
+修改 by 陈岗
+1 联络员管理系统 模块下 
+   原来第一个模块 联络员报价浏览 把参数名改为 联络员报价统计
+   						    把动作 改为 /callcenterj_sy/linkmanpriceinfo.do?method=toOperPriceinfoMain
+   
+   原来第二个模块 联络员报价统计 把参数名改为 联络员报价浏览
+   
+2 表 oper_priceinfo 增加字段 cust_number varchar(50) 记录所报价的联络员的编号
+
+   表 oper_priceinfo 增加字段 cust_type varchar(50) 记录报价用户的类别
+
+3 表 oper_custinfo 增加字段 cust_number varchar(50) 记录编号
+
+

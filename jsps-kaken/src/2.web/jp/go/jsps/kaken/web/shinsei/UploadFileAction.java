@@ -1,0 +1,70 @@
+/*======================================================================
+ *    SYSTEM      : 
+ *    Source name : 
+ *    Description : 
+ *
+ *    Author      : takano
+ *    Date        : 2004/01/09
+ *
+ *    Revision history
+ *    Date          Revision    Author         Description
+ *
+ *====================================================================== 
+ */
+package jp.go.jsps.kaken.web.shinsei;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import jp.go.jsps.kaken.model.exceptions.ApplicationException;
+import jp.go.jsps.kaken.web.common.UserContainer;
+import jp.go.jsps.kaken.web.struts.BaseAction;
+
+import org.apache.struts.action.ActionErrors;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+
+/**
+ * 添付ファイルアップロードアクションクラス。
+ * 申請添付ファイルをセッションに保持する。
+ * 
+ * ID RCSfile="$RCSfile: UploadFileAction.java,v $"
+ * Revision="$Revision: 1.1 $"
+ * Date="$Date: 2007/06/28 02:07:01 $"
+ */
+public class UploadFileAction extends BaseAction {
+
+	/* (非 Javadoc)
+	 * @see jp.go.jsps.kaken.web.struts.BaseAction#doMainProcessing(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, jp.go.jsps.kaken.web.common.UserContainer)
+	 */
+	public ActionForward doMainProcessing(
+		ActionMapping mapping,
+		ActionForm form,
+		HttpServletRequest request,
+		HttpServletResponse response,
+		UserContainer container)
+		throws ApplicationException {
+		
+		//-----ActionErrorsの宣言（定型処理）-----
+		ActionErrors errors = new ActionErrors();
+
+		//-----申請フォームの取得
+		ShinseiForm shinseiForm = (ShinseiForm)form;
+		
+		//-----UploadFileActionの完了フラグをセットする
+		shinseiForm.setUploadActionEnd(true);
+		
+		//-----申請フォームをセッションに保持。
+		updateFormBean(mapping, request, shinseiForm);
+		
+		return forwardSuccess(mapping);
+		
+	}
+	
+	
+
+
+	
+	
+}

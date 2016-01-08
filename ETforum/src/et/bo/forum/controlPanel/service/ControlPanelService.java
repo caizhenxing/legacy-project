@@ -1,0 +1,15 @@
+/**
+ * 	@(#)ControlPanelService.java   2006-12-19 œ¬ŒÁ04:01:43
+ *	 °£ 
+ *	 
+ */
+package et.bo.forum.controlPanel.service;
+
+/**
+ * @author “∂∆÷¡¡
+ * @version 2006-12-19
+ * @see
+ */
+public interface ControlPanelService {
+
+}

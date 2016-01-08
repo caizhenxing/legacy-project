@@ -1,0 +1,27 @@
+修改人：王文权
+修改日期：2009-02-25
+
+需求：三方通话向 expert_answer_log表里插入数据
+修改说明:
+1 java类
+1.1 在et.bo.agentDb.dwr 包里增加类 ExpertAnswerLogDwr.java
+1.2 将expertAnswerLog包拷贝到et.bo下
+
+2 po增加
+2.1 把新增加的po里的文件放入et.po里
+
+3 hibernate.cfg.xml修改
+3.1 在et.config.hibernate里找到 hibernate.cfg.xml 加入 <mapping resource="et/po/ExpertAnswerLog.hbm.xml" />
+
+4 spring配置文件 
+4.1 将spring_bo_expertAnswerLog.xml文件拷入 et.config.spring里
+
+5 dwr配置文件修改
+在WEB-INF里dwr.xml加入
+	<!-- 座席三方通话时 将专家信息插入数据库expert_answer_log -->
+	<create javascript="expertAnswerLogService" creator="new">
+		<param name="class" value="et.bo.agentDb.dwr.ExpertAnswerLogDwr" />
+	</create>
+	
+6 jsp修改
+用prepThreeCall.jsp替换sys目录下的prepThreeCall.jsp文件

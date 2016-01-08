@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="91"
+   name=""
+   committed-date="2009-03-13T17:36:55.069566Z"
+   url="http://jsonplugin.googlecode.com/svn/trunk/src/test/resources/com/googlecode/jsonplugin"
+   last-author="jjlindal"
+   kind="dir"
+   uuid="a1c9066a-c626-0410-9e21-eb7f31747a87"
+   repos="http://jsonplugin.googlecode.com/svn"
+   revision="93"/>
+<entry
+   committed-rev="29"
+   name="bad-to-the-bone.txt"
+   text-time="2009-06-08T02:47:43.156250Z"
+   committed-date="2007-06-06T17:02:13.206485Z"
+   checksum="d41d8cd98f00b204e9800998ecf8427e"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.343750Z"/>
+<entry
+   committed-rev="28"
+   name="bad-1.txt"
+   text-time="2009-06-08T02:47:43.171875Z"
+   committed-date="2007-06-06T16:34:43.705211Z"
+   checksum="5a83a31b8a6b7743de1d44280045123a"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.343750Z"/>
+<entry
+   committed-rev="28"
+   name="bad-2.txt"
+   text-time="2009-06-08T02:47:43.187500Z"
+   committed-date="2007-06-06T16:34:43.705211Z"
+   checksum="ac8070e1c34230e0657d413fbefaa8af"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.359375Z"/>
+<entry
+   committed-rev="29"
+   name="bad-3.txt"
+   text-time="2009-06-08T02:47:43.203125Z"
+   committed-date="2007-06-06T17:02:13.206485Z"
+   checksum="6f7b919bbbea31a2763117839cd1fbc8"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.359375Z"/>
+<entry
+   committed-rev="29"
+   name="bad-4.txt"
+   text-time="2009-06-08T02:47:43.203125Z"
+   committed-date="2007-06-06T17:02:13.206485Z"
+   checksum="511f6539bc2cd5cf17371127e0c1125f"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.359375Z"/>
+<entry
+   committed-rev="71"
+   name="json-10.txt"
+   text-time="2009-06-08T02:47:43.218750Z"
+   committed-date="2008-06-06T16:19:06.492864Z"
+   checksum="586bc32486715c865d51dbad4709e25b"
+   last-author="jholmes612"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.375000Z"/>
+<entry
+   committed-rev="86"
+   name="jsonp-1.txt"
+   text-time="2009-06-08T02:47:43.234375Z"
+   committed-date="2008-12-30T15:38:24.521707Z"
+   checksum="d19d22737e9cd58fbf4042d86f4ec7e7"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.406250Z"/>
+<entry
+   committed-rev="29"
+   name="bad-5.txt"
+   text-time="2009-06-08T02:47:43.234375Z"
+   committed-date="2007-06-06T17:02:13.206485Z"
+   checksum="2cc497c5f9a8ed456127e028314a179d"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.421875Z"/>
+<entry
+   committed-rev="80"
+   name="nulls-1.txt"
+   text-time="2009-06-08T02:47:43.250000Z"
+   committed-date="2008-10-21T15:25:10.236094Z"
+   checksum="8aef68ece72f7db40031e879b3be4de9"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.421875Z"/>
+<entry
+   committed-rev="87"
+   name="prefix-1.txt"
+   text-time="2009-06-08T02:47:43.265625Z"
+   committed-date="2008-12-30T15:56:36.129055Z"
+   checksum="a5ea8b7c15866a2c9f74a2bb72b4e08d"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.437500Z"/>
+<entry
+   committed-rev="24"
+   name="smd-10.txt"
+   text-time="2009-06-08T02:47:43.265625Z"
+   committed-date="2007-05-18T21:31:36.086489Z"
+   checksum="c23178aa6f307037177bc362d069d929"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.453125Z"/>
+<entry
+   committed-rev="24"
+   name="smd-11.txt"
+   text-time="2009-06-08T02:47:43.281250Z"
+   committed-date="2007-05-18T21:31:36.086489Z"
+   checksum="f53ad80fb4dafb1fdbe81bc11f9c9be6"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.453125Z"/>
+<entry
+   committed-rev="86"
+   name="smd-12.txt"
+   text-time="2009-06-08T02:47:43.296875Z"
+   committed-date="2008-12-30T15:38:24.521707Z"
+   checksum="53dd32487fb2b4fe3d2ccca624147cf6"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.468750Z"/>
+<entry
+   committed-rev="67"
+   name="smd-13.txt"
+   text-time="2009-06-08T02:47:43.296875Z"
+   committed-date="2008-05-13T00:46:54.051887Z"
+   checksum="d6ce692106820978d56351e1ab1739ee"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.484375Z"/>
+<entry
+   committed-rev="25"
+   name="smd-14.txt"
+   text-time="2009-06-08T02:47:43.312500Z"
+   committed-date="2007-05-20T16:33:01.681586Z"
+   checksum="f8974bc396e37014367d4001370cc193"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.484375Z"/>
+<entry
+   committed-rev="25"
+   name="smd-15.txt"
+   text-time="2009-06-08T02:47:43.328125Z"
+   committed-date="2007-05-20T16:33:01.681586Z"
+   checksum="5e738ec7e6c2d18e23bb110bfcb96c05"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.500000Z"/>
+<entry
+   committed-rev="7"
+   name="json-1.txt"
+   text-time="2009-06-08T02:47:43.343750Z"
+   committed-date="2007-01-30T21:03:23.497567Z"
+   checksum="f5d919baa71848597a4cca19c00ad4fe"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.500000Z"/>
+<entry
+   committed-rev="86"
+   name="json-2.txt"
+   text-time="2009-06-08T02:47:43.343750Z"
+   committed-date="2008-12-30T15:38:24.521707Z"
+   checksum="0b800caef005bc4deb08e211b8e7504b"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.531250Z"/>
+<entry
+   committed-rev="86"
+   name="json.txt"
+   text-time="2009-06-08T02:47:43.375000Z"
+   committed-date="2008-12-30T15:38:24.521707Z"
+   checksum="055d19ac7764f2adc3eb4ecc8532ab61"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.546875Z"/>
+<entry
+   committed-rev="86"
+   name="json-3.txt"
+   text-time="2009-06-08T02:47:43.359375Z"
+   committed-date="2008-12-30T15:38:24.521707Z"
+   checksum="f4ebfaa8b95aa73840ede9b1e844be72"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.531250Z"/>
+<entry
+   committed-rev="30"
+   name="json-4.txt"
+   text-time="2009-06-08T02:47:43.390625Z"
+   committed-date="2007-06-14T16:42:48.742192Z"
+   checksum="ab4a638f849a3991be8a9b0004d725d3"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.562500Z"/>
+<entry
+   committed-rev="86"
+   name="json-2-enum.txt"
+   text-time="2009-06-08T02:47:43.375000Z"
+   committed-date="2008-12-30T15:38:24.521707Z"
+   checksum="49d21b20d79675e21e4c624a24f595b0"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.546875Z"/>
+<entry
+   committed-rev="31"
+   name="json-5.txt"
+   text-time="2009-06-08T02:47:43.406250Z"
+   committed-date="2007-06-28T13:23:19.344959Z"
+   checksum="b1c3e5237983ce34dd99b0393533c69b"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.562500Z"/>
+<entry
+   committed-rev="49"
+   name="json-6.txt"
+   text-time="2009-06-08T02:47:43.406250Z"
+   committed-date="2007-11-01T17:16:30.810029Z"
+   checksum="99914b932bd37a50b983c5e7c90ae93b"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.578125Z"/>
+<entry
+   committed-rev="91"
+   name="json-7.txt"
+   text-time="2009-06-08T02:47:43.421875Z"
+   committed-date="2009-03-13T17:36:55.069566Z"
+   checksum="e4cc14986b43097222febd2d6a722de2"
+   last-author="jjlindal"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.609375Z"/>
+<entry
+   committed-rev="67"
+   name="json-8.txt"
+   text-time="2009-06-08T02:47:43.437500Z"
+   committed-date="2008-05-13T00:46:54.051887Z"
+   checksum="0b09007744648b192821221752e43425"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.984375Z"/>
+<entry
+   committed-rev="69"
+   name="json-9.txt"
+   text-time="2009-06-08T02:47:43.453125Z"
+   committed-date="2008-05-22T16:34:50.226323Z"
+   checksum="5f54e0fc13f95c1da06d46646ffe3f47"
+   last-author="jmitchtx"
+   kind="file"
+   prop-time="2009-06-08T02:47:42.984375Z"/>
+<entry
+   committed-rev="40"
+   name="smd-1.txt"
+   text-time="2009-06-08T02:47:43.468750Z"
+   committed-date="2007-08-10T15:40:36.997841Z"
+   checksum="f82ffb5ae7bc04fd5b3ff2270cb67180"
+   last-author="omikheev"
+   kind="file"
+   prop-time="2009-06-08T02:47:43.000000Z"/>
+<entry
+   committed-rev="40"
+   name="smd-2.txt"
+   text-time="2009-06-08T02:47:43.468750Z"
+   committed-date="2007-08-10T15:40:36.997841Z"
+   checksum="a00b6c3591f0c5e87924a51bc41ee799"
+   last-author="omikheev"
+   kind="file"
+   prop-time="2009-06-08T02:47:43.000000Z"/>
+<entry
+   committed-rev="19"
+   name="smd-3.txt"
+   text-time="2009-06-08T02:47:43.500000Z"
+   committed-date="2007-05-18T02:24:50.076693Z"
+   checksum="119365b5597a0025f9af22a7089278eb"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:43.015625Z"/>
+<entry
+   committed-rev="18"
+   name="smd.txt"
+   text-time="2009-06-08T02:47:43.484375Z"
+   committed-date="2007-05-17T23:44:11.788662Z"
+   checksum="99914b932bd37a50b983c5e7c90ae93b"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:43.015625Z"/>
+<entry
+   committed-rev="19"
+   name="smd-4.txt"
+   text-time="2009-06-08T02:47:43.500000Z"
+   committed-date="2007-05-18T02:24:50.076693Z"
+   checksum="3146bd7464d857095e928ccd09ca905b"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:43.031250Z"/>
+<entry
+   committed-rev="19"
+   name="smd-5.txt"
+   text-time="2009-06-08T02:47:43.515625Z"
+   committed-date="2007-05-18T02:24:50.076693Z"
+   checksum="24cd856fc05e8cb1c9fca03b748645ba"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:43.031250Z"/>
+<entry
+   committed-rev="24"
+   name="smd-6.txt"
+   text-time="2009-06-08T02:47:43.531250Z"
+   committed-date="2007-05-18T21:31:36.086489Z"
+   checksum="bede89e47ec79d43c8ea8123f476d754"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:43.031250Z"/>
+<entry
+   committed-rev="24"
+   name="smd-7.txt"
+   text-time="2009-06-08T02:47:43.531250Z"
+   committed-date="2007-05-18T21:31:36.086489Z"
+   checksum="6cba79f5bdd54a9e6daa788f70309fac"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:43.062500Z"/>
+<entry
+   committed-rev="21"
+   name="smd-8.txt"
+   text-time="2009-06-08T02:47:43.546875Z"
+   committed-date="2007-05-18T15:04:21.555813Z"
+   checksum="3ef64d3d22b0fffb6a188c7c203fd5ef"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:43.062500Z"/>
+<entry
+   committed-rev="21"
+   name="smd-9.txt"
+   text-time="2009-06-08T02:47:43.562500Z"
+   committed-date="2007-05-18T15:04:21.555813Z"
+   checksum="9ac0781c03eb3f560851c12a611d1ee1"
+   last-author="musachy"
+   kind="file"
+   prop-time="2009-06-08T02:47:43.140625Z"/>
+</wc-entries>

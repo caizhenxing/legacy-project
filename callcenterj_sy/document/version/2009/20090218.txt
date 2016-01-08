@@ -1,0 +1,56 @@
+修改人：王文权
+修改日期：2009-02-18
+说明：农委存储过程未同步 这里加上
+修改内容：
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[proc_productPriceStatisticsByServiceType_new](
+	@beginTime varchar(20),		--开始时间
+	@endTime varchar(20),		--结束时间
+	@otherSQL varchar(2000))	--其他查询条件
+AS
+BEGIN
+	declare @src varchar(2000)
+	declare @mask varchar(200)
+	declare @columns varchar(2000)
+	declare @groupby varchar(2000)
+	declare @fillDate varchar(3)
+	declare @divCol varchar(20)
+	--获得源数据的语句
+	set @src = 'select cust_name, count(*) as un
+		, (
+		select count(*) from oper_priceinfo as s
+		where t.cust_name = s.cust_name
+		and t.question_id = s.question_id
+		) as sn
+		from (
+		select cust_name,question_id
+		from oper_priceinfo as t
+			where oper_time between cast(''' + @beginTime + ''' as datetime) and cast(''' + @endTime + ''' as datetime) ' + @otherSQL + ' 
+		group by cust_name, question_id
+		) as t
+		group by cust_name, question_id'
+	set @mask = 'productPriceStatisticsByServiceType'
+	set @columns = 'sum|un|报价次数,sum|sn|价格条数'
+	set @groupby = 'cust_name'
+	set @fillDate = 'no'
+	exec [proc_generateJFreeChartData] @src, @mask, @columns, @groupby, @fillDate, @beginTime, @endTime
+END
+
+
+
+
+**********************************
+修改人：李春生
+修改日期：2009-02-18
+说明：
+增加电话会议界面 
+
+如果想登录电话会议界面，必须在“组管理”中添加组名为：“TelConference”
+
+添加为该组的人员登录时会直接转入电话会议界面。
+
+

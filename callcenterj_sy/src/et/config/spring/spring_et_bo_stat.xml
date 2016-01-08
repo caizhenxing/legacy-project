@@ -1,0 +1,1593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+
+<beans>
+	<bean id="chartService" class="et.bo.jfree.service.impl.JFreeImpl" />
+	<!-- 电话 -->
+	<bean name="/stat/telephone" class="et.bo.stat.action.TelAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="telService" />
+		</property>
+	</bean>
+	<bean id="telService" class="et.bo.stat.service.impl.TelServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+
+
+
+	<!-- 短信-->
+	<bean name="/stat/smsStat" class="et.bo.stat.action.SmsSendStatAction"
+		scope="singleton">
+		<property name="smsSendStatService">
+			<ref bean="SmsSendStatService" />
+		</property>
+	</bean>
+	<bean id="SmsSendStatService" class="et.bo.stat.service.impl.SmsSendStatServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+
+
+
+	<bean name="/stat/ivr" class="et.bo.stat.action.IvrAction"
+		scope="singleton">
+		<property name="is">
+			<ref bean="IvrStatService" />
+		</property>
+	</bean>
+
+
+	<bean id="IvrStatService" class="et.bo.stat.service.impl.IvrStatServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+
+
+	<bean name="/stat/medicinfoP"
+		class="et.bo.stat.action.MedicinfoPAction" scope="singleton">
+		<property name="mps">
+			<ref bean="MedicinfoPService" />
+		</property>
+	</bean>
+
+
+	<bean id="MedicinfoPService"
+		class="et.bo.stat.service.impl.MedicinfoPServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+
+
+
+	<bean name="/stat/bookMedicinfoP"
+		class="et.bo.stat.action.BookMedicinfoPAction" scope="singleton">
+		<property name="bmps">
+			<ref bean="BookMedicinfoPService" />
+		</property>
+	</bean>
+
+
+	<bean id="BookMedicinfoPService"
+		class="et.bo.stat.service.impl.BookMedicinfoPServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+
+
+	<bean name="/stat/corpinfoP"
+		class="et.bo.stat.action.CorpinfoPAction" scope="singleton">
+		<property name="cps">
+			<ref bean="CorpinfoPService" />
+		</property>
+	</bean>
+
+
+	<bean id="CorpinfoPService"
+		class="et.bo.stat.service.impl.CorpinfoPServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+
+
+	<!-- 价格 -->
+	<bean name="/stat/price" class="et.bo.stat.action.PriceAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="priceService" />
+		</property>
+	</bean>
+	<bean id="priceService"
+		class="et.bo.stat.service.impl.PriceServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+
+	<!-- 专家接听 -->
+	<bean name="/stat/expert" class="et.bo.stat.action.ExpertAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="expertService" />
+		</property>
+	</bean>
+	<bean id="expertService"
+		class="et.bo.stat.service.impl.ExpertServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+
+	<!-- 热点调查 -->
+	<bean name="/stat/inquiry" class="et.bo.stat.action.InquiryAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="inquiryStatService" />
+		</property>
+	</bean>
+	<bean id="inquiryStatService"
+		class="et.bo.stat.service.impl.InquiryServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	<!-- 使用情况 -->
+	<bean name="/stat/use" class="et.bo.stat.action.UseAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="useService" />
+		</property>
+	</bean>
+	<bean id="useService" class="et.bo.stat.service.impl.UseServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	<!-- 短息 ??????????? -->
+	<bean name="/stat/note" class="et.bo.stat.action.MessageAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="messageService" />
+		</property>
+	</bean>
+	<bean id="messageService"
+		class="et.bo.stat.service.impl.MessageServiceImpl" scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	<!-- 外呼计费 -->
+	<bean name="/stat/money" class="et.bo.stat.action.MoneyAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="moneyService" />
+		</property>
+	</bean>
+	<bean id="moneyService" class="et.bo.stat.service.impl.MoneyServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+		<property name="bds">
+			<ref bean="datasource"/>
+		</property>
+	</bean>
+	
+	<!-- 语音留言统计 -->
+	<bean name="/stat/voiceLeave" class="et.bo.stat.action.VoiceLeaveAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="voiceService" />
+		</property>
+	</bean>
+	<bean id="voiceService" class="et.bo.stat.service.impl.VoiceServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 按地区统计来电量 -->
+	<bean name="/stat/address" class="et.bo.stat.action.AddressAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="addressService" />
+		</property>
+	</bean>
+	<bean id="addressService" class="et.bo.stat.service.impl.AddressServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 用户评价统计 -->
+	<bean name="/stat/appraise" class="et.bo.stat.action.AppraiseAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="appraiseService" />
+		</property>
+	</bean>
+	<bean id="appraiseService" class="et.bo.stat.service.impl.AppraiseServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 农产品价格库 -->
+	<bean name="/stat/agrprice" class="et.bo.stat.action.ArgPriceAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="agrPriceService" />
+		</property>
+	</bean>
+	<bean id="agrPriceService" class="et.bo.stat.service.impl.ArgPriceServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	<!-- 用户拨打统计 -->
+	<bean name="/stat/userdial" class="et.bo.stat.action.UserDialAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="userDialService" />
+		</property>
+	</bean>
+	<bean id="userDialService" class="et.bo.stat.service.impl.UserDialServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	<!-- 普通案例库用户受理案件统计 -->
+	<bean name="/stat/usercase" class="et.bo.stat.action.UserCaseAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="userCaseService" />
+		</property>
+	</bean>
+	<bean id="userCaseService" class="et.bo.stat.service.impl.UserCaseServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	<!-- 案件统计 -->
+	<bean name="/stat/case" class="et.bo.stat.action.CaseAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="caseService" />
+		</property>
+	</bean>
+	<bean id="caseService" class="et.bo.stat.service.impl.CaseServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	<!-- 普通案例库用户受理各审核状态下的案件统计 -->
+	<bean name="/stat/statecase" class="et.bo.stat.action.StateCaseAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="stateCaseService" />
+		</property>
+	</bean>
+	<bean id="stateCaseService" class="et.bo.stat.service.impl.StateCaseServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 焦点案例每一案例属性下的案例数量统计 -->
+	<bean name="/stat/focusCaseInfo" class="et.bo.stat.action.FocusCaseInfoStatAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="focusCaseInfoStatService" />
+		</property>
+	</bean>
+	<bean id="focusCaseInfoStatService" class="et.bo.stat.service.impl.FocusCaseInfoStatImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+
+		<!-- 全部座席员和每一座席员受理的各审核状态下的案例数量 wangwenquan -->
+	<bean name="/stat/focusCaseInfoStatistics" class="et.bo.stat.action.FocusCaseInfoStatisticsByStateAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="FocusCaseInfoStatisticsByStateService" />
+		</property>
+	</bean>
+	<bean id="FocusCaseInfoStatisticsByStateService" class="et.bo.stat.service.impl.FocusCaseInfoStatisticsByStateImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	<!-- 全部座席员和每一座席员受理的各审核状态下的案例数量 wangwenquan -->
+	<bean name="/stat/HZCaseInfoStatisticsByState" class="et.bo.stat.action.HZCaseInfoStatisticsByStateAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="HZCaseInfoStatisticsByStateService" />
+		</property>
+	</bean>
+	<bean id="HZCaseInfoStatisticsByStateService" class="et.bo.stat.service.impl.HZCaseInfoStatisticsByStateImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+
+	
+	<!-- 会诊每一案例属性下案例数量统计 -->
+	<bean name="/stat/hzCaseInfo" class="et.bo.stat.action.HZCaseInfoStatAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="hzCaseInfoStatService" />
+		</property>
+	</bean>
+	<bean id="hzCaseInfoStatService" class="et.bo.stat.service.impl.HZCaseInfoStatImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 会诊案例座席员受理的案例数量统计 -->
+	<bean name="/stat/hzCaseInfoSeat" class="et.bo.stat.action.HZCaseInfoSeatStatAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="hzCaseInfoSeatStatService" />
+		</property>
+	</bean>
+	<bean id="hzCaseInfoSeatStatService" class="et.bo.stat.service.impl.HZCaseInfoSeatStatImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 效果案例座席员受理的案例数量统计 -->
+	<bean name="/stat/effectCaseInfoSeat" class="et.bo.stat.action.EffectCaseInfoSeatStatAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="effectCaseInfoSeatStatService" />
+		</property>
+	</bean>
+	<bean id="effectCaseInfoSeatStatService" class="et.bo.stat.service.impl.EffectCaseInfoSeatStatImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 效果案例每一案例属性下的案例数量统计 -->
+	<bean name="/stat/effectCaseInfoProperty" class="et.bo.stat.action.EffectCaseInfoPropertyStatAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="effectCaseInfoPropertyStatService" />
+		</property>
+	</bean>
+	<bean id="effectCaseInfoPropertyStatService" class="et.bo.stat.service.impl.EffectCaseInfoPropertyStatImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 效果案例全部座席员和每一座席员受理的各审核状态下的案例数量 -->
+	<bean name="/stat/effectStat" class="et.bo.stat.action.EffectCaseStaticAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="effectStatService" />
+		</property>
+	</bean>
+	<bean id="effectStatService" class="et.bo.stat.service.impl.EffectStatImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 各产品价格的最大值、最小值、平均值统计 -->
+	<bean name="/stat/productPriceForDate" class="et.bo.stat.action.ProductPriceStatForDateAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="productPriceStatForDateService" />
+		</property>
+	</bean>
+	<bean id="productPriceStatForDateService" class="et.bo.stat.service.impl.ProductPriceStatForDateImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 各产品的价格数量统计 -->
+	<bean name="/stat/priceStatByProduct" class="et.bo.stat.action.PriceStatByProductAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="priceStatByProductService" />
+		</property>
+	</bean>
+	<bean id="priceStatByProductService" class="et.bo.stat.service.impl.PriceStatByProductImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 各产地（到县）各产品价格的最大值、最小值、平均值 -->
+	<bean name="/stat/priceStatForProduct" class="et.bo.stat.action.PriceStatForProductAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="priceStatForProductService" />
+		</property>
+	</bean>
+	<bean id="priceStatForProductService" class="et.bo.stat.service.impl.PriceStatForProductImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 焦点案例下全部座席员和每一座席员受理的案例数量 -->
+	<bean name="/stat/focusCaseInfoUser" class="et.bo.stat.action.FocusCaseinfoUserAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="focusCaseInfoUserService" />
+		</property>
+	</bean>
+	<bean id="focusCaseInfoUserService" class="et.bo.stat.service.impl.FocusCaseInfoUserImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 农产品价格库统计内容与显示内容,全部座席员和每一座席员受理的价格数量 -->
+	<bean name="/stat/priceInfo" class="et.bo.stat.action.PriceInfoAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="priceInfoService"/>
+		</property>
+	</bean>
+	<bean id="priceInfoService" class="et.bo.stat.service.impl.PriceInfoServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	<!-- 农产品价格库统计内容与显示内容,各价格类型（收购价、批发价、零售价）下的价格数量 -->
+	<bean name="/stat/priceInfoForType" class="et.bo.stat.action.PriceInfoForTypeAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="priceInfoForTypeService"/>
+		</property>
+	</bean>
+	<bean id="priceInfoForTypeService" class="et.bo.stat.service.impl.PriceInfoForTypeServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 咨询总量统计 -->
+	<bean name="/stat/callCountStat" class="et.bo.stat.action.CallCountStatAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="callCountStatService"/>
+		</property>
+	</bean>
+	<bean id="callCountStatService" class="et.bo.stat.service.impl.CallCountStatImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	<!-- 普通案例库统计内容与显示内容,每一专家受理的案例数量 -->
+	<bean name="/sate/caseinfoForExport" class="et.bo.stat.action.CaseInfoForExportAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="caseInfoForExportService"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>	
+	</bean>
+	<bean id="caseInfoForExportService" class="et.bo.stat.service.impl.CaseInfoForExportServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	<!-- 会诊案例库统计内容与显示内容,每一专家受理的案例数量 -->
+	<bean name="/stat/hzCaseInfoForExport" class="et.bo.stat.action.HZCaseInfoForExportAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="hzCaseInfoForExportService"/>
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>	
+	</bean>
+	<bean id="hzCaseInfoForExportService" class="et.bo.stat.service.impl.HZCaseInfoForExportServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	<!-- 产品供求库统计内容与显示内容,各产品的供求数量 -->
+	<bean name="/stat/sadInfoForProduct" class="et.bo.stat.action.SadInfoForProductAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="sadInfoForProductService"/>
+		</property>
+	</bean>
+	<bean id="sadInfoForProductService" class="et.bo.stat.service.impl.SadInfoForProductServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	<!-- 产品价格库统计内容与显示内容,个联络员报价次数和条数 -->
+	<bean name="/stat/productPriceStatForServiceType" class="et.bo.stat.action.ProductPriceForServiceTypeAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="productPriceForTypeService"/>
+		</property>
+	</bean>
+	<bean id="productPriceForTypeService" class="et.bo.stat.service.impl.ProductPriceForTypeServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	<!-- 预约医疗服务信息库统计内容与显示内容, 各服务类型下的医疗信息条数和用户数量-->
+	<bean name="/stat/medicInfoForService" class="et.bo.stat.action.MedicInfoForServiceAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="medicInfoForServiceService"/>
+		</property>
+	</bean>
+	<bean id="medicInfoForServiceService" class="et.bo.stat.service.impl.MedicInfoForServiceServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	
+	<!-- 预约医疗服务信息库统计内容与显示内容,　导诊员导诊次数 -->
+	<bean name="/stat/medicInfoForNavigator" class="et.bo.stat.action.MedicInfoForNavigatorAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="medicInfoForNavigatorService"/>
+		</property>
+	</bean>
+	<bean id="medicInfoForNavigatorService" class="et.bo.stat.service.impl.MedicInfoForNavigatorServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 预约医疗服务信息库统计内容与显示内容,　是否就诊数量 -->
+	<bean name="/stat/medicInfoForVisit" class="et.bo.stat.action.MedicInfoForVisitAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="medicInfoForVisitService"/>
+		</property>
+	</bean>
+	<bean id="medicInfoForVisitService" class="et.bo.stat.service.impl.MedicInfoForVisitServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 调查问卷设计库统计内容与显示内容,　各调查类别下的调查次数 -->
+	<bean name="/stat/inquiryStatisticsForType" class="et.bo.stat.action.InquiryStatisticsForTypeAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="inquiryStatisticsForTypeService"/>
+		</property>
+	</bean>
+	<bean id="inquiryStatisticsForTypeService" class="et.bo.stat.service.impl.InquiryStatisticsForTypeServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	
+	
+	<!-- 医疗服务信息处理系统,　各用户接受医疗服务次数 -->
+	<bean name="/stat/medicInfoByUser" class="et.bo.stat.action.MedicInfoByUserAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="medicInfoByUserService"/>
+		</property>
+	</bean>
+	<bean id="medicInfoByUserService" class="et.bo.stat.service.impl.MedicInfoByUserServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	
+	<!-- 医疗服务信息处理系统,　是否参加新农合数量 -->
+	<bean name="/stat/medicInfoByParter" class="et.bo.stat.action.MedicInfoByParterAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="medicInfoByParterService"/>
+		</property>
+	</bean>
+	<bean id="medicInfoByParterService" class="et.bo.stat.service.impl.MedicInfoByParterServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 企业信息库统计内容与显示内容,各服务类型下的企业信息数量和用户数量。   -->
+	<bean name="/stat/corpInfoByServiceType" class="et.bo.stat.action.CorpInfoByServiceTypeAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="corpInfoByServiceTypeService"/>
+		</property>
+	</bean>
+	<bean id="corpInfoByServiceTypeService" class="et.bo.stat.service.impl.CorpInfoByServiceTypeServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	
+	<!-- 产品供求库统计内容与显示内容, 各供求类型（预供、预求、现供、现求）下的产品供求数量。   -->
+	<bean name="/stat/sadStatisticsByType" class="et.bo.stat.action.SadStatisticsByTypeAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="sadStatisticsByTypeService"/>
+		</property>
+	</bean>
+	<bean id="sadStatisticsByTypeService" class="et.bo.stat.service.impl.SadStatisticsByTypeServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao"/>
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+		<property name="cts">
+			<ref bean="ClassTreeService"/>
+		</property>
+	</bean>
+	<!-- 产品供求库每一座席员受理的产品供求数量统计 -->
+	<bean name="/stat/priceAgentProCount" class="et.bo.stat.action.PriceAgentProCountAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="priceAgentProCountService" />
+		</property>
+	</bean>
+	<bean id="priceAgentProCountService" class="et.bo.stat.service.impl.PriceAgentProCountServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 金农信息焦点追踪库全部责任编辑和每一责任编辑的产品数量统计 -->
+	<bean name="/stat/focusInfoByEditor" class="et.bo.stat.action.FocusInfoByEditorAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="focusInfoByEditorService" />
+		</property>
+	</bean>
+	<bean id="focusInfoByEditorService" class="et.bo.stat.service.impl.FocusInfoByEditorImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	<!-- 普通案例库全部座席员和每一座席员受理案例的各审核状态下的案例数量统计 -->
+	<bean name="/stat/commonStateCase" class="et.bo.stat.action.CommonStateCaseAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="commonStateCaseService" />
+		</property>
+	</bean>
+	<bean id="commonStateCaseService" class="et.bo.stat.service.impl.CommonStateCaseServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 金农信息焦点追踪库全部版别和各版别的产品数量统计 -->
+	<bean name="/stat/focusInfoByType" class="et.bo.stat.action.FocusInfoByTypeAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="focusInfoByTypeService" />
+		</property>
+	</bean>
+	<bean id="focusInfoByTypeService" class="et.bo.stat.service.impl.FocusInfoByTypeImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 金农信息焦点追踪库每一责任编辑各版别的产品数量统计 -->
+	<bean name="/stat/focusInfoOneEditor" class="et.bo.stat.action.FocusInfoOneEditorAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="focusInfoOneEditorService" />
+		</property>
+	</bean>
+	<bean id="focusInfoOneEditorService" class="et.bo.stat.service.impl.FocusInfoOneEditorImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 金农信息焦点追踪库全部责任编辑和各编辑被领导批示过的产品数量统计 -->
+	<bean name="/stat/focusInfoAllEditor" class="et.bo.stat.action.FocusInfoAllEditorAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="focusInfoAllEditorService" />
+		</property>
+	</bean>
+	<bean id="focusInfoAllEditorService" class="et.bo.stat.service.impl.FocusInfoAllEditorImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 市场分析库全部责任编辑和各编辑的产品数量统计 -->
+	<bean name="/stat/markanaInfoByEditor" class="et.bo.stat.action.MarkanaInfoByEditorAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="markanaInfoByEditorService" />
+		</property>
+	</bean>
+	<bean id="markanaInfoByEditorService" class="et.bo.stat.service.impl.MarkanaInfoByEditorImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 市场分析库全部评别和各评别产品数量统计 -->
+	<bean name="/stat/markanaInfoByType" class="et.bo.stat.action.MarkanaInfoByTypeAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="markanaInfoByTypeService" />
+		</property>
+	</bean>
+	<bean id="markanaInfoByTypeService" class="et.bo.stat.service.impl.MarkanaInfoByTypeImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 市场分析库全部品种和各品种的产品数量统计 -->
+	<bean name="/stat/markanaInfoByProduct" class="et.bo.stat.action.MarkanaInfoByProductAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="markanaInfoByProductService" />
+		</property>
+	</bean>
+	<bean id="markanaInfoByProductService" class="et.bo.stat.service.impl.MarkanaInfoByProductImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 市场分析库每一责任编辑各评别的产品数量统计 -->
+	<bean name="/stat/markanaInfoByProductType" class="et.bo.stat.action.MarkanaInfoByProductTypeAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="markanaInfoByProductTypeService" />
+		</property>
+	</bean>
+	<bean id="markanaInfoByProductTypeService" class="et.bo.stat.service.impl.MarkanaInfoByProductTypeImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+
+	<!-- 产品价格供求全部座席员和每一座席员受理的各审核状态下的产品供求数量统计 -->
+	<bean name="/stat/productPriceStatisticsByState" class="et.bo.stat.action.ProductPriceStatisticsByStateAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="productPriceStatisticsByStateService" />
+		</property>
+	</bean>
+	<bean id="productPriceStatisticsByStateService" class="et.bo.stat.service.impl.ProductPriceStatisticsByStateServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+
+	
+	<!-- 企业信息库全部座席员和每一座席员受理企业服务次数统计 -->
+	<bean name="/stat/corpInfoBySeat" class="et.bo.stat.action.CorpInfoBySeatAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="corpInfoBySeatService" />
+		</property>
+	</bean>
+	<bean id="corpInfoBySeatService" class="et.bo.stat.service.impl.CorpInfoBySeatImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>		
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>	
+	</bean>
+	
+	<!-- 企业信息库全部座席员和每一座席员受理的各审核状态下的企业信息数量统计 -->
+	<bean name="/stat/corpInfoByState" class="et.bo.stat.action.CorpInfoByStateAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="corpInfoByStateService" />
+		</property>
+	</bean>
+	<bean id="corpInfoByStateService" class="et.bo.stat.service.impl.CorpInfoByStateImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 普通医疗信息库全部座席员和每一座席员受理的医疗服务次数统计 -->
+	<bean name="/stat/medicInfoBySeat" class="et.bo.stat.action.MedicInfoBySeatAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="medicInfoBySeatService" />
+		</property>
+	</bean>
+	<bean id="medicInfoBySeatService" class="et.bo.stat.service.impl.MedicInfoBySeatImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 普通医疗信息库全部专家和每一专家受理医疗服务次数统计 -->
+	<bean name="/stat/medicInfoByExpert" class="et.bo.stat.action.MedicInfoByExpertAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="medicInfoByExpertService" />
+		</property>
+	</bean>
+	<bean id="medicInfoByExpertService" class="et.bo.stat.service.impl.MedicInfoByExpertImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 普通医疗信息库全部座席员和每一座席员受理的各审核状态下的医疗信息数量统计 -->
+	<bean name="/stat/medicInfoByState" class="et.bo.stat.action.MedicInfoByStateAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="medicInfoByStateService" />
+		</property>
+	</bean>
+	<bean id="medicInfoByStateService" class="et.bo.stat.service.impl.MedicInfoByStateImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	
+	<!-- 调查问卷设计库各机构发起的调查次数统计 -->
+	<bean name="/stat/inquiryInfoByOrganization" class="et.bo.stat.action.InquiryInfoByOrganizationAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="inquiryInfoByOrganizationService" />
+		</property>
+	</bean>
+	<bean id="inquiryInfoByOrganizationService" class="et.bo.stat.service.impl.InquiryInfoByOrganizationImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	<!-- 调查问卷设计库各组织者组织完成的调查次数统计 -->
+	<bean name="/stat/inquiryStatisticsByOrganizers" class="et.bo.stat.action.InquiryStatisticsByOrganizersAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="inquiryStatisticsByOrganizersService" />
+		</property>
+	</bean>
+	<bean id="inquiryStatisticsByOrganizersService" class="et.bo.stat.service.impl.InquiryStatisticsByOrganizersImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	<!-- 调查问卷分析库全部座席员和每一座席员完成的问题与用户调查数量统计 -->
+	<bean name="/stat/inquiryStatisticsBySeat" class="et.bo.stat.action.InquiryStatisticsBySeatAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="inquiryStatisticsBySeatService" />
+		</property>
+	</bean>
+	<bean id="inquiryStatisticsBySeatService" class="et.bo.stat.service.impl.InquiryStatisticsBySeatServiceImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	<!-- 调查问卷分析库每一调查问题的回答数量统计 -->
+	<bean name="/stat/inquiryStatisticsByQuestion" class="et.bo.stat.action.InquiryStatisticsByQuestionAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="inquiryStatisticsByQuestionService" />
+		</property>
+	</bean>
+	<bean id="inquiryStatisticsByQuestionService" class="et.bo.stat.service.impl.InquiryStatisticsByQuestionImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+	<!-- 调查问卷分析库每一调查问题下各答案的数量统计 -->
+	<bean name="/stat/inquiryStatisticsByAnswer" class="et.bo.stat.action.InquiryStatisticsByAnswerAction"
+		scope="singleton">
+		<property name="service">
+			<ref bean="inquiryStatisticsByAnswerService" />
+		</property>
+	</bean>
+	<bean id="inquiryStatisticsByAnswerService" class="et.bo.stat.service.impl.InquiryStatisticsByAnswerImpl"
+		scope="singleton">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="procSql">
+			<ref bean="ProcSql" />
+		</property>
+		<property name="chartService">
+			<ref local="chartService" />
+		</property>
+	</bean>
+</beans>

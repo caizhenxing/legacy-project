@@ -1,0 +1,1853 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>JBoss jBPM BPEL User Guide</title><link rel="stylesheet" href="css/html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.65.1"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="book" lang="en"><div class="titlepage"><div><div><h1 class="title"><a name="d0e1"></a>JBoss jBPM BPEL User Guide</h1></div><div><h2 class="subtitle">Orchestration made practical</h2></div><div><p class="releaseinfo">Version: 1.1.Beta2</p></div></div><div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="chapter"><a href="#overview">1. Overview of BPEL</a></span></dt><dd><dl><dt><span class="section"><a href="#overview.soa">1.1. The service-oriented architecture</a></span></dt><dt><span class="section"><a href="#overview.industry">1.2. Industry support</a></span></dt><dt><span class="section"><a href="#overview.oasis">1.3. OASIS Technical Comittee</a></span></dt><dt><span class="section"><a href="#overview.components">1.4. Components and dependencies</a></span></dt><dt><span class="section"><a href="#overview.references">1.5. References</a></span></dt></dl></dd><dt><span class="chapter"><a href="#introduction">2. Introduction to jBPM BPEL</a></span></dt><dd><dl><dt><span class="section"><a href="#introduction.flowcontrol">2.1. Flow control</a></span></dt><dt><span class="section"><a href="#introduction.datahandling">2.2. Data Handling</a></span></dt><dt><span class="section"><a href="#introduction.interaction">2.3. Interaction with the process</a></span></dt><dt><span class="section"><a href="#introduction.invoking">2.4. Invoking services</a></span></dt><dt><span class="section"><a href="#introduction.whichone">2.5. Which one is for me?</a></span></dt></dl></dd><dt><span class="chapter"><a href="#getstarted">3. Getting started</a></span></dt><dd><dl><dt><span class="section"><a href="#getstarted.jbpmbpel">3.1. Getting JBoss jBPM BPEL</a></span></dt><dt><span class="section"><a href="#getstarted.jbossas">3.2. Getting JBoss Application Server</a></span></dt><dt><span class="section"><a href="#getstarted.ant">3.3. Getting Apache Ant</a></span></dt><dt><span class="section"><a href="#getstarted.eclipse">3.4. Getting the Eclipse BPEL designer</a></span></dt><dt><span class="section"><a href="#getstarted.setup">3.5. Service setup</a></span></dt><dd><dl><dt><span class="section"><a href="#getstarted.setup.config">3.5.1. Service configuration</a></span></dt><dd><dl><dt><span class="section"><a href="#getstarted.setup.config.hibernate">3.5.1.1. Hibernate configuration</a></span></dt><dt><span class="section"><a href="#getstarted.setup.config.jbpm">3.5.1.2. jBPM settings</a></span></dt></dl></dd><dt><span class="section"><a href="#getstarted.setup.pack">3.5.2. Packaging</a></span></dt><dt><span class="section"><a href="#getstarted.setup.deploy">3.5.3. Deployment</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="#tutorial">4. Tutorial</a></span></dt><dd><dl><dt><span class="section"><a href="#tutorial.setup.jwsdp">4.1. Getting the Java Web Services Development Pack</a></span></dt><dt><span class="section"><a href="#tutorial.setup.environment">4.2. Defining the environment</a></span></dt><dt><span class="section"><a href="#tutorial.setup.dbschema">4.3. Creating the database schema</a></span></dt><dt><span class="section"><a href="#tutorial.setup.xmlapis">4.4. Replacing the default implementation of the XML APIs</a></span></dt></dl></dd><dt><span class="chapter"><a href="#tutorial.hello">5. Hello World Example</a></span></dt><dd><dl><dt><span class="section"><a href="#tutorial.hello.def">5.1. Define the BPEL process</a></span></dt><dd><dl><dt><span class="section"><a href="#tutorial.hello.def.bpel">5.1.1. Create the BPEL document</a></span></dt><dt><span class="section"><a href="#tutorial.hello.def.wsdl">5.1.2. Create/obtain the WSDL interface documents</a></span></dt><dt><span class="section"><a href="#tutorial.hello.def.deploy">5.1.3. Deploy the process definition</a></span></dt></dl></dd><dt><span class="section"><a href="#tutorial.hello.server">5.2. Build the WSEE port components</a></span></dt><dd><dl><dt><span class="section"><a href="#tutorial.hello.server.wsdl">5.2.1. WSDL implementation documents</a></span></dt><dt><span class="section"><a href="#tutorial.hello.server.artifacts">5.2.2. Java mapping artifacts</a></span></dt><dt><span class="section"><a href="#tutorial.hello.server.webapp">5.2.3. Port components as servlets</a></span></dt><dt><span class="section"><a href="#tutorial.hello.server.integra">5.2.4. Partner integration</a></span></dt><dt><span class="section"><a href="#tutorial.hello.server.webservices">5.2.5. Web services deployment descriptor</a></span></dt><dt><span class="section"><a href="#tutorial.hello.server.deploy">5.2.6. Web application deployment</a></span></dt></dl></dd><dt><span class="section"><a href="#tutorial.hello.client">5.3. Build the WSEE application client</a></span></dt><dd><dl><dt><span class="section"><a href="#tutorial.hello.client.appclient">5.3.1. Application client deployment descriptor
+        </a></span></dt><dt><span class="section"><a href="#tutorial.hello.client.env">5.3.2. Environment context</a></span></dt></dl></dd><dt><span class="section"><a href="#tutorial.hello.test">5.4. Test the process</a></span></dt><dd><dl><dt><span class="section"><a href="#tutorial.hello.test.remote">5.4.1. Remote web service access</a></span></dt><dt><span class="section"><a href="#tutorial.hello.test.jndi">5.4.2. Client JNDI properties</a></span></dt><dt><span class="section"><a href="#tutorial.hello.test.run">5.4.3. Test execution</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="#tutorial.atm">6. ATM Example</a></span></dt><dd><dl><dt><span class="section"><a href="#tutorial.atm.def">6.1. Define the BPEL process</a></span></dt><dd><dl><dt><span class="section"><a href="#tutorial.atm.def.bpel">6.1.1. Create the BPEL document</a></span></dt><dt><span class="section"><a href="#tutorial.atm.def.wsdl">6.1.2. Create/obtain the WSDL interface documents</a></span></dt><dt><span class="section"><a href="#tutorial.atm.def.deploy">6.1.3. Deploy the process definition</a></span></dt></dl></dd><dt><span class="section"><a href="#tutorial.atm.server">6.2. Build the WSEE port components</a></span></dt><dd><dl><dt><span class="section"><a href="#tutorial.atm.server.wsdl">6.2.1. WSDL implementation documents</a></span></dt><dt><span class="section"><a href="#tutorial.atm.server.artifacts">6.2.2. Java mapping artifacts</a></span></dt><dt><span class="section"><a href="#tutorial.atm.server.webapp">6.2.3. Port components as servlets</a></span></dt><dt><span class="section"><a href="#tutorial.atm.server.integra">6.2.4. Partner integration</a></span></dt><dt><span class="section"><a href="#tutorial.atm.server.scheduler">6.2.5. Activity scheduler</a></span></dt><dt><span class="section"><a href="#tutorial.atm.server.webservices">6.2.6. Web services deployment descriptor</a></span></dt><dt><span class="section"><a href="#tutorial.atm.server.deploy">6.2.7. Web application deployment</a></span></dt></dl></dd><dt><span class="section"><a href="#tutorial.atm.client">6.3. Build the WSEE application client</a></span></dt><dd><dl><dt><span class="section"><a href="#tutorial.atm.client.appclient">6.3.1. Application client deployment descriptor</a></span></dt><dt><span class="section"><a href="#tutorial.atm.client.env">6.3.2. Environment context</a></span></dt></dl></dd><dt><span class="section"><a href="#tutorial.atm.test">6.4. Test the process</a></span></dt><dd><dl><dt><span class="section"><a href="#tutorial.atm.test.remote">6.4.1. Remote web service access</a></span></dt><dt><span class="section"><a href="#tutorial.atm.test.jndi">6.4.2. Client JNDI properties</a></span></dt><dt><span class="section"><a href="#tutorial.atm.test.run">6.4.3. Test execution</a></span></dt><dt><span class="section"><a href="#tutorial.atm.test.interactive">6.4.4. Interactive execution</a></span></dt></dl></dd></dl></dd></dl></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="overview"></a>Chapter&nbsp;1.&nbsp;Overview of BPEL</h2></div></div><div></div></div><p>BPEL stands for<span class="emphasis"><em> Business Process Execution Language</em></span>. Originally authored 
+    by a small charter of vendors in the software industry, it is currently under standardization 
+    at OASIS (<a href="#overview.references" title="1.5.&nbsp;References">1</a>).</p><p>BPEL is an XML language for describing long-running interactions of web services 
+    centrally orchestrated by a coordinator, and exposing them as new web services. 
+    The coordinator makes decisions by interpreting &laquo;business processes&raquo;.</p><p>BPEL has quickly become the dominant specification to standardize integration 
+    logic and process automation between Web services. It has bypassed a number 
+    of alternative specifications such as BPML and WSCI, and became a real candidate 
+    to drive the existing web service infrastructure into process-centric applications 
+    based on a service-oriented architecture.</p><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="overview.soa"></a>1.1.&nbsp;The service-oriented architecture</h2></div></div><div></div></div><p> Recent products and strategies announced by IBM, BEA, Microsoft and Oracle 
+      are targeted at the <span class="bold"><b>service-oriented architecture</b></span>
+      (<a href="#overview.references" title="1.5.&nbsp;References">2</a>). 
+      SOA helps enterprises modify their infrastructure &laquo;on the flight&raquo;, according 
+      to changes in the environment. Under this model, new applications are developed 
+      by wiring together software components, or services, that expose reusable business 
+      functions (<a href="#overview.references" title="1.5.&nbsp;References">3</a>).</p><p>Leveraging more from existing assets is a real business challenge right now. 
+      The idea of enabling legacy applications to be deployed as (web) services and 
+      orchestrated across platforms is a key part of why BPEL is becoming a cornerstone 
+      of SOA (<a href="#overview.references" title="1.5.&nbsp;References">4</a>).</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="overview.industry"></a>1.2.&nbsp;Industry support</h2></div></div><div></div></div><div class="itemizedlist"><ul type="disc"><li><p>IBM and BEA worked together in a proposal named BPELJ, with the purpose 
+        of extending BPEL to integrate it more closely with the J2EE platform 
+        (<a href="#overview.references" title="1.5.&nbsp;References">5</a>)</p></li><li><p>BEA will provide full support for BPELJ in the release of WebLogic Integration 
+        following version 8.1 (<a href="#overview.references" title="1.5.&nbsp;References">6</a>). In addition, it has submitted 
+        a specification request (JSR 207) of an annotated Java syntax and APIs for 
+        developing business processes in Java and deploying them in J2EE containers 
+        (<a href="#overview.references" title="1.5.&nbsp;References">7</a>)</p></li><li><p>IBM already offers that support as part of WebSphere Business Integration 
+        Server 5.1 (<a href="#overview.references" title="1.5.&nbsp;References">8</a>)</p></li><li><p>Microsoft BizTalk 2004 includes BPEL import and export capabilities 
+        (<a href="#overview.references" title="1.5.&nbsp;References">9</a>)</p></li><li><p>Oracle acquired Collaxa, a company that focused on implementing the standard 
+        since 2002 (<a href="#overview.references" title="1.5.&nbsp;References">10</a>)</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="overview.oasis"></a>1.3.&nbsp;OASIS Technical Comittee</h2></div></div><div></div></div><p>Despite its acceptance, it is recognized that BPEL remains an emerging technology. 
+      Challenges await those interested in near-term deployment. Version 1.1, dated 
+      May 5, 2003, contains plenty of gaps and ambiguities that should come as no 
+      surprise, considering these factors:</p><div class="itemizedlist"><ul type="disc"><li><p>The separate roots of the specification (<a href="#overview.references" title="1.5.&nbsp;References">12</a>).
+        Microsoft initiated the adoption of Pi-Calculus with XLANG, whereas IBM revisited the
+        use of Petri Nets with the Web Services Flow Language, WSFL. BPEL descends from both languages.
+        </p></li><li><p>The immaturity of the overall Web services &laquo;stack&raquo;</p></li></ul></div><p>The OASIS WS-BPEL technical committee is working diligently to overcome these 
+      deficiencies. It released the first draft of version 2.0 in July 30, 2004 and 
+      continues to publish drafts periodically as it resolves issues. Version 2.0 
+      is receiving contributions from a much broader community and becoming the standard 
+      everyone wants it to be.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="overview.components"></a>1.4.&nbsp;Components and dependencies</h2></div></div><div></div></div><div class="table"><a name="d0e101"></a><p class="title"><b>Table&nbsp;1.1.&nbsp;BPEL components</b></p><table summary="BPEL components" border="1"><colgroup><col><col></colgroup><thead><tr><th align="left">Component</th><th align="left">Dependency</th></tr></thead><tbody><tr><td align="left">Partner relationships</td><td align="left">WSDL 1.1 port types</td></tr><tr><td align="left">Data representation</td><td align="left">XML Schema 1.0</td></tr><tr><td align="left">Data manipulation</td><td align="left">XPath 1.0</td></tr><tr><td align="left">Message exchange</td><td align="left">WSDL 1.1 messages</td></tr><tr><td align="left">Flow-control structures</td><td align="left">-</td></tr><tr><td align="left"><p>Scoping:</p><div class="itemizedlist"><ul type="disc"><li><p>Compensation (&laquo;undo&raquo;)</p></li><li><p>Error handling</p></li><li><p>Event processing</p></li></ul></div></td><td align="left">-</td></tr></tbody></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="overview.references"></a>1.5.&nbsp;References</h2></div></div><div></div></div><div class="orderedlist"><ol type="1"><li><p><a href="http://www.oasis-open.org/committees/tc_home.php?wg_abbrev=wsbpel" target="_top"> 
+        OASIS Web Services Business Process Execution Language TC</a></p></li><li><p><a href="http://inews.webopedia.com/TERM/S/Service_Oriented_Architecture.html" target="_top">Service-Oriented 
+        Architecture</a></p></li><li><p><a href="http://www.rednova.com/news/stories/3/2004/04/30/story103.html" target="_top">IBM 
+        Refocuses WebSphere on Service-Oriented Architectures</a></p></li><li><p><a href="http://www.internetnews.com/ent-news/article.php/3343231" target="_top">IBM Unveils 
+        First SOA Products, Services</a></p></li><li><p><a href="http://itmanagement.earthweb.com/entdev/article.php/3337731" target="_top">BEA, 
+        IBM Propose Java/BPEL 'Marriage'</a></p></li><li><p><a href="http://dev2dev.bea.com/technologies/bpel/index.jsp" target="_top">BEA - BPEL 
+        &amp; BPELJ</a></p></li><li><p><a href="http://www.jcp.org/en/jsr/detail?id=207" target="_top">JSR 207: Process Definition 
+        for Java </a></p></li><li><p><a href="http://www-306.ibm.com/software/integration/wbisf/features/" target="_top">WebSphere 
+        Business Integration Server Foundation</a></p></li><li><p><a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/sdk/htm/ebiz_prog_orch_bfpe.asp" target="_top">MSDN 
+        - Importing BPEL4WS</a></p></li><li><p><a href="http://www.oracle.com/technology/products/ias/bpel/index.html" target="_top">Oracle 
+        BPEL Process Manager</a></p></li><li><p><a href="http://www.active-endpoints.com/siebel/" target="_top">Active Endpoints - Siebel 
+        Alliance</a></p></li><li><p><a href="http://www.bpmi.org/downloads/BPML-BPEL4WS.pdf" target="_top">A Convergence Path 
+        toward a Standard BPM Stack</a></p></li></ol></div></div></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="introduction"></a>Chapter&nbsp;2.&nbsp;Introduction to jBPM BPEL</h2></div></div><div></div></div><p>jBPM is a platform for graph-based execution languages. Its design and pluggable architecture makes 
+    it possible to support different languages that can be shown as a graph and 
+    represent some sort of execution. The goal of this project is to fully implement the 
+    BPEL specification by leveraging the jBPM foundation.</p><p>jPDL is jBPM's core workflow language. It was designed to fully fledge the 
+    capabilities of the jBPM API. BPEL is an emerging standard for assembling a 
+    set of discrete services into an end-to-end process flow. Even when there is 
+    actually an overlap in their functionality, they are targeted at different 
+    audiences. Let us take a look at their similarities and differences. If 
+    you are a jBPM connoisseur and still wonder what BPEL is, this might 
+    help you get started.</p><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="introduction.flowcontrol"></a>2.1.&nbsp;Flow control</h2></div></div><div></div></div><p>jPDL specifies the execution flow of a process in terms of a directed graph 
+      of nodes. It includes a set of node types that intend to cover most routing 
+      scenarios. Furthermore, its flexibility allows including custom routing logic 
+      when facing an eccentric process scenario. In contrast, BPEL has a fixed set 
+      of structured activities represented by XML elements. They are nested together 
+      to model a particular execution path. Among them we can find control structures 
+      present in most programming languages like <tt class="literal">sequence</tt>, <tt class="literal">while</tt>, 
+      and <tt class="literal">switch</tt>.</p><p>A more advanced structured activity worth mentioning is <tt class="literal">flow</tt>. It describes 
+      parallel paths of execution. Most importantly, it can declare links, which are 
+      control dependencies between its enclosed activities. Links allow for modelling 
+      directed graph flows, OR / AND join conditions for the execution of activities 
+      and even make it possible to detect dead paths of execution. </p><p>Below, a simplified version of the jBAY auction process coded in BPEL:</p><pre class="programlisting">&lt;process name="auction" targetNamespace="http://www.jBAY.com"
+      xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"&gt;
+      ...
+      &lt;sequence&gt;  
+      &lt;!-- <span class="emphasis"><em>Seller registers a sale offering and bids from the clients are received.
+       The highest bid is taken</em></span> --&gt;
+      ...
+      &lt;flow&gt;
+      
+         &lt;sequence name="shippingSequence"&gt;
+           &lt;invoke name="sendItem" operation="shipItem" partnerLink="shipper"/&gt;
+           &lt;receive name="receiveItem" operation="confirmDelivery" partnerLink="shipper"/&gt;
+          &lt;/sequence&gt;
+
+         &lt;sequence name="billingSequence"&gt;
+           &lt;receive name="receiveMoney" operation="notifyDeposit" partnerLink="bank"/&gt;
+           &lt;invoke name="sendMoney" operation="depositMoney" partnerLink="bank"/&gt;
+         &lt;/sequence&gt;
+
+       &lt;/flow&gt;
+
+      &lt;/sequence&gt;
+
+    &lt;/process&gt;</pre><p>The <tt class="literal">receive</tt> and <tt class="literal">invoke</tt> elements nested in the structured 
+    elements of the jBAY process are basic activities. They perform the actual work. 
+    The <tt class="literal">receiveMoney</tt> and <tt class="literal">receiveItem</tt> activities act as <span class="emphasis"><em>wait 
+    states</em></span>. In jPDL, any node that interrupts the execution path is a wait 
+    state, whereas in BPEL this behavior is given by the <tt class="literal">receive</tt>, <tt class="literal">wait</tt> 
+    and <tt class="literal">pick</tt> activities. In general, the execution of a process is only 
+    interrupted to wait for either an alarm to go off or a message to arrive.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="introduction.datahandling"></a>2.2.&nbsp;Data Handling</h2></div></div><div></div></div><p>jPDL's variable context is based on POJOs. Process data can be manipulated 
+      by inserting BeanShell code in a script node or invoking the methods of class 
+      <tt class="classname">ContextInstance</tt> inside action handlers. BPEL's variable context is 
+      made up by XML constructs. You can manipulate data within the assign activity 
+      using XPath expressions and in the <tt class="literal">receive</tt> and <tt class="literal">invoke</tt> activities, 
+      where message content is received either by an external call or by the return 
+      value of a service invocation.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="introduction.interaction"></a>2.3.&nbsp;Interaction with the process</h2></div></div><div></div></div><p>Clients of a jPDL definition are expected to start or resume process instances 
+      through the jBPM API. Methods such as <tt class="classname">ProcessDefinition</tt>.
+      <tt class="methodname">createProcessInstance</tt> and <tt class="classname">Token</tt>.
+      <tt class="methodname">signal</tt> allow client code to interact directly with an executing 
+      process.</p><p>BPEL takes a different approach. Instead of defining its own APIs, it accommodates
+      custom web service interfaces with which clients interact. These interfaces describe meaningful 
+      business operations and hide the fact that clients are actually "talking" 
+      to an orchestrator. In the next figure, the participants of the jBAY process 
+      interact with the auction endpoint. The orchestrator remains opaque.</p><div class="figure"><a name="introduction.auction.participants"></a><div class="mediaobject" align="center"><img src="images/auction.gif" align="middle" alt="Participants of the auction process"></div><p class="title"><b>Figure&nbsp;2.1.&nbsp;Participants of the auction process</b></p></div><p>The service operations are connected to the process definition through inbound message
+      activities. They mark <span class="emphasis"><em>entry points</em></span> inside a process definition. 
+      When a client invokes their corresponding operation they respond in one of two ways:</p><div class="orderedlist"><ol type="1"><li><p>behave as start states and trigger a new process instance</p></li><li><p>resume a process instance previously suspended</p></li></ol></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="introduction.invoking"></a>2.4.&nbsp;Invoking services</h2></div></div><div></div></div><p>jPDL processes use action handlers to invoke external services. Calls to Java 
+      component can be coded in an action handler and executed later inside a process. 
+      In BPEL, this behavior is achieved using the <tt class="literal">invoke</tt> activity. While 
+      it is only capable of calling web services right now, there are plans to use
+      <a href="http://ws.apache.org/wsif/" target="_top">Apache WSIF</a> to call any Java component 
+      described in a WSDL document</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="introduction.whichone"></a>2.5.&nbsp;Which one is for me?</h2></div></div><div></div></div><p>Some business processes involve frequent interactions with heterogeneous systems 
+      or partners. In these cases interoperability is essential, and XML is the obvious 
+      data transfer format. If you run into a similar scenario, we encourage you to 
+      choose BPEL. Manipulating XML documents with Java or any other non-XML language
+      is tedious, verbose and error-prone. BPEL alleviates much of this pain through the
+      following features:</p><div class="itemizedlist"><ul type="disc"><li><p>message exchange with efficiency (no Java/XML binding) 
+        and type safety (automatic format checking)</p></li><li><p>comfortable message content manipulation (XPath 1.0 expressions)</p></li><li><p>asynchronous message reception</p></li><li><p>encapsulation of the underlying web services machinery</p></li></ul></div><p>If this is not your case and you are mostly coordinating Java components, use 
+      jPDL. You'll find it easier to use and you will be able to model practically 
+      any imaginable scenario by leveraging jBPM's workflow-rich features.</p></div></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="getstarted"></a>Chapter&nbsp;3.&nbsp;Getting started</h2></div></div><div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="getstarted.jbpmbpel"></a>3.1.&nbsp;Getting JBoss jBPM BPEL</h2></div></div><div></div></div><p>The releases of the jBPM BPEL extension can be found in the 
+      <a href="http://www.jboss.com/products/jbpm/downloads" target="_top">jBPM download page</a>. The 
+      package JBoss jBPM BPEL contains the jBPM BPEL software (sources and binaries) plus the 
+      thirdparty libraries it depends on.</p><p>The BPEL extension is based on jBPM 3. Downloading the jBPM distribution separately is
+      strongly recommended but strictly optional, as the BPEL package already contains the required
+      jBPM binaries.</p><p>Once you download the package, unzip it to a suitable location in your machine.
+      It should all unzip into a single directory named <tt class="literal">jbpm-bpel-&lt;version&gt;</tt>.
+      Make sure you don't use a directory which has any spaces in the path (such as
+      the <tt class="literal">Program Files</tt> directory on Windows) as this may cause problems.</p><p>Alternatively, you can get the software from CVS with the following parameters.
+      Once you have access, look for module <tt class="literal">jbpm.bpel</tt>.</p><div class="table"><a name="d0e372"></a><p class="title"><b>Table&nbsp;3.1.&nbsp;CVS parameters</b></p><table summary="CVS parameters" border="1"><colgroup><col><col></colgroup><thead><tr><th align="left">Parameter</th><th align="left">Value</th></tr></thead><tbody><tr><td align="left">Connection type</td><td align="left">pserver</td></tr><tr><td align="left">User</td><td align="left">anonymous</td></tr><tr><td align="left">Password</td><td align="left">(when prompted for a password, just press enter)</td></tr><tr><td align="left">Host</td><td align="left">anoncvs.forge.jboss.com</td></tr><tr><td align="left">Port</td><td align="left">2401 (the default)</td></tr><tr><td align="left">Repository path</td><td align="left">/cvsroot/jbpm</td></tr></tbody></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="getstarted.jbossas"></a>3.2.&nbsp;Getting JBoss Application Server</h2></div></div><div></div></div><p>The jBPM BPEL software builds on J2EE 1.4 APIs and a number of open source projects. 
+      While it is not tied to JBoss AS, the guide provides deployment instructions for JBoss AS 
+      only. Even if you use a different application server in production, we still encourage you
+      to try this software in development along with JBoss AS. If you like it and decide to take
+      it to production, we can help you through the <a href="http://tinyurl.com/kjru7" target="_top">forum
+      </a> or our <a href="http://www.jboss.com/services/index" target="_top">support services</a>.
+      </p><p>For instructions on getting JBoss AS, see <a href="http://tinyurl.com/kl9wl" target="_top">
+      Downloading and Installing JBoss</a>.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>Please make sure you select a JBoss AS version and server profile compatible with
+      J2EE 1.4. Specifically, jBPM BPEL has been tested with versions 4.0.3SP1 and 4.0.4.GA in the
+      <tt class="literal">default</tt> profile.</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="getstarted.ant"></a>3.3.&nbsp;Getting Apache Ant</h2></div></div><div></div></div><p>Ant scripts dramatically simplify the development and deployment of BPEL proceses.
+      The tutorial chapter assumes you have installed Ant and are able to execute targets. 
+      Furthermore, you need Ant to build the jBPM BPEL service archive.</p><p>For directions on getting Ant, see <a href="http://ant.apache.org/manual/install.html" target="_top">
+      Installing Ant</a>.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>In order to run <tt class="literal">junit</tt> tasks, Ant requires the JUnit library.
+      You will find this library in the <tt class="literal">lib/junit</tt> directory of the jBPM BPEL
+      distribution. Remember to copy it to Ant's <tt class="literal">lib</tt> directory.</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="getstarted.eclipse"></a>3.4.&nbsp;Getting the Eclipse BPEL designer</h2></div></div><div></div></div><p>The Eclipse community has begun a <a href="http://www.eclipse.org/bpel/" target="_top">BPEL
+      project</a>. The goal of this project is "to add comprehensive support to 
+      Eclipse for the definition, authoring, editing, deploying, testing and debugging of 
+      WS-BPEL 2.0 processes".</p><p>The JBoss jBPM team has been in touch with the comitters of this project. Expect
+      tighter integration between the Eclipse Designer and jBPM BPEL shortly after key pieces
+      of functionality such as Runtime Framework and Debug become available.</p><p>You do not have to wait, tough. You can get started with the Eclipse BPEL designer
+      and jBPM BPEL <span class="bold"><b>today</b></span>! Please visit our <a href="http://wiki.jboss.org/wiki/Wiki.jsp?page=JbpmBpelDesigner" target="_top">Wiki</a> knowledge
+      base for a Quick Start guide.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="getstarted.setup"></a>3.5.&nbsp;Service setup</h2></div></div><div></div></div><p>The jBPM BPEL service archive (<tt class="literal">.sar</tt>) contains the libraries and 
+      configuration files required to execute BPEL processes. The following sections describe
+      how to configure, package and deploy the jBPM BPEL service to JBoss AS.</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="getstarted.setup.config"></a>3.5.1.&nbsp;Service configuration</h3></div></div><div></div></div><p>The configuration files reside in <tt class="literal">src/resources/jbpm-bpel.sar</tt>.
+        These files provide settings to Hibernate and to jBPM itself.</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="getstarted.setup.config.hibernate"></a>3.5.1.1.&nbsp;Hibernate configuration</h4></div></div><div></div></div><p>Starting from version 1.0 alpha 3, the BPEL extension incorporates the jBPM
+          persistence model, described in the chapter on <a href="http://docs.jboss.com/jbpm/v3/userguide/persistence.html" target="_top">persistence</a> of 
+          the jBPM user guide. jBPM uses Hibernate as its object-relational mapper.
+          The next table describes the Hibernate configuration files.</p><div class="table"><a name="d0e499"></a><p class="title"><b>Table&nbsp;3.2.&nbsp;Hibernate configuration files</b></p><table summary="Hibernate configuration files" border="1"><colgroup><col><col></colgroup><thead><tr><th align="left">File</th><th align="left">Notes</th></tr></thead><tbody><tr><td align="left"><tt class="literal">hibernate.properties</tt></td><td align="left"><p>Contains database connection properties and miscellaneus values. 
+                  Since the service runs inside the application server, you should configure 
+                  Hibernate to obtain connections from a data source registered in JNDI.</p><p>Refer to the <a href="http://tinyurl.com/e4mp3" target="_top">Configuration</a>
+                  chapter of the Hibernate manual for instructions.</p></td></tr><tr><td align="left"><tt class="literal">ehcache.xml</tt></td><td align="left"><p>Supplies parameters for the default second-level cache provider.</p><p>The chapter on <a href="http://tinyurl.com/pv6w9" target="_top">Performance</a> in
+                  the Hibernate manual describes the use of caches to improve performance.</p></td></tr></tbody></table></div><p>Apart from the above files, jBPM BPEL service includes a data source deployment 
+          descriptor: <tt class="literal">jbpm-bpel-ds.xml</tt>. In addition to the preconfigured data
+          source, this file also describes a <tt class="literal">HypersonicDatabase</tt> MBean. Upon
+          deployment, this MBean creates a database in the same VM the server is running. This
+          database is written to disk when the server shuts down, but no other process has access
+          to it.</p><p>Administrators often prefer to separate data sources from services and applications.
+          The data source described in the previous paragraph is intended for evaluation and 
+          development purposes. It should not be regarded as a production arrangement.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="getstarted.setup.config.jbpm"></a>3.5.1.2.&nbsp;jBPM settings</h4></div></div><div></div></div><p>The file <tt class="literal">jbpm.cfg.xml</tt> contains the jBPM configuration. The 
+          following table summarizes the relevant information items in the context of BPEL.</p><div class="table"><a name="d0e552"></a><p class="title"><b>Table&nbsp;3.3.&nbsp;Relevant jBPM information items for BPEL</b></p><table summary="Relevant jBPM information items for BPEL" border="1"><colgroup><col><col></colgroup><thead><tr><th align="left">Setting</th><th align="left">Notes</th></tr></thead><tbody><tr><td align="left"><tt class="literal">&lt;jbpm-context&gt;</tt></td><td align="left">Configures the jBPM context with a set of services. The persistence
+                and relation services are mandatory; other services may be disabled at will.</td></tr><tr><td align="left"><tt class="literal">&lt;string name="resource.hibernate.cfg.xml"&gt;</tt></td><td align="left">References an alternate XML resource listing the Hibernate mapping files.
+                </td></tr><tr><td align="left"><tt class="literal">&lt;string name="resource.hibernate.properties"&gt;</tt></td><td align="left">References an alternate properties resource containing the JDBC connection 
+                parameters.</td></tr></tbody></table></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="getstarted.setup.pack"></a>3.5.2.&nbsp;Packaging</h3></div></div><div></div></div><p>Once you have set the configuration, building the service archive is easy.
+        Copy or rename file <tt class="literal">ant.example.properties</tt> in your jBPM BPEL 
+        base directory to <tt class="literal">ant.properties</tt>. Edit the values therein to
+        match the directory where you installed JBoss AS and your preferred server configuration.
+        </p><pre class="programlisting"># JBoss AS installation directory
+jboss.home=/jboss/home
+# JBoss server configuration
+jboss.server=default
+
+# jBPM library versions
+jbpm.version=3.1.2
+jbpm.bpel.version=1.1.Beta2</pre><p>To build the service archive, locate <tt class="literal">build.xml</tt> in the base
+        directory and run the target that corresponds to your JBoss AS version.</p><div class="table"><a name="d0e599"></a><p class="title"><b>Table&nbsp;3.4.&nbsp;Ant targets for building the service archive</b></p><table summary="Ant targets for building the service archive" border="1"><colgroup><col><col></colgroup><thead><tr><th align="left">Target</th><th align="left">Version</th></tr></thead><tbody><tr><td align="left"><tt class="literal">build.service.402</tt></td><td align="left">4.0.2</td></tr><tr><td align="left"><tt class="literal">build.service.403</tt></td><td align="left">4.0.3 SP1</td></tr><tr><td align="left"><tt class="literal">build.service.404</tt></td><td align="left">4.0.4 GA</td></tr></tbody></table></div><p>If all goes well you should see messages much like the following:</p><pre class="screen">build.service.404:
+      [jar] Building jar: .../jbpm-bpel.sar</pre><p>JBoss AS 4.0.4 and later versions ship with the new web services stack,
+        <span class="emphasis"><em>JBossWS</em></span>. Like its predecessor in earlier JBoss AS versions, this
+        stack implements the Web Services for J2EE specification, version 1.1. However, some
+        idiosyncrasies of the Axis-based stack result in slight incompatibilities with the new
+        implementation. Specifically, a number of SAAJ methods do not behave as expected. 
+        JBossWS exhibits results that match the reference implementation.</p><p>Starting from version 1.1.Beta2, jBPM BPEL has been revised to work with both stacks.
+        The workarounds used to maintain compatibility with the old stack might fail when parsing
+        or formatting certain SOAP envelopes. If you encounter a SOAP-related problem, please try 
+        upgrading to JBoss AS 4.0.4 or later to determine whether the old stack is causing the
+        problem. Should the issue remain, let us know via the <a href="http://tinyurl.com/kjru7" target="_top">
+        forum</a>.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="getstarted.setup.deploy"></a>3.5.3.&nbsp;Deployment</h3></div></div><div></div></div><p>Before deploying the service, start JBoss in the server configuration of your choice
+        (see <a href="http://tinyurl.com/rjqkb" target="_top">Server Configurations</a>). Afterwards,
+        run the <tt class="literal">deploy-service</tt> target of <tt class="literal">build.xml</tt> in the
+        jBPM BPEL installation directory.</p><p>The following log entries confirm the deployment of the jBPM BPEL data source, service
+        and web application, respectively.</p><pre class="screen">00:39:45,390 INFO  [ConnectionFactoryBindingService] Bound ConnectionManager 'jboss.jca:name=jbpmBpelDS,service=DataSourceBinding' to JNDI name 'java:jbpmBpelDS'
+00:39:45,406 INFO  [JbpmConfiguration] using jbpm configuration resource 'jbpm.cfg.xml'
+00:39:45,437 INFO  [TomcatDeployer] deploy, ctxPath=/jbpm-bpel, warUrl=.../tmp/deploy/tmp30743jbpm-bpel-exp.war/</pre><p>JBoss is now ready to deploy process definitions and BPEL-powered web services.</p></div></div></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="tutorial"></a>Chapter&nbsp;4.&nbsp;Tutorial</h2></div></div><div></div></div><p>The best way to get acquainted with BPEL is to see it in action. For this reason,
+    we included some examples that will help you get started quickly. At
+    this point, you should have the jBPM BPEL service running inside JBoss. If you
+    do not, please read the <a href="#getstarted" title="Chapter&nbsp;3.&nbsp;Getting started">Getting started</a>
+    chapter first.</p><p>In this chapter we will guide you through the example setup procedure. The next two 
+    chapters contain the actual examples.</p><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.setup.jwsdp"></a>4.1.&nbsp;Getting the Java Web Services Development Pack</h2></div></div><div></div></div><p>jBPM BPEL relies on the Web Services for J2EE (WSEE) model for exposing the 
+      functionality a BPEL process delivers. Some of the server artifacts required for a WSEE 
+      deployment can be automatically generated from WSDL documents.</p><p>Starting from JBoss AS 4.0.4, the web services implementation features a
+      toolkit called <tt class="literal">wstools</tt>. If you are using that version of JBoss AS, no
+      further action is required in this section.</p><p>For earlier JBoss AS versions, JBoss recommended the <tt class="literal">wscompile</tt> 
+      tool from the Java Web Services Development Pack. Please refer to the <a href="http://java.sun.com/webservices/jwsdp/index.jsp" target="_top">Java WSDP</a> site for download
+      and installation instructions.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.setup.environment"></a>4.2.&nbsp;Defining the environment</h2></div></div><div></div></div><p>The resources related to each sample process reside in a separate subdirectory 
+       under <tt class="literal">doc/examples</tt>. Each subdirectory contains an Ant script to assist
+       in carrying out process deployment tasks.</p><p>Note that the individual scripts import a template located in the <tt class="literal">common
+      </tt> subdirectory. If you organize your resources in the same way as the examples,
+      you can take advantage of this template in your own project.</p><p>Each runtime environment is likely to be different from all others. For this
+      reason, the build template needs to be made aware of your particular environment.
+      Copy or rename file <tt class="literal">ant.example.properties</tt> in the <tt class="literal">doc/examples
+      </tt> subdirectory to <tt class="literal">ant.properties</tt>. Edit the values there to 
+      match your jBPM BPEL and JWSDP installation directories. The new values are shared
+      among all examples.</p><pre class="programlisting"># jBPM BPEL installation directory 
+jbpm.bpel.home=/jbpm/bpel/home
+
+# JWSDP installation directory
+# optional for JBoss 4.0.4+
+# required for JBoss 4.0.3-
+!jwsdp.home=/jwsdp/home</pre><p>Controlling multiple processes at once becomes as easy as controlling a single
+      process with the build file located in <tt class="literal">doc/examples</tt>. This script 
+      leverages the <tt class="literal">subant</tt> task for running build targets on a collection 
+      of projects.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.setup.dbschema"></a>4.3.&nbsp;Creating the database schema</h2></div></div><div></div></div><p>Starting with version 1.0 alpha 4, a web application deployed along the jBPM BPEL
+      service executes administrative requests such as creating the database schema and
+      deploying a process definition.</p><p>Before you deploy process definitions to the database, the jBPM schema must exist in
+      the database. The schema creation can be manual or automatic, at your choice.</p><p>Automatic schema creation is convenient for evaluation and development purposes.
+      This is why it is the default setting. To disable it, remove the <tt class="literal">
+      hibernate.hbm2ddl.auto</tt> property from <tt class="literal">hibernate.properties</tt> in 
+      <tt class="literal">src/resources/jbpm-bpel.sar</tt> and redeploy the jBPM BPEL service.
+    </p><p>When you turn off automatic schema creation, you need a way to create it manually. 
+      The global process deployment script provides some targets for posting administrative 
+      schema requests to the jBPM BPEL web application: <tt class="literal">create-schema</tt> and 
+      <tt class="literal">drop-schema</tt>.</p><p>Hibernate will emit a few log messages to the server console when the schema gets
+      created either way. The output below corresponds to manual creation.</p><pre class="screen">22:45:00,796 INFO  [SchemaExport] Running hbm2ddl schema export
+22:45:00,812 INFO  [SchemaExport] exporting generated schema to database
+22:45:00,828 INFO  [DatasourceConnectionProvider] Using datasource: java:/jbpmBpelDS
+22:45:00,921 INFO  [SchemaExport] schema export complete</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.setup.xmlapis"></a>4.4.&nbsp;Replacing the default implementation of the XML APIs</h2></div></div><div></div></div><p>There are known issues with the implementations of the XML APIs in Java SE 1.4.2 and 
+      1.5.0. The solution is to employ the Endorsed Standards Override Mechanism for replacing
+      these implementations with more recent versions of Apache Xalan and Apache Xerces.</p><p>You will find adequate replacement libraries in the <tt class="literal">lib/endorsed</tt> 
+      subdirectory of JBoss AS. Please follow the instructions for deploying endorsed standards
+      classes in the Java SE <a href="http://java.sun.com/j2se/1.4.2/docs/guide/standards/" target="_top">
+      Guide to Features</a>.</p></div></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="tutorial.hello"></a>Chapter&nbsp;5.&nbsp;Hello World Example</h2></div></div><div></div></div><p>In this example, we will develop a very simple BPEL process that receives
+    a message carrying the name of a person, composes a greeting phrase containing
+    the name, and then replies with a message carrying the greeting. The resources related
+    to this example come with in the download package. Look in <tt class="literal">doc/examples/hello
+    </tt>.</p><p>The following picture represents the Hello World process.</p><div class="figure"><a name="tutorial.hello.graph"></a><div class="mediaobject" align="center"><img src="images/hello.png" align="middle" alt="Graphical representation of the Hello World process"></div><p class="title"><b>Figure&nbsp;5.1.&nbsp;Graphical representation of the Hello World process</b></p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.hello.def"></a>5.1.&nbsp;Define the BPEL process</h2></div></div><div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.def.bpel"></a>5.1.1.&nbsp;Create the BPEL document</h3></div></div><div></div></div><p>The first step is creating the process definition document. The description
+        ahead assumes familiarity with the BPEL concepts, but even if you are new
+        to BPEL you will find it easy to follow. If you get interested in BPEL
+        and decide to take it to a real project, you should read the
+        specification in its entirety. The OASIS BPEL Technical Committee 
+        <a href="http://www.oasis-open.org/committees/tc_home.php?wg_abbrev=wsbpel" target="_top">web site</a>
+        provides the specification document and a number of useful resources.</p><p>Let's call our process document <tt class="literal">hello.bpel</tt>. We create a partner link to
+        establish a relationship with the client of the process. We indicate that the process
+        will play the <span class="emphasis"><em>Greeter</em></span> role. Next we create two variables to hold the 
+        incoming and outgoing messages. Finally, we create a sequence of three activities that 
+        receives a request message from a client, prepares a response message and sends it back.
+        </p><pre class="programlisting">&lt;process name="HelloWorld" targetNamespace="http://jbpm.org/examples/hello"
+  xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+  xmlns:tns="http://jbpm.org/examples/hello"
+  xmlns:bpel="http://schemas.xmlsoap.org/ws/2003/03/business-process/"&gt;
+
+  &lt;partnerLinks&gt;
+    &lt;!-- establishes the relationship with the caller agent --&gt;
+    &lt;partnerLink name="caller" partnerLinkType="tns:Greeter-Caller"
+      myRole="Greeter" /&gt;
+  &lt;/partnerLinks&gt;
+
+  &lt;variables&gt;
+    &lt;!-- holds the incoming message --&gt;
+    &lt;variable name="request" messageType="tns:nameMessage" /&gt;
+    &lt;!-- holds the outgoing message --&gt;
+    &lt;variable name="response" messageType="tns:greetingMessage" /&gt;
+  &lt;/variables&gt;
+
+  &lt;sequence&gt;
+
+    &lt;!-- receive the name of a person --&gt;
+    &lt;receive operation="sayHello" partnerLink="caller" portType="tns:Greeter"
+      variable="request" createInstance="yes" /&gt;
+
+    &lt;!-- compose a greeting phrase --&gt;
+    &lt;assign&gt;
+      &lt;copy&gt;
+        &lt;from expression="concat('Hello, ', 
+            bpel:getVariableData('request', 'name'), '!')" /&gt;
+        &lt;to variable="response" part="greeting" /&gt;
+      &lt;/copy&gt;
+    &lt;/assign&gt;
+
+    &lt;!-- reply with the greeting --&gt;
+    &lt;reply operation="sayHello" partnerLink="caller" portType="tns:Greeter"
+      variable="response" /&gt;
+  &lt;/sequence&gt;
+
+&lt;/process&gt;</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The <tt class="literal">partnerLinkType</tt> and <tt class="literal">messageType</tt> attributes 
+        refer to external WSDL definitions. We will deal with them in the <a href="#tutorial.hello.def.wsdl" title="5.1.2.&nbsp;Create/obtain the WSDL interface documents">next section</a>.</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.def.wsdl"></a>5.1.2.&nbsp;Create/obtain the WSDL interface documents</h3></div></div><div></div></div><p>WSDL documents describe the interface of the process that will be presented
+        to the outside world. To promote clarity and reuse, the  
+        <a href="http://www.w3.org/TR/wsdl#_style" target="_top">WSDL specification</a>
+        recommends separating the different elements of a service definition into independent
+        documents according to their level of abstraction. The proposed levels are data
+        type definitions, abstract definitions, and specific service bindings.</p><p>A service interface document describes a specific type of service. It contains
+        the <tt class="literal">types</tt>, <tt class="literal">import</tt>, <tt class="literal">message</tt> 
+        and <tt class="literal">portType</tt> elements; it can reference other abstract definitions 
+        documents using <tt class="literal">import</tt> elements. A service implementation document 
+        contains the description of a service that implements a service interface. It contains 
+        the <tt class="literal">import</tt>, <tt class="literal">binding</tt> and <tt class="literal">service</tt>
+        elements. At least one of the <tt class="literal">import</tt> elements references the WSDL 
+        interface document.</p><p>The process definition is dependent on data type definitions and abstract definitions.
+        The BPEL runtime is responsible of supplying the specific bindings for web services produced
+        by a BPEL process. The specific bindings for partner services can be typically obtained at 
+        deployment or runtime.</p><p>We use only one WSDL interface document. Let's name it <tt class="literal">hello.wsdl</tt>. We
+        create two mesages that respectively carry the name and greeting. Next we create a port type
+        that describes the interface that the process presents to its callers. It exposes a single 
+        operation <tt class="literal">sayHello</tt>, which takes the name message as input and returns the
+        greeting message as output.</p><p>Once the service interface is defined, we create a partner link type to characterize the
+        relationship between greeter and caller. We define the roles played by each service and 
+        specify the interfaces (i.e. port types) they expose to each other. Because our greeter
+        process does not call the client back, only one role appears. No responsibilities are placed
+        on the caller.</p><pre class="programlisting">&lt;definitions targetNamespace="http://jbpm.org/examples/hello"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:tns="http://jbpm.org/examples/hello"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"&gt;
+
+  &lt;!-- characterizes the relationship between the greeter and its caller --&gt;
+  &lt;plt:partnerLinkType name="Greeter-Caller"&gt;
+    &lt;plt:role name="Greeter"&gt;
+      &lt;plt:portType name="tns:Greeter" /&gt;
+    &lt;/plt:role&gt;
+    &lt;!-- the Caller does not provide services to the Greeter,
+      this is why we omit the "Caller" role --&gt;
+  &lt;/plt:partnerLinkType&gt;
+
+  &lt;!-- carries the name of a person --&gt;
+  &lt;message name="nameMessage"&gt;
+    &lt;part name="name" type="xsd:string" /&gt;
+  &lt;/message&gt;
+
+  &lt;!-- carries the greeting --&gt;
+  &lt;message name="greetingMessage"&gt;
+    &lt;part name="greeting" type="xsd:string" /&gt;
+  &lt;/message&gt;
+
+  &lt;!-- describes the interface presented to callers --&gt;
+  &lt;portType name="Greeter"&gt;
+    &lt;operation name="sayHello"&gt;
+      &lt;input message="tns:nameMessage" /&gt;
+      &lt;output message="tns:greetingMessage" /&gt;
+    &lt;/operation&gt;
+  &lt;/portType&gt;
+
+&lt;/definitions&gt;</pre><p>Notice the values of <tt class="literal">name</tt> attributes in child elements of 
+        <tt class="literal">definitions</tt> match the names used earlier in the process definition.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.def.deploy"></a>5.1.3.&nbsp;Deploy the process definition</h3></div></div><div></div></div><p>jBPM provides a mechanism to package all files related to a process definition
+        into a process archive, and then deploy the archive to a database. The BPEL
+        extension uses this mechanism to make the definition available to the port components
+        and the BPEL application (we will talk about it in <a href="#tutorial.hello.server.artifacts" title="5.2.2.&nbsp;Java mapping artifacts">Java mapping artifacts</a>).</p><p>The central file in the process archive is the definition descriptor, 
+        <tt class="literal">bpel-definition.xml</tt>. It specifies the location of the process document
+        within the package. The descriptor also indicates the location of WSDL interface files, 
+        either relative to the package root or at some absolute URL.</p><pre class="programlisting">&lt;bpelDefinition location="hello.bpel" xmlns="http://jbpm.org/bpel"&gt;
+
+  &lt;!-- makes WSDL interface elements available to the process --&gt;
+  &lt;imports&gt;
+    &lt;wsdl location="hello.wsdl" /&gt;
+  &lt;/imports&gt;
+
+&lt;/bpelDefinition&gt;</pre><p>To deploy the process definition to the jBPM database, call:</p><pre class="synopsis">ant deploy-definition</pre><p>This will build a file named <tt class="literal">hello-process.zip</tt> and submit it to the
+        jBPM service. When successful, the messages below appear in the server console:</p><pre class="screen">23:55:21,750 INFO  [[/jbpm-bpel]] processDeployServlet: deploying process definition: file=file:/.../hello-process.zip
+23:55:22,078 INFO  [BpelReader] read wsdl definitions: hello.wsdl
+23:55:22,171 INFO  [BpelReader] read bpel process: hello.bpel
+23:55:22,250 INFO  [[/jbpm-bpel]] processDeployServlet: deployed process definition: HelloWorld</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>If this is the first process you deploy after starting the jBPM service, you will see
+        a flurry of logs from Hibernate before the last log shown above. This is normal as long as
+        no ERROR entries appear. Hibernate initializes on demand.</div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.hello.server"></a>5.2.&nbsp;Build the WSEE port components</h2></div></div><div></div></div><p>In WSEE, a port component defines the server view of a web service. It services
+      the operation requests defined by a WSDL <tt class="literal">portType</tt>. In this step, we
+      will create one port component for each partner link that defines a process
+      role; that is, <tt class="literal">partnerLink</tt> elements having a <tt class="literal">myRole</tt> 
+      attribute.</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.server.wsdl"></a>5.2.1.&nbsp;WSDL implementation documents</h3></div></div><div></div></div><p>WSDL implementation documents for the process can be automatically generated
+        from the process definition and related WSDL interface documents. The BPEL extension
+        includes a tool just for that purpose, <tt class="literal">servicegen</tt>. This program reads
+        a process archive.</p><p>To execute the tool, call:</p><pre class="synopsis">ant generate-service</pre><p>Three WSDL files will appear:</p><div class="itemizedlist"><ul type="disc"><li><p><tt class="literal">hello.wsdl</tt> is an equivalent of the interface 
+          document we created in <a href="#tutorial.hello.def.wsdl" title="5.1.2.&nbsp;Create/obtain the WSDL interface documents">Create/obtain the WSDL interface documents</a>. Because the location we specified in <a href="#tutorial.hello.def.deploy" title="5.1.3.&nbsp;Deploy the process definition">Deploy the process definition</a> is relative,
+          the tool writes this file so that its definitions are available to the port component.
+          </p></li><li><p><tt class="literal">binding1.wsdl</tt> contains the SOAP binding for the 
+            <tt class="literal">Greeter</tt> port type we saw in <a href="#tutorial.hello.def.wsdl" title="5.1.2.&nbsp;Create/obtain the WSDL interface documents">Create/obtain the WSDL interface documents</a>. Note that the target namespace of this document
+            is the same as that of the port type: <tt class="literal">http://jbpm.org/examples/hello</tt>.
+            The subsequent listing corresponds to the generated binding document, edited for 
+            clarity.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>If the process implemented other port types belonging to namespace
+            <tt class="literal">http://jbpm.org/examples/hello</tt> they would appear in the above 
+            document, too. Bindings for port types in other namespaces would be placed in a separate
+            <tt class="literal">binding&lt;n&gt;.wsdl</tt> file.</p></div><pre class="programlisting">&lt;definitions targetNamespace="http://jbpm.org/examples/hello" 
+  xmlns:tns="http://jbpm.org/examples/hello" 
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+  xmlns="http://schemas.xmlsoap.org/wsdl/"&gt;
+  
+  &lt;!-- makes WSDL interface elements available to binding elements --&gt;
+  &lt;import namespace="http://jbpm.org/examples/hello" location="hello.wsdl"/&gt;
+  
+  &lt;!-- provides SOAP 1.1 protocol details for the Greeter interface --&gt;
+  &lt;binding name="GreeterBinding" type="tns:Greeter"&gt;
+    &lt;soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/&gt;
+    &lt;operation name="sayHello"&gt;
+      &lt;soap:operation soapAction="http://jbpm.org/examples/sayHello"/&gt;
+      &lt;input&gt;
+        &lt;soap:body use="literal" namespace="http://jbpm.org/examples/hello"/&gt;
+      &lt;/input&gt;
+      &lt;output&gt;
+        &lt;soap:body use="literal" namespace="http://jbpm.org/examples/hello"/&gt;
+      &lt;/output&gt;
+    &lt;/operation&gt;
+  &lt;/binding&gt;
+&lt;/definitions&gt;</pre></li><li><p><tt class="literal">service.wsdl</tt> contains a service element in the same target 
+            namespace as the process. The <tt class="literal">GreeterPort</tt> subelement 
+            implements the <tt class="literal">Greeter</tt> port type using its SOAP binding. 
+            The generated service document is reproduced next.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The tool generates one port for each partner link having a <tt class="literal">
+            myRole</tt> attribute.</p></div><pre class="programlisting">&lt;definitions targetNamespace="http://jbpm.org/examples/hello" xmlns:tns="http://jbpm.org/examples/hello" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/"&gt;
+
+  &lt;import namespace="http://jbpm.org/examples/hello" location="binding1.wsdl"/&gt;
+
+  &lt;!-- groups all endpoints served by the process --&gt;
+  &lt;service name="HelloWorldService"&gt;
+    
+    &lt;!-- supplies access information for the Greeter interface --&gt;
+    &lt;port name="GreeterPort" binding="tns:GreeterBinding"&gt;
+      &lt;soap:address location="REPLACE_WITH_ACTUAL_URI"/&gt;
+    &lt;/port&gt;
+    
+  &lt;/service&gt;
+
+&lt;/definitions&gt;</pre><p>Notice that the actual access information is left unspecified, as WSEE will
+            replace this entry with the definitive location during deployment.</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.server.artifacts"></a>5.2.2.&nbsp;Java mapping artifacts</h3></div></div><div></div></div><p>The Java mapping artifacts required for a WSEE deployment can be automatically generated
+        from the WSDL implementation documents. Depending on your JBoss AS version, the build file
+        calls either <tt class="literal">wstools</tt> or <tt class="literal">wscompile</tt>. Both tools read a
+        (distinct) configuration file which points to a WSDL file, among other settings.</p><p>To execute the generation tool, call:</p><pre class="synopsis">ant generate-artifacts</pre><p>The subsequent snippet shows the input to <tt class="literal">wstools</tt>. Here, 
+        <tt class="literal">package-namespace</tt> elements associate Java packages with XML namespaces
+        occurring in the WSDL file.</p><pre class="programlisting">&lt;configuration xmlns="http://www.jboss.org/jbossws-tools"&gt;
+  &lt;global&gt;
+    &lt;package-namespace package="org.jbpm.bpel.tutorial.hello"
+      namespace="http://jbpm.org/examples/hello" /&gt;
+  &lt;/global&gt;
+  &lt;wsdl-java file="wsdl/service.wsdl"&gt;
+    &lt;mapping file="jaxrpc-mapping.xml" /&gt;
+  &lt;/wsdl-java&gt;
+&lt;/configuration&gt;</pre><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>The JBossWS <a href="http://tinyurl.com/r2jru" target="_top">user guide</a> gives a full
+        coverage of the available options.</p></div><p>The configuration for <tt class="literal">wscompile</tt> is quite similar. The 
+        <tt class="literal">packageName</tt> attribute associates the target namespace of the referenced 
+        WSDL definitions with the Java package <tt class="literal">org.jbpm.bpel.tutorial.hello</tt>.
+        </p><pre class="programlisting">&lt;configuration xmlns="http://java.sun.com/xml/ns/jax-rpc/ri/config"&gt;
+  &lt;wsdl location="src/main/resources/WEB-INF/wsdl/service.wsdl"
+    packageName="org.jbpm.bpel.tutorial.hello" /&gt;
+&lt;/configuration&gt;</pre><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>Refer to the JWSDP tools <a href="http://tinyurl.com/joocc" target="_top">documentation
+        </a> for a complete description of this file.</p></div><p>The generated Java sources contain the service endpoint interface <tt class="classname">Greeter
+        </tt> and the service interface <tt class="classname">HelloWorldService</tt>. The 
+        generation tool also writes a document that describes how the WSDL interface definitions
+        map to the produced Java types: <tt class="literal">jaxrpc-mapping.xml</tt>.</p><p>We will not analyze the Java mapping artifacts as jBPM BPEL is agnostic to them. Keep in
+        mind that variables in a BPEL process are defined in terms of XML types and WSDL messages. 
+        jBPM BPEL extracts XML content from SOAP messages and places it in the process variables 
+        directly.</p><p>Nevertheless, the Java mapping artifacts still must be present for the JSR-109 
+        deployment to be valid. Note that the supplied service implementation bean has empty methods
+        only. The BPEL process specifies the behavior instead.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.server.webapp"></a>5.2.3.&nbsp;Port components as servlets</h3></div></div><div></div></div><p>In WSEE, Java service endpoints are deployed as servlets in a web application.
+        Hence, a <tt class="literal">web.xml</tt> deployment descriptor must be supplied.</p><pre class="programlisting">&lt;web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"&gt;
+  
+  &lt;!-- Greeter Service Endpoint --&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;greeterServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;org.jboss.test.ws.samples.wsbpel.hello.Greeter_Impl&lt;/servlet-class&gt;
+  &lt;/servlet&gt;  
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;greeterServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/greeter&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+  ...
+&lt;/web-app&gt;</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>We refer to the service implementation bean in the <tt class="literal">servlet-class
+        </tt> element, even though it is not a servlet at all. This is a WSEE feature.</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.server.integra"></a>5.2.4.&nbsp;Partner integration</h3></div></div><div></div></div><p>In order for the process to take requests, inbound message activities (<tt class="literal">receive
+        </tt>, <tt class="literal">onMessage</tt> branch of <tt class="literal">pick</tt> and <tt class="literal">
+        onMessage</tt> event) must be enabled for reception. jBPM BPEL provides a servlet for 
+        this purpose.</p><p>An additional <tt class="literal">servlet</tt> element in <tt class="literal">web.xml</tt> sets up
+        the partner integration servlet. We indicate the container to load this servlet during 
+        startup, so that inbound activities are ready before requests begin arriving.</p><pre class="programlisting">&lt;web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"&gt;
+  ...
+  &lt;!-- jBPM BPEL Partner Integration --&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;integrationServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;org.jbpm.bpel.integration.jms.IntegrationServlet&lt;/servlet-class&gt;
+    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;integrationServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/integration&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+    
+&lt;/web-app&gt;</pre><p>The partner relationship manager reads a special descriptor to set itself up: 
+        <tt class="literal">bpel-application.xml</tt> in <tt class="literal">WEB-INF/classes</tt>. It specifies
+        the name and (optional) version of the process definition being enacted.</p><pre class="programlisting">&lt;bpelApplication name="HelloWorld" xmlns="http://jbpm.org/bpel" /&gt;</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.server.webservices"></a>5.2.5.&nbsp;Web services deployment descriptor</h3></div></div><div></div></div><p>The <tt class="literal">webservices.xml</tt> deployment descriptor lists the endpoints to be
+        deployed in a servlet container.</p><p>In the JAX-RPC specification, handlers define a means for an application to access the
+        raw SOAP message of a request or response. Class <tt class="classname">
+        org.jbpm.bpel.integration.server.SoapHandler</tt> is a handler that lets
+        jBPM BPEL manipulate SOAP messages sent to the enclosing port component. In the web services
+        descriptor presented subsequently, the <tt class="literal">GreeterSoapHandler</tt> injects BPEL
+        functionality to the <tt class="literal">GreeterPort</tt> component.</p><pre class="programlisting">&lt;webservices version="1.1" xmlns="http://java.sun.com/xml/ns/j2ee"&gt;
+
+  &lt;webservice-description&gt;
+
+    &lt;!-- descriptive name for the service --&gt;
+    &lt;webservice-description-name&gt;Hello World&lt;/webservice-description-name&gt;
+    &lt;!-- WSDL service file --&gt;
+    &lt;wsdl-file&gt;WEB-INF/wsdl/service.wsdl&lt;/wsdl-file&gt;
+    &lt;!-- Java&lt;-&gt;XML mapping file --&gt;
+    &lt;jaxrpc-mapping-file&gt;WEB-INF/jaxrpc-mapping.xml&lt;/jaxrpc-mapping-file&gt;
+
+    &lt;port-component&gt;
+
+      &lt;!-- logical name for the port (unique within the module) --&gt;
+      &lt;port-component-name&gt;GreeterPort&lt;/port-component-name&gt;
+      &lt;!-- WSDL port element (in service.wsdl) --&gt;
+      &lt;wsdl-port xmlns:portNS="http://jbpm.org/examples/hello"&gt;
+        portNS:GreeterPort
+      &lt;/wsdl-port&gt;
+      &lt;!-- service endpoint interface class --&gt;
+      &lt;service-endpoint-interface&gt;
+        org.jboss.test.ws.samples.wsbpel.hello.Greeter
+      &lt;/service-endpoint-interface&gt;
+      &lt;!-- associated servlet (in web.xml) --&gt;
+      &lt;service-impl-bean&gt;
+        &lt;servlet-link&gt;greeterServlet&lt;/servlet-link&gt;
+      &lt;/service-impl-bean&gt;
+
+      &lt;handler&gt;
+
+        &lt;!-- logical name for the handler (unique within the module) --&gt;
+        &lt;handler-name&gt;GreeterHandler&lt;/handler-name&gt;
+        &lt;!-- handler class (in jbpm-bpel.jar) --&gt;
+        &lt;handler-class&gt;
+          org.jbpm.bpel.integration.server.SoapHandler
+        &lt;/handler-class&gt;
+
+        &lt;init-param&gt;
+          &lt;description&gt;
+            name of the partner link served by this port
+          &lt;/description&gt;
+          &lt;param-name&gt;partnerLinkHandle&lt;/param-name&gt;
+          &lt;param-value&gt;caller&lt;/param-value&gt;
+        &lt;/init-param&gt;
+
+      &lt;/handler&gt;
+
+    &lt;/port-component&gt;
+
+  &lt;/webservice-description&gt;
+
+&lt;/webservices&gt;</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.server.deploy"></a>5.2.6.&nbsp;Web application deployment</h3></div></div><div></div></div><p>To deploy the web application to the app server, call:</p><pre class="synopsis">ant deploy-web</pre><p>This will build a web archive named <tt class="literal">hello.war</tt> and copy it to the
+        <tt class="literal">deploy</tt> directory of your JBoss AS configuration. The structure of this
+        module follows the rules in section 5.4 of the <a href="http://jcp.org/en/jsr/detail?id=921" target="_top">WSEE specification</a>.</p><p>On the server you should see messages similar to these:</p><pre class="screen">23:55:35,171 INFO  [TomcatDeployer] deploy, ctxPath=/hello, warUrl=.../tmp/deploy/tmp44831hello-exp.war/
+23:55:35,781 INFO  [[/hello]] integrationServlet: enabled message reception for process: HelloWorld
+23:55:35,796 INFO  [WSDLFilePublisher] WSDL published to: file:/.../data/wsdl/hello.war/service.wsdl
+23:55:35,812 INFO  [ServiceEndpointManager] WebService started: http://.../hello/greeter</pre><p>At this point, your BPEL process is fully accessible to external clients through its
+        web service interfaces. The remaining sections focus on testing the process using a J2EE
+        application client.</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.hello.client"></a>5.3.&nbsp;Build the WSEE application client</h2></div></div><div></div></div><p>Since we already generated the Java mapping artifacts, the WSEE client programming model
+      is the most comfortable choice for testing purposes. In this step, we will create the 
+      application client.</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.client.appclient"></a>5.3.1.&nbsp;Application client deployment descriptor
+        </h3></div></div><div></div></div><p>J2EE application clients use the <tt class="literal">application-client.xml</tt> 
+        deployment descriptor.</p><p>Clients must have access to the WSDL definitions as well as the Java mapping document.
+        We already produced these files in the <a href="#tutorial.hello.server" title="5.2.&nbsp;Build the WSEE port components">Build the WSEE port components</a> section, so we just reference
+        them from the descriptor.</p><p>There is one caveat to the WSDL reference. Application clients assume the 
+        WSDL document describes a deployed web service. Therefore, the port elements
+        must point to actual locations. Recall the service document generated in <a href="#tutorial.hello.server.wsdl" title="5.2.1.&nbsp;WSDL implementation documents">WSDL implementation documents</a>
+        leaves port locations unspecified.</p><p>The provided build script solves the problem by taking the WSDL file that JBoss AS
+        publishes after deploying the web application to the <tt class="literal">data/wsdl</tt> 
+        subdirectory of the server configuration.</p><pre class="programlisting">&lt;application-client version="1.4" xmlns="http://java.sun.com/xml/ns/j2ee"&gt;
+
+  &lt;display-name&gt;Hello World Service Client&lt;/display-name&gt;
+
+  &lt;service-ref&gt;
+
+    &lt;!-- JNDI name of service interface in client environment context --&gt;
+    &lt;service-ref-name&gt;service/Hello&lt;/service-ref-name&gt;
+    &lt;!-- service interface --&gt;
+    &lt;service-interface&gt;
+      org.jbpm.bpel.tutorial.hello.HelloWorldService
+    &lt;/service-interface&gt;
+    &lt;!-- published WSDL document --&gt;
+    &lt;wsdl-file&gt;META-INF/wsdl/service.wsdl&lt;/wsdl-file&gt;
+    &lt;!-- Java&lt;-&gt;XML mapping file --&gt;
+    &lt;jaxrpc-mapping-file&gt;META-INF/jaxrpc-mapping.xml&lt;/jaxrpc-mapping-file&gt;
+
+    &lt;port-component-ref&gt;
+      &lt;!-- service endpoint interface --&gt;
+      &lt;service-endpoint-interface&gt;
+        org.jbpm.bpel.tutorial.hello.Greeter
+      &lt;/service-endpoint-interface&gt;
+    &lt;/port-component-ref&gt;
+
+  &lt;/service-ref&gt;
+
+&lt;/application-client&gt;</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.client.env"></a>5.3.2.&nbsp;Environment context</h3></div></div><div></div></div><p>In order to provide an environment context for the application client, we must allocate
+        a name for it in the global JNDI context. This is done in <tt class="literal">jboss-client.xml
+        </tt>.Be aware that this descriptor is specific to JBoss AS.</p><pre class="programlisting">&lt;jboss-client&gt;
+  &lt;!-- JNDI name of client environment context --&gt;
+  &lt;jndi-name&gt;jbpmbpel-client&lt;/jndi-name&gt;
+&lt;/jboss-client&gt;</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.hello.test"></a>5.4.&nbsp;Test the process</h2></div></div><div></div></div><p>Once the process starts, we need to make sure it works as we expect. In this step,
+      we will create a JUnit test case named <tt class="classname">HelloTest</tt>.</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.test.remote"></a>5.4.1.&nbsp;Remote web service access</h3></div></div><div></div></div><p>Deploying the application client from <a href="#tutorial.hello.client" title="5.3.&nbsp;Build the WSEE application client">Build the WSEE application client</a> causes the app server to bind an instance of the
+        service interface in the client environment context,using the logical name from the 
+        <tt class="literal">service-ref</tt> element. In our example, the logical name is 
+        <tt class="literal">service/Hello</tt>.</p><p>The test setup code looks up the service instance. This object is a factory that a
+        client uses to get a service endpoint proxy.</p><pre class="programlisting">private HelloWorldService service;
+
+protected void setUp() throws Exception {
+  InitialContext iniCtx = new InitialContext();
+  /*
+   * "service/Hello" is the JNDI name of the service interface instance
+   * relative to the client environment context. This name matches the
+   * &lt;service-ref-name&gt; in application-client.xml
+   */
+  service = (HelloWorldService) iniCtx.lookup("java:comp/env/service/Hello");
+}</pre><p>The test method uses the SEI proxy like a local java object.</p><pre class="programlisting">public void testSayHello_proxy() throws Exception {
+  // obtain dynamic proxy for web service port
+  Greeter proxy = service.getGreeterPort();
+  // use proxy as local java object
+  String greeting = proxy.sayHello("Popeye");
+  // check proper greeting
+  assertEquals("Hello, Popeye!", greeting);
+}</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.test.jndi"></a>5.4.2.&nbsp;Client JNDI properties</h3></div></div><div></div></div><p>The properties of the initial JNDI context are supplied in a separate <tt class="literal">
+        jndi.properties</tt> file. The property <tt class="literal">j2ee.clientName</tt>
+        indicates the JNDI name of the client environment context relative to the global context.
+        The value <tt class="literal">jbpmbpel-client</tt> matches the <tt class="literal">&lt;jndi-name&gt;
+        </tt> in <tt class="literal">jboss-client.xml</tt>.</p><pre class="programlisting">java.naming.provider.url=jnp://localhost:1099
+java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory
+java.naming.factory.url.pkgs=org.jboss.naming.client
+j2ee.clientName=jbpmbpel-client</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.hello.test.run"></a>5.4.3.&nbsp;Test execution</h3></div></div><div></div></div><p>To execute the JUnit test, call:</p><pre class="synopsis">ant run-test</pre><p>If all goes well you should see the output below:</p><pre class="screen">run-test:
+    [junit] Running org.jbpm.bpel.tutorial.hello.HelloTest
+    ...
+    [junit] Tests run: 2, Failures: 0, Errors: 0, Time elapsed: 1.532 sec</pre><p>Other log entries will appear, including a printout of the SOAP messages exchanged with
+        the server.</p></div></div></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="tutorial.atm"></a>Chapter&nbsp;6.&nbsp;ATM Example</h2></div></div><div></div></div><p>In this tutorial, we will develop a process that manages the interaction between an 
+    automated teller machine and the information system of a bank. The process drives ATMs in 
+    performing the operations listed below.</p><div class="orderedlist"><ol type="1"><li><p>Connect to the server</p></li><li><p>Log a customer on</p></li><li><p>Query the state of the session</p></li><li><p>Obtain the acount balance</p></li><li><p>Withdraw and deposit funds</p></li><li><p>Log the customer off</p></li><li><p>Disconnect from the server</p></li></ol></div><p>Not all operations are available at the same time. Most require another operation to 
+    complete for becoming available.</p><p>Four different modules participate in this orchestration. The picture below shows
+    the relationships between modules plus the deployment configuration.</p><div class="figure"><a name="tutorial.atm.participants"></a><div class="mediaobject" align="center"><img src="images/atm.gif" align="middle" alt="Top level graphical representation of the ATM process"></div><p class="title"><b>Figure&nbsp;6.1.&nbsp;Top level graphical representation of the ATM process</b></p></div><p>On startup, the teller machine connects to the front end service. Inside the bank, 
+    the front end contacts the ticket issuer module to generate a number that uniquely
+    identifies the teller. Subsequent exchanges with the bank indicate the ticket number.</p><p>When an account holder comes and authenticates himself/herself, the teller asks the 
+    front end to initiate a customer session. The front end resorts to the account system for
+    checking access rights.</p><p>Once access is granted, the account holder looks at the account balance, deposits/withdraws 
+    funds or terminates the session. Because a given customer is not supposed to use multiple ATM at
+    the same time, these exchanges carry the customer credentials instead of the ticket.</p><p>The front end contacts the account system as required to ensure the balance is accurate.
+    Even tough the account system allows negative balances for the sake of other credit operations,
+    ATMs do not dispense cash on credit. The front end must ensure enough funds exist and reject
+    withdrawings that would result in a negative balance.</p><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.atm.def"></a>6.1.&nbsp;Define the BPEL process</h2></div></div><div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.atm.def.bpel"></a>6.1.1.&nbsp;Create the BPEL document</h3></div></div><div></div></div><p>We will start with the process-level definitions. The <tt class="varname">atm</tt> 
+        partner link represents the relationship between a teller machine and the process.
+        The process assumes the <span class="emphasis"><em>FrontEnd</em></span> role; the ATM has no explicit role.
+        The <tt class="varname">ticket</tt> definition links the process to the ticket issuer service.
+        The ticket issuer plays the <span class="emphasis"><em>TicketIssuer</em></span> role, while the process 
+        assumes no functions. Account system operations are available to the process through the
+        <tt class="varname">account</tt> partner link. Again, no responsibility is placed on the process.
+        </p><p>The variables <tt class="varname">connectReq</tt>, <tt class="varname">ticketReq</tt> and <tt class="varname">
+        ticketMsg</tt> hold messages exchanged with partners. In turn, <tt class="varname">connected
+        </tt> and <tt class="varname">logged</tt> are status flags. The <tt class="varname">atm</tt> 
+        correlation set distinguishes ATMs from each other through the ticket number property.
+        </p><pre class="programlisting">&lt;process name="AtmFrontEnd" targetNamespace="urn:samples:atm"
+  xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+  xmlns:tns="urn:samples:atm" xmlns:atm="urn:samples:atm" xmlns:typ="urn:samples:atm:types"
+  xmlns:tic="urn:samples:ticket" xmlns:acc="urn:samples:account" 
+  xmlns:bpel="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://schemas.xmlsoap.org/ws/2003/03/business-process/
+   http://schemas.xmlsoap.org/ws/2003/03/business-process/"&gt;
+
+  &lt;partnerLinks&gt;
+    &lt;!-- relationship with the ATM --&gt;
+    &lt;partnerLink name="atm" partnerLinkType="tns:Atm-Front" myRole="FrontEnd" /&gt;
+    &lt;!-- relationship with the ticket issuer --&gt;
+    &lt;partnerLink name="ticket" partnerLinkType="tns:Front-Ticket" partnerRole="TicketIssuer" /&gt;
+    &lt;!-- relationship with the account system --&gt;
+    &lt;partnerLink name="account" partnerLinkType="tns:Front-Account" partnerRole="AccountSystem" /&gt;
+  &lt;/partnerLinks&gt;
+
+  &lt;variables&gt;
+    &lt;!-- ATM connection request --&gt;
+    &lt;variable name="connectReq" messageType="atm:connectRequest" /&gt;
+    &lt;!-- ticket creation request --&gt;
+    &lt;variable name="ticketReq" messageType="tic:ticketRequest" /&gt;
+    &lt;!-- ticket number wrapper --&gt;
+    &lt;variable name="ticketMsg" messageType="tic:ticketMessage" /&gt;
+    &lt;!-- ATM connection flag --&gt;
+    &lt;variable name="connected" type="xsd:boolean" /&gt;
+    &lt;!-- customer session flag --&gt;
+    &lt;variable name="logged" type="xsd:boolean" /&gt;
+  &lt;/variables&gt;
+
+  &lt;correlationSets&gt;
+    &lt;!-- conversation with a connected ATM --&gt;
+    &lt;correlationSet name="atmInteraction" properties="tns:ticketId" /&gt;
+  &lt;/correlationSets&gt;</pre><p>Let's move on to the control flow. The next figure is the bird eye view of the ATM front
+        end process.</p><div class="figure"><a name="tutorial.atm.flow.main"></a><div class="mediaobject" align="center"><img src="images/atmMain.png" align="middle" alt="ATM main sequence"></div><p class="title"><b>Figure&nbsp;6.2.&nbsp;ATM main sequence</b></p></div><p>We define a main sequence for handling the lifecycle of an ATM connection. It consists 
+        of these activities: receive a connection request, invoke the ticket issuer service, 
+        initialize the status flags, send the ticket number back to the teller and handle the 
+        new connection.</p><pre class="programlisting">&lt;sequence name="mainSequence"&gt;
+
+    &lt;!-- receive a connection request --&gt;
+    &lt;receive operation="connect" partnerLink="atm" portType="atm:FrontEnd" variable="connectReq"
+      createInstance="yes" /&gt;
+
+    &lt;!-- generate a ticket number --&gt;
+    &lt;invoke operation="createTicket" partnerLink="ticket" portType="tic:TicketIssuer"
+      inputVariable="ticketReq" outputVariable="ticketMsg"&gt;
+      &lt;correlations&gt;
+        &lt;correlation set="atmInteraction" pattern="in" initiate="yes" /&gt;
+      &lt;/correlations&gt;
+    &lt;/invoke&gt;
+
+    &lt;!-- initialize the status flags --&gt;
+    &lt;assign name="initConnection"&gt;
+      &lt;copy&gt;
+        &lt;from expression="true()" /&gt;
+        &lt;to variable="connected" /&gt;
+      &lt;/copy&gt;
+      &lt;copy&gt;
+        &lt;from expression="false()" /&gt;
+        &lt;to variable="logged" /&gt;
+      &lt;/copy&gt;
+    &lt;/assign&gt;
+
+    &lt;!-- send the ticket number back to the ATM --&gt;
+    &lt;reply operation="connect" partnerLink="atm" portType="atm:FrontEnd" variable="ticketMsg"&gt;
+      &lt;correlations&gt;
+        &lt;correlation set="atmInteraction" /&gt;
+      &lt;/correlations&gt;
+    &lt;/reply&gt;
+
+    &lt;!-- handle the ATM connection --&gt;
+    &lt;scope name="connectionUnit"&gt;
+      ...
+    &lt;/scope&gt;
+
+  &lt;/sequence&gt;
+
+&lt;/process&gt;</pre><p>The <tt class="literal">scope</tt> element at the end of the sequence encapsulates
+        the connection handling logic. This activity allows specifying a nested execution
+        flow and local definitions of variables, correlation sets and fault/event handling
+        behavior. The following diagram shows the control flow of the <tt class="literal">connectionUnit
+        </tt>:</p><div class="figure"><a name="tutorial.atm.flow.connection"></a><div class="mediaobject" align="center"><img src="images/atmConnection.png" align="middle" alt="ATM connection handling logic"></div><p class="title"><b>Figure&nbsp;6.3.&nbsp;ATM connection handling logic</b></p></div><p>The local variables <tt class="varname">logOnReq</tt> and <tt class="varname">statusRsp</tt>
+        are placeholders for message exchanges.</p><p>The connection handling logic consists of listening for requests from the ATM and 
+        processing them one at a time. This is an iterative behavior. The 
+        <tt class="literal">connectionLoop</tt> activity causes the front end to keep taking
+        requests as long as the <tt class="varname">connected</tt> flag stays on.</p><p>At this point, the front end accepts one of two requests: initiate a customer session
+        or terminate the connection. The <tt class="literal">connectionMenu</tt> performs the activity 
+        associated with the first request to arrive.</p><pre class="programlisting">&lt;scope name="connectionUnit"&gt;
+
+  &lt;variables&gt;
+    &lt;!-- customer log on request --&gt;
+    &lt;variable name="logOnReq" messageType="atm:logOnRequest" /&gt;
+    &lt;!-- connection status response --&gt;
+    &lt;variable name="statusRsp" messageType="atm:statusResponse" /&gt;
+  &lt;/variables&gt;
+
+  &lt;!-- process ATM requests, one at a time --&gt;
+  &lt;while name="connectionLoop" condition="bpel:getVariableData('connected')"&gt;
+
+    &lt;!-- listen for either disconnect or log on request --&gt;
+    &lt;pick name="connectionMenu"&gt;
+    
+      &lt;onMessage operation="disconnect" .../&gt;
+      
+      &lt;onMessage operation="logOn" .../&gt;
+    
+    &lt;/pick&gt;
+
+  &lt;/while&gt;
+
+&lt;/scope&gt;</pre><div class="itemizedlist"><ul type="disc"><li><p><span class="emphasis"><em>logOn</em></span>: the <tt class="literal">customerUnit</tt> scope
+            encapsulates the customer session logic.</p><pre class="programlisting">&lt;onMessage operation="logOn" partnerLink="atm" portType="atm:FrontEnd"
+  variable="logOnReq"&gt;
+
+  &lt;correlations&gt;
+    &lt;correlation set="atmInteraction" /&gt;
+  &lt;/correlations&gt;
+
+  &lt;!-- handle the customer session --&gt;
+  &lt;scope name="customerUnit"&gt;
+    ...
+  &lt;/scope&gt;
+
+&lt;/onMessage&gt;</pre></li><li><p><span class="emphasis"><em>disconnect</em></span>: the <tt class="literal">setDisconnected</tt> assign
+            turns off the <tt class="varname">connected</tt> flag, causing the <tt class="literal">connectionLoop
+            </tt> to break shortly afterwards.</p><pre class="programlisting">&lt;onMessage operation="disconnect" partnerLink="atm" portType="atm:FrontEnd"
+  variable="ticketMsg"&gt;
+
+  &lt;correlations&gt;
+    &lt;correlation set="atmInteraction" /&gt;
+  &lt;/correlations&gt;
+
+  &lt;!-- turn off connected flag for breaking the connection loop --&gt;
+  &lt;assign name="setDisconnected"&gt;
+    &lt;copy&gt;
+      &lt;from expression="false()" /&gt;
+      &lt;to variable="connected" /&gt;
+    &lt;/copy&gt;
+  &lt;/assign&gt;
+
+&lt;/onMessage&gt;</pre></li></ul></div><p>To spice up the example the scope defines an event for handling status requests
+        on par with the primary activity. The <tt class="literal">status</tt> event lets the ATM query 
+        the connection status anytime, as long as the scope is active:</p><div class="figure"><a name="tutorial.atm.flow.status"></a><div class="mediaobject" align="center"><img src="images/atmStatus.png" align="middle" alt="ATM connection status event"></div><p class="title"><b>Figure&nbsp;6.4.&nbsp;ATM connection status event</b></p></div><p>The following snippet shows the scope's event handling code:</p><pre class="programlisting">&lt;scope name="connectionUnit"&gt;
+  ...
+  &lt;eventHandlers&gt;
+
+    &lt;!-- listen for connection status requests --&gt;
+    &lt;onMessage operation="status" partnerLink="atm" portType="atm:FrontEnd"
+      variable="ticketMsg"&gt;
+
+      &lt;correlations&gt;
+        &lt;correlation set="atmInteraction" /&gt;
+      &lt;/correlations&gt;
+
+      &lt;!-- report the connection status --&gt;
+      &lt;sequence name="statusSequence"&gt;
+
+        &lt;!-- set a status string depending on the flag values --&gt;
+        &lt;switch name="statusSwitch"&gt;
+
+          &lt;case condition="bpel:getVariableData('logged')"&gt;
+
+            &lt;assign name="setStatusLogged"&gt;
+              &lt;copy&gt;
+                &lt;from expression="'logged'" /&gt;
+                &lt;to variable="statusRsp" part="status" /&gt;
+              &lt;/copy&gt;
+            &lt;/assign&gt;
+
+          &lt;/case&gt;
+
+          &lt;case condition="bpel:getVariableData('connected')"&gt;
+
+            &lt;assign name="setStatusConnected"&gt;
+              &lt;copy&gt;
+                &lt;from expression="'connected'" /&gt;
+                &lt;to variable="statusRsp" part="status" /&gt;
+              &lt;/copy&gt;
+            &lt;/assign&gt;
+
+          &lt;/case&gt;
+
+          &lt;otherwise&gt;
+
+            &lt;assign name="setStatusDisconnected"&gt;
+              &lt;copy&gt;
+                &lt;from expression="'disconnected'" /&gt;
+                &lt;to variable="statusRsp" part="status" /&gt;
+              &lt;/copy&gt;
+            &lt;/assign&gt;
+
+          &lt;/otherwise&gt;
+
+        &lt;/switch&gt;
+        &lt;!-- send the status back to the ATM --&gt;
+        &lt;reply operation="status" partnerLink="atm" portType="atm:FrontEnd"
+          variable="statusRsp" /&gt;
+
+      &lt;/sequence&gt;
+
+    &lt;/onMessage&gt;
+
+  &lt;/eventHandlers&gt;
+  ...
+&lt;/scope&gt;</pre><p>The <tt class="literal">customerUnit</tt> scope lies at the core of the ATM front end
+        process. It encapsulates the logic to serve account holder requests. The following 
+        picture summarizes its flow control:</p><div class="figure"><a name="tutorial.atm.flow.customersession"></a><div class="mediaobject" align="center"><img src="images/atmCustomerSession.png" align="middle" alt="ATM customer session handling logic"></div><p class="title"><b>Figure&nbsp;6.5.&nbsp;ATM customer session handling logic</b></p></div><p>The scope declares a number of local variables for incoming and outgoing messages.
+        Apart from them, one variable of simple type, <tt class="varname">newBalance</tt>, stores the
+        result of a computation that determines the remaining amount after withdrawing.</p><p>One correlation set, <tt class="varname">customerInteraction</tt>, distinguishes logged 
+        account holders from each other through the customer name property. One feature of 
+        correlation sets opens a potential pitfall. In order to ensure consistency constraints, 
+        correlation sets are immutable. However, the ATM most likely will serve a different customer
+        at each iteration. For this reason, the <tt class="varname">customerInteraction</tt> declaration
+        appears inside the loop rather than outside. In this way, the set can assume different
+        values in every new session.</p><p>Customer session handling works as follows. The front end must verify the customer
+        holds an active account. Verification is outside the responsibilities of the process;
+        it is a function of the bank account system. Therefore, the front end invokes the
+        account system to check the customer access privilege. If the system grants
+        access, the front end replies the log on request with an acknowledgement and
+        turns on the <tt class="varname">logged</tt> flag. Conversely, when the system denies access,
+        the front end sends a <tt class="literal">unauthorizedAccess</tt> back to the ATM. It leaves
+        the <tt class="varname">logged</tt> flag turned off so that the customer session ends 
+        immediately.</p><p>Note that the aforementioned fault appears in the WSDL definition of the operation. 
+        If it did not appear, jBPM BPEL would report an error at deployment time.</p><pre class="programlisting">&lt;portType name="FrontEnd"&gt;
+  ...
+  &lt;operation name="logOn"&gt;
+    &lt;input message="tns:logOnRequest" /&gt;
+    &lt;output message="tns:logOnResponse" /&gt;
+    &lt;fault name="<span class="bold"><b>unauthorizedAccess</b></span>" message="tns:unauthorizedAccess" /&gt;
+  &lt;/operation&gt;
+  ...
+&lt;/portType&gt;</pre><p>After completing the <tt class="methodname">logOn</tt> operation either way, 
+        the process enters a loop that processes customer requests one at a time.
+        The next section will describe the logic inside that <tt class="literal">customerLoop</tt>.</p><pre class="programlisting">&lt;scope name="customerUnit"&gt;
+
+  &lt;variables&gt;
+    &lt;!-- customer name wrapper --&gt;
+    &lt;variable name="customerMsg" messageType="acc:customerMessage" /&gt;
+    &lt;!-- access check response --&gt;
+    &lt;variable name="accessMsg" messageType="acc:accessMessage" /&gt;
+    &lt;!-- customer log on response --&gt;
+    &lt;variable name="logOnRsp" messageType="atm:logOnResponse" /&gt;
+    &lt;!-- account balance wrapper --&gt;
+    &lt;variable name="balanceMsg" messageType="acc:balanceMessage" /&gt;
+    &lt;!-- balance change request --&gt;
+    &lt;variable name="balanceChange" messageType="atm:balanceChange" /&gt;
+    &lt;!-- account system operation request --&gt;
+    &lt;variable name="accountOperation" messageType="acc:accountOperation" /&gt;
+    &lt;!-- customer log on fault --&gt;
+    &lt;variable name="unauthorizedAccess" messageType="atm:unauthorizedAccess" /&gt;
+    &lt;!-- withdraw fault --&gt;
+    &lt;variable name="insufficientFunds" messageType="atm:insufficientFunds" /&gt;
+    &lt;!-- resulting balance after withdraw --&gt;
+    &lt;variable name="newBalance" type="xsd:double" /&gt;
+  &lt;/variables&gt;
+
+  &lt;correlationSets&gt;
+    &lt;!-- conversation with a logged customer --&gt;
+    &lt;correlationSet name="customerInteraction" properties="tns:customerId" /&gt;
+  &lt;/correlationSets&gt;
+
+  &lt;sequence name="customerSequence"&gt;
+
+    &lt;!-- populate access check request --&gt;
+    &lt;assign name="fillAccessCheck"&gt;
+      &lt;copy&gt;
+        &lt;from variable="logOnReq" part="customerName" /&gt;
+        &lt;to variable="customerMsg" part="customerName" /&gt;
+      &lt;/copy&gt;
+    &lt;/assign&gt;
+
+    &lt;!-- check account access privilege --&gt;
+    &lt;invoke operation="checkAccess" partnerLink="account" portType="acc:AccountSystem"
+      inputVariable="customerMsg" outputVariable="accessMsg"&gt;
+      &lt;correlations&gt;
+        &lt;correlation set="customerInteraction" pattern="out" initiate="yes" /&gt;
+      &lt;/correlations&gt;
+    &lt;/invoke&gt;
+
+    &lt;!-- decide outcome of customer session request --&gt;
+    &lt;switch name="accessDecision"&gt;
+
+      &lt;case condition="bpel:getVariableData('accessMsg', 'granted')"&gt;
+
+        &lt;!-- accept customer session --&gt;
+        &lt;sequence name="accessGrantedSequence"&gt;
+
+          &lt;!-- turn on logged flag for starting session loop  --&gt;
+          &lt;assign name="setLoggedOn"&gt;
+            &lt;copy&gt;
+              &lt;from expression="true()" /&gt;
+              &lt;to variable="logged" /&gt;
+            &lt;/copy&gt;
+          &lt;/assign&gt;
+
+          &lt;!-- send acknowledgement back to ATM --&gt;
+          &lt;reply operation="logOn" partnerLink="atm" portType="atm:FrontEnd"
+            variable="logOnRsp" /&gt;
+
+        &lt;/sequence&gt;
+
+      &lt;/case&gt;
+
+      &lt;otherwise&gt;
+
+        &lt;!-- reject customer session --&gt;
+        &lt;sequence name="accessDeniedSequence"&gt;
+
+          &lt;!-- populate the log on fault --&gt;
+          &lt;assign name="fillAccessDenial"&gt;
+            &lt;copy&gt;
+              &lt;from variable="logOnReq" part="customerName" /&gt;
+              &lt;to variable="unauthorizedAccess" part="detail"
+                query="/typ:unauthorizedAccess/customerName" /&gt;
+            &lt;/copy&gt;
+          &lt;/assign&gt;
+
+          &lt;!-- send fault back to the ATM --&gt;
+          &lt;reply operation="logOn" partnerLink="atm" portType="atm:FrontEnd"
+            variable="unauthorizedAccess" faultName="atm:unauthorizedAccess" /&gt;
+
+        &lt;/sequence&gt;
+
+      &lt;/otherwise&gt;
+
+    &lt;/switch&gt;
+
+    &lt;!-- process customer requests, one at a time --&gt;
+    &lt;while name="customerLoop" condition="bpel:getVariableData('logged')"&gt;
+      ...
+    &lt;/while&gt;
+
+  &lt;/sequence&gt;
+
+&lt;/scope&gt;</pre><p>Inside <tt class="literal">customerLoop</tt>, the process waits for one of four
+        possible requests. These requests appear as <tt class="literal">onMessage</tt> child elements
+        of the <tt class="literal">customerMenu</tt> activity.</p><pre class="programlisting">&lt;while name="customerLoop" condition="bpel:getVariableData('logged')"&gt;
+
+  &lt;pick name="customerMenu"&gt;
+    
+    &lt;onMessage operation="logOff" .../&gt;
+    
+    &lt;onMessage operation="getBalance" .../&gt;
+    
+    &lt;onMessage operation="deposit" .../&gt;
+    
+    &lt;onMessage operation="withdraw" .../&gt;
+    
+    &lt;onAlarm for="'PT2M'" .../&gt;
+    
+  &lt;/pick&gt;
+
+&lt;/while&gt;</pre><div class="itemizedlist"><ul type="disc"><li><p><span class="emphasis"><em>logOff</em></span>: the <tt class="literal">setLoggedOff</tt> 
+            assign turns off the <tt class="varname">logged</tt> flag to break the 
+            <tt class="literal">customerLoop</tt> and terminate the customer session.</p><pre class="programlisting">&lt;onMessage operation="logOff" partnerLink="atm" portType="atm:FrontEnd"
+  variable="customerMsg"&gt;
+
+  &lt;correlations&gt;
+    &lt;correlation set="customerInteraction" /&gt;
+  &lt;/correlations&gt;
+
+  &lt;!-- turn off logged flag for breaking the customer loop --&gt;
+  &lt;assign name="setLoggedOff"&gt;
+    &lt;copy&gt;
+      &lt;from expression="false()" /&gt;
+      &lt;to variable="logged" /&gt;
+    &lt;/copy&gt;
+  &lt;/assign&gt;
+
+&lt;/onMessage&gt;</pre></li><li><p><span class="emphasis"><em>getBalance</em></span>: the <tt class="literal">balanceSequence</tt>
+            queries the account system for the current balance and hands that back to 
+            the ATM.</p><pre class="programlisting">&lt;onMessage operation="getBalance" partnerLink="atm" portType="atm:FrontEnd"
+  variable="customerMsg"&gt;
+
+  &lt;correlations&gt;
+    &lt;correlation set="customerInteraction" /&gt;
+  &lt;/correlations&gt;
+
+  &lt;sequence name="balanceSequence"&gt;
+
+    &lt;!-- get current account balance --&gt;
+    &lt;invoke operation="queryBalance" partnerLink="account"
+      portType="acc:AccountSystem" inputVariable="customerMsg"
+      outputVariable="balanceMsg"&gt;
+      &lt;correlations&gt;
+        &lt;correlation set="customerInteraction" pattern="out" /&gt;
+      &lt;/correlations&gt;
+    &lt;/invoke&gt;
+
+    &lt;!-- hand the balance back to the ATM --&gt;
+    &lt;reply operation="getBalance" partnerLink="atm" portType="atm:FrontEnd"
+      variable="balanceMsg" /&gt;
+
+  &lt;/sequence&gt;
+
+&lt;/onMessage&gt;</pre></li><li><p><span class="emphasis"><em>deposit</em></span>: the <tt class="literal">depositSequence</tt>
+            posts the positive update to the account system. The front end process gets the 
+            new balance in return and makes it available to the ATM.</p><pre class="programlisting">&lt;onMessage operation="deposit" partnerLink="atm" portType="atm:FrontEnd"
+  variable="balanceChange"&gt;
+
+  &lt;correlations&gt;
+    &lt;correlation set="customerInteraction" /&gt;
+  &lt;/correlations&gt;
+
+  &lt;sequence name="depositSequence"&gt;
+
+    &lt;!-- populate balance update request --&gt;
+    &lt;assign name="fillDepositUpdate"&gt;
+      &lt;copy&gt;
+        &lt;from variable="balanceChange" part="customerName" /&gt;
+        &lt;to variable="accountOperation" part="body" query="/body/customerName" /&gt;
+      &lt;/copy&gt;
+      &lt;copy&gt;
+        &lt;from variable="balanceChange" part="amount" /&gt;
+        &lt;to variable="accountOperation" part="body" query="/body/amount" /&gt;
+      &lt;/copy&gt;
+    &lt;/assign&gt;
+
+    &lt;!-- post positive balance update --&gt;
+    &lt;invoke operation="updateBalance" partnerLink="account"
+      portType="acc:AccountSystem" inputVariable="accountOperation"
+      outputVariable="balanceMsg"&gt;
+      &lt;correlations&gt;
+        &lt;correlation set="customerInteraction" pattern="out" /&gt;
+      &lt;/correlations&gt;
+    &lt;/invoke&gt;
+
+    &lt;!-- make new balance available to ATM --&gt;
+    &lt;reply operation="deposit" partnerLink="atm" portType="atm:FrontEnd"
+      variable="balanceMsg" /&gt;
+
+  &lt;/sequence&gt;
+
+&lt;/onMessage&gt;</pre></li><li><p><span class="emphasis"><em>withdraw</em></span>: the <tt class="literal">withdrawSequence</tt>
+            first queries the account system for the current balance. Later, it computes the amount
+            that would remain in the account after the negative update.</p><pre class="programlisting">&lt;onMessage operation="withdraw" partnerLink="atm" portType="atm:FrontEnd"
+  variable="balanceChange"&gt;
+
+  &lt;correlations&gt;
+    &lt;correlation set="customerInteraction" /&gt;
+  &lt;/correlations&gt;
+
+  &lt;sequence name="withdrawSequence"&gt;
+
+    &lt;!-- populate balance query request --&gt;
+    &lt;assign name="fillWithdrawQuery"&gt;
+      &lt;copy&gt;
+        &lt;from variable="balanceChange" part="customerName" /&gt;
+        &lt;to variable="customerMsg" part="customerName" /&gt;
+      &lt;/copy&gt;
+    &lt;/assign&gt;
+
+    &lt;!-- get current account balance --&gt;
+    &lt;invoke operation="queryBalance" partnerLink="account"
+      portType="acc:AccountSystem" inputVariable="customerMsg"
+      outputVariable="balanceMsg"&gt;
+      &lt;correlations&gt;
+        &lt;correlation set="customerInteraction" pattern="out" /&gt;
+      &lt;/correlations&gt;
+    &lt;/invoke&gt;
+
+    &lt;!-- compute amount that would remain in the account --&gt;
+    &lt;assign name="decreaseBalance"&gt;
+      &lt;copy&gt;
+        &lt;from
+          expression="bpel:getVariableData('balanceMsg', 'balance') -
+            bpel:getVariableData('balanceChange', 'amount')" /&gt;
+        &lt;to variable="newBalance" /&gt;
+      &lt;/copy&gt;
+    &lt;/assign&gt;
+
+    &lt;!-- decide outcome of withdraw request --&gt;
+    &lt;switch name="balanceDecision"&gt;
+      
+      &lt;case condition="bpel:getVariableData('newBalance') &amp;gt;= 0.0" .../&gt;
+      
+      &lt;otherwise .../&gt;
+      
+    &lt;/switch&gt;
+
+  &lt;/sequence&gt;
+
+&lt;/onMessage&gt;</pre><div class="itemizedlist"><ul type="circle"><li><p>If there are enough funds, the <tt class="literal">positiveBalanceSequence</tt>
+                posts the negative update to the account system, gets the new balance and returns
+                that to the ATM.</p><pre class="programlisting">&lt;case condition="bpel:getVariableData('newBalance') &amp;gt;= 0.0"&gt;
+
+  &lt;!-- accept withdrawing --&gt;
+  &lt;sequence name="positiveBalanceSequence"&gt;
+
+    &lt;!-- populate balance update request --&gt;
+    &lt;assign name="fillWithdrawUpdate"&gt;
+      &lt;copy&gt;
+        &lt;from variable="balanceChange" part="customerName" /&gt;
+        &lt;to variable="accountOperation" part="body"
+          query="/body/customerName" /&gt;
+      &lt;/copy&gt;
+      &lt;copy&gt;
+        &lt;from
+          expression="-bpel:getVariableData('balanceChange', 'amount')" /&gt;
+        &lt;to variable="accountOperation" part="body" query="/body/amount" /&gt;
+      &lt;/copy&gt;
+    &lt;/assign&gt;
+
+    &lt;!-- post negative balance update --&gt;
+    &lt;invoke operation="updateBalance" partnerLink="account"
+      portType="acc:AccountSystem" inputVariable="accountOperation"
+      outputVariable="balanceMsg"&gt;
+      &lt;correlations&gt;
+        &lt;correlation set="customerInteraction" pattern="out" /&gt;
+      &lt;/correlations&gt;
+    &lt;/invoke&gt;
+
+    &lt;!-- return new balance to ATM --&gt;
+    &lt;reply operation="withdraw" partnerLink="atm" portType="atm:FrontEnd"
+      variable="balanceMsg" /&gt;
+
+  &lt;/sequence&gt;
+
+&lt;/case&gt;</pre></li><li><p>Otherwise, the <tt class="literal">negativeBalanceSequence</tt> rejects the withdraw
+                by returning a fault to the ATM. The update is not posted.</p><pre class="programlisting">&lt;otherwise&gt;
+
+  &lt;!-- reject withdrawing --&gt;
+  &lt;sequence name="negativeBalanceSequence"&gt;
+
+    &lt;!-- populate withdraw fault --&gt;
+    &lt;assign name="fillNoFunds"&gt;
+      &lt;copy&gt;
+        &lt;from variable="balanceChange" part="customerName" /&gt;
+        &lt;to variable="insufficientFunds" part="detail"
+          query="/typ:insufficientFunds/customerName" /&gt;
+      &lt;/copy&gt;
+      &lt;copy&gt;
+        &lt;from variable="balanceMsg" part="balance" /&gt;
+        &lt;to variable="insufficientFunds" part="detail"
+          query="/typ:insufficientFunds/amount" /&gt;
+      &lt;/copy&gt;
+    &lt;/assign&gt;
+
+    &lt;!-- return fault to ATM --&gt;
+    &lt;reply operation="withdraw" partnerLink="atm" portType="atm:FrontEnd"
+      variable="insufficientFunds" faultName="atm:insufficientFunds" /&gt;
+
+  &lt;/sequence&gt;
+
+&lt;/otherwise&gt;</pre></li></ul></div></li></ul></div><p>The final <tt class="literal">onAlarm</tt> subelement terminates the customer session after
+        two minutes if none of the above requests arrives within that interval.</p><pre class="programlisting">&lt;onAlarm for="'PT2M'"&gt;
+
+  &lt;!-- log off after 2 minutes of inactivity --&gt;
+  &lt;assign name="setLoggedOff"&gt;
+    &lt;copy&gt;
+      &lt;from expression="false()" /&gt;
+      &lt;to variable="logged" /&gt;
+    &lt;/copy&gt;
+  &lt;/assign&gt;
+
+&lt;/onAlarm&gt;</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.atm.def.wsdl"></a>6.1.2.&nbsp;Create/obtain the WSDL interface documents</h3></div></div><div></div></div><p>To better organize WSDL definitions, the process uses four interface documents for
+        the ATM service.</p><p>The first document, <tt class="literal">ticket.wsdl</tt> contains the interface
+        of the ticket issuer service. Supposedly, someone has already deployed this
+        service somewhere and the WSDL definitions came from there.</p><pre class="programlisting">&lt;definitions targetNamespace="urn:samples:ticket" xmlns:tns="urn:samples:ticket"
+  xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+
+  &lt;!-- ticket creation request --&gt;
+  &lt;message name="ticketRequest" /&gt;
+
+  &lt;!-- ticket number wrapper --&gt;
+  &lt;message name="ticketMessage"&gt;
+    &lt;part name="ticketNo" type="xsd:int" /&gt;
+  &lt;/message&gt;
+
+  &lt;!-- interface to ticket issuer service --&gt;
+  &lt;portType name="TicketIssuer"&gt;
+
+    &lt;!-- generate a ticket number, distinct from previous calls --&gt;
+    &lt;operation name="createTicket"&gt;
+      &lt;input message="tns:ticketRequest" /&gt;
+      &lt;output message="tns:ticketMessage" /&gt;
+    &lt;/operation&gt;
+
+  &lt;/portType&gt;
+
+&lt;/definitions&gt;</pre><p>Another document, <tt class="literal">account.wsdl</tt> describes the
+        published functions of the account system. One custom XML Schema definition, 
+        <tt class="literal">AccountOperation</tt>, introduces a data transfer type for
+        account operations.</p><pre class="programlisting">&lt;definitions targetNamespace="urn:samples:account" xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:tns="urn:samples:account" xmlns:typ="urn:samples:account"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+
+  &lt;types&gt;
+
+    &lt;schema targetNamespace="urn:samples:account" xmlns="http://www.w3.org/2001/XMLSchema"&gt;
+
+      &lt;!-- account data transfer type --&gt;
+      &lt;complexType name="AccountOperation"&gt;
+        &lt;sequence&gt;
+          &lt;element name="customerName" type="xsd:string" /&gt;
+          &lt;element name="amount" type="xsd:double" /&gt;
+        &lt;/sequence&gt;
+      &lt;/complexType&gt;
+
+    &lt;/schema&gt;
+
+  &lt;/types&gt;
+
+  &lt;!-- customer name wrapper --&gt;
+  &lt;message name="customerMessage"&gt;
+    &lt;part name="customerName" type="xsd:string" /&gt;
+  &lt;/message&gt;
+
+  &lt;!-- access check response --&gt;
+  &lt;message name="accessMessage"&gt;
+    &lt;part name="granted" type="xsd:boolean" /&gt;
+  &lt;/message&gt;
+
+  &lt;!-- account balance wrapper --&gt;
+  &lt;message name="balanceMessage"&gt;
+    &lt;part name="balance" type="xsd:double" /&gt;
+  &lt;/message&gt;
+
+  &lt;!-- account operation request --&gt;
+  &lt;message name="accountOperation"&gt;
+    &lt;part name="body" type="typ:AccountOperation" /&gt;
+  &lt;/message&gt;
+
+  &lt;!-- published account functions --&gt;
+  &lt;portType name="AccountSystem"&gt;
+
+    &lt;!-- tell whether a customer has an active account --&gt;
+    &lt;operation name="checkAccess"&gt;
+      &lt;input message="tns:customerMessage" /&gt;
+      &lt;output message="tns:accessMessage" /&gt;
+    &lt;/operation&gt;
+
+    &lt;!-- retrieve the balance of an account --&gt;
+    &lt;operation name="queryBalance"&gt;
+      &lt;input message="tns:customerMessage" /&gt;
+      &lt;output message="tns:balanceMessage" /&gt;
+    &lt;/operation&gt;
+
+    &lt;!-- increase/decrease the balance of an account --&gt;
+    &lt;operation name="updateBalance"&gt;
+      &lt;input message="tns:accountOperation" /&gt;
+      &lt;output message="tns:balanceMessage" /&gt;
+    &lt;/operation&gt;
+
+  &lt;/portType&gt;
+
+&lt;/definitions&gt;</pre><p>The third document, <tt class="literal">frontend.wsdl</tt>, contains the interface
+        the process presents to ATMs. Because it reuses a number of messages from the ticket issuer
+        and the account system, it imports the WSDL documents that describe these services.</p><p>Some custom XML schema definitions appear in the <tt class="literal">types</tt> section.
+        They define the elements that the front end interface uses to inform ATMs of business
+        logic errors and the types that characterize those elements.</p><p>WSDL messages, in terms of the foregoing definitions and predefined schema types,
+        define the exchange format between the ATM and the bank front end. Finally, 
+        the <tt class="literal">FrontEnd</tt> port type lists the bank functions available to ATMs.</p><pre class="programlisting">&lt;definitions targetNamespace="urn:samples:atm" xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:tns="urn:samples:atm" xmlns:typ="urn:samples:atm" xmlns:tic="urn:samples:ticket"
+  xmlns:acc="urn:samples:account" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+
+  &lt;import namespace="urn:samples:ticket" location="ticket.wsdl" /&gt;
+  &lt;import namespace="urn:samples:account" location="account.wsdl" /&gt;
+
+  &lt;types&gt;
+
+    &lt;schema targetNamespace="urn:samples:atm" xmlns="http://www.w3.org/2001/XMLSchema"&gt;
+
+      &lt;complexType name="UnauthorizedAccess"&gt;
+        &lt;sequence&gt;
+          &lt;element name="customerName" type="xsd:string" /&gt;
+        &lt;/sequence&gt;
+      &lt;/complexType&gt;
+
+      &lt;element name="unauthorizedAccess" type="typ:UnauthorizedAccess" /&gt;
+
+      &lt;complexType name="InsufficientFunds"&gt;
+        &lt;sequence&gt;
+          &lt;element name="customerName" type="xsd:string" /&gt;
+          &lt;element name="amount" type="xsd:double" /&gt;
+        &lt;/sequence&gt;
+      &lt;/complexType&gt;
+
+      &lt;element name="insufficientFunds" type="typ:InsufficientFunds" /&gt;
+
+    &lt;/schema&gt;
+
+  &lt;/types&gt;
+
+  &lt;message name="connectRequest" /&gt;
+
+  &lt;message name="logOnRequest"&gt;
+    &lt;part name="ticketNo" type="xsd:int" /&gt;
+    &lt;part name="customerName" type="xsd:string" /&gt;
+  &lt;/message&gt;
+
+  &lt;message name="logOnResponse" /&gt;
+
+  &lt;message name="statusResponse"&gt;
+    &lt;part name="status" type="xsd:string" /&gt;
+  &lt;/message&gt;
+
+  &lt;message name="balanceChange"&gt;
+    &lt;part name="customerName" type="xsd:string" /&gt;
+    &lt;part name="amount" type="xsd:double" /&gt;
+  &lt;/message&gt;
+
+  &lt;message name="unauthorizedAccess"&gt;
+    &lt;part name="detail" element="typ:unauthorizedAccess" /&gt;
+  &lt;/message&gt;
+
+  &lt;message name="insufficientFunds"&gt;
+    &lt;part name="detail" element="typ:insufficientFunds" /&gt;
+  &lt;/message&gt;
+
+  &lt;!-- bank functions available to ATMs --&gt;
+  &lt;portType name="FrontEnd"&gt;
+
+    &lt;!-- initiate bank connection --&gt;
+    &lt;operation name="connect"&gt;
+      &lt;input message="tns:connectRequest" /&gt;
+      &lt;output message="tic:ticketMessage" /&gt;
+    &lt;/operation&gt;
+
+    &lt;!-- terminate bank connection --&gt;
+    &lt;operation name="disconnect"&gt;
+      &lt;input message="tic:ticketMessage" /&gt;
+    &lt;/operation&gt;
+
+    &lt;!-- retrieve bank connection status --&gt;
+    &lt;operation name="status"&gt;
+      &lt;input message="tic:ticketMessage" /&gt;
+      &lt;output message="tns:statusResponse" /&gt;
+    &lt;/operation&gt;
+
+    &lt;!-- initiate customer session --&gt;
+    &lt;operation name="logOn"&gt;
+      &lt;input message="tns:logOnRequest" /&gt;
+      &lt;output message="tns:logOnResponse" /&gt;
+      &lt;fault name="unauthorizedAccess" message="tns:unauthorizedAccess" /&gt;
+    &lt;/operation&gt;
+
+    &lt;!-- terminate customer session --&gt;
+    &lt;operation name="logOff"&gt;
+      &lt;input message="acc:customerMessage" /&gt;
+    &lt;/operation&gt;
+
+    &lt;!-- retrieve account balance --&gt;
+    &lt;operation name="getBalance"&gt;
+      &lt;input message="acc:customerMessage" /&gt;
+      &lt;output message="acc:balanceMessage" /&gt;
+    &lt;/operation&gt;
+
+    &lt;!-- increase account balance --&gt;
+    &lt;operation name="deposit"&gt;
+      &lt;input message="tns:balanceChange" /&gt;
+      &lt;output message="acc:balanceMessage" /&gt;
+    &lt;/operation&gt;
+
+    &lt;!-- decrease account balance --&gt;
+    &lt;operation name="withdraw"&gt;
+      &lt;input message="tns:balanceChange" /&gt;
+      &lt;output message="acc:balanceMessage" /&gt;
+      &lt;fault name="insufficientFunds" message="tns:insufficientFunds" /&gt;
+    &lt;/operation&gt;
+
+  &lt;/portType&gt;
+
+&lt;/definitions&gt;</pre><p>The last document, <tt class="literal">atm.wsdl</tt>, contains extensibility elements that
+        glue together the BPEL process and the WSDL definitions. At the beginning, the document 
+        imports the previous three documents to reference their definitions. Later,
+        it defines some properties for correlation purposes. <tt class="varname">ticketId</tt> 
+        distinguishes ticket numbers in messages exchanged within an ATM connection, 
+        while <tt class="literal">customerId</tt> represents customer names in messages
+        exchanged during a customer session. The property aliases adjacent to these 
+        property definitions map these properties to key information items inside messages.</p><p>Partner link types characterize the relationship between ATMs and the process
+        (<tt class="varname">Atm-Front</tt>), the process and the ticket issuer 
+        (<tt class="varname">Front-Ticket</tt>) as well as the process and the account system 
+        (<tt class="varname">Front-Account</tt>). They define the roles these services play and
+        specify the interface they present to each other. The coordinator does not call back the
+        ATM. The ticket issuer or the account system do not call back the coordinator either.
+        Therefore, all partner link types have a single role.</p><pre class="programlisting">&lt;definitions targetNamespace="urn:samples:atm"
+  xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:samples:atm"
+  xmlns:atm="urn:samples:atm" xmlns:tic="urn:samples:ticket"
+  xmlns:acc="urn:samples:account"
+  xmlns:bpel="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+  xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+
+  &lt;import namespace="urn:samples:atm" location="interface/frontend.wsdl" /&gt;
+  &lt;import namespace="urn:samples:ticket" location="interface/ticket.wsdl" /&gt;
+  &lt;import namespace="urn:samples:account" location="interface/account.wsdl" /&gt;
+
+  &lt;!-- customer name property --&gt;
+  &lt;bpel:property name="customerId" type="xsd:string" /&gt;
+
+  &lt;!-- location of costumerId inside messages --&gt;
+  &lt;bpel:propertyAlias propertyName="tns:customerId"
+    messageType="atm:logOnRequest" part="customerName" /&gt;
+  &lt;bpel:propertyAlias propertyName="tns:customerId"
+    messageType="atm:balanceChange" part="customerName" /&gt;
+  &lt;bpel:propertyAlias propertyName="tns:customerId"
+    messageType="acc:customerMessage" part="customerName" /&gt;
+  &lt;bpel:propertyAlias propertyName="tns:customerId"
+    messageType="acc:accountOperation" part="body" query="/body/customerName" /&gt;
+
+  &lt;!-- ticket number property --&gt;
+  &lt;bpel:property name="ticketId" type="xsd:int" /&gt;
+
+  &lt;!-- location of ticketId inside messages --&gt;
+  &lt;bpel:propertyAlias propertyName="tns:ticketId"
+    messageType="tic:ticketMessage" part="ticketNo" /&gt;
+  &lt;bpel:propertyAlias propertyName="tns:ticketId" messageType="atm:logOnRequest"
+    part="ticketNo" /&gt;
+
+  &lt;!-- relationship between the ATM and the process --&gt;
+  &lt;plt:partnerLinkType name="Atm-Front"&gt;
+    &lt;plt:role name="FrontEnd"&gt;
+      &lt;plt:portType name="atm:FrontEnd" /&gt;
+    &lt;/plt:role&gt;
+  &lt;/plt:partnerLinkType&gt;
+
+  &lt;!-- relationship between the process and the ticket issuer --&gt;
+  &lt;plt:partnerLinkType name="Front-Ticket"&gt;
+    &lt;plt:role name="TicketIssuer"&gt;
+      &lt;plt:portType name="tic:TicketIssuer" /&gt;
+    &lt;/plt:role&gt;
+  &lt;/plt:partnerLinkType&gt;
+
+  &lt;!-- relationship between the process and the account system --&gt;
+  &lt;plt:partnerLinkType name="Front-Account"&gt;
+    &lt;plt:role name="AccountSystem"&gt;
+      &lt;plt:portType name="acc:AccountSystem" /&gt;
+    &lt;/plt:role&gt;
+  &lt;/plt:partnerLinkType&gt;
+
+&lt;/definitions&gt;</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.atm.def.deploy"></a>6.1.3.&nbsp;Deploy the process definition</h3></div></div><div></div></div><p>The <tt class="literal">bpel-definition.xml</tt> file points to the <tt class="literal">atm.bpel</tt>
+        and <tt class="literal">atm.wsdl</tt> documents from the previous two sections. It is unnecessary
+        to reference other WSDL documents, because <tt class="literal">atm.wsdl</tt> imports them.</p><pre class="programlisting">&lt;bpelDefinition location="atm.bpel" xmlns="http://jbpm.org/bpel"&gt;
+
+  &lt;!-- makes WSDL interface elements available to the process --&gt;
+  &lt;imports&gt;
+    &lt;wsdl location="atm.wsdl" /&gt;
+  &lt;/imports&gt;
+
+&lt;/bpelDefinition&gt;</pre><p>To deploy the process definition to the jBPM database, call:</p><pre class="synopsis">ant deploy-definition</pre><p>The above target creates a file named <tt class="literal">atm-process.zip</tt> and submits it
+        to the jBPM service. The server console should read:</p><pre class="screen">14:30:22,437 INFO  [[/jbpm-bpel]] processDeployServlet: deploying process definition: file=file:/C:/.../atm-process.zip
+14:30:22,968 INFO  [BpelReader] read wsdl definitions: atm.wsdl
+14:30:23,281 INFO  [BpelReader] read bpel process: atm.bpel
+14:30:29,984 INFO  [[/jbpm-bpel]] processDeployServlet: deployed process definition: AtmFrontEnd</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.atm.server"></a>6.2.&nbsp;Build the WSEE port components</h2></div></div><div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.atm.server.wsdl"></a>6.2.1.&nbsp;WSDL implementation documents</h3></div></div><div></div></div><p>Generate the WSDL implementation definitions with:</p><pre class="synopsis">ant generate-service</pre><p>The <tt class="literal">servicegen</tt> tool writes the following documents:</p><div class="itemizedlist"><ul type="disc"><li><p><tt class="literal">atm.wsdl</tt>, <tt class="literal">frontend.wsdl</tt>, <tt class="literal">
+          ticket.wsdl</tt> and <tt class="literal">account.wsdl</tt> are equivalents of the interface
+          WSDL documents we saw in <a href="#tutorial.atm.def.wsdl" title="6.1.2.&nbsp;Create/obtain the WSDL interface documents">Create/obtain the WSDL interface documents</a></p></li><li><p><tt class="literal">binding1.wsdl</tt> contains the SOAP binding for the <tt class="literal">
+          FrontEnd</tt> port type</p></li><li><p><tt class="literal">service.wsdl</tt> has the service that corresponds to the
+          process. The <tt class="varname">AtmFrontEndService</tt> service contains a <tt class="varname">
+          FrontEndPort</tt> associated to the <tt class="varname">atm</tt> partner link.</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.atm.server.artifacts"></a>6.2.2.&nbsp;Java mapping artifacts</h3></div></div><div></div></div><p>Generate the Java mapping artifacts with this command:</p><pre class="synopsis">ant generate-artifacts</pre><p>The configuration for <tt class="literal">wstools</tt> is:</p><pre class="programlisting">&lt;configuration xmlns="http://www.jboss.org/jbossws-tools"&gt;
+  &lt;global&gt;
+    &lt;package-namespace package="org.jbpm.bpel.tutorial.atm"
+      namespace="urn:samples:atm" /&gt;
+  &lt;/global&gt;
+  &lt;wsdl-java file="wsdl/service.wsdl"&gt;
+    &lt;mapping file="jaxrpc-mapping.xml" /&gt;
+  &lt;/wsdl-java&gt;
+&lt;/configuration&gt;</pre><p>For <tt class="literal">wscompile</tt> we have:</p><pre class="programlisting">&lt;configuration xmlns="http://java.sun.com/xml/ns/jax-rpc/ri/config"&gt;
+  &lt;wsdl location="output/resources/WEB-INF/wsdl/service.wsdl"
+    packageName="org.jbpm.bpel.tutorial.atm" /&gt;
+&lt;/configuration&gt;</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.atm.server.webapp"></a>6.2.3.&nbsp;Port components as servlets</h3></div></div><div></div></div><p>The subsequent listing presents the <tt class="literal">web.xml</tt> descriptor used for
+        this example.</p><pre class="programlisting">&lt;web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"&gt;
+
+  &lt;!-- ATM Front End --&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;frontEndServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;org.jbpm.bpel.tutorial.atm.FrontEnd_Impl&lt;/servlet-class&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;frontEndServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/frontEnd&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+  ...
+&lt;/web-app&gt;</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.atm.server.integra"></a>6.2.4.&nbsp;Partner integration</h3></div></div><div></div></div><p>In order for the process to take requests, add the partner integration servlet to your
+        <tt class="literal">web.xml</tt>. Refer to the <a href="#tutorial.hello.server.integra" title="5.2.4.&nbsp;Partner integration">Partner integration</a> section in the Hello World example for a
+        full explanation.</p><pre class="programlisting">&lt;web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"&gt;
+  ...
+  &lt;!-- jBPM BPEL Partner Integration --&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;integrationServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;org.jbpm.bpel.integration.jms.IntegrationServlet&lt;/servlet-class&gt;
+    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;integrationServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/integration&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+  ...
+&lt;/web-app&gt;</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.atm.server.scheduler"></a>6.2.5.&nbsp;Activity scheduler</h3></div></div><div></div></div><p>Processes that include time-driven activities (<tt class="literal">wait</tt>, <tt class="literal">onAlarm
+        </tt> branch of <tt class="literal">pick</tt> and <tt class="literal">onAlarm</tt> event)
+        require a scheduler component. The scheduler examines the list of pending activities
+        and executes them when they are due.</p><p>jBPM provides such a component in the form of a servlet. An extra <tt class="literal">servlet
+        </tt> element in <tt class="literal">web.xml</tt> sets up the scheduler servlet. Similarly to
+        the partner integration servlet, the scheduler servlet must be loaded at startup, so that 
+        activities that became due during downtime execute immediately.</p><pre class="programlisting">&lt;web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"&gt;
+  ...
+  &lt;!-- jBPM Scheduler --&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;schedulerServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;org.jbpm.scheduler.impl.SchedulerServlet&lt;/servlet-class&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;interval&lt;/param-name&gt;
+      &lt;param-value&gt;120000&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;schedulerServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/scheduler&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+
+&lt;/web-app&gt;</pre><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>The <tt class="literal">interval</tt> parameter is optional. It defines how often the
+          scheduler checks for new pending activities. In general, you should set this value to the
+          shortest duration in your process.</p><p>In our example, the only duration is the customer session expiration time: 2 minutes.
+          This duration matches the above value: 120,000 milliseconds.</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.atm.server.webservices"></a>6.2.6.&nbsp;Web services deployment descriptor</h3></div></div><div></div></div><p>The web services descriptor, <tt class="literal">webservices.xml</tt>, appears next. Notice
+        the <tt class="literal">FrontEndHandler</tt>, which injects BPEL functionality to the <tt class="literal">
+        FrontEndPort</tt> component.</p><pre class="programlisting">&lt;webservices version="1.1" xmlns="http://java.sun.com/xml/ns/j2ee"&gt;
+
+  &lt;webservice-description&gt;
+
+    &lt;!-- descriptive name for the service --&gt;
+    &lt;webservice-description-name&gt;ATM Front End&lt;/webservice-description-name&gt;
+    &lt;!-- WSDL implementation file --&gt;
+    &lt;wsdl-file&gt;WEB-INF/wsdl/service.wsdl&lt;/wsdl-file&gt;
+    &lt;!-- Java&lt;-&gt;XML mapping file --&gt;
+    &lt;jaxrpc-mapping-file&gt;WEB-INF/jaxrpc-mapping.xml&lt;/jaxrpc-mapping-file&gt;
+
+    &lt;port-component&gt;
+
+      &lt;!-- logical name for the port (unique within the module) --&gt;
+      &lt;port-component-name&gt;FrontEndPort&lt;/port-component-name&gt;
+      &lt;!-- WSDL port element (in service.wsdl) --&gt;
+      &lt;wsdl-port xmlns:portNS="urn:samples:atm"&gt;portNS:FrontEndPort&lt;/wsdl-port&gt;
+      &lt;!-- service endpoint interface class --&gt;
+      &lt;service-endpoint-interface&gt;
+        org.jbpm.bpel.tutorial.atm.FrontEnd
+      &lt;/service-endpoint-interface&gt;
+      &lt;!-- associated servlet (in web.xml) --&gt;
+      &lt;service-impl-bean&gt;
+        &lt;servlet-link&gt;frontEndServlet&lt;/servlet-link&gt;
+      &lt;/service-impl-bean&gt;
+
+      &lt;handler&gt;
+
+        &lt;!-- logical name for the handler (unique within the module) --&gt;
+        &lt;handler-name&gt;FrontEndHandler&lt;/handler-name&gt;
+        &lt;!-- handler class (in jbpm-bpel.jar) --&gt;
+        &lt;handler-class&gt;
+          org.jbpm.bpel.integration.server.SoapHandler
+        &lt;/handler-class&gt;
+
+        &lt;init-param&gt;
+          &lt;description&gt;
+            name of the partner link served by this port
+          &lt;/description&gt;
+          &lt;param-name&gt;partnerLinkHandle&lt;/param-name&gt;
+          &lt;param-value&gt;atm&lt;/param-value&gt;
+        &lt;/init-param&gt;
+        &lt;init-param&gt;
+          &lt;description&gt;time to wait for response messages (millis)&lt;/description&gt;
+          &lt;param-name&gt;responseTimeout&lt;/param-name&gt;
+          &lt;param-value&gt;5000&lt;/param-value&gt;
+        &lt;/init-param&gt;
+        &lt;init-param&gt;
+          &lt;description&gt;time to expire one-way messages (millis)&lt;/description&gt;
+          &lt;param-name&gt;oneWayTimeout&lt;/param-name&gt;
+          &lt;param-value&gt;60000&lt;/param-value&gt;
+        &lt;/init-param&gt;
+
+      &lt;/handler&gt;
+
+    &lt;/port-component&gt;
+
+  &lt;/webservice-description&gt;
+
+&lt;/webservices&gt;</pre><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>The <tt class="literal">responseTimeout</tt> and <tt class="literal">oneWayTimeout</tt> 
+          parameters are optional.</p><p>When <tt class="literal">responseTimeout</tt> is present, clients of your process that
+          invoke a request/response operation will get a SOAP fault message back when the process
+          is unable to reply within the specified interval. The <tt class="literal">faultcode</tt> of
+          said message is <tt class="literal">soapenv:Server</tt>.</p><p>The <tt class="literal">oneWayTimeout</tt> parameter enables jBPM BPEL to get rid of 
+          unattended one-way messages. This is useful in processes having picks or message events
+          involving one-way operations. In cases where the expected message arrives too late, the
+          server has no other way to detect it will never be received.</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.atm.server.deploy"></a>6.2.7.&nbsp;Web application deployment</h3></div></div><div></div></div><p>To deploy the web application to the app server, call:</p><pre class="synopsis">ant deploy-web</pre><p>This builds a web archive named <tt class="literal">atm.war</tt> and copies it to the
+        <tt class="literal">deploy</tt> directory of your JBoss AS configuration. On the server, you 
+        should see logs like:</p><pre class="screen">17:01:48,281 INFO  [TomcatDeployer] deploy, ctxPath=/atm, warUrl=.../tmp/deploy/tmp60912atm-exp.war/
+17:01:49,062 INFO  [[/atm]] integrationServlet: enabled message reception for process: AtmFrontEnd
+17:01:49,156 INFO  [WSDLFilePublisher] WSDL published to: file:/.../data/wsdl/atm.war/service.wsdl
+17:01:49,265 INFO  [ServiceEndpointManager] WebService started: http://.../atm/frontEnd</pre><p>Back in <a href="#tutorial.atm.def.wsdl" title="6.1.2.&nbsp;Create/obtain the WSDL interface documents">Create/obtain the WSDL interface documents</a> 
+        the description assumed the partner services were available somewhere. At this point,
+        they must be actually up and running. The resources of each partner service reside in 
+        separate directories under <tt class="literal">doc/examples</tt>.</p><p>To deploy the ticket issuer, change to the <tt class="literal">ticket</tt> dir and call:
+        </p><pre class="synopsis">ant redeploy</pre><p>This will generate the Java mapping artifacts, build the <tt class="literal">ticket.war</tt>
+        module and deploy it to JBoss AS. The console output is:</p><pre class="screen">17:35:56,937 INFO  [TomcatDeployer] deploy, ctxPath=/ticket, warUrl=.../tmp/deploy/tmp60917ticket-exp.war/
+17:35:57,093 INFO  [WSDLFilePublisher] WSDL published to: file:/.../data/wsdl/ticket.war/ticket-impl.wsdl
+17:35:57,093 INFO  [ServiceEndpointManager] WebService started: http://.../ticket/ticketIssuer</pre><p>Call the same target in the <tt class="literal">account</tt> directory to deploy the accout 
+        system. The server emits these logs:</p><pre class="screen">17:43:46,828 INFO  [TomcatDeployer] deploy, ctxPath=/account, warUrl=.../tmp/deploy/tmp60918account-exp.war/
+17:43:46,953 INFO  [WSDLFilePublisher] WSDL published to: file:/.../data/wsdl/account.war/account-impl.wsdl
+17:43:46,984 INFO  [ServiceEndpointManager] WebService started: http://.../account/accountSystem</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.atm.client"></a>6.3.&nbsp;Build the WSEE application client</h2></div></div><div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.atm.client.appclient"></a>6.3.1.&nbsp;Application client deployment descriptor</h3></div></div><div></div></div><p>Reference your WSDL definitions and Java mapping artifacts from the <tt class="literal">
+        application-client.xml</tt> descriptor.</p><pre class="programlisting">&lt;application-client version="1.4" xmlns="http://java.sun.com/xml/ns/j2ee"&gt;
+
+  &lt;display-name&gt;ATM Front End Client&lt;/display-name&gt;
+
+  &lt;service-ref&gt;
+
+    &lt;!-- JNDI name of service interface in client environment context --&gt;
+    &lt;service-ref-name&gt;service/ATM&lt;/service-ref-name&gt;
+    &lt;!-- service interface class --&gt;
+    &lt;service-interface&gt;org.jbpm.bpel.tutorial.atm.AtmFrontEndService&lt;/service-interface&gt;
+    &lt;!-- published WSDL document --&gt;
+    &lt;wsdl-file&gt;META-INF/wsdl/service.wsdl&lt;/wsdl-file&gt;
+    &lt;!-- Java&lt;-&gt;XML mapping file --&gt;
+    &lt;jaxrpc-mapping-file&gt;META-INF/jaxrpc-mapping.xml&lt;/jaxrpc-mapping-file&gt;
+
+    &lt;port-component-ref&gt;
+      &lt;!-- service endpoint interface class --&gt;
+      &lt;service-endpoint-interface&gt;org.jbpm.bpel.tutorial.atm.FrontEnd&lt;/service-endpoint-interface&gt;
+    &lt;/port-component-ref&gt;
+
+  &lt;/service-ref&gt;
+
+&lt;/application-client&gt;</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.atm.client.env"></a>6.3.2.&nbsp;Environment context</h3></div></div><div></div></div><p>Allocate a JNDI name for the client environment context in <tt class="literal">jboss-client.xml
+        </tt>.</p><pre class="programlisting">&lt;jboss-client&gt;
+  &lt;!-- JNDI name of client environment context --&gt;
+  &lt;jndi-name&gt;jbpmbpel-client&lt;/jndi-name&gt;
+&lt;/jboss-client&gt;</pre><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>The name above is the same we used in the JBoss client descriptor of the <a href="#tutorial.hello.client.env" title="5.3.2.&nbsp;Environment context">Hello World</a> example.</p><p>You can share one JNDI name among multiple application clients to keep them organized
+          and reduce the number of top-level entries in the global JNDI context. Just be careful to
+          give different <tt class="literal">service-ref-name</tt>s to each client in <tt class="literal">
+          application-client.xml</tt>.</p></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tutorial.atm.test"></a>6.4.&nbsp;Test the process</h2></div></div><div></div></div><p>Once our process is up and running, we need to make sure that it is working as expected.
+      Here we create a JUnit test case called <tt class="classname">AtmFrontEndTest</tt> and exercise
+      several scenarios.</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.atm.test.remote"></a>6.4.1.&nbsp;Remote web service access</h3></div></div><div></div></div><p>This is the setup code for establishing a connection with the ATM front end:</p><pre class="programlisting">private FrontEnd frontEnd;
+
+protected void setUp() throws Exception {
+  InitialContext iniCtx = new InitialContext();
+  /*
+   * "service/ATM" is the JNDI name of the service interface instance
+   * relative to the client environment context. This name matches the
+   * &lt;service-ref-name&gt; in application-client.xml
+   */
+  AtmFrontEndService frontEndService = 
+    (AtmFrontEndService) iniCtx.lookup("java:comp/env/service/ATM");
+  
+  // obtain dynamic proxy for web service port
+  frontEnd = frontEndService.getFrontEndPort();
+}</pre><p>The test scenarios are described next.</p><div class="orderedlist"><ol type="1"><li><p><tt class="literal">testConnect</tt>: establish a connection to the bank.</p><pre class="programlisting">public void testConnect() throws RemoteException {
+  // connect to bank
+  int ticketNumber = frontEnd.connect();
+  assertTrue(ticketNumber &gt; 0);
+
+  // check atm is connected
+  String status = frontEnd.status(ticketNumber);
+  assertEquals("connected", status);
+
+  // disconnect from bank
+  frontEnd.disconnect(ticketNumber);
+}</pre></li><li><p><tt class="literal">testLogOnAuthorized</tt>: initiate a session as an authorized 
+            customer.</p><pre class="programlisting">public void testLogOnAuthorized() throws RemoteException {
+  // connect to bank
+  int ticketNumber = frontEnd.connect();
+
+  // begin customer session
+  final String customerName = "grover";
+  try {
+    frontEnd.logOn(ticketNumber, customerName);
+  }
+  catch (UnauthorizedAccess e) {
+    fail("log on of authorized customer should succeed");
+  }
+
+  // end customer session
+  frontEnd.logOff(customerName);
+
+  // disconnect from bank
+  frontEnd.disconnect(ticketNumber);
+}</pre></li><li><p><tt class="literal">testLogOnUnauthorized</tt>: initiate a session as an unauthorized 
+            customer.</p><pre class="programlisting">public void testLogOnUnauthorized() throws RemoteException {
+  // connect to bank
+  int ticketNumber = frontEnd.connect();
+
+  // begin customer session
+  final String customerName = "misterx";
+  try {
+    frontEnd.logOn(ticketNumber, customerName);
+    fail("log on of unauthorized customer should fail");
+  }
+  catch (UnauthorizedAccess e) {
+    assertEquals(customerName, e.getCustomerName());
+  }
+
+  // disconnect from bank
+  frontEnd.disconnect(ticketNumber);
+}</pre></li><li><p><tt class="literal">testDeposit</tt>: deposit funds</p><pre class="programlisting">public void testDeposit() throws RemoteException, UnauthorizedAccess {
+  // connect to bank
+  int ticketNumber = frontEnd.connect();
+
+  // begin customer session
+  final String customerName = "ernie";
+  frontEnd.logOn(ticketNumber, customerName);
+
+  // get current balance
+  double previousBalance = frontEnd.getBalance(customerName);
+
+  // deposit some funds
+  double newBalance = frontEnd.deposit(customerName, 10);
+  // check the new balance is correct
+  assertEquals(previousBalance + 10, newBalance, 0);
+
+  // end customer session
+  frontEnd.logOff(customerName);
+
+  // disconnect from bank
+  frontEnd.disconnect(ticketNumber);
+}</pre></li><li><p><tt class="literal">testWithdrawUnderBalance</tt>: withdraw funds not exceeding account
+            balance.</p><pre class="programlisting">public void testWithdrawUnderBalance() throws RemoteException,
+    UnauthorizedAccess {
+  // connect to bank
+  int ticketNumber = frontEnd.connect();
+
+  // begin customer session
+  final String customerName = "ernie";
+  frontEnd.logOn(ticketNumber, customerName);
+
+  // get current balance
+  double previousBalance = frontEnd.getBalance(customerName);
+
+  // withdraw some funds
+  try {
+    double newBalance = frontEnd.withdraw(customerName, 10);
+    // check new balance is correct
+    assertEquals(previousBalance - 10, newBalance, 0);
+  }
+  catch (InsufficientFunds e) {
+    fail("withdraw under balance should succeed");
+  }
+
+  // end customer session
+  frontEnd.logOff(customerName);
+
+  // disconnect from bank
+  frontEnd.disconnect(ticketNumber);
+}</pre></li><li><p><tt class="literal">testWithdrawOverBalance</tt>: withdraw funds exceeding account 
+            balance.</p><pre class="programlisting">public void testWithdrawOverBalance() throws RemoteException,
+    UnauthorizedAccess {
+  // connect to bank
+  int ticketNumber = frontEnd.connect();
+
+  // begin customer session
+  final String customerName = "bert";
+  frontEnd.logOn(ticketNumber, customerName);
+
+  // get current balance
+  double previousBalance = frontEnd.getBalance(customerName);
+
+  // try to withdraw an amount greater than current balance
+  try {
+    frontEnd.withdraw(customerName, previousBalance + 1);
+    fail("withdraw over balance should fail");
+  }
+  catch (InsufficientFunds e) {
+    assertEquals(customerName, e.getCustomerName());
+    // check account balance has not changed
+    assertEquals(previousBalance, e.getAmount(), 0);
+  }
+
+  // end customer session
+  frontEnd.logOff(customerName);
+
+  // disconnect from bank
+  frontEnd.disconnect(ticketNumber);
+}</pre></li></ol></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.atm.test.jndi"></a>6.4.2.&nbsp;Client JNDI properties</h3></div></div><div></div></div><p>Because the <tt class="literal">&lt;jndi-name&gt;</tt> in <tt class="literal">jboss-client.xml
+        </tt> is the same as in the Hello World example, the <tt class="literal">jndi.properties</tt>
+        file is shared between the examples.</p><p>See the <a href="#tutorial.hello.test.jndi" title="5.4.2.&nbsp;Client JNDI properties">Client JNDI properties</a> in the Hello World example for a listing
+        of the properties.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.atm.test.run"></a>6.4.3.&nbsp;Test execution</h3></div></div><div></div></div><p>The following target executes the junit test case:</p><pre class="synopsis">ant run-test</pre><p>If everything goes well the target output should look like this:</p><pre class="screen">run-test:
+    [junit] Running org.jbpm.bpel.tutorial.atm.AtmFrontEndTest
+    ...
+    [junit] Tests run: 6, Failures: 0, Errors: 0, Time elapsed: 6.109 sec</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="tutorial.atm.test.interactive"></a>6.4.4.&nbsp;Interactive execution</h3></div></div><div></div></div><p>Last, but not least, the ATM example offers a rich client built from Swing
+        components. This program resembles an actual teller machine. It has a double goal:</p><div class="itemizedlist"><ul type="disc"><li>Let you click your way through the process instead of writing unit tests to
+          explore new scenarios.</li><li>Assist you in demonstrating the BPEL technology to your customer, manager or
+          colleague using an easy-to-follow interface.</li></ul></div><p>To bring up the interactive terminal, call:</p><pre class="synopsis">ant run-terminal</pre><p>The frame bellow appears.</p><div class="figure"><a name="d0e2018"></a><div class="mediaobject" align="center"><img src="images/atmTerminalDisconnected.png" align="middle" alt="Disconnected terminal"></div><p class="title"><b>Figure&nbsp;6.6.&nbsp;Disconnected terminal</b></p></div><p>When you click <span class="emphasis"><em>Connect</em></span>, the terminal establishes a connection
+        with the server.</p><div class="figure"><a name="d0e2029"></a><div class="mediaobject" align="center"><img src="images/atmTerminalConnected.png" align="middle" alt="Connected terminal"></div><p class="title"><b>Figure&nbsp;6.7.&nbsp;Connected terminal</b></p></div><p>Clicking <span class="emphasis"><em>Log On</em></span> starts a customer session. The program
+        asks you for a customer name. Type in any name from the <tt class="literal">accounts.xml</tt>
+        file in the <tt class="literal">account</tt> service.</p><div class="figure"><a name="d0e2046"></a><div class="mediaobject" align="center"><img src="images/atmTerminalLoggingOn.png" align="middle" alt="Terminal starting a customer session"></div><p class="title"><b>Figure&nbsp;6.8.&nbsp;Terminal starting a customer session</b></p></div><p>Enjoy!</p></div></div></div></div></body></html>

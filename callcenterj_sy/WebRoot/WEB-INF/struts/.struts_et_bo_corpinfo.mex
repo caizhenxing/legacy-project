@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/operCorpinfo.do" location="408,0" dimension="308,88" />
+  <StrutsActivity path="/corpinfo/corpinfoQuery.jsp" location="950,50" dimension="202,48" />
+  <StrutsActivity path="/corpinfo/corpinfoStatisticQuery.jsp" location="950,450" dimension="256,48" />
+  <StrutsActivity path="/corpinfo/corpinfoLoad.jsp" location="50,450" dimension="196,48" />
+  <StrutsActivity path="/corpinfo/corpinfolist.jsp" location="350,450" dimension="196,48" />
+  <StrutsActivity path="/corpinfo/corpinfoMain.jsp" location="650,450" dimension="196,48" />
+  <StrutsActivity path="/operCorpinfo/operCorpinfoQuery.jsp" location="0,188" dimension="211,49" />
+  <StrutsActivity path="/operCorpinfo/operCorpinfoLoad.jsp" location="311,188" dimension="204,49" />
+  <StrutsActivity path="/operCorpinfo/operCorpinfolist.jsp" location="615,188" dimension="194,49" />
+  <StrutsActivity path="/operCorpinfo/operCorpinfoMain.jsp" location="909,188" dimension="203,49" />
+  <StrutsActivity path="/corpinfo/operCorpinfoQuery.jsp" location="50,350" dimension="187,49" />
+  <StrutsActivity path="/corpinfo/operCorpinfoLoad.jsp" location="350,350" dimension="180,49" />
+  <StrutsActivity path="/corpinfo/operCorpinfolist.jsp" location="650,350" dimension="170,49" />
+  <StrutsActivity path="/corpinfo/operCorpinfoMain.jsp" location="950,350" dimension="179,49" />
+  <StrutsTransition id="/operCorpinfo.do,tocorpinfoStatisticQuery,/corpinfo/corpinfoStatisticQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="562,44" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toOperCorpinfoMain,/corpinfo/corpinfoMain.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="562,44" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toOperCorpinfoLoad,/corpinfo/corpinfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="562,44" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toOperCorpinfoList,/corpinfo/corpinfolist.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="562,44" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/operCorpinfo.do,toOperCorpinfoQuery,/corpinfo/corpinfoQuery.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="562,44" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

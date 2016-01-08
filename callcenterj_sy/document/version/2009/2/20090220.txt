@@ -1,0 +1,62 @@
+1、	打开192.168.3.229机器上的开始菜单-》程序-》Microsoft Sql Server2005-》SQL Server Management Studio
+2、	打开callcenterj_sy数据库，选中dbo.group_egressive表。（顺便看一下，有没有dbo.group_callback表,要是没有请马上告诉我。）鼠标右键“修改”，如下图，
+把dbo.group_egressive表的deleteMark字段的数据类型的长度从“8”，改成“50”。
+3、	在192.168.3.221服务器的Z:\TTS下，新建groupCallback文件夹。（注意名不要错，区分大小写）。
+4、	替换脚本。
+
+备用sql语句
+USE [callcenterj_sy]
+GO
+/****** 对象:  Table [dbo].[group_egressive]    脚本日期: 02/23/2009 09:40:19 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[group_egressive](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[main_id] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[port] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[begintime] [datetime] NULL,
+	[endtime] [datetime] NULL,
+	[keeptime] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ivr_tree_info_id] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[menu_type] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[deleteMark] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[telnum] [varchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[filepath] [varchar](500) COLLATE Chinese_PRC_CI_AS NULL,
+	[context] [varchar](1000) COLLATE Chinese_PRC_CI_AS NULL,
+ CONSTRAINT [PK_group_] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'单位：秒' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'group_egressive', @level2type=N'COLUMN', @level2name=N'keeptime'
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'message(消息)，voice(语音栏目)' ,@level0type=N'SCHEMA', @level0name=N'dbo', @level1type=N'TABLE', @level1name=N'group_egressive', @level2type=N'COLUMN', @level2name=N'menu_type'
+
+GO
+USE [callcenterj_sy]
+GO
+ALTER TABLE [dbo].[group_egressive]  WITH NOCHECK ADD  CONSTRAINT [FK_group_egressive_group_egressive] FOREIGN KEY([main_id])
+REFERENCES [dbo].[cc_main] ([id])
+NOT FOR REPLICATION 
+
+
+1 联络员管理系统 模块下 
+   原来第一个模块 联络员报价浏览 把参数名改为 联络员报价统计
+   						    把动作 改为 /callcenterj_sy/linkmanpriceinfo.do?method=toOperPriceinfoMain
+   
+   原来第二个模块 联络员报价统计 把参数名改为 联络员报价浏览
+   
+2 表 oper_priceinfo 增加字段 cust_number varchar(50) 记录所报价的联络员的编号
+
+   表 oper_priceinfo 增加字段 cust_type varchar(50) 记录报价用户的类别
+
+3 表 oper_custinfo 增加字段 cust_number varchar(50) 记录编号

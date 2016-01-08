@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "spring-beans-2.0.dtd">
+<beans>
+<!--  action begin -->
+    <!--来电防火墙action-->
+    <bean name="/callcenter/callinFirewall"
+		class="et.bo.callcenter.callinfirewall.action.CallinFirewallAction" scope="singleton">			
+		<property name="callinFirewallService">
+			<ref bean="CallinFirewallService" />
+		</property>			
+	</bean>
+<!-- action end -->
+<!--  service begin -->
+     <!--  来电防火墙service	-->
+     <bean id="CallinFirewallService"
+		class="et.bo.callcenter.callinfirewall.service.impl.CallinFirewallImpl">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>
+<!--  service end   -->
+</beans>

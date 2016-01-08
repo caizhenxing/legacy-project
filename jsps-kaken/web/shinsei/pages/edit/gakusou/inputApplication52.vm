@@ -1,0 +1,658 @@
+## ***********************************************
+## 応募書入力フォーム情報 → ShinseiForm
+## ***********************************************
+
+#parse($commonSetting)
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpenClose.js"></script>
+</head>
+<body class="bodyStyle" onUnload="javascript:fncKeepedWindowClose();">
+
+## スクリプト*************************************
+<script language=javascript>
+<!--
+    function onCheck(){
+        if(document.shinsei_form.page.value == "0"){
+          return false;
+        }else{
+          return true;
+        }
+    }
+    function onUpload(){
+		document.upload_form.action="$link.setAction("/shinsei/uploadFile")";
+        document.upload_form.target="tmp";
+		document.upload_form.submit();
+    }
+	function onTransientSave(){
+		document.shinsei_form.action="$link.setAction("/shinsei/transientSaveApplication")";
+		document.shinsei_form.page.value="1";
+		document.shinsei_form.submit();
+	}
+	function onSave(){
+		document.shinsei_form.action="$link.setAction("/shinsei/dispatchRegistProcess")";
+		document.shinsei_form.page.value="2";
+		document.shinsei_form.submit();
+	}
+	function onTransientSaveWithUpload(){
+		//サブウィンドウが開いたままの場合は処理中止
+		if(fncAlertWindowOpen("「研究組織表」画面の[OK]をクリックしてから再度実行してください。")){
+			//バックグラウンドで処理を実行する
+			setTimeout("onUpload();", 0);
+			setTimeout("onTransientSave();", 500);
+		}
+	}
+	function onSaveWithUpload(){
+		//サブウィンドウが開いたままの場合は処理中止
+		if(fncAlertWindowOpen("「研究組織表」画面の[OK]をクリックしてから再度実行してください。")){
+			//バックグラウンドで処理を実行する
+			setTimeout("onUpload();", 0);
+			setTimeout("onSave();", 500);		
+		}
+	}	
+//-->
+</script>
+## ***********************************************
+
+<form name="shinsei_form" method="post" action="" onSubmit="return onCheck()">
+<input type="hidden" name="page" value="0">	<!-- Validate処理をコマンドによって変更させるため -->
+<input type="hidden" name="yoshikiShubetu" value="$shinseiForm.yoshikiShubetu">	<!-- Validate処理を応募種別によって変更させるため -->
+<input type="hidden" name="$form.tokenName" value="$form.token">	<!-- ２重押し防止のため -->
+
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/shinsei/logoff')"><IMG SRC="$path/images/header_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=20 border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#6699CC" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/shinsei/showMainMenu')">応募者向けメニュー</a>＞研究計画調書作成（<B>応募情報入力</B><font size="1">＞応募情報又は研究計画調書確認＞応募情報又は研究計画調書確認完了</font>）</td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><IMG SRC="$path/images/subtitle_img1.gif" WIDTH=61 HEIGHT=49 ALT=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+       応募情報入力</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <IMG SRC="$path/images/subtitle_img3.gif" width=213 height=49 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+    
+
+<!-- 注意事項ここから -->
+  <p class="comment">＜注意事項＞</p>
+  <ul>
+#*	
+    <li class="comment">
+    研究計画調書は応募情報<!--入力-->と応募内容ファイル（Word等）から構成されます。<br>応募内容ファイル様式をダウンロードしていない方は「受付中研究種目一覧」へ戻り、ダウンロードしてください。</li>
+    <li class="comment">
+    応募情報入力欄に表示されている個人情報が間違っていないかを確認し、間違っていた場合は、研究者名簿の修正が必要となるため所属研究機関担当者に連絡して<!--修正してもらってから入力して-->ください。</li>
+*#    
+	<li class="comment">
+    <font color="#FF0000">
+    *</font>のついた項目は必須項目です。</li>
+    #if( !($shinseiForm.shinseiDataInfo.jokyoId) || ($shinseiForm.shinseiDataInfo.jokyoId == "01") )
+    <li class="comment">
+	入力中に、一定時間、ボタン操作をせずにおくと、セッションタイムアウトにより、入力した情報が保存されない場合があります。随時[一時保存<!--して中断-->]ボタンをクリックして情報を保存して下さい。もし、セッションタイムアウトのエラーメッセージが出た場合は、「電子申請のご案内」ページの「よくあるご質問」をご参照下さい。
+	</li>
+    #end
+  </ul>
+<!-- 注意事項ここまで -->
+
+<!-- ボタン用テーブルここから -->
+<div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="javascript:onSaveWithUpload()"><img src="$path/images/bt_forward.gif" alt="次へ進む" width="219" height="28" border="0"></a></td>
+       #if( !($shinseiForm.shinseiDataInfo.jokyoId) || ($shinseiForm.shinseiDataInfo.jokyoId == "01") )
+       	<td><a href="javascript:onTransientSaveWithUpload()"><img src="$path/images/bt_keep.gif" alt="一時保存して中断" width="219" height="28" border="0"></a></td>
+       #end
+       #if( !($shinseiForm.shinseiDataInfo.systemNo) || ($shinseiForm.shinseiDataInfo.systemNo == "") )
+       	<td><a href="$link.setAction('/shinsei/searchList')"><img src="$path/images/bt_back.gif" alt="保存せずに戻る" width="219" height="28" border="0"></a></td>
+       #else
+       	<td><a href="$link.setAction('/shinsei/processStatusList')"><img src="$path/images/bt_back.gif" alt="保存せずに戻る" width="219" height="28" border="0"></a></td>
+       #end
+      </tr>
+     </table>
+</div>
+<!-- ボタン用テーブルここまで -->
+<!-- 本文ここから -->
+<div align="left">
+
+#errorExistMsg()
+#errorMarkupForGlobalError()
+
+  <center>      
+      <table border="0" cellpadding="0" cellspacing="0" width="800">
+        <tbody>
+          <tr>
+            <td>
+            <div align="center">
+            <table border="0" cellpadding="0" cellspacing="0" width="800">
+              <tbody>
+                <tr>
+                  <td align="center">
+                  <p align="center"><b><font size="4">
+                    平成$!escape.getText($!shinseiForm.shinseiDataInfo.nendo)年度（20$!escape.getText($!shinseiForm.shinseiDataInfo.nendoSeireki)年度）
+	              	#if($shinseiForm.shinseiDataInfo.kaisu != "1")
+	              	  第$!escape.getText($!shinseiForm.shinseiDataInfo.kaisu)回
+	              	#end
+	                $!escape.getText($!shinseiForm.shinseiDataInfo.jigyoName)　研究計画調書</font></b></p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </center>
+
+#errorMarkupForProperty("nenreiInvalid")
+## 20050810 部局、職を追加
+#errorMarkupForProperty("shinseiDataInfo.daihyouInfo.bukyokuName")
+#errorMarkupForProperty("shinseiDataInfo.daihyouInfo.shokushuNameKanji")
+## Horikoshi
+#errorMarkupForProperty("shinseiDataInfo.kadaiInfo.kadaiNameKanji")
+#errorMarkupForProperty("shinseiDataInfo.kadaiInfo.kadaiNameEigo")
+#errorMarkupForProperty("shinseiDataInfo.kadaiInfo.keiNameNo")
+#errorMarkupForProperty("shinseiDataInfo.kadaiInfo.kantenNo")
+#errorMarkupForProperty("shinseiDataInfo.buntankinFlg")
+      <center>
+      <table border="1" cellpadding="0" cellspacing="0" width="800" bgcolor="#ffffff">
+        <tbody>
+## 2005/03/24 削除 ここから----------------------------
+## 理由 表示順序入れ替えのため
+##          <tr>
+##            <th rowspan="2" width="150">研究代表者氏名</th>
+##            <td colspan="2" valign="middle">
+##            （漢字等）$!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.nameKanjiSei)　$!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.nameKanjiMei)
+##            </td>
+##          </tr>
+##          <tr>
+##            <td colspan="2" valign="middle">
+##            （フリガナ）$!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.nameKanaSei)　$!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.nameKanaMei)
+##            </td>
+##          </tr>
+## 削除 ここまで----------------------------------------
+
+## 2005/03/24 追加 ここから----------------------------
+## 理由 表示順序入れ替えのため
+          <tr>
+            <th rowspan="2" width="150">研究代表者氏名</th>
+            <td colspan="2" valign="middle">
+            （フリガナ）$!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.nameKanaSei)　$!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.nameKanaMei)
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" valign="middle">
+            （漢字等）$!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.nameKanjiSei)　$!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.nameKanjiMei)
+            </td>
+          </tr>
+## 追加 ここまで----------------------------------------
+          <tr>
+            <th>所属研究機関</th>
+            <td valign="middle" width="180">
+            （番号）$!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.shozokuCd)
+            </td>
+            <td valign="middle" width="500">
+            $!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.shozokuName)&nbsp;
+            </td>
+          </tr>
+          <tr>
+            <th>部局</th>
+            <td valign="middle">
+            （番号）$!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.bukyokuCd)
+            </td>
+## 20050809
+##            <td valign="middle">
+##            $!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.bukyokuName)&nbsp;
+##            </td>
+            <td valign="middle"><input size="20" name="shinseiDataInfo.daihyouInfo.bukyokuName" 
+##ADD START 2007-07-19 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+	              #errorColorForProperty("shinseiDataInfo.daihyouInfo.bukyokuName")
+##ADD END 2007-07-19 BIS 劉多良               
+            	value="$!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.bukyokuName)" #ChkBukyokuCd($!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.bukyokuCd))>
+			<font size="1">（その他等の番号を使用した場合に記入）</font>
+            </td>
+## Horikoshi
+          </tr>
+          <tr>
+            <th>職</th>
+            <td valign="middle">
+            （番号）$!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.shokushuCd)
+            </td>
+## 20050809 文言追加
+##            <td valign="middle">
+##            $!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.shokushuNameKanji)&nbsp;
+##            </td>
+            <td valign="middle"><input size="20" name="shinseiDataInfo.daihyouInfo.shokushuNameKanji" 
+##ADD START 2007-07-19 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+	              #errorColorForProperty("shinseiDataInfo.daihyouInfo.shokushuNameKanji")
+##ADD END 2007-07-19 BIS 劉多良               
+            	value="$!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.shokushuNameKanji)" #ChkShokuCd($!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.shokushuCd))>
+			<font size="1">（「研究員」、「その他」を選択した場合に記入）</font>
+            </td>
+## Horikoshi
+          </tr>
+          <tr>
+            <th rowspan="2">研究課題名</th>
+            <td colspan="2" valign="middle" width="650">（全角40字以内。半角は使用不可）<br>
+              <font color="#ff0000">*</font>
+              <input size="80" name="shinseiDataInfo.kadaiInfo.kadaiNameKanji" value="$!escape.getText($!shinseiForm.shinseiDataInfo.kadaiInfo.kadaiNameKanji)"
+##ADD START 2007-07-03 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+	              #errorColorForProperty("shinseiDataInfo.kadaiInfo.kadaiNameKanji")
+##ADD END 2007-07-03 BIS 劉多良               
+              >
+            </td>
+          </tr>
+          <tr>
+             <td colspan="2" valign="middle" width="650">（英文）<br>
+               <textarea rows="2" name="shinseiDataInfo.kadaiInfo.kadaiNameEigo" cols="70"
+##ADD START 2007-07-03 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+	              #errorColorForProperty("shinseiDataInfo.kadaiInfo.kadaiNameEigo")
+##ADD END 2007-07-03 BIS 劉多良               
+               >$!escape.getText($!shinseiForm.shinseiDataInfo.kadaiInfo.kadaiNameEigo)</textarea>
+             </td>
+          </tr>
+          <tr>
+            <th>系等の区分</th>
+            <td colspan="2" valign="middle"><font color="#ff0000">*</font>
+            <select name="shinseiDataInfo.kadaiInfo.keiNameNo" size="1"
+##ADD START 2007-07-03 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+	              #errorColorForProperty("shinseiDataInfo.kadaiInfo.keiNameNo")
+##ADD END 2007-07-03 BIS 劉多良               
+            >
+			#showOptionsWithEmpty($shinseiForm.keitouList $shinseiForm.shinseiDataInfo.kadaiInfo.keiNameNo)
+            </select>
+            </td>
+          </tr>
+          <tr>
+            <th>推薦の観点</th>
+            <td colspan="2" valign="middle"><font color="#ff0000">*</font>
+            <select name="shinseiDataInfo.kadaiInfo.kantenNo" size="1"
+##ADD START 2007-07-03 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+	              #errorColorForProperty("shinseiDataInfo.kadaiInfo.kantenNo")
+##ADD END 2007-07-03 BIS 劉多良               
+            >
+			#showOptionsWithEmpty($shinseiForm.suisenList $shinseiForm.shinseiDataInfo.kadaiInfo.kantenNo)
+            </select>
+            </td>
+          </tr>
+          <tr>
+            <th>分担金の有無</th>
+            <td colspan="2" valign="middle"><font color="#ff0000">*</font>
+            <select name="shinseiDataInfo.buntankinFlg"
+##ADD START 2007-07-03 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+	              #errorColorForProperty("shinseiDataInfo.buntankinFlg")
+##ADD END 2007-07-03 BIS 劉多良               
+            >
+            #showOptionsWithEmpty($shinseiForm.buntankinList $shinseiForm.shinseiDataInfo.buntankinFlg)
+            </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </center>
+      
+      
+      <p align="left">【研究経費（千円未満の端数は切り捨てる）】&nbsp; (0の場合も記入すること。）<br>
+#set($soukeiInfo = $shinseiForm.shinseiDataInfo.kenkyuKeihiSoukeiInfo)
+#errorMarkupForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi")
+#foreach($keihiInfo in $soukeiInfo.kenkyuKeihi)
+#set($count = $velocityCount - 1)
+  #errorMarkupForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].bihinhi")
+  #errorMarkupForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].shomohinhi")
+  #errorMarkupForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].ryohi")
+  #errorMarkupForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].shakin")
+  #errorMarkupForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].sonota")
+#end
+#errorMarkupForProperty("shinseidataInfo.kenkyuKeihiSoukeiInfo.keihiTotal")      
+      </p>
+	  <center>
+      <table border="1" cellpadding="0" cellspacing="0" width="800" bgcolor="#ffffff">
+        <tbody>
+          <tr>
+            <th rowspan="2">年度</th>
+            <th rowspan="2">研究経費<br>（千円）</th>
+            <th colspan="6">使用内訳（千円）</th>
+          </tr>
+          <tr>
+            <th>設備備品費</th>
+            <th>消耗品費</th>
+            <th>旅費</th>
+            <th>謝金等</th>
+            <th>その他</th>
+          </tr>
+          
+          #set($soukeiInfo = $shinseiForm.shinseiDataInfo.kenkyuKeihiSoukeiInfo)
+          #foreach($keihiInfo in $soukeiInfo.kenkyuKeihi)
+          #set($count = $velocityCount - 1)
+          #set($nendo = $!escape.getIntValue($shinseiForm.shinseiDataInfo.nendo) + $count)
+          <tr>
+            <th>平成$!escape.getText(${nendo})年度</th>
+##UPDATE START 2007-07-20 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+##            <td align="right">$!escape.getText($!keihiInfo.keihi)</td>
+##            <td><font color="#ff0000">*</font><input size="12" style="text-align:right" name="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].bihinhi" value="$!escape.getText($!keihiInfo.bihinhi)"></td>
+##            <td><font color="#ff0000">*</font><input size="12" style="text-align:right" name="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].shomohinhi" value="$!escape.getText($!keihiInfo.shomohinhi)"></td>
+##            <td><font color="#ff0000">*</font><input size="12" style="text-align:right" name="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].ryohi" value="$!escape.getText($!keihiInfo.ryohi)"></td>
+##            <td><font color="#ff0000">*</font><input size="12" style="text-align:right" name="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].shakin" value="$!escape.getText($!keihiInfo.shakin)"></td>
+##            <td><font color="#ff0000">*</font><input size="12" style="text-align:right" name="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].sonota" value="$!escape.getText($!keihiInfo.sonota)"></td>
+            <td align="right" 
+			#if($count==0)
+	            #errorColorForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi")
+	        #end
+	        #errorColorForProperty("shinseidataInfo.kenkyuKeihiSoukeiInfo.keihiTotal$count") 
+  		    #errorColorForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].bihinhi")
+	  	    #errorColorForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].shomohinhi")
+		    #errorColorForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].ryohi")
+		    #errorColorForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].shakin")
+		    #errorColorForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].sonota")
+            >$!escape.getText($!keihiInfo.keihi)</td>
+            <td><font color="#ff0000">*</font><input size="12" style="text-align:right" name="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].bihinhi" value="$!escape.getText($!keihiInfo.bihinhi)"
+            	#errorColorForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].bihinhi")></td>
+            <td><font color="#ff0000">*</font><input size="12" style="text-align:right" name="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].shomohinhi" value="$!escape.getText($!keihiInfo.shomohinhi)"
+            	#errorColorForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].shomohinhi") ></td>
+            <td><font color="#ff0000">*</font><input size="12" style="text-align:right" name="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].ryohi" value="$!escape.getText($!keihiInfo.ryohi)"
+            	#errorColorForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].ryohi") ></td>
+            <td><font color="#ff0000">*</font><input size="12" style="text-align:right" name="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].shakin" value="$!escape.getText($!keihiInfo.shakin)"
+            	#errorColorForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].shakin") ></td>
+            <td><font color="#ff0000">*</font><input size="12" style="text-align:right" name="shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].sonota" value="$!escape.getText($!keihiInfo.sonota)"
+            	#errorColorForProperty("shinseiDataInfo.kenkyuKeihiSoukeiInfo.kenkyuKeihi[$count].sonota") ></td>
+##UPDATE END 2007-07-20 BIS 劉多良               
+          </tr>
+		  #end
+          <tr>
+            <th>総計</th>
+            <td align="right">$!escape.getText($!soukeiInfo.keihiTotal)</td>
+            <td align="right">$!escape.getText($!soukeiInfo.bihinhiTotal)</td>
+            <td align="right">$!escape.getText($!soukeiInfo.shomohinhiTotal)</td>
+            <td align="right">$!escape.getText($!soukeiInfo.ryohiTotal)</td>
+            <td align="right">$!escape.getText($!soukeiInfo.shakinTotal)</td>
+            <td align="right">$!escape.getText($!soukeiInfo.sonotaTotal)</td>
+          </tr>
+        </tbody>
+      </table>
+      </center>
+      
+      
+      <p align="left">【関連研究分野(細目)】
+#errorMarkupForProperty("shinseiDataInfo.kadaiInfo.bunkaSaimokuCd")
+      </p>
+      <center>
+      <table border="1" cellpadding="0" cellspacing="0" width="800" bgcolor="#ffffff">
+        <tbody>
+          <tr>
+            <th width="180">細目番号　<a href="$link.setAction('/saimokuList')" target="_blank"><img src="$path/images/bt_list.gif" alt="一覧" width="41" height="22" border="0"></a></th>
+            <td valign="middle"><font color="#ff0000">*</font>
+            <input size="8" name="shinseiDataInfo.kadaiInfo.bunkaSaimokuCd" 
+##ADD START 2007-07-03 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+	            #errorColorForProperty("shinseiDataInfo.kadaiInfo.bunkaSaimokuCd")
+	            #errorColorForProperty("shinseiDataInfo.kadaiInfo.bunkaSaimokuCd.kumiai")
+##ADD END 2007-07-03 BIS 劉多良               
+            value="$!escape.getText($!shinseiForm.shinseiDataInfo.kadaiInfo.bunkaSaimokuCd)">
+            </td>
+          </tr>
+          <tr>
+            <th>分野</th>
+            <td valign="middle">$!escape.getText($!shinseiForm.shinseiDataInfo.kadaiInfo.bunya)　</td>
+          </tr>
+          <tr>
+            <th>分科</th>
+            <td valign="middle">$!escape.getText($!shinseiForm.shinseiDataInfo.kadaiInfo.bunka)　</td>
+          </tr>
+          <tr>
+            <th>細目</th>
+            <td valign="middle">$!escape.getText($!shinseiForm.shinseiDataInfo.kadaiInfo.saimokuName)　</td>
+          </tr>
+        </tbody>
+      </table>
+      </center>
+
+
+      <p align="left">　
+#errorMarkupForProperty("shinseiDataInfo.daihyouInfo.tel")
+#errorMarkupForProperty("shinseiDataInfo.daihyouInfo.fax")
+#errorMarkupForProperty("shinseiDataInfo.daihyouInfo.email")
+#errorMarkupForProperty("shinseiDataInfo.kenkyuSoshikiInfoList") 
+##ADD　START 2007/07/24 BIS 金京浩 //区分のドロップボックスの空白の場合はエラーとする
+#errorMarkupForProperty("shinseiDataInfo.kenkyuSoshikiInfoList.buntanFlag")
+##ADD　END　 2007/07/24 BIS 金京浩       
+#errorMarkupForProperty("shinseiDataInfo.kenkyuSoshikiInfoList.kenkyuNo")
+#errorMarkupForProperty("shinseiDataInfo.kenkyuSoshikiInfoList.nameKanjiSei")
+#errorMarkupForProperty("shinseiDataInfo.kenkyuSoshikiInfoList.nameKanjiMei")
+#errorMarkupForProperty("shinseiDataInfo.kenkyuSoshikiInfoList.nameKanaSei")
+#errorMarkupForProperty("shinseiDataInfo.kenkyuSoshikiInfoList.nameKanaMei")
+#errorMarkupForProperty("shinseiDataInfo.kenkyuSoshikiInfoList.nenrei")
+#errorMarkupForProperty("shinseiDataInfo.kenkyuSoshikiInfoList.shozokuCd")
+#errorMarkupForProperty("shinseiDataInfo.kenkyuSoshikiInfoList.bukyokuCd")
+#errorMarkupForProperty("shinseiDataInfo.kenkyuSoshikiInfoList.bukyokuName")
+#errorMarkupForProperty("shinseiDataInfo.kenkyuSoshikiInfoList.shokushuCd")
+#errorMarkupForProperty("shinseiDataInfo.kenkyuSoshikiInfoList.shokushuNameKanji")
+#errorMarkupForProperty("shinseiDataInfo.kenkyuSoshikiInfoList.senmon")
+#errorMarkupForProperty("shinseiDataInfo.kenkyuSoshikiInfoList.gakui")
+#errorMarkupForProperty("shinseiDataInfo.kenkyuSoshikiInfoList.buntan")
+#errorMarkupForProperty("shinseiDataInfo.kenkyuSoshikiInfoList.keihi")
+#errorMarkupForProperty("shinseiDataInfo.kenkyuSoshikiInfoList.effort")
+      </p>
+      <center>
+      <table border="1" cellpadding="0" cellspacing="0" width="800" bgcolor="#ffffff">
+        <tbody>
+          <tr>
+            <th>研究代表者連絡先</th>
+            <td colspan="2" valign="middle">
+            <p>
+            電話番号：<font color="#ff0000">*</font>
+            <input size="15" name="shinseiDataInfo.daihyouInfo.tel" 
+##ADD START 2007-07-03 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+	            #errorColorForProperty("shinseiDataInfo.daihyouInfo.tel")
+##ADD END 2007-07-03 BIS 劉多良               
+            	value="$!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.tel)">
+            　　　FAX番号：<font color="#ff0000">*</font>
+            <input size="15" name="shinseiDataInfo.daihyouInfo.fax"  
+##ADD START 2007-07-03 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+	            #errorColorForProperty("shinseiDataInfo.daihyouInfo.fax")
+##ADD END 2007-07-03 BIS 劉多良               
+            	value="$!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.fax)">
+            </p>
+            <p>
+            Email：<font color="#ff0000">*</font>
+            <input size="70" name="shinseiDataInfo.daihyouInfo.email"   
+##ADD START 2007-07-03 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+	            #errorColorForProperty("shinseiDataInfo.daihyouInfo.email")
+##ADD END 2007-07-03 BIS 劉多良               
+            	value="$!escape.getText($!shinseiForm.shinseiDataInfo.daihyouInfo.email)">
+            </p>
+            </td>
+          </tr>
+          <tr>
+            <th>研究組織</th>
+            <td valign="middle"><a href=javascript:fncWindowOpenAndKeep("$link.setAction('/shinsei/kenkyuSoshikiListView')","kenkyuSoshiki")>
+            <img src="$path/images/bt_listentry.gif"　width="219" height="28" alt="研究組織表入力" border="0"></a></td>
+          </tr>
+        </tbody>
+      </table>
+      </center>
+
+##学創（推薦）の場合のみ表示する
+#if($shinseiForm.shinseiDataInfo.jigyoCd == "00521")
+      <p align="left">【関連研究分野研究者】
+#foreach($kanrenInfo in $shinseiForm.shinseiDataInfo.kanrenBunyaKenkyushaInfo)
+#set($count = $velocityCount - 1)
+  #errorMarkupForProperty("shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenShimei")
+  #errorMarkupForProperty("shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenKikan")
+  #errorMarkupForProperty("shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenBukyoku")
+  #errorMarkupForProperty("shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenShoku")
+  #errorMarkupForProperty("shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenSenmon")
+  #errorMarkupForProperty("shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenTel")
+  #errorMarkupForProperty("shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenJitakuTel")
+  #errorMarkupForProperty("shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenMail")
+#end
+      </p>
+      <center>
+      <table border="1" cellpadding="0" cellspacing="0" width="800" bgcolor="#ffffff">
+        <tbody>
+          <tr>
+            <th>氏名</th>
+            <th>所属研究機関</th>
+            <th>部局</th>
+            <th>職</th>
+            <th>現在の専門</th>
+            <th>勤務先電話番号</th>
+       <!-- <th>自宅電話番号</th> -->
+            <th>Email</th>
+          </tr>
+          #foreach($kanrenInfo in $shinseiForm.shinseiDataInfo.kanrenBunyaKenkyushaInfo)
+          #set($count = $velocityCount - 1)
+          <tr>
+##UPDATE　START 2007-07-12 BIS 劉多良          
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+##          	<td><input size="15" name="shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenShimei" value="$!escape.getText($!kanrenInfo.kanrenShimei)"></td>
+##          	<td><input size="15" name="shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenKikan" value="$!escape.getText($!kanrenInfo.kanrenKikan)"></td>
+##          	<td><input size="15" name="shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenBukyoku" value="$!escape.getText($!kanrenInfo.kanrenBukyoku)"></td>
+##          	<td><input size="15" name="shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenShoku" value="$!escape.getText($!kanrenInfo.kanrenShoku)"></td>
+##          	<td><input size="15" name="shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenSenmon" value="$!escape.getText($!kanrenInfo.kanrenSenmon)"></td>
+##          	<td><input size="15" name="shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenTel" value="$!escape.getText($!kanrenInfo.kanrenTel)"></td>
+##       <!-- <td><input size="15" name="shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenJitakuTel" value="$!escape.getText($!kanrenInfo.kanrenJitakuTel)"></td> -->
+##          	<td><input size="15" name="shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenMail" value="$!escape.getText($!kanrenInfo.kanrenMail)"></td>          	
+          	<td><input size="15" name="shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenShimei" #errorColorForProperty("shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenShimei") value="$!escape.getText($!kanrenInfo.kanrenShimei)"></td>
+          	<td><input size="15" name="shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenKikan" #errorColorForProperty("shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenKikan") value="$!escape.getText($!kanrenInfo.kanrenKikan)"></td>
+          	<td><input size="15" name="shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenBukyoku" #errorColorForProperty("shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenBukyoku") value="$!escape.getText($!kanrenInfo.kanrenBukyoku)"></td>
+          	<td><input size="15" name="shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenShoku" #errorColorForProperty("shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenShoku") value="$!escape.getText($!kanrenInfo.kanrenShoku)"></td>
+          	<td><input size="15" name="shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenSenmon" #errorColorForProperty("shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenSenmon") value="$!escape.getText($!kanrenInfo.kanrenSenmon)"></td>
+          	<td><input size="15" name="shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenTel" #errorColorForProperty("shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenTel") value="$!escape.getText($!kanrenInfo.kanrenTel)"></td>
+       <!-- <td><input size="15" name="shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenJitakuTel" #errorColorForProperty("shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenJitakuTel") value="$!escape.getText($!kanrenInfo.kanrenJitakuTel)"></td> -->
+          	<td><input size="15" name="shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenMail" #errorColorForProperty("shinseiDataInfo.kanrenBunyaKenkyushaInfo[$count].kanrenMail") value="$!escape.getText($!kanrenInfo.kanrenMail)"></td>          	
+##UPDATE　END　 2007-07-12 BIS 劉多良
+          </tr>
+          #end
+        </tbody>
+      </table>
+      </center>
+#end      
+</form>	
+	
+	
+  <p align="left">
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#6699CC" class="rootFont">　</td>
+     </tr>
+    </table>
+  <table border="0" width="100%">
+    <tr>
+      <td width="1%" background="$path/images/subtitle_img2.gif"><IMG SRC="$path/images/subtitle_img1.gif" WIDTH=61 HEIGHT=49 ALT=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+        応募内容ファイル選択</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <IMG SRC="$path/images/subtitle_img3.gif" width=213 height=49 ALT=""></td>
+    </tr>
+  </table>
+<div align="left">
+
+#errorMarkupForProperty("uploadFile")
+
+<form name="upload_form" method="post" action="" enctype="multipart/form-data">  
+  記入した応募内容ファイル（Word又はPDF）を選択してください。<br>
+  <input type="file" size="100" name="uploadFile"
+##ADD START 2007-07-16 BIS 劉多良 
+##エラーが発生したとき、入力項目の背景色をピンク色（#FFCCCC）に変更する
+	#errorColorForProperty("uploadFile")
+##ADD END 2007-07-16 BIS 劉多良               
+  >
+</form> 
+  <ul>
+    <li class="comment">
+    <p align="left">
+    応募内容を修正する場合は、修正済みの応募内容ファイルを選択しなおすと、前のファイルが削除されて上書きされます。</li>
+    <li class="comment">
+    <p align="left">
+    応募内容ファイルに修正がない場合、応募内容ファイル選択欄は空欄のままで構いません。</li>
+    <li class="comment">
+    <p align="left">
+    応募内容ファイルについてはWordファイルの代わりにPDFファイルを選択することも可能です。（PDFファイルは応募内容ファイル様式（Word又は本会並びに文部科学省が提供する様式）を基に作成したものに限ります。）</li>
+  </ul>
+</div>
+
+<div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="javascript:onSaveWithUpload()"><img src="$path/images/bt_forward.gif" alt="次へ進む" width="219" height="28" border="0"></a></td>
+       #if( !($shinseiForm.shinseiDataInfo.jokyoId) || ($shinseiForm.shinseiDataInfo.jokyoId == "01") )
+       	<td><a href="javascript:onTransientSaveWithUpload()"><img src="$path/images/bt_keep.gif" alt="一時保存して中断" width="219" height="28" border="0"></a></td>
+       #end
+       #if( !($shinseiForm.shinseiDataInfo.systemNo) || ($shinseiForm.shinseiDataInfo.systemNo == "") )
+       	<td><a href="$link.setAction('/shinsei/searchList')"><img src="$path/images/bt_back.gif" alt="保存せずに戻る" width="219" height="28" border="0"></a></td>
+       #else
+       	<td><a href="$link.setAction('/shinsei/processStatusList')"><img src="$path/images/bt_back.gif" alt="保存せずに戻る" width="219" height="28" border="0"></a></td>
+       #end
+      </tr>
+     </table>
+</div>
+<!-- ボタン用テーブルここまで -->
+     <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img1.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shinsei/logoff')"><IMG SRC="$path/images/footer_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=26 border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img3.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+  <!-- 左右の縦線用テーブルここまで -->
+</div>
+
+</body>
+</html>
+  
+

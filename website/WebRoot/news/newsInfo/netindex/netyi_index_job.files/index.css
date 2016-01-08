@@ -1,0 +1,174 @@
+.help {
+	FONT-SIZE: 12px; COLOR: #4f4f4f; LINE-HEIGHT: 20px; FONT-STYLE: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A.bt:link {
+	FONT-SIZE: 12px; COLOR: #274b78; TEXT-DECORATION: none
+}
+A.bt:visited {
+	FONT-SIZE: 12px; COLOR: #274b78; TEXT-DECORATION: none
+}
+A.bt:hover {
+	FONT-SIZE: 12px; COLOR: #274b78; TEXT-DECORATION: underline
+}
+.page {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #007fff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.text3 {
+	FONT-SIZE: 12px; COLOR: #666666; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.page:hover {
+	FONT-WEIGHT: bolder; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.pay_title {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #2b2b2b; FONT-FAMILY: Georgia, "Times New Roman", Times, serif; TEXT-DECORATION: none
+}
+.pay_title:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Georgia, "Times New Roman", Times, serif; TEXT-DECORATION: none
+}
+.news {
+	FONT-SIZE: 12px; COLOR: #274b78; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+INPUT {
+	FONT-SIZE: 12px; COLOR: #05010e; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.cat1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.cat11 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.news:hover {
+	FONT-SIZE: 12px; COLOR: #274b78; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+.jobproject {
+	FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 18px; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.bt1 {
+	BORDER-TOP-WIDTH: 1px; PADDING-RIGHT: 2px; PADDING-LEFT: 2px; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 12px; BORDER-BOTTOM-WIDTH: 1px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; HEIGHT: 20px; BORDER-RIGHT-WIDTH: 1px; TEXT-DECORATION: none
+}
+.jobname {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #090000; FONT-FAMILY: Georgia, "Times New Roman", Times, serif; TEXT-DECORATION: underline
+}
+.jobname:hover {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Georgia, "Times New Roman", Times, serif; TEXT-DECORATION: none
+}
+.key {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #d40000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+.key:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #d40000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+.link {
+	FONT-SIZE: 12px; COLOR: #666666; LINE-HEIGHT: 25px; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+.link:hover {
+	FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 25px; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+TABLE {
+	LINE-HEIGHT: 22px; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.table1 {
+	FONT-SIZE: 12px; LINE-HEIGHT: normal; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.intro {
+	FONT-SIZE: 12px; COLOR: #5d5d5d; LINE-HEIGHT: 20px; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.cat {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #274b78; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.more {
+	FONT-SIZE: 12px; COLOR: #333333; FONT-FAMILY: Georgia, "Times New Roman", Times, serif; TEXT-DECORATION: none
+}
+.more:hover {
+	COLOR: #000000; FONT-FAMILY: Georgia, "Times New Roman", Times, serif; TEXT-DECORATION: underline
+}
+.help:hover {
+	FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 20px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.intro:hover {
+	FONT-SIZE: 12px; COLOR: #274b78; LINE-HEIGHT: 20px; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+.cat1:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #ff0000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.cat2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #ff0000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.text1 {
+	FONT-SIZE: 12px; COLOR: #7f7f7f; LINE-HEIGHT: 25px; FONT-FAMILY: Georgia, "Times New Roman", Times, serif; TEXT-DECORATION: none
+}
+.jobtext {
+	FONT-SIZE: 12px; COLOR: #666666; LINE-HEIGHT: 18px; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.px14 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #333333; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.zpr_this {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; BORDER-LEFT: #000000 1px solid; WIDTH: 98px; BORDER-BOTTOM: #000000 1px solid; HEIGHT: 8px; BACKGROUND-COLOR: #ffffff
+}
+.px14Copy {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #55af2e; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+.righttext {
+	FONT-SIZE: 12px; COLOR: #8e8e8e; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+.righttext:hover {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.input1 {
+	BORDER-RIGHT: 1px; BORDER-TOP: 1px; FONT-SIZE: 12px; BORDER-LEFT: 1px; COLOR: #666666; BORDER-BOTTOM: 1px; FONT-FAMILY: Georgia, "Times New Roman", Times, serif; BACKGROUND-COLOR: #f5f5f5
+}
+.fenlei1 {
+	FONT-SIZE: 12px; COLOR: #30aac9; LINE-HEIGHT: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.fenlei2 {
+	FONT-SIZE: 12px; COLOR: #999999; LINE-HEIGHT: normal; FONT-FAMILY: "Times New Roman", Times, serif; TEXT-DECORATION: none
+}
+.fenlei2:hover {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Georgia, "Times New Roman", Times, serif; TEXT-DECORATION: none
+}
+.web20 {
+	PADDING-RIGHT: 6px; PADDING-LEFT: 6px; FONT-SIZE: 12px; PADDING-BOTTOM: 2px; COLOR: #ffffff; LINE-HEIGHT: normal; PADDING-TOP: 4px; FONT-FAMILY: Georgia, "Times New Roman", Times, serif; TOP: 4px; HEIGHT: 20px; TEXT-DECORATION: none
+}
+.web20:hover {
+	BORDER-RIGHT: #3c8db5 1px solid; PADDING-RIGHT: 6px; BORDER-TOP: #3c8db5 1px solid; PADDING-LEFT: 6px; FONT-SIZE: 12px; PADDING-BOTTOM: 2px; BORDER-LEFT: #3c8db5 1px solid; COLOR: #3988ae; LINE-HEIGHT: normal; PADDING-TOP: 4px; BORDER-BOTTOM: #3c8db5 1px solid; FONT-FAMILY: Georgia, "Times New Roman", Times, serif; HEIGHT: 20px; BACKGROUND-COLOR: #ffffff; TEXT-DECORATION: none
+}
+.searchkey {
+	FONT-SIZE: 12px; COLOR: #ff3300; FONT-FAMILY: Georgia, "Times New Roman", Times, serif; TEXT-DECORATION: none
+}
+.web20a {
+	BORDER-RIGHT: #d7d7d7 1px solid; PADDING-RIGHT: 6px; BORDER-TOP: #d7d7d7 1px solid; PADDING-LEFT: 6px; PADDING-BOTTOM: 2px; FONT: 12px Georgia, "Times New Roman", Times, serif; BORDER-LEFT: #d7d7d7 1px solid; COLOR: #959595; PADDING-TOP: 4px; BORDER-BOTTOM: #d7d7d7 1px solid; HEIGHT: 20px; BACKGROUND-COLOR: #ffffff; TEXT-DECORATION: none
+}
+.text1Copy {
+	FONT-SIZE: 12px; COLOR: #7f7f7f; LINE-HEIGHT: 18px; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.sort1 {
+	FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: Georgia, "Times New Roman", Times, serif; TEXT-DECORATION: none
+}
+.sort2 {
+	FONT-SIZE: 12px; COLOR: #999999; FONT-FAMILY: Georgia, "Times New Roman", Times, serif; TEXT-DECORATION: none
+}
+.sort2:hover {
+	FONT-SIZE: 12px; COLOR: #666666; FONT-FAMILY: Georgia, "Times New Roman", Times, serif; TEXT-DECORATION: none
+}
+.fenlei1:hover {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.myjob1 {
+	FONT-SIZE: 12px; COLOR: #ff6600; FONT-FAMILY: Georgia, "Times New Roman", Times, serif; TEXT-DECORATION: underline
+}
+.myjob1:hover {
+	FONT-SIZE: 12px; COLOR: #ff3300; FONT-FAMILY: Georgia, "Times New Roman", Times, serif; TEXT-DECORATION: none
+}
+.web20a:hover {
+	BORDER-RIGHT: #5da7ca 1px solid; PADDING-RIGHT: 6px; BORDER-TOP: #5da7ca 1px solid; PADDING-LEFT: 6px; FONT-SIZE: 12px; PADDING-BOTTOM: 2px; BORDER-LEFT: #5da7ca 1px solid; COLOR: #5da7ca; LINE-HEIGHT: normal; PADDING-TOP: 4px; BORDER-BOTTOM: #5da7ca 1px solid; FONT-FAMILY: Georgia, "Times New Roman", Times, serif; HEIGHT: 20px; BACKGROUND-COLOR: #f2f8fb; TEXT-DECORATION: none
+}
+.web20b {
+	BORDER-RIGHT: #398ab0 1px solid; PADDING-RIGHT: 6px; BORDER-TOP: #398ab0 1px solid; PADDING-LEFT: 6px; PADDING-BOTTOM: 2px; FONT: 12px Georgia, "Times New Roman", Times, serif; BORDER-LEFT: #398ab0 1px solid; COLOR: #3e94bd; PADDING-TOP: 4px; BORDER-BOTTOM: #398ab0 1px solid; HEIGHT: 20px; BACKGROUND-COLOR: #eaf3ff; TEXT-DECORATION: none
+}
+.web20b:hover {
+	BORDER-RIGHT: #ffffff 1px solid; PADDING-RIGHT: 6px; BORDER-TOP: #ffffff 1px solid; PADDING-LEFT: 6px; BACKGROUND: #8ec2db; PADDING-BOTTOM: 2px; FONT: 12px Georgia, "Times New Roman", Times, serif; BORDER-LEFT: #ffffff 1px solid; COLOR: #ffffff; PADDING-TOP: 4px; BORDER-BOTTOM: #ffffff 1px solid; HEIGHT: 20px; TEXT-DECORATION: none
+}
+.web20c {
+	BORDER-RIGHT: #5da7ca 1px solid; PADDING-RIGHT: 6px; BORDER-TOP: #5da7ca 1px solid; PADDING-LEFT: 6px; BACKGROUND: #5da7ca; PADDING-BOTTOM: 2px; FONT: 12px Georgia, "Times New Roman", Times, serif; BORDER-LEFT: #5da7ca 1px solid; COLOR: #ffffff; PADDING-TOP: 4px; BORDER-BOTTOM: #5da7ca 1px solid; HEIGHT: 20px; TEXT-DECORATION: none
+}

@@ -1,0 +1,250 @@
+## ***********************************************
+## チェックリスト一覧（事業リスト）画面
+##
+## ページ情報 → result
+## ***********************************************
+
+## 2005/03/09 新規作成
+
+#parse( $commonSetting )
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+<body class="bodyStyle">
+##スクリプト
+<SCRIPT LANGUAGE=javascript>
+<!--
+//チェックリスト表示
+function onCheckListClick(jigyoId, edition){
+	document.jigyo_form.action="$link.setAction('/shozoku/checkList/checkList')";
+	document.jigyo_form.jigyoId.value = jigyoId;
+	document.jigyo_form.edition.value = edition;
+	document.jigyo_form.submit();
+}
+
+//飛びリスト表示
+function onTobiListClick(jigyoId){
+	document.jigyo_form.action="$link.setAction('/shozoku/checkList/tobiList')";
+	document.jigyo_form.jigyoId.value = jigyoId;
+	document.jigyo_form.submit();
+}
+
+//表紙PDF
+function onHyoshiClick(jigyoId){
+	document.jigyo_form.action="$link.setAction("/shozoku/checkList/coverDownload")";
+	document.jigyo_form.jigyoId.value = jigyoId;
+	document.jigyo_form.submit();
+}
+// 20050726
+//PDFダウンロード
+function onDownload(){
+	document.jigyo_form.action="$link.setAction("/shozoku/checkList/ouboDownload")";
+//	document.jigyo_form.jigyoKbn.value = 4;
+	document.jigyo_form.submit();
+}
+//-->
+</SCRIPT>
+
+## 変数の置き換え
+#set ($list= $result.list)
+
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/shozoku/logoff')"><IMG SRC="$path/images/header_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=20 border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#CC6666" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/shozoku/showMainMenu')">所属研究機関担当者向けメニュー</a>＞<b>チェックリスト一覧</b></font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><IMG SRC="$path/images/subtitle_img1.gif" WIDTH=61 HEIGHT=49 ALT=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+       チェックリスト一覧</td>
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <IMG SRC="$path/images/subtitle_img3.gif" WIDTH=213 HEIGHT=49 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+<!-- 本文ここから -->
+<p class="comment"> ＜注意事項＞</p>
+  <ul>
+   	<li class="comment">
+     チェックリストの[表示]ボタンをクリックし、チェックリストを表示してください。
+    </li>
+     <li class="comment">
+     チェックリストに表示されている研究計画調書が提出されているか確認してください。
+    </li>
+    <li class="comment">
+     チェックリストに表示されている研究計画調書がすべて揃ったら、学振受付期限内にチェックリストを確定し、「表紙」及び「応募書類の提出書」を出力して、研究計画調書と共に日本学術振興会へ提出してください。
+    </li>
+    <li class="comment">
+     チェックリストに表示されている応募情報を取り下げたい場合は、チェックリストの確定前に[応募情報管理]メニューから処理を行ってください。
+    </li>
+## 2005/07/28　追加
+    <li class="comment">
+    応募状況の意味は<a href="$path/code/status2.html" target="_blank">こちら</a>を参照してください。
+    </li>
+## Amemiya
+  </ul>
+<!-- 一覧用テーブルここから -->
+#errorMarkup()
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+ <tr>
+  <td> 
+  <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+    <tr>
+     <th>研究種目名</th>
+     <th>学振受付期限</th>
+     <th>応募件数</th>
+     <th>チェックリスト</th>
+     <th>飛び番号リスト</th>
+     <th>表紙</th>
+     <th>チェックリスト状況</th>
+## 20050707 追加
+     <th>応募状況</th>
+## Horikoshi
+    </tr>
+    ##申請状態が学振受付中以上の件数
+    #set($ouboCnt = 0)
+	#if(!$result || $list.size() == 0)
+  		##該当件数が０件だった場合
+		<tr>
+     		<td>　</td>
+     		<td>　</td>
+     		<td>　</td>
+     		<td>　</td>
+    		<td>　</td>
+     		<td>　</td>
+     		<td>　</td>
+## 20050707 追加
+	    	<td>　</td>
+## Horikoshi
+     	</tr>		
+ 	#else
+	    #foreach($jigyo in $list)
+	     #set ($jigyoId =$!jigyo.JIGYO_ID)
+	     #if($!escape.getIntValue($jigyo.JOKYO_ID) == 4)
+	     	#set($ouboCnt = $ouboCnt + 1)
+	     #elseif($!escape.getIntValue($jigyo.JOKYO_ID) > 5)
+	     	#set($ouboCnt = $ouboCnt + 1)
+	     #end
+	    <tr>
+	      <td>
+	        平成$!escape.getText($!jigyo.NENDO)年度 
+	      	#if($jigyo.KAISU.toString() == '1')
+	     		$!escape.getText($!jigyo.JIGYO_NAME)
+	     	#else
+	     		第$!escape.getText($!jigyo.KAISU)回 $!escape.getText($!jigyo.JIGYO_NAME)
+			#end
+		  </td>	 
+     	  <td>$!escape.getText($!dateFormat.format($!jigyo.UKETUKEKIKAN_END))</td>
+     	  <td align="right">$!escape.getText($!jigyo.COUNT)件</td>
+    	  <td><a href="javascript:onCheckListClick('$jigyoId', '$!jigyo.EDITION');">
+    			<img src="$path/images/bt_indicate.gif" width=64 height=24 alt="表示" border="0"></a></td>
+     	  <td><a href="javascript:onTobiListClick('$jigyoId');">
+     			<img src="$path/images/bt_indicate.gif" width=64 height=24 alt="表示" border="0"></a></td>
+     	  #if($jigyo.KAKUTEI_DATE)
+     	  <td><a href="javascript:onHyoshiClick('$jigyoId');">
+     			<img src="$path/images/bt_indicate.gif" width=64 height=24 alt="表示" border="0"></a></td>
+     	  <td>
+ 				出力完了($!escape.getText($!dateFormat.format($!jigyo.KAKUTEI_DATE))
+ 				#if($!jigyo.EDITION.toString() != '0')
+ 					$!escape.getText($!jigyo.EDITION) 版)
+ 				#else
+ 					-版)
+ 				#end
+ 		  </td>
+     	  #else
+     	  <td>　</td>
+     	  <td>未確定</td>
+     	  #end
+## 20050707
+		  <td>$!escape.getText($jigyo.JOKYO_NAME)</td>
+## Horikoshi
+    	</tr>
+    	#end
+	#end
+   </table>
+  </td>
+ </tr>
+</table>
+<!-- 一覧用テーブルここまで-->
+<br>
+ <font color="blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<!-- 本文ここまで -->
+
+##隠しフォーム情報----------
+<FORM name="jigyo_form" action="" method="post">
+	<INPUT type="hidden" name="jigyoId" >
+	<INPUT type="hidden" name="edition" >
+	<INPUT type="hidden" name="filePath" >
+	<INPUT type="hidden" name="jigyoKbn" value="$checkListForm.jigyoKbn">
+</FORM>
+
+    <!-- ボタン用テーブルここから -->
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+		#if($ouboCnt == 0)
+      	<td>　</td>
+      	#else
+	       <td><a href="javascript:onDownload();"><img src="$path/images/bt_oubo.gif" width=219 height=28 border="0" alt="応募書類の提出書出力"></a></td>
+       	#end
+       <td><a href="$link.setAction('/shozoku/showMainMenu')"><img src="$path/images/bt_bk_menu.gif" width=114 height=28 border="0" alt="メニューに戻る"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img1.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shozoku/logoff')"><IMG SRC="$path/images/footer_logout.gif" ALT="ログアウト" width=72 height=26 border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img3.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+</body>
+</html>

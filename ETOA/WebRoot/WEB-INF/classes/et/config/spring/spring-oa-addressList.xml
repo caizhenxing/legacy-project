@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+<beans>
+<!--  action begin -->
+<!--通讯录-->
+<bean name="/oa/privy/addressList"
+		class="et.bo.oa.privy.addressList.action.AddressListAction" singleton="false">
+		<property name="addressListService">
+			<ref bean="AddressListService" />
+		</property>
+		<property name="addressListSortService">
+			<ref bean="AddressListSortService" />
+		</property>
+<!--		<property name="listValueService">-->
+<!--			<ref bean="listValueService" />-->
+<!--		</property>		-->
+		<property name="ctree">
+			<ref bean="ClassTreeService"/>
+		</property>
+        <property name="departTree">
+			<ref bean="DepTreeService"/>
+		</property>
+		<property name="hrService">
+			<ref bean="hrService"/>
+		</property>
+</bean>
+<!--通讯录类别-->
+<bean name="/oa/privy/addressListSort"
+		class="et.bo.oa.privy.addressListSort.action.AddressListSortAction" singleton="false">
+		<property name="addressListSortService">
+			<ref bean="AddressListSortService" />
+		</property>
+</bean>
+<!-- action end -->
+<!--  service begin -->	
+<bean id="AddressListService"
+		class="et.bo.oa.privy.addressList.service.impl.AddressListServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+	</bean>	
+<!--	-->
+<bean id="AddressListSortService"
+		class="et.bo.oa.privy.addressListSort.service.impl.AddressListSortServiceImpl" singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+		<property name="ks">
+			<ref bean="KeyService"/>
+		</property>
+</bean>	
+	<!--  key -->	
+	<bean id="KeyService" class="excellence.common.key.impl.KeyServiceImpl">
+		<property name="sequenceService">
+			<ref bean="SequenceService" />
+		</property>
+	</bean>
+	
+	<bean id="SequenceService" class="et.bo.common.impl.SequenceServiceImpl">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+<!--  key -->
+<!-- service end -->
+
+</beans>

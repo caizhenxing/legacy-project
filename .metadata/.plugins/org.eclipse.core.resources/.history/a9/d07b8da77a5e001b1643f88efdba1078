@@ -1,0 +1,12 @@
+package et.bo.ccserver.info;
+
+public class OperatorInfo {
+
+	private String state;
+	private String ip;
+	private TelCardInfo ti;
+	private String code;
+	
+	private static String  STATE_LOGIN="login";
+	
+}

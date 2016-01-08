@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<body>
+
+<ui:composition template="/common/template.xhtml">
+
+  <ui:define name="title">
+    Task
+  </ui:define>
+  
+  <ui:define name="submenu">
+    <ui:include src="/common/tasksubmenu.xhtml" />
+  </ui:define>
+
+  <ui:define name="body">
+    <ui:include src="#{taskBean.taskFormPath}" />
+
+    <c:if test="#{taskBean.comments != null}">
+      <h:dataTable var="comment" value="#{taskBean.comments}">
+        <f:facet name="header">Comments</f:facet>
+        <h:column>
+          <f:facet name="header">Actor</f:facet>
+          <h:outputText value="#{comment.actorId}"/>
+        </h:column>
+        <h:column>
+          <f:facet name="header">Time</f:facet>
+          <h:outputText value="#{comment.time}">
+            <f:convertDateTime type="both" />
+          </h:outputText>
+        </h:column>
+        <h:column>
+          <f:facet name="header">Message</f:facet>
+          <h:outputText value="#{comment.message}"/>
+        </h:column>
+      </h:dataTable> 
+    </c:if>
+  </ui:define>
+  
+</ui:composition>
+
+</body>
+</html>

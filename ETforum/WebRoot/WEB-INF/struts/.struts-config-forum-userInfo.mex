@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/forum/userInfo.do" location="50,350" dimension="358,84" />
+  <StrutsActivity path="/forum/userInfo/userInfoLoad.jsp" location="650,350" dimension="232,48" />
+  <StrutsActivity path="/forum/userInfo/userInfoList.jsp" location="950,350" dimension="232,48" />
+  <StrutsActivity path="/user/userList.jsp" location="0,184" dimension="148,48" />
+  <StrutsActivity path="/user/userMain.jsp" location="248,184" dimension="148,48" />
+  <StrutsActivity path="/user/userLoad.jsp" location="496,184" dimension="148,48" />
+  <StrutsActivity path="/user/userQuery.jsp" location="744,184" dimension="154,48" />
+  <StrutsActivity path="/user/userDetail.jsp" location="998,184" dimension="160,48" />
+  <StrutsActivity path="/forum/userInfo/myFriendList.jsp" location="650,450" dimension="232,48" />
+  <StrutsTransition id="/forum/userInfo.do,userInfoList,/forum/userInfo/userInfoList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,413" />
+      <AbsolutePoint location="1066,413" />
+      <AbsolutePoint location="1066,398" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/userInfo.do,userInfoLoad,/forum/userInfo/userInfoLoad.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,383" />
+      <AbsolutePoint location="650,383" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/userInfo.do,toDelUser,/forum/userInfo.do,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="229,392" />
+      <AbsolutePoint location="229,392" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/forum/userInfo.do,userInfoList,/forum/userInfo/myFriendList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,413" />
+      <AbsolutePoint location="766,413" />
+      <AbsolutePoint location="766,450" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

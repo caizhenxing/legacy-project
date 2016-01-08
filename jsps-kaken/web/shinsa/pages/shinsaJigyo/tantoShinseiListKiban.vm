@@ -1,0 +1,879 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+
+## ************************************************
+#parse( $commonSetting )
+## 一覧データ
+#set ($list= $result.get("key_shinsatanto_list").list)
+## 審査完了フラグ
+#set ($shinsaCompleteFlg= $result.get("key_shinsacomplete_flg"))
+## 事業情報
+#set ($jigyoInfo= $result.get("JIGYO_INFO"))
+##総合評点リスト
+#set ($sogoHyotenList= $result.get("key_sogohyoten_list"))
+## 審査員情報
+#set ($shinsainInfo = $userContainer.userInfo.shinsainInfo)
+## ***********************************************
+
+## ***********************************************
+##スクリプト
+<script language="javascript">
+<!--
+  // 「入力」をクリック
+  function onShinsaKekkaInput(systemNo){
+      document.input_form.action="$link.setAction('/shinsa/shinsaJigyo/shinsaKekkaInput')";
+      document.input_form.systemNo.value = systemNo;
+      document.input_form.submit();
+  }
+
+  // 「表示」をクリック
+  function onShinsaKekkaReference(systemNo){
+      document.input_form.action="$link.setAction('/shinsa/shinsaJigyo/shinsaKekkaReference')";
+      document.input_form.systemNo.value = systemNo;
+      document.input_form.submit();
+  }
+
+  // 「審査完了」をクリック
+  function onShinsaCheck(jigyoId){
+      document.check_form.action="$link.setAction('/shinsa/shinsaJigyo/shinsaCheck')";
+      document.check_form.jigyoId.value = jigyoId;
+      document.check_form.submit();
+  }
+
+  // 「ダウンロード」をクリック
+  function onShinseiDownloadFile(systemNo){
+      document.download_form.action="$link.setAction('/shinsa/shinsaJigyo/shinseiDownloadFile')";
+      document.download_form.systemNo.value=systemNo;
+      document.download_form.submit();
+  }
+
+  //// 「XX」をクリック
+  //function onSuisenDownloadFile(systemNo){
+  //    document.download_form.action="$link.setAction('/shinsa/shinsaJigyo/suisenDownloadFile')";
+  //    document.download_form.systemNo.value=systemNo;
+  //    document.download_form.submit();
+  //}
+
+  // 「総合評点」をクリック
+  function onTantoShinseiList(jigyoId, kekkaTen){
+      document.list_form.action="$link.setAction('/shinsa/shinsaJigyo/tantoShinseiList')";
+      document.list_form.jigyoId.value = jigyoId;
+      document.list_form.kekkaTen.value = kekkaTen;
+      document.list_form.submit();
+  }
+//-->
+</script>
+## ***********************************************
+
+<title>JSPS 電子申請システム</title>
+<link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+</head>
+
+<body class="bodyStyle">
+<div align="center">
+ <!-- ヘッダー 用テーブルここから-->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　電子申請システム" width="307" height="58"></td>
+   <td align="right" background="$path/images/header_bg2.gif">
+    <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+    <table border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+     </tr>
+     <tr>
+      <td><a href="http://www-shinsei.jsps.go.jp/kakenhi/" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+      <td><a href="$link.setAction('/shinsa/logoff')"><img src="$path/images/header_logout.gif" alt="ログアウト" width="72" height="20" border="0"></a></td>
+     </tr>
+    </table>
+    <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+   </td>
+   <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+  </tr>
+ </table>
+ <!--  ヘッダー 用テーブルここまで-->
+ <!-- 左右の縦線用テーブルここから -->
+ <table width="95%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   <td>
+    <!-- コンテンツエリアここから -->
+    <!-- ログインユーザ、ルート情報用テーブルここから　-->
+    <table width="100%" border="0" cellpadding="4" cellspacing="0">
+     <tr>
+      <td bgcolor="#669966" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/shinsa/shinsaJigyo/shinsaJigyoList')">審査対象事業一覧</a>＞<b>審査担当分応募課題一覧</b><font size="1">＞審査結果入力</font></font></td>
+     </tr>
+    </table>
+    <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+    <!-- サブ画面タイトル用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr valign="bottom">
+      <td width="1%" background="$path/images/subtitle_img2.gif"><img src="$path/images/subtitle_img1.gif" width="61" height="49" alt=""></td>
+      <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont">
+       <br>審査担当分応募課題一覧
+      </td> 
+      <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <img src="$path/images/subtitle_img3.gif" width="213" height="49" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面タイトル用テーブルここまで -->
+
+    <!-- 本文ここから -->
+    <p align="left"> 
+     <b>研究種目名：
+      #if($!jigyoInfo.kaisu.toString() == "0" || $!jigyoInfo.kaisu.toString() == "1")
+ 		平成$!escape.getText($!jigyoInfo.nendo)年度 $!escape.getText($!jigyoInfo.jigyoName)
+      #else
+     	平成$!escape.getText($!jigyoInfo.nendo)年度 第$!escape.getText($!jigyoInfo.kaisu)回 $!escape.getText($!jigyoInfo.jigyoName)
+      #end
+     </b>
+     #if($shinsaCompleteFlg == 'FALSE')
+       <a href="javascript:onShinsaCheck('$!shinsaKekkaSearchForm.jigyoId');">
+       <img src="$path/images/bt_examcomp.gif" width="210" height="38" alt="審査完了" border="0"></a>
+     #end
+    </p>
+    <p class="comment">＜注意事項＞</p>
+    <ul>
+     ##審査完了していない場合のみ
+     #if($shinsaCompleteFlg == 'FALSE')    
+       <li class="comment"><font color="#FF0000" size="+0.5"><b>すべての応募課題の審査結果を入力し終わったら上の[審査完了]ボタンをクリックしてください。</b></font>
+       <br>（［審査完了］ボタンをクリックするまでは入力データの修正が可能です。［審査完了］ボタンをクリックした後は修正できません。）</li>
+     ##審査完了していた場合のみ
+     #elseif($shinsaCompleteFlg == 'TRUE')  
+       <li class="comment"><font color="#FF0000" size="+0.5"><b>すべての応募課題の審査が完了しています。ご協力ありがとうございました。</b></font></li>
+     #end
+     <li class="comment">総合評点をクリックすると、選択した総合評点の応募課題のみ一覧に表示されます。</li>
+     ##研究種目が「基盤研究(C)企画調査」だったら  
+     #if($jigyoInfo.jigyoCd == '00062')
+       <li class="comment">企画調査は、異なる研究機関に所属する複数の研究者が共同して行う企画調査を対象とし、実際の共同研究（予備実験等を含む）まで行おうとするものは対象となりません。審査に当たりこの点に御留意ください。</li>
+     #end
+     ##研究種目が「萌芽研究」だったら  
+     #if($jigyoInfo.jigyoCd == '00111')  
+       <li class="comment">萌芽研究は、独創的な発想、特に意外性のある着想に基づく芽生え期の研究を対象とします。<br>なお、研究者の過去の研究業績は問わないこととしているため､研究計画調書には該当欄がありませんので御留意ください。</li>
+     #end
+     ##審査完了していた場合のみ
+##   #if($shinsaCompleteFlg == 'TRUE')  
+##    <li class="comment">「審査完了」後に、修正の必要がある場合は、学振担当者問い合わせ先にご連絡ください。</li>
+    </ul>
+
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+     <tr>
+      <td>
+       <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+        <tr>
+         <th>総合評点</th>
+##2006/05/19 追加ここから
+#*       <td><b><a href="javascript:onTantoShinseiList('$jigyoInfo.jigyoId', '0');">すべて</a></b></td>
+         <td><b><a href="javascript:onTantoShinseiList('$jigyoInfo.jigyoId', '5');">&nbsp;5&nbsp;</a></b></td>
+         <td><b><a href="javascript:onTantoShinseiList('$jigyoInfo.jigyoId', '4');">&nbsp;4&nbsp;</a></b></td>
+         <td><b><a href="javascript:onTantoShinseiList('$jigyoInfo.jigyoId', '3');">&nbsp;3&nbsp;</a></b></td>
+         <td><b><a href="javascript:onTantoShinseiList('$jigyoInfo.jigyoId', '2');">&nbsp;2&nbsp;</a></b></td>
+         <td><b><a href="javascript:onTantoShinseiList('$jigyoInfo.jigyoId', '1');">&nbsp;1&nbsp;</a></b></td>
+         <td><b><a href="javascript:onTantoShinseiList('$jigyoInfo.jigyoId', '-');">&nbsp;-(利害関係)&nbsp;</a></b></td>
+         <td><b><a href="javascript:onTantoShinseiList('$jigyoInfo.jigyoId', '-1');">未入力</a></b></td>
+*#
+         <td><b>
+           #if($shinsaKekkaSearchForm.kekkaTen.equals("0"))
+			すべて
+           #else    
+             <a href="javascript:onTantoShinseiList('$jigyoInfo.jigyoId', '0');">すべて</a>
+           #end
+         </b></td>
+         <td><b>
+           #if($shinsaKekkaSearchForm.kekkaTen.equals("5"))
+             &nbsp;5&nbsp;
+           #else
+             <a href="javascript:onTantoShinseiList('$jigyoInfo.jigyoId', '5');">&nbsp;5&nbsp;</a>
+           #end
+         </b></td>
+         <td><b>
+           #if($shinsaKekkaSearchForm.kekkaTen.equals("4"))
+             &nbsp;4&nbsp;
+           #else
+             <a href="javascript:onTantoShinseiList('$jigyoInfo.jigyoId', '4');">&nbsp;4&nbsp;</a>
+           #end
+         </b></td>
+         <td><b>
+           #if($shinsaKekkaSearchForm.kekkaTen.equals("3"))
+             &nbsp;3&nbsp;
+           #else
+             <a href="javascript:onTantoShinseiList('$jigyoInfo.jigyoId', '3');">&nbsp;3&nbsp;</a>
+           #end
+         </b></td>
+         <td><b>
+           #if($shinsaKekkaSearchForm.kekkaTen.equals("2"))
+             &nbsp;2&nbsp;
+           #else
+             <a href="javascript:onTantoShinseiList('$jigyoInfo.jigyoId', '2');">&nbsp;2&nbsp;</a>
+           #end
+         </b></td>
+         <td><b>
+           #if($shinsaKekkaSearchForm.kekkaTen.equals("1"))
+             &nbsp;1&nbsp;
+           #else
+             <a href="javascript:onTantoShinseiList('$jigyoInfo.jigyoId', '1');">&nbsp;1&nbsp;</a>
+           #end
+         </b></td>
+         <td><b>
+           #if($shinsaKekkaSearchForm.kekkaTen.equals("-"))
+             &nbsp;-(利害関係)&nbsp;
+           #else
+             <a href="javascript:onTantoShinseiList('$jigyoInfo.jigyoId', '-');">&nbsp;-(利害関係)&nbsp;</a>
+           #end
+         </b></td>
+         <td><b>
+           #if($shinsaKekkaSearchForm.kekkaTen.equals("-1"))
+			未入力
+           #else
+             <a href="javascript:onTantoShinseiList('$jigyoInfo.jigyoId', '-1');">未入力</a>
+           #end
+         </b></td>
+##苗　追加ここまで
+        </tr>
+        <tr>
+         <th>割合</th>
+         <td>
+          $!escape.getText($!sogoHyotenList.get('0'))件
+         </td>
+         <td>
+          #wariai($sogoHyotenList.get('5') $!sogoHyotenList.get('0'))
+         </td>
+         <td>
+          #wariai($sogoHyotenList.get('4') $!sogoHyotenList.get('0'))
+         </td>
+         <td>
+          #wariai($sogoHyotenList.get('3') $!sogoHyotenList.get('0'))
+         </td>
+         <td>
+          #wariai($sogoHyotenList.get('2') $!sogoHyotenList.get('0'))
+         </td>
+         <td>
+          #wariai($sogoHyotenList.get('1') $!sogoHyotenList.get('0'))
+         </td>
+         <td>
+          #wariai($sogoHyotenList.get('-') $!sogoHyotenList.get('0'))
+         </td>
+         <td>
+          #if($sogoHyotenList.get(null))
+            $!escape.getText($sogoHyotenList.get(null))/$!escape.getText($!sogoHyotenList.get('0'))件
+          #else
+            0/$!escape.getText($!sogoHyotenList.get('0'))件
+          #end
+         </td>
+        </tr>
+##2006/10/10追加
+       #if($jigyoInfo.jigyoCd != '00120')  ##若手Ｓ以外のみ表示する2007/5/30
+       <tr>
+        <th>評点分布の目安</th>
+        <td></td>
+        <td>10%</td>
+        <td>20%</td>
+        <td>40%</td>
+        <td>20%</td>
+        <td>10%</td>
+        <td></td>
+        <td></td>
+       </tr>
+       #end
+##2006/10/10追加完了
+       </table>
+      </td>
+     </tr>
+    </table>
+    <br>
+    <table width="100%" border="0" cellpadding="0" cellspacing="1">
+     <tr>
+      <td class="comment">
+##2006/05/19 追加ここから
+##       <font color="#FF0000">
+        <font color="#FF0000" size="+0.5">
+##苗　追加ここまで 
+		「総合評点：
+        #if($shinsaKekkaSearchForm.kekkaTen.equals('0') || $shinsaKekkaSearchForm.kekkaTen.equals(""))
+			すべて
+        #elseif($!shinsaKekkaSearchForm.kekkaTen.equals('-1'))
+			未入力
+        #else
+	        $!escape.getText($!shinsaKekkaSearchForm.kekkaTen)
+        #end
+    	」の応募課題が表示されています。
+       </font>
+      </td>
+     </tr>
+    </table>
+
+    <!-- 一覧用テーブルここから -->
+#*##################################################################################################
+ここからは、
+研究種目ごとに場合分け。
+【注意！】共通の項目の修正をする場合は、研究種目ごとに確認すること。
+##################################################################################################*#
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+     <tr>
+      <td>
+       ###################################################################################################
+       ##１．研究種目が「基盤研究(S)」「基盤研究(A)一般」「基盤研究(B)一般」「基盤研究(C)一般」
+       ##  「基盤研究(C)企画調査」「若手研究S」「若手研究(A)」「若手研究(B)」「特別研究促進費（基盤研究(A)相当）」
+       ##  「特別研究促進費（基盤研究(B)相当）」「特別研究促進費（基盤研究(C)相当）」「特別研究促進費（若手研究(A)相当）」
+       ##  「特別研究促進費（若手研究(B)相当）」の場合
+       ###################################################################################################
+       #if($jigyoInfo.jigyoCd == '00031' || $jigyoInfo.jigyoCd == '00041' || $jigyoInfo.jigyoCd == '00051' || $jigyoInfo.jigyoCd == '00061'|| $jigyoInfo.jigyoCd == '00062' || $jigyoInfo.jigyoCd == '00120' || $jigyoInfo.jigyoCd == '00121' || $jigyoInfo.jigyoCd == '00131' || $jigyoInfo.jigyoCd == '00152' || $jigyoInfo.jigyoCd == '00153' || $jigyoInfo.jigyoCd == '00154' || $jigyoInfo.jigyoCd == '00155' || $jigyoInfo.jigyoCd == '00156')
+         <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+          <tr>
+           #if($jigyoInfo.jigyoCd == '00120' || $jigyoInfo.jigyoCd == '00154')  ##若手Ｓ・促進費の場合2007/5/30
+           <th rowspan="2">細目番号・細目名</th>
+           #else
+           <th rowspan="2">細目番号・細目名<br>海外分野番号・海外分野名</th>
+           #end
+           #if($jigyoInfo.jigyoCd != '00120')  ##若手Ｓ以外のみ表示する2007/5/30
+           <th rowspan="2">分担金配分</th>
+           #end
+           #if($jigyoInfo.jigyoCd != '00120' && $jigyoInfo.jigyoCd != '00154')  ##若手Ｓ・促進費以外のみ表示する2007/5/30
+           <th rowspan="2">前年度応募</th>
+           #end
+           <th rowspan="2">所属研究機関名・部局名・職名</th>
+           <th rowspan="2">応募者名</th>
+           <th rowspan="2">機関-整理番号</th>
+	           <th rowspan="2">研究課題名</th>	    ##2007/5/8追加
+           <th rowspan="2">総合評点</th>
+           <th colspan="5">評定要素</th>
+	           #if($jigyoInfo.jigyoCd == '00120')  ##若手Ｓ以外のみ表示する2007/5/30
+		           <th rowspan="2">法令等の遵守の適切性</th>
+		           #else           
+	           <th colspan="2">適切性</th>
+	           #end
+           <th rowspan="2">経費<br>の妥当性</th>
+           <th rowspan="2">コメント</th>
+           #if($shinsainInfo.downloadFlag == '1')
+           <th rowspan="2">研究計画調書確認</th>
+           #end
+           <th rowspan="2">審査結果</th>
+           <th rowspan="2">審査意見</th>
+          </tr>    
+          <tr>
+           #if ($jigyoInfo.jigyoCd == '00120') ##若手研究Sの場合2007/5/8
+           <th>若手（S）</th>
+           #end
+           <th>学術</th>
+           <th>計画</th>
+           <th>独創性</th>
+           <th>波及効果</th>
+           #if ($jigyoInfo.jigyoCd != '00120') ##若手研究S以外の場合2007/5/8
+           <th>業績等</th>
+           <th>法令等</th>
+           <th>分担金</th>
+           #end
+          </tr>
+          ##該当件数が0件だった場合
+          #if($list.size() == 0)
+            <tr>
+             <td>&nbsp;<br>&nbsp;</td>
+             #if ($jigyoInfo.jigyoCd != '00120') ##若手研究S以外の場合2007/5/30
+             <td>&nbsp;<br>&nbsp;</td>
+             #end
+             #if($jigyoInfo.jigyoCd != '00120' && $jigyoInfo.jigyoCd != '00154')  ##若手Ｓ・促進費以外のみ表示する2007/5/30
+             <td>&nbsp;<br>&nbsp;</td>
+             #end
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             #if ($jigyoInfo.jigyoCd != '00120') ##若手研究S以外の場合2007/5/30
+             <td>&nbsp;<br>&nbsp;</td>
+             #end
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             #if($shinsainInfo.downloadFlag == '1')
+             <td>&nbsp;<br>&nbsp;</td>
+             #end
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+            </tr>
+          #else
+            #foreach($user in $list)
+              <tr>
+               <td>
+                #if($user.BUNKASAIMOKU_CD)
+                  $!escape.getText($!user.BUNKASAIMOKU_CD)$!escape.getText($!user.BUNKATSU_NO) 
+                #end
+                #if($user.SAIMOKU_NAME)
+                  $!escape.getText($!user.SAIMOKU_NAME)
+                #end
+                #if($user.KAIGAIBUNYA_CD)
+                  $!escape.getText($!user.KAIGAIBUNYA_CD)
+                #end
+                #if($user.KAIGAIBUNYA_NAME)
+                  $!escape.getText($!user.KAIGAIBUNYA_NAME)
+                #end
+               </td>
+             #if ($jigyoInfo.jigyoCd != '00120') ##若手研究S以外の場合2007/5/30
+               <td>
+                #if($user.BUNTANKIN_FLG == '1')
+                 				有
+                #end
+               </td>   
+             #end
+             #if($jigyoInfo.jigyoCd != '00120' && $jigyoInfo.jigyoCd != '00154')  ##若手Ｓ・促進費以外のみ表示する2007/5/30
+               <td>
+                #if($user.SHINSEI_FLG_NO.toString() == '1')
+                 			前年度応募
+                #end
+               </td>
+             #end
+               <td>
+                #if($user.SHOZOKU_NAME_RYAKU)
+                  $!escape.getText($!user.SHOZOKU_NAME_RYAKU) 
+                #end
+                #if($user.BUKYOKU_NAME_RYAKU)
+                  $!escape.getText($!user.BUKYOKU_NAME_RYAKU) 
+                #end
+                #if($user.SHOKUSHU_NAME_RYAKU)
+                  $!escape.getText($!user.SHOKUSHU_NAME_RYAKU)
+                #end
+               </td>
+               <td>$!escape.getText($!user.NAME_KANJI_SEI) $!escape.getText($!user.NAME_KANJI_MEI)</td>
+               <td>$!escape.getText($!user.UKETUKE_NO)</td>
+               <td>$!escape.getText($!user.KADAI_NAME_KANJI)</td> ##2007/5/8追加
+               <td>
+                ##総合評価（ABC）の方が優先
+                #if($user.KEKKA_ABC)
+                  $!escape.getText($!user.KEKKA_ABC)
+                #elseif($user.KEKKA_TEN)
+                  $!escape.getText($!user.KEKKA_TEN)
+                #elseif(!$user.KEKKA_ABC && !$user.KEKKA_TEN)
+					未
+                #end
+               </td>
+               #if ($jigyoInfo.jigyoCd == '00120') ##若手研究Sの場合2007/5/8
+               <td>$!escape.getText($!user.TEKISETSU_WAKATES)</td>
+               #end
+               <td>$!escape.getText($!user.JUYOSEI)</td>
+               <td>$!escape.getText($!user.KENKYUKEIKAKU)</td>
+               <td>$!escape.getText($!user.DOKUSOSEI)</td>
+               <td>$!escape.getText($!user.HAKYUKOKA)</td>
+               #if ($jigyoInfo.jigyoCd != '00120') ##若手研究S以外の場合2007/5/8
+               <td>$!escape.getText($!user.SUIKONORYOKU)</td>
+               #end
+               <td>$!escape.getText($!user.JINKEN_LABEL)</td>
+               #if ($jigyoInfo.jigyoCd != '00120') ##若手研究S以外の場合2007/5/30
+               <td>$!escape.getText($!user.BUNTANKIN_LABEL)</td>
+               #end
+               <td>$!escape.getText($!user.DATO_LABEL)</td>
+##2006/10/25 易旭 修正ここから
+               <!--td>
+                ##審査意見がNULLではない場合「有」と表示
+                #if($user.COMMENTS)
+    				有
+                #end
+               </td-->
+##2006/10/25 易旭 修正ここまで
+               <td>
+                ##コメントがNULLではない場合「有」と表示
+                #if($user.OTHER_COMMENT)
+    				有
+                #end
+               </td>
+                #if($shinsainInfo.downloadFlag == '1')
+                    <td><a href="javascript:onShinseiDownloadFile('$!user.SYSTEM_NO');"><img src="$path/images/bt_download.gif" width="64" height="24" alt="ダウンロード" border="0"></a></td>
+                #end
+               <td>
+##2006/10/25 易旭 修正ここから
+                ##if($user.SHINSA_JOKYO == '0')
+                #if($user.SHINSA_JOKYO == '0' && $user.RIGAI == '0')
+                  ##審査状況が「0:未完了」の場合
+                  <a href="javascript:onShinsaKekkaInput('$!user.SYSTEM_NO');"><img src="$path/images/bt_entry.gif" width="64" height="24" alt="入力" border="0"></a>
+                ##elseif($user.SHINSA_JOKYO == '1')
+                  ##審査状況が「1:完了」の場合
+                #else
+                  <a href="javascript:onShinsaKekkaReference('$!user.SYSTEM_NO');"><img src="$path/images/bt_indicate.gif" width="64" height="24" alt="表示" border="0"></a>
+                ##else
+                #end
+##2006/10/25 易旭 修正ここまで
+               </td>
+               <td style="word-break:break-all">$!escape.getText150($user.COMMENTS)</td>
+              </tr>
+            #end
+          #end
+         </table>
+
+       ###################################################################################################
+       ##２．「基盤研究(A)海外学術調査」「基盤研究(B)海外学術調査」の場合
+       ###################################################################################################
+       #elseif($jigyoInfo.jigyoCd == '00043' || $jigyoInfo.jigyoCd == '00053')
+         <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+          <tr>
+           <th rowspan="2">海外分野番号・海外分野名</th>
+           <th rowspan="2">分担金配分</th>
+           <th rowspan="2">前年度応募</th>
+           <th rowspan="2">所属研究機関名・部局名・職名</th>
+           <th rowspan="2">応募者名</th>
+           <th rowspan="2">機関-整理番号</th>
+           <th rowspan="2">研究課題名</th>	    ##2007/5/8追加
+           <th rowspan="2">総合評点</th>
+           <th colspan="6">評定要素</th>
+           <th colspan="2">適切性</th>
+           <th rowspan="2">経費<br>の妥当性</th>
+           <th rowspan="2">コメント</th>
+##2006/10/25 易旭 追加ここから
+           #if($shinsainInfo.downloadFlag == '1')
+           <th rowspan="2">研究計画調書確認</th>
+           #end
+##2006/10/25 易旭 追加ここまで
+           <th rowspan="2">審査結果</th>
+           <th rowspan="2">審査意見</th>
+          </tr>    
+          <tr>
+           <th>学術</th>
+           <th>海外</th>
+           <th>計画</th>
+           <th>独創性</th>
+           <th>波及効果</th>
+           <th>業績等</th>
+           <th>法令等</th>
+           <th>分担金</th>
+          </tr>
+          ##該当件数が0件だった場合
+          #if($list.size() == 0)
+            <tr>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             #if($shinsainInfo.downloadFlag == '1')
+             <td>&nbsp;<br>&nbsp;</td>
+             #end
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+            </tr>
+          #else
+            #foreach($user in $list)
+              <tr>
+               <td>
+                #if($user.KAIGAIBUNYA_CD)
+                  $!escape.getText($!user.KAIGAIBUNYA_CD) 
+                #end
+                #if($user.KAIGAIBUNYA_NAME_RYAKU)
+                  $!escape.getText($!user.KAIGAIBUNYA_NAME_RYAKU)
+                #end
+               </td>
+               <td>
+                #if($user.BUNTANKIN_FLG == '1')
+    				有
+                #end
+               </td>   
+               <td>
+                #if($user.SHINSEI_FLG_NO.toString() == '1')
+					前年度応募
+                #end
+               </td>
+               <td>
+                #if($user.SHOZOKU_NAME_RYAKU)
+                  $!escape.getText($!user.SHOZOKU_NAME_RYAKU) 
+                #end
+                #if($user.BUKYOKU_NAME_RYAKU)
+                  $!escape.getText($!user.BUKYOKU_NAME_RYAKU) 
+                #end
+                #if($user.SHOKUSHU_NAME_RYAKU)
+                  $!escape.getText($!user.SHOKUSHU_NAME_RYAKU) 	 			
+                #end
+               </td>
+               <td>$!escape.getText($!user.NAME_KANJI_SEI) $!escape.getText($!user.NAME_KANJI_MEI)</td>
+               <td>$!escape.getText($!user.UKETUKE_NO)</td>
+               <td>$!escape.getText($!user.KADAI_NAME_KANJI)</td> ##2007/5/8追加
+               <td>
+                ##総合評価（ABC）の方が優先
+                #if($user.KEKKA_ABC)
+                  $!escape.getText($!user.KEKKA_ABC)
+                #elseif($user.KEKKA_TEN)
+                  $!escape.getText($!user.KEKKA_TEN)
+                #elseif(!$user.KEKKA_ABC && !$user.KEKKA_TEN)
+					未
+                #end
+               </td>
+               <td>$!escape.getText($!user.JUYOSEI)</td>
+               <td>$!escape.getText($!user.TEKISETSU_KAIGAI)</td>
+               <td>$!escape.getText($!user.KENKYUKEIKAKU)</td>
+               <td>
+                 $!escape.getText($!user.DOKUSOSEI)
+               </td>
+               <td>
+                 $!escape.getText($!user.HAKYUKOKA)
+               </td>
+               <td>
+                 $!escape.getText($!user.SUIKONORYOKU)
+               </td>
+	    
+               <td>
+                 $!escape.getText($!user.JINKEN_LABEL)
+               </td>
+               <td>
+                 $!escape.getText($!user.BUNTANKIN_LABEL)
+               </td>
+               <td>
+                 $!escape.getText($!user.DATO_LABEL)
+               </td>
+##2006/10/25 易旭 削除 ここから
+               <!--td>
+                ##審査意見がNULLではない場合「有」と表示
+                #if($user.COMMENTS)
+					有
+                #end
+               </td-->
+##2006/10/25 易旭 削除 ここまで
+               <td>
+                ##コメントがNULLではない場合「有」と表示
+                #if($user.OTHER_COMMENT)
+					有
+                #end
+               </td>
+				#if($shinsainInfo.downloadFlag == '1')
+					<td><a href="javascript:onShinseiDownloadFile('$!user.SYSTEM_NO');"><img src="$path/images/bt_download.gif" width="64" height="24" alt="ダウンロード" border="0"></a></td>
+				#end
+               <td>
+##2006/10/25 易旭 修正 ここから
+                ##if($user.SHINSA_JOKYO == '0')
+				#if($user.SHINSA_JOKYO == '0' && $user.RIGAI == '0')
+				  ##審査状況が「0:未完了」の場合
+				  <a href="javascript:onShinsaKekkaInput('$!user.SYSTEM_NO');"><img src="$path/images/bt_entry.gif" width="64" height="24" alt="入力" border="0"></a>
+                ##elseif($user.SHINSA_JOKYO == '1')
+				  ##審査状況が「1:完了」の場合
+				#else
+				  <a href="javascript:onShinsaKekkaReference('$!user.SYSTEM_NO');"><img src="$path/images/bt_indicate.gif" width="64" height="24" alt="表示" border="0"></a>
+                ##else
+				#end
+##2006/10/25 易旭 修正 ここまで
+               </td>
+			   <td style="word-break:break-all">$!escape.getText150($user.COMMENTS)</td>
+              </tr>
+            #end
+          #end
+         </table>	
+  	
+       ###################################################################################################
+       ##４．研究種目が「萌芽研究」だったら
+       ###################################################################################################
+       #elseif($jigyoInfo.jigyoCd == '00111')
+         <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+          <tr>
+           <th rowspan="2">細目番号・細目名</th>
+           <th rowspan="2">分担金配分</th>
+           <th rowspan="2">前年度応募</th>
+           <th rowspan="2">所属研究機関名・部局名・職名</th>
+           <th rowspan="2">応募者名</th>
+           <th rowspan="2">機関-整理番号</th>
+           <th rowspan="2">研究課題名</th>	    ##2007/5/8追加
+           <th rowspan="2">総合評点</th>
+           <th colspan="5">評定要素</th>
+           <th colspan="2">適切性</th>
+           <th rowspan="2">経費<br>の妥当性</th>
+           <th rowspan="2">コメント</th>
+##2006/10/25 易旭 追加ここから
+	           #if($shinsainInfo.downloadFlag == '1')
+             <th rowspan="2">研究計画調書確認</th>
+		           #end
+##2006/10/25 易旭 追加ここまで
+           <th rowspan="2">審査結果</th>
+           <th rowspan="2">審査意見</th>
+          </tr>    
+          <tr>
+           <th>学術</th>
+           <th>萌芽</th>
+           <th>計画</th>
+           <th>独創性</th>
+           <th>波及効果</th>
+           <th>法令等</th>
+           <th>分担金</th>
+          </tr>
+          ##該当件数が0件だった場合
+          #if($list.size() == 0)
+            <tr>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+           #if($shinsainInfo.downloadFlag == '1')
+             <td>&nbsp;<br>&nbsp;</td>
+			           #end
+             <td>&nbsp;<br>&nbsp;</td>
+             <td>&nbsp;<br>&nbsp;</td>
+            </tr>
+          #else
+            #foreach($user in $list)
+              <tr>
+               <td>
+                #if($user.BUNKASAIMOKU_CD)	    
+                  $!escape.getText($!user.BUNKASAIMOKU_CD)$!escape.getText($!user.BUNKATSU_NO) 
+                #end
+                #if($user.SAIMOKU_NAME)
+                  $!escape.getText($!user.SAIMOKU_NAME)
+                #end
+               </td>
+               <td>
+                #if($user.BUNTANKIN_FLG == '1')
+					有
+                #end
+               </td>   
+               <td>
+                #if($user.SHINSEI_FLG_NO.toString() == '1')
+	 			前年度応募
+                #end
+               </td>
+               <td>
+                #if($user.SHOZOKU_NAME_RYAKU)
+                  $!escape.getText($!user.SHOZOKU_NAME_RYAKU) 
+                #end
+                #if($user.BUKYOKU_NAME_RYAKU)
+                  $!escape.getText($!user.BUKYOKU_NAME_RYAKU) 
+                #end
+                #if($user.SHOKUSHU_NAME_RYAKU)
+                  $!escape.getText($!user.SHOKUSHU_NAME_RYAKU) 	 			
+                #end
+               </td>
+               <td>$!escape.getText($!user.NAME_KANJI_SEI) $!escape.getText($!user.NAME_KANJI_MEI)</td>
+               <td>$!escape.getText($!user.UKETUKE_NO)</td>
+               <td>$!escape.getText($!user.KADAI_NAME_KANJI)</td> ##2007/5/8追加
+               <td>
+                ##総合評価（ABC）の方が優先
+                #if($user.KEKKA_ABC)
+                  $!escape.getText($!user.KEKKA_ABC)
+                #elseif($user.KEKKA_TEN)
+                  $!escape.getText($!user.KEKKA_TEN)
+                #elseif(!$user.KEKKA_ABC && !$user.KEKKA_TEN)
+					未
+                #end
+               </td>
+               <td>$!escape.getText($!user.JUYOSEI)</td>
+               <td>$!escape.getText($!user.TEKISETSU_KAIGAI)</td>
+               <td>$!escape.getText($!user.KENKYUKEIKAKU)</td>
+               <td>$!escape.getText($!user.DOKUSOSEI)</td>
+               <td>$!escape.getText($!user.HAKYUKOKA)</td>  
+               <td>$!escape.getText($!user.JINKEN_LABEL)</td>
+               <td>$!escape.getText($!user.BUNTANKIN_LABEL)</td>
+               <td>$!escape.getText($!user.DATO_LABEL)</td>
+               <!--td>
+                ##審査意見がNULLではない場合「有」と表示
+                #if($user.COMMENTS)
+					有
+                #end
+               </td-->
+               <td>
+                ##コメントがNULLではない場合「有」と表示
+                #if($user.OTHER_COMMENT)
+					有
+                #end
+               </td>
+				#if($shinsainInfo.downloadFlag == '1')
+					<td><a href="javascript:onShinseiDownloadFile('$!user.SYSTEM_NO');"><img src="$path/images/bt_download.gif" width="64" height="24" alt="ダウンロード" border="0"></a></td>
+				#end
+               <td>
+##2006/10/25 易旭 修正ここから
+                ##if($user.SHINSA_JOKYO == '0')
+				#if($user.SHINSA_JOKYO == '0' && $user.RIGAI == '0')
+				  ##審査状況が「0:未完了」の場合
+				  <a href="javascript:onShinsaKekkaInput('$!user.SYSTEM_NO');"><img src="$path/images/bt_entry.gif" width="64" height="24" alt="入力" border="0"></a>
+                ##elseif($user.SHINSA_JOKYO == '1')
+				  ##審査状況が「1:完了」の場合
+				#else
+				  <a href="javascript:onShinsaKekkaReference('$!user.SYSTEM_NO');"><img src="$path/images/bt_indicate.gif" width="64" height="24" alt="表示" border="0"></a>
+                ##else
+				#end
+##2006/10/25 易旭 修正ここまで
+               </td>
+			   <td style="word-break:break-all">$!escape.getText150($user.COMMENTS)</td>
+              </tr>
+            #end
+          #end
+         </table>
+   
+       #end
+
+      </td>
+     </tr>
+    </table>
+#*##################################################################################################
+ここまで
+研究種目ごとに場合分け。
+【注意！】共通の項目の修正をする場合は、研究種目ごとに確認すること。
+##################################################################################################*#
+    <!-- 一覧用テーブルここまで-->
+    <br>
+    <!-- 本文ここまで -->
+
+    <!-- ボタン用テーブルここから -->                               
+    <div align="center">
+     <table border="0" cellpadding="0" cellspacing="4">
+      <tr>
+       <td><a href="$link.setAction('/shinsa/shinsaJigyo/shinsaJigyoList')"><img src="$path/images/bt_bk_worklist.gif" width="228" height="28" alt="事業一覧に戻る" border="0"></a></td>
+      </tr>
+     </table>
+    </div>
+    <!-- ボタン用テーブルここまで -->
+    <!-- サブ画面フッター用テーブルここから -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tr bgcolor="#336699">
+      <td width="8" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img1.gif" width="8" height="26" alt=""></td>
+      <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shinsa/logoff')"><img src="$path/images/footer_logout.gif" alt="ログアウト" width="72" height="26" border="0"></a></td>
+      <td width="8" align="right" background="$path/images/footer_img2.gif"> <img src="$path/images/footer_img3.gif" width="8" height="26" alt=""></td>
+     </tr>
+    </table>
+    <!-- サブ画面フッター用テーブルここまで -->
+    <!-- コンテンツエリアここまで -->
+   </td>
+   <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+  </tr>
+ </table>
+ <!-- 左右の縦線用テーブルここまで -->
+</div>
+##隠しフォーム情報----------
+<form name="download_form" action="" method="post">
+	<input type="hidden" name="systemNo" >
+</form>
+<form name="input_form" action="" method="post">
+	<input type="hidden" name="systemNo" >
+</form>
+<form name="check_form" action="" method="post">
+	<input type="hidden" name="jigyoId" >
+</form>
+<form name="list_form" action="" method="post">
+	<input type="hidden" name="jigyoId" >
+	<input type="hidden" name="kekkaTen" >
+</form>
+##----------
+</body>
+</html>

@@ -1,0 +1,58 @@
+修改人：陈岗
+修改日期：2008-11-21
+修改内容：
+1、	录音文件服务器地址抽取
+配置文件位置：staticparameter.property
+修改内容：
+########### 录音文件服务器地址 ###########
+RecordServerAddress=http://192.168.3.223:80
+类文件位置：et.bo.callcenter.cclog.service.impl.TelQueryServiceImpl
+修改内容：
+public List telQuery(IBaseDTO dto, PageInfo pi) {
+......
+if(filename!=null)							filename=Constants.getProperty("RecordServerAddress")+filename.substring(filename.indexOf(":")+1, filename.length());
+......
+}
+
+public List getTel(IBaseDTO dto, PageInfo pi,String pageState) {
+......
+if(filename!=null)					filename=Constants.getProperty("RecordServerAddress")+filename.substring(filename.indexOf(":")+1, filename.length());
+......
+}
+2、	关联查询的时候处理录音表record里caller数据多“DC”
+类文件位置：et.bo.callcenter.cclog.service.impl.TelQueryServiceImpl
+修改内容：
+public List telQuery(IBaseDTO dto, PageInfo pi) {
+......
+String sql="select filename from record where (caller='"+telnum+"' or caller='D"+telnum+"C') and wid='"+oci.getRespondent()+"' and starttime>='"+oci.getTouchBegintime()+"' and starttime<='"+oci.getTouchEndtime()+"'";
+......
+}
+
+public List getTel(IBaseDTO dto, PageInfo pi,String pageState) {
+......
+String sqlV="select top "+pi.getPageSize()+"  aaa.tel_num ,aaa.ring_begintime ,aaa.process_endtime ,aaa.process_keeptime ,aaa.filename"+ 
+					" from "+
+					" (select a.id, a.tel_num,a.ring_begintime,a.process_endtime,a.process_keeptime,b.filename from"+
+					" cc_main a"+
+					" left join"+
+					" ("+
+							" select a.id, b.filename"+
+							" from cc_main a,record b"+
+							" where (a.tel_num=b.caller or 'D'+a.tel_num+'C'=b.caller)  and b.starttime>=a.ring_begintime and b.starttime <=a.process_endtime"+
+					" ) b"+
+					" on a.id = b.id ) aaa"+	
+					" where aaa.id not in"+
+					" ("+
+						"	select top "+(pState-1)*pi.getPageSize()+" ccc.id from (select a.id, a.tel_num,a.ring_begintime,a.process_endtime,a.process_keeptime,b.filename"+ 
+						"	from cc_main a"+
+						"	left join"+
+						"	("+
+						"	select a.id, b.filename"+
+						"	from cc_main a,record b"+
+						"	where (a.tel_num=b.caller or 'D'+a.tel_num+'C'=b.caller)  and b.starttime>=a.ring_begintime and b.starttime <=a.process_endtime"+
+						"	) b"+
+						"	on a.id = b.id) ccc"+
+						"	order by id desc"+
+					" )";
+......
+}

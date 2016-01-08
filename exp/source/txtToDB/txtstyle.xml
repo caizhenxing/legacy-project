@@ -1,0 +1,12 @@
+<style xmlns="zhao">
+<table name="">
+<element >
+<colunm>
+owner.tablename.column1
+</column>
+<defaultvalue>
+sysdate
+</defaultvalue>
+</element>
+</table>
+</style>

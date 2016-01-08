@@ -1,0 +1,21 @@
+#
+#Fri Nov 10 18:05:19 CST 2006
+genBasicCompId=false
+sessionFactoryName=
+profile=
+daoSFId=
+version=3.0
+jndiPath=
+springDaoFile=
+useJavaTypes=true
+keyGenerator=
+libInstallFolder=<no jars/zips in selected libraries>
+addLibs2Project=true
+genVersionTag=false
+sessionFactoryId=
+basePersistenceClass=
+reSettingsFile=
+configFile=/testwebsphere/src/et/config/hibernate/hibernate.cfg.xml
+createConfigFile=false
+addLibs2Classpath=true
+baseDaoClass=

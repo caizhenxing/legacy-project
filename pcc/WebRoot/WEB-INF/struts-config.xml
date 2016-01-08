@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans >
+  <form-bean name="LoginBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+	<form-property name="username" type="java.lang.String" />
+      <form-property name="pw" type="java.lang.String" />
+     <form-property name="val" type="java.lang.String" />
+   
+			</form-bean>
+  </form-beans>
+  <global-exceptions >
+    <exception
+      key="all"
+      path="/sys/error.html"
+      type="java.lang.Exception" />
+  </global-exceptions>
+
+  <global-forwards >
+    <forward name="sessionTimeOut" path="/index.jsp" />
+
+  </global-forwards>
+
+  <action-mappings >
+  		<action attribute="LoginBean" name="LoginBean"
+			path="/login" input="" parameter="method"
+			scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success"
+				path="/sys/main.jsp" />
+				<forward name="error"
+				path="/index.jsp" />
+		</action>
+		<action path="/sys/moduleLinkTreeSearch"
+			type="et.bo.sys.common.action.ModuleLinkTreeSearch"
+			parameter="method" scope="request">
+			<forward name="ok" path="/sys/tree.jsp"></forward>
+			<forward name="module" path="/sys/module/tree.jsp"></forward>
+			<forward name="dep" path="/sys/dep/tree.jsp"></forward>
+			<forward name="tree" path="/sys/tree/tree.jsp"></forward>
+			<forward name="type" path="/sys/type/tree.jsp"></forward>
+			<forward name="group" path="/sys/right/grantGroup.jsp"></forward>
+			<forward name="user" path="/sys/right/grantUser.jsp"></forward>
+			<forward name="station" path="/sys/station/tree.jsp" />
+		</action>
+  </action-mappings>
+  <message-resources parameter="et.config.struts.ApplicationResources_ch" />
+  	<plug-in
+		className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation"
+			value="/WEB-INF/classes/et/config/spring/applicationContext.xml ,/WEB-INF/classes/et/config/spring/spring*.xml" />
+	</plug-in>
+</struts-config>
+

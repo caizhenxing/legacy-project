@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+
+<contents>
+    ##ファイルパスの設定
+    #set($path = "D:/shinsei/settings/webdoc/hyoshiRyoiki")
+  
+    <!-- ********** ページ１ ここから ********** -->
+    <page templateFilePath="$path/Page1.iod">
+      <!-- ******* タイトル ******* -->
+      <field name="NENDO1"             value="平成$!escape.getText($!shinseiDataInfo.nendo)年度 "/>
+      #set($nendoSeireki = "")
+      #if($!shinseiDataInfo.nendo)
+        #set($nendoSeireki = $!escape.getText($!dateUtil.changeWareki4Seireki($!shinseiDataInfo.nendo)))
+      #end
+      <field name="NENDO_SEIREKI"     value="${nendoSeireki}年度"/>
+      <field name="UKETUKE_NO"        value="$!escape.getText($!shinseiDataInfo.uketukeNo) "/>
+      <field name="RYOIKI_NAME"       value="$!escape.getText($!shinseiDataInfo.ryoikiName)"/>
+      <field name="NAME_KANA"         value="$!escape.getText($!shinseiDataInfo.nameKanaSei) $!escape.getText($!shinseiDataInfo.nameKanaMei)"/>
+      <field name="NAME_KANJI"        value="$!escape.getText($!shinseiDataInfo.nameKanjiSei) $!escape.getText($!shinseiDataInfo.nameKanjiMei)"/>
+      <field name="SHOZOKU_NAME"      value="$!escape.getText($!shinseiDataInfo.shozokuName) "/>
+      <field name="BUKYOKU_NAME"      value="$!escape.getText($!shinseiDataInfo.bukyokuName)"/>
+      <field name="SHOKU_NAME_KANJI"  value="$!escape.getText($!shinseiDataInfo.shokushuNameKanji)"/>
+      $!dateUtil.setCal($!escape.getText($!shinseiDataInfo.sakuseiDate.toString().substring(0,4)),"4","1")
+      #set($sakuseiYY = $!dateUtil.getNendo())
+      <field name="SAKUSEI_DATE_Y"    value="$!escape.getText($sakuseiYY)"/>
+      <field name="SAKUSEI_DATE_M"    value="$!escape.getText($dateFormat.getMonth($!shinseiDataInfo.sakuseiDate))"/>
+    </page>
+
+</contents> 

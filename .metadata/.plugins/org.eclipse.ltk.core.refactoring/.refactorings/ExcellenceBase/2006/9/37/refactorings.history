@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<session version="1.0">
+<refactoring comment="Rename package 'excellence.common.file' to 'excellence.common.util.file'&#13;&#10;- Original element: 'ExcellenceBase/src/excellence.common.file'&#13;&#10;- Renamed element: 'ExcellenceBase/src/excellence.common.util.file'&#13;&#10;- Update references to refactored element&#13;&#10;- Update textual occurrences in comments and strings" description="Rename package 'excellence.common.file'" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;excellence.common.file" name="excellence.common.util.file" qualified="false" references="true" stamp="1158043687265" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+  	   <!-- hr add -->
+       <form-bean name="addressListBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="id" type="java.lang.String" />
+    	<form-property name="userId" type="java.lang.String" />
+    	<form-property name="sort" type="java.lang.String" />
+    	<form-property name="name" type="java.lang.String" />
+    	<form-property name="appellation" type="java.lang.String" />
+    	<form-property name="company" type="java.lang.String" />
+    	<form-property name="station" type="java.lang.String" />
+    	<form-property name="personalEmail" type="java.lang.String" />
+    	<form-property name="businessEmail" type="java.lang.String" />
+    	<form-property name="otherEmail" type="java.lang.String" />
+    	<form-property name="personalPhone" type="java.lang.String" />
+    	<form-property name="businessPhone" type="java.lang.String" />
+    	<form-property name="fax" type="java.lang.String" />
+    	<form-property name="mobile" type="java.lang.String" />
+    	<form-property name="beepPager" type="java.lang.String" />
+    	<form-property name="otherPhone" type="java.lang.String" />
+    	<form-property name="businessAddress" type="java.lang.String" />
+    	<form-property name="businessPost" type="java.lang.String" />
+    	<form-property name="personalAddress" type="java.lang.String" />
+    	<form-property name="personalPost" type="java.lang.String" />
+    	<form-property name="companyPage" type="java.lang.String" />
+    	<form-property name="personalPage" type="java.lang.String" />
+    	<form-property name="birthday" type="java.lang.String" />
+    	<form-property name="remark" type="java.lang.String" />
+    	<form-property name="sign" type="java.lang.String" />
+        <!-- 公司通讯录   	-->
+        <form-property name="department" type="java.lang.String" />
+        <form-property name="companyPhone" type="java.lang.String" />
+    	<!--  数组类型  	<form-property name="chk" type="java.lang.String[]" />-->
+	 </form-bean>
+	 <form-bean name="addressListSortBean"
+			type="excellence.framework.base.dto.impl.DynaActionFormDTO">
+      	<form-property name="id" type="java.lang.String" />
+    	<form-property name="userId" type="java.lang.String" />
+    	<form-property name="sortName" type="java.lang.String" />
+    	<form-property name="sortExplain" type="java.lang.String" />
+    	<form-property name="sortMark" type="java.lang.String" />
+    	<!--  数组类型  	<form-property name="chk" type="java.lang.String[]" />-->
+	 </form-bean>
+  </form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+     <action
+      attribute="addressListBean"
+      name="addressListBean"
+      path="/oa/privy/addressList"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="docUpload" path="/oa/privy/addressList/docUpload.jsp"/>
+           <forward name="main"  path="/oa/privy/addressList/addressListManagerMain.jsp"/>
+           <forward name="compangyMain"  path="/oa/privy/addressList/companyAddressListManagerMain.jsp"/>
+           <forward name="personalMain"  path="/oa/privy/addressList/personalAddressListManagerMain.jsp"/>
+           <forward name="commonMain"  path="/oa/privy/addressList/commonAddressListManagerMain.jsp"/>
+           <forward name="query" path="/oa/privy/addressList/addressListManagerQuery.jsp"/>
+           <forward name="companyQuery" path="/oa/privy/addressList/companyAddressListQuery.jsp"/>
+           <forward name="load"  path="/oa/privy/addressList/addressListManagerLoad.jsp"/>
+           <forward name="list"  path="/oa/privy/addressList/addressListManagerList.jsp"/>
+           <forward name="companyList"  path="/oa/privy/addressList/companyAddressListManagerList.jsp"/>
+           <forward name="detail"  path="/oa/privy/addressList/addressListManagerDetail.jsp"/>
+           <forward name="companyAddressListDetail"  path="/oa/privy/addressList/companyAddressListDetail.jsp"/>            
+    </action>
+    <action
+      attribute="addressListSortBean"
+      name="addressListSortBean"
+      path="/oa/privy/addressListSort"
+      parameter="method"
+      scope="request"
+      type="org.springframework.web.struts.DelegatingActionProxy" >
+           <forward name="docUpload" path="/oa/privy/addressList/docUpload.jsp"/>
+           <forward name="main"  path="/oa/privy/addressListSort/addressListSortManagerMain.jsp"/>
+           <forward name="personalMain"  path="/oa/privy/addressListSort/personalAddressListSortManagerMain.jsp"/>
+           <forward name="commonMain"  path="/oa/privy/addressListSort/commonAddressListSortManagerMain.jsp"/>
+           <forward name="query" path="/oa/privy/addressListSort/addressListSortManagerQuery.jsp"/>
+           <forward name="load"  path="/oa/privy/addressListSort/addressListSortManagerLoad.jsp"/>
+           <forward name="list"  path="/oa/privy/addressListSort/addressListSortManagerList.jsp"/>
+           <forward name="detail"  path="/oa/privy/addressListSort/addressListSortManagerDetail.jsp"/>
+           <forward name="ok" path="/oa/privy/addressListSort/test1.jsp"/>         
+    </action>
+  </action-mappings>
+  
+</struts-config>
+

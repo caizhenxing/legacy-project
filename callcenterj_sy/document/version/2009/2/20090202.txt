@@ -1,0 +1,2 @@
+1、oper_book_medicinfo表里新增字段expert_sort varchar(50) 允许为空 注释：专家类别
+2、oper_medicinfo表里新增字段expert_name varchar(50) 允许为空 注释：专家名称

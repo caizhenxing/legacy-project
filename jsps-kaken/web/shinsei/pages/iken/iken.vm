@@ -1,0 +1,154 @@
+#parse( $commonSetting )
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <title>JSPS 電子申請システム</title>
+  <link href="$path/css/jspsstyle.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" language="javascript" src="$path/js/fncWindowOpen.js"></script>
+  <script language="javascript">
+  <!--
+    function dataCheck(){
+       if (document.frmIken.ikenInfo.value == ""){
+       		alert("ご意見・ご要望を入力して下さい。");
+        	return false;
+       }
+
+       /*str = new String(document.frmIken.ikenInfo.value);
+       if ( jstrlen(str) > 2000 ){
+       		alert("ご意見・ご要望は２０００バイト以内で入力して下さい。");
+        	return false;
+       }*/
+       
+       document.frmIken.submit();
+    }
+
+	function jstrlen(str) {
+	   len = 0;
+	   str = escape(str);
+		//alert("ご意見・ご要望は＝" + str);
+	   for (i = 0; i < str.length; i++, len++) {
+	      if (str.charAt(i) == "%") {
+	         if (str.charAt(++i) == "u") {
+	            i += 3;
+	            len++;
+	         }
+	         i++;
+	      }
+	   }
+
+		alert("ご意見・ご要望は＝" + len);
+	   
+	   return len;
+	}
+  //-->
+  </script>
+</head>
+<body class="bodyStyle">
+ <div align="center">
+  <!-- ヘッダー 用テーブルここから-->
+  <table width="95%" border="0" cellpadding="0" cellspacing="0">
+   <tr>
+     <td width="307" valign="top" background="$path/images/header_bg2.gif"><img src="$path/images/header_logo.gif" alt="JSPS　独立行政法人　日本学術振興会　オンライン応募システム" width="307" height="58"></td>
+     <td align="right" background="$path/images/header_bg2.gif">
+       <!-- ヘルプ、ログアウトボタン用テーブルここから -->
+       <table border="0" cellpadding="0" cellspacing="1">
+         <tr>
+           <td colspan="2"><img src="$path/images/spacer.gif" alt="" width="1" height="15"></td>
+         </tr>
+         <tr>
+           <td><a href="https://www-shinsei.jsps.go.jp/topkakenhi/download-ka.html#tebiki" target="_blank"><img src="$path/images/header_help.gif" alt="ヘルプ" width="72" height="20" border="0"></a></td>
+           <td><a href="$link.setAction('/shinsei/logoff')"><IMG SRC="$path/images/header_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=20 border="0"></a></td>
+         </tr>
+       </table>
+       <!-- ヘルプ、ログアウトボタン用テーブルここまで -->
+     </td>
+     <td width="6" align="right" background="$path/images/header_bg2.gif"><img src="$path/images/header_bg3.gif" alt="" width="6" height="58"></td>
+    </tr>
+  </table>
+  <!--  ヘッダー 用テーブルここまで-->
+
+  <!-- 左右の縦線用テーブルここから -->
+  <table width="95%" border="0" cellpadding="0" cellspacing="0">
+   <tr>
+    <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+    <td>
+     <!-- コンテンツエリアここから -->
+     <!-- ログインユーザ、ルート情報用テーブルここから　-->
+     <table width="100%" border="0" cellpadding="4" cellspacing="0">
+      <tr>
+       <td bgcolor="#6699CC" class="rootFont"><font color="#FFFFFF"><a href="$link.setAction('/shinsei/showMainMenu')">応募者向けメニュー</a>＞<B>ご意見・ご要望</B></font></td>
+      </tr>
+     </table>
+     <!-- ログインユーザ、ルート情報用テーブルここまで　-->
+
+     <!-- サブ画面タイトル用テーブルここから -->
+     <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr valign="bottom">
+       <td width="1%" background="$path/images/subtitle_img2.gif"><IMG SRC="$path/images/subtitle_img1.gif" WIDTH=61 HEIGHT=49 ALT=""></td>
+       <td width="90%" valign="middle" background="$path/images/subtitle_img2.gif" class="subTitlefont"> <br>
+            ご意見・ご要望</td>
+       <td width="1%" align="right" background="$path/images/subtitle_img2.gif"> <IMG SRC="$path/images/subtitle_img3.gif" width=213 height=49 ALT=""></td>
+      </tr>
+     </table>
+     <!-- サブ画面タイトル用テーブルここまで -->
+    
+     <!-- 本文ここから -->
+     <div>
+     <p align="left">電子申請<!--ならびに事業-->に関するご意見・ご要望をお寄せください。</p>
+     <li class="comment">ご意見・ご要望は、匿名で日本学術振興会に直接送信され、今後の電子申請システム改善のための参考とさせていただきます。</li>
+     <li class="comment">ご記入内容について、個別に回答はしていませんので、ご了承ください（お問い合わせは<a href="http://www-shinsei.jsps.go.jp/usage/usage7.html" target="_blank">こちら</a>）。</li>
+     <li class="comment">ご記入内容が採否に影響することはありません。</li>
+     </div>
+
+     <br>
+     <form name="frmIken" method="post" action="$link.setAction('/shinsei/ikenKakunin')">
+       <input type="hidden" name="taishoID" value="1"> 
+     #errorMarkup()<br>
+     <div align="center">
+     <table width="95%" border="0" cellpadding="0" cellspacing="0" class="tableBackg">
+      <tr>
+       <td>
+        <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+         <tr>
+          <th width="30%" align="left">ご意見・ご要望内容</th>
+          <td width="70%"><textarea rows="4" name="ikenInfo" cols="80">$!escape.getText($!form.getBean().ikenInfo)</textarea></td>
+         </tr>
+        </table>
+       </td>
+      </tr>
+     </table>
+     <br>
+     <!-- 本文ここまで -->
+
+     <!-- ボタン用テーブルここから --> 
+      <table border="0" cellpadding="0" cellspacing="4">
+       <tr>
+        ##<td><input type="image" src="$path/images/bt_ok.gif" alt="OK" width="114" height="28" onClick="return dataCheck();"></td>
+        <td><input type="image" src="$path/images/bt_ok.gif" alt="OK" width="114" height="28" ></td>
+        <td><a href="$link.setAction('/shinsei/showMainMenu')"><img src="$path/images/bt_cancel.gif" width=114 height=28 border="0" alt="キャンセル"></a></td>
+       </tr>
+      </table>
+     </div>
+	 </form>
+     <!-- ボタン用テーブルここまで -->
+
+     <!-- サブ画面フッター用テーブルここから -->
+     <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr bgcolor="#336699">
+       <td width="8" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img1.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+       <td align="right" background="$path/images/footer_img2.gif"><a href="$link.setAction('/shinsei/logoff')"><IMG SRC="$path/images/footer_logout.gif" ALT="ログアウト" WIDTH=72 HEIGHT=26 border="0"></a></td>
+       <td width="8" align="right" background="$path/images/footer_img2.gif"> <IMG SRC="$path/images/footer_img3.gif" WIDTH=8 HEIGHT=26 ALT=""></td>
+      </tr>
+     </table>
+     <!-- サブ画面フッター用テーブルここまで -->
+
+     <!-- コンテンツエリアここまで -->
+    </td>
+    <td width="1" bgcolor="#CCCCCC"><img src="$path/images/spacer.gif" alt="" width="1" height="1"></td>
+   </tr>
+  </table>
+  <!-- 左右の縦線用テーブルここまで -->
+ </div>
+</body>
+</html>

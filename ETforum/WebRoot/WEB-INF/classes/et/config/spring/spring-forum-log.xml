@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean name="/forum/forumLog"
+		class="et.bo.forum.log.action.ForumLogAction" singleton="false">			
+		<property name="forumLogService">
+			<ref bean="ForumLogService" />
+		</property>	
+		<property name="cts">
+			<ref bean="ClassTreeService" />
+		</property>			
+	</bean>
+	
+	<!--  service begin -->	
+	<bean id="ForumLogService"
+		class="et.bo.forum.log.service.impl.ForumLogServiceImpl" singleton="true">
+		<property name="ks">
+			<ref bean="KeyService" />
+		</property>
+		<property name="dao">
+			<ref bean="ForumDao" />
+		</property>
+	</bean>	
+</beans>

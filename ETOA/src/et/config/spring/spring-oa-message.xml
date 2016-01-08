@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "spring-beans.dtd">
+<beans>
+	<bean id="AddrListService" class="et.bo.oa.message.addrList.service.impl.AddrListServiceImpl"  singleton="true">
+		<property name="dao">
+			<ref bean="BaseDao" />
+		</property>
+	</bean>
+	
+	<bean name="/oa/addrList" class="et.bo.oa.message.addrList.action.AddrListAction"  singleton="false">
+		<property name="addrListService">
+			<ref bean="AddrListService" />
+		</property>
+		<property name="ctree">
+			<ref bean="ClassTreeService"/>
+		</property>
+		<property name="departTree">
+			<ref bean="DepTreeService"/>
+		</property>
+	</bean>
+</beans>

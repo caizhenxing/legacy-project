@@ -1,0 +1,71 @@
+<project name="jbpm.jpdl.jar" basedir="." default="install">
+
+  <!-- project specific properties -->
+  <property name="artifact.name" value="jbpm-jpdl.jar" />
+  <property name="module.name" value="jpdl" />
+  <property name="jbpm.root" value="../.." />
+  <property file="../version.properties" />
+
+  <!-- properties files -->
+  <property file="${user.home}/jbpm/build.properties" />
+  <property file="build.properties" />
+  <property file="${jbpm.root}/build/build.properties" />
+
+  <!-- import base project build file -->
+  <import file="${jbpm.root}/build/base.project.build.xml"/>
+  
+  <!-- project specific targets -->
+
+  <target name="config.profile.default">
+    <mkdir dir="target/profiles" />
+    <jar jarfile="target/profiles/jbpm.config.profile.default.jar">
+      <fileset dir="src/main/config" />
+    </jar>
+  </target>
+
+  <target name="config.profile.datasource">
+    <mkdir dir="target/profiles/jbpm.config.profile.datasource" />
+    <copy todir="target/profiles/jbpm.config.profile.datasource">
+      <fileset dir="src/main/config" />
+    </copy>
+    <replace file="target/profiles/jbpm.config.profile.datasource/hibernate.cfg.xml">
+      <replacetoken><![CDATA[<!-- jdbc connection properties (begin) -->]]></replacetoken>
+      <replacevalue><![CDATA[<!-- jdbc connection properties (begin) ===]]></replacevalue>
+    </replace>
+    <replace file="target/profiles/jbpm.config.profile.datasource/hibernate.cfg.xml">
+      <replacetoken><![CDATA[<!-- jdbc connection properties (end) -->]]></replacetoken>
+      <replacevalue><![CDATA[==== jdbc connection properties (end) -->]]></replacevalue>
+    </replace>
+    <replace file="target/profiles/jbpm.config.profile.datasource/hibernate.cfg.xml">
+      <replacetoken><![CDATA[<!-- datasource properties (begin) ===]]></replacetoken>
+      <replacevalue><![CDATA[<!-- datasource properties (begin) -->]]></replacevalue>
+    </replace>
+    <replace file="target/profiles/jbpm.config.profile.datasource/hibernate.cfg.xml">
+      <replacetoken><![CDATA[==== datasource properties (end) -->]]></replacetoken>
+      <replacevalue><![CDATA[<!-- datasource properties (end) -->]]></replacevalue>
+    </replace>
+    <jar jarfile="target/profiles/jbpm.config.profile.datasource.jar">
+      <fileset dir="target/profiles/jbpm.config.profile.datasource" />
+    </jar>
+  </target>
+
+  <target name="config.profile.cmt" 
+          depends="config.profile.datasource">
+    <mkdir dir="target/profiles/jbpm.config.profile.cmt" />
+    <copy todir="target/profiles/jbpm.config.profile.cmt">
+      <fileset dir="target/profiles/jbpm.config.profile.datasource" />
+    </copy>
+    <replace file="target/profiles/jbpm.config.profile.cmt/hibernate.cfg.xml">
+      <replacetoken><![CDATA[<!-- cmt transaction properties (begin) ===]]></replacetoken>
+      <replacevalue><![CDATA[<!-- cmt transaction properties (begin) -->]]></replacevalue>
+    </replace>
+    <replace file="target/profiles/jbpm.config.profile.cmt/hibernate.cfg.xml">
+      <replacetoken><![CDATA[==== cmt transaction properties (end) -->]]></replacetoken>
+      <replacevalue><![CDATA[<!-- cmt transaction properties (end) -->]]></replacevalue>
+    </replace>
+    <jar jarfile="target/profiles/jbpm.config.profile.cmt.jar">
+      <fileset dir="target/profiles/jbpm.config.profile.cmt" />
+    </jar>
+  </target>
+
+</project>
